@@ -1,0 +1,92 @@
+
+!! !!!The Estonian morphophonological/twolc rules file 
+
+
+
+Alphabet
+a b d e f g h i j k l m n o p r s š t u v z ž õ ü ä ö
+A B D E F G H I J K L M N O P R S Š T U V Z Ž Õ Ü Ä Ö
+ y
+ Y
+
+
+! this appears in the illative
+V1:a
+V1:e
+V1:i
+V1:o
+V1:u
+V1:y
+V1:ä
+V1:ö
+
+%- !Hyphen in  constructions 
+%>
+#   ! Word boundary for both lexicalised and dynamic compounds
+
+%^LVws:0
+%^LCns:0
+%^WCns:0
+%^AtoO:0
+%^RVws:0
+%^Prti:i
+%^Pli:i
+
+;
+
+
+Sets
+
+VwsBack = a o u ;
+VwsFront = ä ö y ü ;
+VwsNeutral = e i ; 
+VwsNonHigh = a o ä ö e ;
+Vws = a o u ä ö y ü e i ;
+
+Cns = b d f g h j k l m n p r s š t v z ž ;
+
+Letters = Vws Cns ;
+
+
+Rules
+!Vowels
+
+!sööma:süüa
+!"ö:ü in Inf"
+!ö:ü <=> _  ö: %>: a %^RVws:0 ;
+!        ö: _  %>: a %^RVws:0 ;
+
+! Vowel raising
+!sööma:süüa, jooma:juua
+"Vowel raising ö:ü, o:u in Inf"
+!! __@RULENAME@__ 
+Vx:Vy <=> _     Vx:Vy %^RVws:0 %>: [ a | e ]  ;
+		  Vx:Vy _  %^RVws:0 %>: [ a | e ] ;
+          where Vx in ( ö o )
+                Vy in ( ü u )
+          matched ;
+
+! Vowel loss
+"Vowel to 0"
+!! __@RULENAME@__ 
+Vx:0 <=> Vx: _ %> [ %^Pli: | %^Prti: ] ;
+         where Vx in ( a ä o ö) ;
+
+"Vowel change"
+!! __@RULENAME@__ 
+Vx:õ <=> _ Vx: %>: %^Prti: ;
+     where Vx in ( o ö ) ;
+
+"Long vowel shortening"
+!! __@RULENAME@__ 
+Vx:0 <=> Vx: _ %> i ;
+     where Vx in ( e ö o ä a ) ;
+
+"Front mid goes back"
+!! __@RULENAME@__ 
+ö:õ <=> _ ö: %>: i ;
+
+! Vowel raising dummy
+"Vowel raising dummy to Zero"
+!! __@RULENAME@__ 
+%^RVws:0 <=> [ o:u | ö:ü ] _ %>: [ a | e ] ;

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<r xsi:noNamespaceSchemaLocation="../../../../../gtcore/schemas/fiu-dict-schema.xsd"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:hfp="http://www.w3.org/2001/XMLSchema-hasFacetAndProperty" xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+   <e>
+      <lg>
+         <l>all</l>
+         <stg>
+            <st Contlex="PoTag">all</st>
+         </stg>
+      </lg>
+      <pos>POSTP</pos>
+      <mg>
+         <m>
+            <head/>
+            <defNative/>
+         </m>
+         <tg lang="eng">
+            <t pos="POSTP">under</t>
+         </tg>
+         <tg lang="fin">
+            <t pos="POSTP">alla</t>
+         </tg>
+      </mg>
+   </e>
+   <e>
+      <lg>
+         <l>ilma</l>
+         <stg>
+            <st Contlex="PrepTag">ilma</st>
+         </stg>
+      </lg>
+      <pos>PREP</pos>
+      <mg>
+         <m>
+            <head/>
+            <defNative/>
+         </m>
+         <tg lang="eng">
+            <t pos="PREP">without</t>
+         </tg>
+         <tg lang="fin">
+            <t pos="PREP">ilman</t>
+         </tg>
+      </mg>
+   </e>
+</r>

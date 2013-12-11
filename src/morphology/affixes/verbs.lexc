@@ -1,0 +1,175 @@
+
+!! !!!Verb inflection
+
+!! Verbs in the Estonian language inflect for number and persons.
+
+LEXICON V-olema
++V+Ind+Prs:   normpöörded   ;
+
+LEXICON V-sööma
+!!+Ind+Prs
++V+Ind+Prs:   normpöörded   ;
++V+Ind+Prs+Sg1+ConNeg:%>0 K ;
++V+Ind+Prs+Sg2+ConNeg:%>0 K ;
++V+Ind+Prs+Sg3+ConNeg:%>0 K ;
++V+Ind+Prs+Pl1+ConNeg:%>0 K ;
++V+Ind+Prs+Pl2+ConNeg:%>0 K ;
++V+Ind+Prs+Pl3+ConNeg:%>0 K ;
++V+Ind+Prs+4:%^RVws%>akse K ; !!How should this be marked?
++V+Ind+Prs+4+ConNeg:%>da K ;
+!!+Ind+Prt
++V+Ind+Prt:%>%^Prti pöörded-ita ; ! 
++V+Ind+Prt+Sg1+ConNeg:%>nud K ;
++V+Ind+Prt+Sg2+ConNeg:%>nud K ;
++V+Ind+Prt+Sg3+ConNeg:%>nud K ;
++V+Ind+Prt+Pl1+ConNeg:%>nud K ;
++V+Ind+Prt+Pl2+ConNeg:%>nud K ;
++V+Ind+Prt+Pl3+ConNeg:%>nud K ;
++V+Ind+Prt+4:%>di K ;
++V+Ind+Prt+4+ConNeg:%>dud K ;
+!!Imprt
++V+Imprt+Pl1+ConNeg:%>gem K ;
++V+Imprt+Pl1:%>gem K ;
++V+Imprt+Pl2:%>ge K ;
++V+Imprt+Pl2+ConNeg:%>ge K ;
++V+Imprt+4:%>dagu K ;
++V+Imprt+4+ConNeg:%>dagu K ;
++V+Imprt+Sg2+ConNeg:%>0 K ;
++V+Imprt+Sg2:%>0 K ;
++V+Imprt+Sg3+ConNeg:%>gu K ;
++V+Imprt+Pl3+ConNeg:%>gu K ;
++V+Imprt+Pl3:%>gu K ;
++V+Imprt+Sg3:%>gu K ;
+!!Cond
++V+Cond+Prs:%>ks pöörded ;
++V+Cond+Prs+Sg1+ConNeg:%>ks K ;
++V+Cond+Prs+Sg2+ConNeg:%>ks K ;
++V+Cond+Prs+Sg3+ConNeg:%>ks K ;
++V+Cond+Prs+Pl1+ConNeg:%>ks K ;
++V+Cond+Prs+Pl2+ConNeg:%>ks K ;
++V+Cond+Prs+Pl3+ConNeg:%>ks K ;
++V+Cond+Prs+4:%>daks K ;
++V+Cond+Prs+4+ConNeg:%>daks K ;
+!!
++V+Cond+Prt:%>nuks pöörded ;
++V+Cond+Prt+Sg1+ConNeg:%>nuks K ;
++V+Cond+Prt+Sg2+ConNeg:%>nuks K ;
++V+Cond+Prt+Sg3+ConNeg:%>nuks K ;
++V+Cond+Prt+Pl1+ConNeg:%>nuks K ;
++V+Cond+Prt+Pl2+ConNeg:%>nuks K ;
++V+Cond+Prt+Pl3+ConNeg:%>nuks K ;
++V+Cond+Prt+4:%>duks K ;
++V+Cond+Prt+4+ConNeg:%>duks K ;
+!!Quo
++V+Quo+Prs+Sg1:%>vat K ;
++V+Quo+Prs+Sg2:%>vat K ;
++V+Quo+Prs+Sg3:%>vat K ;
++V+Quo+Prs+Pl1:%>vat K ;
++V+Quo+Prs+Pl2:%>vat K ;
++V+Quo+Prs+Pl3:%>vat K ;
++V+Quo+Prs+Sg1+ConNeg:%>vat K ;
++V+Quo+Prs+Sg2+ConNeg:%>vat K ;
++V+Quo+Prs+Sg3+ConNeg:%>vat K ;
++V+Quo+Prs+Pl1+ConNeg:%>vat K ;
++V+Quo+Prs+Pl2+ConNeg:%>vat K ;
++V+Quo+Prs+Pl3+ConNeg:%>vat K ; 
++V+Quo+Prs+4:%>davat K ;
++V+Quo+Prs+4+ConNeg:%>davat K ;
++V+Quo+Prt+Sg1:%>nuvat K ;
++V+Quo+Prt+Sg2:%>nuvat K ;
++V+Quo+Prt+Sg3:%>nuvat K ;
++V+Quo+Prt+Pl1:%>nuvat K ;
++V+Quo+Prt+Pl2:%>nuvat K ;
++V+Quo+Prt+Pl3:%>nuvat K ;
++V+Quo+Prt+Sg1+ConNeg:%>nuvat K ;
++V+Quo+Prt+Sg2+ConNeg:%>nuvat K ;
++V+Quo+Prt+Sg3+ConNeg:%>nuvat K ;
++V+Quo+Prt+Pl1+ConNeg:%>nuvat K ;
++V+Quo+Prt+Pl2+ConNeg:%>nuvat K ;
++V+Quo+Prt+Pl3+ConNeg:%>nuvat K ;
++V+Quo+Prt+4:%>danuvat K ;
++V+Quo+Prt+4+ConNeg:%>danuvat K ;
+!!Jus
++V+Jus+Prs+Sg1:%>gu K ;
++V+Jus+Prs+Sg2:%>gu K ;
++V+Jus+Prs+Sg3:%>gu K ;
++V+Jus+Prs+Pl1:%>gu K ;
++V+Jus+Prs+Pl2:%>gu K ;
++V+Jus+Prs+Pl3:%>gu K ;
++V+Jus+Prs+Sg1+ConNeg:%>gu K ;
++V+Jus+Prs+Sg2+ConNeg:%>gu K ;
++V+Jus+Prs+Sg3+ConNeg:%>gu K ;
++V+Jus+Prs+Pl1+ConNeg:%>gu K ;
++V+Jus+Prs+Pl2+ConNeg:%>gu K ;
++V+Jus+Prs+Pl3+ConNeg:%>gu K ; 
++V+Jus+Prs+4:%>dagu K ;
++V+Jus+Prs+4+ConNeg:%>dagu K ;
++V+Jus+Prt+Sg1:%>nud K ;
++V+Jus+Prt+Sg2:%>nud K ;
++V+Jus+Prt+Sg3:%>nud K ;
++V+Jus+Prt+Pl1:%>nud K ;
++V+Jus+Prt+Pl2:%>nud K ;
++V+Jus+Prt+Pl3:%>nud K ;
++V+Jus+Prt+Sg1+ConNeg:%>nud K ;
++V+Jus+Prt+Sg2+ConNeg:%>nud K ;
++V+Jus+Prt+Sg3+ConNeg:%>nud K ;
++V+Jus+Prt+Pl1+ConNeg:%>nud K ;
++V+Jus+Prt+Pl2+ConNeg:%>nud K ;
++V+Jus+Prt+Pl3+ConNeg:%>nud K ;
++V+Jus+Prt+4:%>dud K ;
++V+Jus+Prt+4+ConNeg:%>dud K ;
+!!! sounds like rule, really 
+
+!
++V+Sup:%>ma    K   ;
++V+Inf:%^RVws%>a K ; ! How should this be marked?
+!!Infinitives
+     +V+Sup+Ill:%>ma	K	;
+     +V+Sup+Ine:%>mas	K	;
+     +V+Sup+Ela:%>mast	K	;
+     +V+Sup+Tra:%>maks	K	;
+     +V+Sup+VAbess:%>mata	K	;
+     ! ? V+Sup+4:%>dama     K	;
+     !
+     ! Participle
+     !
+     +V+PrsPrc:%>v	K	;
+     +V+PrsPrc+4:%>dav	K	;
+     +V+PrfPrc:%>nud	K	;	
+     +V+PrfPrc+4:%>dud	K	;
+     !
+     ! Gerund
+     !
+     ! +V+Ger: süües
+     +V+Ger:%^RVws%>es K ;
+
+!!derivations
++V+Der/mine:mi   N-hobune   ;
+
+LEXICON normpöörded
++Sg1:%>n   K   ;
++Sg2:%>d   K   ;
++Sg3:%>b   K   ;
++Pl1:%>me   K   ;
++Pl2:%>te   K   ;
++Pl3:%>vad   K   ;
+
+LEXICON pöörded
++Sg1:%>in   K   ;
++Sg2:%>id   K   ;
++Sg3:%>   K   ;
++Pl1:%>ime   K   ;
++Pl2:%>ite   K   ;
++Pl3:%>id   K   ;
+
+LEXICON pöörded-ita
++Sg1:%>n   K   ;
++Sg2:%>d   K   ;
++Sg3:%>   K   ;
++Pl1:%>me   K   ;
++Pl2:%>te   K   ;
++Pl3:%>d   K   ;
+
+
+! vim: set ft=xfst-lexc:
+
