@@ -37,10 +37,10 @@ JSP_PAGES=root-morphology.jspwiki  \
 # subjunctions-stems.jspwiki       \
 # verbs-stems.jspwiki              \
 # adjectives-oahpa-affixes.jspwiki \
-ALLINONE_JSP_PAGE=$(GTLANG).jspwiki
+ALLINONE_JSP_PAGE=$(srcdir)/$(GTLANG).jspwiki
 
-LINKS=Links.jspwiki
+LINKS=$(srcdir)/Links.jspwiki
 
 endif # CAN_DOCC
 
-include $(top_srcdir)/am-shared/doc-include.am
+include $(top_srcdir)/am-shared/doc-dir-include.am

@@ -16,12 +16,7 @@
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ####### Build rules: ########
-
 .cg3.bin:
-	$(AM_V_GEN)$(VISLCG3_COMP) $< $@
-
-####### Other targets: ###########
-clean-local:
-	-rm -f *.bin
+	$(AM_V_CGCOMP)$(VISLCG3_COMP) $< $@
 
 # vim: set ft=automake:

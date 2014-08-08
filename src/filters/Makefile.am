@@ -18,11 +18,15 @@
 # List any local additions here:
 GT_FILTER_SRCS=
 
+# DIALECT_TARGETS_HFST is constructed dynamically based on the dialects
+# specified in configure.ac.
+
 # The common filter targets (don't change locally):
 GT_FILTER_TARGETS=
 if CAN_HFST
 GT_FILTER_TARGETS+=\
 				   make-optional-homonymy-tags.hfst       \
+				   make-optional-semantic-tags.hfst       \
 				   make-optional-transitivity-tags.hfst   \
 				   make-optional-variant-tags.hfst        \
 				   remove-derivation-position-tags.hfst   \
@@ -32,6 +36,7 @@ GT_FILTER_TARGETS+=\
 				   remove-number-string-tags.hfst         \
 				   remove-orig_lang-tags.hfst             \
 				   remove-orthography-tags.hfst           \
+				   remove-semantic-tags.hfst              \
 				   remove-usage-tags.hfst                 \
 				   remove-variant-tags.hfst               \
 				   remove-hyphenation-marks.hfst          \
@@ -51,12 +56,16 @@ GT_FILTER_TARGETS+=\
 				   remove-Orth_Strd-strings.hfst          \
 				   remove-PUNCT-strings.hfst              \
 				   remove-UseCirc-strings.hfst            \
-				   remove-variant-strings.hfst
+				   remove-variant-strings.hfst            \
+				   reorder-semantic-tags.hfst             \
+				   reorder-subpos-tags.hfst               \
+				   $(DIALECT_TARGETS_HFST)
 endif
 
 if CAN_XFST
 GT_FILTER_TARGETS+=\
 				   make-optional-homonymy-tags.xfst       \
+				   make-optional-semantic-tags.xfst       \
 				   make-optional-transitivity-tags.xfst   \
 				   make-optional-variant-tags.xfst        \
 				   remove-derivation-position-tags.xfst   \
@@ -66,6 +75,7 @@ GT_FILTER_TARGETS+=\
 				   remove-number-string-tags.xfst         \
 				   remove-orig_lang-tags.xfst             \
 				   remove-orthography-tags.xfst           \
+				   remove-semantic-tags.xfst              \
 				   remove-usage-tags.xfst                 \
 				   remove-variant-tags.xfst               \
 				   remove-hyphenation-marks.xfst          \
@@ -85,8 +95,18 @@ GT_FILTER_TARGETS+=\
 				   remove-Orth_Strd-strings.xfst          \
 				   remove-PUNCT-strings.xfst              \
 				   remove-UseCirc-strings.xfst            \
-				   remove-variant-strings.xfst
+				   remove-variant-strings.xfst            \
+				   reorder-semantic-tags.xfst             \
+				   reorder-subpos-tags.xfst               \
+				   $(DIALECT_TARGETS_XFST)
 endif
+
+GENERATED_REGEXES=remove-semantic-tags.regex \
+                  remove-dialect-tags.regex \
+                  remove-derivation-strings.regex \
+                  reorder-semantic-tags.regex \
+                  make-optional-semantic-tags.regex \
+                  $(DIALECT_REGEXES)
 
 # Add the target of local additions here:
 # HFST targets here:
@@ -101,6 +121,6 @@ GT_FILTER_TARGETS+=
 
 endif
 
-include $(top_srcdir)/am-shared/filters-include.am
+include $(top_srcdir)/am-shared/src-filters-dir-include.am
 
 # vim: set ft=automake:
