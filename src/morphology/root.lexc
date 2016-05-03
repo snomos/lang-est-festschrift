@@ -1,227 +1,1487 @@
-! Divvun & Giellatekno - open source grammars for Estonian language
-! Copyright © 2015 The University of Tromsø & the Norwegian Sámi Parliament
-! http://giellatekno.uit.no & http://divvun.no
+! Morphological Transducer for Estonian
+
+Multichar_Symbols
+
+!! !!!Estonian morphological tags
+
+! sõnaliik
+!! part of speech
+
++N	! nimisõna		! substantive		! asi
++Prop	! pärisnimi		! proper name		! Jaan
++A	! omadussõna		! adjective		! asjalik
++Num +Card +Ord
+! +Num+Card	! arvsõna		! numeral		! kaks
+! +Num+Ord	! järgarv		! ordinal		! teine
++Pron	! asesõna		! pronoun		! see
++V	! tegusõna 		! verb			! asjastama
++Adv	! määrsõna		! adverb		! asjatult
++Interj	! hüüdsõna		! interjection		! hei
++CC +CS	! sidesõna		! conjunction		! ja
+!+N+Sg+Gen	! genitiivatribuut	! genitive attribute	! saksa
++Adp	! kaassõna		! pre/postposition	! kaudu
++Adv	! muu sõna		! other word		! kihku, kihla, minap
+
++Emph ! Long form personal pronouns (emphasized):  tema (vs ta)
+
+! tuletised, sisemiseks kasutamiseks, filtreerimiseks
+!! derivation suffixes, used to filter out illegal combinations internally
++Dim/ke	! deminutive
++Dim/kene  ! deminutive
++Der
++Der/us
++Der/lt
++Der/ini	! comparation? paremini, kiiremini (how? better than .., faster than ..)
++Der/lik
+
++Der/nu
++Der/tu
++Der/tav
++Der/v
++Der/ja
++Der/mine
+
+! partikkel -gi/-ki
+! particle -gi/-ki
++Foc/gi
+
+! arv 			! number
++Sg	! ainsus	! singular
++Pl	! mitmus	! plural
+
+! käänded
++Nom	! nimetav			! nominative	! part, maja		pardid, majad
++Gen	! omastav 			! genitive	! pardi, maja		partide, majade
++Par	! osastav			! partitive	! parti, maja		parte, maju
++Ill	! sisseütlev			! illative	! pardisse, majasse	partidesse, majadesse
++Ill	! suunduv (lühike sisseütlev?)	! aditive	! p'arti, majja
++Ine	! seesütlev			! inessive	! pardis, majas		partides, majades
++Ela	! seestütlev			! elative	! pardist, majast	partidest, majadest
++All	! alaleütlev			! allative	! pardile, majale	partidele, majadele
++Ade	! alalütlev			! adessive	! pardil, majal		partidel, majadel
++Abl	! alaltütlev			! ablative	! pardilt, majalt	partidelt, majadelt
++Tra	! saav				! translative	! pardiks, majaks	partideks, majadeks
++Trm	! rajav				! terminative	! pardini, majani	partideni, majadeni
++Ess	! olev				! essive	! pardina, majana	partidena, majadena
++Abe	! ilmaütlev			! abessive	! pardita, majata	partideta, majadeta
++Com	! kaasaütlev			! comitative	! pardiga, majaga	partidega, majadega
+
+! võrdlusastmed
++Comp	! komparatiiv	! comparative
++Superl	! superlatiiv	! superlative
+
+! genitiivatribuut?
++Attr   ! ???
+
+
+! verb
+! finiitsed (pöördelised) ja infiniitsed (nn käänduvad) vormid
+! finite (conjugable) and infinite ("declinable") forms
+
+! pöördelistel vormidel on kategooriad: 
+! tegumood, aeg, kõneviis, isik, arv, kõneliik
+! (tegumood ja aeg on ka mõnedel infiniitsetel vormidel)
+
+! finite forms have categories: 
+! voice, tense, mood, person, number, negation
+! (some infinite forms also have voice and tense)
+
+! tegumood		! voice
++Impers	! umbisikuline	! impersonal
++Pers	! isikuline	! personal
+
+! aeg			! tense
++Prs	! olevik	! present
++Prt	! minevik	! past (i.e. not present)
+! lihtminevik = minevik ! past imperfect = past
+! täisminevik, past perfect: olema (pres) + nud/tud/dud (olen teinud)
+! enneminevik, past pluperfect: olema (impf) + nud/tud/dud (olin teinud)
+
+! kõneviis		! mood
++Ind	! kindel	! indicative
++Cond	! tingiv	! conditional
++Imprt	! käskiv	! imperative / jussive
++Quot	! kaudne	! quotative
+
+! pööre	ja arv		        ! person and number
++Sg1	! ainsuse 1. pööre	! singular 1st person
++Sg2	! ainsuse 2. pööre	! singular 2nd person
++Sg3 	! ainsuse 3. pööre	! singular 3rd person
++Pl1	! mitmuse 1. pööre	! plural   1st person
++Pl2	! mitmuse 2. pööre	! plural   2nd person
++Pl3 	! mitmuse 3. pööre	! plural   3rd person
+
+! kõneliik		! polarity
++Aff 	! jaatav kõne	! affirmative
++Neg	! eitav kõne	! negative
+
+! infiniitsed (nn käänduvad) verbivormid
+! infinite ("declinable") verb forms
+
++Sup	! ma-tegevusnimi ! supine (ma-infinitive)	! lugema
+
++Inf	! da-tegevusnimi ! infinitive (da-infinitive)	! lugeda
+
++Ger	! des-vorm	 ! gerund (des-form)		! lugedes
+
++Prc	! kesksõna	 ! participle
+
+
+! kategooriate võimalikud kombinatsioonid
+! possible combinations of categories
+! allikas / source :
+! Heiki-Jaan Kaalep. Eesti verbi vormistik. Keel ja kirjandus 1/2015 lk 1-15. http://kjk.eki.ee/ee/issues/2015/1/582 
+
+! The categories are given in the order in which the allomorphs (if they can be
+! distinguished) that represent them are attached to the word stem (note that the
+! treatment of allomorphs is sloppy here). The justification is that the
+! categories are not equal, but form an hierarchy: those closer to the word end 
+! tend to be more optional, more often non-specified.   
 !
-! This program is free software; you can redistribute and/or modify
-! this file under the terms of the GNU General Public License as published by
-! the Free Software Foundation, either version 3 of the License, or
-! (at your option) any later version. The GNU General Public License
-! is found at http://www.gnu.org/licenses/gpl.html. It is
-! also available in the file $GTHOME/LICENSE.txt.
+!# __voice:__ personal vs. impersonal (0-morph vs. {{t/d[aiu]}}), eg. elaks vs
+!  elataks, elav vs elatav
+!# __tense:__ present vs. past (0-morph vs. s/si/nu), e.g. elan vs. elasin;
+!  elaks vs. elanuks
+!# __mood:__ indicative vs. conditional vs imperative vs quotative
+!  (0-morph vs. ks vs. k/g[ue] vs. vat)
+!# __person+number:__ notice that in personal present and past conditional, imperative 
+!  and quotative moods one form is underspecified for person+number
+!# __negation:__ affirmative vs. negative. It manifests itself via
+!  lexical means: it is either present in an exceptional wordform (some forms of
+!  olema) or gets adhered to a form, normally used in affirmative,
+!  from an immediately preceding word ei, ega or ära (e.g. ei elaks).
+!  The only case when negation has a dedicated form of its own is impersonal
+!  present indicative negative (e.g. ei elata).  
 !
-! Other licensing options are available upon request, please contact
-! giellatekno@uit.no or feedback@divvun.no
+! Below, brackets are used to indicate the set of underspecified alternative values.
+! The forms of negative words pole and ära are included in order to capture really all 
+!  the combinations
+! 
+! * tähistab kategooriate kombinatsiooni või sõnavormi, mida 1.10.2015 ei genereerita ega tunta ära 
+! * denotes the categories or word form that is not recognized nor generated as of Oct 1, 2015
+!
+! ---- personal finite forms ----
+!
+! personal present indicative Sg1 affirmative                                    elan  
+! personal present indicative Sg2 affirmative                                    elad  
+! personal present indicative Sg3 affirmative                                    elab  
+! personal present indicative Pl1 affirmative                                    elame 
+! personal present indicative Pl2 affirmative                                    elate 
+! personal present indicative Pl3 affirmative                                    elavad
+!
+! personal present indicative (Sg1/Sg2/Sg3/Pl1/Pl2/Pl3) negative                 ela, pole
+!
+! personal present conditional Sg1 affirmative                                   elaksin
+! personal present conditional Sg2 affirmative                                   elaksid
+! personal present conditional (Sg1/Sg2/Sg3/Pl1/Pl2/Pl3) (affirmative/negative)  elaks 
+! personal present conditional Pl1 affirmative                                   elaksime
+! personal present conditional Pl2 affirmative                                   elaksite
+! personal present conditional Pl3 affirmative                                   elaksid
+!
+! personal present conditional Sg1 negative                                      poleksin*
+! personal present conditional Sg2 negative                                      poleksid*
+! personal present conditional (Sg1/Sg2/Sg3/Pl1/Pl2/Pl3) negative                poleks
+! personal present conditional Pl1 negative                                      poleksime*
+! personal present conditional Pl2 negative                                      poleksite*
+! personal present conditional Pl3 negative                                      poleksid*
+!
+! personal present imperative Sg2 (affirmative/negative)                         ela
+! personal present imperative (Sg1/Sg2/Sg3/Pl1/Pl2/Pl3) (affirmative/negative)   elagu 
+! personal present imperative Pl1 (affirmative/negative)                         elagem
+! personal present imperative Pl2 (affirmative/negative)                         elage 
+!
+! personal present imperative Sg2 negative                                       ära
+! personal present imperative (Sg1/Sg2/Sg3/Pl1/Pl2/Pl3) negative                 ärgu
+! personal present imperative Pl1 negative                                       ärgem, ärme
+! personal present imperative Pl2 negative                                       ärge
+!
+! personal present quotative (affirmative/negative)                              elavat
+! personal present quotative negative                                            polevat
+! 
+! personal past indicative Sg1 affirmative                                       elasin
+! personal past indicative Sg2 affirmative                                       elasid
+! personal past indicative Sg3 affirmative                                       elas  
+! personal past indicative Pl1 affirmative                                       elasime
+! personal past indicative Pl2 affirmative                                       elasite
+! personal past indicative Pl3 affirmative                                       elasid
+!
+! personal past indicative (Sg1/Sg2/Sg3/Pl1/Pl2/Pl3) negative                    polnud 
+!
+! personal past conditional Sg1 affirmative                                      elanuksin
+! personal past conditional Sg2 affirmative                                      elanuksid
+! personal past conditional (Sg1/Sg2/Sg3/Pl1/Pl2/Pl3) (affirmative/negative)     elanuks
+! personal past conditional Pl1 affirmative                                      elanuksime
+! personal past conditional Pl2 affirmative                                      elanuksite
+! personal past conditional Pl3 affirmative                                      elanuksid
+!
+! personal past conditional Sg1 negative                                         polnuksin*
+! personal past conditional Sg2 negative                                         polnuksid*
+! personal past conditional (Sg1/Sg2/Sg3/Pl1/Pl2/Pl3) negative                   polnuks
+! personal past conditional Pl1 negative                                         polnuksime*
+! personal past conditional Pl2 negative                                         polnuksite*
+! personal past conditional Pl3 negative                                         polnuksid*
+!
+! personal past imperative (Sg1/Sg2/Sg3/Pl1/Pl2/Pl3) (affirmative/negative) *    elanud 
+! personal past imperative (Sg1/Sg2/Sg3/Pl1/Pl2/Pl3) negative  *                 ärnud*
+!
+! personal past quotative (affirmative/negative)                                 elanuvat
+! personal past quotative negative                                               polnuvat
+!
+! ---- personal infinite forms ----
+!
+! personal present participle                                                     elav
+! personal past participle                                                        elanud
+!          (ei, on, oli, ...) + personal past participle = some analytical personal form 
+!
+! personal supine illative                                                        elama 
+! personal supine inessive                                                        elamas
+! personal supine elative                                                         elamast
+! personal supine translative                                                     elamaks
+! personal supine abessive                                                        elamata
+!
+! ---- impersonal finite forms ----
+!
+! impersonal present indicative affirmative                                       elatakse
+! impersonal present indicative negative                                          elata, polda 
+!                   
+! impersonal present conditional (affirmative/negative)                           elataks
+! impersonal present conditional negative                                         poldaks
+!
+! impersonal present imperative (affirmative/negative)                            elatagu
+! impersonal present imperative negative                                          ärdagu
+!
+! impersonal present quotative (affirmative/negative)                             elatavat
+! impersonal present quotative negative                                           poldavat
+!
+! impersonal past indicative affirmative                                          elati 
+! impersonal past indicative negative                                             elatud, poldud 
+!
+! impersonal past conditional (affirmative/negative)                              elatuks
+! impersonal past conditional negative                                            polduks*
+!
+! ---- impersonal infinite forms ----
+!
+! impersonal present participle                                                   elatav
+! impersonal past participle                                                      elatud
+!
+! impersonal supine                                                               elatama
+!
+! ---- infinite forms with no voice category ----
+!
+! infinitive                                                                      elada
+! gerund                                                                          elades
+!
+!
+! Exceptional cases:
+!
+! personal present (affirmative/negative), 3 words:  kuulukse, tunnukse, näikse
+! negative                                                           ei 
+!
+!
+! Analytical forms (olen elanud, olin elanud, oleksin elanud, ei olnud elanud,
+! ei olnuks elanud etc) are not treated here...
 
-!! Morphology
-!! ----------
-!! INTRODUCTION TO MORPHOLOGICAL ANALYSER OF UNDEFINED LANGUAGE.
-
-Multichar_Symbols  !!≈ !!!Definitions for @CODE@
-
-!! !!Analysis symbols
-!! ----------------
-!! The morphological analyses of wordforms for the Estonian
-!! language are presented in this system in terms of the following symbols.
-!! (It is highly suggested to follow existing standards when adding new tags).
-
-!! The parts-of-speech are:
- +N +A +Adv +V
- +Pron +CS +CC +Adp +Po +Pr +Interj +Pcle +Num +Qnt
-
-!! The parts of speech are further split up into:
-!!! Types of nouns include
- +Prop
-!!! Types of pronouns include
- +Pers +Dem +Interr +Refl +Recipr +Rel +Indef
-
-!!! Types of adverbs include
- +Manner +Spat +Temp
-
-!! The Usage extents are marked using following tags:
- +Err/Orth   
- +Use/-Spell 
-
-!! Overgeneration of case formatives, such as, exessive with personal pronouns
- +Err/OverG 
-!! Dialects
-
-!! The nominals are inflected in the following Case and Number
- +Sg +Pl
- +Ess +Nom +Gen +Acc +Ill +Ine +Ela +All +Ade +Abl +Tra +Par
- +Exe +Instr +Com +Ins +Prl
- +Trm ! terminatiiv (-ni)
- +Abe ! abessiiv
-
-
-!! The possession is marked as such:
- +PxSg1 +PxSg2 +PxSg3 +PxPl1 +PxPl2 +PxPl3
-!! The comparative forms are:
- +Comp +Superl
-!! Numerals and other quantifiers are classified under:
- +Attr +Card
- +Ord 
- +Univ ! universal quantifier
-
-!!VERB
-!! Verb moods are:
- +Ind +Prs +Prt +Pot +Cond +Imprt
-
-!! Verb personal forms are:
- +Sg1 +Sg2 +Sg3 +Pl1 +Pl2 +Pl3
-!! Other verb forms are
- +Inf +Ger
- +ConNeg ! connegative _ära 'söö'_
-+ConNegII +Neg +ImprtII 
- +ActPrsPrc +ActPrtPrc
-  +Prc +PrtPrc +Sup +VGen +VAbess
-+PrfPrc ! Which one is needed?
-+4 ! Impersonal
-
-! Abbreviated words are classified with:
- +ABBR +ACR 
-!! Special symbols are classified with:
-+CLB +PUNCT +LEFT +RIGHT
-!! The verbs are syntactically split according to transitivity:
- +TV +IV
-!! Special multiword units are analysed with:
- +Multi
-!! Non-dictionary words can be recognised with:
- +Guess
-
-!! Question and Focus particles:
- +Qst +Foc
- +Foc/gi
-
-!! Semantics are classified with
- +Mal +Fem +Sur 
- +Plc 
- +Org
- +Obj
- +Ani
- +Hum
- +Plant
- +Group
- +Time 
- +Txt
- +Route
- +Measr 
- +Wthr
- +Build 
- +Edu
- +Veh
- +Clth
-
-
-!! Derivations are classified under the morphophonetic form of the suffix, the
-!! source and target part-of-speech.
- +V→N +V→V +V→A
- +Der/ja ! actor name
- +Der/mine ! action
 
 !! Morphophonology
-!! ---------------
-!! To represent phonologic variations in word forms we use the following
-!! symbols in the lexicon files:
- {aä} {oö} {uü}
- %> V1 
 
-!! And following triggers to control variation
- {front} {back}
- %^LVws
- %^LCns
- %^WCns
- %^AtoO
- %^RVws
- %^Prti
- %^Pli
+ %{W%} ! The weak grade trigger never appears on the surface side.
+ %{WF%} ! The weak grade for foreign words trigger never appears on the surface side.
 
-!! !!Flag diacritics
-!! We have manually optimised the structure of our lexicon using following
-!! flag diacritics to restrict morhpological combinatorics - only allow compounds
-!! with verbs if the verb is further derived into a noun again:
- @P.NeedNoun.ON@    !!≈ | @CODE@ | (Dis)allow compounds with verbs unless nominalised
- @D.NeedNoun.ON@    !!≈ | @CODE@ | (Dis)allow compounds with verbs unless nominalised
- @C.NeedNoun@       !!≈ | @CODE@ | (Dis)allow compounds with verbs unless nominalised
-!! 
-!! For languages that allow compounding, the following flag diacritics are needed
-!! to control position-based compounding restrictions for nominals. Their use is
-!! handled automatically if combined with +CmpN/xxx tags. If not used, they will
-!! do no harm.
- @P.CmpFrst.FALSE@ !!≈ | @CODE@ | Require that words tagged as such only appear first
- @D.CmpPref.TRUE@  !!≈ | @CODE@ | Block such words from entering ENDLEX
- @P.CmpPref.FALSE@ !!≈ | @CODE@ | Block these words from making further compounds
- @D.CmpLast.TRUE@  !!≈ | @CODE@ | Block such words from entering R
- @D.CmpNone.TRUE@  !!≈ | @CODE@ | Combines with the next tag to prohibit compounding
- @U.CmpNone.FALSE@ !!≈ | @CODE@ | Combines with the prev tag to prohibit compounding
- @P.CmpOnly.TRUE@  !!≈ | @CODE@ | Sets a flag to indicate that the word has passed R
- @D.CmpOnly.FALSE@ !!≈ | @CODE@ | Disallow words coming directly from root.
-!! 
-!! Use the following flag diacritics to control downcasing of derived proper
-!! nouns (e.g. Finnish Pariisi -> pariisilainen). See e.g. North Sámi for how to use
-!! these flags. There exists a ready-made regex that will do the actual down-casing
-!! given the proper use of these flags.
- @U.Cap.Obl@        !!≈ | @CODE@ | Allowing downcasing of derived names: deatnulasj.
- @U.Cap.Opt@        !!≈ | @CODE@ | Allowing downcasing of derived names: deatnulasj.
+ %+    ! The morpheme boundary never appears on the surface side.
 
+! short stops
+ G1 ! 0 g k   lagi lae lakke
+ B1 ! 0 b p   saba sappa
+ D1 ! 0 d t   idu eo; ida itta
 
+ G2 ! g j    kärg kärje
+ D2 ! 0 j t  sõda sõja sõtta
+ B2 ! b v p  tõbi tõve tõppe
+
+ K2 ! k g
+ P2 ! p b
+ T2 ! t d
+ 
+ S1 ! 0 s
+  
+! orthographic convention: after voiceless (e.g. s or h), gbd is written as kpt
+! e.g. õhk-õhu, vask-vase
+
+ K1 ! k 0
+ P1 ! p 0 ?? EKK: never happens ??
+ T1 ! t 0
+ 
+I5  ! i e
+Ü5   ! ü ö
+U5   ! u o
+Ö6   ! üü öö õ  sööma - süüa - sõi
+O6   ! uu oo õ  tooma - tuua - tõi
+
+E3   ! e i   aed aia
+E4   ! e j   aeg aja 
+
+E1    ! e 0  soolase, raudset  soolas t
+
+A2   ! a 0  valvas valvsa
+E2   ! e 0  laulev laulva
+I2   ! i 0  õilis õilsa
+U2   ! u 0  hirmus hirmsa
+
+I4  ! i j  ahi ahju
+
+M1   ! m n  lumi lund
+
+! Stem vowels for singular and plural
+! For plural partitive, the form is generated either with sg vowel + sid or plural vowel + 0
+
+ %{sg.a%}  ! a 0  Stem vowel tag in lexicon  tünga
+ %{sg.e%}  ! e 0  Stem vowel tag in lexicon   neeme
+ 
+! default sg stem vowel for most types
+ %{sg.i%}  ! i 0  Stem vowel tag in lexicon
+ 
+ %{sg.u%}  ! u 0  Stem vowel tag in lexicon   koonu
+
+ %{pl.i%}  ! i 0  Stem vowel tag in lexicon   kingi
+ %{pl.e%}  ! e 0  Stem vowel tag in lexicon   tõuge
+ %{pl.u%}  ! u 0  Stem vowel tag in lexicon   laudu
+ 
+
+! ne, s ending words have similar paradigms; only sg nom is different
+N1  ! ne s  soolane and other ne-words; soolas+e, soolas+t etc  
+
+ %. ! double the previous letter (kabinet - kabinetti)
+
+! usage tag; never on the surface side
+
+ %{hyp%}        ! hypothetical form (norm, but never used); e.g. siilisid, puudi
+ %{rare%}       ! rare or less used form (norm) ; e.g. kingasid
+ %{notnorm%}    ! rare or less used form (not norm); e.g. piprate
+ %{commonnotnorm%}   ! more commonly used form (but not norm); e.g. peeneid (norm: peeni)
+
+! Inflectional affixes having the same grammatical meaning
+
+ %{sid%}   ! s 0    pl par ending siilisid siile
+ %{i%}
+ %{d%}
+
+ %{idsid%} ! s 0   pl par ending esseesid esseid
+ 
+ %{id%}   ! lexicon flag for pl part possible ending (esseesid/esseid)
+
+ %{ssestem%} ! sse 0  sg ill ending jõesse jõkke; also acts as a flag for telling this stem is sg ill 
+ %{s%}
+ %{e%}
+
+ %{stemill%} ! lexicon flag for short sg ill, formed by stem change (jõgi-jõkke)
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!                       M O R P H O T A C T I C S                         !!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 LEXICON Root
-!! The word forms in UNDEFINED language start from the lexeme roots of basic
-!! word classes, or optionally from prefixes:
-   adjectives  ;
-   adpositions ;
-   adverbs  ;
-   conjunctions   ;
-   interjections   ;
-   nouns   ;
-   particles    ;
-   pronouns    ;
-   propernouns    ;
-   quantifiers   ;
-   verbs   ;
 
-Abbreviation	 ;
-Acronym		 ;
-Punctuation	 ;
-!wordToNumeral    ;
+NounRoot ;
+
+! VVS 1
+LEXICON AASTA    ! default? for vowel-final; stress on penultimate syllable words
+
++N+Sg+Nom: # ;        ! aasta
++N: 2C ;
+
+! VVS 2
+LEXICON REDEL    ! VVS 2 default for consonant-ending, stress on penultimate syllable words
+
++N+Sg+Nom: # ;        ! redel, koppel
++N:I5 2C ;
+
+! VVS 2
+LEXICON VIRSIK    ! VVS 2 default for -ik, -ing; stress on penultimate syllable words
+
++N+Sg+Nom: # ;        ! virsik
++N:u 2C ;
+
+! VVS 2
+LEXICON LOHAKAS      ! VVS 2 -kas, -jas etc ending words (incl derivations)
+
++N+Sg+Nom:s # ;        ! lohakas
++N: 2C ;
+
+! VVS 2
+LEXICON TUNTUD      ! VVS 2 -d ending words (incl derivations)
+
++N+Sg+Nom:d # ;        ! tuntud
++N: 2C ;
+
+! VVS 2
+LEXICON MAGUS    ! VVS 2 unstable (closed) type
+
++N+Sg+Nom: # ;        ! magus
++N:a 2C ;
+
+! VVS 2
+LEXICON HALE    ! VVS 2 unstable (closed) type
+
++N+Sg+Nom: # ;        ! hale
++N:da 2C ;
 
 
+! VVS 3
+LEXICON HOOLAS    ! VVS 3 unstable (closed) type; strengthening gradation
 
-!! POS with minimal morphological variation
+: VAHER ;
++N+Sg+Par%+Use%/Rare:%{W%}%+t # ;  ! hoolast
++N%+Use%/NotNorm:%{W%}%+te N_PL_SUBPARA ;      ! hoolaste pl gen + pl cases depending on it 
 
-LEXICON ACRONDELIMITER
-#;
+! VVS 3
+LEXICON VAHER    ! VVS 3 unstable (closed) type; strengthening gradation
 
-LEXICON K
-+Foc/gi:%>gi # ;
++N+Sg+Nom:%{W%} # ;        ! vaher
++N:a 2C ;
+
+! VVS 3
+LEXICON MANNER    ! VVS 3 unstable (closed) type; strengthening gradation
+                  ! almost = VAHER, but stem vowel is i
+
++N+Sg+Nom:%{W%} # ;        ! manner
++N:I5 2C ;
+
+! VVS 4
+LEXICON HABE    ! VVS 4 unstable (closed) type; almost like HAARE, but no gradation
+
++N+Sg+Nom: # ;        ! habe
++N+Sg+Par:%+t # ;  ! habet
++N:me 2C_EXCL_SG_PAR ;
+
+! VVS 5
+LEXICON HAARE    ! VVS 5 unstable (closed) type
+
++N+Sg+Nom:%{W%} # ;        ! haare
++N+Sg+Par:%{W%}%+t # ;  ! haaret
++N:me 2C_EXCL_SG_PAR ;
+
+! VVS 6
+LEXICON PINGE    ! VVS 6 stable (open) + unstable (closed) type; 
+! open to verbal derivations, e.g. kiune from kiunuma
+
++N+Sg+Nom:%{W%} # ;        ! pinge
++N+Sg+Par:%{W%}%+t # ;  ! pinget
++N:%{W%}%+te N_PL_SUBPARA ;       ! pingete pl gen + pl cases depending on it 
++N: 2C_STRONG ;
+
+! VVS 7
+LEXICON KOTKAS    !  VVS 7 unstable (closed) type; 
+
++N+Sg+Nom:s%{W%} # ;        ! kotkas
++N+Sg+Par:s%{W%}%+t # ;  ! kotkast
++N:s%{W%}%+te N_PL_SUBPARA ;       ! kotkaste pl gen + pl cases depending on it 
++N: 2C_STRONG ;
+
+! VVS 8
+LEXICON PIPAR    !  VVS 8 unstable (closed) type; = HOOLAS
+
++N+Sg+Nom:%{W%} # ;        ! pipar
++N+Sg+Par:%{W%}%+t # ;  ! pipart
++N:%{W%}%+de N_PL_SUBPARA ;       ! piparde pl gen + pl cases depending on it 
++N%+Use%/NotNorm:a%+te N_PL_SUBPARA ;    ! piprate pl gen + pl cases depending on it 
++N:a 2C_STRONG ;
+
+! VVS 8
+LEXICON KANNEL    ! VVS 8 unstable (closed) type; = PIPAR, but stem vowel -e instead of -a
+
++N+Sg+Nom:%{W%} # ;        ! kannel, tütar
++N+Sg+Par:%{W%}%+t # ;  ! kannelt, tütart
++N:%{W%}%+de N_PL_SUBPARA ;       ! kannelde, tütarde pl gen + pl cases depending on it 
++N%+Use%/NotNorm:e%+te N_PL_SUBPARA ;    ! kandlete, tütrete pl gen + pl cases depending on it 
++N:e 2C_STRONG ;
+
+! VVS 9, 10
+LEXICON SOOLANE  ! VVS 9 simplex words ending with -s (katus), 10 affix -ne; 
+                       
++N+Sg+Nom: # ;
+: NE_S ;
++N+Sg+Ill:e%+sse # ;      ! soolasesse, katusesse
++N%+Use%/Rare:e%+i SMALL_N_PL_SUBPARA ;       ! vocal pl cases  soolaseil, katuseil
++N+Pl+Par:e%+id # ;         ! soolaseid, katuseid
+
+! VVS 11, 12
+LEXICON OLULINE   ! affixes -lane, -line, -mine, -tine, -ke(ne), -stikune (?)
+                  ! derived words ending with -us, -is (?) (harjutus)
+                  
++N+Sg+Nom: # ;
+: NE_S ;
++N+Sg+Ill%+Use%/Rare:e%+sse # ; ! olulisesse, harjutusesse
++N+Sg+Ill:%+se # ;      ! olulisse, harjutusse (haplology)
++N%+Use%/Rare:%+i SMALL_N_PL_SUBPARA ;       ! vocal pl cases  olulisil, harjutusil
++N+Pl+Par:%+i # ;          ! olulisi, harjutusi
+
+! VVS 9 & (11), 10 & (12)
+LEXICON KATKINE  ! affix -ne, but sg ill, pl part and vocal cases also like -line
+                 ! simplex -s, but also like -us (gloobus) 
+                 
++N+Sg+Nom: # ;
+: SOOLANE ;
++N+Sg+Ill%+Use%/Rare:%+se # ;      ! katkisse, gloobusse (haplology)
++N%+Use%/Rare:%+i SMALL_N_PL_SUBPARA ;       ! vocal pl cases  katkisil; (ever used?)
++N+Pl+Par%+Use%/Rare:%+i # ;          ! katkisi, gloobusi
+
+
+! VVS (9) & 11, (10) & 12
+LEXICON SUULINE  ! affix -line, but pl part and vocal cases also like -ne
+                 ! derived -us, but pl part and vocal cases (?) also like simplex -s (vaatlus) 
+
++N+Sg+Nom: # ;
+: OLULINE ;
++N%+Use%/Rare:e%+i SMALL_N_PL_SUBPARA ;       ! vocal pl cases  suuliseil, vaatluseil
++N+Pl+Par%+Use%/Rare:e%+id # ; ! suuliseid, vaatluseid
+
+! VVS 12
+LEXICON PEENIKE   ! affix -ke; almost = OLULINE, except sg nom
+
++N+Sg+Nom: # ;
++N+Sg+Nom%+Use%/Rare:ne # ;
+:N1e NE_S ;
++N+Sg+Ill%+Use%/Rare:se%+sse # ; ! olulisesse, harjutusesse
++N+Sg+Ill:s%+se # ;      ! olulisse, harjutusse (haplology)
++N%+Use%/Rare:N1%+i SMALL_N_PL_SUBPARA ;       ! vocal pl cases  olulisil, harjutusil
++N+Pl+Par:s%+i # ;          ! olulisi, harjutusi
+
+! VVS 10
+LEXICON PÄIKE  ! päike(ne), äike(ne)  VVS 10
+
+: XÄIKE ;
++N+Pl+Par:kese%+id # ;            ! päikeseid
++N+Pl+Par%+Use%/Rare:kse%+id # ;  ! päikseid
+
+LEXICON VÄIKE  ! väike(ne)  VVS 10
+
+: XÄIKE ;
++N+Pl+Par%+Use%/Rare:kese%+id # ; ! väikeseid
++N+Pl+Par:kse%+id # ;             ! väikseid
+
+! VVS 10
+LEXICON XÄIKE  ! VVS 10 common part of väike(ne), päike(ne), äike(ne)
+
++N+Sg+Nom:ke # ;
++N+Sg+Nom%+Use%/Rare:kene # ;
+:keN1e NE_S ;
++N%+Use%/Rare:kse N_SG_SUBPARA ;       ! xäikse sg gen + sg cases depending on it + pl nom ; 
++N+Sg+Par%+Use%/Rare:kse%+t # ;       ! xäikset
++N+Sg+Ill:kese%+sse # ;    ! xäikesesse
++N+Sg+Ill%+Use%/Rare:kse%+sse # ;   ! xäiksesse
++N+Sg+Ill%+Use%/Rare:ke%+sse # ;    ! xäikesse (haplology)
++N%+Use%/Rare:kse%+te N_PL_SUBPARA ;   ! pl gen + pl cases depending on it 
++N+Pl+Par%+Use%/Rare:kes%+i # ;   ! xäikesi
++N%+Use%/Rare:kes%+i SMALL_N_PL_SUBPARA ;   ! vocal pl cases  xäikesil
++N%+Use%/Rare:kese%+i SMALL_N_PL_SUBPARA ;   ! vocal pl cases  xäikeseil
++N%+Use%/Rare:kse%+i SMALL_N_PL_SUBPARA ;   ! vocal pl cases  xäikseil
+
+!  VVS 13
+LEXICON KEEL    !  VVS 13 unstable (closed) type; 
+
+: VARS ;
++N%+Use%/Hyp:%{W%}%+i SMALL_N_PL_SUBPARA ;       ! vocal pl cases  keelil; except for some expressions (suuril silmil)
+
+! VVS 13
+LEXICON NIIN    ! VVS 13 almost like KEEL, but some forms are more regular
+
++N+Sg+Nom: # ;        ! niin
++N:e%{W%} N_SG_SUBPARA ;    ! niine sg gen + sg cases depending on it + pl nom ; 
++N+Sg+Par:%+t # ;  ! niint
++N+Sg+Ill:%+de%{ssestem%} SG_ILL ;     ! niinde
++N+Sg+Ill:e%{W%}%+%{ssestem%} SG_ILL ;     ! niinesse 
++N:%+te N_PL_SUBPARA ;       ! niinte pl gen + pl cases depending on it 
+! +N%+Use%/Hyp:%+i SMALL_N_PL_SUBPARA ;       ! impossible for rarer words
++N+Pl+Par:e%+sid # ;  ! NB! niinesid (not niini)
+
+! VVS 13
+LEXICON PEEN    ! VVS 13 almost like KEEL, but some forms are more regular
+
++N+Sg+Nom: # ;        ! peen
++N:%+e N_SG_SUBPARA ;    ! peene sg gen + sg cases depending on it + pl nom ; 
++N+Sg+Par:%+t # ;  ! peent
++N+Sg+Par%+Use%/NotNorm:e%+t # ;  ! peenet
++N+Sg+Ill:%+de%{ssestem%} SG_ILL ;     ! peende
++N+Sg+Ill:e%{W%}%+%{ssestem%} SG_ILL ;     ! peenesse 
++N:%+te N_PL_SUBPARA ;       ! peente pl gen + pl cases depending on it 
++N%+Use%/NotNorm:e%+te N_PL_SUBPARA ;       ! peenete pl gen + pl cases depending on it 
++N%+Use%/Hyp:%{W%}%+i SMALL_N_PL_SUBPARA ;       ! vocal pl cases peenil 
++N+Pl+Par%+Use%/CommonNotNorm:e%+id # ;  ! NB! peeneid 
++N+Pl+Par:i # ;  ! peeni
+
+!  VVS 14 unstable (closed) type;
+LEXICON VARS     !  VVS 14 unstable (closed) type;
+
+! %{W%} here helps to select the right paradigm slots for stem change;
+! it does not really stand for "weak grade"
+
++N+Sg+Nom: # ;        ! vars
++N:e%{W%} N_SG_SUBPARA ;    ! varre sg gen + sg cases depending on it + pl nom ; 
++N+Sg+Par:%+t # ;  ! vart
++N+Sg+Ill:%+de%{ssestem%} SG_ILL ;     ! varde
++N+Sg+Ill:e%{W%}%+%{ssestem%} SG_ILL ;     ! varresse 
++N:%+te N_PL_SUBPARA ;       ! varte pl gen + pl cases depending on it 
+! +N%+Use%/Hyp:%+i SMALL_N_PL_SUBPARA ;       ! vocal pl cases  varsil?; except for some expressions (uusil)
++N+Pl+Par:%+i # ;  ! varsi
+
+!  VVS 15 unstable (closed) type;
+LEXICON MESI     
+
++N+Sg+Nom:i # ;        ! mesi
++N:e%{W%} N_SG_SUBPARA ;    ! mee sg gen + sg cases depending on it + pl nom ; 
++N+Sg+Par:%+tt # ;  ! mett
++N+Sg+Ill:e%{W%}%+sse # ;     ! meesse
++N:%{W%}%+te N_PL_SUBPARA ;       ! mete pl gen + pl cases depending on it 
+! +N%+Use%/Hyp: SMALL_N_PL_SUBPARA ;       ! vocal pl cases  mesil?; except for some expressions (käsil) ?
++N+Pl+Par:i # ;  ! mesi ?? meesid ???
+
+! VVS 16
+LEXICON PERE
+
++N+Sg+Nom: # ;
++N: N_SG_SUBPARA ;      ! sg gen + sg cases depending on it + pl nom
++N+Sg+Par:%+t # ;
++N+Sg+Ill:%{ssestem%} SG_ILL ;     ! perre
++N+Sg+Ill:%{W%}%+%{ssestem%} SG_ILL ;     ! peresse 
++N:%+de N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
++N+Pl+Par:%+sid #; ! peresid
+
+! %{W%} here helps to select the right paradigm slots for stem change;
+! it does not really stand for "weak grade"
+! VVS 17, 18
+LEXICON KAVA
+
++N+Sg+Nom: # ;
++N:%{W%} N_SG_SUBPARA ;      ! sg gen + sg cases depending on it + pl nom
++N+Sg+Par: # ;
++N+Sg+Ill:%{ssestem%} SG_ILL ;     ! kavva
++N+Sg+Ill:%{W%}%+%{ssestem%} SG_ILL ;     ! kavasse 
++N:%+de N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
++N+Pl+Par:%+%{sid%}%{i%}%{d%} PL_PAR ;  ! kavasid & kavu ...
+
+! VVS 2 & 19 
+LEXICON MUUSEUM  ! undecided which stable type (aktiivne muuttüüp): TAUD or REDEL 
+
++N+Sg+Nom: # ;
++N:i%{W%} N_SG_SUBPARA ; ! sg gen + sg cases depending on it + pl nom
++N+Sg+Par:i # ;    ! muuseumi
++N+Sg+Ill:i # ;    ! muuseumi  ! ?? not sure; rare ??
++N+Sg+Ill%+Use%/Rare:i%{W%}%+sse # ;  ! ?? not sure; rare ??
++N:i%+de N_PL_SUBPARA ;    ! muuseumide pl gen + pl cases depending on it 
++N+Pl+Par:e # ;      ! muuseume
+
++N+Sg+Par%+Use%/Rare:%+it # ;  ! muuseumit
++N%+Use%/Rare:%+ite N_PL_SUBPARA ;   ! muuseumite pl gen + pl cases depending on it 
++N%+Use%/Rare:%+ei SMALL_N_PL_SUBPARA ;       ! vocal pl cases  muuseumeil
++N+Pl+Par%+Use%/Rare:%+eid # ;  ! muuseumeid
+
+! VVS 20
+LEXICON MERI   ! unstable type (passiivne muuttüüp) lumi, tuli, uni, veri
+
++N+Sg+Nom:i # ;
++N:e N_SG_SUBPARA ; ! sg gen + sg cases depending on it + pl nom
++N+Sg+Par:%+d # ;    ! merd
++N+Sg+Ill:e%{ssestem%} SG_ILL ;     ! merre
++N+Sg+Ill:e%{W%}%+%{ssestem%} SG_ILL ;     ! meresse 
++N:%+e%+de N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
++N+Pl+Par:e%+sid # ;      ! lagesid
+
+! VVS 20, 21
+LEXICON NIMI   ! unstable type (passiivne muuttüüp) suvi, lagi
+
++N+Sg+Nom:i # ;
++N:e%{W%} N_SG_SUBPARA ; ! sg gen + sg cases depending on it + pl nom
++N+Sg+Par:e # ;    ! suve, lage
++N+Sg+Ill:e%{ssestem%} SG_ILL ;     ! nimme
++N+Sg+Ill:e%{W%}%+%{ssestem%} SG_ILL ;     ! nimesse 
++N:%+e%+de N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
++N+Pl+Par:e%+sid # ;      ! lagesid
+
+! VVS 22 
+LEXICON PIIM   ! unstable type (passiivne muuttüüp) sepp, kaup, ...
+
++N+Sg+Nom: # ;
++N:%{sg.a%} 1C ;
+
+! VVS 22 
+LEXICON KOON   ! unstable type (passiivne muuttüüp) lõpp, laug
+
++N+Sg+Nom: # ;
++N:%{sg.u%} 1C ;
+
+! VVS 22 
+LEXICON EIT   ! unstable type (passiivne muuttüüp) kuusk, kärg
+
++N+Sg+Nom: # ;
++N:%{sg.e%} 1C ;
+
+! VVS 22 
+LEXICON TAUD  ! stable type (aktiivne muuttüüp) siil, president, ...
+
++N+Sg+Nom: # ;
++N:%+%{pl.e%}%{sg.i%} 1C ;  ! {pl.e} is here so it need not be in the stem lexicon
+
+! VVS 22 
+LEXICON DUCK          ! stable type (aktiivne muuttüüp) almost == TAUD, but final stop weak grade does not change 
+
++N+Sg+Nom: # ;
++N:i%{WF%} N_SG_SUBPARA ; ! sg gen + sg cases depending on it + pl nom
++N+Sg+Par:i # ;     ! ducki
++N+Sg+Ill:i # ;     ! ducki
++N+Sg+Ill%+Use%/Hyp:i%{WF%}%+sse # ;
++N:i%+de N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
++N+Pl+Par:e # ;     ! ducke
++N+Pl+Par%+Use%/Rare:i%+sid # ; ! duckisid+Use/Rare
+
+! VVS 22 
+LEXICON KABINET          ! stable type (aktiivne muuttüüp) almost == TAUD
+
++N+Sg+Nom: # ;
+! sg nom has single final stop instead of double, so it has to be doubled in strong grade
++N:%.%+%{pl.e%}%{sg.i%} 1C ;
+
+! VVS 22 
+LEXICON VEIMED   ! plurale tantum (EIT)
+
++N+Pl+Nom:%{sg.e%}%{W%}%+d # ; !  pl nom
++N:%{sg.e%} 1C_PL ;
+
+! VVS 22 
+LEXICON KIHLAD   ! plurale tantum (PIIM)
+
++N+Pl+Nom:%{sg.a%}%{W%}%+d # ; !  pl nom
++N:%{sg.a%} 1C_PL ;
+
+! VVS 22 
+LEXICON VURRUD   ! plurale tantum (KOON)
+
++N+Pl+Nom:%{sg.u%}%{W%}%+d # ; !  pl nom
++N:%{sg.u%} 1C_PL ;
+
+! VVS 22 
+LEXICON KETSID   ! plurale tantum (TAUD)
+
++N+Pl+Nom:i%{W%}%+d # ; !  pl nom
++N:%+%{pl.e%}%{sg.i%} 1C_PL ;
+
+! VVS 23 
+LEXICON KAEL   ! almost = PIIM, except pl gen + 
+
++N+Sg+Nom: # ;
++N:%{sg.a%} 1C_SG ;
++N:%{W%}%+te N_PL_SUBPARA ;       ! kaelte pl gen + pl cases depending on it 
++N%+Use%/Rare:%{sg.a%}%+de N_PL_SUBPARA ;   ! kaelade pl gen + pl cases depending on it 
+! pl par stem vowel (u, i, 0) is lexically determined and usage-wise tagged
+! kaelu, kaelasid+Use/Rare 
++N+Pl+Par:%{sg.a%}%+%{sid%}%{i%}%{d%} PL_PAR ;      ! kaelasid, kaelu
+
+! VVS 23 
+LEXICON POISS   ! poiss, püks; almost = TAUD, except pl gen + 
+
++N+Sg+Nom: # ;
++N:i 1C_SG ;
++N:%{W%}%+te N_PL_SUBPARA ;       ! poiste pl gen + pl cases depending on it 
++N%+Use%/Rare:%+i%+de N_PL_SUBPARA ;   ! poisside pl gen + pl cases depending on it 
++N+Pl+Par:e # ;        ! poisse
++N+Pl+Par%+Use%/Hyp:%+i%+sid # ;     ! poissisid+Use/Hyp
+
+! VVS 24 is lexical variants under VVS 22 various subtypes
+
+! VVS 25 
+LEXICON ELANIK          ! stable type (aktiivne muuttüüp) almost == KABINET == TAUD
+
++N+Sg+Nom: # ;
+! sg nom has single final stop instead of double, so it has to be doubled in strong grade
++N:k%{sg.u%} 1C_SG ;
++N:ke%{W%} N_PL_SUBPARA ;        ! NB! 
++N%+Use%/Rare:k%{sg.u%}%+de N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
++N+Pl+Par:ke # ;  ! elanikke
++N+Pl+Par%+Use%/Rare:k%{sg.u%}%+sid # ;  ! elanikkusid+Use/Rare
+
+LEXICON ARMEE ! VVS 26
+
++N+Sg+Nom: # ;
++N: N_SG_SUBPARA ;           ! sg gen + sg cases depending on it + pl nom ; 
++N+Sg+Par:%+d # ; 
++N:%+de N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
++N+Pl+Par:%+%{idsid%}id PL_PAR ;
+
+! ---------------
+
+! VVS 9, 10, 11, 12
+LEXICON NE_S  ! VVS 9, 10, 11, 12 common forms for affix -ne, -line, -s, -tus etc 
+
++N:e N_SG_SUBPARA ;               ! sg gen + sg cases depending on it + pl nom ; 
++N+Sg+Par:E2%+t # ;   ! soolast, raudset, olulist
++N:E2%+te N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
+
+LEXICON 2C ! consonant ending with stress on penultimate syllable, or vowel ending 
+
+: N_SG_SUBPARA ;    ! redeli, virsiku sg gen + sg cases depending on it + pl nom ; 
++Sg+Par:%+t # ;  ! redelit, virsikut
+:%+te N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
+%+Use%/Rare:%+i SMALL_N_PL_SUBPARA ;       ! vocal pl cases  redeleil, virsikuil
++Pl+Par:%+id # ;  ! redeleid, virsikuid
+
+LEXICON 2C_EXCL_SG_PAR ! =2C, excluding sg partitive
+
+: N_SG_SUBPARA ;    ! redeli, virsiku sg gen + sg cases depending on it + pl nom ; 
+:%+te N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
+%+Use%/Rare:%+i SMALL_N_PL_SUBPARA ;       ! vocal pl cases  redeleil, virsikuil
++Pl+Par:%+id # ;  ! redeleid, virsikuid
+
+LEXICON 2C_STRONG ! =2C_EXCL_SG_PAR, excluding N_PL_SUBPARA
+
+: N_SG_SUBPARA ;    ! kotka sg gen + sg cases depending on it + pl nom ; 
+%+Use%/Rare:%+i SMALL_N_PL_SUBPARA ;       ! vocal pl cases  kotkail
++Pl+Par:%+id # ;  ! kotkaid
+
+LEXICON 1C ! consonant ending, stress NOT on penultimate syllable
+
+: 1C_SG ;  ! singular forms + pl nom
+: 1C_PL ;  ! plural forms
+
+LEXICON 1C_SG ! SG subpara of 1C
+
+:%{W%} N_SG_SUBPARA ; ! sg gen + sg cases depending on it + pl nom
++Sg+Par: # ;    ! piima
++Sg+Ill: # ;    ! piima
++Sg+Ill%+Use%/Hyp:%{W%}%+sse # ;
+
+LEXICON 1C_PL ! PL subpara of 1C
+
+:%+de N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
+! pl par stem vowel (u, i, 0) is lexically determined and usage-wise tagged
+! kingi, kingasid+Use/Rare vs. puudi+Use/Rare, puudasid
++Pl+Par:%+%{sid%}%{i%}%{d%} PL_PAR ;      ! piimasid, piimi+Use/Rare
+
+! ---------------
+
+LEXICON N_SG_SUBPARA     ! sg gen + sg cases depending on it + pl nom
+
++Pl+Nom:%+d # ;
++Sg: SEM_CASE_ENDINGS ;
+
+LEXICON N_PL_SUBPARA     ! -de/-te pl gen + pl cases depending on it 
+
++Pl: SEM_CASE_ENDINGS ;
++Pl+Ill:%+sse # ;
+
+LEXICON SEM_CASE_ENDINGS  ! gen and cases depending on it (either sg or pl)
+                          ! NB! excl. illative 
++Gen: # ; 
++Ine:%+st # ;
+
+LEXICON SMALL_N_PL_SUBPARA     ! pl cases depending on vocal plural gen  
+                               ! excl. ni-na-ta-ga TODO
++Pl+Ill:%+sse # ;
++Pl+Ine:%+st # ;
+
+! we want to indicate the preferred form in the stem lexicon
+! (not in the continuation lexicon)
+
+LEXICON PL_PAR            ! for TAUD, PIIM, KOON etc types
+%+Use%/Rare:%{rare%} # ;  ! less used pl par form for that word
+ # ;  ! default pl par form for that word
+
+LEXICON SG_ILL            ! for KEEL etc types
+%+Use%/Rare:%{s%}%{e%}%{rare%} # ;  ! less used sg ill form for that word
+:%{s%}%{e%} # ;  ! default sg ill form for that word
+
+! ----------------
+! Verbs
+! ---------------
+
+! VVS 27
+LEXICON ELAMA
+
++V+Impers:%+t IMPERS ; ! impersonal forms
++V+Pers:%+ SUPINE_V ;  ! -ma etc, -v, -vat
++V:%+d INFINITIVE ;    ! infinitive, gerund (des-form)
++V+Pers+Prs+Imprt:%+g IMPERATIVE ; ! -gu/ku, -ge/ke, -gem/kem
++V+Pers+Prt:%+nu NU ;     !  NU-affixes
++V+Pers+Prt+Ind:%+s IND_PAST ; ! indicative past
++V+Pers+Prs:%+ IND_COND_PRS ; ! 
+
+! VVS 28
+LEXICON LEPPIMA
+
++V+Impers:%{W%}%+t IMPERS ; ! impersonal forms
++V+Pers:%+ SUPINE_V ;  ! -ma etc, -v, -vat
++V:%+d INFINITIVE ;    ! infinitive, gerund (des-form)
++V+Pers+Prs+Imprt:%+g IMPERATIVE ; ! -gu/ku, -ge/ke, -gem/kem
++V+Pers+Prt:%+nu NU ;     !  NU-affixes
++V+Pers+Prt+Ind:%+s IND_PAST ; ! indicative past
++V+Pers+Prs:%{W%}%+ IND_COND_PRS ; ! 
+
+! VVS 29
+LEXICON HAKKAMA
+
++V+Impers:%{W%}%+t IMPERS ; ! impersonal forms
++V+Pers:%+ SUPINE_V ;  ! -ma etc, -v, -vat
++V:%{W%}%+t INFINITIVE ;    ! infinitive, gerund (des-form)
++V+Pers+Prs+Imprt:%{W%}%+k IMPERATIVE ; ! -gu/ku, -ge/ke, -gem/kem
++V+Pers+Prt:%{W%}%+nu NU ;     !  NU-affixes
++V+Pers+Prt+Ind:%+s IND_PAST ; ! indicative past
++V+Pers+Prs:%+ IND_COND_PRS ; ! 
+
+! VVS 30
+LEXICON SIPLEMA
+
++V+Impers:%{W%}%+d IMPERS ; ! impersonal forms
++V+Pers:e%+ SUPINE_V ;  ! -ma etc, -v, -vat
++V:%{W%}%+d INFINITIVE ;    ! infinitive, gerund (des-form)
++V+Pers+Prs+Imprt:%{W%}%+g IMPERATIVE ; ! -gu/ku, -ge/ke, -gem/kem
++V+Pers+Prt:%{W%}%+nu NU ;     !  NU-affixes
++V+Pers+Prt+Ind:e%+s IND_PAST ; ! indicative past
++V+Pers+Prs:e%+ IND_COND_PRS ; ! 
+
+! VVS 31
+LEXICON RABELEMA  ! SIPLEMA + ELAMA 
+                  ! assuming that rabel- is less used than rabele- ...
+
++V+Impers%+Use%/Rare:%+d IMPERS ; ! rabeldakse impersonal forms
++V+Impers:e%+t IMPERS ; ! rabeletakse impersonal forms
++V+Pers:e%+ SUPINE_V ;  ! rabele-ma etc, -v, -vat
++V%+Use%/Rare:%+d INFINITIVE ;    ! rabeldes infinitive, gerund (des-form)
++V:e%+d INFINITIVE ;    ! rabeledes infinitive, gerund (des-form)
++V+Pers+Prs+Imprt%+Use%/Rare:%+g IMPERATIVE ; ! rabel-gu/ku, -ge/ke, -gem/kem
++V+Pers+Prs+Imprt:e%+g IMPERATIVE ; ! rabele-gu/ku, -ge/ke, -gem/kem
++V+Pers+Prt%+Use%/Rare:%+nu NU ;     ! rabelnu NU-affixes
++V+Pers+Prt:e%+nu NU ;     ! rabelenu NU-affixes
++V+Pers+Prt+Ind:e%+s IND_PAST ; ! indicative past
++V+Pers+Prs:e%+ IND_COND_PRS ; ! 
+
+! VVS 32, 33  seisma, naerma
+LEXICON SEISMA
+
++V+Impers:%+d IMPERS ; ! impersonal forms
++V+Pers:E2%+ SUPINE_V ;  ! -ma etc, -v, -vat
++V:%+d INFINITIVE ;    ! infinitive, gerund (des-form)
++V+Pers+Prs+Imprt:%+g IMPERATIVE ; ! -gu/ku, -ge/ke, -gem/kem
++V+Pers+Prt:%+nu NU ;     !  NU-affixes
++V+Pers+Prt+Ind:I2%+s IND_PAST ; ! indicative past
++V+Pers+Prs:a%{W%}%+ IND_COND_PRS ; ! 
+
+! VVS 32 exceptions
+LEXICON PESEMA
+
++V+Impers:%+d IMPERS ; ! impersonal forms
++V+Pers:e%+ SUPINE_V ;  ! -ma etc, -v, -vat
++V:%+d INFINITIVE ;    ! infinitive, gerund (des-form)
++V+Pers+Prs+Imprt:%+g IMPERATIVE ; ! -gu/ku, -ge/ke, -gem/kem
++V+Pers+Prt:%+nu NU ;     !  NU-affixes
++V+Pers+Prt+Ind:%+ IND_PAST1 ; ! indicative past1
++V+Pers+Prt+Ind+Sg3+Aff:%+i # ; ! pesi
++V+Pers+Prs:e%+ IND_COND_PRS ; ! 
+
+! VVS 32 exceptions kaitsma maitsma
+LEXICON KAITSMA
+
++V+Impers:%+d IMPERS ; ! impersonal forms
++V+Pers:E2%+ SUPINE_V ;  ! -ma etc, -v, -vat
++V:%+d INFINITIVE ;    ! infinitive, gerund (des-form)
++V+Pers+Prs+Imprt:%+g IMPERATIVE ; ! -gu/ku, -ge/ke, -gem/kem
++V+Pers+Prt:%+nu NU ;     !  NU-affixes
++V+Pers+Prt+Ind:e%+s IND_PAST ; ! indicative past
++V+Pers+Prs:e%+ IND_COND_PRS ; ! 
+
+! VVS 34, 35   söötma, nutma
+LEXICON SAATMA
+
++V+Impers:e%{W%}%+t IMPERS ; ! impersonal forms
++V+Pers:E2%+ SUPINE_V ;  ! -ma etc, -v, -vat
++V:%+ INFINITIVE ;    ! infinitive, gerund (des-form)
++V+Pers+Prs+Imprt:%+g IMPERATIVE ; ! -gu/ku, -ge/ke, -gem/kem
++V+Pers+Prt:%+nu NU ;     !  NU-affixes
++V+Pers+Prt+Ind:I2%+s IND_PAST ; ! indicative past
++V+Pers+Prs:a%{W%}%+ IND_COND_PRS ; ! 
+
+! VVS 34   hoidma
+LEXICON HOIDMA
+
++V+Impers:%{W%}%+t IMPERS ; ! impersonal forms
++V+Pers:E2%+ SUPINE_V ;  ! -ma etc, -v, -vat
++V:%+ INFINITIVE ;    ! infinitive, gerund (des-form)
++V+Pers+Prs+Imprt:%+g IMPERATIVE ; ! -gu/ku, -ge/ke, -gem/kem
++V+Pers+Prt:%+nu NU ;     !  NU-affixes
++V+Pers+Prt+Ind:I2%+s IND_PAST ; ! indicative past
++V+Pers+Prs:a%{W%}%+ IND_COND_PRS ; ! 
+
+! VVS 34   tundma
+LEXICON TUNDMA
+
++V+Impers:%{W%}%+t IMPERS ; ! impersonal forms
++V+Pers:E2%+ SUPINE_V ;  ! -ma etc, -v, -vat
++V:%+ INFINITIVE ;    ! infinitive, gerund (des-form)
++V+Pers+Prs+Imprt:%+g IMPERATIVE ; ! -gu/ku, -ge/ke, -gem/kem
++V+Pers+Prt:%+nu NU ;     !  NU-affixes
++V+Pers+Prt+Ind:I2%+s IND_PAST ; ! indicative past
++V+Pers+Prs:e%{W%}%+ IND_COND_PRS ; ! 
+
+! VVS 36   tulema, olema, minema, panema, surema
+LEXICON TULEMA
+
++V+Impers:%+d IMPERS1 ; ! impersonal forms, except -akse
++V+Impers+Prs+Ind+Aff:%.%+akse # ;
++V+Impers+Prs+Ind+Aff%+Use%/NotNorm:%+dakse # ;
++V+Pers:e%+ SUPINE_V ;  ! -ma etc, -v, -vat
++V:%.%+ INFINITIVE ;    ! infinitive, gerund (des-form)
++V+Pers+Prs+Imprt:%{W%}%+g IMPERATIVE ; ! -gu/ku, -ge/ke, -gem/kem
++V+Pers+Prt:%+nu NU ;     !  NU-affixes
++V+Pers+Prt+Ind:%+ IND_PAST1 ; ! indicative past1
++V+Pers+Prt+Ind+Sg3+Aff:%+i # ; ! tuli
++V+Pers+Prs:e%{W%}%+ IND_COND_PRS ; ! 
+
+! VVS 37   laama, keema, leema, naima, võima, näima
+LEXICON KEEMA
+
++V+Impers:%{W%}%+d IMPERS ; ! impersonal forms
++V+Pers:%+ SUPINE_V ;  ! -ma etc, -v, -vat
++V:%+d INFINITIVE ;    ! infinitive, gerund (des-form)
++V+Pers+Prs+Imprt:%{W%}%+g IMPERATIVE ; ! -gu/ku, -ge/ke, -gem/kem
++V+Pers+Prt:%+nu NU ;     !  NU-affixes
++V+Pers+Prt+Ind:%+s IND_PAST ; ! indicative past
++V+Pers+Prs:%{W%}%+ IND_COND_PRS ; ! 
+
+! VVS 37   saama, jääma
+LEXICON SAAMA
+
++V+Impers:%{W%}%+d IMPERS ; ! impersonal forms, except -akse
++V+Pers:%+ SUPINE_V ;  ! -ma etc, -v, -vat
++V:%+d INFINITIVE ;    ! infinitive, gerund (des-form)
++V+Pers+Prs+Imprt:%{W%}%+g IMPERATIVE ; ! -gu/ku, -ge/ke, -gem/kem
++V+Pers+Prt:%+nu NU ;     !  NU-affixes
++V+Pers+Prt+Ind:%+ IND_PAST1 ; ! indicative past1
++V+Pers+Prt+Ind+Sg3+Aff:%+i # ; ! sai
++V+Pers+Prs:%{W%}%+ IND_COND_PRS ; ! 
+
+! VVS 38   viima, käima, pooma, müüma
+LEXICON VIIMA
+
++V+Impers:%{W%}%+d IMPERS1 ; ! impersonal forms, except -akse
++V+Impers+Prs+Ind+Aff:%{W%}%+akse # ;
++V+Impers+Prs+Ind+Aff%+Use%/NotNorm:%{W%}%+dakse # ;
++V+Pers:%+ SUPINE_V ;  ! -ma etc, -v, -vat
++V:%+ INFINITIVE ;    ! infinitive, gerund (des-form)
++V+Pers+Prs+Imprt:%{W%}%+g IMPERATIVE ; ! -gu/ku, -ge/ke, -gem/kem
++V+Pers+Prt:%+nu NU ;     !  NU-affixes
++V+Pers+Prt+Ind:%+s IND_PAST ; ! indicative past
++V+Pers+Prs:%{W%}%+ IND_COND_PRS ; ! 
+
+! VVS 38   jooma, looma, tooma, lööma, sööma
+LEXICON JOOMA
+
++V+Impers:%{W%}%+d IMPERS1 ; ! impersonal forms, except -akse
++V+Impers+Prs+Ind+Aff:%{W%}%+akse # ;
++V+Impers+Prs+Ind+Aff%+Use%/NotNorm:%{W%}%+dakse # ;
++V+Pers:%+ SUPINE_V ;  ! -ma etc, -v, -vat
++V:%+ INFINITIVE ;    ! infinitive, gerund (des-form)
++V+Pers+Prs+Imprt:%{W%}%+g IMPERATIVE ; ! -gu/ku, -ge/ke, -gem/kem
++V+Pers+Prt:%+nu NU ;     !  NU-affixes
++V+Pers+Prt+Ind:%+ IND_PAST1 ; ! indicative past1
++V+Pers+Prt+Ind+Sg3+Aff:%+i # ; ! jõi
++V+Pers+Prs:%{W%}%+ IND_COND_PRS ; ! 
+
+LEXICON IND_COND_PRS   ! indicative, conditional present + imp sg2
+
++Imprt+Sg2: # ;
++Ind+Neg: # ;
++Ind+Sg1+Aff:n # ;
++Ind+Sg2+Aff:d # ;
++Ind+Sg3+Aff:b # ;
++Ind+Pl1+Aff:me # ;
++Ind+Pl2+Aff:te # ;
++Ind+Pl3+Aff:vad # ;
+: CONDITIONAL ;
+
+LEXICON IND_PAST       ! indicative past
+: IND_PAST1 ;
++Sg3+Aff: # ;
+
+LEXICON IND_PAST1       ! indicative past, except sg3
+
++Sg1+Aff:in # ;
++Sg2+Aff:id # ;
++Pl1+Aff:ime # ;
++Pl2+Aff:ite # ;
++Pl3+Aff:id # ;
+
+LEXICON NU      !  NU-affixes
+
+: CONDITIONAL ;
+! +Imprt:d # ;      ! omitted for now because it would create homonymy
++Ind+Neg:d # ;
++Prc:d # ;
++Quot:vat # ;
+
+LEXICON IMPERATIVE      ! imperative
+
+:u # ;              ! elagu
++Pl1:em # ;      ! elagem
++Pl2:e # ;       ! elage
+
+LEXICON SUPINE_V
+
++Sup:ma SUPINE ;
++Prc:v # ;
++Quot:vat # ;
+
+LEXICON SUPINE
+
++Ill: # ;     ! elama
++Ine:s # ;    ! elamas
+%<ela%+:st # ;
+%<tra%+:ks # ;
+%<abe%+:ta # ;
+
+LEXICON IMPERS  ! impersonal forms
+: IMPERS1 ;
++Prs+Ind+Aff:akse # ;
+
+LEXICON IMPERS1  ! impersonal forms, except -[td]akse
+
++Prs+Cond:aks # ;
++Prs+Imprt:agu # ;
++Prs+Ind+Neg:a # ;
++Prs+Prc:av # ;
++Prs+Quot:avat # ;
++Prt+Cond:uks # ;
++Prt+Ind+Aff:i # ;
++Prt+Ind+Neg:ud # ;
++Prt+Prc:ud # ;
++Sup:ama # ;
+
+LEXICON INFINITIVE     ! infinitive, gerund (des-form)
+
++Inf:a # ;
++Ger:es # ;
+
+LEXICON CONDITIONAL    ! conditional present and past  
+
++Cond:ks # ;
++Cond+Sg1+Aff:ksin # ;
++Cond+Sg2+Aff:ksid # ;
++Cond+Pl1+Aff:ksime # ;
++Cond+Pl2+Aff:ksite # ;
++Cond+Pl3+Aff:ksid # ;
+
+
+LEXICON XXXX   ! dummy
  # ;
 
-LEXICON AdvTag
-+Adv: K ;
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!                          L E X I C O N                                  !!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-LEXICON CcTag
-+CC:   #   ;
+LEXICON NounRoot
 
-LEXICON CsTag
-+CS:   #   ;
+! VVS type 1
+aasta AASTA ;
 
-LEXICON AbbrDot
-+ABBR:%. # ;
+! VVS type 2
+lohakas:lohaka LOHAKAS ;
+joobnud:joobnu TUNTUD ;
+spiiker:spiikE2r REDEL ;
+hostel:hostel REDEL ;
+spikker:spikkE2r REDEL ;
+staier REDEL ;
+teler REDEL ;
+arter REDEL ;
+bakter REDEL ;
+kohver:kohvE2r REDEL;
+malkel REDEL ;
+uhmer:uhmE2r REDEL ;
+veksel:veksE2l REDEL ;
+mailer REDEL ;
+virsik VIRSIK ;
+magus MAGUS ;
+hale HALE ;
 
-LEXICON InterjTag
-+Interj: # ;
+! irregular stem changes: vowel deletion 
+laulev:laulE2v MAGUS ;
+kaaren:kaarE2n MAGUS ;
+koorem:koorE2m MAGUS ;
+koskel:koskE2l MAGUS ;
+veider:veidE2r MAGUS ;
+hirmus:hirmU2s MAGUS ;
+õilis:õilI2s MAGUS ;
+suhkur:suhkU2r VIRSIK ;
 
-LEXICON NumTag
-+Num: K ;
+! irregular stem changes:
+! sajas:saja%{snd%} MAGUS ;
+! tuhat:tuha%{tnd%} XXXX ;
 
-LEXICON PcleTag
-+Pcle: # ;
+! strengthening gradation
 
-LEXICON PoTag
-+Po: K ;
+! VVS type 3
+vaher:vahT1E2r VAHER ;
+manner:mannD1E2r MANNER ;
+tanner:tannD1E2r MANNER ;
 
-LEXICON PrepTag
-+Pr: # ;
+! VVS type 3 & 5
+hoolas:hoolA2s HOOLAS ;
+õnnis:õnnD1I2s HOOLAS ;
+ergas:erK2A2s HOOLAS ;
+
+! VVS type 4
+habe HABE ;
+! süda:süda HABE ;
+
+! VVS type 5
+kaabe:kaaP2E2 HAARE ;
+seade:seadE2 HAARE ;
+mähe:mähK1E2 HAARE ;
+ranne:rannD1E2 HAARE ;
+! kümme:kümme XXX ;  ! + seeme, kööme
+
+! kallis, kaunis
+! kohus
+
+! VVS type 6
+pinge PINGE ;
+liide:liiT2e PINGE ;
+tahe:tahT1e PINGE ;
+muie:muiG1e PINGE ;
+mulle:mullD1e PINGE ;
+käive:käiB2e PINGE ;
+norse:norsK1e PINGE ;
+
+! VVS type 7
+kotkas:kotka KOTKAS ;
+lammas:lammB1a KOTKAS ;
+teivas:teiB2a KOTKAS ;
+hüljes:hülG2e KOTKAS ;
+rukis:rukK1I5 KOTKAS ;
+! kärbes:kärbE2s XXX ;
+
+! VVS type 8
+pipar:pipA2r PIPAR ;
+pöial:pöiD1A2l PIPAR ;
+kannel:kannD1E2l KANNEL ;
+lemmel:lemmE2l KANNEL ;
+
+! VVS type 9, 10, 11, 12
+oluline:oluliN1e OLULINE ;
+peenike:peenike PEENIKE ;
+soolane:soolaN1e SOOLANE ;
+raudne:raudN1e SOOLANE ;
+viskoosne:viskoosN1e SOOLANE ;
+suuline:suuliN1e SUULINE ;
+katkine:katkiN1e KATKINE ; 
+päike:päi PÄIKE ;
+äike:äi PÄIKE ;
+väike:väi VÄIKE ;
+katus:katus SOOLANE ;
+harjutus:harjutus OLULINE ;
+kandvus:kandvus SUULINE ;
+gloobus:gloobus KATKINE ;
+
+! VVS type 13
+keel:keel%{stemill%} KEEL ;
+
+peen:peen%{stemill%}%{rare%} PEEN ;
+niin NIIN ;
+
+! VVS type 14
+vars:varrS1%{stemill%} VARS ;
+köis:köiS1%{stemill%} VARS ;
+kõrs:kõrrS1%{stemill%}%{rare%} VARS ;
+!laas:laa%{sn%} VARS ;
+leem:leeM1%{stemill%}%{rare%} KEEL ;
+
+! mees
+! laps
+! uks
+
+! VVS type 15
+mesi:meS1 MESI ;
+süsi:sÜ5S1 MESI ;
+susi:sU5S1 MESI ;
+
+! VVS type 16
+pere:pere%{stemill%} PERE ;
+leedi PERE ;
+
+! VVS type 17, 18
+maja:maja%+%{pl.u%}%{stemill%} KAVA ;
+saba:saba%+%{pl.u%}%{rare%}%{stemill%} KAVA ;
+elu:elu%{stemill%} KAVA ;
+magu:maG1U5%{stemill%} KAVA ;
+sõda:sõD2a%+%{pl.u%}%{stemill%} KAVA ;
+tuba:tU5B1a%+%{pl.e%}%{stemill%} KAVA ;
+loba KAVA ;
+
+! VVS type 19 & 2
+muuseum MUUSEUM ;
+
+! VVS type 20
+meri:mer%{stemill%} MERI ;
+lumi:luM1%{stemill%} MERI ;
+
+! VVS type 20, 21
+nimi:nim%{stemill%}%{rare%} NIMI ;
+tüvi:tüv%{stemill%}%{rare%} NIMI ;
+lagi:laG1%{stemill%} NIMI ;
+tõbi:tõB2%{stemill%} NIMI ;
+tugi:tU5G1 NIMI;
+
+! VVS type 22
+laud:lauD1%+%{pl.u%} PIIM ; ! laud laua lauda laudu
+kaup:kaup%+%{pl.u%}  PIIM ;     ! kaup kauba kaupa kaupu
+king:king%+%{pl.i%}  PIIM ;     ! king kinga kinga kingi
+tüng:tüng  PIIM ;     ! tüng tünga tünga tüngasid
+puud:puud%+%{pl.i%}%{hyp%}  PIIM ;     ! puud puuda puuda puudasid (puudi)
+taud TAUD ;     ! taud taudi taudi taude
+kepp TAUD ;     ! kepp kepi  keppi keppe
+sepp:sepp%+%{pl.i%} PIIM ;     ! sepp sepa  seppa seppi
+kott TAUD ;     ! kott koti  kotti kotte
+kont TAUD ;     ! kont kondi  konti konte
+kauss TAUD ;     ! kauss kausi  kaussi kausse
+buss TAUD ;     ! buss bussi  bussi busse
+York DUCK ;     ! York Yorki  Yorki Yorke
+aed:aE3D1%+%{pl.u%} PIIM ; ! aed aia aeda aedu
+aeg:aE4G1%+%{pl.u%} PIIM ; ! aeg aja aega aegu
+kabinet KABINET ;     ! kabinet kabineti  kabinetti kabinette
+seminar TAUD ;     ! kabinet kabineti  kabinetti kabinette
+kärg:kärG2%+%{pl.i%}%{rare%} EIT ; ! kärg kärje kärge kärgi
+kuld:kullD1%+%{pl.i%}%{hyp%} PIIM ; ! kuld kulla kulda kuldasid (kuldi)
+õhk:õhK1 KOON ; ! õhk õhu õhku õhkusid
+paks:paks%+%{pl.e%} KOON ; ! paks paksu paksu pakse (paksusid)
+dušš TAUD ; ! dušš duši dušši dušše
+õukond:õukonnD1%+%{pl.i%} PIIM ; ! õukond õukonna õukonda õukondi
+proff TAUD ; ! proff profi proffi proffe
+tiib:tiiB2%+%{pl.u%} PIIM ; ! 
+pelg:pelG2 KOON ;
+laid:laiD1%+%{pl.e%} KOON ;
+saag:saaG1 TAUD ;
+siig:siiG1 PIIM ;
+voog:vooG1%+%{pl.e%}%{rare%} KOON ;
+tõug:tõuG1%+%{pl.e%} KOON ;
+paas:paaS1 TAUD ;
+alimendid:aliment KETSID ;
+veimed:veim%+%{pl.i%}%{rare%} VEIMED ;
+kihlad:kihl KIHLAD ;
+vurrud:vurr%+%{pl.e%} VURRUD ;
+
+! VVS type 23
+kael:kael%+%{pl.u%} KAEL ;
+poiss:poiss%+%{pl.e%} POISS ;
+
+! VVS type 24
+ahi:ahI4%+%{pl.e%}%{rare%} KOON ;
+! rohi:rohT1%{if%}%+%{pl.e%}%{rare%} KOON ;
+lubi:luP2I4 PIIM ;
+põlv:põlv%+%{pl.i%} EIT ;
+põli+N+Sg+Nom%+Use%/Rare:põlv # ;
+! põli = põlv...
+ader:aT2E2r%+%{pl.u%}%{rare%} PIIM ;
+puder:puT2E2r%+%{pl.e%}%{rare%} KOON ;
+
+! VVS type 25
+elanik ELANIK ;
+
+! VVS type 26
+puu:puu%+%{id%} ARMEE ;        ! puu  puu  puud puid (puusid)
+gnuu ARMEE ;        ! gnuu  gnuu  gnuud gnuusid
+idee:idee%+%{id%} ARMEE ;        ! idee  idee  ideed ideid (ideesid)
+essee:essee%+%{id%}%{rare%} ARMEE ;        ! essee  essee  esseed (esseid) esseesid
+suu:suu%+%{id%} ARMEE ;        ! suu  suu   suud
+! suu+N+Sg+Ill:suhu # ;
 
 
-! vim: set ft=xfst-lexc:
+! verbs
+
+! VVS type 27
+elama:ela ELAMA ;
+
+! VVS type 28
+leppima:leppi LEPPIMA ;
+kraapima:kraapi LEPPIMA ;
+marssima:marssi LEPPIMA ;
+katkuma:katku LEPPIMA ;
+ambuma:ammB1u LEPPIMA ;
+soiguma:soiG1u LEPPIMA ;
+näuguma:näuG1u LEPPIMA ;
+liguma:lI5G1U5 LEPPIMA ;
+jahtima:jahT1i LEPPIMA ;
+
+! VVS type 29
+hakkama:hakka HAKKAMA ;
+lõugama:lõuG1a HAKKAMA ;
+huugama:huuG1a HAKKAMA ;
+lupjama:lupja HAKKAMA ;
+kõplama:kõpla HAKKAMA ;
+kompama:kompa HAKKAMA ;
+laastama:laasta HAKKAMA ;
+
+! VVS type 30
+siplema:sipE2l SIPLEMA ;
+võrdlema:võrrD1E2l SIPLEMA ;
+kaeblema:kaeB2E2l SIPLEMA ;
+riidlema:riiD1E2l SIPLEMA ;
+muiglema:muiG1E2l SIPLEMA ;
+vähkrema:vähK1E2r SIPLEMA ;
+
+! VVS type 31
+rabelema:rabel RABELEMA ;
+
+! VVS type 32, 33
+seisma:seis SEISMA ;
+naerma:naer SEISMA ;
+
+! VVS type 34, 35
+söötma:sööt SAATMA ;
+nutma:nutt SAATMA ;
+kastma:kast SAATMA ;
+kurtma:kurt SAATMA ;
+
+! VVS type 34,
+kündma:künnD1 HOIDMA ;
+hoidma:hoiD1 HOIDMA ;
+needma:neeD1 HOIDMA ;
+
+! exceptions VVS 32
+pesema:pes PESEMA ;
+kaitsma:kaits KAITSMA ;
+maitsma:maits KAITSMA ;
+kusema:kus PESEMA ; 
+kusema+V+Pers+Prt+Ind%+Use%/NotNorm:kuse%+s IND_PAST ; ! indicative past
+
+! exceptions VVS 34
+tundma:tunnD1 TUNDMA ;
+
+!laskma:lasK1 JOOKSMA ;
+!laskma+V+Pers+Prt+Ind:las%+ IND_PAST ; ! indicative past
+! puskma
+! mõskma
+! jooksma:jooks  ;
+
+! VVS 36
+!olema:ol TULEMA ;
+tulema:tul TULEMA ;
+panema:pan TULEMA ;
+!minema:min TULEMA ;
+surema:sur TULEMA ;
+
+! VVS 37
+laama:laa KEEMA ;
+saama:saa SAAMA ;
+keema:kee KEEMA ;
+leema:lee KEEMA ;
+naima:nai KEEMA ;
+võima:või KEEMA ;
+näima:näi KEEMA ;
+jääma:jää SAAMA ;
+
+! VVS 38 viima, jooma
+viima:vii VIIMA ;
+käima:käi VIIMA ;
+jooma:jO6O6 JOOMA ;
+looma:lO6O6 JOOMA ;
+pooma:pO6O6 VIIMA ;
+tooma:tO6O6 JOOMA ;
+lööma:lÖ6Ö6 JOOMA ;
+sööma:sÖ6Ö6 JOOMA ;
+müüma:müü VIIMA ;
+
