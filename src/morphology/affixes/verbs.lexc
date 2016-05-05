@@ -241,9 +241,9 @@ LEXICON SUPINE
 
 +Ill: GI ;     ! elama
 +Ine:s GI ;    ! elamas
-%<ela%+:st GI ;
-%<tra%+:ks GI ;
-%<abe%+:ta GI ;
++Ela:st GI ;
++Tra:ks GI ;
++Abe:ta GI ;
 
 LEXICON IMPERS  ! impersonal forms
 : IMPERS1 ;
