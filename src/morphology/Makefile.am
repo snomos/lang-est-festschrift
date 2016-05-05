@@ -26,11 +26,9 @@ GT_LEXC_SRCS_L1_L2=\
 			 stems/abbreviations.lexc \
 			 stems/acronyms.lexc \
 			 stems/punctuation.lexc \
-			 affixes/adjectives.lexc \
-			 affixes/nouns.lexc \
-			 affixes/pronouns.lexc \
-			 affixes/propernouns.lexc \
-			 affixes/verbs.lexc
+			 affixes/declinations.lexc \
+			 affixes/verbs.lexc \
+			 affixes/gi.lexc
 
 # If you are building an error-detecting L2 analyser, specify the lexc files
 # that differ between the regular L1 and the L2 analysers below, in L1 and

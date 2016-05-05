@@ -1,0 +1,534 @@
+! inflectional types and analogue rules for nouns, adjectives and other declinables
+! VVS stands for Ü. Viks "Väike vormisõnastik" for reference purposes
+
+!---------------
+! inflectional types
+!---------------
+
+! VVS 1
+LEXICON AASTA    ! default? for vowel-final; stress on penultimate syllable words
+
++Sg+Nom: GI ;        ! aasta
+: 2C ;
+
+! VVS 2
+LEXICON REDEL    ! VVS 2 default for consonant-ending, stress on penultimate syllable words
+
++Sg+Nom: GI ;        ! redel, koppel
+:I5 2C ;
+
+! VVS 2
+LEXICON VIRSIK    ! VVS 2 default for -ik, -ing; stress on penultimate syllable words
+
++Sg+Nom: GI ;        ! virsik
+:u 2C ;
+
+! VVS 2
+LEXICON LOHAKAS      ! VVS 2 -kas, -jas etc ending words (incl derivations)
+
++Sg+Nom:s GI ;        ! lohakas
+: 2C ;
+
+! VVS 2
+LEXICON TUNTUD      ! VVS 2 -d ending words (incl derivations)
+
++Sg+Nom:d GI ;        ! tuntud
+: 2C ;
+
+! VVS 2
+LEXICON MAGUS    ! VVS 2 unstable (closed) type
+
++Sg+Nom: GI ;        ! magus
+:a 2C ;
+
+! VVS 2
+LEXICON HALE    ! VVS 2 unstable (closed) type
+
++Sg+Nom: GI ;        ! hale
+:da 2C ;
+
+
+! VVS 3
+LEXICON HOOLAS    ! VVS 3 unstable (closed) type; strengthening gradation
+
+: VAHER ;
++Sg+Par%+Use%/Rare:%{W%}%+t GI ;  ! hoolast
+%+Use%/NotNorm:%{W%}%+te N_PL_SUBPARA ;      ! hoolaste pl gen + pl cases depending on it 
+
+! VVS 3
+LEXICON VAHER    ! VVS 3 unstable (closed) type; strengthening gradation
+
++Sg+Nom:%{W%} GI ;        ! vaher
+:a 2C ;
+
+! VVS 3
+LEXICON MANNER    ! VVS 3 unstable (closed) type; strengthening gradation
+                  ! almost = VAHER, but stem vowel is i
+
++Sg+Nom:%{W%} GI ;        ! manner
+:I5 2C ;
+
+! VVS 4
+LEXICON HABE    ! VVS 4 unstable (closed) type; almost like HAARE, but no gradation
+
++Sg+Nom: GI ;        ! habe
++Sg+Par:%+t GI ;  ! habet
+:me 2C_EXCL_SG_PAR ;
+
+! VVS 5
+LEXICON HAARE    ! VVS 5 unstable (closed) type
+
++Sg+Nom:%{W%} GI ;        ! haare
++Sg+Par:%{W%}%+t GI ;  ! haaret
+:me 2C_EXCL_SG_PAR ;
+
+! VVS 6
+LEXICON PINGE    ! VVS 6 stable (open) + unstable (closed) type; 
+! open to verbal derivations, e.g. kiune from kiunuma
+
++Sg+Nom:%{W%} GI ;        ! pinge
++Sg+Par:%{W%}%+t GI ;  ! pinget
+:%{W%}%+te N_PL_SUBPARA ;       ! pingete pl gen + pl cases depending on it 
+: 2C_STRONG ;
+
+! VVS 7
+LEXICON KOTKAS    !  VVS 7 unstable (closed) type; 
+
++Sg+Nom:s%{W%} GI ;        ! kotkas
++Sg+Par:s%{W%}%+t GI ;  ! kotkast
+:s%{W%}%+te N_PL_SUBPARA ;       ! kotkaste pl gen + pl cases depending on it 
+: 2C_STRONG ;
+
+! VVS 8
+LEXICON PIPAR    !  VVS 8 unstable (closed) type; = HOOLAS
+
++Sg+Nom:%{W%} GI ;        ! pipar
++Sg+Par:%{W%}%+t GI ;  ! pipart
+:%{W%}%+de N_PL_SUBPARA ;       ! piparde pl gen + pl cases depending on it 
+%+Use%/NotNorm:a%+te N_PL_SUBPARA ;    ! piprate pl gen + pl cases depending on it 
+:a 2C_STRONG ;
+
+! VVS 8
+LEXICON KANNEL    ! VVS 8 unstable (closed) type; = PIPAR, but stem vowel -e instead of -a
+
++Sg+Nom:%{W%} GI ;        ! kannel, tütar
++Sg+Par:%{W%}%+t GI ;  ! kannelt, tütart
+:%{W%}%+de N_PL_SUBPARA ;       ! kannelde, tütarde pl gen + pl cases depending on it 
+%+Use%/NotNorm:e%+te N_PL_SUBPARA ;    ! kandlete, tütrete pl gen + pl cases depending on it 
+:e 2C_STRONG ;
+
+! VVS 9, 10
+LEXICON SOOLANE  ! VVS 9 simplex words ending with -s (katus), 10 affix -ne; 
+                       
++Sg+Nom: GI ;
+: NE_S ;
++Sg+Ill:e%+sse GI ;      ! soolasesse, katusesse
+%+Use%/Rare:e%+i SMALL_N_PL_SUBPARA ;       ! vocal pl cases  soolaseil, katuseil
++Pl+Par:e%+id GI ;         ! soolaseid, katuseid
+
+! VVS 11, 12
+LEXICON OLULINE   ! affixes -lane, -line, -mine, -tine, -ke(ne), -stikune (?)
+                  ! derived words ending with -us, -is (?) (harjutus)
+                  
++Sg+Nom: GI ;
+: NE_S ;
++Sg+Ill%+Use%/Rare:e%+sse GI ; ! olulisesse, harjutusesse
++Sg+Ill:%+se GI ;      ! olulisse, harjutusse (haplology)
+%+Use%/Rare:%+i SMALL_N_PL_SUBPARA ;       ! vocal pl cases  olulisil, harjutusil
++Pl+Par:%+i GI ;          ! olulisi, harjutusi
+
+! VVS 9 & (11), 10 & (12)
+LEXICON KATKINE  ! affix -ne, but sg ill, pl part and vocal cases also like -line
+                 ! simplex -s, but also like -us (gloobus) 
+                 
++Sg+Nom: GI ;
+: SOOLANE ;
++Sg+Ill%+Use%/Rare:%+se GI ;      ! katkisse, gloobusse (haplology)
+%+Use%/Rare:%+i SMALL_N_PL_SUBPARA ;       ! vocal pl cases  katkisil; (ever used?)
++Pl+Par%+Use%/Rare:%+i GI ;          ! katkisi, gloobusi
+
+
+! VVS (9) & 11, (10) & 12
+LEXICON SUULINE  ! affix -line, but pl part and vocal cases also like -ne
+                 ! derived -us, but pl part and vocal cases (?) also like simplex -s (vaatlus) 
+
++Sg+Nom: GI ;
+: OLULINE ;
+%+Use%/Rare:e%+i SMALL_N_PL_SUBPARA ;       ! vocal pl cases  suuliseil, vaatluseil
++Pl+Par%+Use%/Rare:e%+id GI ; ! suuliseid, vaatluseid
+
+! VVS 12
+LEXICON PEENIKE   ! affix -ke; almost = OLULINE, except sg nom
+
++Sg+Nom: GI ;
++Sg+Nom%+Use%/Rare:ne GI ;
+:N1e NE_S ;
++Sg+Ill%+Use%/Rare:se%+sse GI ; ! olulisesse, harjutusesse
++Sg+Ill:s%+se GI ;      ! olulisse, harjutusse (haplology)
+%+Use%/Rare:N1%+i SMALL_N_PL_SUBPARA ;       ! vocal pl cases  olulisil, harjutusil
++Pl+Par:s%+i GI ;          ! olulisi, harjutusi
+
+! VVS 10
+LEXICON PÄIKE  ! päike(ne), äike(ne)  VVS 10
+
+: XÄIKE ;
++Pl+Par:kese%+id GI ;            ! päikeseid
++Pl+Par%+Use%/Rare:kse%+id GI ;  ! päikseid
+
+LEXICON VÄIKE  ! väike(ne)  VVS 10
+
+: XÄIKE ;
++Pl+Par%+Use%/Rare:kese%+id GI ; ! väikeseid
++Pl+Par:kse%+id GI ;             ! väikseid
+
+! VVS 10
+LEXICON XÄIKE  ! VVS 10 common part of väike(ne), päike(ne), äike(ne)
+
++Sg+Nom:ke GI ;
++Sg+Nom%+Use%/Rare:kene GI ;
+:keN1e NE_S ;
+%+Use%/Rare:kse N_SG_SUBPARA ;       ! xäikse sg gen + sg cases depending on it + pl nom ; 
++Sg+Par%+Use%/Rare:kse%+t GI ;       ! xäikset
++Sg+Ill:kese%+sse GI ;    ! xäikesesse
++Sg+Ill%+Use%/Rare:kse%+sse GI ;   ! xäiksesse
++Sg+Ill%+Use%/Rare:ke%+sse GI ;    ! xäikesse (haplology)
+%+Use%/Rare:kse%+te N_PL_SUBPARA ;   ! pl gen + pl cases depending on it 
++Pl+Par%+Use%/Rare:kes%+i GI ;   ! xäikesi
+%+Use%/Rare:kes%+i SMALL_N_PL_SUBPARA ;   ! vocal pl cases  xäikesil
+%+Use%/Rare:kese%+i SMALL_N_PL_SUBPARA ;   ! vocal pl cases  xäikeseil
+%+Use%/Rare:kse%+i SMALL_N_PL_SUBPARA ;   ! vocal pl cases  xäikseil
+
+!  VVS 13
+LEXICON KEEL    !  VVS 13 unstable (closed) type; 
+
+: VARS ;
+%+Use%/Hyp:%{W%}%+i SMALL_N_PL_SUBPARA ;       ! vocal pl cases  keelil; except for some expressions (suuril silmil)
+
+! VVS 13
+LEXICON NIIN    ! VVS 13 almost like KEEL, but some forms are more regular
+
++Sg+Nom: GI ;        ! niin
+:e%{W%} N_SG_SUBPARA ;    ! niine sg gen + sg cases depending on it + pl nom ; 
++Sg+Par:%+t GI ;  ! niint
++Sg+Ill:%+de%{ssestem%} SG_ILL ;     ! niinde
++Sg+Ill:e%{W%}%+%{ssestem%} SG_ILL ;     ! niinesse 
+:%+te N_PL_SUBPARA ;       ! niinte pl gen + pl cases depending on it 
+! +N%+Use%/Hyp:%+i SMALL_N_PL_SUBPARA ;       ! impossible for rarer words
++Pl+Par:e%+sid GI ;  ! NB! niinesid (not niini)
+
+! VVS 13
+LEXICON PEEN    ! VVS 13 almost like KEEL, but some forms are more regular
+
++Sg+Nom: GI ;        ! peen
+:%+e N_SG_SUBPARA ;    ! peene sg gen + sg cases depending on it + pl nom ; 
++Sg+Par:%+t GI ;  ! peent
++Sg+Par%+Use%/NotNorm:e%+t GI ;  ! peenet
++Sg+Ill:%+de%{ssestem%} SG_ILL ;     ! peende
++Sg+Ill:e%{W%}%+%{ssestem%} SG_ILL ;     ! peenesse 
+:%+te N_PL_SUBPARA ;       ! peente pl gen + pl cases depending on it 
+%+Use%/NotNorm:e%+te N_PL_SUBPARA ;       ! peenete pl gen + pl cases depending on it 
+%+Use%/Hyp:%{W%}%+i SMALL_N_PL_SUBPARA ;       ! vocal pl cases peenil 
++Pl+Par%+Use%/CommonNotNorm:e%+id GI ;  ! NB! peeneid 
++Pl+Par:i GI ;  ! peeni
+
+!  VVS 14 unstable (closed) type;
+LEXICON VARS     !  VVS 14 unstable (closed) type;
+
+! %{W%} here helps to select the right paradigm slots for stem change;
+! it does not really stand for "weak grade"
+
++Sg+Nom: GI ;        ! vars
+:e%{W%} N_SG_SUBPARA ;    ! varre sg gen + sg cases depending on it + pl nom ; 
++Sg+Par:%+t GI ;  ! vart
++Sg+Ill:%+de%{ssestem%} SG_ILL ;     ! varde
++Sg+Ill:e%{W%}%+%{ssestem%} SG_ILL ;     ! varresse 
+:%+te N_PL_SUBPARA ;       ! varte pl gen + pl cases depending on it 
+! +N%+Use%/Hyp:%+i SMALL_N_PL_SUBPARA ;       ! vocal pl cases  varsil?; except for some expressions (uusil)
++Pl+Par:%+i GI ;  ! varsi
+
+!  VVS 15 unstable (closed) type;
+LEXICON MESI     
+
++Sg+Nom:i GI ;        ! mesi
+:e%{W%} N_SG_SUBPARA ;    ! mee sg gen + sg cases depending on it + pl nom ; 
++Sg+Par:%+tt GI ;  ! mett
++Sg+Ill:e%{W%}%+sse GI ;     ! meesse
+:%{W%}%+te N_PL_SUBPARA ;       ! mete pl gen + pl cases depending on it 
+! +N%+Use%/Hyp: SMALL_N_PL_SUBPARA ;       ! vocal pl cases  mesil?; except for some expressions (käsil) ?
++Pl+Par:i GI ;  ! mesi ?? meesid ???
+
+! VVS 16
+LEXICON PERE
+
++Sg+Nom: GI ;
+: N_SG_SUBPARA ;      ! sg gen + sg cases depending on it + pl nom
++Sg+Par:%+t GI ;
++Sg+Ill:%{ssestem%} SG_ILL ;     ! perre
++Sg+Ill:%{W%}%+%{ssestem%} SG_ILL ;     ! peresse 
+:%+de N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
++Pl+Par:%+sid #; ! peresid
+
+! %{W%} here helps to select the right paradigm slots for stem change;
+! it does not really stand for "weak grade"
+! VVS 17, 18
+LEXICON KAVA
+
++Sg+Nom: GI ;
+:%{W%} N_SG_SUBPARA ;      ! sg gen + sg cases depending on it + pl nom
++Sg+Par: GI ;
++Sg+Ill:%{ssestem%} SG_ILL ;     ! kavva
++Sg+Ill:%{W%}%+%{ssestem%} SG_ILL ;     ! kavasse 
+:%+de N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
++Pl+Par:%+%{sid%}%{i%}%{d%} PL_PAR ;  ! kavasid & kavu ...
+
+! VVS 2 & 19 
+LEXICON MUUSEUM  ! undecided which stable type (aktiivne muuttüüp): TAUD or REDEL 
+
++Sg+Nom: GI ;
+:i%{W%} N_SG_SUBPARA ; ! sg gen + sg cases depending on it + pl nom
++Sg+Par:i GI ;    ! muuseumi
++Sg+Ill:i GI ;    ! muuseumi  ! ?? not sure; rare ??
++Sg+Ill%+Use%/Rare:i%{W%}%+sse GI ;  ! ?? not sure; rare ??
+:i%+de N_PL_SUBPARA ;    ! muuseumide pl gen + pl cases depending on it 
++Pl+Par:e GI ;      ! muuseume
+
++Sg+Par%+Use%/Rare:%+it GI ;  ! muuseumit
+%+Use%/Rare:%+ite N_PL_SUBPARA ;   ! muuseumite pl gen + pl cases depending on it 
+%+Use%/Rare:%+ei SMALL_N_PL_SUBPARA ;       ! vocal pl cases  muuseumeil
++Pl+Par%+Use%/Rare:%+eid GI ;  ! muuseumeid
+
+! VVS 20
+LEXICON MERI   ! unstable type (passiivne muuttüüp) lumi, tuli, uni, veri
+
++Sg+Nom:i GI ;
+:e N_SG_SUBPARA ; ! sg gen + sg cases depending on it + pl nom
++Sg+Par:%+d GI ;    ! merd
++Sg+Ill:e%{ssestem%} SG_ILL ;     ! merre
++Sg+Ill:e%{W%}%+%{ssestem%} SG_ILL ;     ! meresse 
+:%+e%+de N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
++Pl+Par:e%+sid GI ;      ! lagesid
+
+! VVS 20, 21
+LEXICON NIMI   ! unstable type (passiivne muuttüüp) suvi, lagi
+
++Sg+Nom:i GI ;
+:e%{W%} N_SG_SUBPARA ; ! sg gen + sg cases depending on it + pl nom
++Sg+Par:e GI ;    ! suve, lage
++Sg+Ill:e%{ssestem%} SG_ILL ;     ! nimme
++Sg+Ill:e%{W%}%+%{ssestem%} SG_ILL ;     ! nimesse 
+:%+e%+de N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
++Pl+Par:e%+sid GI ;      ! lagesid
+
+! VVS 22 
+LEXICON PIIM   ! unstable type (passiivne muuttüüp) sepp, kaup, ...
+
++Sg+Nom: GI ;
+:%{sg.a%} 1C ;
+
+! VVS 22 
+LEXICON KOON   ! unstable type (passiivne muuttüüp) lõpp, laug
+
++Sg+Nom: GI ;
+:%{sg.u%} 1C ;
+
+! VVS 22 
+LEXICON EIT   ! unstable type (passiivne muuttüüp) kuusk, kärg
+
++Sg+Nom: GI ;
+:%{sg.e%} 1C ;
+
+! VVS 22 
+LEXICON TAUD  ! stable type (aktiivne muuttüüp) siil, president, ...
+
++Sg+Nom: GI ;
+:%+%{pl.e%}%{sg.i%} 1C ;  ! {pl.e} is here so it need not be in the stem lexicon
+
+! VVS 22 
+LEXICON DUCK          ! stable type (aktiivne muuttüüp) almost == TAUD, but final stop weak grade does not change 
+
++Sg+Nom: GI ;
+:i%{WF%} N_SG_SUBPARA ; ! sg gen + sg cases depending on it + pl nom
++Sg+Par:i GI ;     ! ducki
++Sg+Ill:i GI ;     ! ducki
++Sg+Ill%+Use%/Hyp:i%{WF%}%+sse GI ;
+:i%+de N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
++Pl+Par:e GI ;     ! ducke
++Pl+Par%+Use%/Rare:i%+sid GI ; ! duckisid+Use/Rare
+
+! VVS 22 
+LEXICON KABINET          ! stable type (aktiivne muuttüüp) almost == TAUD
+
++Sg+Nom: GI ;
+! sg nom has single final stop instead of double, so it has to be doubled in strong grade
+:%.%+%{pl.e%}%{sg.i%} 1C ;
+
+! VVS 22 
+LEXICON VEIMED   ! plurale tantum (EIT)
+
++Pl+Nom:%{sg.e%}%{W%}%+d GI ; !  pl nom
+:%{sg.e%} 1C_PL ;
+
+! VVS 22 
+LEXICON KIHLAD   ! plurale tantum (PIIM)
+
++Pl+Nom:%{sg.a%}%{W%}%+d GI ; !  pl nom
+:%{sg.a%} 1C_PL ;
+
+! VVS 22 
+LEXICON VURRUD   ! plurale tantum (KOON)
+
++Pl+Nom:%{sg.u%}%{W%}%+d GI ; !  pl nom
+:%{sg.u%} 1C_PL ;
+
+! VVS 22 
+LEXICON KETSID   ! plurale tantum (TAUD)
+
++Pl+Nom:i%{W%}%+d GI ; !  pl nom
+:%+%{pl.e%}%{sg.i%} 1C_PL ;
+
+! VVS 23 
+LEXICON KAEL   ! almost = PIIM, except pl gen + 
+
++Sg+Nom: GI ;
+:%{sg.a%} 1C_SG ;
+:%{W%}%+te N_PL_SUBPARA ;       ! kaelte pl gen + pl cases depending on it 
+%+Use%/Rare:%{sg.a%}%+de N_PL_SUBPARA ;   ! kaelade pl gen + pl cases depending on it 
+! pl par stem vowel (u, i, 0) is lexically determined and usage-wise tagged
+! kaelu, kaelasid+Use/Rare 
++Pl+Par:%{sg.a%}%+%{sid%}%{i%}%{d%} PL_PAR ;      ! kaelasid, kaelu
+
+! VVS 23 
+LEXICON POISS   ! poiss, püks; almost = TAUD, except pl gen + 
+
++Sg+Nom: GI ;
+:i 1C_SG ;
+:%{W%}%+te N_PL_SUBPARA ;       ! poiste pl gen + pl cases depending on it 
+%+Use%/Rare:%+i%+de N_PL_SUBPARA ;   ! poisside pl gen + pl cases depending on it 
++Pl+Par:e GI ;        ! poisse
++Pl+Par%+Use%/Hyp:%+i%+sid GI ;     ! poissisid+Use/Hyp
+
+! VVS 24 is lexical variants under VVS 22 various subtypes
+
+! VVS 25 
+LEXICON ELANIK          ! stable type (aktiivne muuttüüp) almost == KABINET == TAUD
+
++Sg+Nom: GI ;
+! sg nom has single final stop instead of double, so it has to be doubled in strong grade
+:k%{sg.u%} 1C_SG ;
+:ke%{W%} N_PL_SUBPARA ;        ! NB! 
+%+Use%/Rare:k%{sg.u%}%+de N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
++Pl+Par:ke GI ;  ! elanikke
++Pl+Par%+Use%/Rare:k%{sg.u%}%+sid GI ;  ! elanikkusid+Use/Rare
+
+LEXICON ARMEE ! VVS 26
+
++Sg+Nom: GI ;
+: N_SG_SUBPARA ;           ! sg gen + sg cases depending on it + pl nom ; 
++Sg+Par:%+d GI ; 
+:%+de N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
++Pl+Par:%+%{idsid%}id PL_PAR ;
+
+! ---------------
+! sub-paradigms common to several inflectional types
+! ---------------
+
+! VVS 9, 10, 11, 12
+LEXICON NE_S  ! VVS 9, 10, 11, 12 common forms for affix -ne, -line, -s, -tus etc 
+
+:e N_SG_SUBPARA ;               ! sg gen + sg cases depending on it + pl nom ; 
++Sg+Par:E2%+t GI ;   ! soolast, raudset, olulist
+:E2%+te N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
+
+! ------
+
+LEXICON 2C ! consonant ending with stress on penultimate syllable, or vowel ending 
+
+: N_SG_SUBPARA ;    ! redeli, virsiku sg gen + sg cases depending on it + pl nom ; 
++Sg+Par:%+t GI ;  ! redelit, virsikut
+:%+te N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
+%+Use%/Rare:%+i SMALL_N_PL_SUBPARA ;       ! vowel pl cases  redeleil, virsikuil
++Pl+Par:%+id GI ;  ! redeleid, virsikuid
+
+LEXICON 2C_EXCL_SG_PAR ! =2C, excluding sg partitive
+
+: N_SG_SUBPARA ;    ! redeli, virsiku sg gen + sg cases depending on it + pl nom ; 
+:%+te N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
+%+Use%/Rare:%+i SMALL_N_PL_SUBPARA ;       ! vowel pl cases  redeleil, virsikuil
++Pl+Par:%+id GI ;  ! redeleid, virsikuid
+
+LEXICON 2C_STRONG ! =2C_EXCL_SG_PAR, excluding N_PL_SUBPARA
+
+: N_SG_SUBPARA ;    ! kotka sg gen + sg cases depending on it + pl nom ; 
+%+Use%/Rare:%+i SMALL_N_PL_SUBPARA ;       ! vowel pl cases  kotkail
++Pl+Par:%+id GI ;  ! kotkaid
+
+LEXICON 1C ! consonant ending, stress NOT on penultimate syllable
+
+: 1C_SG ;  ! singular forms + pl nom
+: 1C_PL ;  ! plural forms
+
+LEXICON 1C_SG ! SG subpara of 1C
+
+:%{W%} N_SG_SUBPARA ; ! sg gen + sg cases depending on it + pl nom
++Sg+Par: GI ;    ! piima
++Sg+Ill: GI ;    ! piima
++Sg+Ill%+Use%/Hyp:%{W%}%+sse GI ;
+
+LEXICON 1C_PL ! PL subpara of 1C
+
+:%+de N_PL_SUBPARA ;       ! pl gen + pl cases depending on it 
+! pl par stem vowel (u, i, 0) is lexically determined and usage-wise tagged
+! kingi, kingasid+Use/Rare vs. puudi+Use/Rare, puudasid
++Pl+Par:%+%{sid%}%{i%}%{d%} PL_PAR ;      ! piimasid, piimi+Use/Rare
+
+! ---------------
+! most regular ...
+! ---------------
+
+LEXICON N_SG_SUBPARA     ! sg gen + sg cases depending on it + pl nom
+
++Pl+Nom:%+d GI ;
++Sg: SEM_CASE_ENDINGS ;
+
+LEXICON N_PL_SUBPARA     ! -de/-te pl gen + pl cases depending on it 
+
++Pl: SEM_CASE_ENDINGS ;
++Pl+Ill:%+sse GI ;
+
+LEXICON SEM_CASE_ENDINGS  ! genitive and cases depending on it (either sg or pl)
+                          ! NB! excl. illative 
++Gen: GI ; 
++Ine:%+s GI ;
++Ela:%+st GI ;
++All:%+le GI ;	
++Ade:%+l GI ;	
++Abl:%+lt GI ;	
++Tra:%+ks GI ;	
++Trm:%+ni GI ;	
++Ess:%+na GI ;	
++Abe:%+ta GI ;	
++Com:%+ga GI ;
+	
+LEXICON SMALL_N_PL_SUBPARA     ! pl cases depending on vocal plural gen  
+                               ! excl. ni-na-ta-ga 
++Pl+Ill:%+sse GI ;
++Pl+Ine:%+s GI ;
++Pl+Ela:%+st GI ;
++Pl+All:%+le GI ;	
++Pl+Ade:%+l GI ;	
++Pl+Abl:%+lt GI ;	
++Pl+Tra:%+ks GI ;	
+
+! we want to indicate the preferred form in the stem lexicon
+! (not in the continuation lexicon)
+
+LEXICON PL_PAR            ! for TAUD, PIIM, KOON etc types
+
+%+Use%/Rare:%{rare%} GI ;  ! less used pl par form for that word
+ GI ;  ! default pl par form for that word
+
+LEXICON SG_ILL            ! for KEEL etc types
+
+%+Use%/Rare:%{s%}%{e%}%{rare%} GI ;  ! less used sg ill form for that word
+:%{s%}%{e%} GI ;  ! default sg ill form for that word
+

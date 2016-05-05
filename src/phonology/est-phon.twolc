@@ -167,10 +167,6 @@ Vowel = A E I O U Õ Ä Ö Ü
 Consonant = b c d f g h j k l m n p q r s š z ž t v w x y 
             B C D F G H J K L M N P Q R S Š Z Ž T V W X Y ;
 
-! fricatives
-! for -el, -er words
-fricative = v f s h ;
-
 ! stops
 stop = g b d k p t ;
 
@@ -178,7 +174,7 @@ stop = g b d k p t ;
 lmnr = l m n r ;
 
 ! voiceless consonants  
-voiceless = fricative stop ;
+voiceless = f s h stop ;
 
 ! possible stem- or ending vowels
 V = a e i u ;
