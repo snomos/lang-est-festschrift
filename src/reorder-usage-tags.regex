@@ -4,17 +4,17 @@
 # 2) delete tag if there is OK somewhere in the right side
 # 3) delete OK
 
-define RTag [ %+ U s e %/ R a r e ] ;       # norm, but rare 
-define HTag [ %+ U s e %/ H y p ] ;         # norm, but so rare that norm is probaly wrong
-define NTag [ %+ U s e %/ N o t N o r m ] ; # not norm, but sometimes used
-define CNTag [ %+ U s e %/ C o m m o n N o t N o r m ] ; # not norm, and used more than norm
+define RTag [ "+Use/Rare" ] ;       # norm, but rare 
+define HTag [ "+Use/Hyp" ] ;         # norm, but so rare that norm is probaly wrong
+define NTag [ "+Use/NotNorm" ] ; # not norm, but sometimes used
+define CNTag [ "+Use/CommonNotNorm" ] ; # not norm, and used more than norm
 
 define UTag [ RTag | HTag | NTag | CNTag ] ; # usage-related tag
 
 define OK [ %+ O K ] ;   # temporary 
 
 # grammatical categories
-# missing: gi/ki, ...
+# missing: derivational tags???
 
 define Number [%+Pl | %+Sg ] ;
 define Case [ %+Nom | %+Gen | %+Par | %+Ill | %+Ine | %+Ela | 
@@ -28,13 +28,15 @@ define Sup [ %+Sup ] ;
 define Inf [ %+Inf ] ;
 define Ger [ %+Ger ] ;
 define Prc [ %+Prc ] ;
+define GI [ "+Foc/gi" ] ;
 
-# combinations of categories that may happen to be on the right from a usage tag
+# combinations of categories that may happen to be on the left from a usage tag
 # (according to the present continuation lexicons...)
-define Cat [ Number | Case | Voice | Tense | Mood | PN | Polarity | Sup | Inf | Ger | Prc |
+define Ct  [ Number | Case | Voice | Tense | Mood | PN | Polarity | Sup | Inf | Ger | Prc |
            [Number Case] | 
            [PN Polarity] | [Mood PN Polarity] | [Mood PN] | [Mood Polarity] |
            [Tense Mood] | [Tense Mood Polarity] | [Tense Prc] ] ;
+define Cat [ Ct | GI | [Ct GI] ];
 
 define MoveR Cat @-> ... OK RTag || RTag _ ;  # replicate tag from left also to the right
 define MoveH Cat @-> ... OK HTag || HTag _ ; 

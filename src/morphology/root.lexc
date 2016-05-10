@@ -22,28 +22,7 @@ Multichar_Symbols
 +Adp	! kaassõna		! pre/postposition	! kaudu
 +Adv	! muu sõna		! other word		! kihku, kihla, minap
 
-+Emph ! Long form personal pronouns (emphasized):  tema (vs ta)
-
-! tuletised, sisemiseks kasutamiseks, filtreerimiseks
-!! derivation suffixes, used to filter out illegal combinations internally
-+Dim/ke	! deminutive
-+Dim/kene  ! deminutive
-+Der
-+Der/us
-+Der/lt
-+Der/ini	! comparation? paremini, kiiremini (how? better than .., faster than ..)
-+Der/lik
-
-+Der/nu
-+Der/tu
-+Der/tav
-+Der/v
-+Der/ja
-+Der/mine
-
-! partikkel -gi/-ki
-! particle -gi/-ki
-+Foc/gi
+! Käändsõna             ! Noun
 
 ! arv 			! number
 +Sg	! ainsus	! singular
@@ -71,7 +50,7 @@ Multichar_Symbols
 +Superl	! superlatiiv	! superlative
 
 ! genitiivatribuut?
-+Attr   ! ???
+! +Attr   ! ???
 
 
 ! verb
@@ -281,6 +260,41 @@ Multichar_Symbols
 ! Analytical forms (olen elanud, olin elanud, oleksin elanud, ei olnud elanud,
 ! ei olnuks elanud etc) are not treated here...
 
+! partikkel -gi/-ki
+! particle -gi/-ki
++Foc/gi
+
+! kasutust (sagedust jm) iseloomustavad märgendid
+! usage-related tags
+
++Emph ! Long form personal pronouns (emphasized):  tema (vs ta)
+
+! paralleelvormide erinevat kasutussagedust iseloomustavad
+! usage info for parallel forms (either correct according to the norm, or incorrect)
+
++Use/Rare       ! norm, but rare: puusid:puu+Pl+Par+Use/Rare
++Use/Hyp        ! norm, but so rare that norm is probaly wrong: tiivasse:tiib+Sg+Ill+Use/Hyp
++Use/NotNorm    ! not norm, but sometimes used: pöidlates:pöial+Pl+Ine+Use/NotNorm
++Use/CommonNotNorm ! not norm, and used more than norm: peeneid:peen+Pl+Par+Use/CommonNotNorm
+
+
+
+! tuletised, sisemiseks kasutamiseks, filtreerimiseks
+!! derivation suffixes, used to filter out illegal combinations internally
++Dim/ke	! deminutive
++Dim/kene  ! deminutive
++Der
++Der/us
++Der/lt
++Der/ini	! comparation? paremini, kiiremini (how? better than .., faster than ..)
++Der/lik
+
++Der/nu
++Der/tu
++Der/tav
++Der/v
++Der/ja
++Der/mine
 
 !! Morphophonology
 

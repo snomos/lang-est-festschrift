@@ -194,6 +194,11 @@ WS = G1 B1 D1 K1 P1 T1 ;
 ! Usage, style etc tags in lexicon
 LT = %{hyp%} %{rare%} %{notnorm%} %{commonnotnorm%} ;
 
+Definitions
+
+Border = [ .#. | # ];  ! word border
+WordEnd = [ (%+: g: i) Border ];     ! final +gi is optional for almost any word
+
 Rules 
 
 ! ----- k p t s gradation
@@ -246,8 +251,8 @@ Cx:Cy  <=> _ [ : ]* %{W%}: ;
 "Lexically determined weak grade for kpt:gbd; sg nom for ader, lubi"
 
 Cx:Cy  <=>  _ [ : ]* %{W%}: ;
-            _ I4:i [:0]* .#. ;            ! lubi sg nom is not {W}; has ij:i
-            _ E2:e [l | r] [:0]* .#. ;    ! ader sg nom is not {W}; has e2:e
+            _ I4:i [:0]* WordEnd ; ! lubi sg nom is not {W}; has ij:i
+            _ E2:e [l | r] [:0]* WordEnd ;    ! ader sg nom is not {W}; has e2:e
       where Cx in ( K2 P2 T2 ) 
             Cy in (  g  b  d )
       matched ;
@@ -405,7 +410,7 @@ Cx:Cy  <=> :voiceless [:0]* %+: _ ;
 ! Orthographical convention for recent loans (kabinet) and -ik suffix
 "Double the previous consonant"
 
-%.:Cx  <=> :Vowel :Cx _ \[%{W%}:]* .#. ;
+%.:Cx  <=> :Vowel :Cx _ \[%{W%}:]* WordEnd ;
       where Cx in (Consonant) ;
 
 ! lexical: k a b i n e t . + {pl.e} {sg.i}
@@ -417,10 +422,10 @@ Cx:Cy  <=> :voiceless [:0]* %+: _ ;
 ! they are handled by having truncated stems pointing to a few continuation lexicons (LISE, SE, etc) 
 
 ! Two rules are needed for allowing -ne only for sg nom
-! we want to express string mapping: {N1e}:ne <=> _ .#.  (otherwise {N1e}:s)
+! we want to express string mapping: {N1e}:ne <=> _ WordEnd  (otherwise {N1e}:s)
 "ne is sg nom only (1/2)"
 
-N1:n  <=>  _ e .#. ;
+N1:n  <=>  _ e WordEnd ;
 
 ! lexical: s o o l a N1 e 
 ! surface: s o o l a n  e
@@ -429,7 +434,7 @@ N1:n  <=>  _ e .#. ;
 
 e:0  <=>  N1:s _  ;
      except
-           _ [ :0 ]* .#. ;   ! to prohibit s o o l a N1:s e:0 
+           _ [ :0 ]* WordEnd ;   ! to prohibit s o o l a N1:s e:0 
 
 ! lexical: s o o l a N1 e E2
 ! surface: s o o l a s  0 e
@@ -474,7 +479,7 @@ M1:n  <=> _ [:0]* [:t | :d ] ;
 ! final i of some words is substituted by j in other forms; 
 "choose i for lemma in sg nom (otherwise j)"
 
-I4:i  <=> _ [ :0 ]* .#. ;
+I4:i  <=> _ [ :0 ]* WordEnd ;
 
 ! lexical: a h I4 + {pl.e} {rare}
 ! surface: a h  i  0    0      0
@@ -558,7 +563,7 @@ a:0  <=> :Consonant _ %+: PlSV:V [:0]* %{sid%}:0 ;
 
 ! lexical: p u u d + {pl.i} {hyp} {sg.a} + {sid} {rare}
 ! surface: p u u d 0    i     0      0   0   0      0     
-! lexical: p u u d + {pl.i} {hyp} {sg.a} + {sid} .#.
+! lexical: p u u d + {pl.i} {hyp} {sg.a} + {sid} WordEnd
 ! surface: p u u d 0    i     0      0   0   0           FAIL
 ! lexical: k a u p + {pl.u}       {sg.a} + {sid} {rare}
 ! surface: k a u p 0    u            0   0   0      0    FAIL
@@ -573,12 +578,12 @@ a:0  <=> :Consonant _ %+: PlSV:V [:0]* %{sid%}:0 ;
 
 %{sid%}:s    /<=  PlSV:0 LT: [:]* _ %{i%}: %{d%}: LT: ;
                  PlSV:0 \LT: [:]* _ %{i%}: %{d%}: \LT: ;
-                 .#. \[PlSV:]*    _ %{i%}: %{d%}: LT: ;
+              Border \[PlSV:]*    _ %{i%}: %{d%}: LT: ;
                                   _ %{i%}:0 %{d%}:0 ;
 
 ! lexical: p u u d + {pl.i} {hyp} {sg.a} + {sid} {rare}
 ! surface: p u u d 0    0     0      a   0  sid     0    FAIL
-! lexical: k a u p + {pl.u}       {sg.a} + {sid} .#.
+! lexical: k a u p + {pl.u}       {sg.a} + {sid} WordEnd
 ! surface: k a u p 0    0            a   0  sid          FAIL
 ! lexical: t ü n g                {sg.a} + {sid} {rare}
 ! surface: t ü n g                   a   0  sid     0    FAIL
@@ -613,13 +618,13 @@ a:0  <=> :Consonant _ %+: PlSV:V [:0]* %{sid%}:0 ;
 
 "-sid cannot be rare, unless the lexicon entry implies this by having {id} and no LT"
 
-%{idsid%}:s    /<= .#. [\%{id%}:]* _ i d LT:  ;
+%{idsid%}:s    /<= Border [\%{id%}:]* _ i d LT:  ;
 
-! lexical: p u u     {id}        + {idsid} i d .#.
+! lexical: p u u     {id}        + {idsid} i d WordEnd
 ! surface: p u 0      0          0    0    i d 
 ! lexical: p u u     {id}        + {idsid} i d {rare}
 ! surface: p u u      0          0   s     i d   0
-! lexical: g n u u               + {idsid} i d .#.
+! lexical: g n u u               + {idsid} i d WordEnd
 ! surface: g n u u               0   s     i d 
 ! lexical: g n u u               + {idsid} i d {rare}
 ! surface: g n u u               0   s     i d    0      FAIL 
@@ -627,9 +632,9 @@ a:0  <=> :Consonant _ %+: PlSV:V [:0]* %{sid%}:0 ;
 ! surface: e s s e 0  0      0   0    0    i d   0 
 ! lexical: e s s e e {id} {rare} + {idsid} i d {rare}
 ! surface: e s s e 0  0      0   0   s     i d    0      FAIL
-! lexical: e s s e e {id} {rare} + {idsid} i d .#.    
+! lexical: e s s e e {id} {rare} + {idsid} i d WordEnd    
 ! surface: e s s e 0  0      0   0    0    i d        FAIL
-! lexical: e s s e e {id} {rare} + {idsid} i d .#.
+! lexical: e s s e e {id} {rare} + {idsid} i d WordEnd
 ! surface: e s s e 0  0      0   0   s     i d      
 ! --------------
 
@@ -677,8 +682,8 @@ a:0  <=> :Consonant _ %+: PlSV:V [:0]* %{sid%}:0 ;
 "-sse sg ill usage"
 
 %{ssestem%}:s /<=  %{stemill%}:  LT: [:]* _ :s :e LT: ;  ! -sse cannot be rare
-                     %{stemill%}: \LT: [:]* _ :s :e \LT: ; ! -sse cannot be common
-                     .#. \[%{stemill%}:]*   _ :s :e LT: ;  ! -sse cannot be rare
+                   %{stemill%}: \LT: [:]* _ :s :e \LT: ; ! -sse cannot be common
+                Border \[%{stemill%}:]*   _ :s :e LT: ;  ! -sse cannot be rare
 
 ! nimesse is common, nimme is rare
 ! lexical: n i m 0 {stemill} {rare} {W} e {ssestem} {rare}
@@ -686,16 +691,16 @@ a:0  <=> :Consonant _ %+: PlSV:V [:0]* %{sid%}:0 ;
 ! lexical: n i m   {stemill} {rare} {W} e + {ssestem}
 ! surface: n i m       0        0    0  e 0    sse  
 ! merre is common, meresse is rare
-! lexical: m e r 0 {stemill} e {ssestem} .#.
+! lexical: m e r 0 {stemill} e {ssestem} WordEnd
 ! surface: m e r r    0      e     0 
 ! lexical: m e r   {stemill} e {W} + {ssestem} {rare}
 ! surface: m e r       0     e  0  0    sse       0  
 ! lexical: m e r 0 {stemill} e + {ssestem} {rare}
 ! surface: m e r r     0     e 0     0        0       FAIL
-! lexical: m e r   {stemill} e {W} + {ssestem} .#.
+! lexical: m e r   {stemill} e {W} + {ssestem} WordEnd
 ! surface: m e r       0     e  0  0    sse               FAIL 
 ! loppa is impossible, lobasse is common
-! lexical: l o b a                       {W} +     {ssestem} .#.
+! lexical: l o b a                       {W} +     {ssestem} WordEnd
 ! surface: l o b a                        0  0        sse
 ! lexical: l o b a                       {W} +     {ssestem} {rare}
 ! surface: l o b a                        0  0        sse      0       FAIL
