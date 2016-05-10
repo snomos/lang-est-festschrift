@@ -51,7 +51,7 @@ define CleanUp [ DelUTag .o. DelOK ] ;
 # move tag over any categories 
 define MoveCat [MoveR .o. MoveH .o. MoveN .o. MoveCN] ;
 
-regex MoveCat .o. CleanUp ;
+regex [MoveCat .o. CleanUp].i ;
 
 save stack reorder-usage-tags.hfst
 quit

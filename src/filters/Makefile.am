@@ -23,7 +23,7 @@ GIELLA_FILTER_LOCAL_REGEX_SRCS=\
 					downcase_UCletters.regex
 
 # List any local filter xfscript files here:
-GIELLA_FILTER_LOCAL_XFSCRIPT_SRCS=
+GIELLA_FILTER_LOCAL_XFSCRIPT_SRCS=reorder-tags.est.xfscript
 
 # List any local filter lexc files here:
 GIELLA_FILTER_LOCAL_LEXC_SRCS=
@@ -40,7 +40,7 @@ GIELLA_FILTER_LOCAL_GENERATED_LEXC_SRCS=
 # List any additional source files here, so that they are included in the dist.
 # Source files that are not directly compiled to fst's but are instead used as
 # part of a local build step should be listed here.
-EXTRA_SRCS=
+EXTRA_SRCS=reorder-tags.est.xfscript
 
 ########## Add local build rules below here: ############
 
