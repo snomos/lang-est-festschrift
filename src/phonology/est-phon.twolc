@@ -188,7 +188,7 @@ lmnr = l m n r ;
 voiceless = f s h stop ;
 
 ! possible stem- or ending vowels
-V = a e i u ;
+stemV = a e i u ;
 
 ! last syllable nonstressed vowels that are not always pronounced 
 V0 = A2 E2 I2 U2 ;
@@ -218,8 +218,8 @@ Rules
 ! (because declinables may have additional info in the stem lexicon entries)
 "Weak grade for productive kpt:gbd"
 
-Cx:Cy  <=> _ (%+:0) (SV:0)  :V %{W%}: ;
-           _ ([l | r | j]) V:V %{W%}: ;
+Cx:Cy  <=> _ (%+:0) (SV:0)  :stemV %{W%}: ;
+           _ ([l | r | j]) stemV %{W%}: ;
      except 
            [voiceless | c] _  ;  ! orthographical convention
      where Cx in ( p t k ) 
@@ -294,7 +294,7 @@ Cx:0 <=>  Cx _ [:0]* :V [:0]* %{W%}:  ;  ! sepa, lepin
 "Weak grade for productive ss:s kauss, jamss"
 
 s:0 <=> :Vowel [ :Vowel | :lmnr ] :s _ [:0]* %{W%}: [:0]* :V ;
-        :Vowel [ :Vowel | :lmnr ] :s _ [:0]* :V [:0]* %{W%}: ;
+        :Vowel [ :Vowel | :lmnr ] :s _ [:0]* :stemV [:0]* %{W%}: ;
 
 ! lexical: k a u s s + {pl.e} {sg.i} {W}
 ! surface: k a u s 0 0    0      i    0
@@ -368,10 +368,10 @@ Vx:Vy  <=>  Vx: _  [:0]+ [:a | :e] ;
 ! --------
 "Long vowel shortening in vowel context"
 
-Vx:0 <=>      :Vx _ [:0]+ :V ;            ! sae, puid
+Vx:0 <=>      :Vx _ [:0]+ :stemV ;            ! sae, puid
            :Vowel _ [:0]+ :Vx              ;  ! tõu
       except
-              [:i] _ [:0]+ :V        ;  ! siig - siia, hiid - hiiu
+              [:i] _ [:0]+ :stemV        ;  ! siig - siia, hiid - hiiu
          [:u | :ü] _ [:0]+ [:a | :e] ;  ! luua, huuata, hüüu
       where Vx in ( Vowel ) ;
 
@@ -456,7 +456,7 @@ e:0  <=>  N1:s _  ;
 ! lumping together instances of vowel deletion (koorma) and insertion (raudset)...
 "nonstressed syllable vowel deletion"
 
-V0:0  <=>                           _ [ :0 ]* [:Consonant - :stop] [ :0 ]* :V  ;
+V0:0  <=>                           _ [ :0 ]* [:Consonant - :stop] [ :0 ]* :stemV  ;
           :Vowel [ :0 ]* :s [ :0 ]* _ [ :0 ]* :stop ;   ! soolast
 
 ! lexical: k o o r E2 m + a
@@ -525,7 +525,7 @@ I4:i  <=> _ [ :0 ]* WordEnd ;
 
 "No sg stem vowel if no pl par -sid (choose pl stem vowel instead)"
 
-Vx:0  <=>  PlSV:V [:0]* _ [:0]* %{sid%}:0 ;
+Vx:0  <=>  PlSV:stemV [:0]* _ [:0]* %{sid%}:0 ;
      where Vx in ( %{sg.a%} %{sg.e%} %{sg.u%} %{sg.i%} ); 
 
 ! lexical: p u u d + {pl.i} {hyp} {sg.a} + {sid} 
@@ -558,7 +558,7 @@ Vx:Vy  <=>   :Consonant [:0]* _ [:0]+ %{sid%}:0  ;     ! puud-puudi
 
 "final vowel substitution for plural vowel"
 
-a:0  <=> :Consonant _ %+: PlSV:V [:0]* %{sid%}:0 ;
+a:0  <=> :Consonant _ %+: PlSV:stemV [:0]* %{sid%}:0 ;
 
 ! lexical: m a j a + {pl.u} {stemill} + {sid}
 ! surface: m a j 0 0    u       0     0   0  
@@ -569,8 +569,8 @@ a:0  <=> :Consonant _ %+: PlSV:V [:0]* %{sid%}:0 ;
 ! (short pl par is impossible without a plural stem vowel)
 "short pl par usage" 
 
-%{sid%}:0   <=>  PlSV:V LT: [:]* _ %{i%}: %{d%}: LT: ;   ! puudi is rare
-                 PlSV:V \[LT:]*  _ %{i%}: %{d%}: \LT: ;   ! kaupu is common
+%{sid%}:0   <=>  PlSV:stemV LT: [:]* _ %{i%}: %{d%}: LT: ;   ! puudi is rare
+                 PlSV:stemV \[LT:]*  _ %{i%}: %{d%}: \LT: ;   ! kaupu is common
 
 ! lexical: p u u d + {pl.i} {hyp} {sg.a} + {sid} {rare}
 ! surface: p u u d 0    i     0      0   0   0      0     
