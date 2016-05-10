@@ -563,7 +563,7 @@ tõbi:tõB2%{stemill%} NIMI ;
 tugi:tU5G1 NIMI;
 
 ! VVS type 22
-laud:lauD1%+%{pl.u%} PIIM ; ! laud laua lauda laudu
+laud:l´auD1%+%{pl.u%} PIIM ; ! laud laua lauda laudu
 kaup:kaup%+%{pl.u%}  PIIM ;     ! kaup kauba kaupa kaupu
 king:king%+%{pl.i%}  PIIM ;     ! king kinga kinga kingi
 tüng:tüng  PIIM ;     ! tüng tünga tünga tüngasid
@@ -571,8 +571,8 @@ puud:puud%+%{pl.i%}%{hyp%}  PIIM ;     ! puud puuda puuda puudasid (puudi)
 taud TAUD ;     ! taud taudi taudi taude
 kepp TAUD ;     ! kepp kepi  keppi keppe
 sepp:sepp%+%{pl.i%} PIIM ;     ! sepp sepa  seppa seppi
-kott TAUD ;     ! kott koti  kotti kotte
-kont TAUD ;     ! kont kondi  konti konte
+kott:k´ot,t TAUD ;     ! kott koti  kotti kotte
+kont:k´on,t TAUD ;     ! kont kondi  konti konte
 kauss TAUD ;     ! kauss kausi  kaussi kausse
 buss TAUD ;     ! buss bussi  bussi busse
 York DUCK ;     ! York Yorki  Yorki Yorke
@@ -582,10 +582,10 @@ kabinet KABINET ;     ! kabinet kabineti  kabinetti kabinette
 seminar TAUD ;     ! kabinet kabineti  kabinetti kabinette
 kärg:kärG2%+%{pl.i%}%{rare%} EIT ; ! kärg kärje kärge kärgi
 kuld:kullD1%+%{pl.i%}%{hyp%} PIIM ; ! kuld kulla kulda kuldasid (kuldi)
-õhk:õhK1 KOON ; ! õhk õhu õhku õhkusid
+õhk:´õhK1 KOON ; ! õhk õhu õhku õhkusid
 paks:paks%+%{pl.e%} KOON ; ! paks paksu paksu pakse (paksusid)
 dušš TAUD ; ! dušš duši dušši dušše
-õukond:õukonnD1%+%{pl.i%} PIIM ; ! õukond õukonna õukonda õukondi
+õukond:`õuk´onnD1%+%{pl.i%} PIIM ; ! õukond õukonna õukonda õukondi
 proff TAUD ; ! proff profi proffi proffe
 tiib:tiiB2%+%{pl.u%} PIIM ; ! 
 pelg:pelG2 KOON ;

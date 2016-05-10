@@ -53,8 +53,6 @@ define MoveCat [MoveR .o. MoveH .o. MoveN .o. MoveCN] ;
 
 regex [MoveCat .o. CleanUp].i ;
 
-save stack reorder-usage-tags.hfst
-quit
 
 
 
