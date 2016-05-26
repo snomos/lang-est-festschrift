@@ -63,6 +63,54 @@ endif # CAN_FOMA
 #################################################
 #### Add language-specific build rules here: ####
 
+EST_EXTRA_PRE_FILTERS=filters/remove-sg-forms.est
+EST_EXTRA_POST_FILTERS=
+
+
+# We need to add processing of language-specific tags in the analyser:
+# HFST:
+analyser-raw-gt-%.hfst: analyser-raw-gt-%.tmp.hfst $(EST_EXTRA_PRE_FILTERS:%=%.hfst) $(EST_EXTRA_POST_FILTERS:%=%.hfst)
+	$(AM_V_RGX2FST)$(PRINTF) "\
+			$(EST_EXTRA_PRE_FILTERS:%=@\"%.hfst\" .o.)    \
+			@\"$<\"                                       \
+			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.hfst\")   \
+			;" \
+		| $(HFST_REGEXP2FST) $(VERBOSITY) $(HFST_FLAGS) -S --xerox-composition=ON \
+		| $(HFST_INVERT) $(VERBOSITY) $(HFST_FLAGS) \
+		> $@
+
+# Xerox:
+analyser-raw-gt-%.xfst: analyser-raw-gt-%.tmp.xfst $(EST_EXTRA_PRE_FILTERS:%=%.xfst) $(EST_EXTRA_POST_FILTERS:%=%.xfst)
+	$(AM_V_XFST)$(PRINTF) "read regex                         \
+			$(EST_EXTRA_PRE_FILTERS:%=@\"%.xfst\" .o.)    \
+			@\"$<\"                                       \
+			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.xfst\")   \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
+# We need to add processing of language-specific tags in the generator:
+# HFST:
+generator-raw-gt-%.hfst: generator-raw-gt-%.tmp.hfst $(EST_EXTRA_PRE_FILTERS:%=%.hfst) $(EST_EXTRA_POST_FILTERS:%=%.hfst)
+	$(AM_V_RGX2FST)$(PRINTF) "\
+			$(EST_EXTRA_PRE_FILTERS:%=@\"%.hfst\" .o.)    \
+			@\"$<\"                                       \
+			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.hfst\")   \
+			;" \
+		| $(HFST_REGEXP2FST) $(VERBOSITY) $(HFST_FLAGS) -S --xerox-composition=ON \
+		> $@
+
+# Xerox:
+generator-raw-gt-%.xfst: generator-raw-gt-%.tmp.xfst $(EST_EXTRA_PRE_FILTERS:%=%.xfst) $(EST_EXTRA_POST_FILTERS:%=%.xfst)
+	$(AM_V_XFST)$(PRINTF) "read regex                         \
+			$(EST_EXTRA_PRE_FILTERS:%=@\"%.xfst\" .o.)    \
+			@\"$<\"                                       \
+			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.xfst\")   \
+			;\n\
+		 invert net\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######
 ##################################################################
