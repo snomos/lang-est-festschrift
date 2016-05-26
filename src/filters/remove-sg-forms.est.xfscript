@@ -1,0 +1,18 @@
+# remove Sg forms of plurale tantum words
+# 
+
+define plwords [ {ketsid} | {buss} ] ;
+
+define SG [ "+Sg" ] ;
+define WB [ "#" ] ;
+
+define lexical [ plwords [\WB]* SG [\WB]+ ] ; 
+
+regex ~[lexical].i ;
+
+# save stack remove-sg-forms.est.hfst
+# quit
+
+
+
+

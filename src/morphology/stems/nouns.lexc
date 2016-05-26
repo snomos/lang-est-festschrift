@@ -1,20 +1,4 @@
 
 LEXICON nouns
 
-!! hobune
 hobune:hobu N-hobune  "" ;
-rebane:reba N-hobune  "" ;
-
-!! redel
-redel:redel N-redel "" ;
-traktor:traktor N-redel "" ;
-
-!! redel-A
-aatom:aatom N-redel "" ;
-aamen:aamen N-redel "" ;
-aatrium:aatrium N-redel "" ;
-abdoomen:abdoomen N-redel "" ;
-abituurium:abituurium N-redel "" ;
-absorber:absorber N-redel "" ;
-adapter:adapter N-redel "" ;
-adiantum:adiantum N-redel "" ;

@@ -10,6 +10,11 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
 
  %+:0   ! The morpheme boundary never appears on the surface side.
 
+ %{apo%}:'   ! Apostrofy is needed separating inflectional affix from foreign word lemma
+ %{apo%}:0   ! ... but Sg Nom is without apostrofy
+ 
+ %{no.apo%}:0  ! no apostrofy; for deleting apostrofy (used for foreign word inflections) from sg nom
+
 ! short stops
 
  G1:g ! In strong grade, G1 is g
@@ -185,7 +190,7 @@ stop = g b d k p t ;
 lmnr = l m n r ;
 
 ! voiceless consonants  
-voiceless = f s h stop ;
+voiceless = f s h stop ; 
 
 ! possible stem- or ending vowels
 stemV = a e i u ;
@@ -221,7 +226,7 @@ Rules
 Cx:Cy  <=> _ (%+:0) (SV:0)  :stemV %{W%}: ;
            _ ([l | r | j]) stemV %{W%}: ;
      except 
-           [voiceless | c] _  ;  ! orthographical convention
+           [voiceless | v | c] _  ;  ! orthographical convention
      where Cx in ( p t k ) 
            Cy in ( b d g )
      matched ;
@@ -426,6 +431,18 @@ Cx:Cy  <=> :voiceless [:0]* %+: _ ;
 
 ! lexical: k a b i n e t . + {pl.e} {sg.i}
 ! surface: k a b i n e t t 0    0      i
+
+! If a foreign word is pronounced not according to Estonian writing conventions (Braille - brai)
+! then its inflectional ending is separated with an apostrophy (superscript 9) ’ 
+! This applies even to Sg Gen: Braille’
+! The only form without ’ is Sg Nom, so {no_apo} is a standard trigger in contiuation lexicons
+"No apostrofy"
+
+%{apo%}:0  <=> _ %{no.apo%}: ;
+
+! lexical: B r a i l l e {apo} {no_apo}
+! surface: B r a i l l e   0      0     
+
 ! ---------
 
 ! ---------

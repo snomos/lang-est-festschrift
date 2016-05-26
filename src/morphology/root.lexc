@@ -303,6 +303,9 @@ Multichar_Symbols
 
  %+    ! The morpheme boundary never appears on the surface side.
 
+ %{apo%}   ! Apostrofy is needed separating inflectional affix from foreign word lemma
+ %{no.apo%}  ! trigger for deleting apostrofy (used for foreign word inflections) from sg nom
+
 ! short stops
  G1 ! 0 g k   lagi lae lakke
  B1 ! 0 b p   saba sappa
@@ -365,6 +368,7 @@ M1   ! m n  lumi lund
 N1  ! ne s  soolane and other ne-words; soolas+e, soolas+t etc  
 
  %. ! double the previous letter (kabinet - kabinetti)
+ %{no.apo%}  ! no apostrofy; 
 
 ! usage tag; never on the surface side
 
@@ -433,6 +437,7 @@ mailer REDEL ;
 virsik VIRSIK ;
 magus MAGUS ;
 hale HALE ;
+Schedule:Schedule%{apo%} REDEL ;
 
 ! irregular stem changes: vowel deletion 
 laulev:laulE2v MAGUS ;
@@ -442,6 +447,7 @@ koskel:koskE2l MAGUS ;
 veider:veidE2r MAGUS ;
 hirmus:hirmU2s MAGUS ;
 õilis:õilI2s MAGUS ;
+pingne:pingN1e MAGUS ;
 suhkur:suhkU2r VIRSIK ;
 
 ! irregular stem changes:
@@ -573,9 +579,12 @@ kepp TAUD ;     ! kepp kepi  keppi keppe
 sepp:sepp%+%{pl.i%} PIIM ;     ! sepp sepa  seppa seppi
 kott:k´ot,t TAUD ;     ! kott koti  kotti kotte
 kont:k´on,t TAUD ;     ! kont kondi  konti konte
+post:p´os,t TAUD ;     ! post posti posti poste
+kihvt:k´ihvt TAUD ;     ! kihvt kihvti kihvti kihvte (~kift)
+abt:´abt TAUD ;
 kauss TAUD ;     ! kauss kausi  kaussi kausse
 buss TAUD ;     ! buss bussi  bussi busse
-York DUCK ;     ! York Yorki  Yorki Yorke
+York FIAT ;     ! York Yorki  Yorki Yorke
 aed:aE3D1%+%{pl.u%} PIIM ; ! aed aia aeda aedu
 aeg:aE4G1%+%{pl.u%} PIIM ; ! aeg aja aega aegu
 kabinet KABINET ;     ! kabinet kabineti  kabinetti kabinette
@@ -624,6 +633,7 @@ idee:idee%+%{id%} ARMEE ;        ! idee  idee  ideed ideid (ideesid)
 essee:essee%+%{id%}%{rare%} ARMEE ;        ! essee  essee  esseed (esseid) esseesid
 suu:suu%+%{id%} ARMEE ;        ! suu  suu   suud
 ! suu+N+Sg+Ill:suhu # ;
+Braille:Braille%{apo%} ARMEE ;        ! gnuu  gnuu  gnuud gnuusid
 
 
 ! verbs
