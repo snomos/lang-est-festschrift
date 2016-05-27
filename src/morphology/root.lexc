@@ -477,7 +477,8 @@ mähe:mähK1E2 HAARE ;
 ranne:rannD1E2 HAARE ;
 ! kümme:kümme XXX ;  ! + seeme, kööme
 
-! kallis, kaunis
+kallis:kallI5 KALLIS ;
+kaunis:kaunI5 KALLIS ;
 ! kohus
 
 ! VVS type 6
@@ -604,10 +605,10 @@ siig:siiG1 PIIM ;
 voog:vooG1%+%{pl.e%}%{rare%} KOON ;
 tõug:tõuG1%+%{pl.e%} KOON ;
 paas:paaS1 TAUD ;
-alimendid:aliment KETSID ;
-veimed:veim%+%{pl.i%}%{rare%} VEIMED ;
-kihlad:kihl KIHLAD ;
-vurrud:vurr%+%{pl.e%} VURRUD ;
+alimendid:aliment TAUD ;
+veimed:veim%+%{pl.i%}%{rare%} EIT ;
+kihlad:kihl PIIM ;
+vurrud:vurr%+%{pl.e%} KOON ;
 
 ! VVS type 23
 kael:kael%+%{pl.u%} KAEL ;

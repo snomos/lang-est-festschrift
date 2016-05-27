@@ -1,18 +1,129 @@
 # remove Sg forms of plurale tantum words
-# 
-
-define plwords [ {ketsid} | {buss} ] ;
-
+#
+define plwords [
+               {annaalid} | 
+               {andmed} | 
+               {aplodismendid} | 
+               {arstmed} | 
+               {bakid} | 
+               {bikiinid} | 
+               {džiinid} | 
+               {fekaalid} | 
+               {finantsid} | 
+               {genitaalid} | 
+               {heitmed} | 
+               {hekslid} | 
+               {hõõrmed} | 
+               {härrased} | 
+               {ihkmed} | 
+               {iidid} | 
+               {alimendid} | 
+               {kaltsad} | 
+               {kastanjetid} | 
+               {ketsid} | 
+               {kihlad} | 
+               {kodinad} | 
+               {koolikud} | 
+               {kosjad} | 
+               {kraasmed} | 
+               {kuluaarid} | 
+               {kõrkmed} | 
+               {kõrvetised} | 
+               {käimad} | 
+               {käärid} | 
+               {langud} | 
+               {leetrid} | 
+               {lendmed} | 
+               {linnased} | 
+               {looded} | 
+               {lõikmed} | 
+               {jõulud} | 
+               {jäätmed} | 
+               {kaatsad} | 
+               {memuaarid} | 
+               {miasmid} | 
+               {mitmikud} | 
+               {murdmed} | 
+               {nopped} | 
+               {nõoksed} | 
+               {näärid} | 
+               {nöörmed} | 
+               {omaksed} | 
+               {padinad} | 
+               {paklad} | 
+               {pantaloonid} | 
+               {pantsid} | 
+               {pealsed} | 
+               {peied} | 
+               {pihid} | 
+               {poised} | 
+               {punetised} | 
+               {puurmed} | 
+               {päitsed} | 
+               {päramised} | 
+               {päädikud} | 
+               {pühkmed} | 
+               {püksikud} | 
+               {raidmed} | 
+               {rakmed} | 
+               {rangid} | 
+               {rapped} | 
+               {reaalid} | 
+               {retuusid} | 
+               {riismed} | 
+               {ristsed} | 
+               {rookmed} | 
+               {ruunid} | 
+               {räätsad} | 
+               {saagmed} | 
+               {sademed} | 
+               {sarlakid} | 
+               {saturnaalid} | 
+               {sub#produktid} | 
+               {suised} | 
+               {suitsed} | 
+               {suulised} | 
+               {sõelmed} | 
+               {sügelised} | 
+               {tangid} | 
+               {taosed} | 
+               {teksased} | 
+               {tinulised} | 
+               {trussikud} | 
+               {tulused} | 
+               {uhtmed} | 
+               {valjad} | 
+               {vaselised} | 
+               {vastlad} | 
+               {vatid} | 
+               {veimed} | 
+               {viilmed} | 
+               {virmalised} | 
+               {voolmed} | 
+               {väitused} | 
+               {õeksed} | 
+               {õlpmed} | 
+               {üsked} | 
+               {teismed} | 
+               {järelmid} | 
+               {korn#tangid} | 
+               {töötlemis#jäätmed} | 
+               {tootmis#jäätmed} | 
+               {arv#andmed} | 
+               {tule#ristsed} | 
+               {lahingu#ristsed} | 
+               {lamba#käärid} | 
+               {andmed} | 
+               {kummi#jäätmed} | 
+               {lähte#andmed} | 
+               {naha#jäätmed} | 
+               {toidu#jäätmed} | 
+               {tuuma#jäätmed} | 
+               {võrdlus#andmed} ] ;
 define SG [ "+Sg" ] ;
-define WB [ "#" ] ;
 
-define lexical [ plwords [\WB]* SG [\WB]+ ] ; 
+# make sure only word-final components are considered
+define WB [ "#" ] ;
+define lexical [ plwords [\WB]* SG [\WB]+ ] ;
 
 regex ~[lexical].i ;
-
-# save stack remove-sg-forms.est.hfst
-# quit
-
-
-
-

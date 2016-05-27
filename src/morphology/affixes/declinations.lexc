@@ -88,24 +88,33 @@ LEXICON PINGE    ! VVS 6 stable (open) + unstable (closed) type;
 
 +Sg+Nom:%{W%} GI ;                      ! pinge
 +Sg+Par:%{W%}%+t GI ;                   ! pinget
-:%{W%}%+te N_PL_SUBPARA ;               ! pingete pl gen + pl cases depending on it 
-: 2C_STRONG ;
+:%{W%}%+te N_PL_SUBPARA ;               ! pingete etc 
+: 2C_STRONG ;                           ! pinge etc, pingeid, pingeil etc
 
 ! VVS 7
 LEXICON KOTKAS    !  VVS 7 unstable (closed) type; 
 
 +Sg+Nom:s%{W%} GI ;                      ! kotkas
 +Sg+Par:s%{W%}%+t GI ;                   ! kotkast
-:s%{W%}%+te N_PL_SUBPARA ;               ! kotkaste pl gen + pl cases depending on it 
-: 2C_STRONG ;
+:s%{W%}%+te N_PL_SUBPARA ;               ! kotkaste etc 
+: 2C_STRONG ;                            ! kotka etc, kotkaid, kotkail etc
+
+! VVS 7 & 5: kallis, kaunis
+LEXICON KALLIS    !  VVS 7, 5 unstable (closed) type; 
+
++Sg+Nom:s%{W%} GI ;                      ! kallis
++Sg+Par:s%{W%}%+t GI ;                   ! kallist
+:%+te N_PL_SUBPARA ;                     ! kallite etc 
+%+Use%/Rare:s%{W%}%+te N_PL_SUBPARA ;    ! kalliste etc 
+: 2C_STRONG ;                            ! kalli etc, kalleid, kalleil etc
 
 ! VVS 8
 LEXICON PIPAR    !  VVS 8 unstable (closed) type; = HOOLAS
 
 +Sg+Nom:%{W%} GI ;                       ! pipar
 +Sg+Par:%{W%}%+t GI ;                    ! pipart
-:%{W%}%+de N_PL_SUBPARA ;                ! piparde pl gen + pl cases depending on it 
-%+Use%/NotNorm:a%+te N_PL_SUBPARA ;      ! piprate pl gen + pl cases depending on it 
+:%{W%}%+de N_PL_SUBPARA ;                ! piparde etc 
+%+Use%/NotNorm:a%+te N_PL_SUBPARA ;      ! piprate etc 
 :a 2C_STRONG ;
 
 ! VVS 8
@@ -362,30 +371,6 @@ LEXICON KABINET                 ! stable type (aktiivne muuttüüp) almost == TA
                                       ! sg nom has a single final stop instead of double, 
                                       ! so it has to be doubled in strong grade
 :%.%+%{pl.e%}%{sg.i%} 1C ;
-
-! VVS 22 
-LEXICON VEIMED   ! plurale tantum (EIT)
-
-+Pl+Nom:%{sg.e%}%{W%}%+d GI ; 
-:%{sg.e%} 1C_PL ;
-
-! VVS 22 
-LEXICON KIHLAD   ! plurale tantum (PIIM)
-
-+Pl+Nom:%{sg.a%}%{W%}%+d GI ; 
-:%{sg.a%} 1C_PL ;
-
-! VVS 22 
-LEXICON VURRUD   ! plurale tantum (KOON)
-
-+Pl+Nom:%{sg.u%}%{W%}%+d GI ; 
-:%{sg.u%} 1C_PL ;
-
-! VVS 22 
-LEXICON KETSID   ! plurale tantum (TAUD)
-
-+Pl+Nom:i%{W%}%+d GI ; 
-:%+%{pl.e%}%{sg.i%} 1C_PL ;
 
 ! VVS 23 
 LEXICON KAEL   ! almost = PIIM, except pl gen + 
