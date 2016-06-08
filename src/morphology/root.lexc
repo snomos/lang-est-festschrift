@@ -367,6 +367,8 @@ M1   ! m n  lumi lund
 ! ne, s ending words have similar paradigms; only sg nom is different
 N1  ! ne s  soolane and other ne-words; soolas+e, soolas+t etc  
 
+N2  ! laas-laane
+
  %. ! double the previous letter (kabinet - kabinetti)
  %{no.apo%}  ! no apostrofy; 
 
@@ -450,6 +452,8 @@ hirmus:hirmU2s MAGUS ;
 pingne:pingN1e MAGUS ;
 suhkur:suhkU2r VIRSIK ;
 
+köömen:köömE2n KÖÖMEN ;
+
 ! irregular stem changes:
 ! sajas:saja%{snd%} MAGUS ;
 ! tuhat:tuha%{tnd%} XXXX ;
@@ -468,18 +472,24 @@ ergas:erK2A2s HOOLAS ;
 
 ! VVS type 4
 habe HABE ;
-! süda:süda HABE ;
+süda:süda SÜDA ;
 
 ! VVS type 5
 kaabe:kaaP2E2 HAARE ;
 seade:seadE2 HAARE ;
 mähe:mähK1E2 HAARE ;
 ranne:rannD1E2 HAARE ;
+võti:võttI2 HAARE ;
+setu:settU2 HAARE ;
+lõuna:lõuna LÕUNA ;
+kümme:kümmE2 SEEME ;
+
 ! kümme:kümme XXX ;  ! + seeme, kööme
 
 kallis:kallI5 KALLIS ;
 kaunis:kaunI5 KALLIS ;
-! kohus
+valmis:valmI5 LOHAKAS ;
+kohus:kohT1u KOHUS ;
 
 ! VVS type 6
 pinge PINGE ;
@@ -489,6 +499,7 @@ muie:muiG1e PINGE ;
 mulle:mullD1e PINGE ;
 käive:käiB2e PINGE ;
 norse:norsK1e PINGE ;
+rake:rakK1e PINGE ;
 
 ! VVS type 7
 kotkas:kotka KOTKAS ;
@@ -496,7 +507,7 @@ lammas:lammB1a KOTKAS ;
 teivas:teiB2a KOTKAS ;
 hüljes:hülG2e KOTKAS ;
 rukis:rukK1I5 KOTKAS ;
-! kärbes:kärbE2s XXX ;
+kärbes:kärbE2s KANNEL ;
 
 ! VVS type 8
 pipar:pipA2r PIPAR ;
@@ -530,12 +541,11 @@ niin NIIN ;
 vars:varrS1%{stemill%} VARS ;
 köis:köiS1%{stemill%} VARS ;
 kõrs:kõrrS1%{stemill%}%{rare%} VARS ;
-!laas:laa%{sn%} VARS ;
+laas:laaN2%{stemill%} VARS ;
 leem:leeM1%{stemill%}%{rare%} KEEL ;
-
-! mees
-! laps
-! uks
+mees:me MEES ;
+laps:laP1s LAPS ;
+uks:uK1s LAPS ;
 
 ! VVS type 15
 mesi:meS1 MESI ;
@@ -607,6 +617,7 @@ tõug:tõuG1%+%{pl.e%} KOON ;
 paas:paaS1 TAUD ;
 alimendid:aliment TAUD ;
 veimed:veim%+%{pl.i%}%{rare%} EIT ;
+kõrb:kõrb KÕRB ;
 kihlad:kihl PIIM ;
 vurrud:vurr%+%{pl.e%} KOON ;
 

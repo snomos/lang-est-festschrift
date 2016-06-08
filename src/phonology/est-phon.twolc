@@ -129,6 +129,9 @@ M1:n   ! lun d
 N1:n   ! soolane and other ne-words
 N1:s   ! soolas+e, soolas+t etc  
 
+N2:n   ! laane
+N2:s   ! laas
+
 %.:0 ! double the previous letter (kabinet - kabinetti)
 
 ! usage tag; never on the surface side
@@ -253,6 +256,7 @@ S1:0  <=> _ :* %{W%}: ;       ! paas - pae
 "Lexically determined weak grade for gbd:jvj, gbdkpts:0"
 
 Cx:Cy  <=> _ [ : ]* %{W%}: ;
+           _ s [:0]+ :t ;         ! uks, laps -> ust, last
      where Cx in (G1 B1 D1 K1 P1 T1 G2 B2 D2) 
            Cy in ( 0  0  0  0  0  0  j  v  j  )
      matched ;
@@ -284,7 +288,7 @@ Cx:Cy  <=>  _ [ : ]* %{W%}: ;
 
 "Weak grade for productive kk pp tt šš ff : k p t š f"
 
-Cx:0 <=>  Cx _ [:0]* :V [:0]* %{W%}:  ;  ! sepa, lepin
+Cx:0 <=>  Cx _ [:0]* :Vowel [:0]* %{W%}:  ;  ! sepa, lepin
      where Cx in ( p t k š f) ;
 
 ! lexical: k e p p + {pl.e} {sg.i} {W}
@@ -469,6 +473,13 @@ e:0  <=>  N1:s _  ;
 ! lexical: s o o l a N1 e 
 ! surface: s o o l a s  0     FAIL
 
+"laas-laane"
+
+N2:s  <=> _ [ :0 ]* WordEnd ;   ! laas
+          _ [ :0 ]* i ;         ! laasi
+
+! lexical: l a a N2 
+! surface: l a a s
 
 ! lumping together instances of vowel deletion (koorma) and insertion (raudset)...
 "nonstressed syllable vowel deletion"

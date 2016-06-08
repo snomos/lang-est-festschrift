@@ -18,7 +18,21 @@ cat fs_lex \
 | sed 's/[]_<?]//g' \
 | sed 's/\[//g' \
 | sed 's/^.*$/               {&} \| /' \
-> tmp.remove-sg-forms.est.xfscript
+> tmp1.remove-sg-forms.est.xfscript
+
+cat fs_lex \
+| grep '^[^ ]*\[D' \
+| sed 's/^[^|]*|//' \
+| sed 's/!.*$//' \
+| sed 's/D/d/' \
+| sed 's/_/#/g' \
+| sed 's/[]_<?]//g' \
+| sed 's/\[//g' \
+| sed 's/^.*$/               {&} \| /' \
+> tmp2.remove-sg-forms.est.xfscript
+
+cat tmp1.remove-sg-forms.est.xfscript tmp2.remove-sg-forms.est.xfscript \
+| sort > tmp.remove-sg-forms.est.xfscript
 
 cat tmp.remove-sg-forms.est.xfscript \
 | sed '$s/}.*$/} ] ;/' \

@@ -1,13 +1,20 @@
 # remove Sg forms of plurale tantum words
 #
 define plwords [
-               {annaalid} | 
+               {abud} | 
+               {alimendid} | 
                {andmed} | 
+               {andmed} | 
+               {annaalid} | 
                {aplodismendid} | 
                {arstmed} | 
+               {arv#andmed} | 
                {bakid} | 
                {bikiinid} | 
+               {dionüüsiad} | 
                {džiinid} | 
+               {elejad} | 
+               {feeriad} | 
                {fekaalid} | 
                {finantsid} | 
                {genitaalid} | 
@@ -17,33 +24,48 @@ define plwords [
                {härrased} | 
                {ihkmed} | 
                {iidid} | 
-               {alimendid} | 
+               {insiigniad} | 
+               {jõulud} | 
+               {järelmid} | 
+               {jäätmed} | 
+               {kaatsad} | 
+               {kalavinskid} | 
+               {kalifeed} | 
                {kaltsad} | 
                {kastanjetid} | 
+               {kedrid} | 
                {ketsid} | 
+               {kihermed} | 
                {kihlad} | 
                {kodinad} | 
                {koolikud} | 
+               {korn#tangid} | 
                {kosjad} | 
                {kraasmed} | 
                {kuluaarid} | 
+               {kummi#jäätmed} | 
                {kõrkmed} | 
                {kõrvetised} | 
                {käimad} | 
+               {kärajad} | 
                {käärid} | 
+               {lahingu#ristsed} | 
+               {lamba#käärid} | 
                {langud} | 
                {leetrid} | 
                {lendmed} | 
                {linnased} | 
                {looded} | 
                {lõikmed} | 
-               {jõulud} | 
-               {jäätmed} | 
-               {kaatsad} | 
+               {lähte#andmed} | 
+               {malid} | 
                {memuaarid} | 
                {miasmid} | 
                {mitmikud} | 
                {murdmed} | 
+               {mõtte#talgud} | 
+               {naglid} | 
+               {naha#jäätmed} | 
                {nopped} | 
                {nõoksed} | 
                {näärid} | 
@@ -73,7 +95,10 @@ define plwords [
                {riismed} | 
                {ristsed} | 
                {rookmed} | 
+               {rubid} | 
+               {rupskid} | 
                {ruunid} | 
+               {rõuged} | 
                {räätsad} | 
                {saagmed} | 
                {sademed} | 
@@ -82,17 +107,34 @@ define plwords [
                {sub#produktid} | 
                {suised} | 
                {suitsed} | 
+               {susped} | 
                {suulised} | 
+               {suvisted} | 
                {sõelmed} | 
                {sügelised} | 
+               {tagid} | 
+               {talgud} | 
+               {talvisted} | 
                {tangid} | 
                {taosed} | 
+               {tapa#talgud} | 
+               {teismed} | 
+               {teksad} | 
                {teksased} | 
                {tinulised} | 
+               {toidu#jäätmed} | 
+               {tootmis#jäätmed} | 
                {trussikud} | 
+               {tuhud} | 
+               {tule#ristsed} | 
                {tulused} | 
+               {tunked} | 
+               {tuuma#jäätmed} | 
+               {töötlemis#jäätmed} | 
                {uhtmed} | 
                {valjad} | 
+               {varad} | 
+               {varrud} | 
                {vaselised} | 
                {vastlad} | 
                {vatid} | 
@@ -100,26 +142,11 @@ define plwords [
                {viilmed} | 
                {virmalised} | 
                {voolmed} | 
+               {võrdlus#andmed} | 
                {väitused} | 
                {õeksed} | 
                {õlpmed} | 
-               {üsked} | 
-               {teismed} | 
-               {järelmid} | 
-               {korn#tangid} | 
-               {töötlemis#jäätmed} | 
-               {tootmis#jäätmed} | 
-               {arv#andmed} | 
-               {tule#ristsed} | 
-               {lahingu#ristsed} | 
-               {lamba#käärid} | 
-               {andmed} | 
-               {kummi#jäätmed} | 
-               {lähte#andmed} | 
-               {naha#jäätmed} | 
-               {toidu#jäätmed} | 
-               {tuuma#jäätmed} | 
-               {võrdlus#andmed} ] ;
+               {üsked} ] ;
 define SG [ "+Sg" ] ;
 
 # make sure only word-final components are considered
