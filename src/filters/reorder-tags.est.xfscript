@@ -52,7 +52,3 @@ define CleanUp [ DelUTag .o. DelOK ] ;
 define MoveCat [MoveR .o. MoveH .o. MoveN .o. MoveCN] ;
 
 regex [MoveCat .o. CleanUp].i ;
-
-
-
-
