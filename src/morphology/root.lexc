@@ -420,6 +420,7 @@ LEXICON NounRoot
 
 ! VVS type 1
 aasta AASTA ;
+Kunda:Kunda%{stemill%} AASTA ;
 
 ! VVS type 2
 lohakas:lohaka LOHAKAS ;
@@ -454,9 +455,10 @@ suhkur:suhkU2r VIRSIK ;
 
 köömen:köömE2n KÖÖMEN ;
 
-! irregular stem changes:
-! sajas:saja%{snd%} MAGUS ;
-! tuhat:tuha%{tnd%} XXXX ;
+sajas:sajaN2 HALE ;
+tuhat:tuha TUHAT ;
+kurat:kura KURAT ;
+paras:para PARAS ;
 
 ! strengthening gradation
 
@@ -472,7 +474,7 @@ ergas:erK2A2s HOOLAS ;
 
 ! VVS type 4
 habe HABE ;
-süda:süda SÜDA ;
+süda:süda%{stemill%}%{rare%} SÜDA ;
 
 ! VVS type 5
 kaabe:kaaP2E2 HAARE ;
@@ -484,22 +486,20 @@ setu:settU2 HAARE ;
 lõuna:lõuna LÕUNA ;
 kümme:kümmE2 SEEME ;
 
-! kümme:kümme XXX ;  ! + seeme, kööme
-
 kallis:kallI5 KALLIS ;
 kaunis:kaunI5 KALLIS ;
 valmis:valmI5 LOHAKAS ;
 kohus:kohT1u KOHUS ;
 
 ! VVS type 6
-pinge PINGE ;
+pinge:pinge%{stemill%} PINGE ;
 liide:liiT2e PINGE ;
 tahe:tahT1e PINGE ;
 muie:muiG1e PINGE ;
 mulle:mullD1e PINGE ;
 käive:käiB2e PINGE ;
 norse:norsK1e PINGE ;
-rake:rakK1e PINGE ;
+rake:rakK1e%{stemill%} PINGE ;
 
 ! VVS type 7
 kotkas:kotka KOTKAS ;
@@ -534,7 +534,8 @@ gloobus:gloobus KATKINE ;
 ! VVS type 13
 keel:keel%{stemill%} KEEL ;
 
-peen:peen%{stemill%}%{rare%} PEEN ;
+peen:peen PEEN ;
+! peen:peen%{stemill%}%{rare%} PEEN ;
 niin NIIN ;
 
 ! VVS type 14
@@ -554,6 +555,10 @@ susi:sU5S1 MESI ;
 
 ! VVS type 16
 pere:pere%{stemill%} PERE ;
+Leedu:Leedu%{stemill%} PERE ;
+Läti:Läti%{stemill%} PERE ;
+Riia:RiiG1a%{stemill%} PERE ;
+Taani:Taani%{stemill%} PERE ;
 leedi PERE ;
 
 ! VVS type 17, 18

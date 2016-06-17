@@ -397,7 +397,7 @@ Vx:0 <=>      :Vx _ [:0]+ :stemV ;            ! sae, puid
 
 ! ---------
 ! Orthography: consonant (cluster) writing conventions
- 
+
 "consonant de-doubling in consonant clusters (e.g. after vowel deletion)"
 
 Cx:0  <=> Cx _ [:0]* :Consonant  ;
@@ -439,7 +439,7 @@ Cx:Cy  <=> :voiceless [:0]* %+: _ ;
 ! If a foreign word is pronounced not according to Estonian writing conventions (Braille - brai)
 ! then its inflectional ending is separated with an apostrophy (superscript 9) ’ 
 ! This applies even to Sg Gen: Braille’
-! The only form without ’ is Sg Nom, so {no_apo} is a standard trigger in contiuation lexicons
+! The only form without ’ is Sg Nom, so {no_apo} is a standard trigger in continuation lexicons
 "No apostrofy"
 
 %{apo%}:0  <=> _ %{no.apo%}: ;
@@ -451,8 +451,6 @@ Cx:Cy  <=> :voiceless [:0]* %+: _ ;
 
 ! ---------
 ! -ne, -s ending words
-! they are handled by having truncated stems pointing to a few continuation lexicons (LISE, SE, etc) 
-
 ! Two rules are needed for allowing -ne only for sg nom
 ! we want to express string mapping: {N1e}:ne <=> _ WordEnd  (otherwise {N1e}:s)
 "ne is sg nom only (1/2)"
@@ -475,7 +473,7 @@ e:0  <=>  N1:s _  ;
 
 "laas-laane"
 
-N2:s  <=> _ [ :0 ]* WordEnd ;   ! laas
+N2:s  <=> _ [ :0 ]* WordEnd ;   ! laas, tuhandes
           _ [ :0 ]* i ;         ! laasi
 
 ! lexical: l a a N2 
@@ -639,11 +637,13 @@ a:0  <=> :Consonant _ %+: PlSV:stemV [:0]* %{sid%}:0 ;
 
 ! rules for sse/0
 "sse (1)"
-%{s%}:s        <=>  %{ssestem%}:s _ %{e%}:e ;
+%{s%}:s        <=>  %{ssestem%}:s _ %{e%}:e ;  ! stem change:    toasse, tuppa
+                          %{s%}:s _ %{e%}:e ;  ! no stem change: pingesse, pinge
+                          _ %{s%}:s %{e%}:e ;
 
 "sse (2)"
 %{e%}:e        <=>  %{ssestem%}:s %{s%}:s _ ;
-
+                          %{s%}:s %{s%}:s _ ;
 ! --------------
 ! 1.2 plural partitive: -sid vs -id
 ! 
@@ -744,12 +744,26 @@ a:0  <=> :Consonant _ %+: PlSV:stemV [:0]* %{sid%}:0 ;
 ! lexical: l o b a                       {W} +     {ssestem} {rare}
 ! surface: l o b a                        0  0        sse      0       FAIL
 
+! -sse usage for words where stem does not change: taskusse, tasku; Elvasse, Elva
+! like in %{ssestem%}:s /<=
+"-sse sg ill usage 2"
+
+%{s%}:s       /<=  %{stemill%}:  LT: [:]* _ :s :e LT: ;  ! -sse cannot be rare
+                   %{stemill%}: \LT: [:]* _ :s :e \LT: ; ! -sse cannot be common
+                Border \[%{stemill%}:]*   _ :s :e LT: ;  ! -sse cannot be rare
+
+! like in %{ssestem%}:s /<=
+"-sse sg ill usage 3"
+
+%{s%}:0       /<=  %{stemill%}:  LT: [:]* _ %{s%}:0 %{e%}:0 \LT: ;  ! -0 cannot be rare
+                   %{stemill%}: \LT: [:]* _ %{s%}:0 %{e%}:0 LT: ; ! -0 cannot be common
+                Border \[%{stemill%}:]*   _ %{s%}:0 %{e%}:0  ;  ! -0 is not even possible
 
 
 ! the rule is hard-wired to {ssestem}:0 
 "short ill stem generation: consonant doubling"
 
-0:Cy  <=>  :Vowel Cx:Cy _ [ :0]* :Vowel [ :0]* %{ssestem%}:0 ; ! majja
+0:Cy  <=>  \[ :Vowel] :Vowel Cx:Cy _ [ :0]* :Vowel [ :0]* %{ssestem%}:0 ; ! majja
      where Cx in ( l m M1 n r v j h s g b d k p t G1 B1 B2 D1 D2 ) 
            Cy in ( l m  m n r v j h s k p t k p t  k  p  p  t  t )
      matched ;

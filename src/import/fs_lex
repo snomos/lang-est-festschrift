@@ -7931,7 +7931,7 @@ vvs:0093|mõn]i mõne (mõnne)!\P\.20! **$SG.P$: m<õn[DA & m<õn[D; $ADT$: m<õ
 vvs:0093|naine naise nais[TE!\S\.12^I^+7! **$SG.P$: n<ais[T; $PL.P$: n<aisi; $ADT$: --
 vvs:0093|paras paraja!\A\.2+9! **$SG.P$: paraja[T & paras[T
 vvs:0093|p<ea!\S\.26! **$PL.P$: p<ä[ID; $ADT$: pähe; $PL.ILL$: p<ea[DESSE & p<ä[ISSE; $PL.IN$: p<ea[DES & p<ä[IS; $PL.EL$: p<ea[DEST & p<ä[IST
-vvs:0093|pogri!\S\.16! **$ADT$: p<okri
+vvs:0093|pogri p<okri!\S\.16!
 vvs:0093|p<uu!\S\.26+9!%uu>u[I%
 vvs:0093|rehi r<ehte rehe!\S\.24^I^! **$SG.P$: r<ehte & r<eht
 vvs:0093|r<ind r<inda rinna!\S\.22^U^+8! **$PL.G$: r<inda[DE & r<inde
@@ -18052,7 +18052,7 @@ vvs:0093|pesija!\S\.1+9!
 vvs:0093|pesitsus pesitsuse!\S\.11^I^+7!
 vvs:0093|pesitus pesituse!\S\.11^I^+7!
 vvs:0093|p?estits<iid p?estits<iidi p?estitsiidi!\S\.22^E^+7!
-vvs:0093|pesu (p<essu)!\S\.17!
+vvs:0093|pesu p<essu!\S\.17!
 vvs:0093|pesula!\S\.1+9!
 vvs:0093|pesur pesuri!\S\.2+9!%i>e[I%
 vvs:0093|pete p<ette!\S\.6+9!
@@ -23808,7 +23808,7 @@ vvs:0093|v<at]t v<at]ti vat]i!\S\.22^E^!
 vvs:0093|(v<at]t) (v<at]t)i[DE #vat]i[D#!\S\.22^E^.PL!
 vvs:0093|v<au!\S\.26!
 vvs:0093|v<eatus v<eatuse!\S\.11^I^+7!&&!\S\.9+7!
-vvs:0093|veda #veda[D#!\S\.17!
+vvs:0093|veda #veda[D#!\S\.16!
 vvs:0093|vedaja!\S\.1+9!
 vvs:0093|v?edam<ik v?edam<ikku v?edamiku!\S\.25^E^+11!
 vvs:0093|vedamus vedamuse!\S\.11^I^+7!
@@ -29262,7 +29262,7 @@ lisa:0094|v<eerm<ik v<eerm<ikku v<eermiku!\S\.25^E^+11!
 lisa:0094|vahhab<iit vahhab<iiti vahhab?iidi!\S\.22^E^+7!
 lisa:0094|vere_t<es]t vere_t<es]ti vere_tes]ti!\S\.22^E^!
 lisa:0094|vin<üül] vin<üül]i vin?üül]i!\S\.22^E^+7!
-lisa:0094|š<õu!\S\.17!
+lisa:0094|š<õu!\S\.26!
 lisa:0094|piimakus piimakuse!\S\.11^I^+7!
 lisa:0094|k<andlus k<andluse!\S\.11^I^+7!&&!\S\.9+7!
 lisa:0094|s?õrmist<ik s?õrmist<ikku s?õrmistiku!\S\.25^E^+11!
@@ -39100,7 +39100,7 @@ tes:0802|kasu_iha (kasu_<ihha)!\S\.17!
 tes:0802|tegutsemis_iha (tegutsemis_<ihha)!\S\.17!
 tes:0802|oma_s<oo_ihar oma_s<oo_ihara!\A\.2+9!
 tes:0802|elu_<ihk elu_<ihku elu_ihu!\S\.22^E^!
-tes:0802|ema_ihu ema_<ihhu!\S\.17!
+tes:0802|ema_ihu (ema_<ihhu)!\S\.17!
 tes:0802|tuisu_<iil tuisu_<iili tuisu_iili!\S\.22^E^!
 tes:0802|orja_ike orja_<ikke!\S\.6+9!
 tes:0802|<äikese_<ilm <äikese_<ilma <äikese_ilma!\S\.22^U^!
@@ -56722,7 +56722,7 @@ lisa:0904|str<ippar str<ippari!\S\.2+9!%i>e[I%
 lisa:0904|f<iider f<iidri!\S\.2+9!%i>e[I%
 lisa:0904|v<öörm<ünder v<öörm<ündri!\S\.2+9!%i>e[I%
 lisa:0904|sn<uuker sn<uukeri!\S\.2+9!%i>e[I%
-lisa:0904|koroner!\S\.17!
+lisa:0904|koroner koroneri!\S\.19^E^+7!
 lisa:0904|t<uuner t<uuneri!\S\.2+9!%i>e[I%
 lisa:0904|p?erim<eeter p?erim<eetri!\S\.2+9!%i>e[I%
 lisa:0904|skv<otter skv<otteri!\S\.2+9!%i>e[I%
@@ -67793,7 +67793,7 @@ lisa:1001|Bernard Bernardi!\H\.2+9!%i>e[I%
 lisa:1001|Olaf Olafi!\H\.2+9!%i>e[I%
 lisa:1001|Gustaf Gustafi!\H\.2+9!%i>e[I%
 lisa:1001|Jossif Jossifi!\H\.2+9!%i>e[I%
-lisa:1001|Tallegg Talleggi!\H\.16!
+lisa:1001|T?al]l<egg T?al]l<eggi T?al]l?eggi!\H\.22^E^!
 lisa:1001|Sarah!\H\.16!
 lisa:1001|Joseph Josephi!\H\.2+9!%i>e[I%
 lisa:1001|Pohlak Pohlaku!\H\.2+9!
@@ -67803,7 +67803,7 @@ lisa:1001|Israel Israeli!\H\.19^E^+7!
 lisa:1001|Ethel Etheli!\H\.2+9!%i>e[I%
 lisa:1001|<Opel <Opeli!\H\.2+9!%i>e[I%
 lisa:1001|Migu<el Migu<eli Migu?eli!\H\.22^E^!
-lisa:1001|S<amuel S<amueli!\H\.16!
+lisa:1001|S<amuel S<amueli!\H\.19^E^!
 lisa:1001|V<illem V<illemi!\H\.2+9!%i>e[I%
 lisa:1001|Artj<om Artj<omi Artj?omi!\H\.22^E^!
 lisa:1001|Fabian Fabiani!\H\.19^E^+7!
@@ -67881,7 +67881,7 @@ lisa:0605|R<ask R<aski Raski!\H\.22^E^+7!
 lisa:0605|N<oop N<oopi Noobi!\H\.22^E^+7!
 lisa:0605|Kuris_m<aa!\H\.26.SG!
 lisa:0605|Lilian Liliani!\H\.19^E^+7!
-lisa:0605|R<ealo!\H\.16!
+lisa:0605|R<ealo!\H\.1!
 lisa:0605|<Üllar <Üllari!\H\.2+9!%i>e[I%
 lisa:0605|Loorits Looritsa!\S\.2+9!
 lisa:0605|Atonen Atoneni!\H\.19^E^.SG+7!
@@ -67892,22 +67892,22 @@ lisa:0605|Pärnits Pärnitsa!\S\.2+9!
 lisa:0605|J<aanson J<aansoni!\H\.2+9!%i>e[I%
 lisa:0605|P<utin P<utini!\H\.2+9!%i>e[I%
 lisa:0605|Ideon Ideoni!\H\.19^E^.SG+7!
-lisa:0605|P<etseri!\H\.16.SG!
+lisa:0605|P<etseri!\H\.1.SG!
 lisa:0605|Tammet Tammeti!\H\.2+9!%i>e[I%
 lisa:0709|Ansip Ansipi!\H\.2+9!%i>e[I%
-lisa:0094|<Aadria!\H\.16.SG!
+lisa:0094|<Aadria!\H\.1.SG!
 lisa:0094|Aafrika!\H\.1.SG+9!
-lisa:0094|<Aasia!\H\.16.SG!
+lisa:0094|<Aasia!\H\.1.SG!
 lisa:0094|<Aasov <Aasovi!\H\.2.SG+9!
 lisa:0094|Abh<aasia!\H\.1.SG+9!
 lisa:0094|Abja A<pja!\H\.16.SG!
-lisa:0094|Abja-Palu_oja!\H\.17.SG!
+lisa:0094|Abja-Palu_oja Abja-Palu_<ojja!\H\.16.SG!
 lisa:0094|Abruka!\H\.1.SG+9!
 lisa:0094|Adž<aaria!\H\.1.SG+9!
 lisa:0094|Ada_vere Ada_v<erre!\H\.16.SG!
 lisa:0094|Adõg<ee!\H\.26.SG!
 lisa:0094|<Adler <Adleri!\H\.2.SG+9!
-lisa:0094|<Aegna!\H\.16.SG!
+lisa:0094|<Aegna!\H\.1.SG!
 lisa:0094|<Aeg_viidu <Aeg_v<iitu!\H\.16.SG!
 lisa:0094|Afganist<an Afganist<ani Afganist?ani!\H\.22^E^.SG!
 lisa:0094|Ašgab<at Ašgab<ati Ašgab?ati!\H\.22^E^.SG!
@@ -67938,7 +67938,7 @@ lisa:0094|Altam?ira!\H\.16.SG!
 lisa:0094|Aluksne!\H\.1.SG+9!
 lisa:0094|Alu_taguse!\H\.1.SG+9!
 lisa:0094|Amaz?onas Amaz?onase!\H\.9.SG+9!
-lisa:0094|<Ambla!\H\.16.SG!
+lisa:0094|<Ambla!\H\.1.SG!
 lisa:0094|Ameerika!\H\.1.SG+9!
 lisa:0094|Amm<an Amm<ani Amm?ani!\H\.22^E^.SG!
 lisa:0094|Amme!\H\.16.SG!
@@ -67966,7 +67966,7 @@ lisa:0094|Antanar?ivo!\H\.16.SG!
 lisa:0094|Ant<arktis Ant<arktise!\H\.9.SG+9!
 lisa:0094|Ant?igua!\H\.1.SG+9!
 lisa:0094|Antillid Antilli Antilli!\H\.22^E^.PL!
-lisa:0094|<Antsla!\H\.16.SG!
+lisa:0094|<Antsla!\H\.1.SG!
 lisa:0094|Aom<en Aom<eni Aom?eni!\H\.22^E^.SG!
 lisa:0094|Ape!\H\.16.SG!
 lisa:0094|Apenn?iinid Apenn<iini Apenn?iini!\H\.22^E^.PL!
@@ -68001,7 +68001,7 @@ lisa:0094|Atika!\H\.1.SG+9!
 lisa:0094|<Atlandi!\H\.1.SG+9!
 lisa:0094|<Audru!\H\.16.SG!
 lisa:0094|Austr<aalia!\H\.1.SG+9!
-lisa:0094|<Austria!\H\.16.SG!
+lisa:0094|<Austria!\H\.1.SG!
 lisa:0094|Avaste!\H\.1.SG+9!
 lisa:0094|Avi_jõgi Avi_jõge Avi_j<õe Avi_j<õkke!\H\.21.SG!
 lisa:0094|Avi_nurme Avi_n<urme!\H\.16.SG!
@@ -68123,11 +68123,11 @@ lisa:0094|<Elbrus <Elbruse!\H\.9.SG+9!
 lisa:0094|Elektr?enai!\H\.26.SG!
 lisa:0094|El?ista!\H\.16.SG!
 lisa:0094|<Elton <Eltoni!\H\.2.SG+9!
-lisa:0094|<Elva!\H\.16.SG!
+lisa:0094|<Elva!\H\.1.SG! **$ADT$: <Elva
 lisa:0094|Ema_jõgi Ema_jõge Ema_j<õe Ema_j<õkke!\H\.21.SG!
 lisa:0094|Emmaste!\H\.1.SG+9!
 lisa:0094|Emu_mägi Emu_mäge Emu_m<äe Emu_m<äkke!\H\.21.SG!
-lisa:0094|<Endla!\H\.16.SG!
+lisa:0094|<Endla!\H\.1.SG!
 lisa:0094|Enge!\H\.16.SG!
 lisa:0094|Epu-Kakerdi!\H\.1.SG+9!
 lisa:0094|Er-Rij<ad Er-Rij<adi Er-Rij?adi!\H\.22^E^.SG!
@@ -68158,7 +68158,7 @@ lisa:0094|Friisi_m<aa!\H\.26.SG!
 lisa:0094|Frunze!\H\.16.SG!
 lisa:0094|Gab<on Gab<oni Gab?oni!\H\.22^E^.SG!
 lisa:0094|Gabor?one!\H\.16.SG!
-lisa:0094|G<ambia!\H\.16.SG!
+lisa:0094|G<ambia!\H\.1.SG!
 lisa:0094|Ganges Gangese!\H\.9.SG+9!
 lisa:0094|Garap<an Garap<ani Garap?ani!\H\.22^E^.SG!
 lisa:0094|G<atšina!\H\.1.SG+9!
@@ -68180,7 +68180,7 @@ lisa:0094|Görlitz Görlitzi!\H\.2.SG+9!
 lisa:0094|Grööni_m<aa!\H\.26.SG!
 lisa:0094|Groningen Groningeni!\H\.19^E^.SG+7!
 lisa:0094|Gr<oznõi!\H\.26.SG!
-lisa:0094|Gr<uusia!\H\.16.SG!
+lisa:0094|Gr<uusia!\H\.1.SG!
 lisa:0094|Guaj?aana!\H\.1.SG+9!
 lisa:0094|Gu<am Gu<ami Gu?ami!\H\.22^E^.SG!
 lisa:0094|Guatem?ala!\H\.16.SG!
@@ -68232,7 +68232,7 @@ lisa:0094|Helv<eetsia!\H\.1.SG+9!
 lisa:0094|Herson Hersoni!\H\.2.SG+9!
 lisa:0094|Hertsegov?iina!\H\.16.SG!
 lisa:0094|H<essen H<esseni!\H\.2.SG+9!
-lisa:0094|Hiina!\H\.16.SG!
+lisa:0094|Hiina H<iina!\H\.16.SG!
 lisa:0094|Hiina_m<aa!\H\.26.SG!
 lisa:0094|Hiiu!\H\.16.SG!
 lisa:0094|Hiiu_m<aa!\H\.26.SG!
@@ -68258,7 +68258,7 @@ lisa:0094|Iasi!\H\.16.SG!
 lisa:0094|Ib<eeria!\H\.1.SG+9!
 lisa:0094|Iževsk Iževski!\H\.2.SG+9!
 lisa:0094|Ignalina!\H\.16.SG!
-lisa:0094|Ihamaru!\H\.1.SG+9!
+lisa:0094|Ihamaru!\H\.16.SG!
 lisa:0094|Ihaste!\H\.16.SG!
 lisa:0094|Iiri!\H\.16.SG!
 lisa:0094|Iiri_m<aa!\H\.26.SG!
@@ -68277,7 +68277,7 @@ lisa:0094|Imola!\H\.1.SG+9!
 lisa:0094|Inari!\H\.1.SG+9!
 lisa:0094|<India!\H\.16.SG!
 lisa:0094|Indi?ana!\H\.16.SG!
-lisa:0094|Indo-Hiina!\H\.16.SG!
+lisa:0094|Indo-Hiina Indo-H<iina!\H\.16.SG!
 lisa:0094|Indon<eesia!\H\.1.SG+9!
 lisa:0094|Indus Induse!\H\.9.SG+9!
 lisa:0094|<Inglis_m<aa!\H\.26.SG!
@@ -68316,7 +68316,7 @@ lisa:0094|Jer?uusal<emm Jer?uusal<emma Jer?uusal?emma!\H\.22^E^.SG!
 lisa:0094|Jägala!\H\.1.SG+9!
 lisa:0094|Jõgeva!\H\.1.SG+9!
 lisa:0094|Jõgeva_m<aa!\H\.26.SG!
-lisa:0094|Jõhvi!\H\.16.SG!
+lisa:0094|Jõhvi J<õhvi!\H\.16.SG!
 lisa:0094|Jõksi!\H\.16.SG!
 lisa:0094|Jämaja!\H\.1.SG+9!
 lisa:0094|J<õmm_s<oo!\H\.26.SG!
@@ -68395,7 +68395,7 @@ lisa:0094|Karula!\H\.1.SG+9!
 lisa:0094|Karuse!\H\.1.SG+9!
 lisa:0094|Kasahstan Kasahstani!\H\.19^E^.SG+7!
 lisa:0094|Kasari!\H\.1.SG+9!
-lisa:0094|K<aspia!\H\.16.SG!
+lisa:0094|K<aspia!\H\.1.SG!
 lisa:0094|Kassari!\H\.1.SG+9!
 lisa:0094|Katal<oonia!\H\.1.SG+9!
 lisa:0094|Katar Katari!\H\.2.SG+9!
@@ -68407,27 +68407,27 @@ lisa:0094|Kaunas Kaunase!\H\.9.SG+9!
 lisa:0094|Kazb<ek Kazb<ekki Kazb?eki!\H\.22^E^.SG!
 lisa:0094|Kübas_saare Kübas_s<aarde!\H\.16.SG!
 lisa:0094|Keblaste!\H\.1.SG+9!
-lisa:0094|K<eenia!\H\.16.SG!
-lisa:0094|K<ehra!\H\.16.SG!
-lisa:0094|K<ehtna!\H\.16.SG!
-lisa:0094|K<eila!\H\.16.SG!
+lisa:0094|K<eenia!\H\.1.SG!
+lisa:0094|K<ehra!\H\.1.SG!
+lisa:0094|K<ehtna!\H\.1.SG!
+lisa:0094|K<eila!\H\.1.SG!
 lisa:0094|K<eila-J<oa!\H\.26.SG!
 lisa:0094|Kella_vere Kella_v<erre!\H\.16.SG!
 lisa:0094|Kemerovo!\H\.16.SG!
 lisa:0094|Kerekunna!\H\.16.SG!
 lisa:0094|Kernu!\H\.16.SG!
 lisa:0094|Kig?ali!\H\.1.SG+9!
-lisa:0094|Kihelkonna!\H\.16.SG!
+lisa:0094|K?ihelkonna K?ihelk<onda!\H\.16.SG!
 lisa:0094|Kihnu K<ihnu!\H\.16.SG!
 lisa:0094|K<iiev K<iievi!\H\.2.SG+9!
 lisa:0094|K?išinj<ov K?išinj<ovi K?išinjovi!\H\.22^E^.SG!
-lisa:0094|Kil<iikia!\H\.16.SG!
+lisa:0094|Kil<iikia!\H\.1.SG!
 lisa:0094|Kilimandž?aaro!\H\.16.SG!
 lisa:0094|Kilingi-Nõmme Kilingi-N<õmme!\H\.16.SG!
 lisa:0094|Kiltsi!\H\.16.SG!
 lisa:0094|Käina!\H\.16.SG!
 lisa:0094|Kõinastu!\H\.1.SG+9!
-lisa:0094|Kingissepa!\H\.16.SG!
+lisa:0094|Kingis_sepa Kingis_s<eppa!\H\.16.SG!
 lisa:0094|K<ingston K<ingstoni!\H\.2.SG+9!
 lisa:0094|Kinsh?asa!\H\.16.SG!
 lisa:0094|K<irbla!\H\.16.SG!
@@ -68453,7 +68453,7 @@ lisa:0094|Koguva!\H\.1.SG+9!
 lisa:0094|Kohila!\H\.1.SG+9!
 lisa:0094|K<ohtla!\H\.16.SG!
 lisa:0094|K<ohtla-Järve!\H\.16.SG!
-lisa:0094|K<ohtla-NõmmeK<ohtla-N<õmme !\H\.16.SG!
+lisa:0094|K<ohtla-Nõmme K<ohtla-N<õmme!\H\.16.SG!
 lisa:0094|Koidula!\H\.1.SG+9!
 lisa:0094|Koigi!\H\.16.SG!
 lisa:0094|Koiva!\H\.16.SG!
@@ -68490,18 +68490,18 @@ lisa:0094|Kääriku!\H\.1.SG+9!
 lisa:0094|Kr<imm Kr<immi Krimmi!\H\.22^E^.SG!
 lisa:0094|Kristiine!\H\.1.SG+9!
 lisa:0094|Kärla!\H\.16.SG!
-lisa:0094|Kro<aatia!\H\.16.SG!
-lisa:0094|K<ärstna!\H\.16.SG!
+lisa:0094|Kro<aatia!\H\.1.SG!
+lisa:0094|K<ärstna!\H\.1.SG!
 lisa:0094|Käru!\H\.16.SG!
 lisa:0094|Käsmu K<äsmu!\H\.16.SG!
 lisa:0094|Kõue!\H\.16.SG!
 lisa:0094|Kuibõšev Kuibõševi!\H\.19^E^.SG+7!
 lisa:0094|K<uldiga!\H\.1.SG+9!
-lisa:0094|K<uldre!\H\.16.SG!
+lisa:0094|K<uldre!\H\.1.SG!
 lisa:0094|Kulla_m<aa!\H\.26.SG!
 lisa:0094|Kulla_vere Kulla_v<erre!\H\.16.SG!
 lisa:0094|Kunaš<ir Kunaš<iri Kunaš?iri!\H\.22^E^.SG!
-lisa:0094|K<unda K<unda!\H\.16.SG!
+lisa:0094|K<unda!\H\.1.SG! **$ADT$: K<unda
 lisa:0094|Kura!\H\.16.SG!
 lisa:0094|Kurdistan Kurdistani!\H\.19^E^.SG+7!
 lisa:0094|Kures_saare Kures_s<aarde!\H\.16.SG!
@@ -68524,7 +68524,7 @@ lisa:0094|Lagedi!\H\.1.SG+9!
 lisa:0094|Lagos Lagose!\H\.9.SG+9!
 lisa:0094|Lahe_pera Lahe_p<erra!\H\.16.SG!
 lisa:0094|Lahti!\H\.16.SG!
-lisa:0094|L<aim_jala!\H\.16.SG!
+lisa:0094|L<aim_jala L<aim_j<alga!\H\.16.SG!
 lisa:0094|L<aiuse!\H\.16.SG!
 lisa:0094|Lakad?iivid Lakad<iivi Lakad?iivi!\H\.22^E^.PL!
 lisa:0094|L<aos L<aose!\H\.9.SG+9!
@@ -68541,7 +68541,7 @@ lisa:0094|Leedu_m<aa!\H\.26.SG!
 lisa:0094|Leena!\H\.16.SG!
 lisa:0094|Leesi!\H\.16.SG!
 lisa:0094|Leevi!\H\.16.SG!
-lisa:0094|L<ehtse!\H\.16.SG!
+lisa:0094|L<ehtse!\H\.1.SG!
 lisa:0094|Leie!\H\.16.SG!
 lisa:0094|Leisi!\H\.16.SG!
 lisa:0094|Lelle!\H\.16.SG!
@@ -68556,7 +68556,7 @@ lisa:0094|Lhasa!\H\.16.SG!
 lisa:0094|Lib<eeria!\H\.1.SG+9!
 lisa:0094|L<iepaja!\H\.1.SG+9!
 lisa:0094|Lihula!\H\.1.SG+9!
-lisa:0094|L<iibüa!\H\.16.SG!
+lisa:0094|L<iibüa!\H\.1.SG!
 lisa:0094|L<iibanon L<iibanoni!\H\.19^E^.SG+7!
 lisa:0094|Liiva!\H\.16.SG!
 lisa:0094|Liivi_m<aa!\H\.26.SG!
@@ -68596,7 +68596,7 @@ lisa:0094|Lus?aka!\H\.16.SG!
 lisa:0094|Luuga!\H\.16.SG!
 lisa:0094|L<uunja!\H\.16.SG!
 lisa:0094|Lv<ov Lv<ovi Lvovi!\H\.22^E^.SG!
-lisa:0094|M<aardu M<aardu!\H\.16.SG!
+lisa:0094|M<aardu!\H\.1.SG!
 lisa:0094|M<aarianhamina!\H\.1.SG+9!
 lisa:0094|M<aarja!\H\.16.SG!
 lisa:0094|M<aarja-Magdal?eena!\H\.16.SG!
@@ -68643,7 +68643,7 @@ lisa:0094|M<at_salu M<at_s<allu!\H\.16.SG!
 lisa:0094|Maurit<aania!\H\.1.SG+9!
 lisa:0094|Mbab?ane!\H\.16.SG!
 lisa:0094|Meegaste!\H\.1.SG+9!
-lisa:0094|Meeksi!\H\.16.SG!
+lisa:0094|Meeksi M<eeksi!\H\.16.SG!
 lisa:0094|Meerapalu Meera_p<allu!\H\.16.SG!
 lisa:0094|Mehhiko!\H\.1.SG+9!
 lisa:0094|Mehi_k<oorma!\H\.1.SG+9!
@@ -68697,7 +68697,7 @@ lisa:0094|Mul]gi_m<aa!\H\.26.SG!
 lisa:0094|Mullutu!\H\.1.SG+9!
 lisa:0094|Murmansk Murmanski!\H\.2.SG+9!
 lisa:0094|Musta_j<õe!\H\.26.SG!
-lisa:0094|M<ust_jala!\H\.16.SG!
+lisa:0094|M<ust_jala M<ust_j<alga!\H\.16.SG!
 lisa:0094|M<ustla!\H\.16.SG!
 lisa:0094|Must_vee!\H\.26.SG!
 lisa:0094|Muuga!\H\.16.SG!
@@ -68707,10 +68707,10 @@ lisa:0094|Nair?obi!\H\.16.SG!
 lisa:0094|Nam<iibia!\H\.1.SG+9!
 lisa:0094|Nank<ing Nank<ingi Nank?ingi!\H\.22^E^.SG!
 lisa:0094|Narva N<arva!\H\.16.SG!
-lisa:0094|Narva-J<õe_s<uu!\H\.26.SG!
+lisa:0094|Narva-J<õe_s<uu!\H\.26.SG!%uu>u[I% **$ADT$: Narva-J<õe_suhu
 lisa:0094|Narva_m<aa!\H\.26.SG!
 lisa:0094|N<assau!\H\.26.SG!
-lisa:0094|Nasva!\H\.16.SG!
+lisa:0094|Nasva N<asva!\H\.16.SG!
 lisa:0094|Nauru!\H\.16.SG!
 lisa:0094|Nav?arra!\H\.16.SG!
 lisa:0094|Navesti!\H\.1.SG+9!
@@ -68731,12 +68731,12 @@ lisa:0094|Nissi!\H\.16.SG!
 lisa:0094|Niue!\H\.26.SG!
 lisa:0094|Njassa!\H\.16.SG!
 lisa:0094|Nõmme!\H\.16.SG!
-lisa:0094|N<õo!\H\.26.SG!
+lisa:0094|N<õo N<õkku!\H\.26.SG!
 lisa:0094|N<oa_rootsi N<oa_r<ootsi!\H\.16.SG!
 lisa:0094|N<orf<olk N<orf<olki N<orf?olgi!\H\.22^E^.SG!
 lisa:0094|Nor<ilsk Nor<ilski!\H\.2.SG+9!
 lisa:0094|Norm<andia!\H\.1.SG+9!
-lisa:0094|Norra!\H\.16.SG!
+lisa:0094|Norra N<orra!\H\.16.SG!
 lisa:0094|Norra_m<aa!\H\.26.SG!
 lisa:0094|Novgorod Novgorodi!\H\.19^E^.SG+7!
 lisa:0094|Novgorodi_m<aa!\H\.26.SG!
@@ -68746,7 +68746,7 @@ lisa:0094|N<ürnb<erg N<ürnb<ergi N<ürnbergi!\H\.22^E^.SG!
 lisa:0094|Nuia N<uia!\H\.16.SG!
 lisa:0094|N<uubia!\H\.16.SG!
 lisa:0094|N<uuk N<uuki Nuugi!\H\.22^E^.SG!
-lisa:0094|Nõva!\H\.16.SG!
+lisa:0094|Nõva N<õvva!\H\.16.SG!
 lisa:0094|<Ob <Obi Obi!\H\.22^E^.SG!
 lisa:0094|?Obinitsa ?Obin<itsa!\H\.16.SG!
 lisa:0094|Oder Oderi!\H\.2.SG+9!
@@ -68777,16 +68777,16 @@ lisa:0094|Oss<eetia!\H\.1.SG+9!
 lisa:0094|Ost<ankino!\H\.1.SG+9!
 lisa:0094|Otepää!\H\.26.SG!
 lisa:0094|Otr?anto!\H\.16.SG!
-lisa:0094|<Oulu <Oulu!\H\.16.SG!
+lisa:0094|Oulu <Oulu!\H\.16.SG!
 lisa:0094|P<aadrema!\H\.1.SG+9!
 lisa:0094|P<aapua!\H\.1.SG+9!
 lisa:0094|Padise!\H\.1.SG+9!
-lisa:0094|P<aide!\H\.16.SG!
+lisa:0094|P<aide!\H\.1.SG! **$ADT$: P<aide
 lisa:0094|P<aikuse!\H\.1.SG+9!
 lisa:0094|Paistu!\H\.16.SG!
 lisa:0094|Pajusi!\H\.1.SG+9!
 lisa:0094|Pakistan Pakistani!\H\.19^E^.SG+7!
-lisa:0094|P<akri!\H\.16.SG!
+lisa:0094|P<akri!\H\.1.SG!
 lisa:0094|Pala!\H\.16.SG!
 lisa:0094|Palamuse!\H\.1.SG+9!
 lisa:0094|Pal?anga!\H\.16.SG!
@@ -68797,7 +68797,6 @@ lisa:0094|P<almse!\H\.16.SG!
 lisa:0094|Palu_pera Palu_p<erra!\H\.16.SG!
 lisa:0094|Pam<iir Pam<iiri Pam?iiri!\H\.22^E^.SG!
 lisa:0094|Panama!\H\.1.SG+9!
-lisa:0094|Panama!\H\.26.SG!
 lisa:0094|P<andžab P<andžabi!\H\.2.SG+9!
 lisa:0094|Pa]ndi_vere Pa]ndi_v<erre!\H\.16.SG!
 lisa:0094|Pap?eete!\H\.16.SG!
@@ -68813,9 +68812,9 @@ lisa:0094|Pedeli!\H\.1.SG+9!
 lisa:0094|Pedetsi!\H\.1.SG+9!
 lisa:0094|Pedja!\H\.16.SG!
 lisa:0094|Peedu!\H\.16.SG!
-lisa:0094|P<eetri!\H\.16.SG!
+lisa:0094|P<eetri!\H\.1.SG!
 lisa:0094|P<eipsi!\H\.16.SG!
-lisa:0094|P<eipsi_ääre!\H\.16.SG!
+lisa:0094|P<eipsi_ääre P<eipsi_<äärde!\H\.16.SG!
 lisa:0094|Peking Pekingi!\H\.2.SG+9!
 lisa:0094|Pelop<onnesos Pelop<onnesose!\H\.9.SG+9!
 lisa:0094|Pelop<onnisos Pelop<onnisose!\H\.9.SG+9!
@@ -68831,10 +68830,10 @@ lisa:0094|Püha_lepa Püha_l<eppa!\H\.16.SG!
 lisa:0094|Põhja-Jää_meri Põhja-Jää_mere Põhja-Jää_m<erre!\H\.20! **$SG.P$: Põhja-Jää_m<er[D
 lisa:0094|Põhja_meri Põhja_mere Põhja_m<erre!\H\.20! **$SG.P$: Põhja_m<er[D
 lisa:0094|Phj<ongj<ang Phj<ongj<angi Phj<ongj?angi!\H\.22^E^.SG!
-lisa:0094|P<öide!\H\.16.SG!
-lisa:0094|P<ihkva P<ihkva!\H\.16.SG!
+lisa:0094|P<öide!\H\.1.SG! **$ADT$: P<öide
+lisa:0094|P<ihkva!\H\.1.SG!
 lisa:0094|P<ihkva_m<aa!\H\.26.SG!
-lisa:0094|P<ihtla!\H\.16.SG!
+lisa:0094|P<ihtla!\H\.1.SG!
 lisa:0094|Piigandi!\H\.1.SG+9!
 lisa:0094|Piiris_s<aar Piiris_saare Piiris_saarte!\H\.13^I^.SG+7! **$ADT$: Piiris_s<aar[DE
 lisa:0094|Piiris_saare Piiris_s<aarde!\H\.16.SG!
@@ -68847,7 +68846,7 @@ lisa:0094|Pleven Pleveni!\H\.2.SG+9!
 lisa:0094|Pl<ovdiv Pl<ovdivi!\H\.2.SG+9!
 lisa:0094|P<õltsa_m<aa!\H\.26.SG!
 lisa:0094|Pluto!\H\.16.SG!
-lisa:0094|P<õlva P<õlva!\H\.16.SG!
+lisa:0094|P<õlva!\H\.1.SG! **$ADT$: P<õlva
 lisa:0094|P<õlva_m<aa!\H\.26.SG!
 lisa:0094|Pod<ol]sk Pod<ol]ski!\H\.2.SG+9!
 lisa:0094|Pol]li!\H\.16.SG!
@@ -68864,7 +68863,7 @@ lisa:0094|P<otsdam P<otsdami!\H\.2.SG+9!
 lisa:0094|Praha!\H\.16.SG!
 lisa:0094|Praia!\H\.16.SG!
 lisa:0094|Prandi!\H\.16.SG!
-lisa:0094|Pr<angli!\H\.16.SG!
+lisa:0094|Pr<angli!\H\.1.SG!
 lisa:0094|Pr<antsus_m<aa!\H\.26.SG!
 lisa:0094|Preisi_m<aa!\H\.26.SG!
 lisa:0094|Pürenee[d!\H\.26!
@@ -68874,33 +68873,33 @@ lisa:0094|Prim<orsk Prim<orski!\H\.2.SG+9!
 lisa:0094|Pripj<at Pripj<ati Pripj?ati!\H\.22^E^.SG!
 lisa:0094|Pürksi!\H\.16.SG!
 lisa:0094|Prääma!\H\.16.SG!
-lisa:0094|P<ärnu P<ärnu!\H\.16.SG!
+lisa:0094|P<ärnu!\H\.1.SG! **$ADT$: P<ärnu
 lisa:0094|P<ärnu-Jaagupi!\H\.1.SG+9!
 lisa:0094|P<ärnu_m<aa!\H\.26.SG!
-lisa:0094|P<ärsia!\H\.16.SG!
+lisa:0094|P<ärsia!\H\.1.SG!
 lisa:0094|Pärsti!\H\.16.SG!
 lisa:0094|Põõsas_p<ea!\H\.26.SG!
-lisa:0094|Püssi!\H\.16.SG!
+lisa:0094|Püssi P<üssi!\H\.16.SG!
 lisa:0094|Puhatu!\H\.1.SG+9!
-lisa:0094|Puhja Puhja!\H\.16.SG!
+lisa:0094|Puhja P<uhja!\H\.16.SG!
 lisa:0094|Puka P<ukka!\H\.16.SG!
 lisa:0094|Purtse!\H\.16.SG!
 lisa:0094|Pus<an Pus<ani Pus?ani!\H\.22^E^.SG!
-lisa:0094|P<uurmani!\H\.1.SG+9!
+lisa:0094|P<uurmani P<uurmani!\H\.19^E^.SG+7!
 lisa:0094|Raadi!\H\.16.SG!
 lisa:0094|Raasiku!\H\.1.SG+9!
 lisa:0094|Rab<at Rab<atti Rab?ati!\H\.22^E^.SG!
 lisa:0094|Radom Radomi!\H\.2.SG+9!
 lisa:0094|Raik_küla Raik_k<ülla!\H\.17.SG!
 lisa:0094|Raja!\H\.16.SG!
-lisa:0094|R<akke!\H\.16.SG!
+lisa:0094|R<akke!\H\.1.SG!
 lisa:0094|R<ak_vere R<ak_v<erre!\H\.16.SG!
 lisa:0094|Rang<uun Rang<uuni Rang?uuni!\H\.22^E^.SG!
 lisa:0094|Rannapungerja!\H\.1.SG+9!
-lisa:0094|Rannu!\H\.16.SG!
-lisa:0094|R<apla!\H\.16.SG!
+lisa:0094|Rannu R<andu!\H\.16.SG!
+lisa:0094|R<apla!\H\.1.SG!
 lisa:0094|R<apla_m<aa!\H\.26.SG!
-lisa:0094|R<audna!\H\.16.SG!
+lisa:0094|R<audna!\H\.1.SG!
 lisa:0094|Rauma!\H\.16.SG!
 lisa:0094|Reigi!\H\.16.SG!
 lisa:0094|Reiu!\H\.16.SG!
@@ -68912,11 +68911,11 @@ lisa:0094|Riia R<iiga!\H\.16.SG!
 lisa:0094|R<iidaja!\H\.1.SG+9!
 lisa:0094|Riisi_pere Riisi_p<erre!\H\.16.SG!
 lisa:0094|Risti!\H\.16.SG!
-lisa:0094|R<istna!\H\.16.SG!
+lisa:0094|R<istna!\H\.1.SG!
 lisa:0094|Rivi?era!\H\.16.SG!
 lisa:0094|Rjaz<an Rjaz<ani Rjaz?ani!\H\.22^E^.SG!
 lisa:0094|Rjaz?ani_m<aa!\H\.26.SG!
-lisa:0094|Rõngu!\H\.16.SG!
+lisa:0094|Rõngu R<õngu!\H\.16.SG!
 lisa:0094|Rod<eesia!\H\.1.SG+9!
 lisa:0094|R<ohte_s<oo!\H\.26.SG!
 lisa:0094|Rooma R<ooma!\H\.16.SG!
@@ -68929,17 +68928,17 @@ lisa:0094|Rotterdam Rotterdami!\H\.19^E^.SG+7!
 lisa:0094|R?ovan<iemi!\H\.16.SG!
 lisa:0094|Räpina!\H\.1.SG+9!
 lisa:0094|Ru?anda!\H\.16.SG!
-lisa:0094|R<õuge!\H\.16.SG!
+lisa:0094|R<õuge R<õuge!\H\.16.SG!
 lisa:0094|Ruhnu R<uhnu!\H\.16.SG!
-lisa:0094|R<uila!\H\.16.SG!
+lisa:0094|R<uila!\H\.1.SG!
 lisa:0094|Rum<eenia!\H\.1.SG+9!
 lisa:0094|Rävala!\H\.1.SG+9!
 lisa:0094|S<aalomon S<aalomoni!\H\.19^E^.SG+7!
-lisa:0094|S<aaluse!\H\.16.SG!
-lisa:0094|S<aarde!\H\.16.SG!
-lisa:0094|Saare!\H\.16.SG!
+lisa:0094|S<aaluse!\H\.1.SG!
+lisa:0094|S<aarde S<aarde!\H\.16.SG!
+lisa:0094|Saare S<aarde!\H\.16.SG!
 lisa:0094|Saare_m<aa!\H\.26.SG!
-lisa:0094|Saare_peedi!\H\.16.SG!
+lisa:0094|Saare_peedi Saare_p<eeti!\H\.16.SG!
 lisa:0094|Saari_m<aa!\H\.26.SG!
 lisa:0094|S<aarl<and S<aarl<andi S<aarl?andi!\H\.22^E^.SG!
 lisa:0094|S<aatse!\H\.16.SG!
@@ -68957,11 +68956,11 @@ lisa:0094|Saksi_m<aa!\H\.26.SG!
 lisa:0094|Saku S<akku!\H\.16.SG!
 lisa:0094|Salme!\H\.16.SG!
 lisa:0094|S?amark<an]d S?amark<an]di Samarkan]di!\H\.22^E^.SG!
-lisa:0094|S<ambia!\H\.16.SG!
+lisa:0094|S<ambia!\H\.1.SG!
 lisa:0094|Sam<oa!\H\.26.SG!
 lisa:0094|Sana!\H\.16.SG!
 lisa:0094|Sangaste!\H\.1.SG+9!
-lisa:0094|S<angla!\H\.16.SG!
+lisa:0094|S<angla!\H\.1.SG!
 lisa:0094|Sansibar Sansibari!\H\.19^E^.SG+7!
 lisa:0094|Santi?ago!\H\.16.SG!
 lisa:0094|Sar<aatov Sar<aatovi!\H\.2.SG+9!
@@ -68975,7 +68974,7 @@ lisa:0094|Sauga!\H\.16.SG!
 lisa:0094|Semeru!\H\.1.SG+9!
 lisa:0094|Semipalat<insk Semipalat<inski!\H\.2.SG+9!
 lisa:0094|Senegal Senegali!\H\.19^E^.SG+7!
-lisa:0094|S<erbia!\H\.16.SG!
+lisa:0094|S<erbia!\H\.1.SG!
 lisa:0094|Setu_m<aa!\H\.26.SG!
 lisa:0094|Sev<an Sev<ani Sev?ani!\H\.22^E^.SG!
 lisa:0094|Sevast<oopol Sevast<oopoli!\H\.2.SG+9!
@@ -69012,8 +69011,8 @@ lisa:0094|Sollentuna!\H\.16.SG!
 lisa:0094|Som<aalia!\H\.1.SG+9!
 lisa:0094|Sommerlingi Sommerl<ingi!\H\.16.SG!
 lisa:0094|Sompa!\H\.16.SG!
-lisa:0094|S<onda!\H\.16.SG!
-lisa:0094|S<oodla!\H\.16.SG!
+lisa:0094|S<onda!\H\.1.SG!
+lisa:0094|S<oodla!\H\.1.SG!
 lisa:0094|Soome S<oome!\H\.16.SG!
 lisa:0094|Soome_m<aa!\H\.26.SG!
 lisa:0094|Sopot Sopoti!\H\.2.SG+9!
@@ -69022,7 +69021,7 @@ lisa:0094|S<oul S<ouli Souli!\H\.22^E^.SG!
 lisa:0094|Spr<ee!\H\.26.SG!
 lisa:0094|Sõrdarj?a!\H\.26.SG!
 lisa:0094|Sürga_vere Sürga_v<erre!\H\.16.SG!
-lisa:0094|S<üüria!\H\.16.SG!
+lisa:0094|S<üüria!\H\.1.SG!
 lisa:0094|Sõrve S<õrve!\H\.16.SG!
 lisa:0094|Stavropol Stavropoli!\H\.19^E^.SG+7!
 lisa:0094|Stepanak<ert Stepanak<erti Stepanak?erdi!\H\.22^E^.SG!
@@ -69039,13 +69038,13 @@ lisa:0094|Surju!\H\.16.SG!
 lisa:0094|S<uur-Sõja_m<äe!\H\.26.SG!
 lisa:0094|S<uur_brit<an]nia!\H\.1.SG+9!
 lisa:0094|Suure-Jaani Suure-J<aani!\H\.16.SG!
-lisa:0094|Suure_metsa Suure_m<etsa!\H\.17.SG!
+lisa:0094|Suure_metsa Suure_m<etsa!\H\.16.SG!
 lisa:0094|Suva!\H\.16.SG!
 lisa:0094|Suzdal Suzdali!\H\.2.SG+9!
 lisa:0094|Suzdali_m<aa!\H\.26.SG!
 lisa:0094|Svaasi_m<aa!\H\.26.SG!
 lisa:0094|Sv?alb<ard Sv?alb<ardi Svalbardi!\H\.22^E^.SG!
-lisa:0094|Sverdl<ovsk Sverdl<ovski!\H\.2.SG+9!
+lisa:0094|Sverdl<ovsk Sverdl<ovski Sverdl?ovski!\H\.22^E^.SG!
 lisa:0094|Tš<aad Tš<aadi Tšaadi!\H\.22^E^.SG!
 lisa:0094|Taage_pera Taage_p<erra!\H\.16.SG!
 lisa:0094|Taani T<aani!\H\.16.SG!
@@ -69053,7 +69052,7 @@ lisa:0094|Taani_m<aa!\H\.26.SG!
 lisa:0094|Taba_salu Taba_s<allu!\H\.16.SG!
 lisa:0094|Tabi_vere Tabi_v<erre!\H\.16.SG!
 lisa:0094|Tadž?ikistan Tadž?ikistani!\H\.19^E^.SG+7!
-lisa:0094|T<aebla!\H\.16.SG!
+lisa:0094|T<aebla!\H\.1.SG!
 lisa:0094|Taga-Karp<aatia!\H\.1.SG+9!
 lisa:0094|Taganr<og Taganr<ogi Taganr?ogi!\H\.22^E^.SG!
 lisa:0094|Taheva!\H\.1.SG+9!
@@ -69076,7 +69075,7 @@ lisa:0094|Tanganj?ika!\H\.16.SG!
 lisa:0094|Tans<aania!\H\.1.SG+9!
 lisa:0094|Tapa!\H\.16.SG!
 lisa:0094|Tapiku!\H\.1.SG+9!
-lisa:0094|T<artu T<artu!\H\.16.SG!
+lisa:0094|T<artu!\H\.1.SG! **$ADT$: T<artu
 lisa:0094|T<artu-M<aarja!\H\.1.SG+9!
 lisa:0094|T<artu_m<aa!\H\.26.SG!
 lisa:0094|Tartus_saare Tartus_s<aarde!\H\.16.SG!
@@ -69088,9 +69087,9 @@ lisa:0094|Tatarstan Tatarstani!\H\.19^E^.SG+7!
 lisa:0094|Tauksi!\H\.16.SG!
 lisa:0094|Tbil?isi!\H\.16.SG!
 lisa:0094|Tšeboks?arõ!\H\.16.SG!
-lisa:0094|Teenuse!\H\.17.SG!
+lisa:0094|Teenuse!\H\.1.SG!
 lisa:0094|Teheran Teherani!\H\.19^E^.SG+7!
-lisa:0094|Tš<ehhia!\H\.16.SG!
+lisa:0094|Tš<ehhia!\H\.1.SG!
 lisa:0094|Tšehhi_m<aa!\H\.26.SG!
 lisa:0094|Tšehho_slov<akkia!\H\.1.SG+9!
 lisa:0094|Tšelj?abinsk Tšelj?abinski!\H\.2.SG+9!
@@ -69124,17 +69123,17 @@ lisa:0094|Tõnis_mägi Tõnis_mäge Tõnis_m<äe Tõnis_m<äkke!\H\.21.SG!
 lisa:0094|Tännas_silma!\H\.16.SG!
 lisa:0094|Tob?ago!\H\.16.SG!
 lisa:0094|Togo!\H\.16.SG!
-lisa:0094|T<oila!\H\.16.SG!
+lisa:0094|T<oila!\H\.1.SG!
 lisa:0094|T?okel<au!\H\.26.SG!
 lisa:0094|T<okio!\H\.1.SG+9!
 lisa:0094|T<omsk T<omski!\H\.2.SG+9!
 lisa:0094|Tonga!\H\.16.SG!
-lisa:0094|Tootsi!\H\.16.SG!
+lisa:0094|Tootsi T<ootsi!\H\.16.SG!
 lisa:0094|Torgu!\H\.16.SG!
 lisa:0094|Tori!\H\.16.SG!
-lisa:0094|T<orma!\H\.16.SG!
+lisa:0094|T<orma T<orma!\H\.16.SG!
 lisa:0094|Tor?onto!\H\.16.SG!
-lisa:0094|Tr<aakia!\H\.16.SG!
+lisa:0094|Tr<aakia!\H\.1.SG!
 lisa:0094|Travemünde!\H\.16.SG!
 lisa:0094|Trento!\H\.16.SG!
 lisa:0094|Türgi T<ürki!\H\.16.SG!
@@ -69143,7 +69142,7 @@ lisa:0094|Tüüring Tüüringi!\H\.2.SG+9!
 lisa:0094|Trinidad Trinidadi!\H\.19^E^.SG+7!
 lisa:0094|Tripoli!\H\.1.SG+9!
 lisa:0094|Türi_salu Türi_s<allu!\H\.16.SG!
-lisa:0094|T<õrva!\H\.16.SG!
+lisa:0094|T<õrva!\H\.1.SG! **$ADT$: T<õrva
 lisa:0094|Tõrvandi!\H\.1.SG+9!
 lisa:0094|Ts<eilon Ts<eiloni!\H\.2.SG+9!
 lisa:0094|Tsirguliina!\H\.16.SG!
@@ -69152,12 +69151,12 @@ lisa:0094|Tsolgo!\H\.16.SG!
 lisa:0094|Tsooru!\H\.16.SG!
 lisa:0094|Tõsta_m<aa!\H\.26.SG!
 lisa:0094|Tsug?aru!\H\.16.SG!
-lisa:0094|Tud]u_linna Tud]u_l<inna!\H\.17.SG!
+lisa:0094|Tud]u_linna Tud]u_l<inna!\H\.16.SG!
 lisa:0094|Tšuktši_m<aa!\H\.26.SG!
 lisa:0094|Tun<eesia!\H\.1.SG+9!
 lisa:0094|Tung?uska!\H\.16.SG!
 lisa:0094|Tunis Tunise!\H\.9.SG+9!
-lisa:0094|T<urba!\H\.16.SG!
+lisa:0094|T<urba!\H\.1.SG! **$ADT$: T<urba
 lisa:0094|Turkm<eenia!\H\.1.SG+9!
 lisa:0094|Turkmenist<an Turkmenist<ani Turkmenist?ani!\H\.22^E^.SG!
 lisa:0094|Turu!\H\.16.SG!
@@ -69180,7 +69179,7 @@ lisa:0094|Ulj?anovsk Ulj?anovski!\H\.2.SG+9!
 lisa:0094|<Ungari!\H\.1.SG+9!
 lisa:0094|<Uppsala!\H\.1.SG+9!
 lisa:0094|Ur<aan Ur<aani Ur?aani!\H\.22^E^.SG!
-lisa:0094|Ur<al]sk Ur<al]ski!\H\.2.SG+9!
+lisa:0094|Ur<al]sk Ur<al]ski Ur?al]ski!\H\.22^E^.SG!
 lisa:0094|Urg<entš Urg<entši Urg?entši!\H\.22^E^.SG!
 lisa:0094|Urugu?ai!\H\.26.SG!
 lisa:0094|Urvaste!\H\.1.SG+9!
@@ -69211,38 +69210,38 @@ lisa:0094|V<an V<ani Vani!\H\.22^E^.SG!
 lisa:0094|Vana-Vigala!\H\.1.SG+9!
 lisa:0094|Vanu?atu!\H\.1.SG+9!
 lisa:0094|Vara!\H\.16.SG!
-lisa:0094|V<arbla!\H\.16.SG!
+lisa:0094|V<arbla!\H\.1.SG!
 lisa:0094|Varbola!\H\.1.SG+9!
-lisa:0094|V<arnja!\H\.16.SG!
+lisa:0094|V<arnja!\H\.1.SG!
 lisa:0094|V<arssavi!\H\.1.SG+9!
-lisa:0094|Varstu!\H\.16.SG!
+lisa:0094|Varstu V<arstu!\H\.16.SG!
 lisa:0094|V?asalemma V?asal<emma!\H\.16.SG!
 lisa:0094|V<aste_mõisa V<aste_m<õisa!\H\.16.SG!
 lisa:0094|V<astse-K<uuste!\H\.1.SG+9!
 lisa:0094|V<astse-Roosa!\H\.16.SG!
-lisa:0094|Vastseliina!\H\.16.SG!
+lisa:0094|V<astseliina V<astsel<iina!\H\.16.SG!
 lisa:0094|Vatikan Vatikani!\H\.19^E^.SG+7!
 lisa:0094|Veenus Veenuse!\H\.9+9!
 lisa:0094|Velise!\H\.1.SG+9!
 lisa:0094|Ven<eetsia!\H\.1.SG+9!
 lisa:0094|Vene_m<aa!\H\.26.SG!
-lisa:0094|V<entsp<ils V<entsp<ilsi V<entspilsi!\H\.22^E^.SG!
+lisa:0094|V<entsp<ils V<entsp<ilsi V<entsp?ilsi!\H\.22^E^.SG!
 lisa:0094|Verhoj<ansk Verhoj<anski!\H\.2.SG+9!
 lisa:0094|Veri_ora Veri_<orra!\H\.16.SG!
 lisa:0094|Ves<uuv Ves<uuvi Ves?uuvi!\H\.22^E^.SG!
 lisa:0094|Võhandu!\H\.1.SG+9!
-lisa:0094|Võhma!\H\.16.SG!
+lisa:0094|Võhma V<õhma!\H\.16.SG!
 lisa:0094|V<ietnam V<ietnami!\H\.2.SG+9!
 lisa:0094|Vigala!\H\.1.SG+9!
 lisa:0094|Vihter_palu Vihter_p<allu!\H\.16.SG!
 lisa:0094|Vihula!\H\.1.SG+9!
 lisa:0094|V<iiburi!\H\.1.SG+9!
 lisa:0094|Viidu_m<äe!\H\.26.SG!
-lisa:0094|V<iimsi!\H\.16.SG!
+lisa:0094|V<iimsi!\H\.1.SG!
 lisa:0094|V<iin V<iini Viini!\H\.22^E^.SG!
 lisa:0094|Viinistu!\H\.1.SG+9!
 lisa:0094|Viiratsi!\H\.1.SG+9!
-lisa:0094|V<iitna!\H\.16.SG!
+lisa:0094|V<iitna!\H\.1.SG!
 lisa:0094|Viivikonna!\H\.16.SG!
 lisa:0094|Väike-M<aarja!\H\.1.SG+9!
 lisa:0094|Väike-P<akri!\H\.1.SG+9!
@@ -69267,8 +69266,8 @@ lisa:0094|Vjatka!\H\.16.SG!
 lisa:0094|Vlad?imir Vlad?imiri!\H\.2.SG+9!
 lisa:0094|Vladivost<ok Vladivost<okki Vladivost?oki!\H\.22^E^.SG!
 lisa:0094|Välla_mägi Välla_mäge Välla_m<äe Välla_m<äkke!\H\.21.SG!
-lisa:0094|Vääna!\H\.16.SG!
-lisa:0094|V<ändra!\H\.16.SG!
+lisa:0094|Vääna V<ääna!\H\.16.SG!
+lisa:0094|V<ändra!\H\.1.SG!
 lisa:0094|Võnnu V<õndu!\H\.16.SG!
 lisa:0094|V<äo!\H\.26.SG!
 lisa:0094|Vohi_l<aid Vohi_l<aidu Vohi_laiu!\H\.22^E^.SG!
@@ -69280,7 +69279,7 @@ lisa:0094|Vol<õõnia!\H\.1.SG+9!
 lisa:0094|Vol?ogda!\H\.26.SG!
 lisa:0094|Volokol<amsk Volokol<amski!\H\.2.SG+9!
 lisa:0094|Vorkut?a!\H\.26.SG!
-lisa:0094|V<ormsi!\H\.16.SG!
+lisa:0094|V<ormsi!\H\.1.SG!
 lisa:0094|Voroš?ilov_gr<ad Voroš?ilov_gr<adi Voroš?ilov_gr?adi!\H\.22^E^.SG!
 lisa:0094|Voronež Voroneži!\H\.19^E^.SG+7!
 lisa:0094|Värska!\H\.16.SG!
@@ -69761,7 +69760,7 @@ lisa:1001|<uus_kreeka!\Gn\!
 lisa:1002|Avanduse!\H\.1.SG+9!
 lisa:1002|Kasepää!\H\.26.SG!
 lisa:1002|Kõlleste!\H\.1.SG+9!
-lisa:1002|Oisu!\H\.16.SG!
+lisa:1002|Oisu <Oisu!\H\.16.SG!
 lisa:1002|Põdrala!\H\.1.SG+9!
 lisa:1002|Sõmeru!\H\.1.SG+9!
 lisa:1002|Fenno_sk<andia!\H\.1.SG+9!
@@ -69777,12 +69776,12 @@ lisa:1002|Perä_meri Perä_mere Perä_m<erre!\H\.20! **$SG.P$: Perä_m<er[D
 lisa:1002|S<aaristo_meri S<aaristo_mere S<aaristo_m<erre!\H\.20! **$SG.P$: S<aaristo_m<er[D
 lisa:1002|P<äij<änne!\H\.16.SG!
 lisa:1102|Bal]ti=meri Bal]ti=mere Bal]ti=m<erre!\H\.20! **$SG.P$: Bal]ti=m<er[D
-lisa:0804|Reini_maa!\H\.26.SG!
-lisa:0804|Määri_maa!\H\.26.SG!
-lisa:0804|G<allia!\H\.16.SG!
-lisa:0804|Transilv<aania!\H\.16.SG!
-lisa:0804|Brit<annia!\H\.16.SG!
-lisa:0804|Mor<aavia!\H\.16.SG!
+lisa:0804|Reini_m<aa!\H\.26.SG!
+lisa:0804|Määri_m<aa!\H\.26.SG!
+lisa:0804|G<allia!\H\.1.SG!
+lisa:0804|Transilv<aania!\H\.1.SG!
+lisa:0804|Brit<annia!\H\.1.SG!
+lisa:0804|Mor<aavia!\H\.1.SG!
 lisa:0804|?Els<ass ?Els<assi ?Elsassi!\H\.22^E^.SG!
 lisa:0605|V<as]k_narva V<as]k_n<arva!\H\.16.SG!
 lisa:0605|Ussuuri_m<aa!\H\.26.SG!
@@ -69796,7 +69795,7 @@ voor:0094|Abidj<an Abidj<ani Abidj?ani!\H\.22^E^.SG!
 voor:0094|Abu=Dhabi!\H\.16.SG!
 voor:0094|Acap?ulco!\H\.16.SG!
 voor:0094|Acc<ess Acc<essi Acc?essi!\H\.22^E^.SG!
-voor:0094|<Accra!\H\.26.SG!
+voor:0094|<Accra!\H\.1.SG!
 voor:0094|Aconc<agua!\H\.1.SG+9!
 voor:0094|?Adams_t<own ?Adams_t<owni ?Adams_t?owni!\H\.22^E^.SG!
 voor:0094|Add?is=Ab?eba!\H\.16.SG!

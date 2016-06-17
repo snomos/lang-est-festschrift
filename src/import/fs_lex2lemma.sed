@@ -18,6 +18,7 @@ s/^\([^ ]*lõuna\) \([^ ]*l<õuna\)[^@]*@LÕUNA.*$/& \1:\2/
 s/^\([^ ]*an\)ner [^@]*@MANNER.*$/& \1ner:\1nD1E2R/
 s/^\([^ ]*\)m<ees [^@]*@MEES.*$/& \1m<ees:\1me/
 s/^\([^ ]*\) [^@]*@PEEN$/& \1:\1/
+s/^\([^ ]*\) [^@]*@NIIN$/& \1:\1/
 s/^\([^ ]*\)ke [^@]*@PÄIKE.*$/& \1ke:\1/
 s/^\([^ ]*\)e [^@]*@SEEME.*$/& \1e:\1E2/
 s/^\([^ ]*süda\) [^@]*@SÜDA.*$/& \1:\1/
@@ -25,8 +26,10 @@ s/^\([^ ]*ah\)er [^@]*@VAHER.*$/& \1er:\1T1E2R/
 s/^\([^ ]*\)ke [^@]*@VÄIKE.*$/& \1ke:\1/
 s/^\([^ ]*emand\) [^@]*@MAGUS.*$/& \1:\1/
 s/^\([^ ]*is*sand\) [^@]*@MAGUS.*$/& \1:\1/
+s/^\([^ ]*para\)s [^@]*@PARAS.*$/& \1s:\1/
 s/^\([^ ]*põrand\) [^@]*@MAGUS.*$/& \1:\1/
 s/^\([^ ]*rätsep\) [^@]*@MAGUS.*$/& \1:\1/
+s/^\([^ ]*tuha\)t [^@]*@TUHAT.*$/& \1t:\1/
 s/^\([^ ]*tulnuk\) [^@]*@MAGUS.*$/& \1:\1/
 s/^\([^ ]*Tooming\) [^@]*@MAGUS.*$/& \1:\1/
 s/^\([^ ]*raamat\) [^@]*@VIRSIK.*$/& \1:\1/
@@ -44,6 +47,7 @@ s/^\([^ ]*\) [^@]*@AASTA.*$/& \1:\1/
 /@.*:/!s/^\([^ ]*\)\([kptmshf]*\)i\([lmnrsv]\) \1[kpt]*\3a [^@]*@MAGUS.*$/& \1\2i\3:\1\2I2\3/
 /@.*:/!s/^\([^ ]*\)ne \1sa [^@]*@MAGUS.*$/& \1ne:\1N1e/
 /@.*:/!s/^\([^ ]*\)s \1 [^@]*@LOHAKAS.*$/& \1s:\1/
+/@.*:/!s/^\([^ ]*\)s \1nda [^@]*@HALE.*$/& \1s:\1N2/
 /@.*:/!s/^\([^ ]*\) [^@]*@HALE.*$/& \1:\1/
 /@.*:/!s/^\([^ ]*\)as \([^ ]*\)sa [^@]*@HOOLAS.*$/& \1as:\2A2s/
 /@.*:/!s/^\([^ ]*\)es \([^ ]*\)sa [^@]*@HOOLAS.*$/& \1es:\2E2s/
@@ -62,43 +66,108 @@ s/^\([^ ]*\) [^@]*@AASTA.*$/& \1:\1/
 /@.*:/!s/^\([^ ]*tüt\)ar \([^ ]*\)re [^@]*@KANNEL.*$/& \1ar:\2A2r/
 /@.*:/!s/^\([^ ]*\)ar \([^ ]*\)ra [^@]*@PIPAR.*$/& \1ar:\2A2r/
 /@.*:/!s/^\([^ ]*\)al \([^ ]*\)la [^@]*@PIPAR.*$/& \1al:\2A2l/
-/@/s/\(g[aeiu][^aeiuõäöü]*:.*\)k\([AEIU]2\)/\1K2\2/
-/@/s/\(b[aeiu][^aeiuõäöü]*:.*\)p\([AEIU]2\)/\1P2\2/
-/@/s/\(d[aeiu][^aeiuõäöü]*:.*\)t\([AEIU]2\)/\1T2\2/
-/@/s/\([lmnr]\)\(\]*[lmnr][aeiu][^aeiuõäöü]*:.*\)g\([AEIU]2\)/\1\2\1G1\3/
-/@/s/\([lmnr]\)\(\]*[lmnr][aeiu][^aeiuõäöü]*:.*\)b\([AEIU]2\)/\1\2\1B1\3/
-/@/s/\([lmnr]\)\(\]*[lmnr][aeiu][^aeiuõäöü]*:.*\)d\([AEIU]2\)/\1\2\1D1\3/
-/@/s/\([aeiouõäöü]\)\([aeiu][^aeiuõäöü]*:.*\)g\([AEIU]2\)/\1\2G1\3/
-/@/s/\([aeiouõäöü]\)\([aeiu][^aeiuõäöü]*:.*\)b\([AEIU]2\)/\1\2B1\3/
-/@/s/\([aeiouõäöü]\)\([aeiu][^aeiuõäöü]*:.*\)d\([AEIU]2\)/\1\2D1\3/
-/@/s/\([^k]k[aeiu][^aeiuõäöü]*:.*k\)k\([AEIU]2\)/\1K1\2/
-/@/s/\([^p]p[aeiu][^aeiuõäöü]*:.*p\)p\([AEIU]2\)/\1P1\2/
-/@/s/\([^t]t[aeiu][^aeiuõäöü]*:.*t\)t\([AEIU]2\)/\1T1\2/
-/@/s/\([hs][aeiu][^aeiuõäöü]*:.*[hs]\)k\([AEIU]2\)/\1K1\2/
-/@/s/\([hs][aeiu][^aeiuõäöü]*:.*[hs]\)p\([AEIU]2\)/\1P1\2/
-/@/s/\([hs][aeiu][^aeiuõäöü]*:.*[hs]\)t\([AEIU]2\)/\1T1\2/
-/@/s/\(j[aeiu][^aeiuõäöü]*:.*\)g\([AEIU]2\)/\1G2\2/
-/@/s/\(j[aeiu][^aeiuõäöü]*:.*\)d\([AEIU]2\)/\1D2\2/
-/@/s/\(v[aeiu][^aeiuõäöü]*:.*\)b\([AEIU]2\)/\1B2\2/
-/@/s/\(g[aeiu][^aeiuõäöü]*:.*\)k\([aeiu]\)$/\1K2\2/
-/@/s/\(b[aeiu][^aeiuõäöü]*:.*\)p\([aeiu]\)$/\1P2\2/
-/@/s/\(d[aeiu][^aeiuõäöü]*:.*\)t\([aeiu]\)$/\1T2\2/
-/@/s/\(b[lrj][aeiu][^aeiuõäöü]*:.*\)p\([lrj][aeiu]\)$/\1P2\2/
-/@/s/\([lmnr]\)\(\]*[lmnr][aeiu][^aeiuõäöü]*:.*\)g\([aeiu]\)$/\1\2\1G1\3/
-/@/s/\([lmnr]\)\(\]*[lmnr][aeiu][^aeiuõäöü]*:.*\)b\([aeiu]\)$/\1\2\1B1\3/
-/@/s/\([lmnr]\)\(\]*[lmnr][aeiu][^aeiuõäöü]*:.*\)d\([aeiu]\)$/\1\2\1D1\3/
-/@/s/\([aeiouõäöü]\)\([aeiu][^aeiuõäöü]*:.*\)g\([aeiu]\)$/\1\2G1\3/
-/@/s/\([aeiouõäöü]\)\([aeiu][^aeiuõäöü]*:.*\)b\([aeiu]\)$/\1\2B1\3/
-/@/s/\([aeiouõäöü]\)\([aeiu][^aeiuõäöü]*:.*\)d\([aeiu]\)$/\1\2D1\3/
-/@/s/\([^k]k[aeiu][^aeiuõäöü]*:.*k\)k\([aeiu]\)$/\1K1\2/
-/@/s/\([^p]p[aeiu][^aeiuõäöü]*:.*p\)p\([aeiu]\)$/\1P1\2/
-/@/s/\([^t]t[aeiu][^aeiuõäöü]*:.*t\)t\([aeiu]\)$/\1T1\2/
-/@/s/\([hs][aeiu][^aeiuõäöü]*:.*[hs]\)k\([aeiu]\)$/\1K1\2/
-/@/s/\([hs][aeiu][^aeiuõäöü]*:.*[hs]\)p\([aeiu]\)$/\1P1\2/
-/@/s/\([hs][aeiu][^aeiuõäöü]*:.*[hs]\)t\([aeiu]\)$/\1T1\2/
-/@/s/\(j[aeiu][^aeiuõäöü]*:.*\)g\([aeiu]\)$/\1G2\2/
-/@/s/\(j[aeiu][^aeiuõäöü]*:.*\)d\([aeiu]\)$/\1D2\2/
-/@/s/\(v[aeiu][^aeiuõäöü]*:.*\)b\([aeiu]\)$/\1B2\2/
+/@.*:/!s/^\([^ ]*\)s [^@]*@SOOLANE.*$/& \1s:\1s/
+/@.*:/!s/^\([^ ]*\)ne [^@]*@SOOLANE.*$/& \1ne:\1N1e/
+/@.*:/!s/^\([^ ]*\)s [^@]*@OLULINE.*$/& \1s:\1s/
+/@.*:/!s/^\([^ ]*\)ne [^@]*@OLULINE.*$/& \1ne:\1N1e/
+/@.*:/!s/^\([^ ]*\)s [^@]*@KATKINE.*$/& \1s:\1s/
+/@.*:/!s/^\([^ ]*\)ne [^@]*@KATKINE.*$/& \1ne:\1N1e/
+/@.*:/!s/^\([^ ]*\)s [^@]*@SUULINE.*$/& \1s:\1s/
+/@.*:/!s/^\([^ ]*\)ne [^@]*@SUULINE.*$/& \1ne:\1N1e/
+/@.*:/!s/^\([^ ]*\) [^@]*@PEENIKE.*$/& \1:\1/
+/@.*:/!s/^\([^ ]*l<ee\)m [^@]*@KEEL.*$/& \1m:\1M1/
+/@.*:/!s/^\([^ ]*\) [^@]*@KEEL.*$/& \1:\1/
+/@.*:/!s/^\([^ ]*\)s\]* \([^ ]*\)ne [^@]*@VARS.*$/& \1s:\1N2/
+/@.*:/!s/^\([^ ]*\)rs \([^ ]*\)rre [^@]*@VARS.*$/& \1rs:\1rrS1/
+/@.*:/!s/^\([^ ]*\)s \([^ ]*\)e [^@]*@VARS.*$/& \1s:\1S1/
+/@.*:/!s/^\([^ ]*\)üs\]i [^@]*@MESI.*$/& \1üsi:\1Ü5S1/
+/@.*:/!s/^\([^ ]*\)us\]i [^@]*@MESI.*$/& \1usi:\1U5S1/
+/@.*:/!s/^\([^ ]*\)s\]i [^@]*@MESI.*$/& \1si:\1S1/
+/@.*:/!s/^\([^ ]*[pk]ere\) \([^ (][^ ]*[^)]\) [^@]*@PERE.*$/& \1:\1%{stemill%}/
+/@.*:/!s/^\([^ ]*\) [^@]*@PERE.*$/& \1:\1/
+/@.*:/!s/^\([^ ]*\) ([^ ]*) [^@]*\.17[^@]*@KAVA.*$/& \1:\1/
+/@.*:/!s/^\([^ ]*\) [^ @]*\.17[^@]*@KAVA.*$/& \1:\1/
+/@.*:/!s/^\([^ ]*\)\([aeiouõäöü]\)\(.\)\]*\([aeiou]\) [^ ]*\2\3\]*\3\4 [^@]*\.17[^@]*@KAVA.*$/& \1\2\3\4:\1\2\3\4%{stemill%}/
+/@.*:/!s/^\([^ ]*\)\([aeiouõäöü]\)\(g\)\([aeiou]\) [^ ]*\2kk\4 [^@]*\.17[^@]*@KAVA.*$/& \1\2\3\4:\1\2\3\4%{stemill%}/
+/@.*:/!s/^\([^ ]*\)\([aeiouõäöü]\)\(b\)\([aeiou]\) [^ ]*\2pp\4 [^@]*\.17[^@]*@KAVA.*$/& \1\2\3\4:\1\2\3\4%{stemill%}/
+/@.*:/!s/^\([^ ]*\)\([aeiouõäöü]\)\(d\)\([aeiou]\) [^ ]*\2tt\4 [^@]*\.17[^@]*@KAVA.*$/& \1\2\3\4:\1\2\3\4%{stemill%}/
+/@.*:/!s/^\([^ ]*\)\([aeiouõäöü]\)\(d\)\([aeiou]\) [^ ]*\2j\4 [^@]*\.17[^@]*@KAVA.*$/& \1\2\3\4:\1\2D2\4%{stemill%}/
+
+/@.*:/!s/^\([^ ]*\)gu [^ ][^ ]*o [^@]*\.18[^@]*@KAVA.*$/& \1gu:\1G1U5/
+/@.*:/!s/^\([^ ]*\)bu [^ ][^ ]*o [^@]*\.18[^@]*@KAVA.*$/& \1bu:\1B1U5/
+/@.*:/!s/^\([^ ]*\)du [^ ][^ ]*o [^@]*\.18[^@]*@KAVA.*$/& \1du:\1D1U5/
+/@.*:/!s/^\([^ ]*\)du [^ ][^ ]*ju [^@]*\.18[^@]*@KAVA.*$/& \1du:\1D2u/
+
+/@.*:/!s/^\([^ ]*\)da [^ ][^ ]*ja [^@]*\.18[^@]*@KAVA.*$/& \1da:\1D2a/
+/@.*:/!s/^\([^ ]*\)da [^ ][^ ]*[^j]a [^@]*\.18[^@]*@KAVA.*$/& \1da:\1D1a/
+/@.*:/!s/^\([^ ]*\)ga [^ ][^ ]*a [^@]*\.18[^@]*@KAVA.*$/& \1ga:\1G1a/
+/@.*:/!s/^\([^ ]*\)ba [^ ][^ ]*a [^@]*\.18[^@]*@KAVA.*$/& \1ba:\1B1a/
+
+/@.*:/!s/^\([^ ]*\)de [^ ][^ ]*[^d]e [^@]*\.18[^@]*@KAVA.*$/& \1de:\1D1e/
+
+s/i\([GBD]1[Uae]\)/I5\1/
+s/u\([GBD]1[Uae]\)/U5\1/
+
+/^\([^ ]*\) [^ ][^ ]* [^ (][^ ]*[^)] .*@KAVA/s/$/%{stemill%}/
+/iga.*ikka /s/%{stemill%}/&%{rare%}/
+/suga.*ukka /s/%{stemill%}//
+
+/@.*:/s/^[^ ]* [^@]*\^E\^[^!]*!@KAVA.*$/&%+%{pl.e%}/
+/@.*:/s/^[^ ]* [^@]*\^I\^[^!]*!@KAVA.*$/&%+%{pl.i%}/
+/@.*:/s/^[^ ]* [^@]*\^U\^[^!]*!@KAVA.*$/&%+%{pl.u%}/
+
+/@KAVA.*%{stemill%}/s/\(%{stemill%}\)\(%+%{pl.[eiu]%}\)/\2\1/
+
+/\.17.*@KAVA.*%{stemill%}/s/%{stemill%}/&%{rare%}/
+/^elu .*%{stemill%}%{rare%}/s/%{rare%}//
+/_elu .*%{stemill%}%{rare%}/s/%{rare%}//
+/^maru .*%{stemill%}%{rare%}/s/%{rare%}//
+/_maru .*%{stemill%}%{rare%}/s/%{rare%}//
+/^eru .*%{stemill%}%{rare%}/s/%{rare%}//
+/_eru .*%{stemill%}%{rare%}/s/%{rare%}//
+/^häda .*%{stemill%}%{rare%}/s/%{rare%}//
+/^ida .*%{stemill%}%{rare%}/s/%{rare%}//
+/_ida .*%{stemill%}%{rare%}/s/%{rare%}//
+/^abi .*%{stemill%}%{rare%}/s/%{rare%}//
+/kino .*%{stemill%}%{rare%}/s/%{rare%}//
+/kodu .*%{stemill%}%{rare%}/s/%{rare%}//
+/kõri .*%{stemill%}%{rare%}/s/%{rare%}//
+/küla .*%{stemill%}%{rare%}/s/%{rare%}//
+/maja .*%{stemill%}%{rare%}/s/%{rare%}//
+/mälu .*%{stemill%}%{rare%}/s/%{rare%}//
+/nina .*%{stemill%}%{rare%}/s/%{rare%}//
+/^oja .*%{stemill%}%{rare%}/s/%{rare%}//
+/_oja .*%{stemill%}%{rare%}/s/%{rare%}//
+/^osa .*%{stemill%}%{rare%}/s/%{rare%}//
+/_osa .*%{stemill%}%{rare%}/s/%{rare%}//
+/^pada .*%{stemill%}%{rare%}/s/%{rare%}//
+/_pada .*%{stemill%}%{rare%}/s/%{rare%}//
+/^pesa .*%{stemill%}%{rare%}/s/%{rare%}//
+/_pesa .*%{stemill%}%{rare%}/s/%{rare%}//
+/^saba .*%{stemill%}%{rare%}/s/%{rare%}//
+/talu .*%{stemill%}%{rare%}/s/%{rare%}//
+/^tül\]i .*%{stemill%}%{rare%}/s/%{rare%}//
+/^udu .*%{stemill%}%{rare%}/s/%{rare%}//
+/_udu .*%{stemill%}%{rare%}/s/%{rare%}//
+
+/raba .*17^U^!@KAVA/s/%+%{pl\.u%}//
+/jada .*17^U^!@KAVA/s/%+%{pl\.u%}//
+/lava .*17^U^!@KAVA/s/%+%{pl\.u%}//
+/nõva .*17^U^!@KAVA/s/%+%{pl\.u%}//
+/[ljs]uga .*18^.^!@KAVA/s/%+%{pl\..%}//
+/pada .*18^.^!@KAVA/s/%+%{pl\..%}//
+
+/kava .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
+/nina .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
+/saba .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
+/kena .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
+/kõva .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
+/paha .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
+/vaga .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
+/ala .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
+/huvi .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
+/keha .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
+
 
 
 

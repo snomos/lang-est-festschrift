@@ -34,6 +34,7 @@ LEXICON KURAT    ! only kurat; like redel
 :dI5 2C ;                            ! kuradi etc
 
 LEXICON KÕRB   ! only kõrb
+
 +Sg+Nom: GI ;                                  ! kõrb
 :%+e N_SG_SUBPARA ;                            ! kõrbe etc 
 +Sg+Par:e GI ;                                 ! kõrbe
@@ -76,21 +77,36 @@ LEXICON MANNER    ! VVS 3 only manner, tanner
 
 LEXICON MEES                  ! only mees
 
-+Sg+Nom:es GI ;                                 ! mees
-:he N_SG_SUBPARA ;                        ! mehe etc 
-+Sg+Par:es%+t GI ;                              ! meest
-+Sg+Ill:he%+sse GI ;                      ! mehesse 
-:es%+te N_PL_SUBPARA ;                          ! meeste etc 
++Sg+Nom:es GI ;                                ! mees
+:he N_SG_SUBPARA ;                             ! mehe etc 
++Sg+Par:es%+t GI ;                             ! meest
++Sg+Ill:he%+sse GI ;                           ! mehesse 
+:es%+te N_PL_SUBPARA ;                         ! meeste etc 
 +Pl+Par:h%+i GI ;                              ! mehi
 
-LEXICON PEEN    ! only peen; VVS 13 almost like KEEL, but some forms are more regular
+LEXICON NIIN    ! only niin; almost like KEEL, but some forms are more regular
+
++Sg+Nom: GI ;                                 ! niin
+:e%{W%} N_SG_SUBPARA ;                        ! niine etc 
++Sg+Par:%+t GI ;                              ! niint
++Sg+Ill:e%{W%}%+sse GI ;                      ! niinesse 
+:%+te N_PL_SUBPARA ;                          ! niinte etc 
+! +N%+Use%/Hyp:%+i N_VOWEL_PL_SUBPARA ;       ! impossible for rarer words
++Pl+Par:e%+sid GI ;                           ! NB! niinesid (not niini)
+
+LEXICON PARAS      ! only paras; like LOHAKAS
+
++Sg+Nom:s GI ;                         ! paras
+:ja 2C ;                               ! paraja etc
+
+LEXICON PEEN    ! only peen, tüün; almost like KEEL, but some forms are more regular
 
 +Sg+Nom: GI ;                                  ! peen
 :%+e N_SG_SUBPARA ;                            ! peene etc 
 +Sg+Par:%+t GI ;                               ! peent
 +Sg+Par%+Use%/NotNorm:e%+t GI ;                ! peenet
-+Sg+Ill:%+de%{ssestem%} SG_ILL ;               ! peende
-+Sg+Ill:e%{W%}%+%{ssestem%} SG_ILL ;           ! peenesse 
++Sg+Ill%+Use%/Rare:%+de GI ;                   ! peende
++Sg+Ill:e%{W%}%+sse GI ;                       ! peenesse 
 :%+te N_PL_SUBPARA ;                           ! peente etc 
 %+Use%/NotNorm:e%+te N_PL_SUBPARA ;            ! peenete etc 
 +Pl+Par%+Use%/CommonNotNorm:e%+id GI ;         ! NB! peeneid 
@@ -114,6 +130,11 @@ LEXICON SÜDA                   ! only süda; like habe
 +Sg+Nom: GI ;                          ! süda
 +Sg+Par:n%+t GI ;                       ! südant
 :me 2C_EXCL_SG_PAR ;                   ! südame etc
+
+LEXICON TUHAT      ! only tuhat; like LOHAKAS
+
++Sg+Nom:t GI ;                          ! tuhat
+:nde 2C ;                               ! tuhande etc
 
 LEXICON VAHER    ! VVS 3 unstable (closed) type; strengthening gradation
                  ! only vaher, aher
@@ -185,8 +206,8 @@ LEXICON MAGUS    ! VVS 2 unstable (closed) type
 ! VVS 2
 LEXICON HALE    ! VVS 2 unstable (closed) type
 
-+Sg+Nom: GI ;                         ! hale
-:da 2C ;                              ! haleda
++Sg+Nom: GI ;                         ! hale, sajas
+:da 2C ;                              ! haleda, sajanda
 
 
 ! VVS 3
@@ -302,18 +323,6 @@ LEXICON KEEL    !  VVS 13 unstable (closed) type;
 
 : VARS ;
 %+Use%/Hyp:%{W%}%+i N_VOWEL_PL_SUBPARA ;       ! vocal pl cases  keelil; except for some expressions (suuril silmil)
-
-! VVS 13
-LEXICON NIIN    ! VVS 13 almost like KEEL, but some forms are more regular
-
-+Sg+Nom: GI ;                                 ! niin
-:e%{W%} N_SG_SUBPARA ;                        ! niine etc 
-+Sg+Par:%+t GI ;                              ! niint
-+Sg+Ill:%+de%{ssestem%} SG_ILL ;              ! niinde
-+Sg+Ill:e%{W%}%+%{ssestem%} SG_ILL ;          ! niinesse 
-:%+te N_PL_SUBPARA ;                          ! niinte etc 
-! +N%+Use%/Hyp:%+i N_VOWEL_PL_SUBPARA ;       ! impossible for rarer words
-+Pl+Par:e%+sid GI ;                           ! NB! niinesid (not niini)
 
 !  VVS 14 unstable (closed) type;
 LEXICON VARS     !  VVS 14 unstable (closed) type;
@@ -517,6 +526,8 @@ LEXICON 2C_EXCL_SG_PAR ! =2C, excluding sg partitive
 LEXICON 2C_STRONG ! =2C_EXCL_SG_PAR, excluding N_PL_SUBPARA
 
 : N_SG_SUBPARA ;                           ! redeli, kotka etc
++Sg+Ill:%+%{s%} SG_ILL ;                ! taskusse or tasku
+!+Sg+Ill:%+sse GI ;                         ! kotkasse
 +Pl+Par:%+id GI ;                          ! kotkaid
 %+Use%/Rare:%+i N_VOWEL_PL_SUBPARA ;       ! kotkail etc
 
