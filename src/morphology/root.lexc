@@ -300,6 +300,7 @@ Multichar_Symbols
 
  %{W%} ! The weak grade trigger never appears on the surface side.
  %{WF%} ! The weak grade for foreign words trigger never appears on the surface side.
+ %{S%}  ! Strong stem trigger (for short illatives only) never appears on the surface side.
 
  %+    ! The morpheme boundary never appears on the surface side.
 
@@ -314,6 +315,9 @@ Multichar_Symbols
  G2 ! g j    kärg kärje
  D2 ! 0 j t  sõda sõja sõtta
  B2 ! b v p  tõbi tõve tõppe
+
+ G3 ! 0 g  Riia Riiga
+ D3 ! 0 d  Rannu Randu
 
  K2 ! k g
  P2 ! p b
@@ -389,7 +393,6 @@ N2  ! laas-laane
  
  %{id%}   ! lexicon flag for pl part possible ending (esseesid/esseid)
 
- %{ssestem%} ! sse 0  sg ill ending jõesse jõkke; also acts as a flag for telling this stem is sg ill 
  %{s%}
  %{e%}
 
@@ -557,7 +560,9 @@ susi:sU5S1 MESI ;
 pere:pere%{stemill%} PERE ;
 Leedu:Leedu%{stemill%} PERE ;
 Läti:Läti%{stemill%} PERE ;
-Riia:RiiG1a%{stemill%} PERE ;
+Riia:RiiG3a%{stemill%} PERE ;
+Abja:Abja%{stemill%} PERE ;
+Rannu:RannD3u%{stemill%} PERE ;
 Taani:Taani%{stemill%} PERE ;
 leedi PERE ;
 

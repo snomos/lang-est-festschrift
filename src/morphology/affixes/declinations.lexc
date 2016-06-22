@@ -333,8 +333,8 @@ LEXICON VARS     !  VVS 14 unstable (closed) type;
 +Sg+Nom: GI ;                                 ! vars
 :e%{W%} N_SG_SUBPARA ;                        ! varre etc 
 +Sg+Par:%+t GI ;                              ! vart
-+Sg+Ill:%+de%{ssestem%} SG_ILL ;              ! varde
-+Sg+Ill:e%{W%}%+%{ssestem%} SG_ILL ;          ! varresse 
++Sg+Ill:%{S%}%+de SG_ILL ;              ! varde
++Sg+Ill:e%{W%} SG_ILL ;          ! varresse 
 :%+te N_PL_SUBPARA ;                          ! varte etc 
 +Pl+Par:%+i GI ;                              ! varsi
 ! +N%+Use%/Hyp:%+i N_VOWEL_PL_SUBPARA ;       ! varsil?; except for some expressions (uusil)
@@ -356,8 +356,8 @@ LEXICON PERE
 +Sg+Nom:%{no.apo%} GI ;
 : N_SG_SUBPARA ;      
 +Sg+Par:%+t GI ;                           ! peret
-+Sg+Ill:%{ssestem%} SG_ILL ;               ! perre
-+Sg+Ill:%{W%}%+%{ssestem%} SG_ILL ;        ! peresse 
++Sg+Ill:%{S%} SG_ILL ;               ! perre
++Sg+Ill:%{W%} SG_ILL ;        ! peresse 
 :%+de N_PL_SUBPARA ;                       ! perede etc
 +Pl+Par:%+sid #;                           ! peresid
 
@@ -369,8 +369,8 @@ LEXICON KAVA
 +Sg+Nom:%{no.apo%} GI ;
 :%{W%} N_SG_SUBPARA ;                      ! kava etc
 +Sg+Par: GI ;                              ! kava
-+Sg+Ill:%{ssestem%} SG_ILL ;               ! kavva
-+Sg+Ill:%{W%}%+%{ssestem%} SG_ILL ;        ! kavasse 
++Sg+Ill:%{S%} SG_ILL ;               ! kavva
++Sg+Ill:%{W%} SG_ILL ;        ! kavasse 
 :%+de N_PL_SUBPARA ;                       ! kavade etc
 +Pl+Par:%+%{sid%}%{i%}%{d%} PL_PAR ;       ! kavasid & kavu ...
 
@@ -396,8 +396,8 @@ LEXICON MERI   ! unstable type (passiivne muuttüüp) lumi, tuli, uni, veri
 +Sg+Nom:i GI ;
 :e N_SG_SUBPARA ;                        ! mere etc
 +Sg+Par:%+d GI ;                         ! merd
-+Sg+Ill:e%{ssestem%} SG_ILL ;            ! merre
-+Sg+Ill:e%{W%}%+%{ssestem%} SG_ILL ;     ! meresse 
++Sg+Ill:e%{S%} SG_ILL ;            ! merre
++Sg+Ill:e%{W%} SG_ILL ;     ! meresse 
 :%+e%+de N_PL_SUBPARA ;                  ! merede etc
 +Pl+Par:e%+sid GI ;                      ! meresid
 
@@ -407,8 +407,8 @@ LEXICON NIMI   ! unstable type (passiivne muuttüüp) suvi, lagi
 +Sg+Nom:i GI ;
 :e%{W%} N_SG_SUBPARA ;                   ! suve etc
 +Sg+Par:e GI ;                           ! suve, lage
-+Sg+Ill:e%{ssestem%} SG_ILL ;            ! nimme
-+Sg+Ill:e%{W%}%+%{ssestem%} SG_ILL ;     ! nimesse 
++Sg+Ill:e%{S%} SG_ILL ;            ! nimme
++Sg+Ill:e%{W%} SG_ILL ;     ! nimesse 
 :%+e%+de N_PL_SUBPARA ;                  ! lagede etc
 +Pl+Par:e%+sid GI ;                      ! lagesid
 
@@ -526,8 +526,7 @@ LEXICON 2C_EXCL_SG_PAR ! =2C, excluding sg partitive
 LEXICON 2C_STRONG ! =2C_EXCL_SG_PAR, excluding N_PL_SUBPARA
 
 : N_SG_SUBPARA ;                           ! redeli, kotka etc
-+Sg+Ill:%+%{s%} SG_ILL ;                ! taskusse or tasku
-!+Sg+Ill:%+sse GI ;                         ! kotkasse
++Sg+Ill: SG_ILL ;                ! taskusse or tasku
 +Pl+Par:%+id GI ;                          ! kotkaid
 %+Use%/Rare:%+i N_VOWEL_PL_SUBPARA ;       ! kotkail etc
 
@@ -598,6 +597,6 @@ LEXICON PL_PAR                       ! for TAUD, PIIM, KOON etc types
 
 LEXICON SG_ILL                       ! for KEEL etc types
 
-%+Use%/Rare:%{s%}%{e%}%{rare%} GI ;  ! less used sg ill form for that word
-:%{s%}%{e%} GI ;                     ! default sg ill form for that word
+%+Use%/Rare:%+%{s%}%{s%}%{e%}%{rare%} GI ;  ! less used sg ill form for that word
+:%+%{s%}%{s%}%{e%} GI ;                     ! default sg ill form for that word
 

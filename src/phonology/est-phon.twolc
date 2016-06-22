@@ -7,6 +7,7 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
 
  %{W%}:0 ! The weak grade trigger never appears on the surface side.
  %{WF%}:0 ! The weak grade for foreign words trigger never appears on the surface side.
+ %{S%}:0  ! Strong stem trigger (for short illatives only) never appears on the surface side.
 
  %+:0   ! The morpheme boundary never appears on the surface side.
 
@@ -52,6 +53,11 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
  P2:b ! In weak grade, P2 is b
  T2:t ! In strong grade, T2 is t
  T2:d ! In weak grade, T2 is d
+
+ G3:g ! In strong grade, G3 is g Riiga
+ G3:0 ! In weak grade, G3 is 0   Riia
+ D3:d ! In strong grade, D3 is d Randu
+ D3:0 ! In weak grade, D3 is 0   Rannu
 
  S1:s ! In strong grade, S1 is s
  S1:0 ! In weak grade, S1 is 0; before stop, S1 is 0
@@ -156,12 +162,10 @@ N2:s   ! laas
  %{idsid%}:s  ! sid   pl par ending esseesid
  %{idsid%}:0  ! id    pl par ending esseid
 
- %{ssestem%}:s  ! s of -sse jõesse; also acts as a flag for telling this stem is sg ill 
- %{ssestem%}:0  !        -0  jõkke; also acts as a flag for telling this stem is sg ill
  %{s%}:s  ! s of -sse jõesse;  
- %{s%}:0  !        -0  jõkke; a
+ %{s%}:0  !        -0  jõkke; 
  %{e%}:e  ! e of -sse jõesse;  
- %{e%}:0  !        -0  jõkke; a
+ %{e%}:0  !        -0  jõkke; 
 
  %{id%}:0   ! trigger / lexicon flag for pl part possible ending (esseesid/esseid)
  %{stemill%}:0 ! trigger / lexicon flag for short sg ill, formed by stem change (jõgi-jõkke)
@@ -250,8 +254,8 @@ S1:0  <=> _ :* %{W%}: ;       ! paas - pae
 
 ! lexical: p a a S1 + {pl.e} {sg.i} {W}
 ! surface: p a 0  0 0   0       e    0
-! lexical: v a r r S1 {stemill} + d e {ssestem}
-! surface: v a r 0  0      0    0 d e     0
+! lexical: v a r r S1 {stemill} {S} + d e + {s} {s} {e}
+! surface: v a r 0  0      0     0  0 d e 0  0   0   0
 
 "Lexically determined weak grade for gbd:jvj, gbdkpts:0"
 
@@ -626,24 +630,14 @@ a:0  <=> :Consonant _ %+: PlSV:stemV [:0]* %{sid%}:0 ;
 ! surface: t ü n g                   a   0  sid     0    FAIL
 
 ! ---------
-! --------- for affix strings sid/0, sse/0
 
-! rules for sid/0
+! rules for affix sid/0
 "sid (1)"
 %{i%}:i        <=>  %{sid%}:s _ %{d%}:d ;
 
 "sid (2)"
 %{d%}:d        <=>  %{sid%}:s %{i%}:i _ ;
 
-! rules for sse/0
-"sse (1)"
-%{s%}:s        <=>  %{ssestem%}:s _ %{e%}:e ;  ! stem change:    toasse, tuppa
-                          %{s%}:s _ %{e%}:e ;  ! no stem change: pingesse, pinge
-                          _ %{s%}:s %{e%}:e ;
-
-"sse (2)"
-%{e%}:e        <=>  %{ssestem%}:s %{s%}:s _ ;
-                          %{s%}:s %{s%}:s _ ;
 ! --------------
 ! 1.2 plural partitive: -sid vs -id
 ! 
@@ -681,109 +675,86 @@ a:0  <=> :Consonant _ %+: PlSV:stemV [:0]* %{sid%}:0 ;
 ! 2. singular illative: -sse vs stem grade strengthening
 !
 ! lagi-laesse/lakke, keel-keelesse/keelde
-! co-play of xxx rules with stem lex info for lagi, nimi, sõda
+! co-play of xxx rules with stem lex info for lagi, nimi, sõda; Riia, Kunda, ...
+
+! rules for affix sse/0
+"sse (1)"
+%{s%}:s        <=>  %{s%}:s _ %{e%}:e ;  ! toasse, tuppa; pingesse, pinge
+                    _ %{s%}:s %{e%}:e ;
+
+"sse (2)"
+%{e%}:e        <=>   %{s%}:s %{s%}:s _ ;
 
 ! if short illative by stem gradation is possible, then it has to be indicated in stem lexicon
-! short sg ill is rare, if the lexicon tag says it is rare;
-! short sg ill is common, if there is no lexicon tag to indicate that it is rare
-! (the first LT comes from the stem lexicon, the second from a continuation class lexicon;
+! (the same applies to exceptional words whose short illative is without stem gradation (põrgu; Kunda) ) 
+! (the first lexical tag (LT) comes from the stem lexicon, the second from a continuation class lexicon;
 ! the second LT determines the lexical form of the output)
-"short sg ill stem gradation needs tag in lexicon (lagi-lakke, nimi-nimme, sõda-sõtta)"
 
-%{ssestem%}:0  <=>  %{stemill%}: LT: [:]* _ :0 :0 LT: ;  ! peende is rare
-                    %{stemill%}: \[LT:]* _ :0 :0 \LT: ;  ! majja is common
-               except
-                     %{W%}: :* _ ;
-
-! lexical: p e e n {stemill} {rare} + d e {ssestem} {rare}
-! surface: p e e n     0        0   0 d e     0        0
-! lexical: m a j 0 a + {pl.u} {stemill} {ssestem}
-! surface: m a j j a 0    0       0         0
-! lexical: m a j 0 a + {pl.u} {stemill} {ssestem}  {rare}
-! surface: m a j j a 0    0       0         0        0        FAIL
-
-
-"-sse sg ill (for words that can have short stem gradation illative) "
-
-%{ssestem%}:s  <=>  %{W%}: [:]* _ :s :e ;  ! 
-
-! lexical: t U5 B1 a + {pl.e} {stemill} {W}     + {ssestem} {rare}
-! surface: t  o   0 a 0    0       0      0      0    sse       0
-! lexical: n i m {stemill} {rare}          e {W} + {ssestem}
-! surface: n i m     0       0             e  0  0    sse  
-
-! how -sse sg ill and usage info lexical tag (LT, usually "rare") are related:
-! (the first LT comes from the stem lexicon, the second from a continuation class lexicon;
-! the second LT determines the lexical form of the output)
 ! -sse sg ill cannot be rare, if the stem lexicon tag says that short form is rare;
 ! -sse sg ill cannot be common, if there is no lexicon tag that would say that short form is rare;
 ! -sse sg ill cannot be rare, if the lexicon contains no tag to indicate that short form exists;
+
 "-sse sg ill usage"
-
-%{ssestem%}:s /<=  %{stemill%}:  LT: [:]* _ :s :e LT: ;  ! -sse cannot be rare
-                   %{stemill%}: \LT: [:]* _ :s :e \LT: ; ! -sse cannot be common
-                Border \[%{stemill%}:]*   _ :s :e LT: ;  ! -sse cannot be rare
-
-! nimesse is common, nimme is rare
-! lexical: n i m 0 {stemill} {rare} {W} e {ssestem} {rare}
-! surface: n i m m     0        0    0  e     0       0
-! lexical: n i m   {stemill} {rare} {W} e + {ssestem}
-! surface: n i m       0        0    0  e 0    sse  
-! merre is common, meresse is rare
-! lexical: m e r 0 {stemill} e {ssestem} WordEnd
-! surface: m e r r    0      e     0 
-! lexical: m e r   {stemill} e {W} + {ssestem} {rare}
-! surface: m e r       0     e  0  0    sse       0  
-! lexical: m e r 0 {stemill} e + {ssestem} {rare}
-! surface: m e r r     0     e 0     0        0       FAIL
-! lexical: m e r   {stemill} e {W} + {ssestem} WordEnd
-! surface: m e r       0     e  0  0    sse               FAIL 
-! loppa is impossible, lobasse is common
-! lexical: l o b a                       {W} +     {ssestem} WordEnd
-! surface: l o b a                        0  0        sse
-! lexical: l o b a                       {W} +     {ssestem} {rare}
-! surface: l o b a                        0  0        sse      0       FAIL
-
-! -sse usage for words where stem does not change: taskusse, tasku; Elvasse, Elva
-! like in %{ssestem%}:s /<=
-"-sse sg ill usage 2"
 
 %{s%}:s       /<=  %{stemill%}:  LT: [:]* _ :s :e LT: ;  ! -sse cannot be rare
                    %{stemill%}: \LT: [:]* _ :s :e \LT: ; ! -sse cannot be common
-                Border \[%{stemill%}:]*   _ :s :e LT: ;  ! -sse cannot be rare
+                Border \[%{stemill%}:]*   _ :s :e LT: ;  ! there is no -0, thus -sse cannot be rare
+                              %{S%}: [:]* _ :s :e     ;  ! (extra) strong grade -sse is not even possible
 
-! like in %{ssestem%}:s /<=
-"-sse sg ill usage 3"
+! short sg ill is rare, if the lexicon tag says it is rare;
+! short sg ill is common, if there is no lexicon tag to indicate that it is rare
+! note that {stemill} has to be indicated in lexicon; and weak grade is impossible
+"-0 sg ill usage"
 
-%{s%}:0       /<=  %{stemill%}:  LT: [:]* _ %{s%}:0 %{e%}:0 \LT: ;  ! -0 cannot be rare
-                   %{stemill%}: \LT: [:]* _ %{s%}:0 %{e%}:0 LT: ; ! -0 cannot be common
-                Border \[%{stemill%}:]*   _ %{s%}:0 %{e%}:0  ;  ! -0 is not even possible
+%{s%}:0       /<=  %{stemill%}:  LT: [:]* _ %{s%}:0 %{e%}:0 \LT: ; ! -0 cannot be common 
+                   %{stemill%}: \LT: [:]* _ %{s%}:0 %{e%}:0 LT: ;  ! -0 cannot be rare
+                Border \[%{stemill%}:]*   _ %{s%}:0 %{e%}:0  ;     ! -0 is not even possible
+                              %{W%}: [:]* _ %{s%}:0 %{e%}:0  ;     ! -0 is not even possible
 
+! majja is common, majasse is rare
+! lexical: m a j 0 a + {pl.u} {stemill} {S} + {s} {s} {e}
+! surface: m a j j a 0    0       0      0  0  0   0   0
+! lexical: m a j   a + {pl.u} {stemill} {W} + {s} {s} {e} {rare}
+! surface: m a j   a 0    0       0      0  0  s   s   s    0
 
-! the rule is hard-wired to {ssestem}:0 
-"short ill stem generation: consonant doubling"
+! nimesse is common, nimme is rare
+! lexical: n i m 0 {stemill} {rare} e {S} + {s} {s} {e} {rare} 
+! surface: n i m m     0        0   e  0  0  0   0   0    0
+! lexical: n i m   {stemill} {rare} e {W} + {s} {s} {e}
+! surface: n i m       0        0   e  0  0  s   s   e  
 
-0:Cy  <=>  \[ :Vowel] :Vowel Cx:Cy _ [ :0]* :Vowel [ :0]* %{ssestem%}:0 ; ! majja
+! tuppa is common, toasse is rare
+! lexical: t U5 B1 0 a + {pl.e} {stemill} {S} + {s} {s} {e}
+! surface: t  u  p p a 0    0       0      0  0  0   0   0 
+! lexical: t U5 B1   a + {pl.e} {stemill} {W} + {s} {s} {e} {rare}
+! surface: t  o  0   a 0    0       0      0  0  s   s   e     0
+
+! loppa is impossible, lobasse is common
+! lexical: l o b a                       {W} + {s} {s} {e}
+! surface: l o b a                        0  0  s   s   e
+
+! the rule is hard-wired to %{S%}: 
+"short illative strong stem generation: consonant doubling"
+
+0:Cy  <=>  \[ :Vowel] :Vowel Cx:Cy _ [ :0]* :Vowel [ :0]* %{S%}: ; ! majja
      where Cx in ( l m M1 n r v j h s g b d k p t G1 B1 B2 D1 D2 ) 
            Cy in ( l m  m n r v j h s k p t k p t  k  p  p  t  t )
      matched ;
 
-! lexical: t U5 B1 0 a + {pl.e} {stemill} {ssestem}
-! surface: t  u  p p a 0    0       0         0
+! lexical: t U5 B1 0 a + {pl.e} {stemill} {S} + {s} {s} {e}
+! surface: t  u  p p a 0    0       0      0  0  0   0   0 
 
 ! short illative stem gradation
-! the rule is hard-wired to {ssestem}:0
-"short illative weak stop to hard "
+! the rule is hard-wired to %{S%}: 
+"short illative strong stem generation: stop to stronger stop "
 
-Cx:Cy  <=> :Vowel  _ ( :Cy) [ :0]* :Vowel [ :0]* %{ssestem%}:0 ;
-     except
-             _ :* %{W%}:  ;
-     where Cx in ( g b d G1 B1 B2 D1 D2 ) 
-           Cy in ( k p t  k  p  p  t  t )
+Cx:Cy  <=> :Vowel \[:Vowel]* _ ( :Cy) \[:Vowel]* :Vowel [ :0]* %{S%}: ;
+     where Cx in ( g b d G1 B1 B2 D1 D2 G3 D3) 
+           Cy in ( k p t  k  p  p  t  t  g  d)
      matched ;
 
-! lexical: l a G1 0 {stemill} e {ssestem}
-! surface: l a  k k     0     e     0
+! lexical: l a G1 0 {stemill} e  {S} + {s} {s} {e}
+! surface: l a  k k     0     e   0  0  0   0   0
 
 !----------------
 
