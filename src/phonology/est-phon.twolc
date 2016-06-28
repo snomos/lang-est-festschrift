@@ -8,6 +8,7 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
  %{W%}:0 ! The weak grade trigger never appears on the surface side.
  %{WF%}:0 ! The weak grade for foreign words trigger never appears on the surface side.
  %{S%}:0  ! Strong stem trigger (for short illatives only) never appears on the surface side.
+          ! (necessary for words with no stem gradation, having only short illative in a strong grade, e.g. Riia - Riiga, Rannu - Randu)
 
  %+:0   ! The morpheme boundary never appears on the surface side.
 
@@ -197,8 +198,10 @@ stop = g b d k p t ;
 ! sonorous consonants that have a special place in Est morph/phon
 lmnr = l m n r ;
 
+sonor = Vowel lmnr ;
+
 ! voiceless consonants  
-voiceless = f s h stop ; 
+voiceless = f s š h stop ; 
 
 ! possible stem- or ending vowels
 stemV = a e i u ;
@@ -224,17 +227,17 @@ Border = [ .#. | # ];  ! word border
 WordEnd = [ (%+: g: i) Border ];     ! final +gi is optional for almost any word
 
 Rules 
-
+ 
 ! ----- k p t s gradation
 
 ! different contexts for declinables and verbs
 ! (because declinables may have additional info in the stem lexicon entries)
+! left context has to be sonorous because of orthographic conventions:
+! gbd are written as kpt after voiceless consonants
 "Weak grade for productive kpt:gbd"
 
-Cx:Cy  <=> _ (%+:0) (SV:0)  :stemV %{W%}: ;
-           _ ([l | r | j]) stemV %{W%}: ;
-     except 
-           [voiceless | v | c] _  ;  ! orthographical convention
+Cx:Cy  <=> :sonor _ (%+:0) (SV:0)  :stemV %{W%}: ;
+           :sonor _ ([l | r | j]) stemV %{W%}: ;
      where Cx in ( p t k ) 
            Cy in ( b d g )
      matched ;
@@ -248,6 +251,27 @@ Cx:Cy  <=> _ (%+:0) (SV:0)  :stemV %{W%}: ;
 ! lexical: k õ p l a {W} + t a
 ! surface: k õ b l a  0  0 t a
 
+"Weak grade for productive kk pp tt šš ff : k p t š f"
+
+Cx:0 <=>  Cx _ (%+:0) (SV:0) :stemV %{W%}:  ;  ! sepa, lepin
+     where Cx in ( p t k š f) ;
+
+! lexical: k e p p + {pl.e} {sg.i} {W}
+! surface: k e p 0 0    0      i    0 
+! lexical: s e p p + {pl.i} {sg.a} {W}
+! surface: s e p 0 0    0      a    0 
+! lexical: l e p p i {W} + n
+! surface: l e p 0 i  0  0 n 
+
+"Weak grade for productive ss:s kauss, jamss"
+
+s:0 <=> :Vowel :sonor :s _ (%+:0) (SV:0) :stemV %{W%}: ;
+
+! lexical: k a u s s + {pl.e} {sg.i} {W}
+! surface: k a u s 0 0    0      i    0
+! lexical: m a r s s i {W} + n
+! surface: m a r s 0 i  0  0 n
+
 "Lexically determined weak grade for s:0"
 
 S1:0  <=> _ :* %{W%}: ;       ! paas - pae
@@ -260,7 +284,7 @@ S1:0  <=> _ :* %{W%}: ;       ! paas - pae
 
 "Lexically determined weak grade for gbd:jvj, gbdkpts:0"
 
-Cx:Cy  <=> _ [ : ]* %{W%}: ;
+Cx:Cy  <=> _ :* %{W%}: ;
            _ s [:0]+ :t ;         ! uks, laps -> ust, last
      where Cx in (G1 B1 D1 K1 P1 T1 G2 B2 D2) 
            Cy in ( 0  0  0  0  0  0  j  v  j  )
@@ -275,7 +299,7 @@ Cx:Cy  <=> _ [ : ]* %{W%}: ;
 
 "Lexically determined weak grade for kpt:gbd; sg nom for ader, lubi"
 
-Cx:Cy  <=>  _ [ : ]* %{W%}: ;
+Cx:Cy  <=>  _ :* %{W%}: ;
             _ I4:i [:0]* WordEnd ; ! lubi sg nom is not {W}; has ij:i
             _ E2:e [l | r] [:0]* WordEnd ;    ! ader sg nom is not {W}; has e2:e
       where Cx in ( K2 P2 T2 ) 
@@ -290,31 +314,6 @@ Cx:Cy  <=>  _ [ : ]* %{W%}: ;
 ! surface: a  d  e r 0    0     0
 ! lexical: l u P2 I4
 ! surface: l u  b  i 
-
-"Weak grade for productive kk pp tt šš ff : k p t š f"
-
-Cx:0 <=>  Cx _ [:0]* :Vowel [:0]* %{W%}:  ;  ! sepa, lepin
-     where Cx in ( p t k š f) ;
-
-! lexical: k e p p + {pl.e} {sg.i} {W}
-! surface: k e p 0 0    0      i    0 
-! lexical: s e p p + {pl.i} {sg.a} {W}
-! surface: s e p 0 0    0      a    0 
-! lexical: l e p p i {W} + n
-! surface: l e p 0 i  0  0 n 
-
-! different contexts for declinables and verbs
-! (because declinables may have additional info in the stem lexicon entries)
-"Weak grade for productive ss:s kauss, jamss"
-
-s:0 <=> :Vowel [ :Vowel | :lmnr ] :s _ [:0]* %{W%}: [:0]* :V ;
-        :Vowel [ :Vowel | :lmnr ] :s _ [:0]* :stemV [:0]* %{W%}: ;
-
-! lexical: k a u s s + {pl.e} {sg.i} {W}
-! surface: k a u s 0 0    0      i    0
-! lexical: m a r s s i {W} + n
-! surface: m a r s 0 i  0  0 n
-
 
 !----------------
 
@@ -360,8 +359,8 @@ Vx:Vy  <=>  _ [ :0 ]+ :Vowel ;
 Vx:õ  <=> Vx: _ [:0]+ :i ; 
      where Vx in ( Ö6 O6 ) ; 
 
-! lexical: l O6 + i 
-! surface: l  õ 0 i 
+! lexical: l O6 O6 + i 
+! surface: l  0  õ 0 i 
 
 "Verb vowel ö o to 0"
 
@@ -376,8 +375,8 @@ Vx:Vy  <=>  Vx: _  [:0]+ [:a | :e] ;
            Vy in ( ü  u )
      matched ;
 
-! lexical: l O6 {W} + a k s e 
-! surface: l uu  0  0 a k s e 
+! lexical: l O6 O6 {W} + a k s e 
+! surface: l u   u  0  0 a k s e 
 
 ! --------
 "Long vowel shortening in vowel context"
@@ -386,7 +385,8 @@ Vx:0 <=>      :Vx _ [:0]+ :stemV ;            ! sae, puid
            :Vowel _ [:0]+ :Vx              ;  ! tõu
       except
               [:i] _ [:0]+ :stemV        ;  ! siig - siia, hiid - hiiu
-         [:u | :ü] _ [:0]+ [:a | :e] ;  ! luua, huuata, hüüu
+         [:u | :ü] _ [:0]+ [:a | :e] ;      ! luua, huuata, müües
+              [:ü] _ [:0]+ [:u] ;           !  hüüu
       where Vx in ( Vowel ) ;
 
 ! lexical: s a a G1 + {pl.e} {sg.i} {W}
@@ -526,7 +526,7 @@ I4:i  <=> _ [ :0 ]* WordEnd ;
 ! lexical: a h I4 + {pl.e} {rare}
 ! surface: a h  i  0    0      0
 ! lexical: a h I4 + {pl.e} {rare} {sg.u} {W}
-! surface: a h  j  0   0       0      u    0
+! surface: a h j  0   0       0      u    0
 
 ! ----------    
 ! Rules for selecting 
@@ -543,7 +543,7 @@ I4:i  <=> _ [ :0 ]* WordEnd ;
 
 !! 1.1. plural partitive: -sid vs stem vowel change
 !
-! PIIM, KOON, EIT;  VEIMED, KIHLAD, VURRUD + PL_PAR
+! PIIM, KOON, EIT + PL_PAR
 ! pl part kingi/kingasid, koone/koonusid etc
 ! co-play of 2 rules with stem lex and contin. lex info for plural partitive:
 ! 1. generate correct plural forms
@@ -558,11 +558,6 @@ I4:i  <=> _ [ :0 ]* WordEnd ;
 
 Vx:0  <=>  PlSV:stemV [:0]* _ [:0]* %{sid%}:0 ;
      where Vx in ( %{sg.a%} %{sg.e%} %{sg.u%} %{sg.i%} ); 
-
-! lexical: p u u d + {pl.i} {hyp} {sg.a} + {sid} 
-! surface: p u u d 0    0     0      a   0  sid   
-! lexical: k a u p + {pl.u}       {sg.a} + {sid}  
-! surface: k a u p 0    0            a   0  sid 
 
 "Choose pl stem vowel for pl par (sg stem vowel is 0) "
 
@@ -749,13 +744,17 @@ a:0  <=> :Consonant _ %+: PlSV:stemV [:0]* %{sid%}:0 ;
 ! the rule is hard-wired to %{S%}: 
 "short illative strong stem generation: stop to stronger stop "
 
-Cx:Cy  <=> :Vowel \[:Vowel]* _ ( :Cy) \[:Vowel]* :Vowel [ :0]* %{S%}: ;
+Cx:Cy  <=> :sonor [ :0]* _ ( :Cy | j ) [ :0]* :Vowel [ :0]* %{S%}: ;
      where Cx in ( g b d G1 B1 B2 D1 D2 G3 D3) 
            Cy in ( k p t  k  p  p  t  t  g  d)
      matched ;
 
 ! lexical: l a G1 0 {stemill} e  {S} + {s} {s} {e}
 ! surface: l a  k k     0     e   0  0  0   0   0
+! lexical: A b j a {stemill} {S} + {s} {s} {e}
+! surface: A p j a     0      0  0  0   0   0
+! lexical: R a n n D3 u {stemill} {S} + {s} {s} {e}
+! surface: R a n 0  d u     0      0  0  0   0   0
 
 !----------------
 

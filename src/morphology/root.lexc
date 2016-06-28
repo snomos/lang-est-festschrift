@@ -581,6 +581,7 @@ muuseum MUUSEUM ;
 ! VVS type 20
 meri:mer%{stemill%} MERI ;
 lumi:luM1%{stemill%} MERI ;
+! mõni:mõnD3%{stemill%} MERI ; mõnda ???
 
 ! VVS type 20, 21
 nimi:nim%{stemill%}%{rare%} NIMI ;
@@ -630,6 +631,8 @@ veimed:veim%+%{pl.i%}%{rare%} EIT ;
 kõrb:kõrb KÕRB ;
 kihlad:kihl PIIM ;
 vurrud:vurr%+%{pl.e%} KOON ;
+latv:laT2v PIIM ;
+hüüd:hüüD1 KOON;
 
 ! VVS type 23
 kael:kael%+%{pl.u%} KAEL ;
@@ -644,6 +647,7 @@ põli+N+Sg+Nom%+Use%/Rare:põlv # ;
 ! põli = põlv...
 ader:aT2E2r%+%{pl.u%}%{rare%} PIIM ;
 puder:puT2E2r%+%{pl.e%}%{rare%} KOON ;
+soe:sooE4 PIIM ;
 
 ! VVS type 25
 elanik ELANIK ;
