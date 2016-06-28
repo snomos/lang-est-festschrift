@@ -25,10 +25,11 @@ GT_LEXC_ROOT=root.lexc
 GT_LEXC_SRCS_L1_L2=\
 			 stems/abbreviations.lexc \
 			 stems/acronyms.lexc \
-			 stems/punctuation.lexc \
 			 affixes/declinations.lexc \
 			 affixes/verbs.lexc \
 			 affixes/gi.lexc
+
+#			 stems/punctuation.lexc 
 
 # If you are building an error-detecting L2 analyser, specify the lexc files
 # that differ between the regular L1 and the L2 analysers below, in L1 and
@@ -46,18 +47,19 @@ GT_LEXC_L2_SRCS=\
 			$(L2)
 
 # Set this to the names of all generated lexc files, if any
-GENERATED_LEXC_SRCS=\
-			 stems/adjectives.lexc \
-			 stems/adpositions.lexc \
-			 stems/adverbs.lexc \
-			 stems/conjunctions.lexc \
-			 stems/interjections.lexc \
-			 stems/nouns.lexc \
-			 stems/particles.lexc \
-			 stems/pronouns.lexc \
-			 stems/propernouns.lexc \
-			 stems/quantifiers.lexc \
-			 stems/verbs.lexc 
+#GENERATED_LEXC_SRCS=\
+#			 stems/adjectives.lexc \
+#			 stems/adpositions.lexc \
+#			 stems/adverbs.lexc \
+#			 stems/conjunctions.lexc \
+#			 stems/interjections.lexc \
+#			 stems/nouns.lexc \
+#			 stems/particles.lexc \
+#			 stems/pronouns.lexc \
+#			 stems/propernouns.lexc \
+#			 stems/quantifiers.lexc \
+#			 stems/verbs.lexc 
+#
 
 # Set this to the names of all source xml files, if any
 GT_XML_SRCS=\

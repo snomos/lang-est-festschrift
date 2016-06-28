@@ -31,3 +31,6 @@ K   acrotag ; ! Kelvin, Latin letter K
 LEXICON acrotag
 +N+ACR: ACRONDELIMITER ;
 
+LEXICON ACRONDELIMITER
+#;
+
