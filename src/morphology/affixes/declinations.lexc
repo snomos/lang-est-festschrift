@@ -99,6 +99,12 @@ LEXICON PARAS      ! only paras; like LOHAKAS
 +Sg+Nom:s GI ;                         ! paras
 :ja 2C ;                               ! paraja etc
 
+LEXICON ROHI   ! only rohi; almost like KOON, only Sg Nom is exceptional
+
++Sg+Nom:i%{W%}%{no.apo%} GI ;
+:%{sg.u%} 1C ;
+
+
 LEXICON PEEN    ! only peen, tüün; almost like KEEL, but some forms are more regular
 
 +Sg+Nom: GI ;                                  ! peen

@@ -348,7 +348,7 @@ E2   ! e 0  laulev laulva
 I2   ! i 0  õilis õilsa
 U2   ! u 0  hirmus hirmsa
 
-I4  ! i j  ahi ahju
+J1   ! i j ahi ahju
 
 M1   ! m n  lumi lund
 
@@ -639,15 +639,15 @@ kael:kael%+%{pl.u%} KAEL ;
 poiss:poiss%+%{pl.e%} POISS ;
 
 ! VVS type 24
-ahi:ahI4%+%{pl.e%}%{rare%} KOON ;
-! rohi:rohT1%{if%}%+%{pl.e%}%{rare%} KOON ;
-lubi:luP2I4 PIIM ;
+ahi:ahJ1%+%{pl.e%}%{rare%} KOON ;
+rohi:rohT1%+%{pl.e%}%{rare%} ROHI ;
+lubi:luP2J1 PIIM ;
 põlv:põlv%+%{pl.i%} EIT ;
 põli+N+Sg+Nom%+Use%/Rare:põlv # ;
 ! põli = põlv...
 ader:aT2E2r%+%{pl.u%}%{rare%} PIIM ;
 puder:puT2E2r%+%{pl.e%}%{rare%} KOON ;
-soe:sooE4 PIIM ;
+soe:sooE4+%{pl.e%} PIIM ;
 
 ! VVS type 25
 elanik ELANIK ;

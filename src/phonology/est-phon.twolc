@@ -80,7 +80,8 @@ O6:0
 
 E3:e   ! aed aia
 E3:i
-E4:e   ! aeg aja 
+
+E4:e   ! aeg aja; soe sooja
 E4:j
 
 E1:e    ! soolase, raudset
@@ -95,8 +96,8 @@ I2:0   ! õil sa
 U2:u   ! hirmus
 U2:0   ! hirm sa
 
-I4:i   ! ahi
-I4:j   ! ahju
+J1:i   ! ahi
+J1:j   ! ahju
 
 M1:m   ! lumi
 M1:n   ! lun d
@@ -300,7 +301,7 @@ Cx:Cy  <=> _ :* %{W%}: ;
 "Lexically determined weak grade for kpt:gbd; sg nom for ader, lubi"
 
 Cx:Cy  <=>  _ :* %{W%}: ;
-            _ I4:i [:0]* WordEnd ; ! lubi sg nom is not {W}; has ij:i
+            _ J1:i [:0]* WordEnd ; ! lubi sg nom is not {W}; has ij:i
             _ E2:e [l | r] [:0]* WordEnd ;    ! ader sg nom is not {W}; has e2:e
       where Cx in ( K2 P2 T2 ) 
             Cy in (  g  b  d )
@@ -312,19 +313,35 @@ Cx:Cy  <=>  _ :* %{W%}: ;
 ! surface: e r  k  0 s 0 a
 ! lexical: a T2 E2 r + {pl.u} {rare}
 ! surface: a  d  e r 0    0     0
-! lexical: l u P2 I4
+! lexical: l u P2 J1
 ! surface: l u  b  i 
 
 !----------------
 
-! aed-aia, aeg-aja
-"Vowel change in weak grade: aed, aeg"
+! the only word where this is used: aed-aia
+"aed aia"
 
-[E3:i | E4:j] <=> _ WS:0 ;
+E3:i  <=> [:Vowel - :i] [:0]* _ [:0]* [:Vowel - :i] ;
 
 ! lexical: a E3 D1 
 ! surface: a  e  d
-! surface: a  i  0
+! lexical: a E3 D1 a
+! surface: a  i  0 a
+
+
+"e pronounced as j between vowels"
+
+E4:j  <=> [:Vowel - :i] [:0]* _ [:0]* [:Vowel - :i] ;
+
+! lexical: a E4 G1 
+! surface: a  e  g
+! lexical: a E4 G1 a
+! surface: a  j  0 a
+! lexical: s o o E4  
+! surface: s o 0 e 
+! lexical: s o o E4 a 
+! surface: s o o j  a 
+
 
 ! vowel lowering special case in the current description:
 ! the vowels involved are stem vowels; the rule applies only to a small set
@@ -382,7 +399,8 @@ Vx:Vy  <=>  Vx: _  [:0]+ [:a | :e] ;
 "Long vowel shortening in vowel context"
 
 Vx:0 <=>      :Vx _ [:0]+ :stemV ;            ! sae, puid
-           :Vowel _ [:0]+ :Vx              ;  ! tõu
+           :Vowel _ [:0]+ :Vx ;               ! tõu
+              :Vx _ E4:e ;                    ! soe
       except
               [:i] _ [:0]+ :stemV        ;  ! siig - siia, hiid - hiiu
          [:u | :ü] _ [:0]+ [:a | :e] ;      ! luua, huuata, müües
@@ -399,6 +417,8 @@ Vx:0 <=>      :Vx _ [:0]+ :stemV ;            ! sae, puid
 ! surface: n ä 0  0 u  0  0 b
 ! lexical: h u u G1 a {W} + n u d      NB! no shortening !
 ! surface: h u u  0 a  0  0 n u d
+! lexical: s o o E4 
+! surface: s o 0 e
 
 ! ---------
 ! Orthography: consonant (cluster) writing conventions
@@ -511,21 +531,20 @@ V0:0  <=>                           _ [ :0 ]* [:Consonant - :stop] [ :0 ]* :stem
 ! rules that operate on a small set of different words
 
 ! a general rule, but has to be encoded with M1 to allow for komtuur, EMT etc
-"m to n before t"
+"m pronounced as n before t"
 
 M1:n  <=> _ [:0]* [:t | :d ] ;
 
 ! lexical: l e e M1 {stemill} {rare} + t
 ! surface: l e e  n      0        0   0 t 
 
-! final i of some words is substituted by j in other forms; 
-"choose i for lemma in sg nom (otherwise j)"
+"j appears as i in word final position"
 
-I4:i  <=> _ [ :0 ]* WordEnd ;
+J1:i  <=> :Consonant _ [ :0 ]* WordEnd ;
 
-! lexical: a h I4 + {pl.e} {rare}
+! lexical: a h J1 + {pl.e} {rare}
 ! surface: a h  i  0    0      0
-! lexical: a h I4 + {pl.e} {rare} {sg.u} {W}
+! lexical: a h J1 + {pl.e} {rare} {sg.u} {W}
 ! surface: a h j  0   0       0      u    0
 
 ! ----------    

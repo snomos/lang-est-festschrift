@@ -165,7 +165,7 @@ s/u\([GBD]1[Uae]\)/U5\1/
 /nina .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
 /saba .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
 /kena .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
-/kõva .*17^I^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
+/kõva .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
 /paha .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
 /vaga .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
 /ala .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
@@ -184,40 +184,537 @@ s/^\([^ ]*t\)ugi [^@]*21[^@]*@NIMI.*$/& \1ugi:\1U5G1/
 /@.*:/!s/^\([^ ]*\)bi [^@]*21[^@]*@NIMI.*$/& \1gi:\1B2%{stemill%}/
 
 
-/@.*:/!s/^\([^ ]*\) \([^ ]*\)\([lmnr]\)ga \([^ ]*\)\3\3a [^@]*22[^@]*@PIIM/& \1:\2\3\3G1/
-/@.*:/!s/^\([^ ]*\) \([^ ]*\)\([lmnr]\)ba \([^ ]*\)\3\3a [^@]*22[^@]*@PIIM/& \1:\2\3\3B1/
-/@.*:/!s/^\([^ ]*\) \([^ ]*\)\([lmnr]\)da \([^ ]*\)\3\3a [^@]*22[^@]*@PIIM/& \1:\2\3\3D1/
+/@.*:/!s/^\([^ ]*\) \([^ ]*\)\([lmnr]\)g[aeiu] \([^ ]*\)\3\3[aeiu] [^@]*22[^@]*@.*$/& \1:\2\3\3G1/
+/@.*:/!s/^\([^ ]*\) \([^ ]*\)\([lmnr]\)b[aeiu] \([^ ]*\)\3\3[aeiu] [^@]*22[^@]*@.*$/& \1:\2\3\3B1/
+/@.*:/!s/^\([^ ]*\) \([^ ]*\)\([lmnr]\)\]*d[aeiu] \([^ ]*\)\3\]*\3[aeiu] [^@]*22[^@]*@.*$/& \1:\2\3\3D1/
 
-/@.*:/!s/^\([^ ]*\) \([^ ]*\)\(.\)ga \([^ ]*\)\3a [^@]*22[^@]*@PIIM/& \1:\2\3G1/
-/@.*:/!s/^\([^ ]*\) \([^ ]*\)\(.\)ba \([^ ]*\)\3a [^@]*22[^@]*@PIIM/& \1:\2\3B1/
-/@.*:/!s/^\([^ ]*\) \([^ ]*\)\(.\)da \([^ ]*\)\3a [^@]*22[^@]*@PIIM/& \1:\2\3D1/
+/@.*:/!s/^\([^ ]*\) \([^ ]*\)\(.\)g[aeiu] \([^ ]*\)\3[aeiu] [^@]*22[^@]*@.*$/& \1:\2\3G1/
+/@.*:/!s/^\([^ ]*\) \([^ ]*\)\(.\)b[aeiu] \([^ ]*\)\3[aeiu] [^@]*22[^@]*@.*$/& \1:\2\3B1/
+/@.*:/!s/^\([^ ]*\) \([^ ]*\)\(.\)d[aeiu] \([^ ]*\)\3[aeiu] [^@]*22[^@]*@.*$/& \1:\2\3D1/
 
-/@.*:/!s/^\([^ ]*\) \([^ ]*\)\([sh]\)ka \([^ ]*\)\3a [^@]*22[^@]*@PIIM/& \1:\2\3K1/
-/@.*:/!s/^\([^ ]*\) \([^ ]*\)\([sh]\)pa \([^ ]*\)\3a [^@]*22[^@]*@PIIM/& \1:\2\3P1/
-/@.*:/!s/^\([^ ]*\) \([^ ]*\)\([sh]\)ta \([^ ]*\)\3a [^@]*22[^@]*@PIIM/& \1:\2\3T1/
+/@.*:/!s/^\([^ ]*\) \([^ ]*\)\([sh]\)k[aeiu] \([^ ]*\)\3[aeiu] [^@]*22[^@]*@.*$/& \1:\2\3K1/
+/@.*:/!s/^\([^ ]*\) \([^ ]*\)\([sh]\)p[aeiu] \([^ ]*\)\3[aeiu] [^@]*22[^@]*@.*$/& \1:\2\3P1/
+/@.*:/!s/^\([^ ]*\) \([^ ]*\)\([sh]\)t[aeiu] \([^ ]*\)\3[aeiu] [^@]*22[^@]*@.*$/& \1:\2\3T1/
 
-/@.*:/!s/^\([^ ]*\) \([^ ]*\)\([ao]\)ega \([^ ]*\)\3ja [^@]*22[^@]*@PIIM/& \1:\2\3E4G2/
-/@.*:/!s/^\([^ ]*\) \([^ ]*\)\([ao]\)eda \([^ ]*\)\3ia [^@]*22[^@]*@PIIM/& \1:\2\3E3D1/
+/@.*:/!s/^\([^ ]*\) \([^ ]*\)\([ao]\)eg[aeiu] \([^ ]*\)\3j[aeiu] [^@]*22[^@]*@.*$/& \1:\2\3E4G2/
+/@.*:/!s/^\([^ ]*\) \([^ ]*\)\([ao]\)ed[aeiu] \([^ ]*\)\3i[aeiu] [^@]*22[^@]*@.*$/& \1:\2\3E3D1/
 
-/@.*:/!s/^\([^ ]*\) \([^ ]*\)\(.\)tva \([^ ]*\)dva [^@]*22[^@]*@PIIM/& \1:\2\3T2v/
+/@.*:/!s/^\([^ ]*\) \([^ ]*\)\(.\)tv[aeiu] \([^ ]*\)dv[aeiu] [^@]*22[^@]*@.*$/& \1:\2\3T2v/
 
-/@.*:/!s/^\([^ ]*\) \([^ ]*\)\(.\)ga \([^ ]*\)\3ja [^@]*22[^@]*@PIIM/& \1:\2\3G2/
-/@.*:/!s/^\([^ ]*\) \([^ ]*\)\(.\)ba \([^ ]*\)\3va [^@]*22[^@]*@PIIM/& \1:\2\3B2/
-/@.*:/!s/^\([^ ]*\) \([^ ]*\)\(.\)da \([^ ]*\)\3ja [^@]*22[^@]*@PIIM/& \1:\2\3D2/
+/@.*:/!s/^\([^ ]*\) \([^ ]*\)\(.\)g[aeiu] \([^ ]*\)\3j[aeiu] [^@]*22[^@]*@.*$/& \1:\2\3G2/
+/@.*:/!s/^\([^ ]*\) \([^ ]*\)\(.\)b[aeiu] \([^ ]*\)\3v[aeiu] [^@]*22[^@]*@.*$/& \1:\2\3B2/
+/@.*:/!s/^\([^ ]*\) \([^ ]*\)\(.\)d[aeiu] \([^ ]*\)\3j[aeiu] [^@]*22[^@]*@.*$/& \1:\2\3D2/
 
-/@.*:/!s/^\([^ ]*\) \([^ ]*\)\(ss\)a \([^ ]*\)sa [^@]*22[^@]*@PIIM/& \1:\1/
-/@.*:/!s/^\([^ ]*\) \([^ ]*\)\([kpt]\)a \([^ ]*\)[gbdkpt]a [^@]*22[^@]*@PIIM/& \1:\1/
-/@.*:/!s/^\([^ ]*\) \([^ ]*\)\(..\)a \([^ ]*\)\3a [^@]*22[^@]*@PIIM/& \1:\1/
+/@.*:/!s/^\([^ ]*\) \([^ ]*\)\(ss\)[aeiu] \([^ ]*\)s[aeiu] [^@]*22[^@]*@.*$/& \1:\1/
+/@.*:/!s/^\([^ ]*\) \([^ ]*\)\(šš\)[aeiu] \([^ ]*\)š[aeiu] [^@]*22[^@]*@.*$/& \1:\1/
+/@.*:/!s/^\([^ ]*\) \([^ ]*\)\(ff\)[aeiu] \([^ ]*\)f[aeiu] [^@]*22[^@]*@.*$/& \1:\1/
+/@.*:/!s/^\([^ ]*\) \([^ ]*\)\([kpt]\)\]*[aeiu] \([^ ]*\)[gbdkpt]\]*[aeiu] [^@]*22[^@]*@.*$/& \1:\1/
+/@.*:/!s/^\([^ ]*\) \([^ ]*\)\(..\)[aeiu] \([^ ]*\)\3[aeiu] [^@]*22[^@]*@.*$/& \1:\1/
 
-/@.*:/!s/^\([^ ]*i\) \([^ ]*\)\(.\)kja \([^ ]*\)\3gja [^@]*24[^@]*@PIIM/& \1:\2\3K2I4/
-/@.*:/!s/^\([^ ]*i\) \([^ ]*\)\(.\)pja \([^ ]*\)\3bja [^@]*24[^@]*@PIIM/& \1:\2\3P2I4/
-/@.*:/!s/^\([^ ]*i\) \([^ ]*\)\(.\)t\]*ja \([^ ]*\)\3d\]*ja [^@]*24[^@]*@PIIM/& \1:\2\3T2I4/
+/@.*:/!s/^\([^ ]*i\) \([^ ]*\)\(.\)kj[aeiu] \([^ ]*\)\3gj[aeiu] [^@]*24[^@]*@.*$/& \1:\2\3K2J1/
+/@.*:/!s/^\([^ ]*i\) \([^ ]*\)\(.\)pj[aeiu] \([^ ]*\)\3bj[aeiu] [^@]*24[^@]*@.*$/& \1:\2\3P2J1/
+/@.*:/!s/^\([^ ]*i\) \([^ ]*\)\(.\)t\]*j[aeiu] \([^ ]*\)\3d\]*j[aeiu] [^@]*24[^@]*@.*$/& \1:\2\3T2J1/
 
-/@.*:/!s/^\([^ ]*i\) \([^ ]*\)\(.\)ja \([^ ]*\)\3ja [^@]*24[^@]*@PIIM/& \1:\2\3I4/
+/@.*:/!s/^\([^ ]*i\) \([^ ]*\)\(.\)j[aeiu]\[DE \([^ ]*\)\3j[aeiu] [^@]*24[^@]*@.*$/& \1:\2\3J1/
+/@.*:/!s/^\([^ ]*i\) \([^ ]*\)\(.\)j[aeiu] \([^ ]*\)\3j[aeiu] [^@]*24[^@]*@.*$/& \1:\2\3J1/
+/@.*:/!s/^\([^ ]*e\) \([^ ]*\)\(.\)j[aeiu] \([^ ]*\)\3j[aeiu] [^@]*24[^@]*@.*$/& \1:\2\3E4/
 
-/@.*:/!s/^\([^ ]*e[lr]\) \([^ ]*\)k\([lr]\)a \([^ ]*\)g\3a [^@]*24[^@]*@PIIM/& \1:\2K2E2\3/
-/@.*:/!s/^\([^ ]*e[lr]\) \([^ ]*\)p\([lr]\)a \([^ ]*\)b\3a [^@]*24[^@]*@PIIM/& \1:\2P2E2\3/
-/@.*:/!s/^\([^ ]*e[lr]\) \([^ ]*\)t\([lr]\)a \([^ ]*\)d\3a [^@]*24[^@]*@PIIM/& \1:\2T2E2\3/
+/@.*:/!s/^\([^ ]*e[lr]\) \([^ ]*\)k\([lr]\)[aeiu] \([^ ]*\)g\3[aeiu] [^@]*24[^@]*@.*$/& \1:\2K2E2\3/
+/@.*:/!s/^\([^ ]*e[lr]\) \([^ ]*\)p\([lr]\)[aeiu] \([^ ]*\)b\3[aeiu] [^@]*24[^@]*@.*$/& \1:\2P2E2\3/
+/@.*:/!s/^\([^ ]*e[lr]\) \([^ ]*\)t\([lr]\)[aeiu] \([^ ]*\)d\3[aeiu] [^@]*24[^@]*@.*$/& \1:\2T2E2\3/
+
+/@.*:/!s/^\([^ ]*g\]*\) \([^ ]*\)\(.\)g\]*[aeiu] \([^ ]*\)[aeiuo] [^@]*22[^@]*@.*$/& \1:\2\3G1/
+/@.*:/!s/^\([^ ]*b\]*\) \([^ ]*\)\(.\)b\]*[aeiu] \([^ ]*\)[aeiuo] [^@]*22[^@]*@.*$/& \1:\2\3B1/
+/@.*:/!s/^\([^ ]*d\]*\) \([^ ]*\)\(.\)d\]*[aeiu] \([^ ]*\)[aeiuo] [^@]*22[^@]*@.*$/& \1:\2\3D1/
+
+/@.*:/!s/^\([^ ]*s\]*\) \([^ ]*\)\(.\)s\]*i \([^ ]*[^s]\)e [^@]*22[^@]*@.*$/& \1:\2\3S1/
+
+/@.*:/s/^[^ ]* [^@]*\.2[24][^@]*\^E\^[^!]*!@.*$/&%+%{pl.e%}%{rare%}/
+/@.*:/s/^[^ ]* [^@]*\.2[24][^@]*\^I\^[^!]*!@.*$/&%+%{pl.i%}%{rare%}/
+/@.*:/s/^[^ ]* [^@]*\.2[24][^@]*\^U\^[^!]*!@.*$/&%+%{pl.u%}%{rare%}/
+
+/@TAUD/s/%+%{pl.e%}%{rare%}//
+
+/k<*onnD1/s/%{rare%}//
+
+/[ =_-]k<ehva .*PIIM/s/%{rare%}//
+/[ =_-]<arga .*PIIM/s/%{rare%}//
+/[ =_-]k<uiva .*PIIM/s/%{rare%}//
+/[ =_-]k<urba .*PIIM/s/%{rare%}//
+/[ =_-]k<urja .*PIIM/s/%{rare%}//
+/[ =_-]k<uuma .*PIIM/s/%{rare%}//
+/[ =_-]k<õhna .*PIIM/s/%{rare%}//
+/[ =_-]k<ülma .*PIIM/s/%{rare%}//
+/[ =_-]l<aia .*PIIM/s/%{rare%}//
+/[ =_-]l<aiska .*PIIM/s/%{rare%}//
+/[ =_-]l<õtva .*PIIM/s/%{rare%}//
+/[ =_-]m<usta .*PIIM/s/%{rare%}//
+/[ =_-]m<ärga .*PIIM/s/%{rare%}//
+/[ =_-]n<õrka .*PIIM/s/%{rare%}//
+/[ =_-]p<elka .*PIIM/s/%{rare%}//
+/[ =_-]p<ikka .*PIIM/s/%{rare%}//
+/[ =_-]r<änka .*PIIM/s/%{rare%}//
+/[ =_-]s<ooja .*PIIM/s/%{rare%}//
+/[ =_-]s<ünka .*PIIM/s/%{rare%}//
+/[ =_-]t<arka .*PIIM/s/%{rare%}//
+/[ =_-]t<uima .*PIIM/s/%{rare%}//
+/[ =_-]t<umma .*PIIM/s/%{rare%}//
+/[ =_-]t<ühja .*PIIM/s/%{rare%}//
+/[ =_-]v<irka .*PIIM/s/%{rare%}//
+/[ =_-]<õrna .*PIIM/s/%{rare%}//
+/[ =_-]h<alba .*PIIM/s/%{rare%}//
+/[ =_-]h<arva .*PIIM/s/%{rare%}//
+/[ =_-]h<ella .*PIIM/s/%{rare%}//
+/[ =_-]j<ulma .*PIIM/s/%{rare%}//
+/[ =_-]j<äika .*PIIM/s/%{rare%}//
+/[ =_-]r<inda .*PIIM/s/%{rare%}//
+/[ =_-]s<ilma .*PIIM/s/%{rare%}//
+/[ =_-]j<alga .*PIIM/s/%{rare%}//
+/[ =_-]<atra .*PIIM/s/%{rare%}//
+/[ =_-]<as]ja .*PIIM/s/%{rare%}//
+/[ =_-]<aeda .*PIIM/s/%{rare%}//
+/[ =_-]<aega .*PIIM/s/%{rare%}//
+/[ =_-]<aasa .*PIIM/s/%{rare%}//
+/[ =_-]h<aaba .*PIIM/s/%{rare%}//
+/[ =_-]h<aava .*PIIM/s/%{rare%}//
+/[ =_-]h<arja .*PIIM/s/%{rare%}//
+/[ =_-]h<auda .*PIIM/s/%{rare%}//
+/[ =_-]h<inda .*PIIM/s/%{rare%}//
+/[ =_-]h<ulka .*PIIM/s/%{rare%}//
+/[ =_-]h<õlma .*PIIM/s/%{rare%}//
+/[ =_-]h<ärga .*PIIM/s/%{rare%}//
+/[ =_-]<ilma .*PIIM/s/%{rare%}//
+/[ =_-]j<aama .*PIIM/s/%{rare%}//
+/[ =_-]k<anda .*PIIM/s/%{rare%}//
+/[ =_-]k<arja .*PIIM/s/%{rare%}//
+/[ =_-]k<arva .*PIIM/s/%{rare%}//
+/[ =_-]k<aupa .*PIIM/s/%{rare%}//
+/[ =_-]k<austa .*PIIM/s/%{rare%}//
+/[ =_-]k<ella .*PIIM/s/%{rare%}//
+/[ =_-]k<esta .*PIIM/s/%{rare%}//
+/[ =_-]k<ihva .*PIIM/s/%{rare%}//
+/[ =_-]k<inga .*PIIM/s/%{rare%}//
+/[ =_-]k<irja .*PIIM/s/%{rare%}//
+/[ =_-]k<ohta .*PIIM/s/%{rare%}//
+/[ =_-]k<oiba .*PIIM/s/%{rare%}//
+/[ =_-]k<okka .*PIIM/s/%{rare%}//
+/[ =_-]k<onna .*PIIM/s/%{rare%}//
+/[ =_-]k<ontsa .*PIIM/s/%{rare%}//
+/[ =_-]k<oppa .*PIIM/s/%{rare%}//
+/[ =_-]k<orda .*PIIM/s/%{rare%}//
+/[ =_-]k<uhja .*PIIM/s/%{rare%}//
+/[ =_-]k?ujut<elma .*PIIM/s/%{rare%}//
+/[ =_-]k<ulda .*PIIM/s/%{rare%}//
+/[ =_-]k<õntsa .*PIIM/s/%{rare%}//
+/[ =_-]k<õrva .*PIIM/s/%{rare%}//
+/[ =_-]k<äppa .*PIIM/s/%{rare%}//
+/[ =_-]k<ärssa .*PIIM/s/%{rare%}//
+/[ =_-]l<aata .*PIIM/s/%{rare%}//
+/[ =_-]l<aeva .*PIIM/s/%{rare%}//
+/[ =_-]l<aipa .*PIIM/s/%{rare%}//
+/[ =_-]l<atva .*PIIM/s/%{rare%}//
+/[ =_-]l<auda .*PIIM/s/%{rare%}//
+/[ =_-]l<aupa .*PIIM/s/%{rare%}//
+/[ =_-]l<auta .*PIIM/s/%{rare%}//
+/[ =_-]l<ehma .*PIIM/s/%{rare%}//
+/[ =_-]l<eiba .*PIIM/s/%{rare%}//
+/[ =_-]l<eina .*PIIM/s/%{rare%}//
+/[ =_-]l<eppa .*PIIM/s/%{rare%}//
+/[ =_-]l<esta .*PIIM/s/%{rare%}//
+/[ =_-]l<inna .*PIIM/s/%{rare%}//
+/[ =_-]l<ooma .*PIIM/s/%{rare%}//
+/[ =_-]l<õhna .*PIIM/s/%{rare%}//
+/[ =_-]l<õnga .*PIIM/s/%{rare%}//
+/[ =_-]l<õuga .*PIIM/s/%{rare%}//
+/[ =_-]l<õusta .*PIIM/s/%{rare%}//
+/[ =_-]k<apja .*PIIM/s/%{rare%}//
+/[ =_-]l<ünka .*PIIM/s/%{rare%}//
+/[ =_-]m<ahla .*PIIM/s/%{rare%}//
+/[ =_-]m<altsa .*PIIM/s/%{rare%}//
+/[ =_-]m<arja .*PIIM/s/%{rare%}//
+/[ =_-]m<arka .*PIIM/s/%{rare%}//
+/[ =_-]m<atka .*PIIM/s/%{rare%}//
+/[ =_-]m<etsa .*PIIM/s/%{rare%}//
+/[ =_-]m<okka .*PIIM/s/%{rare%}//
+/[ =_-]m<ulda .*PIIM/s/%{rare%}//
+/[ =_-]m<unka .*PIIM/s/%{rare%}//
+/[ =_-]m<õrda .*PIIM/s/%{rare%}//
+/[ =_-]m<õrva .*PIIM/s/%{rare%}//
+/[ =_-]m<õõka .*PIIM/s/%{rare%}//
+/[ =_-]n<ahka .*PIIM/s/%{rare%}//
+/[ =_-]n<al]ja .*PIIM/s/%{rare%}//
+/[ =_-]n<okka .*PIIM/s/%{rare%}//
+/[ =_-]n<ukka .*PIIM/s/%{rare%}//
+/[ =_-]n<urka .*PIIM/s/%{rare%}//
+/[ =_-]n<õida .*PIIM/s/%{rare%}//
+/[ =_-]n<õlva .*PIIM/s/%{rare%}//
+/[ =_-]<ohja .*PIIM/s/%{rare%}//
+/[ =_-]<orja .*PIIM/s/%{rare%}//
+/[ =_-]p<at]ja .*PIIM/s/%{rare%}//
+/[ =_-]p<ahna .*PIIM/s/%{rare%}//
+/[ =_-]p<aika .*PIIM/s/%{rare%}//
+/[ =_-]p<alka .*PIIM/s/%{rare%}//
+/[ =_-]p<anka .*PIIM/s/%{rare%}//
+/[ =_-]p<auna .*PIIM/s/%{rare%}//
+/[ =_-]p<iina .*PIIM/s/%{rare%}//
+/[ =_-]p<iitsa .*PIIM/s/%{rare%}//
+/[ =_-]p<inda .*PIIM/s/%{rare%}//
+/[ =_-]p<oega .*PIIM/s/%{rare%}//
+/[ =_-]p<ohla .*PIIM/s/%{rare%}//
+/[ =_-]p<ulka .*PIIM/s/%{rare%}//
+/[ =_-]p<ulma .*PIIM/s/%{rare%}//
+/[ =_-]p<unga .*PIIM/s/%{rare%}//
+/[ =_-]p<uusa .*PIIM/s/%{rare%}//
+/[ =_-]p<õtra .*PIIM/s/%{rare%}//
+/[ =_-]p<õhja .*PIIM/s/%{rare%}//
+/[ =_-]p<äeva .*PIIM/s/%{rare%}//
+/[ =_-]p<ärga .*PIIM/s/%{rare%}//
+/[ =_-]p<ärna .*PIIM/s/%{rare%}//
+/[ =_-]r<aiska .*PIIM/s/%{rare%}//
+/[ =_-]r<anda .*PIIM/s/%{rare%}//
+/[ =_-]r<asva .*PIIM/s/%{rare%}//
+/[ =_-]r<auda .*PIIM/s/%{rare%}//
+/[ =_-]r<auka .*PIIM/s/%{rare%}//
+/[ =_-]r<elva .*PIIM/s/%{rare%}//
+/[ =_-]r<ihma .*PIIM/s/%{rare%}//
+/[ =_-]r<iita .*PIIM/s/%{rare%}//
+/[ =_-]r<oima .*PIIM/s/%{rare%}//
+/[ =_-]r<onka .*PIIM/s/%{rare%}//
+/[ =_-]r<ooga .*PIIM/s/%{rare%}//
+/[ =_-]r<ühma .*PIIM/s/%{rare%}//
+/[ =_-]r<ünka .*PIIM/s/%{rare%}//
+/[ =_-]s<aia .*PIIM/s/%{rare%}//
+/[ =_-]s<alka .*PIIM/s/%{rare%}//
+/[ =_-]s<anga .*PIIM/s/%{rare%}//
+/[ =_-]s<arja .*PIIM/s/%{rare%}//
+/[ =_-]s<auna .*PIIM/s/%{rare%}//
+/[ =_-]s<eika .*PIIM/s/%{rare%}//
+/[ =_-]s<el]ga .*PIIM/s/%{rare%}//
+/[ =_-]s<eppa .*PIIM/s/%{rare%}//
+/[ =_-]s<erva .*PIIM/s/%{rare%}//
+/[ =_-]s<ilda .*PIIM/s/%{rare%}//
+/[ =_-]s<oola .*PIIM/s/%{rare%}//
+/[ =_-]s<ukka .*PIIM/s/%{rare%}//
+/[ =_-]s<uunda .*PIIM/s/%{rare%}//
+/[ =_-]s<uuska .*PIIM/s/%{rare%}//
+/[ =_-]s<õpra .*PIIM/s/%{rare%}//
+/[ =_-]s<õrga .*PIIM/s/%{rare%}//
+/[ =_-]s<ööta .*PIIM/s/%{rare%}//
+/[ =_-]t<alda .*PIIM/s/%{rare%}//
+/[ =_-]t<austa .*PIIM/s/%{rare%}//
+/[ =_-]t<iiba .*PIIM/s/%{rare%}//
+/[ =_-]t<ilka .*PIIM/s/%{rare%}//
+/[ =_-]t<urja .*PIIM/s/%{rare%}//
+/[ =_-]t<urska .*PIIM/s/%{rare%}//
+/[ =_-]t<uuma .*PIIM/s/%{rare%}//
+/[ =_-]v<aala .*PIIM/s/%{rare%}//
+/[ =_-]v<aeva .*PIIM/s/%{rare%}//
+/[ =_-]v<akla .*PIIM/s/%{rare%}//
+/[ =_-]v<aia .*PIIM/s/%{rare%}//
+/[ =_-]v<aipa .*PIIM/s/%{rare%}//
+/[ =_-]r<iista .*PIIM/s/%{rare%}//
+/[ =_-]v<arna .*PIIM/s/%{rare%}//
+/[ =_-]v<atsa .*PIIM/s/%{rare%}//
+/[ =_-]v<enda .*PIIM/s/%{rare%}//
+/[ =_-]v<il]ja .*PIIM/s/%{rare%}//
+/[ =_-]v<illa .*PIIM/s/%{rare%}//
+/[ =_-]v<irna .*PIIM/s/%{rare%}//
+/[ =_-]v<õlga .*PIIM/s/%{rare%}//
+/[ =_-]v<äl]ja .*PIIM/s/%{rare%}//
+/[ =_-]<õlga .*PIIM/s/%{rare%}//
+/[ =_-]n<el]ja .*PIIM/s/%{rare%}//
 
 
+/[ _-]kr<iimu .*KOON/s/%{rare%}//
+/[ _-]l<augu .*KOON/s/%{rare%}//
+/[ _-]l<õppu .*KOON/s/%{rare%}//
+/[ _-]n<artsu .*KOON/s/%{rare%}//
+/[ _-]p<aksu .*KOON/s/%{rare%}//
+/[ _-]p<irtsu .*KOON/s/%{rare%}//
+/[ _-]h<ullu .*KOON/s/%{rare%}//
+/[ _-]h<õrku .*KOON/s/%{rare%}//
+/[ _-]<arvu .*KOON/s/%{rare%}//
+/[ _-]<auku .*KOON/s/%{rare%}//
+/[ _-]<auru .*KOON/s/%{rare%}//
+/[ _-]<aeru .*KOON/s/%{rare%}//
+/[ _-]departem<angu .*KOON/s/%{rare%}//
+/[ _-]<ahju .*KOON/s/%{rare%}//
+/[ _-]h<aisu .*KOON/s/%{rare%}//
+/[ _-]h<algu .*KOON/s/%{rare%}//
+/[ _-]h<ilpu .*KOON/s/%{rare%}//
+/[ _-]h<irmu .*KOON/s/%{rare%}//
+/[ _-]h<oogu .*KOON/s/%{rare%}//
+/[ _-]h<õimu .*KOON/s/%{rare%}//
+/[ _-]h<üüdu .*KOON/s/%{rare%}//
+/[ _-]j<ooksu .*KOON/s/%{rare%}//
+/[ _-]<ampsu .*KOON/s/%{rare%}//
+/[ _-]k<akku .*KOON/s/%{rare%}//
+/[ _-]k<almu .*KOON/s/%{rare%}//
+/[ _-]k<altsu .*KOON/s/%{rare%}//
+/[ _-]k<annu .*KOON/s/%{rare%}//
+/[ _-]k<arku .*KOON/s/%{rare%}//
+/[ _-]k<asvu .*KOON/s/%{rare%}//
+/[ _-]k<eeldu .*KOON/s/%{rare%}//
+/[ _-]k<empsu .*KOON/s/%{rare%}//
+/[ _-]k<iiksu .*KOON/s/%{rare%}//
+/[ _-]k<iilu .*KOON/s/%{rare%}//
+/[ _-]k<ildu .*KOON/s/%{rare%}//
+/[ _-]k<impu .*KOON/s/%{rare%}//
+/[ _-]k<intsu .*KOON/s/%{rare%}//
+/[ _-]k<irpu .*KOON/s/%{rare%}//
+/[ _-]k<irstu .*KOON/s/%{rare%}//
+/[ _-]k<iudu .*KOON/s/%{rare%}//
+/[ _-]kl<õksu .*KOON/s/%{rare%}//
+/[ _-]kl<õmmu .*KOON/s/%{rare%}//
+/[ _-]kl<õpsu .*KOON/s/%{rare%}//
+/[ _-]kn<iksu .*KOON/s/%{rare%}//
+/[ _-]k<ompsu .*KOON/s/%{rare%}//
+/[ _-]k<onksu .*KOON/s/%{rare%}//
+/[ _-]k<ortsu .*KOON/s/%{rare%}//
+/[ _-]kr<iipsu .*KOON/s/%{rare%}//
+/[ _-]kr<iuksu .*KOON/s/%{rare%}//
+/[ _-]kr<õksu .*KOON/s/%{rare%}//
+/[ _-]kr<õpsu .*KOON/s/%{rare%}//
+/[ _-]k?uberm<angu .*KOON/s/%{rare%}//
+/[ _-]k<ulmu .*KOON/s/%{rare%}//
+/[ _-]k<uppu .*KOON/s/%{rare%}//
+/[ _-]k<õksu .*KOON/s/%{rare%}//
+/[ _-]k<õlksu .*KOON/s/%{rare%}//
+/[ _-]k<õpsu .*KOON/s/%{rare%}//
+/[ _-]k<õõksu .*KOON/s/%{rare%}//
+/[ _-]k<äiku .*KOON/s/%{rare%}//
+/[ _-]k<ändu .*KOON/s/%{rare%}//
+/[ _-]k<äntsu .*KOON/s/%{rare%}//
+/[ _-]k<äsku .*KOON/s/%{rare%}//
+/[ _-]k<ääksu .*KOON/s/%{rare%}//
+/[ _-]k<äändu .*KOON/s/%{rare%}//
+/[ _-]l<aastu .*KOON/s/%{rare%}//
+/[ _-]l<aenu .*KOON/s/%{rare%}//
+/[ _-]l<aiku .*KOON/s/%{rare%}//
+/[ _-]l<aksu .*KOON/s/%{rare%}//
+/[ _-]l<artsu .*KOON/s/%{rare%}//
+/[ _-]l<asku .*KOON/s/%{rare%}//
+/[ _-]l<aulu .*KOON/s/%{rare%}//
+/[ _-]l<eidu .*KOON/s/%{rare%}//
+/[ _-]l<endu .*KOON/s/%{rare%}//
+/[ _-]l<iitu .*KOON/s/%{rare%}//
+/[ _-]l<indu .*KOON/s/%{rare%}//
+/[ _-]l<ippu .*KOON/s/%{rare%}//
+/[ _-]l<ipsu .*KOON/s/%{rare%}//
+/[ _-]l<irtsu .*KOON/s/%{rare%}//
+/[ _-]l<iugu .*KOON/s/%{rare%}//
+/[ _-]l<ohku .*KOON/s/%{rare%}//
+/[ _-]l<oiku .*KOON/s/%{rare%}//
+/[ _-]l<oitsu .*KOON/s/%{rare%}//
+/[ _-]l<oksu .*KOON/s/%{rare%}//
+/[ _-]l<onksu .*KOON/s/%{rare%}//
+/[ _-]l<opsu .*KOON/s/%{rare%}//
+/[ _-]l<uisku .*KOON/s/%{rare%}//
+/[ _-]l<ukku .*KOON/s/%{rare%}//
+/[ _-]l<upsu .*KOON/s/%{rare%}//
+/[ _-]l<urtsu .*KOON/s/%{rare%}//
+/[ _-]l<utsu .*KOON/s/%{rare%}//
+/[ _-]l<õiku .*KOON/s/%{rare%}//
+/[ _-]l<õivu .*KOON/s/%{rare%}//
+/[ _-]l<õksu .*KOON/s/%{rare%}//
+/[ _-]l<õmpsu .*KOON/s/%{rare%}//
+/[ _-]l<õnksu .*KOON/s/%{rare%}//
+/[ _-]l<ärtsu .*KOON/s/%{rare%}//
+/[ _-]j<uhtu .*KOON/s/%{rare%}//
+/[ _-]j<uttu .*KOON/s/%{rare%}//
+/[ _-]j<õnksu .*KOON/s/%{rare%}//
+/[ _-]j<õudu .*KOON/s/%{rare%}//
+/[ _-]j<õuku .*KOON/s/%{rare%}//
+/[ _-]j<õulu .*KOON/s/%{rare%}//
+/[ _-]k<aalu .*KOON/s/%{rare%}//
+/[ _-]k<aevu .*KOON/s/%{rare%}//
+/[ _-]m<ahtu .*KOON/s/%{rare%}//
+/[ _-]m<aimu .*KOON/s/%{rare%}//
+/[ _-]m<aksu .*KOON/s/%{rare%}//
+/[ _-]m<atsu .*KOON/s/%{rare%}//
+/[ _-]m<uksu .*KOON/s/%{rare%}//
+/[ _-]m<ulku .*KOON/s/%{rare%}//
+/[ _-]m<ulksu .*KOON/s/%{rare%}//
+/[ _-]m<urdu .*KOON/s/%{rare%}//
+/[ _-]m<õõtu .*KOON/s/%{rare%}//
+/[ _-]m<ängu .*KOON/s/%{rare%}//
+/[ _-]m<ässu .*KOON/s/%{rare%}//
+/[ _-]m<öllu .*KOON/s/%{rare%}//
+/[ _-]m<üksu .*KOON/s/%{rare%}//
+/[ _-]m<ürsku .*KOON/s/%{rare%}//
+/[ _-]m<ürtsu .*KOON/s/%{rare%}//
+/[ _-]m<ütsu .*KOON/s/%{rare%}//
+/[ _-]n<aastu .*KOON/s/%{rare%}//
+/[ _-]n<aeru .*KOON/s/%{rare%}//
+/[ _-]n<aksu .*KOON/s/%{rare%}//
+/[ _-]n<apsu .*KOON/s/%{rare%}//
+/[ _-]n<eeru .*KOON/s/%{rare%}//
+/[ _-]n<iitu .*KOON/s/%{rare%}//
+/[ _-]n<ipsu .*KOON/s/%{rare%}//
+/[ _-]n<iuksu .*KOON/s/%{rare%}//
+/[ _-]n<ukku .*KOON/s/%{rare%}//
+/[ _-]n<ulgu .*KOON/s/%{rare%}//
+/[ _-]n<uttu .*KOON/s/%{rare%}//
+/[ _-]n<uuksu .*KOON/s/%{rare%}//
+/[ _-]n<õksu .*KOON/s/%{rare%}//
+/[ _-]n<äitu .*KOON/s/%{rare%}//
+/[ _-]n<äppu .*KOON/s/%{rare%}//
+/[ _-]n<ätsu .*KOON/s/%{rare%}//
+/[ _-]n<äuksu .*KOON/s/%{rare%}//
+/[ _-]<orgu .*KOON/s/%{rare%}//
+/[ _-]<ostu .*KOON/s/%{rare%}//
+/[ _-]p<aastu .*KOON/s/%{rare%}//
+/[ _-]p<aisu .*KOON/s/%{rare%}//
+/[ _-]p<ampu .*KOON/s/%{rare%}//
+/[ _-]p<armu .*KOON/s/%{rare%}//
+/[ _-]p<artsu .*KOON/s/%{rare%}//
+/[ _-]p<attu .*KOON/s/%{rare%}//
+/[ _-]p<auku .*KOON/s/%{rare%}//
+/[ _-]p<eergu .*KOON/s/%{rare%}//
+/[ _-]p<iiksu .*KOON/s/%{rare%}//
+/[ _-]p<iipu .*KOON/s/%{rare%}//
+/[ _-]p<ilku .*KOON/s/%{rare%}//
+/[ _-]p<indu .*KOON/s/%{rare%}//
+/[ _-]p<irdu .*KOON/s/%{rare%}//
+/[ _-]p<iuksu .*KOON/s/%{rare%}//
+/[ _-]pl<aksu .*KOON/s/%{rare%}//
+/[ _-]pl<anku .*KOON/s/%{rare%}//
+/[ _-]pl<artsu .*KOON/s/%{rare%}//
+/[ _-]pl<irtsu .*KOON/s/%{rare%}//
+/[ _-]pl<õksu .*KOON/s/%{rare%}//
+/[ _-]pl<ärtsu .*KOON/s/%{rare%}//
+/[ _-]p<ortsu .*KOON/s/%{rare%}//
+/[ _-]pr<aksu .*KOON/s/%{rare%}//
+/[ _-]pr<ääksu .*KOON/s/%{rare%}//
+/[ _-]p<õldu .*KOON/s/%{rare%}//
+/[ _-]p<õntsu .*KOON/s/%{rare%}//
+/[ _-]r<ahnu .*KOON/s/%{rare%}//
+/[ _-]r<akku .*KOON/s/%{rare%}//
+/[ _-]r<iidu .*KOON/s/%{rare%}//
+/[ _-]r<opsu .*KOON/s/%{rare%}//
+/[ _-]r<uutu .*KOON/s/%{rare%}//
+/[ _-]r<õhku .*KOON/s/%{rare%}//
+/[ _-]r<õõmu .*KOON/s/%{rare%}//
+/[ _-]s<ammu .*KOON/s/%{rare%}//
+/[ _-]s<antsu .*KOON/s/%{rare%}//
+/[ _-]s<apsu .*KOON/s/%{rare%}//
+/[ _-]s<eisu .*KOON/s/%{rare%}//
+/[ _-]s<iilu .*KOON/s/%{rare%}//
+/[ _-]s<ilku .*KOON/s/%{rare%}//
+/[ _-]s<irtsu .*KOON/s/%{rare%}//
+/[ _-]s<opsu .*KOON/s/%{rare%}//
+/[ _-]s<ortsu .*KOON/s/%{rare%}//
+/[ _-]s<uitsu .*KOON/s/%{rare%}//
+/[ _-]s<ulgu .*KOON/s/%{rare%}//
+/[ _-]s<ulksu .*KOON/s/%{rare%}//
+/[ _-]s<ulpsu .*KOON/s/%{rare%}//
+/[ _-]s<urtsu .*KOON/s/%{rare%}//
+/[ _-]s<utsu .*KOON/s/%{rare%}//
+/[ _-]s<õitu .*KOON/s/%{rare%}//
+/[ _-]s<õõmu .*KOON/s/%{rare%}//
+/[ _-]s<älku .*KOON/s/%{rare%}//
+/[ _-]s<äästu .*KOON/s/%{rare%}//
+/[ _-]s<ööstu .*KOON/s/%{rare%}//
+/[ _-]s<öötu .*KOON/s/%{rare%}//
+/[ _-]t<ahku .*KOON/s/%{rare%}//
+/[ _-]t<angu .*KOON/s/%{rare%}//
+/[ _-]t<antsu .*KOON/s/%{rare%}//
+/[ _-]t<appu .*KOON/s/%{rare%}//
+/[ _-]t<empu .*KOON/s/%{rare%}//
+/[ _-]t<iiru .*KOON/s/%{rare%}//
+/[ _-]t<ikku .*KOON/s/%{rare%}//
+/[ _-]t<ingu .*KOON/s/%{rare%}//
+/[ _-]t<ipsu .*KOON/s/%{rare%}//
+/[ _-]t<irtsu .*KOON/s/%{rare%}//
+/[ _-]t<oitu .*KOON/s/%{rare%}//
+/[ _-]t<ompu .*KOON/s/%{rare%}//
+/[ _-]t<onksu .*KOON/s/%{rare%}//
+/[ _-]t<ortsu .*KOON/s/%{rare%}//
+/[ _-]tr<iipu .*KOON/s/%{rare%}//
+/[ _-]tr<ipsu .*KOON/s/%{rare%}//
+/[ _-]tr<itsu .*KOON/s/%{rare%}//
+/[ _-]t<uisku .*KOON/s/%{rare%}//
+/[ _-]t<upsu .*KOON/s/%{rare%}//
+/[ _-]t<urgu .*KOON/s/%{rare%}//
+/[ _-]t<urtsu .*KOON/s/%{rare%}//
+/[ _-]t<õugu .*KOON/s/%{rare%}//
+/[ _-]t<õuku .*KOON/s/%{rare%}//
+/[ _-]t<õusu .*KOON/s/%{rare%}//
+/[ _-]t<örtsu .*KOON/s/%{rare%}//
+/[ _-]<uisku .*KOON/s/%{rare%}//
+/[ _-]<urgu .*KOON/s/%{rare%}//
+/[ _-]<usku .*KOON/s/%{rare%}//
+/[ _-]v<aimu .*KOON/s/%{rare%}//
+/[ _-]v<alku .*KOON/s/%{rare%}//
+/[ _-]l<iistu .*KOON/s/%{rare%}//
+/[ _-]v<aistu .*KOON/s/%{rare%}//
+/[ _-]v<arju .*KOON/s/%{rare%}//
+/[ _-]v<eergu .*KOON/s/%{rare%}//
+/[ _-]v<empu .*KOON/s/%{rare%}//
+/[ _-]v<iirgu .*KOON/s/%{rare%}//
+/[ _-]v<iisku .*KOON/s/%{rare%}//
+/[ _-]v<iuksu .*KOON/s/%{rare%}//
+/[ _-]v<olksu .*KOON/s/%{rare%}//
+/[ _-]v<oogu .*KOON/s/%{rare%}//
+/[ _-]v<oolu .*KOON/s/%{rare%}//
+/[ _-]v<opsu .*KOON/s/%{rare%}//
+/[ _-]v<ulksu .*KOON/s/%{rare%}//
+/[ _-]v<õitu .*KOON/s/%{rare%}//
+/[ _-]v<õrku .*KOON/s/%{rare%}//
+/[ _-]n<utsu .*KOON/s/%{rare%}//
+/[ _-]kl<eepsu .*KOON/s/%{rare%}//
+/[ _-]s<äutsu .*KOON/s/%{rare%}//
+/[ _-]t<ümpsu .*KOON/s/%{rare%}//
+
+/[ =_-]h<ange .*EIT/s/%{rare%}//
+/[ =_-]h<etke .*EIT/s/%{rare%}//
+/[ =_-]h<inge .*EIT/s/%{rare%}//
+/[ =_-]k<aske .*EIT/s/%{rare%}//
+/[ =_-]k<irge .*EIT/s/%{rare%}//
+/[ =_-]k<itse .*EIT/s/%{rare%}//
+/[ =_-]k<oske .*EIT/s/%{rare%}//
+/[ =_-]k<ukke .*EIT/s/%{rare%}//
+/[ =_-]k<urge .*EIT/s/%{rare%}//
+/[ =_-]k<uuske .*EIT/s/%{rare%}//
+/[ =_-]k<ärge .*EIT/s/%{rare%}//
+/[ =_-]k<ül]ge .*EIT/s/%{rare%}//
+/[ =_-]l<ahte .*EIT/s/%{rare%}//
+/[ =_-]l<ehte .*EIT/s/%{rare%}//
+/[ =_-]l<eske .*EIT/s/%{rare%}//
+/[ =_-]l<ille .*EIT/s/%{rare%}//
+/[ =_-]l<uike .*EIT/s/%{rare%}//
+/[ =_-]l<õime .*EIT/s/%{rare%}//
+/[ =_-]l<äätse .*EIT/s/%{rare%}//
+/[ =_-]j<äl]ge .*EIT/s/%{rare%}//
+/[ =_-]j<ärge .*EIT/s/%{rare%}//
+/[ =_-]j<ärve .*EIT/s/%{rare%}//
+/[ =_-]n<urme .*EIT/s/%{rare%}//
+/[ =_-]p<arve .*EIT/s/%{rare%}//
+/[ =_-]p<erve .*EIT/s/%{rare%}//
+/[ =_-]p<ilve .*EIT/s/%{rare%}//
+/[ =_-]p<õlve .*EIT/s/%{rare%}//
+/[ =_-]p<õlve .*EIT/s/%{rare%}//
+/[ =_-]p<õske .*EIT/s/%{rare%}//
+/[ =_-]r<etke .*EIT/s/%{rare%}//
+/[ =_-]r<äime .*EIT/s/%{rare%}//
+/[ =_-]s<arve .*EIT/s/%{rare%}//
+/[ =_-]s<õime .*EIT/s/%{rare%}//
+/[ =_-]s<õlme .*EIT/s/%{rare%}//
+/[ =_-]s<õrme .*EIT/s/%{rare%}//
+/[ =_-]s<ärge .*EIT/s/%{rare%}//
+/[ =_-]s<ääske .*EIT/s/%{rare%}//
+/[ =_-]s<ül]ge .*EIT/s/%{rare%}//
+/[ =_-]t<aime .*EIT/s/%{rare%}//
+/[ =_-]t<alve .*EIT/s/%{rare%}//
+/[ =_-]t<amme .*EIT/s/%{rare%}//
+/[ =_-]t<el]ge .*EIT/s/%{rare%}//
+/[ =_-]t<ähte .*EIT/s/%{rare%}//
+/[ =_-]<uime .*EIT/s/%{rare%}//
+/[ =_-]v<el]ge .*EIT/s/%{rare%}//
+/[ =_-]<õlge .*EIT/s/%{rare%}//
+/[ =_-]<õnge .*EIT/s/%{rare%}//
+
+/@.*:/s/^[^ ]* [^@]*\.23[^@]*\^E\^[^!]*!@.*$/&%+%{pl.e%}/
+/@.*:/s/^[^ ]* [^@]*\.23[^@]*\^I\^[^!]*!@.*$/&%+%{pl.i%}/
+/@.*:/s/^[^ ]* [^@]*\.23[^@]*\^U\^[^!]*!@.*$/&%+%{pl.u%}/
 
