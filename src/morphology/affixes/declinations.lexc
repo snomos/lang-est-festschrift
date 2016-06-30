@@ -99,12 +99,6 @@ LEXICON PARAS      ! only paras; like LOHAKAS
 +Sg+Nom:s GI ;                         ! paras
 :ja 2C ;                               ! paraja etc
 
-LEXICON ROHI   ! only rohi; almost like KOON, only Sg Nom is exceptional
-
-+Sg+Nom:i%{W%}%{no.apo%} GI ;
-:%{sg.u%} 1C ;
-
-
 LEXICON PEEN    ! only peen, tüün; almost like KEEL, but some forms are more regular
 
 +Sg+Nom: GI ;                                  ! peen
@@ -125,11 +119,52 @@ LEXICON PÄIKE  ! only päike(ne), äike(ne)  VVS 10
 +Pl+Par:kese%+id GI ;                      ! päikeseid
 +Pl+Par%+Use%/Rare:kse%+id GI ;            ! päikseid
 
+LEXICON ROHI   ! only rohi; almost like KOON, only Sg Nom is exceptional
+
++Sg+Nom:i%{W%}%{no.apo%} GI ;
+:%{sg.u%} 1C ;
+
 LEXICON SEEME    ! only kümme, seeme, kööme; like HAARE
 
 +Sg+Nom:%{W%} GI ;                      ! seeme
 +Sg+Par:%{W%}%+t GI ;                   ! seemet
 :ne 2C_EXCL_SG_PAR ;                    ! seemne etc
+
+!---------
+
+LEXICON ÖÖ ! only öö
+
+: ARMEE ;
++Sg+Ill%+Use%/Rare:%+he GI ;                  ! öhe
+
+LEXICON HEA ! only hea
+
+: XUU ;
++Sg+Ill:%+sse GI ;                 ! heasse
+
+
+LEXICON PEA ! only pea
+
+: XUU ;
++Sg+Ill%+Use%/Rare:%+sse GI ;                 ! peasse
++Sg+Ill:%+he GI ;                             ! pähe
+
+LEXICON SUU ! only suu, soo
+
+: XUU ;
++Sg+Ill%+Use%/Rare:%+sse GI ;                 ! suusse
++Sg+Ill:%+hu GI ;                             ! suhu
+
+LEXICON XUU ! common for suu, soo, öö; like ARMEE
+
++Sg+Nom:%{no.apo%} GI ;                        ! suu
+: N_SG_SUBPARA ;                               ! suu etc
++Sg+Par:%+d GI ;                               ! suud
+:%+de N_PL_SUBPARA ;                           ! suude etc  
++Pl+Par:%+%{idsid%}id PL_PAR ;                 ! suusid; suid...
+
+
+!--------
 
 LEXICON SÜDA                   ! only süda; like habe
 
@@ -168,6 +203,7 @@ LEXICON XÄIKE  ! VVS 10 common part of väike(ne), päike(ne), äike(ne)
 %+Use%/Rare:kes%+i N_VOWEL_PL_SUBPARA ;       ! xäikesil etc
 %+Use%/Rare:kese%+i N_VOWEL_PL_SUBPARA ;      ! xäikeseil etc
 %+Use%/Rare:kse%+i N_VOWEL_PL_SUBPARA ;       ! xäikseil etc
+
 
 !---------------
 ! not-so-exceptional inflectional types

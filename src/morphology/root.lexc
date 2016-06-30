@@ -335,6 +335,8 @@ Multichar_Symbols
 I5  ! i e
 Ü5   ! ü ö
 U5   ! u o
+A6   ! hea pea
+E6   ! hea pea
 Ö6   ! üü öö õ  sööma - süüa - sõi
 O6   ! uu oo õ  tooma - tuua - tõi
 
@@ -657,8 +659,12 @@ puu:puu%+%{id%} ARMEE ;        ! puu  puu  puud puid (puusid)
 gnuu ARMEE ;        ! gnuu  gnuu  gnuud gnuusid
 idee:idee%+%{id%} ARMEE ;        ! idee  idee  ideed ideid (ideesid)
 essee:essee%+%{id%}%{rare%} ARMEE ;        ! essee  essee  esseed (esseid) esseesid
-suu:suu%+%{id%} ARMEE ;        ! suu  suu   suud
-! suu+N+Sg+Ill:suhu # ;
+suu:suu%+%{id%} SUU ;        ! suu  suu   suud
+soo:soo%+%{id%} SUU ;        ! 
+öö:öö%+%{id%} ÖÖ ;        ! 
+hea:hE6A6%+%{id%} ARMEE ;        ! 
+pea:pE6A6%+%{id%} PEA ;        ! 
+
 Braille:Braille%{apo%} ARMEE ;        ! gnuu  gnuu  gnuud gnuusid
 
 
