@@ -235,6 +235,8 @@ s/^\([^ ]*t\)ugi [^@]*21[^@]*@NIMI.*$/& \1ugi:\1U5G1/
 
 /rohi.*@KOON/s/^\([^ ]*roh\)i \(.*@\)KOON/\1\2ROHI \1i:\1T1%+%{pl.e%}%{rare%}/
 
+/@.*:/!s/^\([^ ]*\]*\) \([^ ]*\) [^@]*\.19[^@]*@TAUD$/& \1:\1/
+
 /@TAUD/s/%+%{pl.e%}%{rare%}//
 
 /k<*onnD1/s/%{rare%}//
@@ -721,12 +723,12 @@ s/^\([^ ]*t\)ugi [^@]*21[^@]*@NIMI.*$/& \1ugi:\1U5G1/
 /@.*:/s/^[^ ]* [^@]*\.23[^@]*\^U\^[^!]*!@.*$/&%+%{pl.u%}/
 
 s/^\([^ ]*\) .*@ELANIK/& \1:\1/
-/p<*ea .*ADT\$: [^\-].*ARMEE/s/^\([^ ]*p<*\)ea\( .*@\)ARMEE/\1ea\2PEA \1ea:\1E6A6%+%{id%}/
+/p<*ea .*ADT\$: [^\-].*ARMEE/s/^\([^ ]*p<*\)ea\( .*@\)ARMEE/\1ea\2PUU \1ea:\1E6A6H3Y3%+%{id%}%{stemill%}/
 /@.*:/!s/^\([^ ]*p<*\)ea\( .*@\)ARMEE/& \1ea:\1E6A6%+%{id%}/
-/h<*ea .*PL\.P.*ARMEE/s/^\([^ ]*\)ea\( .*@\)ARMEE/& \1ea:\1E6A6%+%{id%}/
-/s<*oo .*ADT.*ARMEE/s/^\([^ ]*\)\( .*@\)ARMEE/\1\2SUU \1:\1%+%{id%}/
-/s<*uu .*ADT.*ARMEE/s/^\([^ ]*\)\( .*@\)ARMEE/\1\2SUU \1:\1%+%{id%}/
-/<*öö .*ADT.*ARMEE/s/^\([^ ]*\)\( .*@\)ARMEE/\1\2SUU \1:\1%+%{id%}/
+/h<*ea .*PL\.P.*ARMEE/s/^\([^ ]*\)ea\( .*@\)ARMEE/\1ea\2PUU \1ea:\1E6A6%+%{id%}/
+/s<*oo .*ADT.*ARMEE/s/^\([^ ]*\)\( .*@\)ARMEE/\1\2PUU \1:\1H3Y3%+%{id%}%{stemill%}/
+/s<*uu .*ADT.*ARMEE/s/^\([^ ]*\)\( .*@\)ARMEE/\1\2PUU \1:\1H3Y3%+%{id%}%{stemill%}/
+/<*öö .*ADT.*ARMEE/s/^\([^ ]*\)\( .*@\)ARMEE/\1\2PUU \1:\1H3Y3%+%{id%}%{stemill%}%{rare%}/
 /@.*:/!s/^\([^ ]*\) .*[aouö]>.*@ARMEE/& \1:\1%+%{id%}/
 /@.*:/!s/^\([^ ]*\) .*ee>e.*@ARMEE/& \1:\1%+%{id%}%{rare%}/
 /@.*:/!s/^\([^ ]*\) .*@ARMEE/& \1:\1/
@@ -738,5 +740,6 @@ s/^\([^ ]*\) .*@ELANIK/& \1:\1/
 /_m<aa .*ARMEE.*m<aa$/s/$/%{id%}/
 /_k<uu .*ARMEE.*k<uu$/s/$/%{id%}/
 
+/\.26.*ARMEE.*%{id%}$/s/ARMEE/PUU/
 
 

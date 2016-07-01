@@ -318,6 +318,8 @@ Multichar_Symbols
 
  G3 ! 0 g  Riia Riiga
  D3 ! 0 d  Rannu Randu
+ H3
+ Y3
 
  K2 ! k g
  P2 ! p b
@@ -657,13 +659,14 @@ elanik ELANIK ;
 ! VVS type 26
 puu:puu%+%{id%} ARMEE ;        ! puu  puu  puud puid (puusid)
 gnuu ARMEE ;        ! gnuu  gnuu  gnuud gnuusid
-idee:idee%+%{id%} ARMEE ;        ! idee  idee  ideed ideid (ideesid)
+idee:idee%+%{id%} PUU ;        ! idee  idee  ideed ideid (ideesid)
 essee:essee%+%{id%}%{rare%} ARMEE ;        ! essee  essee  esseed (esseid) esseesid
-suu:suu%+%{id%} SUU ;        ! suu  suu   suud
-soo:soo%+%{id%} SUU ;        ! 
-öö:öö%+%{id%} ÖÖ ;        ! 
-hea:hE6A6%+%{id%} ARMEE ;        ! 
-pea:pE6A6%+%{id%} PEA ;        ! 
+
+suu:suuH3Y3%+%{id%}%{stemill%} PUU ;        ! suu  suu   suud
+soo:sooH3Y3%+%{id%}%{stemill%} PUU ;        ! 
+öö:ööH3Y3%+%{id%}%{stemill%}%{rare%} PUU ;        ! 
+hea:hE6A6%+%{id%} PUU ;        ! 
+pea:pE6A6H3Y3%+%{id%}%{stemill%} PUU ;        ! 
 
 Braille:Braille%{apo%} ARMEE ;        ! gnuu  gnuu  gnuud gnuusid
 

@@ -59,6 +59,11 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
  G3:0 ! In weak grade, G3 is 0   Riia
  D3:d ! In strong grade, D3 is d Randu
  D3:0 ! In weak grade, D3 is 0   Rannu
+ H3:h
+ H3:0
+ Y3:u
+ Y3:e
+ Y3:0
 
  S1:s ! In strong grade, S1 is s
  S1:0 ! In weak grade, S1 is 0; before stop, S1 is 0
@@ -376,16 +381,28 @@ Vx:Vy  <=>  _ [ :0 ]+ :Vowel ;
 ! lexical: s Ü5 S1 e {W}
 ! surface: s  ö  0 e  0
 
+!------
 ! Only pea, hea 
 "Pea, hea vs häid, päid, pähe 1"
 
-A6:ä  <=> E6: _ [ :0 ]+ [:h | :i] ;
+A6:ä  <=> E6: _ :h ;
+          E6: _ [:0]+ :i ;   
 
 "Pea, hea vs häid, päid, pähe 2"
 
-E6:0  <=> _ A6: [ :0 ]+ [:h | :i] ;
-!------
+E6:0  <=> _ A6: :h  ;
+          _ A6: [:0]+ :i ;
 
+"öhe, pähe"
+Y3:e  <=> [:ä | :ö] [ :0 ]* H3:h _ ;
+
+"sohu, suhu"
+Y3:u  <=> [:o | :u] [ :0 ]* H3:h _ ;
+
+"h-illative"
+H3:h  <=> _ :* %{S%}: ;
+
+!------
 "Verb vowel ö o to õ"
 
 Vx:õ  <=> Vx: _ [:0]+ :i ; 
@@ -413,7 +430,8 @@ Vx:Vy  <=>  Vx: _  [:0]+ [:a | :e] ;
 ! --------
 "Long vowel shortening in vowel context"
 
-Vx:0 <=>        :Vx _ [:0]+ (h) :stemV ;            ! sae, puid, suid, soid; sohu, suhu
+Vx:0 <=>        :Vx _ [:0]+ :stemV ;            ! sae, puid, suid, soid; sohu, suhu
+                :Vx _ H3:h Y3:stemV ;            !  sohu, suhu, öhe, pähe
              :Vowel _ [:0]+ :Vx ;               ! tõu
                 :Vx _ E4:e ;                    ! soe
       except
@@ -675,8 +693,9 @@ a:0  <=> :Consonant _ %+: PlSV:stemV [:0]* %{sid%}:0 ;
 ! co-play of 2 rules with stem lex info for puu, gnuu, essee
 
 ! if -id is possible, then it has to be indicated in stem lexicon with {id}
+! (%{stemill%}: %{rare%}: ) appears only in "öö"
 "-id selection (puu, gnuu, essee)"
-%{idsid%}:0   <=>      %{id%}: \[LT:]*  _ i d \LT: ;   ! puu-puid is common
+%{idsid%}:0   <=>      %{id%}: (%{stemill%}: %{rare%}:) \[LT:]*  _ i d \LT: ;   ! puu-puid is common
                        %{id%}: LT: [:]* _ i d LT: ;   ! essee-esseid is rare
 
 "-sid cannot be rare, unless the lexicon entry implies this by having {id} and no LT"

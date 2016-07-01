@@ -130,41 +130,14 @@ LEXICON SEEME    ! only kümme, seeme, kööme; like HAARE
 +Sg+Par:%{W%}%+t GI ;                   ! seemet
 :ne 2C_EXCL_SG_PAR ;                    ! seemne etc
 
-!---------
+! only if the plural partitive with -id is more frequent than the one with sid (puid-puusid),
+! then the word may have vowel plural forms
 
-LEXICON ÖÖ ! only öö
+LEXICON PUU ! 11 words (kuu, maa, etc) that have possible vowel plural forms 
 
 : ARMEE ;
-+Sg+Ill%+Use%/Rare:%+he GI ;                  ! öhe
+%+Use%/Rare:%+i N_VOWEL_PL_SUBPARA ;       ! puil etc
 
-LEXICON HEA ! only hea
-
-: XUU ;
-+Sg+Ill:%+sse GI ;                 ! heasse
-
-
-LEXICON PEA ! only pea
-
-: XUU ;
-+Sg+Ill%+Use%/Rare:%+sse GI ;                 ! peasse
-+Sg+Ill:%+he GI ;                             ! pähe
-
-LEXICON SUU ! only suu, soo
-
-: XUU ;
-+Sg+Ill%+Use%/Rare:%+sse GI ;                 ! suusse
-+Sg+Ill:%+hu GI ;                             ! suhu
-
-LEXICON XUU ! common for suu, soo, öö; like ARMEE
-
-+Sg+Nom:%{no.apo%} GI ;                        ! suu
-: N_SG_SUBPARA ;                               ! suu etc
-+Sg+Par:%+d GI ;                               ! suud
-:%+de N_PL_SUBPARA ;                           ! suude etc  
-+Pl+Par:%+%{idsid%}id PL_PAR ;                 ! suusid; suid...
-
-
-!--------
 
 LEXICON SÜDA                   ! only süda; like habe
 
@@ -427,10 +400,10 @@ LEXICON MUUSEUM  ! undecided which stable type (aktiivne muuttüüp): TAUD or RE
 :i%+de N_PL_SUBPARA ;                       ! muuseumide etc 
 +Pl+Par:e GI ;                              ! muuseume
 
-+Sg+Par%+Use%/Rare:%+it GI ;                ! muuseumit
-%+Use%/Rare:%+ite N_PL_SUBPARA ;            ! muuseumite etc 
-+Pl+Par%+Use%/Rare:%+eid GI ;               ! muuseumeid
-%+Use%/Rare:%+ei N_VOWEL_PL_SUBPARA ;       ! muuseumeil etc
++Sg+Par%+Use%/Rare:i%+t GI ;                ! muuseumit
+%+Use%/Rare:i%+te N_PL_SUBPARA ;            ! muuseumite etc 
++Pl+Par%+Use%/Rare:e%+id GI ;               ! muuseumeid
+%+Use%/Rare:e%+i N_VOWEL_PL_SUBPARA ;       ! muuseumeil etc
 
 ! VVS 20
 LEXICON MERI   ! unstable type (passiivne muuttüüp) lumi, tuli, uni, veri
@@ -517,7 +490,7 @@ LEXICON POISS   ! poiss, püks; almost = TAUD, except pl gen +
 :%{W%}%+te N_PL_SUBPARA ;                   ! poiste etc
 %+Use%/Rare:%+i%+de N_PL_SUBPARA ;          ! poisside etc
 +Pl+Par:e GI ;                              ! poisse
-+Pl+Par%+Use%/Hyp:%+i%+sid GI ;             ! poissisid+Use/Hyp
++Pl+Par%+Use%/Hyp:i%+sid GI ;              ! poissisid+Use/Hyp
 
 ! VVS 24 is lexical variants under VVS 22 various subtypes
 
@@ -528,7 +501,7 @@ LEXICON ELANIK          ! stable type (aktiivne muuttüüp) almost == KABINET ==
                                                ! sg nom has a single final stop instead of double, 
                                                ! so it has to be doubled in strong grade
 :%.%{sg.u%} 1C_SG ;                            ! elaniku etc
-:%.e%{W%} N_PL_SUBPARA ;                       ! NB! elanike etc
+:%.e%{W%}%+ N_PL_SUBPARA ;                     ! NB! elanike etc
 %+Use%/Rare:%.%{sg.u%}%+de N_PL_SUBPARA ;      ! elanikkude etc   
 +Pl+Par:%.e GI ;                               ! elanikke
 +Pl+Par%+Use%/Rare:%.%{sg.u%}%+sid GI ;        ! elanikkusid+Use/Rare
@@ -538,7 +511,8 @@ LEXICON ARMEE ! VVS 26
 +Sg+Nom:%{no.apo%} GI ;                        ! armee
 : N_SG_SUBPARA ;                               ! armee etc
 +Sg+Par:%+d GI ;                               ! armeed
-+Sg+Ill:%+sse GI ;                             ! armeesse
++Sg+Ill:%{W%} SG_ILL ;                       ! armeesse, öösse; {W} is here just to get SG_ILL right
++Sg+Ill:%{S%} SG_ILL ;                       ! öhe, suhu, sohu, pähe
 :%+de N_PL_SUBPARA ;                           ! armeede etc  
 +Pl+Par:%+%{idsid%}id PL_PAR ;                 ! armeesid; armeid...
 

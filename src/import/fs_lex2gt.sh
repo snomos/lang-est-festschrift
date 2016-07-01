@@ -1,5 +1,21 @@
 #!/bin/sh
 
+# määra muuttüübid
+cat fs_lex | ./fs_lex2tyyp.sed > ajutmp
+
+# määra lemmad
+cat ajutmp | ./fs_lex2lemma.sed > tmp26
+
+# kirjuta mõnedesse lemmadesse sisse leksikaalse tasandi märgid
+cat tmp26 | ./lemma2twol.sed > tmp26twol
+
+# tegemata: apostroofi märgi teisendamine
+# sõnaliikide teisendamine
+# tegusõnad kogu täiega
+# vigu on veel ka, nt puhas:puhta (peaks olema :puhT2a vist) 
+
+exit
+
 # määra gt jätkuleksikoni nimi
 
 cat fs_lex \
