@@ -4,15 +4,31 @@
 cat fs_lex | ./fs_lex2tyyp.sed > ajutmp
 
 # määra lemmad
-cat ajutmp | ./fs_lex2lemma.sed > tmp26
+# mitmuselised algvormid
+cat ajutmp | ./fs_lex2algvorm.sed > algtmp
+
+# käändsõnade omad
+cat algtmp | ./fs_lex2lemma.sed > decltmp42
+
+# pöördsõnade omad
+cat decltmp42 | ./fs_lex2verblemma.sed > tmp42
 
 # kirjuta mõnedesse lemmadesse sisse leksikaalse tasandi märgid
-cat tmp26 | ./lemma2twol.sed > tmp26twol
+# ja paranda erandsõnade vead
+cat tmp42 | ./lemma2twol.sed \
+| sed '/HAARE/s/tT1/tt/' \
+| sed 's/ \*\*\([^$:]*:\)/ \1/' \
+| sed 's/:\*\*\([^$:]*\)$/:\1/' \
+> tmp42twol
 
-# tegemata: apostroofi märgi teisendamine
+# tegemata: 
+# $...$ vahel erandvormide arvessevõtmine 
+# kahest osast koosnevad sõnad, millel mõlemad osad käänduvad, nt seitsetuhat ?
+# 
+# sg tantum, nt iga ?
 # sõnaliikide teisendamine
-# tegusõnad kogu täiega
-# vigu on veel ka, nt puhas:puhta (peaks olema :puhT2a vist) 
+# tegusõnad pooleli
+#  
 
 exit
 

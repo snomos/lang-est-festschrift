@@ -9,6 +9,13 @@
 ! exceptional inflectional types, i.e. covering very few words each
 !---------------
 
+LEXICON ARGPÜKS   ! some compound words ending with püks (argpüks, vesipüks etc)
+                  ! and declined not exactly like püksid (e.g. karupüksid, sukkpüksid) 
+                  ! almost like TAUD, but has some less used pl forms
+: TAUD ;
+%+Use%/Rare:%{W%}%+te N_PL_SUBPARA ;           ! argpükste etc
+
+
 LEXICON KALLIS    !  VVS 7, 5 only kallis, kaunis unstable (closed) type; 
 
 +Sg+Nom:s%{W%} GI ;                      ! kallis
@@ -22,11 +29,12 @@ LEXICON KEVAD              ! only küps, kevad, = REDEL, but stem vowel is e
 +Sg+Nom:%{no.apo%} GI ;              ! kevad
 :e 2C ;                              ! kevade etc
 
-LEXICON KOHUS                 ! only kohus; like HOOLAS
+LEXICON KOHUS                 ! only kohus-kohtu; like HOOLAS
 
 +Sg+Nom:s%{W%} GI ;                           ! kohus
-: 2C ;                                        ! kohtu etc
-+Sg+Par%+Use%/Rare:s%{W%}%+t GI ;             ! kohust
+: 2C_EXCL_SG_PAR ;                            ! kohtu etc  
++Sg+Par:%{W%}%+t GI ;                         ! kohut
++Sg+Par%+Use%/Rare:%+t GI ;                   ! kohtut
 
 LEXICON KURAT    ! only kurat; like redel
    
@@ -53,13 +61,23 @@ LEXICON KÖÖMEN               ! only köömen; like KEVAD
 :e 2C ;                                        ! köömne etc  
 +Sg+Par%+Use%/CommonNotNorm:%+t GI ;           ! kööment
 
-LEXICON LAPS               ! only laps, uks
+LEXICON KAKS                  ! only üks, kaks
+
++Sg+Nom:ks GI ;                                ! kaks
+:he N_SG_SUBPARA ;                             ! kahe etc 
++Sg+Par:h%+t GI ;                              ! kaht
++Sg+Par%+Use%/Rare:h%+te GI ;                  ! kahte
++Sg+Ill:he%+sse GI ;                           ! kahesse 
+:hte%+de N_PL_SUBPARA ;                         ! kahtede etc 
++Pl+Par:hte%+sid GI ;                          ! kahtesid
+
+LEXICON LAPS               ! only laps, uks; notice the weird (?) use of {W}
 
 +Sg+Nom: GI ;                                 ! laps
 :e N_SG_SUBPARA ;                             ! lapse etc 
-+Sg+Par:%+t GI ;                              ! last
++Sg+Par:%{W%}%+t GI ;                              ! last
 +Sg+Ill:e%+sse GI ;                           ! lapsesse 
-:%+te N_PL_SUBPARA ;                          ! laste etc 
+:%{W%}%+te N_PL_SUBPARA ;                          ! laste etc 
 +Pl+Par:%+i GI ;                              ! lapsi
 
 LEXICON LÕUNA                 ! only lõuna; like haare
@@ -83,6 +101,14 @@ LEXICON MEES                  ! only mees
 +Sg+Ill:he%+sse GI ;                           ! mehesse 
 :es%+te N_PL_SUBPARA ;                         ! meeste etc 
 +Pl+Par:h%+i GI ;                              ! mehi
+
+LEXICON NAINE   ! only naine; much like OLULINE
+                  
++Sg+Nom: GI ;
+: NE_S ;
++Sg+Ill:e%+sse GI ;             ! naisesse
++Pl+Par:%+i GI ;                           ! naisi
+%+Use%/Rare:%+i N_VOWEL_PL_SUBPARA ;       ! naisil etc
 
 LEXICON NIIN    ! only niin; almost like KEEL, but some forms are more regular
 
@@ -124,6 +150,17 @@ LEXICON ROHI   ! only rohi; almost like KOON, only Sg Nom is exceptional
 +Sg+Nom:i%{W%}%{no.apo%} GI ;
 :%{sg.u%} 1C ;
 
+LEXICON RUBLA  ! about 20 words 
+
+: PERE ;
++Sg+Par+Use%/Rare: GI ;            ! (viis) rubla
+
+LEXICON SADA    ! only sada
+
+: KAVA ;
++Sg+Par+Use%/Rare:%+t GI ;            ! sadat
+
+
 LEXICON SEEME    ! only kümme, seeme, kööme; like HAARE
 
 +Sg+Nom:%{W%} GI ;                      ! seeme
@@ -145,10 +182,20 @@ LEXICON SÜDA                   ! only süda; like habe
 +Sg+Par:n%+t GI ;                       ! südant
 :me 2C_EXCL_SG_PAR ;                   ! südame etc
 
+LEXICON TEINE   ! only teine; almost = NAINE; much like OLULINE
+                  
++Sg+Nom: GI ;
+: NE_S ;
++Sg+Ill:%+e GI ;                          ! teise (should be 3rd grade... )
++Sg+Ill%+Use%/Rare:e%+sse GI ;             ! teisesse
++Pl+Par:%+i GI ;                           ! teisi
+%+Use%/Rare:%+i N_VOWEL_PL_SUBPARA ;       ! teisil etc
+
 LEXICON TUHAT      ! only tuhat; like LOHAKAS
 
 +Sg+Nom:t GI ;                          ! tuhat
 :nde 2C ;                               ! tuhande etc
+! ????  +Sg+Par:%+t GI ;                              ! tuhat
 
 LEXICON VAHER    ! VVS 3 unstable (closed) type; strengthening gradation
                  ! only vaher, aher
@@ -176,6 +223,16 @@ LEXICON XÄIKE  ! VVS 10 common part of väike(ne), päike(ne), äike(ne)
 %+Use%/Rare:kes%+i N_VOWEL_PL_SUBPARA ;       ! xäikesil etc
 %+Use%/Rare:kese%+i N_VOWEL_PL_SUBPARA ;      ! xäikeseil etc
 %+Use%/Rare:kse%+i N_VOWEL_PL_SUBPARA ;       ! xäikseil etc
+
+LEXICON ÕLU                  ! only õlu
+
++Sg+Nom:u GI ;                                ! õlu
+:le N_SG_SUBPARA ;                             ! õlle etc 
++Sg+Par:u%+t GI ;                             ! õlut
++Sg+Ill:le%+sse GI ;                           ! õllesse 
+:le%+de N_PL_SUBPARA ;                         ! õllede etc 
++Pl+Par:le%+sid GI ;                              ! õlusid
++Pl+Par%+Use%/Rare:u%+sid GI ;                              ! õlusid
 
 
 !---------------

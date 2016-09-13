@@ -467,6 +467,8 @@ tuhat:tuha TUHAT ;
 kurat:kura KURAT ;
 paras:para PARAS ;
 
+ligida:ligid MAGUS ;
+
 ! strengthening gradation
 
 ! VVS type 3
@@ -537,6 +539,8 @@ katus:katus SOOLANE ;
 harjutus:harjutus OLULINE ;
 kandvus:kandvus SUULINE ;
 gloobus:gloobus KATKINE ;
+naine:naiN1e NAINE ;
+teine:teiN1e TEINE ;
 
 ! VVS type 13
 keel:keel%{stemill%} KEEL ;
@@ -578,6 +582,7 @@ magu:maG1U5%{stemill%} KAVA ;
 sõda:sõD2a%+%{pl.u%}%{stemill%} KAVA ;
 tuba:tU5B1a%+%{pl.e%}%{stemill%} KAVA ;
 loba KAVA ;
+sada:saD2a SADA ;
 
 ! VVS type 19 & 2
 muuseum MUUSEUM ;
@@ -641,6 +646,7 @@ hüüd:hüüD1 KOON;
 ! VVS type 23
 kael:kael%+%{pl.u%} KAEL ;
 poiss:poiss%+%{pl.e%} POISS ;
+argpüks:argpüks ARGPÜKS ;
 
 ! VVS type 24
 ahi:ahJ1%+%{pl.e%}%{rare%} KOON ;
@@ -652,6 +658,8 @@ põli+N+Sg+Nom%+Use%/Rare:põlv # ;
 ader:aT2E2r%+%{pl.u%}%{rare%} PIIM ;
 puder:puT2E2r%+%{pl.e%}%{rare%} KOON ;
 soe:sooE4+%{pl.e%} PIIM ;
+õlu:õl ÕLU ;
+kaks:ka KAKS ;
 
 ! VVS type 25
 elanik ELANIK ;
@@ -676,6 +684,11 @@ Braille:Braille%{apo%} ARMEE ;        ! gnuu  gnuu  gnuud gnuusid
 ! VVS type 27
 elama:ela ELAMA ;
 
+! type 27
+ajama:aE4 AJAMA ;
+muuma:muu KEEMA ;
+julgema:julG1e JULGEMA ;
+
 ! VVS type 28
 leppima:leppi LEPPIMA ;
 kraapima:kraapi LEPPIMA ;
@@ -687,6 +700,20 @@ näuguma:näuG1u LEPPIMA ;
 liguma:lI5G1U5 LEPPIMA ;
 jahtima:jahT1i LEPPIMA ;
 
+käskima:käsK1 KÄSKIMA ;
+kiskuma:kisK1 KISKUMA ;
+uskuma:usK1 USKUMA ;
+
+vedama:veD1 VEDAMA ;
+pügama:pÜ5G1 VEDAMA ;
+pidama:pI5D1 VEDAMA ;
+pidama:pI5D1 PIDAMA ;
+tegema:te TEGEMA ;
+
+! VVS 28 & 27
+lekkima:lekki LEKKIMA ;
+süttima:sütti SÜTTIMA ;
+
 ! VVS type 29
 hakkama:hakka HAKKAMA ;
 lõugama:lõuG1a HAKKAMA ;
@@ -697,19 +724,32 @@ kompama:kompa HAKKAMA ;
 laastama:laasta HAKKAMA ;
 
 ! VVS type 30
-siplema:sipE2l SIPLEMA ;
+siplema:sippE2l SIPLEMA ;
 võrdlema:võrrD1E2l SIPLEMA ;
 kaeblema:kaeB2E2l SIPLEMA ;
 riidlema:riiD1E2l SIPLEMA ;
 muiglema:muiG1E2l SIPLEMA ;
 vähkrema:vähK1E2r SIPLEMA ;
+võitlema:võitE2l SIPLEMA ;
+mäslema:mässE2l SIPLEMA ;
+aeglema:aE4G1E2l SIPLEMA ;
+ütlema:Ü5T1 ÜTLEMA ;
 
 ! VVS type 31
 rabelema:rabel RABELEMA ;
 
-! VVS type 32, 33
+! VVS type 32
 seisma:seis SEISMA ;
-naerma:naer SEISMA ;
+tõusma:tõus TÕUSMA ;
+pesema:pes PESEMA ;
+kusema:kus KUSEMA ;
+kaitsma:kaits KAITSMA ;
+maitsma:maits KAITSMA ;
+
+! VVS type 33
+naerma:naer NAERMA ;
+kuulma:kuul KUULMA ;
+
 
 ! VVS type 34, 35
 söötma:sööt SAATMA ;
@@ -721,28 +761,25 @@ kurtma:kurt SAATMA ;
 kündma:künnD1 HOIDMA ;
 hoidma:hoiD1 HOIDMA ;
 needma:neeD1 HOIDMA ;
-
-! exceptions VVS 32
-pesema:pes PESEMA ;
-kaitsma:kaits KAITSMA ;
-maitsma:maits KAITSMA ;
-kusema:kus PESEMA ; 
-kusema+V+Pers+Prt+Ind%+Use%/NotNorm:kuse%+s IND_PAST ; ! indicative past
-
-! exceptions VVS 34
 tundma:tunnD1 TUNDMA ;
+puskma:pusK1 PUSKMA ;
+mõskma:mõsK1 PUSKMA ;
+laskma:lasK1 LASKMA ;
+jooksma:jooK1s JOOKSMA ;
+teadma:teaD1 HOIDMA ;
 
-!laskma:lasK1 JOOKSMA ;
-!laskma+V+Pers+Prt+Ind:las%+ IND_PAST ; ! indicative past
-! puskma
-! mõskma
-! jooksma:jooks  ;
+
+! VVS type 35
+katma:kaT1 KATMA ;
+kütma:kÜ5T1 KATMA ;
+tundma:tunnD1 TUNDMA ;
+lõpma:lõpp LÕPMA ;
 
 ! VVS 36
-!olema:ol TULEMA ;
+olema: OLEMA ;
 tulema:tul TULEMA ;
 panema:pan TULEMA ;
-!minema:min TULEMA ;
+minema: MINEMA ;
 surema:sur TULEMA ;
 
 ! VVS 37
@@ -758,11 +795,11 @@ jääma:jää SAAMA ;
 ! VVS 38 viima, jooma
 viima:vii VIIMA ;
 käima:käi VIIMA ;
-jooma:jO6O6 JOOMA ;
-looma:lO6O6 JOOMA ;
+jooma:jO6O6 TOOMA ;
+looma:lO6O6 TOOMA ;
 pooma:pO6O6 VIIMA ;
-tooma:tO6O6 JOOMA ;
-lööma:lÖ6Ö6 JOOMA ;
-sööma:sÖ6Ö6 JOOMA ;
+tooma:tO6O6 TOOMA ;
+lööma:lÖ6Ö6 TOOMA ;
+sööma:sÖ6Ö6 TOOMA ;
 müüma:müü VIIMA ;
 

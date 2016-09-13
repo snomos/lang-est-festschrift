@@ -1,73 +1,122 @@
-# remove Sg forms of plurale tantum words
-#
-define plwords [
-               {abud} | 
+# remove:
+#  Sg forms of plurale tantum words
+#  Sg Nom forms of 6 words
+define plwords [{aganad} | 
+               {Aleuudid} | 
+               {algonkinid} | 
                {alimendid} | 
-               {andmed} | 
+               {Alpid} | 
+               {alus#püksid} | 
+               {Andid} | 
                {andmed} | 
                {annaalid} | 
+               {Antillid} | 
+               {Apenniinid} | 
                {aplodismendid} | 
+               {Ardennid} | 
                {arstmed} | 
                {arv#andmed} | 
+               {Assoorid} | 
                {bakid} | 
                {bikiinid} | 
+               {danaiidid} | 
+               {Dardanellid} | 
                {dionüüsiad} | 
+               {dressi#püksid} | 
                {džiinid} | 
                {elejad} | 
+               {ergused} | 
+               {erinnüsed} | 
+               {eumeniidid} | 
                {feeriad} | 
                {fekaalid} | 
+               {Filipiinid} | 
                {finantsid} | 
+               {gastropoodid} | 
                {genitaalid} | 
+               {Hašimiidid} | 
                {heitmed} | 
                {hekslid} | 
+               {hesperiidid} | 
                {hõõrmed} | 
                {härrased} | 
                {ihkmed} | 
                {iidid} | 
                {insiigniad} | 
+               {joodud} | 
                {jõulud} | 
                {järelmid} | 
                {jäätmed} | 
                {kaatsad} | 
                {kalavinskid} | 
                {kalifeed} | 
+               {kalifee#püksid} | 
                {kaltsad} | 
+               {Kanaarid} | 
+               {Karpaadid} | 
+               {karu#püksid} | 
                {kastanjetid} | 
+               {katse#andmed} | 
                {kedrid} | 
-               {ketsid} | 
                {kihermed} | 
                {kihlad} | 
+               {kints#püksid} | 
+               {kliid} | 
                {kodinad} | 
+               {Komoorid} | 
                {koolikud} | 
+               {Kordiljeerid} | 
                {korn#tangid} | 
                {kosjad} | 
+               {kott#püksid} | 
                {kraasmed} | 
+               {kruubid} | 
+               {kruubi#tangud} | 
                {kuluaarid} | 
                {kummi#jäätmed} | 
+               {Kuriilid} | 
                {kõrkmed} | 
                {kõrvetised} | 
                {käimad} | 
                {kärajad} | 
+               {kärssed} | 
                {käärid} | 
                {lahingu#ristsed} | 
+               {Lakadiivid} | 
                {lamba#käärid} | 
                {langud} | 
                {leetrid} | 
                {lendmed} | 
+               {liigud} | 
+               {limused} | 
                {linnased} | 
+               {loimurid} | 
                {looded} | 
                {lõikmed} | 
+               {lõkad} | 
+               {lõpusesed} | 
                {lähte#andmed} | 
+               {Maldiivid} | 
                {malid} | 
+               {Malviinid} | 
+               {mamelukid} | 
+               {matuse#joodud} | 
                {memuaarid} | 
                {miasmid} | 
+               {missi#valimised} | 
                {mitmikud} | 
                {murdmed} | 
                {mõtte#talgud} | 
+               {Myrtoonid} | 
                {naglid} | 
                {naha#jäätmed} | 
+               {niied} | 
+               {nina#prillid} | 
+               {niuded} | 
                {nopped} | 
                {nõoksed} | 
+               {näpits#prillid} | 
+               {näpped} | 
                {näärid} | 
                {nöörmed} | 
                {omaksed} | 
@@ -75,82 +124,138 @@ define plwords [
                {paklad} | 
                {pantaloonid} | 
                {pantsid} | 
+               {parlamendi#valimised} | 
                {pealsed} | 
+               {peased} | 
+               {pebred} | 
                {peied} | 
+               {penaadid} | 
                {pihid} | 
                {poised} | 
+               {populaarid} | 
+               {present#püksid} | 
+               {presidendi#valimised} | 
+               {prillid} | 
+               {pulmad} | 
                {punetised} | 
                {puurmed} | 
+               {põlv#püksid} | 
+               {päikese#prillid} | 
                {päitsed} | 
                {päramised} | 
+               {pärgsed} | 
                {päädikud} | 
                {pühkmed} | 
+               {püksid} | 
                {püksikud} | 
                {raidmed} | 
                {rakmed} | 
+               {raksed} | 
                {rangid} | 
                {rapped} | 
                {reaalid} | 
                {retuusid} | 
+               {rihvlid} | 
                {riismed} | 
                {ristsed} | 
+               {rohundid} | 
                {rookmed} | 
+               {rootud} | 
                {rubid} | 
                {rupskid} | 
                {ruunid} | 
                {rõuged} | 
                {räätsad} | 
                {saagmed} | 
+               {sabased} | 
                {sademed} | 
+               {Sajaanid} | 
                {sarlakid} | 
                {saturnaalid} | 
+               {Seišellid} | 
+               {seldžukid} | 
+               {sipu#püksid} | 
+               {spiikeri#valimised} | 
+               {spordi#püksid} | 
                {sub#produktid} | 
                {suised} | 
                {suitsed} | 
+               {sukk#püksid} | 
+               {supel#püksid} | 
                {susped} | 
                {suulised} | 
                {suvisted} | 
                {sõelmed} | 
+               {sõna#sabased} | 
                {sügelised} | 
                {tagid} | 
                {talgud} | 
                {talvisted} | 
                {tangid} | 
+               {tangud} | 
                {taosed} | 
                {tapa#talgud} | 
                {teismed} | 
                {teksad} | 
                {teksased} | 
+               {teksas#püksid} | 
                {tinulised} | 
                {toidu#jäätmed} | 
                {tootmis#jäätmed} | 
+               {treening#püksid} | 
+               {treeningu#püksid} | 
+               {trikoo#püksid} | 
                {trussikud} | 
+               {tsitrused} | 
+               {tšuudid} | 
                {tuhud} | 
                {tule#ristsed} | 
                {tulused} | 
                {tunked} | 
                {tuuma#jäätmed} | 
                {töötlemis#jäätmed} | 
+               {Türreenid} | 
                {uhtmed} | 
+               {ujumis#püksid} | 
+               {umbrid} | 
+               {valimised} | 
                {valjad} | 
                {varad} | 
                {varrud} | 
                {vaselised} | 
                {vastlad} | 
                {vatid} | 
+               {vedad} | 
+               {vedru#püksid} | 
                {veimed} | 
+               {viigi#püksid} | 
                {viilmed} | 
                {virmalised} | 
                {voolmed} | 
+               {vurrud} | 
                {võrdlus#andmed} | 
                {väitused} | 
                {õeksed} | 
                {õlpmed} | 
+               {õõssed} | 
+               {üld#valimised} | 
                {üsked} ] ;
+
+define otherwords [
+        {ligida} |
+        {läheda} |
+        {mõlema} |
+        {üks#teise} |
+        {teine#teise} |
+        {lühida} ] ;
+
 define SG [ "+Sg" ] ;
+define SGNOM [ "+Sg" "+Nom" ] ;
 
 # make sure only word-final components are considered
 define WB [ "#" ] ;
-define lexical [ plwords [\WB]* SG [\WB]+ ] ;
+define pllexical [ plwords [\WB]* SG [\WB]+ ] ;
+define otherlexical [ otherwords [\WB]* SGNOM [\WB]* ] ;
 
-regex ~[lexical].i ;
+regex ~[pllexical | otherlexical].i ;
+

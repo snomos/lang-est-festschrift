@@ -9,16 +9,21 @@ echo '#' >> remove-sg-forms.est.xfscript
 echo 'define plwords [' >> remove-sg-forms.est.xfscript
 
 
-cat fs_lex \
-| grep '|(.*#' \
-| sed 's/^[^#]*#//' \
-| sed 's/#[^#]*$//' \
-| sed 's/D/d/' \
+cat algtmp \
+| grep 'ÕIGEVORM' \
+| sed 's/^.* \([^ ]*\)ÕIGEVORM.*$/\1/' \
+| sed 's/#//g' \
+| sed 's/D$/d/' \
 | sed 's/_/#/g' \
 | sed 's/[]_<?]//g' \
 | sed 's/\[//g' \
 | sed 's/^.*$/               {&} \| /' \
+| sort \
 > tmp1.remove-sg-forms.est.xfscript
+
+# insert the list to ../filters/remove-sg-forms.est.xfscript
+exit
+
 
 cat fs_lex \
 | grep '^[^ ]*\[D' \
@@ -47,7 +52,7 @@ echo '' >> remove-sg-forms.est.xfscript
 echo 'regex ~[lexical].i ;' >> remove-sg-forms.est.xfscript
 
 rm tmp.remove-sg-forms.est.xfscript
-cp remove-sg-forms.est.xfscript ../filters/remove-sg-forms.est.xfscript
+# cp remove-sg-forms.est.xfscript ../filters/remove-sg-forms.est.xfscript
 
 exit
 
