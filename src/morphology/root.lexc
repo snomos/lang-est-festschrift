@@ -267,7 +267,6 @@ Multichar_Symbols
 ! kasutust (sagedust jm) iseloomustavad märgendid
 ! usage-related tags
 
-+Emph ! Long form personal pronouns (emphasized):  tema (vs ta)
 
 ! paralleelvormide erinevat kasutussagedust iseloomustavad
 ! usage info for parallel forms (either correct according to the norm, or incorrect)
@@ -276,25 +275,6 @@ Multichar_Symbols
 +Use/Hyp        ! norm, but so rare that norm is probaly wrong: tiivasse:tiib+Sg+Ill+Use/Hyp
 +Use/NotNorm    ! not norm, but sometimes used: pöidlates:pöial+Pl+Ine+Use/NotNorm
 +Use/CommonNotNorm ! not norm, and used more than norm: peeneid:peen+Pl+Par+Use/CommonNotNorm
-
-
-
-! tuletised, sisemiseks kasutamiseks, filtreerimiseks
-!! derivation suffixes, used to filter out illegal combinations internally
-+Dim/ke	! deminutive
-+Dim/kene  ! deminutive
-+Der
-+Der/us
-+Der/lt
-+Der/ini	! comparation? paremini, kiiremini (how? better than .., faster than ..)
-+Der/lik
-
-+Der/nu
-+Der/tu
-+Der/tav
-+Der/v
-+Der/ja
-+Der/mine
 
 !! Morphophonology
 
@@ -389,11 +369,8 @@ N2  ! laas-laane
 
 ! Inflectional affixes having the same grammatical meaning
 
- %{sid%}   ! s 0    pl par ending siilisid siile
  %{i%}
  %{d%}
-
- %{idsid%} ! s 0   pl par ending esseesid esseid
  
  %{id%}   ! lexicon flag for pl part possible ending (esseesid/esseid)
 
@@ -678,7 +655,7 @@ soo:sooH3Y3%+%{id%}%{stemill%} PUU ;        !
 hea:hE6A6%+%{id%} PUU ;        ! 
 pea:pE6A6H3Y3%+%{id%}%{stemill%} PUU ;        ! 
 
-Braille:Braille%{apo%} ARMEE ;        ! gnuu  gnuu  gnuud gnuusid
+Braille:Braille%{apo%} ARMEE ;        ! Braille Braille' Braille'd Braille'sid
 
 
 
