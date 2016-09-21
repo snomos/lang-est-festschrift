@@ -402,6 +402,12 @@ N2  ! laas-laane
 
  %{stemill%} ! lexicon flag for short sg ill, formed by stem change (jõgi-jõkke)
 
+! Flag diacritics for words that need GI at the end, e.g. keegi, kumbki
+!@P.Final.Gi@
+!@R.Final.Gi@
+!@U.Final.Gi@
+!@U.Final.NotGi@
+
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!                       M O R P H O T A C T I C S                         !!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -409,12 +415,6 @@ N2  ! laas-laane
 LEXICON Root
 
 NounRoot ;
-
-
-! ----------------
-! Verbs
-! ---------------
-
 
 LEXICON XXXX   ! dummy
  # ;
@@ -424,6 +424,8 @@ LEXICON XXXX   ! dummy
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 LEXICON NounRoot
+
+! kumbki@U.Final.Gi@:kummB1@U.Final.Gi@ PIIM ;
 
 ! VVS type 1
 aasta AASTA ;
@@ -679,7 +681,11 @@ pea:pE6A6H3Y3%+%{id%}%{stemill%} PUU ;        !
 Braille:Braille%{apo%} ARMEE ;        ! gnuu  gnuu  gnuud gnuusid
 
 
-! verbs
+
+! ----------------
+! Verbs
+! ---------------
+
 
 ! VVS type 27
 elama:ela ELAMA ;

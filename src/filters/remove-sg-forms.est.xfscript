@@ -1,6 +1,6 @@
 # remove:
 #  Sg forms of plurale tantum words
-#  Sg Nom forms of 6 words
+
 define plwords [{aganad} | 
                {Aleuudid} | 
                {algonkinid} | 
@@ -241,21 +241,11 @@ define plwords [{aganad} |
                {üld#valimised} | 
                {üsked} ] ;
 
-define otherwords [
-        {ligida} |
-        {läheda} |
-        {mõlema} |
-        {üks#teise} |
-        {teine#teise} |
-        {lühida} ] ;
-
 define SG [ "+Sg" ] ;
-define SGNOM [ "+Sg" "+Nom" ] ;
 
 # make sure only word-final components are considered
 define WB [ "#" ] ;
 define pllexical [ plwords [\WB]* SG [\WB]+ ] ;
-define otherlexical [ otherwords [\WB]* SGNOM [\WB]* ] ;
 
-regex ~[pllexical | otherlexical].i ;
+regex ~[pllexical].i ;
 

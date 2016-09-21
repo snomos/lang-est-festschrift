@@ -80,7 +80,7 @@ LEXICON LAPS               ! only laps, uks; notice the weird (?) use of {W}
 :%{W%}%+te N_PL_SUBPARA ;                          ! laste etc 
 +Pl+Par:%+i GI ;                              ! lapsi
 
-LEXICON LÕUNA                 ! only lõuna; like haare
+LEXICON LÕUNA                 ! only lõuna; almost like haare
 
 +Sg+Nom:%{W%} GI ;                      ! lõuna
 +Sg+Par:%{W%}%+t GI ;                   ! lõunat
@@ -444,7 +444,7 @@ LEXICON KAVA
 +Sg+Ill:%{S%} SG_ILL ;               ! kavva
 +Sg+Ill:%{W%} SG_ILL ;        ! kavasse 
 :%+de N_PL_SUBPARA ;                       ! kavade etc
-+Pl+Par:%+%{sid%}%{i%}%{d%} PL_PAR ;       ! kavasid & kavu ...
++Pl+Par:%+%{s%}%{i%}%{d%} PL_PAR ;       ! kavasid & kavu ...
 
 ! VVS 2 & 19 
 LEXICON MUUSEUM  ! undecided which stable type (aktiivne muuttüüp): TAUD or REDEL 
@@ -537,7 +537,7 @@ LEXICON KAEL   ! almost = PIIM, except pl gen +
 %+Use%/Rare:%{sg.a%}%+de N_PL_SUBPARA ;       ! kaelade etc 
                                               ! pl par stem vowel (u, i, 0) is lexically determined 
                                               ! and usage-wise tagged
-+Pl+Par:%{sg.a%}%+%{sid%}%{i%}%{d%} PL_PAR ;  ! kaelu, kaelasid+Use/Rare
++Pl+Par:%{sg.a%}%+%{s%}%{i%}%{d%} PL_PAR ;  ! kaelu, kaelasid+Use/Rare
 
 ! VVS 23 
 LEXICON POISS   ! poiss, püks; almost = TAUD, except pl gen + 
@@ -571,7 +571,7 @@ LEXICON ARMEE ! VVS 26
 +Sg+Ill:%{W%} SG_ILL ;                       ! armeesse, öösse; {W} is here just to get SG_ILL right
 +Sg+Ill:%{S%} SG_ILL ;                       ! öhe, suhu, sohu, pähe
 :%+de N_PL_SUBPARA ;                           ! armeede etc  
-+Pl+Par:%+%{idsid%}id PL_PAR ;                 ! armeesid; armeid...
++Pl+Par:%+%{s%}id PL_PAR ;                 ! armeesid; armeid...
 
 ! ---------------
 ! sub-paradigms common to several inflectional types
@@ -620,7 +620,7 @@ LEXICON 1C_PL ! PL subpara of 1C
 :%+de N_PL_SUBPARA ;                       ! kottide etc
                                            ! pl par stem vowel (u, i, 0) is lexically determined 
                                            ! and usage-wise tagged
-+Pl+Par:%+%{sid%}%{i%}%{d%} PL_PAR ;       ! kingi, kingasid+Use/Rare vs. puudi+Use/Rare, puudasid
++Pl+Par:%+%{s%}%{i%}%{d%} PL_PAR ;       ! kingi, kingasid+Use/Rare vs. puudi+Use/Rare, puudasid
 
 ! ---------------
 ! most regular ...

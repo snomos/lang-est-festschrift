@@ -164,18 +164,14 @@ N2:s   ! laas
 ! their choice depends on triggers in the lexicon
 ! have to be defined un-naturally letter by letter
 
- %{sid%}:s   ! s of sid: pl par ending siilisid
- %{sid%}:0   !        0: pl par ending siile
  %{i%}:i   ! i of sid: pl par ending siilisid
  %{i%}:0   !        0: pl par ending siile
  %{d%}:d   ! d of sid: pl par ending siilisid
  %{d%}:0   !        0: pl par ending siile
 
- %{idsid%}:s  ! sid   pl par ending esseesid
- %{idsid%}:0  ! id    pl par ending esseid
 
- %{s%}:s  ! s of -sse jõesse;  
- %{s%}:0  !        -0  jõkke; 
+ %{s%}:s  ! s of -sse jõesse; -sid siilisid 
+ %{s%}:0  !        -0  jõkke; -0 siile; 0 puid
  %{e%}:e  ! e of -sse jõesse;  
  %{e%}:0  !        -0  jõkke; 
 
@@ -190,7 +186,7 @@ Diacritics
 ! Originally in the Filosoft lexicon; keep them for future 
 
 ´    ! kolmas aste ! 3rd grade: l´aud
-`    ! rõhk        ! stress: sem`antiline
+`    ! rõhk        ! stress: sem`antiline  ˈ
 %,    ! peenendus   ! palatalisation: k´on,t
 
 ;
@@ -239,6 +235,12 @@ WordEnd = [ (%+: g: i) Border ];     ! final +gi is optional for almost any word
 
 Rules 
  
+! -----
+! general 
+"strong and weak gradation triggers cannot co-exist"
+%{S%}:0  /<= _ :* [%{W%}: | %{WF%}:] ;
+             [%{W%}: | %{WF%}:] :* _ ;
+
 ! ----- consonant gradation
 
 ! different contexts for declinables and verbs
@@ -301,7 +303,6 @@ Cx:Cy  <=> _ :* %{W%}: ;
 "Lexically determined weak grade for gbdkpt:0"
 
 Cx:Cy  <=> _ :* %{W%}: ;
-!           _ s [:0]+ :t ;         ! uks, laps -> ust, last
      where Cx in (G1 B1 D1 K1 P1 T1 ) 
            Cy in ( 0  0  0  0  0  0 )
      matched ;
@@ -594,7 +595,7 @@ e:0  <=>  N1:s _  ;
 !
 ! PIIM, KOON, EIT + PL_PAR
 ! pl part kingi/kingasid, koone/koonusid etc
-! co-play of 2 rules with stem lex and contin. lex info for plural partitive:
+! co-play of several rules with stem lex and contin. lex info for plural partitive:
 ! 1. generate correct plural forms
 !    - -sid is always possible
 !    - vowel is possible only when shown in stem lex
@@ -603,28 +604,65 @@ e:0  <=>  N1:s _  ;
 !    - if stem lex has usage tag (rare, hyp) after vowel, then this form is rare or hyp
 ! note the use of LT (Lexicon-based usage Tag) in rules
 
-"No sg stem vowel if no pl par -sid (choose pl stem vowel instead)"
+! ---------
+! affixes sid, id and sse have to be unnaturally described symbol-by-symbol
 
-Vx:0  <=>  PlSV:stemV [:0]* _ [:0]* %{sid%}:0 ;
+! affixes sid, sse, id
+
+"i for sid"
+%{i%}:i        <=>  :s _ :d ;
+
+"d for sid"
+%{d%}:d        <=>  :s :i _ ;
+
+"s for sse, sid"
+%{s%}:s         =>  :s _ :e ;   ! sse
+                    _ :s :e ;   ! sse
+                    _ :i :d ;   ! sid
+
+"e for sse"
+%{e%}:e        <=>   :s :s _ ;
+
+! rules for choosing the shorter wordform depend on info in the lexical entry
+"choosing short(er) affix: 0 vs sid, 0 vs sse, id vs sid"
+
+%{s%}:0     =>  PlSV:stemV   [:]* _ %{i%}:0 %{d%}:0; ! short Pl Par needs its stem vowel indicated in the lexicon
+                %{id%}:      [:]* _ i d ;            ! -id needs a trigger in the lexicon
+                %{stemill%}: [:]* _ %{s%}:0 %{e%}:0; ! stem (aka short) illative needs a trigger in the lexicon
+                                  %{s%}:0 _ %{e%}:0; ! the middle s is sometimes zero, of course  
+
+! lexical: s a b a + {pl.u} {rare} {stemill} + {s} {i} {d} 
+! surface: s a b 0 +    u      0       0     0  0   0   0 
+! lexical: p u u {id} + {s} i d 
+! surface: p u 0  0   0  0  i d 
+! lexical: s a b . a + {pl.u} {rare} {stemill} {S} + {s} {s} {e} 
+! surface: s a p p a +    0      0       0      0  0  0   0   0 
+
+
+"No sg stem vowel if no Pl Par with -sid (choose pl stem vowel instead)"
+
+Vx:0  <=>  PlSV:stemV [:0]* _ [:0]* %{s%}:0 ;
      where Vx in ( %{sg.a%} %{sg.e%} %{sg.u%} %{sg.i%} ); 
 
-"Choose pl stem vowel for pl par (sg stem vowel is 0) "
+"Choose pl stem vowel for Pl Par (sg stem vowel is 0) "
 
-Vx:Vy  <=>   :Consonant [:0]* _ [:0]+ %{sid%}:0  ;     ! puud-puudi
+Vx:Vy  <=>   :Consonant [:0]* _ [:0]+ %{s%}:0 ;     ! puud-puudi
      where Vx in ( %{pl.e%} %{pl.i%} %{pl.u%} ) 
            Vy in (     e        i        u   )
      matched ;
 
-! lexical: k i n g + {pl.i}       {sg.a} + {sid}  
-! surface: k i n g 0    i            0   0   0   
-! lexical: p u u d + {pl.i} {hyp} {sg.a} + {sid} {rare}
-! surface: p u u d 0    i    hyp     0   0   0     0 
-! lexical: k a u p + {pl.u}       {sg.a} + {sid}  
-! surface: k a u p 0    u            0   0   0
-! lexical: m a j a + {pl.u}        {stemill} + {sid} 
-! surface: m a j 0 0    u             0     0   0    
-! lexical: s a b a + {pl.u} {rare} {stemill} + {sid} {rare}
-! surface: s a b 0 0    u              0     0   0     0 
+! lexical: k i n g + {pl.i}       {sg.a} + {s} {i} {d}
+! surface: k i n g 0    i            0   0  0   0   0  
+! lexical: p u u d + {pl.i} {hyp} {sg.a} + {s} {i} {d} {rare}
+! surface: p u u d 0    i    hyp     0   0  0   0   0     0 
+! lexical: k a u p + {pl.u}       {sg.a} + {s} {i} {d}  
+! surface: k a u p 0    u            0   0  0   0   0
+! lexical: m a j a + {pl.u}        {stemill} + {s} {i} {d} 
+! surface: m a j 0 0    u             0     0   0   0   0    
+! lexical: s a b a + {pl.u} {rare} {stemill} + {s} {i} {d} {rare}
+! surface: s a b 0 0    u              0     0  0   0   0     0 
+
+
 ! ------------
 
 ! maja-maju/majasid, osa-osi/osasid, nuga-nuge/nugasid
@@ -633,129 +671,117 @@ Vx:Vy  <=>   :Consonant [:0]* _ [:0]+ %{sid%}:0  ;     ! puud-puudi
 
 "final vowel substitution for plural vowel"
 
-a:0  <=> :Consonant _ %+: PlSV:stemV [:0]* %{sid%}:0 ;
+a:0  <=> :Consonant _ %+: PlSV:stemV [:0]* %{s%}:0 %{i%}:0 %{d%}:0 ;
 
-! lexical: m a j a + {pl.u} {stemill} + {sid}
-! surface: m a j 0 0    u       0     0   0  
-
-! how short pl par and usage info are related:
-! short pl par is rare, if the lexicon tag says it is rare;
-! short pl par is common, if there is no lexicon tag to indicate that it is rare;
-! (short pl par is impossible without a plural stem vowel)
-"short pl par usage" 
-
-%{sid%}:0   <=>  PlSV:stemV LT: [:]* _ %{i%}: %{d%}: LT: ;   ! puudi is rare
-                 PlSV:stemV \[LT:]*  _ %{i%}: %{d%}: \LT: ;   ! kaupu is common
-
-! lexical: p u u d + {pl.i} {hyp} {sg.a} + {sid} {rare}
-! surface: p u u d 0    i     0      0   0   0      0     
-! lexical: p u u d + {pl.i} {hyp} {sg.a} + {sid} WordEnd
-! surface: p u u d 0    i     0      0   0   0           FAIL
-! lexical: k a u p + {pl.u}       {sg.a} + {sid} {rare}
-! surface: k a u p 0    u            0   0   0      0    FAIL
-! lexical: t ü n g                {sg.a} + {sid}
-! surface: t ü n g                   a   0   0           
-
-! how -sid pl par and usage info (the final LT) are related:
-! -sid pl par cannot be rare, if the lexicon tag says that short form is rare;
-! -sid pl par cannot be common, if there is no lexicon tag that would say that short form is rare;
-! -sid pl par cannot be rare, if the lexicon contains no pl vowel to indicate short form ;
-"-sid pl par usage"
-
-%{sid%}:s    /<=  PlSV:0 LT: [:]* _ %{i%}: %{d%}: LT: ;
-                 PlSV:0 \LT: [:]* _ %{i%}: %{d%}: \LT: ;
-              Border \[PlSV:]*    _ %{i%}: %{d%}: LT: ;
-                                  _ %{i%}:0 %{d%}:0 ;
-
-! lexical: p u u d + {pl.i} {hyp} {sg.a} + {sid} {rare}
-! surface: p u u d 0    0     0      a   0  sid     0    FAIL
-! lexical: k a u p + {pl.u}       {sg.a} + {sid} WordEnd
-! surface: k a u p 0    0            a   0  sid          FAIL
-! lexical: t ü n g                {sg.a} + {sid} {rare}
-! surface: t ü n g                   a   0  sid     0    FAIL
-
-! ---------
-
-! rules for affix sid/0
-"sid (1)"
-%{i%}:i        <=>  %{sid%}:s _ %{d%}:d ;
-
-"sid (2)"
-%{d%}:d        <=>  %{sid%}:s %{i%}:i _ ;
-
-! --------------
-! 1.2 plural partitive: -sid vs -id
-! 
-! puu-puid/puusid
-! co-play of 2 rules with stem lex info for puu, gnuu, essee
-
-! if -id is possible, then it has to be indicated in stem lexicon with {id}
-! (%{stemill%}: %{rare%}: ) appears only in "öö"
-"-id selection (puu, gnuu, essee)"
-%{idsid%}:0   <=>      %{id%}: (%{stemill%}: %{rare%}:) \[LT:]*  _ i d \LT: ;   ! puu-puid is common
-                       %{id%}: LT: [:]* _ i d LT: ;   ! essee-esseid is rare
-
-"-sid cannot be rare, unless the lexicon entry implies this by having {id} and no LT"
-
-%{idsid%}:s    /<= Border [\%{id%}:]* _ i d LT:  ;
-
-! lexical: p u u     {id}        + {idsid} i d WordEnd
-! surface: p u 0      0          0    0    i d 
-! lexical: p u u     {id}        + {idsid} i d {rare}
-! surface: p u u      0          0   s     i d   0
-! lexical: g n u u               + {idsid} i d WordEnd
-! surface: g n u u               0   s     i d 
-! lexical: g n u u               + {idsid} i d {rare}
-! surface: g n u u               0   s     i d    0      FAIL 
-! lexical: e s s e e {id} {rare} + {idsid} i d {rare}
-! surface: e s s e 0  0      0   0    0    i d   0 
-! lexical: e s s e e {id} {rare} + {idsid} i d {rare}
-! surface: e s s e 0  0      0   0   s     i d    0      FAIL
-! lexical: e s s e e {id} {rare} + {idsid} i d WordEnd    
-! surface: e s s e 0  0      0   0    0    i d        FAIL
-! lexical: e s s e e {id} {rare} + {idsid} i d WordEnd
-! surface: e s s e 0  0      0   0   s     i d      
-! --------------
+! lexical: m a j a + {pl.u} {stemill} + {s} {i} {d}
+! surface: m a j 0 0    u       0     0  0   0   0
 
 ! --------------
 ! 2. singular illative: -sse vs stem grade strengthening
 !
+! bisyllabic vowel-ending words may have a stem illative (also called as short illative) 
+! but it is exceptional, and actually usable only for frequently occurring words.
+! thus it has to be indicated in a stem lexicon with %{stemill%}
+! (the same applies to exceptional words whose short illative is without stem gradation (põrgu; Kunda) ) 
+! 
 ! lagi-laesse/lakke, keel-keelesse/keelde
 ! co-play of xxx rules with stem lex info for lagi, nimi, sõda; Riia, Kunda, ...
 
-! rules for affix sse/0
-"sse (1)"
-%{s%}:s        <=>  %{s%}:s _ %{e%}:e ;  ! toasse, tuppa; pingesse, pinge
-                    _ %{s%}:s %{e%}:e ;
+! ------
+! general relations between short illative and stem grade
 
-"sse (2)"
-%{e%}:e        <=>   %{s%}:s %{s%}:s _ ;
+"weak grade is incompatible with exceptional stem (aka short) illative"
+%{W%}:0       /<=  _ [:]* %{s%}:0 %{s%}:0 %{e%}:0  ;    
 
-! if short illative by stem gradation is possible, then it has to be indicated in stem lexicon
-! (the same applies to exceptional words whose short illative is without stem gradation (põrgu; Kunda) ) 
-! (the first lexical tag (LT) comes from the stem lexicon, the second from a continuation class lexicon;
-! the second LT determines the lexical form of the output)
+"(extra) strong grade is incompatible with sse-illative"
+%{S%}:0       /<=  _ [:]* %{s%}:s %{s%}:s %{e%}:e  ;      
+
+! ------
+! we (mis)use 2-level formalism to prune spurious branches that emerge from continuation lexicons
+!
+! usage tag (LT for "lexical tag") is used for controlling paths
+! that have the same lexical side, but different surface realisation
+! so that the final lexical side has usage info indicated
+
+! (the first lexical tag (LT) comes from the stem lexicon, the second from a continuation class lexicon)
 
 ! -sse sg ill cannot be rare, if the stem lexicon tag says that short form is rare;
 ! -sse sg ill cannot be common, if there is no lexicon tag that would say that short form is rare;
 ! -sse sg ill cannot be rare, if the lexicon contains no tag to indicate that short form exists;
 
-"-sse sg ill usage"
-
-%{s%}:s       /<=  %{stemill%}:  LT: [:]* _ :s :e LT: ;  ! -sse cannot be rare
-                   %{stemill%}: \LT: [:]* _ :s :e \LT: ; ! -sse cannot be common
-                Border \[%{stemill%}:]*   _ :s :e LT: ;  ! there is no -0, thus -sse cannot be rare
-                              %{S%}: [:]* _ :s :e     ;  ! (extra) strong grade -sse is not even possible
-
 ! short sg ill is rare, if the lexicon tag says it is rare;
 ! short sg ill is common, if there is no lexicon tag to indicate that it is rare
 ! note that {stemill} has to be indicated in lexicon; and weak grade is impossible
-"-0 sg ill usage"
 
-%{s%}:0       /<=  %{stemill%}:  LT: [:]* _ %{s%}:0 %{e%}:0 \LT: ; ! -0 cannot be common 
-                   %{stemill%}: \LT: [:]* _ %{s%}:0 %{e%}:0 LT: ;  ! -0 cannot be rare
-                Border \[%{stemill%}:]*   _ %{s%}:0 %{e%}:0  ;     ! -0 is not even possible
-                              %{W%}: [:]* _ %{s%}:0 %{e%}:0  ;     ! -0 is not even possible
+! short pl par is rare, if the lexicon tag says it is rare;
+! short pl par is common, if there is no lexicon tag to indicate that it is rare;
+! (short pl par is impossible without a plural stem vowel)
+
+! -sid pl par cannot be rare, if the lexicon tag says that short form is rare;
+! -sid pl par cannot be common, if there is no lexicon tag that would say that short form is rare;
+! -sid pl par cannot be rare, if the lexicon contains no pl vowel to indicate short form ;
+
+"usage tag may be in several places"
+LT:0          =>  %{stemill%}: _ ;      ! stem illative usage tag in the lexicon follows the trigger
+                         PlSV: _ ;      ! short pl partitive usage tag in the lexicon follows the plural stem vowel 
+                       %{id%}: _ ;      ! -id plural partitive usage tag in the lexicon follows the trigger 
+                  %{stemill%}:  LT: [:]* %{s%}:0 %{s%}:0 %{e%}:0   _  ;   ! nimme is rare
+                  %{stemill%}: \LT: [:]* %{s%}:s %{s%}:s %{e%}:e   _  ;   ! majasse is rare
+                    PlSV:stemV  LT: [:]* %{s%}:0 %{i%}:0 %{d%}:0  _ ;   ! puudi is rare
+                    PlSV:0     \LT: [:]* %{s%}:s %{i%}:i %{d%}:d  _ ;   ! kaupasid is rare
+                       %{id%}:  LT: [:]* %{s%}:0 i d _  ;   ! esseid is rare
+                       %{id%}: \LT: [:]* %{s%}:s i d _  ;   ! puusid is rare
+
+
+"long plural partitive cannot be common if the word has a common short plural partitive"
+%{s%}:s    /<= PlSV:0 \LT: [:]* _ %{i%}:i %{d%}:d \LT: ; 
+
+"short plural partitive cannot be common if the lexicon tag says it is rare"
+%{s%}:0    /<= PlSV:stemV LT: [:]* _ %{i%}:0 %{d%}:0 \LT: ; 
+
+! lexical: p u u d + {pl.i} {hyp} {sg.a} + {s} {i} {d} {rare}
+! surface: p u u d 0    i     0      0   0  0   0   0      0     
+! lexical: p u u d + {pl.i} {hyp} {sg.a} + {s} {i} {d} WordEnd
+! surface: p u u d 0    i     0      0   0  0   0   0           FAIL
+! lexical: k a u p + {pl.u}       {sg.a} + {s} {i} {d} {rare}
+! surface: k a u p 0    u            0   0  0   0   0      0    FAIL
+! lexical: t ü n g                {sg.a} + {s} {i} {d}
+! surface: t ü n g                   a   0  s   i   d           
+
+! lexical: p u u d + {pl.i} {hyp} {sg.a} + {s} {i} {d} {rare}
+! surface: p u u d 0    0     0      a   0  s   i   d     0    FAIL
+! lexical: k a u p + {pl.u}       {sg.a} + {s} {i} {d} WordEnd
+! surface: k a u p 0    0            a   0  s   i   d          FAIL
+! lexical: t ü n g                {sg.a} + {s} {i} {d} {rare}
+! surface: t ü n g                   a   0  s   i   d     0    FAIL
+
+"-id plural partitive cannot be common if the lexicon tag says it is rare"
+%{s%}:0  /<=  %{id%}: LT: [:]* _ i d \LT:  ;
+
+"-sid plural partitive cannot be common if the word has a common -id plural partitive"
+%{s%}:s  /<= %{id%}: \LT: [:]* _ i d \LT:  ;
+
+! lexical: p u u     {id}        + {s} i d {rare}
+! surface: p u u      0          0  s  i d   0
+! lexical: g n u u               + {s} i d WordEnd
+! surface: g n u u               0  s  i d 
+! lexical: g n u u               + {s} i d {rare}
+! surface: g n u u               0  s  i d    0      FAIL 
+! lexical: e s s e e {id} {rare} + {s} i d {rare}
+! surface: e s s e 0  0      0   0  0  i d   0 
+! lexical: e s s e e {id} {rare} + {s} i d {rare}
+! surface: e s s e 0  0      0   0  s  i d    0      FAIL
+! lexical: e s s e e {id} {rare} + {s} i d WordEnd    
+! surface: e s s e 0  0      0   0  0  i d        FAIL
+! lexical: e s s e e {id} {rare} + {s} i d WordEnd
+! surface: e s s e 0  0      0   0  s  i d      
+! --------------
+
+"long illative cannot be common if the word has a common short illative already"
+%{s%}:s      /<= %{stemill%}: \LT: [:]* _ %{s%}: %{e%}: \LT:  ;
+
+"short illative cannot be common if the lexicon tag says it is rare"
+%{s%}:0      /<= %{stemill%}: LT: [:]* _ %{s%}: %{e%}: \LT:  ;
 
 ! majja is common, majasse is rare
 ! lexical: m a j 0 a + {pl.u} {stemill} {S} + {s} {s} {e}
@@ -846,11 +872,16 @@ Cx:Cy  <=> :voiceless [:0]* %+: _ ;
 ! hfst-twolc -o tmp.twol phonology/est-phon.twolc
 
 ! echo 'laud+N+Pl+Par' | hfst-lookup tmp.lexc
+! .... in GT infra, while in src, do:
+! echo 'laud+N+Pl+Par' | hfst-lookup morphology/lexicon.hfst
 ! hfst-lookup: warning: It is not possible to perform fast lookups with OpenFST, std arc, tropical semiring format automata.
 ! Using HFST basic transducer format and performing slow lookups
 ! > laud+N+Pl+Par	lauD1+{pl.u}{sg.a}+{sid}	0,000000
 
-! echo 'l a u D1:d +:0 {pl.u}:u {sg.a}:0 +:0 {sid}:0' | hfst-pair-test tmp.twol
+! echo 'l a u D1:d +:0 {pl.u}:u {sg.a}:0 +:0 {s}:0' | hfst-pair-test tmp.twol
+! .... in GT infra, while in src, do:
+! echo 'l a u D1:d +:0 {pl.u}:u {sg.a}:0 +:0 {s}:0' | hfst-pair-test phonology/est-phon.compose.hfst
+
 ! Test passed.
 
 ! echo 'jõnklema+V+Inf' | hfst-lookup morphology/lexicon.hfst
