@@ -140,9 +140,6 @@ M1:n   ! lun d
  %{pl.u%}:u  ! Stem vowel tag in lexicon
  %{pl.u%}:0  ! Stem vowel tag in lexicon
 
-! %{snd%}:s  ! sajas
-! %{snd%}:nd ! sajanda
-
 ! ne, s ending words have similar paradigms; only sg nom is different
 N1:n   ! soolane and other ne-words
 N1:s   ! soolas+e, soolas+t etc  
@@ -399,10 +396,10 @@ E2:0  <=>                          _ [ :0 ]* [:Consonant - :stop] [ :0 ]* :stemV
 ! surface: s i p  0 l e 0 v
 ! lexical: s p i k k E2 r + i
 ! surface: s p i k 0  0 r 0 i 
-! lexical: s o o l a {ne} E2 + t 
-! surface: s o o l a   s  0  0 t
-! lexical: r a u d {ne} E2 + t    ! NB! no e deletion
-! surface: r a u d   s  e  0 t
+! lexical: s o o l a N1 e E2 + t 
+! surface: s o o l a  s 0  0 0 t
+! lexical: r a u d N1 e E2 + t    ! NB! no e deletion
+! surface: r a u d  s 0  e 0 t
 
 ! general case of vowel lowering; it is lexically conditioned
 "Vowel lowering"
