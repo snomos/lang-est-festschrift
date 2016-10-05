@@ -1,0 +1,15 @@
+# remove:
+#  Pl forms of some words
+# Pl Nom is not removed
+
+define sgwords [{kumbki} | {keegi} | {miski} | {eikeegi} | {eimiski}] ;
+
+define PL [ "+Pl" ] ;
+define NOM [ "+Nom" ] ;
+
+# make sure only word-final components are considered
+define WB [ "#" ] ;
+define sglexical [ sgwords [\WB]* PL [\WB & \NOM]+ ] ;
+
+regex ~[sglexical].i ;
+
