@@ -266,7 +266,7 @@ Multichar_Symbols
 
 ! kasutust (sagedust jm) iseloomustavad märgendid
 ! usage-related tags
-
++Emph      ! long inflectional forms of personal pronouns mina, sina, tema, meie, teie, nemad
 
 ! paralleelvormide erinevat kasutussagedust iseloomustavad
 ! usage info for parallel forms (either correct according to the norm, or incorrect)
@@ -326,6 +326,8 @@ E3   ! e i   aed aia
 E4   ! e j   aeg aja 
 
 E1    ! e 0  soolase, raudset  soolas t
+I1    ! i    katkisil
+A1    ! a    pingsa
 
 A2   ! a 0  valvas valvsa
 E2   ! e 0  laulev laulva
@@ -402,8 +404,6 @@ LEXICON XXXX   ! dummy
 
 LEXICON NounRoot
 
-! kumbki@U.Final.Gi@:kummB1@U.Final.Gi@ PIIM ;
-
 ! VVS type 1
 aasta AASTA ;
 Kunda:Kunda%{stemill%} AASTA ;
@@ -436,7 +436,7 @@ koskel:koskE2l MAGUS ;
 veider:veidE2r MAGUS ;
 hirmus:hirmU2s MAGUS ;
 õilis:õilI2s MAGUS ;
-pingne:pingN1e MAGUS ;
+pingne:pingne MAGUS ;
 suhkur:suhkU2r VIRSIK ;
 
 köömen:köömE2n KÖÖMEN ;
@@ -504,13 +504,13 @@ kannel:kannD1E2l KANNEL ;
 lemmel:lemmE2l KANNEL ;
 
 ! VVS type 9, 10, 11, 12
-oluline:oluliN1e OLULINE ;
+oluline:oluline OLULINE ;
 peenike:peenike PEENIKE ;
-soolane:soolaN1e SOOLANE ;
-raudne:raudN1e SOOLANE ;
-viskoosne:viskoosN1e SOOLANE ;
-suuline:suuliN1e SUULINE ;
-katkine:katkiN1e KATKINE ; 
+soolane:soolane SOOLANE ;
+raudne:raudne SOOLANE ;
+viskoosne:viskoosne SOOLANE ;
+suuline:suuline SUULINE ;
+katkine:katkine KATKINE ; 
 päike:päi PÄIKE ;
 äike:äi PÄIKE ;
 väike:väi VÄIKE ;
@@ -518,8 +518,8 @@ katus:katus SOOLANE ;
 harjutus:harjutus OLULINE ;
 kandvus:kandvus SUULINE ;
 gloobus:gloobus KATKINE ;
-naine:naiN1e NAINE ;
-teine:teiN1e TEINE ;
+naine:naine NAINE ;
+teine:teine TEINE ;
 
 ! VVS type 13
 keel:keel%{stemill%} KEEL ;
@@ -621,6 +621,7 @@ kihlad:kihl PIIM ;
 vurrud:vurr%+%{pl.e%} KOON ;
 latv:laT2v PIIM ;
 hüüd:hüüD1 KOON;
+kumb:kummB1%+%{pl.i%}%{rare%} PIIM ;
 
 ! VVS type 23
 kael:kael%+%{pl.u%} KAEL ;
@@ -785,4 +786,29 @@ tooma:tO6O6 TOOMA ;
 lööma:lÖ6Ö6 TOOMA ;
 sööma:sÖ6Ö6 TOOMA ;
 müüma:müü VIIMA ;
+
+! VVS exceptions
+
+mis:mi KES ;
+kes:ke KES ;
+see:se SEE ;
+too:to TOO ;
+need:ne NEED ;
+nemad:n NEMAD ;
+nood:no NOOD ;
+mina:m MASA ;
+sina:s MASA ;
+tema:t TEMA ;
+meie:me METE ;
+teie:te METE ;
+ise: ISE ;
+iseenese:ise# ISE ;
+omaenese:oma# OMAENESE ;
+
+kõik:kõik KÕIK ;
+kumbki:kummB1%+%{pl.i%}%{rare%} KUMBKI ;
+miski:mi MISKI ;
+keegi:ke KEEGI ;
+eimiski:ei#mi MISKI ;
+eikeegi:ei#ke KEEGI ;
 

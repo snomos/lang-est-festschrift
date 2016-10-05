@@ -1,5 +1,6 @@
-# move usage-related tags to the right
+# move (usage-related) tags to the right
 # algorithm: 
+# 0) if 2 tags are adjacent, remove the less informative one
 # 1) tag categories -> tag categories OK tag
 # 2) delete tag if there is OK somewhere in the right side
 # 3) delete OK
@@ -8,8 +9,14 @@ define RTag [ "+Use/Rare" ] ;       # norm, but rare
 define HTag [ "+Use/Hyp" ] ;         # norm, but so rare that norm is probaly wrong
 define NTag [ "+Use/NotNorm" ] ; # not norm, but sometimes used
 define CNTag [ "+Use/CommonNotNorm" ] ; # not norm, and used more than norm
+define ETag [ "+Emph" ] ;       # emphasized form (mina, sina, tema, meie, teie, nemad) 
 
-define UTag [ RTag | HTag | NTag | CNTag ] ; # usage-related tag
+# we currently deal only with this instance
+define RemRTag1 RTag -> 0 || [NTag | HTag] _ ; # 
+define RemRTag2 RTag -> 0 || _ [NTag | HTag] ; # 
+define RemRTag [RemRTag1 .o. RemRTag2] ; 
+
+define UTag [ RTag | HTag | NTag | CNTag | ETag ] ; # usage-related tag
 
 define OK [ %+ O K ] ;   # temporary 
 
@@ -42,6 +49,7 @@ define MoveR Cat @-> ... OK RTag || RTag _ ;  # replicate tag from left also to 
 define MoveH Cat @-> ... OK HTag || HTag _ ; 
 define MoveN Cat @-> ... OK NTag || NTag _ ; 
 define MoveCN Cat @-> ... OK CNTag || CNTag _ ; 
+define MoveE Cat @-> ... OK ETag || ETag _ ; 
 
 define DelUTag UTag -> 0 || _ ?* OK ;    # clean up: remove tags from left
 define DelOK OK -> 0  ;                  # clean up: remove temporary tags
@@ -49,6 +57,6 @@ define DelOK OK -> 0  ;                  # clean up: remove temporary tags
 define CleanUp [ DelUTag .o. DelOK ] ;
 
 # move tag over any categories 
-define MoveCat [MoveR .o. MoveH .o. MoveN .o. MoveCN] ;
+define MoveCat [MoveR .o. MoveH .o. MoveN .o. MoveCN .o. MoveE] ;
 
-regex [MoveCat .o. CleanUp].i ;
+regex [RemRTag .o. MoveCat .o. CleanUp].i ;

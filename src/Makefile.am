@@ -63,7 +63,7 @@ endif # CAN_FOMA
 #################################################
 #### Add language-specific build rules here: ####
 
-EST_EXTRA_PRE_FILTERS=filters/remove-sg-forms.est filters/remove-sg-nom-forms.est
+EST_EXTRA_PRE_FILTERS=filters/remove-sg-forms.est filters/remove-pl-forms.est filters/remove-sg-nom-forms.est filters/remove-non-gi-forms.est
 EST_EXTRA_POST_FILTERS=
 
 

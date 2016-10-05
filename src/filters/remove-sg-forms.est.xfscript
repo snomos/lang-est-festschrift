@@ -6,7 +6,7 @@ define plwords [{aganad} |
                {algonkinid} | 
                {alimendid} | 
                {Alpid} | 
-               {alus#püksid} | 
+               {aluspüksid} | 
                {Andid} | 
                {andmed} | 
                {annaalid} | 
@@ -22,7 +22,7 @@ define plwords [{aganad} |
                {danaiidid} | 
                {Dardanellid} | 
                {dionüüsiad} | 
-               {dressi#püksid} | 
+               {dressipüksid} | 
                {džiinid} | 
                {elejad} | 
                {ergused} | 
@@ -50,7 +50,7 @@ define plwords [{aganad} |
                {kaatsad} | 
                {kalavinskid} | 
                {kalifeed} | 
-               {kalifee#püksid} | 
+               {kalifeepüksid} | 
                {kaltsad} | 
                {Kanaarid} | 
                {Karpaadid} | 
@@ -71,9 +71,9 @@ define plwords [{aganad} |
                {kott#püksid} | 
                {kraasmed} | 
                {kruubid} | 
-               {kruubi#tangud} | 
+               {kruubitangud} | 
                {kuluaarid} | 
-               {kummi#jäätmed} | 
+               {kummijäätmed} | 
                {Kuriilid} | 
                {kõrkmed} | 
                {kõrvetised} | 
@@ -81,9 +81,9 @@ define plwords [{aganad} |
                {kärajad} | 
                {kärssed} | 
                {käärid} | 
-               {lahingu#ristsed} | 
+               {lahinguristsed} | 
                {Lakadiivid} | 
-               {lamba#käärid} | 
+               {lambakäärid} | 
                {langud} | 
                {leetrid} | 
                {lendmed} | 
@@ -95,27 +95,27 @@ define plwords [{aganad} |
                {lõikmed} | 
                {lõkad} | 
                {lõpusesed} | 
-               {lähte#andmed} | 
+               {lähteandmed} | 
                {Maldiivid} | 
                {malid} | 
                {Malviinid} | 
                {mamelukid} | 
-               {matuse#joodud} | 
+               {matusejoodud} | 
                {memuaarid} | 
                {miasmid} | 
-               {missi#valimised} | 
+               {missivalimised} | 
                {mitmikud} | 
                {murdmed} | 
-               {mõtte#talgud} | 
+               {mõttetalgud} | 
                {Myrtoonid} | 
                {naglid} | 
-               {naha#jäätmed} | 
+               {nahajäätmed} | 
                {niied} | 
-               {nina#prillid} | 
+               {ninaprillid} | 
                {niuded} | 
                {nopped} | 
                {nõoksed} | 
-               {näpits#prillid} | 
+               {näpitsprillid} | 
                {näpped} | 
                {näärid} | 
                {nöörmed} | 
@@ -124,7 +124,7 @@ define plwords [{aganad} |
                {paklad} | 
                {pantaloonid} | 
                {pantsid} | 
-               {parlamendi#valimised} | 
+               {parlamendivalimised} | 
                {pealsed} | 
                {peased} | 
                {pebred} | 
@@ -133,14 +133,14 @@ define plwords [{aganad} |
                {pihid} | 
                {poised} | 
                {populaarid} | 
-               {present#püksid} | 
-               {presidendi#valimised} | 
+               {presentpüksid} | 
+               {presidendivalimised} | 
                {prillid} | 
                {pulmad} | 
                {punetised} | 
                {puurmed} | 
-               {põlv#püksid} | 
-               {päikese#prillid} | 
+               {põlvpüksid} | 
+               {päikeseprillid} | 
                {päitsed} | 
                {päramised} | 
                {pärgsed} | 
@@ -174,19 +174,19 @@ define plwords [{aganad} |
                {saturnaalid} | 
                {Seišellid} | 
                {seldžukid} | 
-               {sipu#püksid} | 
-               {spiikeri#valimised} | 
-               {spordi#püksid} | 
-               {sub#produktid} | 
+               {sipupüksid} | 
+               {spiikerivalimised} | 
+               {spordipüksid} | 
+               {subproduktid} | 
                {suised} | 
                {suitsed} | 
-               {sukk#püksid} | 
-               {supel#püksid} | 
+               {sukkpüksid} | 
+               {supelpüksid} | 
                {susped} | 
                {suulised} | 
                {suvisted} | 
                {sõelmed} | 
-               {sõna#sabased} | 
+               {sõnasabased} | 
                {sügelised} | 
                {tagid} | 
                {talgud} | 
@@ -194,29 +194,29 @@ define plwords [{aganad} |
                {tangid} | 
                {tangud} | 
                {taosed} | 
-               {tapa#talgud} | 
+               {tapatalgud} | 
                {teismed} | 
                {teksad} | 
                {teksased} | 
-               {teksas#püksid} | 
+               {teksaspüksid} | 
                {tinulised} | 
-               {toidu#jäätmed} | 
-               {tootmis#jäätmed} | 
-               {treening#püksid} | 
-               {treeningu#püksid} | 
-               {trikoo#püksid} | 
+               {toidujäätmed} | 
+               {tootmisjäätmed} | 
+               {treeningpüksid} | 
+               {treeningupüksid} | 
+               {trikoopüksid} | 
                {trussikud} | 
                {tsitrused} | 
                {tšuudid} | 
                {tuhud} | 
-               {tule#ristsed} | 
+               {tuleristsed} | 
                {tulused} | 
                {tunked} | 
-               {tuuma#jäätmed} | 
-               {töötlemis#jäätmed} | 
+               {tuumajäätmed} | 
+               {töötlemisjäätmed} | 
                {Türreenid} | 
                {uhtmed} | 
-               {ujumis#püksid} | 
+               {ujumispüksid} | 
                {umbrid} | 
                {valimised} | 
                {valjad} | 
@@ -226,19 +226,19 @@ define plwords [{aganad} |
                {vastlad} | 
                {vatid} | 
                {vedad} | 
-               {vedru#püksid} | 
+               {vedrupüksid} | 
                {veimed} | 
-               {viigi#püksid} | 
+               {viigipüksid} | 
                {viilmed} | 
                {virmalised} | 
                {voolmed} | 
                {vurrud} | 
-               {võrdlus#andmed} | 
+               {võrdlusandmed} | 
                {väitused} | 
                {õeksed} | 
                {õlpmed} | 
                {õõssed} | 
-               {üld#valimised} | 
+               {üldvalimised} | 
                {üsked} ] ;
 
 define SG [ "+Sg" ] ;

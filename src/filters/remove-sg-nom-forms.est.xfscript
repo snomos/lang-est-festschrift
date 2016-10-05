@@ -1,11 +1,12 @@
 # remove Sg nom forms of some words that don't actually have them
 #
 define words [
+        {iseenese} |
         {ligida} |
         {läheda} |
         {mõlema} |
-        {üks#teise} |
-        {teine#teise} |
+        {üksteise} |
+        {teineteise} |
         {lühida} ] ;
 define SGNOM [ "+Sg" "+Nom" ] ;
 

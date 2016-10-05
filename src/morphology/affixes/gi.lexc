@@ -2,16 +2,8 @@
 
 LEXICON GI  ! liide gi/ki
 
-!@U.Final.NotGi@  GI1 ;
-!@U.Final.Gi@  GI2 ;
-  
-!LEXICON GI1  ! liide gi/ki
-
  +Foc/gi:%+gi #;
  #;
 
-!LEXICON GI2  ! liide gi/ki
-!
-!@U.Final.Gi@:%+gi@U.Final.Gi@ #;
 
 

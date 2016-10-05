@@ -97,6 +97,9 @@ E4:j
 E1:e    ! soolase, raudset
 E1:0    ! soolas t
 
+I1:i    ! an ugly trigger for ne/s words katkine - katkisil
+A1:a    ! an ugly trigger for ne/s words pingne - pingsa
+
 A2:a   ! valvas
 A2:0   ! valv sa
 E2:e   ! laulev
@@ -141,8 +144,12 @@ M1:n   ! lun d
  %{pl.u%}:0  ! Stem vowel tag in lexicon
 
 ! ne, s ending words have similar paradigms; only sg nom is different
-N1:n   ! soolane and other ne-words
-N1:s   ! soolas+e, soolas+t etc  
+!N1:n   ! soolane and other ne-words
+!N1:s   ! soolas+e, soolas+t etc  
+n:n   ! soolane and other ne-words
+n:s   ! soolas+e, soolas+t etc  
+e:e   ! soolane, soolase
+e:0   ! soolas t
 
 N2:n   ! laane
 N2:s   ! laas
@@ -366,11 +373,11 @@ Cx:Cy  <=> :sonor [ :0]* _ ( :Cy | j ) [ :0]* :Vowel [ :0]* %{S%}: ;
 
 !--------- vowels
 
-"nonstressed syllable vowel (a u i) deletion"
+"nonstressed syllable vowel (a e u i) deletion"
 
 Vx:Vy  <=>    _ [ :0 ]* [:Consonant - :stop] [ :0 ]* :stemV  ;
-     where Vx in ( A2 I2 U2 ) 
-           Vy in (  0  0  0 )
+     where Vx in ( A2 I2 U2 E2 ) 
+           Vy in (  0  0  0  0 )
      matched ;
 
 ! lexical: p e e n A2 r + a
@@ -379,27 +386,16 @@ Vx:Vy  <=>    _ [ :0 ]* [:Consonant - :stop] [ :0 ]* :stemV  ;
 ! surface: t ä h t  0 s 0 a 
 ! lexical: s u h k U2 r + u
 ! surface: s u h k  0 r 0 u 
-
-! lumping together instances of vowel deletion (koorma) and insertion (raudset)...
-"nonstressed syllable vowel (e) deletion"
-
-E2:0  <=>                          _ [ :0 ]* [:Consonant - :stop] [ :0 ]* :stemV  ;
-         :Vowel [ :0 ]* :s [ :0 ]* _ [ :0 ]* :stop ;   ! soolast
-
 ! lexical: k o o r E2 m + a
 ! surface: k o o r 0  m 0 a 
-! lexical: s e a d E2 m + e
+! lexical: s e a d E2 m + e    ??
 ! surface: s e a d 0  m 0 e 
 ! lexical: a T2 E2 r + a
-! surface: a  d   0 r 0 a 
+! surface: a  d  0 r 0 a 
 ! lexical: s i p E2 l e + v
 ! surface: s i p  0 l e 0 v
 ! lexical: s p i k k E2 r + i
 ! surface: s p i k 0  0 r 0 i 
-! lexical: s o o l a N1 e E2 + t 
-! surface: s o o l a  s 0  0 0 t
-! lexical: r a u d N1 e E2 + t    ! NB! no e deletion
-! surface: r a u d  s 0  e 0 t
 
 ! general case of vowel lowering; it is lexically conditioned
 "Vowel lowering"
@@ -415,12 +411,15 @@ Vx:Vy  <=>  _ [ :0 ]+ :Vowel ;
 ! lexical: s Ü5 S1 e {W}
 ! surface: s  ö  0 e  0
 
-"Long vowel shortening in vowel context"
+"Long vowel shortening in vowel context; e disappearing (ne - s)"
 
 Vx:0 <=>        :Vx _ [:0]+ :stemV ;            ! sae, puid, suid, soid; sohu, suhu
                 :Vx _ H3:h Y3:stemV ;            !  sohu, suhu, öhe, pähe
              :Vowel _ [:0]+ :Vx ;               ! tõu
                 :Vx _ E4:e ;                    ! soe
+                    _ E1: ;                    ! kodune - kodust, koduse
+                    _ [:0]* I1: ;               ! katkine - katkisil
+                    _ A1: ;                    ! pingne - pingsa
       except
               [:i] _ [:0]+ :stemV        ;  ! siig - siia, hiid - hiiu
          [:u | :ü] _ [:0]+ [:a | :e] ;      ! luua, huuata, müües
@@ -453,8 +452,8 @@ Vx:Vy  <=>  a a: [WS:0 | S1:0] [:0]* _ \[:Vowel];
            Vy in (     e        o    )
      matched ;
 
-! lexical: s a a G1 {W} + i
-! surface: s a 0  0  0  0 e
+! lexical: s a a G1 {W} + {sg.i}
+! surface: s a 0  0  0  0    e
 
 "e pronounced as j between vowels"
 
@@ -555,25 +554,71 @@ M1:n  <=> _ [:0]* [:t | :d ] ;
 ! ---------- morphology
    
 ! --------- -ne, -s ending words
-! Two rules are needed for allowing -ne only for sg nom
-! we want to express string mapping: {N1e}:ne <=> _ WordEnd  (otherwise {N1e}:s)
-"ne is sg nom only (1/2)"
+! xxx rules are needed for allowing -ne only for sg nom
 
-N1:n  <=>  _ e WordEnd ;
+! we want to express correspondence: ne -> s in the context of E1, I1 or A1
+"ne to s (1/2)"
 
-! lexical: s o o l a N1 e 
-! surface: s o o l a n  e
+n:s  =>       _ e: E1:  ;
+              _ e: [ :0 ]* I1: ;
+              _ e: A1:  ;
 
-"ne is sg nom only (2/2)"
+"ne to s (2/2)"
 
-e:0  <=>  N1:s _  ;
-     except
-           _ [ :0 ]* WordEnd ;   ! to prohibit s o o l a N1:s e:0 
+e:0  /<= n:n _ E1: ;
+         n:n _ A1: ;
 
-! lexical: s o o l a N1 e E2
-! surface: s o o l a s  0 e
-! lexical: s o o l a N1 e 
-! surface: s o o l a s  0     FAIL
+! we postulate that there is a special stem vowel e that is added both for -ne and -s words
+"add e for inflecting a ne/s word "
+
+E1:e   => n:s e:0 _ ;  ! -ne word
+          s _ ;      ! -s word
+
+! lexical: s o o l a n e E1
+! surface: s o o l a s 0 e
+! lexical: v i s k o o s n e E1
+! surface: v i s k o o s s 0 e
+
+! -ne, -s word e deletion 
+"do not add e for inflecting some forms of ne/s word "
+
+E1:0  <=> _ [ :0 ]* s e ;          ! olulisse (haplology)
+          _ [ :0 ]* t WordEnd ;   ! soolast
+          _ [ :0 ]* t e ;        ! soolaste
+         except 
+               :Consonant [ :0 ]* :s [ :0 ]* _ [ :0 ]* t ;   ! raudset, raudsete
+
+! lexical: o l u l i n e E1 + s e 
+! surface: o l u l i s 0  0 + s e
+! lexical: s o o l a n e E1 + t
+! surface: s o o l a s 0  0 0 t
+! lexical: g l o o b u s E1 + t 
+! surface: g l o o b u s  0 0 t
+! lexical: g l o o b u s E1 + t e
+! surface: g l o o b u s  0 0 t e
+! lexical: g l o o b u s E1 + t a
+! surface: g l o o b u s  e 0 t a
+! lexical: r a u d n e E1 + t    ! NB! no e deletion
+! surface: r a u d s 0  e 0 t
+
+! i is a vowel that starts Pl Par or vowel plural affixes; use I1 as a trigger
+"I1 triggers -ne to be -s"
+
+I1:i   => n:s e:0 [ :0 ]* _ ;   ! -ne word
+          s [ :0 ]* _ ;       ! -s word
+
+! lexical: k a t k i n e + I1
+! surface: k a t k i s 0 0  i
+! lexical: g l o o b u s + I1
+! surface: g l o o b u s 0  i
+
+! a is a stem vowel; use A1 as a trigger
+"A1 triggers -ne to be -s"
+
+A1:a   <= n:s e:0 _ ;   ! -ne word
+
+! lexical: p i n g n e A1
+! surface: p i n g s 0  a
 
 ! ---------
 ! Rules for selecting 
@@ -651,13 +696,13 @@ Vx:Vy  <=>   :Consonant [:0]* _ [:0]+ %{s%}:0 ;     ! puud-puudi
 ! lexical: k i n g + {pl.i}       {sg.a} + {s} {i} {d}
 ! surface: k i n g 0    i            0   0  0   0   0  
 ! lexical: p u u d + {pl.i} {hyp} {sg.a} + {s} {i} {d} {rare}
-! surface: p u u d 0    i    hyp     0   0  0   0   0     0 
+! surface: p u u d 0    i     0      0   0  0   0   0     0 
 ! lexical: k a u p + {pl.u}       {sg.a} + {s} {i} {d}  
 ! surface: k a u p 0    u            0   0  0   0   0
 ! lexical: m a j a + {pl.u}        {stemill} + {s} {i} {d} 
 ! surface: m a j 0 0    u             0     0   0   0   0    
 ! lexical: s a b a + {pl.u} {rare} {stemill} + {s} {i} {d} {rare}
-! surface: s a b 0 0    u              0     0  0   0   0     0 
+! surface: s a b 0 0    u     0        0     0  0   0   0     0 
 
 
 ! ------------
@@ -808,7 +853,6 @@ LT:0          =>  %{stemill%}: _ ;      ! stem illative usage tag in the lexicon
 "consonant de-doubling in consonant clusters (e.g. after vowel deletion)"
 
 Cx:0  <=> :Cx _ [:0]* :Consonant  ;
-!          :Consonant _ %+: :Cx ;          ! 
        where Cx in (Consonant) ;
 
 ! lexical: s p i k k e r + i
