@@ -186,7 +186,8 @@ s/u\([GBD]1[Uae]\)/U5\1/
 
 s/^\([^ ]*\) [^@]*@MUUSEUM.*$/& \1:\1/
 s/^\([^ ]*lu\)mi [^@]*@MERI.*$/& \1mi:\1M1%{stemill%}/
-s/^\([^ ]*mõ\)n\]i [^@]*@MERI.*$/& \1ni:\1nD3%{stemill%}ERAND/
+s/^\([^ ]*mõ\)n\]i [^@]*@MERI.*$/& MÕNI \1ni:\1nD3/
+/@MERI.*MÕNI/s/@MERI.*MÕNI/@MÕNI/
 /@.*:/!s/^\([^ ]*\)i [^@]*@MERI.*$/& \1i:\1%{stemill%}/
 /[ _]kuse .*MERI/s/%{stemill%}/&%{rare%}/
 s/^\([^ ]*\)i [^@]*20[^@]*@NIMI.*$/& \1i:\1/
@@ -245,7 +246,9 @@ s/^\([^ ]*t\)ugi [^@]*21[^@]*@NIMI.*$/& \1ugi:\1U5G1/
 /@.*:/s/^[^ ]* [^@]*\.2[24][^@]*\^I\^[^!]*!.*@.*$/&%+%{pl.i%}%{rare%}/
 /@.*:/s/^[^ ]* [^@]*\.2[24][^@]*\^U\^[^!]*!.*@.*$/&%+%{pl.u%}%{rare%}/
 
-/rohi.*@KOON/s/^\([^ ]*roh\)i \(.*@\)KOON/\1i \2ROHI \1i:\1T1%+%{pl.e%}%{rare%}/
+/rohi.*@KOON/s/^\([^ ]*ro\)hi \(.*@\)KOON/\1hi \2KOON \1hi:\1hJ1T1%+%{pl.e%}%{rare%}/
+
+/r[eu]hi.*@EIT/s/^\([^ ]*r[eu]\)hi \(.*@\)EIT/\1hi \2REHI \1hi:\1hJ1T1/
 
 /@.*:/!s/^\([^ ]*_p<üks\)i*d* [^@]*23[^@]*@.*$/& \1:\1/
 
@@ -726,7 +729,6 @@ s/^\([^ ]*t\)ugi [^@]*21[^@]*@NIMI.*$/& \1ugi:\1U5G1/
 /[ =_-]s<ääske .*EIT/s/%{rare%}//
 /[ =_-]s<ül]ge .*EIT/s/%{rare%}//
 /[ =_-]t<aime .*EIT/s/%{rare%}//
-/[ =_-]t<alve .*EIT/s/%{rare%}//
 /[ =_-]t<amme .*EIT/s/%{rare%}//
 /[ =_-]t<el]ge .*EIT/s/%{rare%}//
 /[ =_-]t<ähte .*EIT/s/%{rare%}//
@@ -734,6 +736,15 @@ s/^\([^ ]*t\)ugi [^@]*21[^@]*@NIMI.*$/& \1ugi:\1U5G1/
 /[ =_-]v<el]ge .*EIT/s/%{rare%}//
 /[ =_-]<õlge .*EIT/s/%{rare%}//
 /[ =_-]<õnge .*EIT/s/%{rare%}//
+
+/r<ind .*@PIIM/s/@PIIM/@RIND/
+/s<ilm .*@PIIM/s/@PIIM/@RIND/
+/j<alg .*@PIIM/s/@PIIM/@JALG/
+/p<õlv .*@EIT/s/@EIT/@PÕLV/
+/t<alv .*@EIT/s/@EIT/@TALV/
+/p<õlv .*@PÕLV/s/:p<*õlv/:p<õl/
+/t<alv .*@TALV/s/:t<*alv/:t<al/
+/tervis .*@SOOLANE/s/@SOOLANE/@KATKINE/
 
 s/^\([^ ]*\) .*@ELANIK/& \1:\1/
 /p<*ea .*ADT\$: [^\-].*ARMEE/s/^\([^ ]*p<*\)ea\( .*@\)ARMEE/\1ea\2PUU \1ea:\1E6A6H3Y3%+%{id%}%{stemill%}/

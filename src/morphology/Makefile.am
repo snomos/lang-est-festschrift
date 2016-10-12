@@ -23,6 +23,17 @@ GT_LEXC_ROOT=root.lexc
 
 # Set this to the names of all regular lexc source files:
 GT_LEXC_SRCS_L1_L2=\
+                         stems/adjectives.lexc \
+                         stems/adpositions.lexc \
+                         stems/adverbs.lexc \
+                         stems/conjunctions.lexc \
+                         stems/genitive_attributes.lexc \
+                         stems/interjections.lexc \
+                         stems/nouns.lexc \
+                         stems/numerals.lexc \
+                         stems/pronouns.lexc \
+                         stems/proper_names.lexc \
+                         stems/verbs.lexc \
 			 stems/abbreviations.lexc \
 			 stems/acronyms.lexc \
 			 affixes/declinations.lexc \
@@ -62,18 +73,19 @@ GT_LEXC_L2_SRCS=\
 #
 
 # Set this to the names of all source xml files, if any
-GT_XML_SRCS=\
-			 stems/adjectives.xml \
-			 stems/adpositions.xml \
-			 stems/adverbs.xml \
-			 stems/conjunctions.xml \
-			 stems/interjections.xml \
-			 stems/nouns.xml \
-			 stems/particles.xml \
-			 stems/pronouns.xml \
-			 stems/propernouns.xml \
-			 stems/quantifiers.xml \
-			 stems/verbs.xml 
+#GT_XML_SRCS=\
+#			 stems/adjectives.xml \
+#			 stems/adpositions.xml \
+#			 stems/adverbs.xml \
+#			 stems/conjunctions.xml \
+#			 stems/interjections.xml \
+#			 stems/nouns.xml \
+#			 stems/particles.xml \
+#			 stems/pronouns.xml \
+#			 stems/propernouns.xml \
+#			 stems/quantifiers.xml \
+#			 stems/verbs.xml 
+#
 
 # Define any additional lexc sources here (compiled on their own):
 GT_LOCAL_SRCS=

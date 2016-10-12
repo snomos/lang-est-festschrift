@@ -258,6 +258,18 @@ LEXICON MEES                  ! only mees
 :es%+te N_PL_SUBPARA ;                         ! meeste etc 
 +Pl+Par:h%+i GI ;                              ! mehi
 
+LEXICON MÕNI    ! only mõni; similar to MERI
+
++Sg+Nom:i GI ;
+:e N_SG_SUBPARA ;                        ! mõne etc
++Sg+Par%+Use%/Rare:%+d GI ;                         ! mõnd
++Sg+Par:+da GI ;                     ! actually, mõnda is the preferred form...
++Sg+Ill:+da GI ;                     ! actually, mõnda is the preferred form...
++Sg+Ill%+Use%/Rare:e%{W%} SG_ILL ;     ! mõnesse 
+:%+e%+de N_PL_SUBPARA ;                  ! mõnede etc
++Pl+Par:e%+sid GI ;                      ! mõnesid
+
+
 LEXICON NAINE   ! only naine; much like OLULINE
                   
 +Sg+Nom: GI ;
@@ -301,21 +313,35 @@ LEXICON PÄIKE  ! only päike(ne), äike(ne)  VVS 10
 +Pl+Par:kese%+id GI ;                      ! päikeseid
 +Pl+Par%+Use%/Rare:kse%+id GI ;            ! päikseid
 
-LEXICON ROHI   ! only rohi; almost like KOON, only Sg Nom is exceptional
+LEXICON REHI   ! rehi, ruhi
 
-+Sg+Nom:i%{W%}%{no.apo%} GI ;
-:%{sg.u%} 1C ;
+: EIT ;
++Sg+Par%+Use%/Rare:%{W%}%+t #;   ! reht, ruht
+
+LEXICON RIND   ! only rind, silm
+
+: PIIM ;
++Pl+Gen%+Use%/Rare:%+e #;      ! rinde
+
+LEXICON JALG   ! only jalg
+
+: PIIM ;
+%+Use%/Rare:%+e N_VOWEL_PL_SUBPARA ;      ! jalge
 
 LEXICON RUBLA  ! about 20 words 
 
 : PERE ;
-+Sg+Par+Use%/Rare: GI ;            ! (viis) rubla
++Sg+Par%+Use%/Rare: GI ;            ! (viis) rubla
 
 LEXICON SADA    ! only sada
 
 : KAVA ;
-+Sg+Par+Use%/Rare:%+t GI ;            ! sadat
++Sg+Par%+Use%/Rare:%+t GI ;            ! sadat
 
+LEXICON PURI  ! only puri
+
+: EIT ;
++Pl+Par+Use%/Rare:e%+id GI ;  ! purjeid
 
 LEXICON SEEME    ! only kümme, seeme, kööme; like HAARE
 
@@ -325,6 +351,18 @@ LEXICON SEEME    ! only kümme, seeme, kööme; like HAARE
 
 ! only if the plural partitive with -id is more frequent than the one with sid (puid-puusid),
 ! then the word may have vowel plural forms
+
+LEXICON TALV  ! only talv
+
+:v%+%{pl.i%}%{rare%} EIT ;
++Sg+Nom%+Use%/Rare:i GI ;  ! tali
+
+LEXICON PÕLV  ! only põlv
+
+:v%+%{pl.i%} EIT ;
++Sg+Nom%+Use%/Rare:i GI ;  ! tali
+%+Use%/Rare:v%+i N_VOWEL_PL_SUBPARA ;  ! põlvil etc
++Pl+Trm%+Use%/Rare:v%+i%+ni GI ;  ! põlvini
 
 LEXICON PUU ! 11 words (kuu, maa, etc) that have possible vowel plural forms 
 
@@ -672,10 +710,8 @@ LEXICON FIAT          ! stable type (aktiivne muuttüüp) almost == TAUD, but fi
 +Sg+Par:i GI ;                         ! Fiati
 +Sg+Ill:i GI ;                         ! Fiati
 +Sg+Ill%+Use%/Hyp:i%{WF%}%+sse GI ;    ! Fiatisse
-:i%+de N_PL_SUBPARA ;                  ! Fiatide etc
-+Pl+Par:e GI ;                         ! Fiate
-+Pl+Par%+Use%/Rare:i%+sid GI ;         ! Fiatisid+Use/Rare
- 
+:%+%{pl.e%}%{sg.i%} 1C_PL ;            ! Fiatide, Fiate, Fiatisid+Use/Rare 
+
 ! VVS 22 
 LEXICON KABINET                 ! stable type (aktiivne muuttüüp) almost == TAUD
 

@@ -146,7 +146,7 @@ s/^[^ ]* [^!]*!\\[^\\]*\\\.26.*$/&@ARMEE/
 /s<etti\[MA [^ ]*set]i\[B/s/^.*$/&@SÜTTIMA/
 /s<oigu\[MA [^ ]*soiu\[B/s/^.*$/&@LEKKIMA/
 /s<ulge\[MA [^ ]*sule\[B/s/^.*$/&@SÜTTIMA/
-/s<ütti\[MA [^ ]*süt]i\[B/s/^.*$/&@SÜTTIMA/
+/s<ütti\[MA [^ ]*süt]*i\[B/s/^.*$/&@SÜTTIMA/
 /t<ekki\[MA [^ ]*teki\[B/s/^.*$/&@LEKKIMA/
 /v<appu\[MA [^ ]*vapu\[B/s/^.*$/&@SÜTTIMA/
 
