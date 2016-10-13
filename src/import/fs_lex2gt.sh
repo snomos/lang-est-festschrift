@@ -37,6 +37,8 @@ cat tmp1 | ./lemma2twol.sed \
 | sed '/HAARE/s/tT1/tt/' \
 | sed 's/ \*\*\([^$:]*:\)/ \1/' \
 | sed 's/:\*\*\([^$:]*\)$/:\1/' \
+| sed '/KANNEL/s/\(.\)\([kpt]\)\([aeiu][lmnr]:.*<\)\1\2\([AEIU]2\)/\1\2\3\1\2\2\4/' \
+| sed '/PIPAR/s/\(.\)\([kpt]\)\([aeiu][lmnr]:.*<\)\1\2\([AEIU]2\)/\1\2\3\1\2\2\4/' \
 > tmp1twol
 
 # tegemata: 

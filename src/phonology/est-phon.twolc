@@ -145,12 +145,10 @@ M1:n   ! lun d
  %{pl.u%}:0  ! Stem vowel tag in lexicon
 
 ! ne, s ending words have similar paradigms; only sg nom is different
-!N1:n   ! soolane and other ne-words
-!N1:s   ! soolas+e, soolas+t etc  
 n:n   ! soolane and other ne-words
 n:s   ! soolas+e, soolas+t etc  
-e:e   ! soolane, soolase
-e:0   ! soolas t
+e:e   ! soolane
+e:0   ! soolas0+e 
 
 N2:n   ! laane
 N2:s   ! laas
@@ -274,7 +272,7 @@ Cx:Cy  <=> :sonor _ (%+:0) (SV:0) :stemV %{W%}: ;
 
 "Weak grade for productive kk pp tt šš ff : k p t š f"
 
-Cx:0 <=>  Cx _ (%+:0) (SV:0) :stemV (l) %{W%}:  ;  ! sepa, lepin, sipelda
+Cx:0 <=>  Cx _ (%+:0) (SV:0) :stemV (lmnr) %{W%}:  ;  ! sepa, lepin, sipelda, aken, tütar, ...
      where Cx in ( p t k š f) ;
 
 ! lexical: k e p p + {pl.e} {sg.i} {W}
@@ -285,6 +283,8 @@ Cx:0 <=>  Cx _ (%+:0) (SV:0) :stemV (l) %{W%}:  ;  ! sepa, lepin, sipelda
 ! surface: l e p 0 i  0  0 n 
 ! lexical: s i p p E2 l {W} + d a
 ! surface: s i p 0 e  l  0  0 d a 
+! lexical: t ü t t A2 r {W}
+! surface: t ü t 0 a  r 0 
 
 "Weak grade for productive ss:s kauss, jamss"
 
@@ -413,6 +413,9 @@ Vx:Vy  <=>  _ [ :0 ]+ :Vowel ;
 ! lexical: s Ü5 S1 e {W}
 ! surface: s  ö  0 e  0
 
+! here long vowel shortening is formally equivalent to one vowel deletion
+! hence the need to use 2 rules instead of one <=> rule:
+! there are other contexts where a vowel gets deleted
 
 "Long vowel shortening in vowel context 1/2"
 
@@ -428,7 +431,7 @@ Vx:0 =>        :Vx _ [:0]+ :stemV ;            ! sae, puid, suid, soid; sohu, su
 
 "Long vowel shortening in vowel context 2/2"
 
-Vx:Vx /<=        :Vx _ [:0]+ :stemV ;           ! sae, puid, suid, soid; sohu, suhu
+Vx:Vx /<=      :Vx _ [:0]+ :stemV ;           ! sae, puid, suid, soid; sohu, suhu
                :Vx _ H3:h Y3:stemV ;            !  sohu, suhu, öhe, pähe
             :Vowel _ [:0]+ :Vx ;               ! tõu
                :Vx _ E4:e ;                    ! soe
@@ -549,13 +552,13 @@ H3:h  <=> _ :* %{S%}: ;
 Vx:õ  <=> Vx: _ [:0]+ :i ; 
      where Vx in ( Ö6 O6 ) ; 
 
-! lexical: l O6 O6 + i 
-! surface: l  0  õ 0 i 
-
 "Verb vowel ö o to 0"
 
 Vx:0  <=> _ Vx:õ [:0]+ :i ; 
      where Vx in ( Ö6 O6 ) ; 
+
+! lexical: l O6 O6 + i 
+! surface: l  0  õ 0 i 
 
 "Verb vowel o ö to u ü"
 
@@ -806,7 +809,7 @@ LT:0          =>  %{stemill%}: _ ;      ! stem illative usage tag in the lexicon
                        %{id%}: \LT: [:]* %{s%}:s i d _  ;   ! puusid is rare
 
 
-"long plural partitive cannot be common if the word has a common short plural partitive"
+"long plural partitive cannot be common if the word already has a common short plural partitive"
 %{s%}:s    /<= PlSV:0 \LT: [:]* _ %{i%}:i %{d%}:d \LT: ; 
 
 "short plural partitive cannot be common if the lexicon tag says it is rare"
@@ -931,31 +934,27 @@ Cx:Cy  <=> :voiceless [:0]* %+: _ ;
 
 !----------------
 
-! for debugging:
+! for debugging in GT infra:
+! in ~/svn-giellatekno/main/experiment-langs/est/src
 
-! hkaalep@laura:~/svn-giellatekno/main/experiment-langs/est/src
+! for looking at all the generated forms (use only if the lexicon is really small):
+! hfst-fst2strings analyser-gt-desc.hfstol > tmp1
 
-! hfst-fst2strings analyser-gt-desc.hfstol > tmp11
 ! echo 'laudu' | hfst-lookup analyser-gt-desc.hfstol
 ! > laudu	laud+N+Pl+Par	0,000000
 
+! echo 'laud+N+Pl+Par' | hfst-lookup morphology/lexicon.hfst
+! > laud+N+Pl+Par	lauD1+{pl.u}{sg.a}+{sid}	0,000000
+
+! echo 'l a u D1:d +:0 {pl.u}:u {sg.a}:0 +:0 {s}:0' | hfst-pair-test phonology/est-phon.compose.hfst
+
+! a minimalistic way:
 ! make nets for lexc and twol:
 ! hfst-lexc -o tmp.lexc morphology/root.lexc
 ! hfst-twolc -o tmp.twol phonology/est-phon.twolc
-
 ! echo 'laud+N+Pl+Par' | hfst-lookup tmp.lexc
-! .... in GT infra, while in src, do:
-! echo 'laud+N+Pl+Par' | hfst-lookup morphology/lexicon.hfst
-! hfst-lookup: warning: It is not possible to perform fast lookups with OpenFST, std arc, tropical semiring format automata.
-! Using HFST basic transducer format and performing slow lookups
-! > laud+N+Pl+Par	lauD1+{pl.u}{sg.a}+{sid}	0,000000
 
 ! echo 'l a u D1:d +:0 {pl.u}:u {sg.a}:0 +:0 {s}:0' | hfst-pair-test tmp.twol
-! .... in GT infra, while in src, do:
-! echo 'l a u D1:d +:0 {pl.u}:u {sg.a}:0 +:0 {s}:0' | hfst-pair-test phonology/est-phon.compose.hfst
 
-! Test passed.
-
-! echo 'jõnklema+V+Inf' | hfst-lookup morphology/lexicon.hfst
 
 
