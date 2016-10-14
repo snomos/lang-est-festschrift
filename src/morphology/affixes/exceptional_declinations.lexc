@@ -1,0 +1,500 @@
+! inflectional types and analogue rules for nouns, adjectives and other declinables
+! VVS stands for Ü. Viks "Väike vormisõnastik" for reference purposes
+
+!---------------
+! pronouns
+!---------------
+
+LEXICON KES       ! kes, mis 
+
++Sg+Nom:s #;
++Sg+Ade%+Use%/Rare:%+l #;                           ! kel, mil 
+: KEMISETO ;
+:lle%+de N_PL_SUBPARA ;                         ! kellede etc 
+
+LEXICON SEE       ! see 
+
++Sg+Nom:e GI ;
++Sg+Ill%+Use%/Rare:%+sse GI ;   ! sesse
++Sg+Ine%+Use%/Rare:%+s #;   ! ses
++Sg+Ela%+Use%/Rare:%+st GI ;  ! sest
++Sg+Ade%+Use%/Rare:%+l GI ;   ! sel
++Sg+Abl%+Use%/Rare:%+lt GI ;  ! selt	
++Sg+Tra%+Use%/Rare:%+ks GI ;  ! seks
+: KEMISETO ;
+
+LEXICON TOO       ! too 
+
++Sg+Nom:o GI ;
++Sg+Ill%+Use%/Rare:%+sse GI ;   ! tosse
++Sg+Ine%+Use%/Rare:%+s #;   ! tos
++Sg+Ela%+Use%/Rare:%+st GI ;  ! tost
++Sg+Ade%+Use%/Rare:%+l GI ;   ! tol
+: KEMISETO ;
+
+LEXICON KEMISETO      ! kes, mis, see, too common cont. lexicon
+
++Sg:lle STANDARD_GEN_ET_AL ;                      ! kelle, tolle etc , excl Pl Nom
++Sg+Par:%+da GI ;                               ! keda, toda etc
+
+! -----
+LEXICON MASA       ! ma & sa 
+
++Sg+Nom+Emph:ina GI ;    ! mina, sina
++Sg+Nom:a #;                  ! ma, sa
++Sg+Gen+Emph:inu GI ;                  ! minu, sinu
++Sg+Gen:u #;                  ! mu, su
++Sg+Par:in%+d GI ;                               ! mind, sind
++Sg+Ill:u%+sse GI ;   ! musse
++Sg+Ine:u%+s #;     ! mus
++Sg+Ela:u%+st GI ;
++Sg+All:ul%+le GI ;	! mulle
++Sg+Ade:u%+l GI ;	
++Sg+Abl:u%+lt GI ;	
++Sg+Com:u%+ga #;     ! muga
++Sg+Emph:inu STANDARD_LOCATIVES ;                      ! minul, sinul
++Sg+Tra:inu%+ks GI ;
++Sg+Trm:inu%+ni GI ;	  ! minuni
++Sg+Ess:inu%+na GI ;	  ! minuna
++Sg+Abe:inu%+ta GI ;	  ! minuta
++Pl+Com+Emph:inu%+ga GI ;      ! minuga
+
+LEXICON METE       ! me & te 
+
++Pl+Nom+Emph:ie GI ;    ! meie, teie
++Pl+Nom: #;                  ! me, te
++Pl+Gen+Emph:ie GI ;    ! meie, teie
++Pl+Gen: #;                  ! me, te
++Pl+Par:i%+d GI ;                               ! meid, teid
++Pl:i STANDARD_LOCATIVES ;                      ! meil, teil etc
++Pl+Tra:ie%+ks GI ;
++Pl+Trm:ie%+ni GI ;	  ! meieni
++Pl+Ess:ie%+na GI ;	  ! meiena
++Pl+Abe:ie%+ta GI ;	  ! meieta
++Pl+Com:ie%+ga GI ;    ! meiega
+
+LEXICON TEMA       ! ta 
+
++Sg+Nom+Emph:ema GI ;    ! tema
++Sg+Nom:a #;                  ! ta
++Sg+Gen+Emph:ema GI ;                  ! tema
++Sg+Gen:a #;                  ! ta
++Sg+Par:e%+da GI ;                               ! teda
++Sg+Emph:ema STANDARD_LOCATIVES ;                      ! temal etc
++Sg+Tra:ema%+ks GI ;
++Sg+Trm:ema%+ni GI ;	  ! temani
++Sg+Ess:ema%+na GI ;	  ! temana
++Sg+Abe:ema%+ta GI ;	  ! temata
++Pl+Com:ema%+ga GI ;      ! temaga
++Sg:a STANDARD_LOCATIVES ;                      ! tal etc
+
+LEXICON NEED       ! need 
+
++Pl+Nom:e%+d GI ;           ! need
+: NENO ;
+
+LEXICON NEMAD       ! nemad 
+
++Pl+Nom+Emph:ema%+d GI ;           ! nemad
++Pl+Nom:a%+d GI ;           ! nad
+:e NENO ;
+
+LEXICON NOOD       ! nood 
+
++Pl+Nom:o%+d GI ;           ! nood
+: NENO ;
+
+LEXICON NENO       ! need & nood common cont. lexicon
+
+:n%+de N_PL_SUBPARA ;      ! nende etc 
++Pl+Par:%+id GI ;           ! neid
++Pl:i STANDARD_LOCATIVES ;     ! neil etc
++Pl+Trm:n%+de%+ni GI ;	  ! nendeni
++Pl+Ess:n%+de%+na GI ;	  ! nendena
++Pl+Abe:n%+de%+ta GI ;	  ! nendeta
++Pl+Com:n%+de%+ga GI ;    ! nendega
+%+Use%/Rare:n%+de N_VOWEL_PL_SUBPARA ;      ! nendel etc 
+
+! ----
+LEXICON ISE       ! ise, iseenese 
+
++Sg+Nom:ise GI ;                  ! ise
++Sg:enese REGULAR_GEN_ET_AL ;                      ! enese, enesel etc
++Sg:enda REGULAR_GEN_ET_AL ;                      ! enda, endal etc
++Sg+Par:ennas%+t GI ;                               
++Sg+Par:en%+d GI ;                               
++Sg+Ill:enese%+sse GI ;                            
++Sg+Ill:enda%+sse GI ;                           
++Pl:enes%+te REGULAR_GEN_ET_AL ;
++Pl:end%+i REGULAR_GEN_ET_AL ;
+
+LEXICON OMAENESE       ! omaenese 
+
++Sg+Gen%+Use%/Rare:enese GI ;                      ! enese, enesel etc
++Sg+Gen:enda GI ;                      ! enda, endal etc
++Pl+Gen:enes%+te GI ;
++Pl+Gen%+Use%/Rare:end%+i GI ;
+
+! ----
+LEXICON KÕIK
+
++Sg+Nom: #;
++Sg:e%{W%} STANDARD_GEN_ET_AL ;                      ! kõige etc
++Sg+Par:e GI ;                              ! kõike
++Pl+Nom: #;                            ! kõik
++Pl%+Use%/Rare:i%+de STANDARD_GEN_ET_AL ;                      ! kõikide etc
++Pl:i%{W%} STANDARD_GEN_ET_AL ;                      ! kõigi etc
+
+LEXICON MÕNI    ! only mõni; similar to MERI
+
++Sg+Nom:i GI ;
+:e N_SG_SUBPARA ;                        ! mõne etc
++Sg+Par%+Use%/Rare:%+d GI ;                         ! mõnd
++Sg+Par:+da GI ;                     ! actually, mõnda is the preferred form...
++Sg+Ill:+da GI ;                     ! actually, mõnda is the preferred form...
++Sg+Ill%+Use%/Rare:e%{W%} SG_ILL ;     ! mõnesse 
+:%+e%+de N_PL_SUBPARA ;                  ! mõnede etc
++Pl+Par:e%+sid GI ;                      ! mõnesid
+
+! -----
+LEXICON KEEGI    ! only keegi; (kes+gi); nonstandard parallel forms kellegil etc like REDEL
+
++Sg+Nom:e GI ;
+: KEMISETO ;
+%+Use%/NotNorm:llegi STANDARD_SEM_CASES ;  ! kellegis, 
+
+LEXICON MISKI    ! only miski; mis+gi; nonstandard parallel forms millegil etc; miskid etc like REDEL
+
+: KES ;
+%+Use%/NotNorm:llegi STANDARD_SEM_CASES ;  ! millegis, millegil etc
+%+Use%/NotNorm:skI5 2C ;                         ! miskid, miskite etc 
+
+
+LEXICON KUMBKI    ! only kumbki; kumb like PIIM +gi; nonstandard parallel forms kummagil etc like REDEL
+
++Sg+Nom:%{no.apo%} GI ;
+:%{sg.a%} 1C ;
+%+Use%/NotNorm:agI5%{W%} 2C ;  ! kummagis, kummagil etc
+
+!---------------
+! exceptional inflectional types, i.e. covering very few words each
+!---------------
+LEXICON ARGPÜKS   ! some compound words ending with püks (argpüks, vesipüks etc)
+                  ! and declined not exactly like püksid (e.g. karupüksid, sukkpüksid) 
+                  ! almost like TAUD, but has some less used pl forms
+: TAUD ;
+%+Use%/Rare:%{W%}%+te N_PL_SUBPARA ;           ! argpükste etc
+
+LEXICON JALG   ! only jalg
+
+: PIIM ;
+%+Use%/Rare:%+e N_VOWEL_PL_SUBPARA ;      ! jalge
+
+LEXICON KAEL   ! VVS 23  almost = PIIM, except pl gen + 
+
++Sg+Nom:%{no.apo%} GI ;
+:%{sg.a%} 1C_SG ;
+:%{W%}%+te N_PL_SUBPARA ;                     ! kaelte etc 
+%+Use%/Rare:%{sg.a%}%+de N_PL_SUBPARA ;       ! kaelade etc 
+                                              ! pl par stem vowel (u, i, 0) is lexically determined 
+                                              ! and usage-wise tagged
++Pl+Par:%{sg.a%}%+%{s%}%{i%}%{d%} PL_PAR ;  ! kaelu, kaelasid+Use/Rare
+
+LEXICON KALLIS    !  VVS 7, 5 only kallis, kaunis unstable (closed) type; 
+
++Sg+Nom:s%{W%} GI ;                      ! kallis
++Sg+Par:s%{W%}%+t GI ;                   ! kallist
+:%+te N_PL_SUBPARA ;                     ! kallite etc 
+%+Use%/Rare:s%{W%}%+te N_PL_SUBPARA ;    ! kalliste etc 
+: 2C_STRONG ;                            ! kalli etc, kalleid, kalleil etc
+
+LEXICON KAKS                  ! only üks, kaks
+
++Sg+Nom:ks GI ;                                ! kaks
+:he N_SG_SUBPARA ;                             ! kahe etc 
++Sg+Par:h%+t GI ;                              ! kaht
++Sg+Par%+Use%/Rare:h%+te GI ;                  ! kahte
++Sg+Ill:he%+sse GI ;                           ! kahesse 
+:hte%+de N_PL_SUBPARA ;                         ! kahtede etc 
++Pl+Par:hte%+sid GI ;                          ! kahtesid
+
+LEXICON KEEL    !  VVS 13 unstable (closed) type; 
+
+: VARS ;
+%+Use%/Hyp:%{W%}%+i N_VOWEL_PL_SUBPARA ;       ! vocal pl cases  keelil; except for some expressions (suuril silmil)
+
+LEXICON KEVAD              ! only küps, kevad, = REDEL, but stem vowel is e
+
++Sg+Nom:%{no.apo%} GI ;              ! kevad
+:e 2C ;                              ! kevade etc
+
+LEXICON KOHUS                 ! only kohus-kohtu; like HOOLAS
+
++Sg+Nom:s%{W%} GI ;                           ! kohus
+: 2C_EXCL_SG_PAR ;                            ! kohtu etc  
++Sg+Par:%{W%}%+t GI ;                         ! kohut
++Sg+Par%+Use%/Rare:%+t GI ;                   ! kohtut
+
+LEXICON KURAT    ! only kurat; like redel
+   
++Sg+Nom:t GI ;                       ! kurat
+:dI5 2C ;                            ! kuradi etc
+
+LEXICON KÕRB   ! only kõrb
+
++Sg+Nom: GI ;                                  ! kõrb
+:%+e N_SG_SUBPARA ;                            ! kõrbe etc 
++Sg+Par:e GI ;                                 ! kõrbe
++Sg+Par%+Use%/Rare:e%+t GI ;                   ! kõrbet
++Sg+Ill%+Use%/Rare:e GI ;                      ! kõrbe
++Sg+Ill:e%{W%}%+sse GI ;                       ! kõrbesse 
+%+Use%/Rare:e%{W%}%+de N_PL_SUBPARA ;          ! kõrbede etc 
+:e%+te N_PL_SUBPARA ;                          ! kõrbete etc 
++Pl+Par:e%+id GI ;                             ! kõrbeid 
++Pl+Par%+Use%/Rare:i GI ;                      ! kõrbi
++Pl+Par%+Use%/Rare:e%+sid GI ;                 ! kõrbesid
+
+LEXICON KÖÖMEN               ! only köömen; like KEVAD
+
++Sg+Nom:%{no.apo%} GI ;                        ! köömen
+:e 2C ;                                        ! köömne etc  
++Sg+Par%+Use%/CommonNotNorm:%+t GI ;           ! kööment
+
+LEXICON LAPS               ! only laps, uks; notice the weird (?) use of {W}
+
++Sg+Nom: GI ;                                 ! laps
+:e N_SG_SUBPARA ;                             ! lapse etc 
++Sg+Par:%{W%}%+t GI ;                              ! last
++Sg+Ill:e%+sse GI ;                           ! lapsesse 
+:%{W%}%+te N_PL_SUBPARA ;                          ! laste etc 
++Pl+Par:%+i GI ;                              ! lapsi
+
+LEXICON LÕUNA                 ! only lõuna; almost like haare
+
++Sg+Nom:%{W%} GI ;                      ! lõuna
++Sg+Par:%{W%}%+t GI ;                   ! lõunat
+: 2C_EXCL_SG_PAR ;                      ! lõuna etc
+
+
+LEXICON MANNER    ! VVS 3 only manner, tanner
+                  ! almost = VAHER, but stem vowel is i
+
++Sg+Nom:%{W%} GI ;                     ! manner
+:I5 2C ;                               ! mandri etc
+
+LEXICON MEES                  ! only mees
+
++Sg+Nom:es GI ;                                ! mees
+:he N_SG_SUBPARA ;                             ! mehe etc 
++Sg+Par:es%+t GI ;                             ! meest
++Sg+Ill:he%+sse GI ;                           ! mehesse 
+:es%+te N_PL_SUBPARA ;                         ! meeste etc 
++Pl+Par:h%+i GI ;                              ! mehi
+
+LEXICON MERI   ! VVS 20 unstable type (passiivne muuttüüp) lumi, tuli, uni, veri
+
++Sg+Nom:i GI ;
+:e N_SG_SUBPARA ;                        ! mere etc
++Sg+Par:%+d GI ;                         ! merd
++Sg+Ill:e%{S%} SG_ILL ;            ! merre
++Sg+Ill:e%{W%} SG_ILL ;     ! meresse 
+:%+e%+de N_PL_SUBPARA ;                  ! merede etc
++Pl+Par:e%+sid GI ;                      ! meresid
+
+LEXICON MESI     
+
++Sg+Nom:i GI ;                                ! mesi
+:e%{W%} N_SG_SUBPARA ;                        ! mee etc 
++Sg+Par:%+tt GI ;                             ! mett
++Sg+Ill:e%{W%}%+sse GI ;                      ! meesse
+:%{W%}%+te N_PL_SUBPARA ;                     ! mete etc 
++Pl+Par:i GI ;                                ! mesi ?? meesid ???
+! +N%+Use%/Hyp: N_VOWEL_PL_SUBPARA ;          ! mesil? etc; except for some expressions (käsil) ?
+
+LEXICON NAINE   ! only naine; much like OLULINE
+                  
++Sg+Nom: GI ;
+: NE_S ;
++Sg+Ill:E1%+sse GI ;             ! naisesse
++Pl+Par:%+I1 GI ;                           ! naisi
+%+Use%/Rare:%+I1 N_VOWEL_PL_SUBPARA ;       ! naisil etc
+
+LEXICON NIIN    ! only niin; almost like KEEL, but some forms are more regular
+
++Sg+Nom: GI ;                                 ! niin
+:e%{W%} N_SG_SUBPARA ;                        ! niine etc 
++Sg+Par:%+t GI ;                              ! niint
++Sg+Ill:e%{W%}%+sse GI ;                      ! niinesse 
+:%+te N_PL_SUBPARA ;                          ! niinte etc 
+! +N%+Use%/Hyp:%+i N_VOWEL_PL_SUBPARA ;       ! impossible for rarer words
++Pl+Par:e%+sid GI ;                           ! NB! niinesid (not niini)
+
+LEXICON NIMI   ! VVS 20, 21 unstable type (passiivne muuttüüp) suvi, lagi
+
++Sg+Nom:i GI ;
+:e%{W%} N_SG_SUBPARA ;                   ! suve etc
++Sg+Par:e GI ;                           ! suve, lage
++Sg+Ill:e%{S%} SG_ILL ;            ! nimme
++Sg+Ill:e%{W%} SG_ILL ;     ! nimesse 
+:%+e%+de N_PL_SUBPARA ;                  ! lagede etc
++Pl+Par:e%+sid GI ;                      ! lagesid
+
+LEXICON PARAS      ! only paras; like LOHAKAS
+
++Sg+Nom:s GI ;                         ! paras
+:ja 2C ;                               ! paraja etc
+
+LEXICON PEEN    ! only peen, tüün; almost like KEEL, but some forms are more regular
+
++Sg+Nom: GI ;                                  ! peen
+:%+e N_SG_SUBPARA ;                            ! peene etc 
++Sg+Par:%+t GI ;                               ! peent
++Sg+Par%+Use%/NotNorm:e%+t GI ;                ! peenet
++Sg+Ill%+Use%/Rare:%+de GI ;                   ! peende
++Sg+Ill:e%{W%}%+sse GI ;                       ! peenesse 
+:%+te N_PL_SUBPARA ;                           ! peente etc 
+%+Use%/NotNorm:e%+te N_PL_SUBPARA ;            ! peenete etc 
++Pl+Par%+Use%/CommonNotNorm:e%+id GI ;         ! NB! peeneid 
++Pl+Par:i GI ;                                 ! peeni
+%+Use%/Hyp:%{W%}%+i N_VOWEL_PL_SUBPARA ;       ! peenil etc
+
+
+LEXICON POISS   ! VVS 23 poiss, püks; almost = TAUD, except pl gen + 
+
++Sg+Nom:%{no.apo%} GI ;
+:i 1C_SG ;                                  ! poisi etc
+:%{W%}%+te N_PL_SUBPARA ;                   ! poiste etc
+%+Use%/Rare:%+i%+de N_PL_SUBPARA ;          ! poisside etc
++Pl+Par:e GI ;                              ! poisse
++Pl+Par%+Use%/Hyp:i%+sid GI ;              ! poissisid+Use/Hyp
+
+LEXICON PURI  ! only puri
+
+: EIT ;
++Pl+Par+Use%/Rare:e%+id GI ;  ! purjeid
+
+! only if the plural partitive with -id is more frequent than the one with sid (puid-puusid),
+! then the word may have vowel plural forms
+LEXICON PUU ! 11 words (kuu, maa, etc) that have possible vowel plural forms 
+
+: ARMEE ;
+%+Use%/Rare:%+i N_VOWEL_PL_SUBPARA ;       ! puil etc
+
+LEXICON PÕLV  ! only põlv
+
+:v%+%{pl.i%} EIT ;
++Sg+Nom%+Use%/Rare:i GI ;  ! tali
+%+Use%/Rare:v%+i N_VOWEL_PL_SUBPARA ;  ! põlvil etc
++Pl+Trm%+Use%/Rare:v%+i%+ni GI ;  ! põlvini
+
+LEXICON PÄIKE  ! only päike(ne), äike(ne)  VVS 10
+
+: XÄIKE ;
++Pl+Par:kese%+id GI ;                      ! päikeseid
++Pl+Par%+Use%/Rare:kse%+id GI ;            ! päikseid
+
+LEXICON REHI   ! rehi, ruhi
+
+: EIT ;
++Sg+Par%+Use%/Rare:%{W%}%+t #;   ! reht, ruht
+
+LEXICON RIND   ! only rind, silm
+
+: PIIM ;
++Pl+Gen%+Use%/Rare:%+e #;      ! rinde
+
+LEXICON RUBLA  ! about 20 words 
+
+: PERE ;
++Sg+Par%+Use%/Rare: GI ;            ! (viis) rubla
+
+LEXICON SADA    ! only sada
+
+: KAVA ;
++Sg+Par%+Use%/Rare:%+t GI ;            ! sadat
+
+LEXICON SEEME    ! only kümme, seeme, kööme; like HAARE
+
++Sg+Nom:%{W%} GI ;                      ! seeme
++Sg+Par:%{W%}%+t GI ;                   ! seemet
+:ne 2C_EXCL_SG_PAR ;                    ! seemne etc
+
+LEXICON SÜDA                   ! only süda; like habe
+
++Sg+Nom: GI ;                          ! süda
++Sg+Par:n%+t GI ;                       ! südant
+:me 2C_EXCL_SG_PAR ;                   ! südame etc
+
+LEXICON TALV  ! only talv
+
+:v%+%{pl.i%}%{rare%} EIT ;
++Sg+Nom%+Use%/Rare:i GI ;  ! tali
+
+LEXICON TEINE   ! only teine; almost = NAINE; much like OLULINE
+                  
++Sg+Nom: GI ;
+: NE_S ;
++Sg+Ill:E1 GI ;                          ! teise (should be 3rd grade... )
++Sg+Ill%+Use%/Rare:E1%+sse GI ;             ! teisesse
++Pl+Par:%+I1 GI ;                           ! teisi
+%+Use%/Rare:%+I1 N_VOWEL_PL_SUBPARA ;       ! teisil etc
+
+LEXICON TUHAT      ! only tuhat; like LOHAKAS
+
++Sg+Nom:t GI ;                          ! tuhat
+:nde 2C ;                               ! tuhande etc
+! ????  +Sg+Par:%+t GI ;                              ! tuhat
+
+LEXICON VAHER    ! VVS 3 unstable (closed) type;  only vaher, aher
+
++Sg+Nom:%{W%} GI ;                     ! vaher
+:a 2C ;                                ! vahtra etc
+
+LEXICON VARS     !  VVS 14 unstable (closed) type;
+
+! %{W%} here helps to select the right paradigm slots for stem change;
+! it does not really stand for "weak grade"
+
++Sg+Nom: GI ;                                 ! vars
+:e%{W%} N_SG_SUBPARA ;                        ! varre etc 
++Sg+Par:%+t GI ;                              ! vart
++Sg+Ill:%{S%}%+de SG_ILL ;              ! varde
++Sg+Ill:e%{W%} SG_ILL ;          ! varresse 
+:%+te N_PL_SUBPARA ;                          ! varte etc 
++Pl+Par:%+i GI ;                              ! varsi
+! +N%+Use%/Hyp:%+i N_VOWEL_PL_SUBPARA ;       ! varsil?; except for some expressions (uusil)
+
+LEXICON VÄIKE  ! only väike(ne)  VVS 10
+
+: XÄIKE ;
++Pl+Par%+Use%/Rare:kese%+id GI ;            ! väikeseid
++Pl+Par:kse%+id GI ;                        ! väikseid
+
+LEXICON XÄIKE  ! VVS 10 common part of väike(ne), päike(ne), äike(ne)
+
++Sg+Nom:ke GI ;
++Sg+Nom%+Use%/Rare:kene GI ;
+:kene NE_S ;
+%+Use%/Rare:kse N_SG_SUBPARA ;                ! xäikse etc 
++Sg+Par%+Use%/Rare:kse%+t GI ;                ! xäikset
++Sg+Ill:kese%+sse GI ;                        ! xäikesesse
++Sg+Ill%+Use%/Rare:kse%+sse GI ;              ! xäiksesse
++Sg+Ill%+Use%/Rare:ke%+sse GI ;               ! xäikesse (haplology)
+%+Use%/Rare:kse%+te N_PL_SUBPARA ;       
++Pl+Par%+Use%/Rare:kes%+i GI ;                ! xäikesi
+%+Use%/Rare:kes%+i N_VOWEL_PL_SUBPARA ;       ! xäikesil etc
+%+Use%/Rare:kese%+i N_VOWEL_PL_SUBPARA ;      ! xäikeseil etc
+%+Use%/Rare:kse%+i N_VOWEL_PL_SUBPARA ;       ! xäikseil etc
+
+LEXICON ÕLU                  ! only õlu
+
++Sg+Nom:u GI ;                                ! õlu
+:le N_SG_SUBPARA ;                             ! õlle etc 
++Sg+Par:u%+t GI ;                             ! õlut
++Sg+Ill:le%+sse GI ;                           ! õllesse 
+:le%+de N_PL_SUBPARA ;                         ! õllede etc 
++Pl+Par:le%+sid GI ;                              ! õlusid
++Pl+Par%+Use%/Rare:u%+sid GI ;                              ! õlusid
+
+
+

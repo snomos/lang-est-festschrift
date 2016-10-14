@@ -325,6 +325,8 @@ O6   ! uu oo õ  tooma - tuua - tõi
 E3   ! e i   aed aia
 E4   ! e j   aeg aja 
 
+K3   ! k 0  vennas vennakse
+
 E1    ! e 0  soolase, raudset  soolas t
 I1    ! i    katkisil
 A1    ! a    pingsa
@@ -353,9 +355,6 @@ M1   ! m n  lumi lund
  %{pl.e%}  ! e 0  Stem vowel tag in lexicon   tõuge
  %{pl.u%}  ! u 0  Stem vowel tag in lexicon   laudu
  
-
-! ne, s ending words have similar paradigms; only sg nom is different
-N1  ! ne s  soolane and other ne-words; soolas+e, soolas+t etc  
 
 N2  ! laas-laane
 

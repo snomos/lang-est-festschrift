@@ -36,7 +36,8 @@ GT_LEXC_SRCS_L1_L2=\
                          stems/verbs.lexc \
 			 stems/abbreviations.lexc \
 			 stems/acronyms.lexc \
-			 affixes/declinations.lexc \
+			 affixes/regular_declinations.lexc \
+			 affixes/exceptional_declinations.lexc \
 			 affixes/verbs.lexc \
 			 affixes/gi.lexc
 

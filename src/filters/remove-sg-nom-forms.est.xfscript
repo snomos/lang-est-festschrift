@@ -9,9 +9,11 @@ define words [
         {teineteise} |
         {lühida} ] ;
 define SGNOM [ "+Sg" "+Nom" ] ;
+define POS ["+Pron" | "+A" | "+N"] ;
 
 # make sure only word-final components are considered
 define WB [ "#" ] ;
-define lexicalw [ words [\WB]* SGNOM [\WB]* ] ;
+
+define lexicalw [ words POS [\WB]* SGNOM [\WB]* ] ;
 
 regex ~[lexicalw].i ;

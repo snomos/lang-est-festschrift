@@ -15,7 +15,7 @@ define plwords [{aganad} |
                {aplodismendid} | 
                {Ardennid} | 
                {arstmed} | 
-               {arv#andmed} | 
+               {arvandmed} | 
                {Assoorid} | 
                {bakid} | 
                {bikiinid} | 
@@ -54,21 +54,21 @@ define plwords [{aganad} |
                {kaltsad} | 
                {Kanaarid} | 
                {Karpaadid} | 
-               {karu#püksid} | 
+               {karupüksid} | 
                {kastanjetid} | 
-               {katse#andmed} | 
+               {katseandmed} | 
                {kedrid} | 
                {kihermed} | 
                {kihlad} | 
-               {kints#püksid} | 
+               {kintspüksid} | 
                {kliid} | 
                {kodinad} | 
                {Komoorid} | 
                {koolikud} | 
                {Kordiljeerid} | 
-               {korn#tangid} | 
+               {korntangid} | 
                {kosjad} | 
-               {kott#püksid} | 
+               {kottpüksid} | 
                {kraasmed} | 
                {kruubid} | 
                {kruubitangud} | 
@@ -242,10 +242,11 @@ define plwords [{aganad} |
                {üsked} ] ;
 
 define SG [ "+Sg" ] ;
+define POS ["+Pron" | "+A" | "+N"] ;
 
 # make sure only word-final components are considered
 define WB [ "#" ] ;
-define pllexical [ plwords [\WB]* SG [\WB]+ ] ;
+define pllexical [ plwords POS [\WB]* SG [\WB]+ ] ;
 
 regex ~[pllexical].i ;
 

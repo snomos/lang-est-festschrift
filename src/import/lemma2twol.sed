@@ -10,7 +10,7 @@
 /@/s/\([aeiouõäöü]\)\([aeiu][^aeiuõäöü]*:.*\)g\([AEIU]2\)/\1\2G1\3/
 /@/s/\([aeiouõäöü]\)\([aeiu][^aeiuõäöü]*:.*\)b\([AEIU]2\)/\1\2B1\3/
 /@/s/\([aeiouõäöü]\)\([aeiu][^aeiuõäöü]*:.*\)d\([AEIU]2\)/\1\2D1\3/
-/@/s/\([^k]k[aeiu][^aeiuõäöü]*:.*k\)k\([AEIU]2\)/\1K1\2/
+/@[PK]/s/\([^k]k[aeiu][^aeiuõäöü]*:.*k\)k\([AEIU]2\)/\1K1\2/
 /@/s/\([^p]p[aeiu][^aeiuõäöü]*:.*p\)p\([AEIU]2\)/\1P1\2/
 /@/s/\([^t]t[aeiu][^aeiuõäöü]*:.*t\)t\([AEIU]2\)/\1T1\2/
 /@/s/\([hs][aeiu][^aeiuõäöü]*:.*[hs]\)k\([AEIU]2\)/\1K1\2/

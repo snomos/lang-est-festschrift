@@ -6,10 +6,11 @@ define sgwords [{kumbki} | {keegi} | {miski} | {eikeegi} | {eimiski}] ;
 
 define PL [ "+Pl" ] ;
 define NOM [ "+Nom" ] ;
+define POS ["+Pron" | "+A" | "+N"] ;
 
 # make sure only word-final components are considered
 define WB [ "#" ] ;
-define sglexical [ sgwords [\WB]* PL [\WB & \NOM]+ ] ;
+define sglexical [ sgwords POS [\WB]* PL [\WB & \NOM]+ ] ;
 
 regex ~[sglexical].i ;
 

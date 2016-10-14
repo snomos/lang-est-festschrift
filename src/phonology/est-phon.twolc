@@ -91,7 +91,7 @@ O6:0
 E3:e   ! aed aia
 E3:i
 
-E4:e   ! aeg aja; soe sooja
+E4:e   ! aeg - aja; soe - sooja
 E4:j
 
 E1:e    ! soolase, raudset
@@ -99,6 +99,9 @@ E1:0    ! soolas t
 
 I1:i    ! an ugly trigger for ne/s words katkine - katkisil
 A1:a    ! an ugly trigger for ne/s words pingne - pingsa
+
+K3:k    ! vennakse
+K3:0    ! venna s
 
 A2:a   ! valvas
 A2:0   ! valv sa
@@ -196,11 +199,11 @@ Diacritics
 
 Sets
 
-Vowel = A E I O U Õ Ä Ö Ü
-        a e i o u õ ä ö ü ;
+Vowel = A E I O U Õ Ä Ö Ü Y
+        a e i o u õ ä ö ü y ;
 
-Consonant = b c d f g h j k l m n p q r s š z ž t v w x y 
-            B C D F G H J K L M N P Q R S Š Z Ž T V W X Y ;
+Consonant = b c d f g h j k l m n p q r s š z ž t v w x 
+            B C D F G H J K L M N P Q R S Š Z Ž T V W X ;
 
 ! stops
 stop = g b d k p t ;
@@ -235,6 +238,7 @@ Definitions
 
 Border = [ .#. | # ];  ! word border
 WordEnd = [ (%+: [ :g | :k ] i) Border ];     ! final +gi is optional for almost any word
+Null = [ :0 - # ];                   ! something on the lexical side, but nothing on the surface (except word border)
 
 Rules 
  
@@ -252,8 +256,8 @@ Rules
 ! gbd are written as kpt after voiceless consonants
 "Weak grade for productive kpt:gbd"
 
-Cx:Cy  <=> :sonor _ (%+:0) (SV:0) :stemV %{W%}: ;
-           :sonor _ ([l | r | j]) :stemV %{W%}: ;
+Cx:Cy  <=> :sonor _ (%+:0) (SV:0) (LT:0) :stemV %{W%}: ;
+           :sonor _ ([l | r | j | v]) :stemV %{W%}: ;
            :sonor _               :stemV (l) %{W%}: ;  ! võidelda
      where Cx in ( p t k ) 
            Cy in ( b d g )
@@ -269,10 +273,12 @@ Cx:Cy  <=> :sonor _ (%+:0) (SV:0) :stemV %{W%}: ;
 ! surface: k õ b l a  0  0 t a
 ! lexical: v õ i t E2 l {W} + d a
 ! surface: v õ i d e  l  0  0 d a
+! lexical: l õ t v e {W}
+! surface: l õ d v e  0        ! Sg Nom
 
 "Weak grade for productive kk pp tt šš ff : k p t š f"
 
-Cx:0 <=>  Cx _ (%+:0) (SV:0) :stemV (lmnr) %{W%}:  ;  ! sepa, lepin, sipelda, aken, tütar, ...
+Cx:0 <=>  Cx _ (%+:0) (SV:0) (LT:0) :stemV (lmnr) %{W%}:  ;  ! sepa, lepin, sipelda, aken, tütar, ...
      where Cx in ( p t k š f) ;
 
 ! lexical: k e p p + {pl.e} {sg.i} {W}
@@ -288,7 +294,7 @@ Cx:0 <=>  Cx _ (%+:0) (SV:0) :stemV (lmnr) %{W%}:  ;  ! sepa, lepin, sipelda, ak
 
 "Weak grade for productive ss:s kauss, jamss"
 
-s:0 <=> :Vowel :sonor :s _ (%+:0) (SV:0) :stemV %{W%}: ;
+s:0 <=> :Vowel :sonor :s _ (%+:0) (SV:0) (LT:0) :stemV %{W%}: ;
 
 ! lexical: k a u s s + {pl.e} {sg.i} {W}
 ! surface: k a u s 0 0    0      i    0
@@ -308,7 +314,7 @@ Cx:Cy  <=> _ :* %{W%}: ;
 "Lexically determined weak grade for gbdkpt:0"
 
 Cx:Cy  <=> _ :* %{W%}: ;
-           J1: _ [:0]* WordEnd ; ! rohi sg nom is not {W}; has ij:
+           J1: _ Null* WordEnd ; ! rohi sg nom is not {W}; has ij:
      where Cx in (G1 B1 D1 K1 P1 T1 ) 
            Cy in ( 0  0  0  0  0  0 )
      matched ;
@@ -321,7 +327,7 @@ Cx:Cy  <=> _ :* %{W%}: ;
 "Lexically determined weak grade for s:0"
 
 S1:0  <=> _ :* %{W%}: ;       ! paas - pae
-          _ [:0]+ :stop ;     ! vars - vart, varde
+          _ Null+ :stop ;     ! vars - vart, varde
 
 ! lexical: p a a S1 + {pl.e} {sg.i} {W}
 ! surface: p a 0  0 0   0       e    0
@@ -331,8 +337,8 @@ S1:0  <=> _ :* %{W%}: ;       ! paas - pae
 "Lexically determined weak grade for kpt:gbd; sg nom for ader, lubi"
 
 Cx:Cy  <=>  _ :* %{W%}: ;
-            _ J1:  [:0]* WordEnd ; ! lubi sg nom is not {W}; has ij:
-            _ E2:e [l | r] [:0]* WordEnd ;    ! ader sg nom is not {W}; has e2:e
+            _ J1:  Null* WordEnd ; ! lubi sg nom is not {W}; has ij:
+            _ E2:e [l | r] Null* WordEnd ;    ! ader sg nom is not {W}; has e2:e
       where Cx in ( K2 P2 T2 ) 
             Cy in (  g  b  d )
       matched ;
@@ -351,7 +357,7 @@ Cx:Cy  <=>  _ :* %{W%}: ;
 
 "short illative strong stem generation: consonant doubling"
 
-0:Cy  <=>  \[ :Vowel] :Vowel Cx:Cy _ [ :0 ]* :Vowel [ :0 ]* %{S%}: ; ! majja
+0:Cy  <=>  \[ :Vowel] :Vowel Cx:Cy _ Null* :Vowel Null* %{S%}: ; ! majja
      where Cx in ( l m M1 n r v j h s g b d k p t G1 B1 B2 D1 D2 ) 
            Cy in ( l m  m n r v j h s k p t k p t  k  p  p  t  t )
      matched ;
@@ -361,7 +367,7 @@ Cx:Cy  <=>  _ :* %{W%}: ;
 
 "short illative strong stem generation: stop to stronger stop"
 
-Cx:Cy <=> :sonor [ :0]* _ ( :Cy | j ) [ :0 ]* :Vowel [ :0 ]* %{S%}: ;
+Cx:Cy <=> :sonor Null* _ ( :Cy | j ) Null* :Vowel Null* %{S%}: ;
      where Cx in ( g b d G1 B1 B2 D1 D2 G3 D3) 
            Cy in ( k p t  k  p  p  t  t  g  d)
      matched ;
@@ -377,7 +383,7 @@ Cx:Cy <=> :sonor [ :0]* _ ( :Cy | j ) [ :0 ]* :Vowel [ :0 ]* %{S%}: ;
 
 "nonstressed syllable vowel (a e u i) deletion"
 
-Vx:Vy  <=>    _ [ :0 ]* [:Consonant - :stop] [ :0 ]* :stemV  ;
+Vx:Vy  <=>    _ Null* [:Consonant - :stop] Null* :stemV  ;
      where Vx in ( A2 I2 U2 E2 ) 
            Vy in (  0  0  0  0 )
      matched ;
@@ -402,8 +408,8 @@ Vx:Vy  <=>    _ [ :0 ]* [:Consonant - :stop] [ :0 ]* :stemV  ;
 ! general case of vowel lowering; it is lexically conditioned
 "Vowel lowering"
 
-Vx:Vy  <=>  _ [ :0 ]+ :Vowel ; 
-           :Vowel [ :0 ]+ _ ; 
+Vx:Vy  <=>  _ Null+ :Vowel ; 
+           :Vowel Null+ _ ; 
      where Vx in ( I5 Ü5 U5 ) 
            Vy in (  e  ö  o )
      matched ;
@@ -419,26 +425,26 @@ Vx:Vy  <=>  _ [ :0 ]+ :Vowel ;
 
 "Long vowel shortening in vowel context 1/2"
 
-Vx:0 =>        :Vx _ [:0]+ :stemV ;            ! sae, puid, suid, soid; sohu, suhu
+Vx:0 =>        :Vx _ Null+ :stemV ;            ! sae, puid, suid, soid; sohu, suhu
                :Vx _ H3:h Y3:stemV ;            !  sohu, suhu, öhe, pähe
-            :Vowel _ [:0]+ :Vx ;               ! tõu
+            :Vowel _ Null+ :Vx ;               ! tõu
                :Vx _ E4:e ;                    ! soe
       except
-              [:i] _ [:0]+ :stemV        ;  ! siig - siia, hiid - hiiu
-         [:u | :ü] _ [:0]+ [:a | :e] ;      ! luua, huuata, müües
-              [:ü] _ [:0]+ [:u] ;           !  hüüu
+              [:i] _ Null+ :stemV        ;  ! siig - siia, hiid - hiiu
+         [:u | :ü] _ Null+ [:a | :e] ;      ! luua, huuata, müües
+              [:ü] _ Null+ [:u] ;           !  hüüu
       where Vx in ( Vowel ) ;
 
 "Long vowel shortening in vowel context 2/2"
 
-Vx:Vx /<=      :Vx _ [:0]+ :stemV ;           ! sae, puid, suid, soid; sohu, suhu
+Vx:Vx /<=      :Vx _ Null+ :stemV ;           ! sae, puid, suid, soid; sohu, suhu
                :Vx _ H3:h Y3:stemV ;            !  sohu, suhu, öhe, pähe
-            :Vowel _ [:0]+ :Vx ;               ! tõu
+            :Vowel _ Null+ :Vx ;               ! tõu
                :Vx _ E4:e ;                    ! soe
       except
-              [:i] _ [:0]+ :stemV        ;  ! siig - siia, hiid - hiiu
-         [:u | :ü] _ [:0]+ [:a | :e] ;      ! luua, huuata, müües
-              [:ü] _ [:0]+ [:u] ;           !  hüüu
+              [:i] _ Null+ :stemV        ;  ! siig - siia, hiid - hiiu
+         [:u | :ü] _ Null+ [:a | :e] ;      ! luua, huuata, müües
+              [:ü] _ Null+ [:u] ;           !  hüüu
       where Vx in ( Vowel ) ;
 
 
@@ -462,8 +468,8 @@ Vx:Vx /<=      :Vx _ [:0]+ :stemV ;           ! sae, puid, suid, soid; sohu, suh
 ! of old words - those that lose weak stop in certain case forms
 "Vowel lowering (?) for TAUD (e.g. mood), KOON (e.g. voog)"
 
-Vx:Vy  <=>  a a: [WS:0 | S1:0] [:0]* _ \[:Vowel]; 
-            o o: [WS:0 | S1:0] [:0]* _ \[:Vowel];
+Vx:Vy  <=>  a a: [WS:0 | S1:0] Null* _ \[:Vowel]; 
+            o o: [WS:0 | S1:0] Null* _ \[:Vowel];
      where Vx in ( %{sg.i%} %{sg.u%} ) 
            Vy in (     e        o    )
      matched ;
@@ -473,7 +479,7 @@ Vx:Vy  <=>  a a: [WS:0 | S1:0] [:0]* _ \[:Vowel];
 
 "e pronounced as j between vowels "
 
-E4:j  <=> [:Vowel - :i] [:0]* _ [:0]* [:Vowel - :i] ;
+E4:j  <=> [:Vowel - :i] Null* _ Null* [:Vowel - :i] ;
 
 ! lexical: a E4 G1 
 ! surface: a  e  g
@@ -486,14 +492,14 @@ E4:j  <=> [:Vowel - :i] [:0]* _ [:0]* [:Vowel - :i] ;
 
 "j appears as i in word final position after consonant"
 
-J1:i  <=> :Consonant _ [ :0 ]* WordEnd ;
+J1:i  <=> :Consonant _ Null* WordEnd ;
 
 ! lexical: a h J1 + {pl.e} {rare}
 ! surface: a h  i  0    0      0
 
 "j remains j if some (stem)vowel follows"
 
-J1:j  <=> _ [ :0 ]* :Vowel ;
+J1:j  <=> _ Null* :Vowel ;
         except
           _ WS: ;
 
@@ -510,18 +516,27 @@ J1:j  <=> _ [ :0 ]* :Vowel ;
 ! the only word where this is used: aed-aia
 "aed aia"
 
-E3:i  <=> [:Vowel - :i] [:0]* _ [:0]* [:Vowel - :i] ;
+E3:i  <=> [:Vowel - :i] Null* _ Null* [:Vowel - :i] ;
 
 ! lexical: a E3 D1 
 ! surface: a  e  d
 ! lexical: a E3 D1 a
 ! surface: a  i  0 a
 
+! --- 
+! juus-juuksed, kälis-käliksed, nõos-nõoksed, omas-omaksed, vennas-vennaksed, ões-õeksed 
+"vennas-vennaksed"
+
+K3:k  <=> _ s E1:e ;
+
+! lexical: v e n n a K3 s E1 + d 
+! surface: v e n n a k  s  e 0 d
+
 !------
 "laas-laane"
 
-N2:s  <=> _ [ :0 ]* WordEnd ;   ! laas, tuhandes
-          _ [ :0 ]* i ;         ! laasi
+N2:s  <=> _ Null* WordEnd ;   ! laas, tuhandes
+          _ Null* i ;         ! laasi
 
 ! lexical: l a a N2 
 ! surface: l a a s
@@ -530,18 +545,18 @@ N2:s  <=> _ [ :0 ]* WordEnd ;   ! laas, tuhandes
 "Pea, hea vs häid, päid, pähe 1"
 
 A6:ä  <=> E6: _ :h ;
-          E6: _ [:0]+ :i ;   
+          E6: _ Null+ :i ;   
 
 "Pea, hea vs häid, päid, pähe 2"
 
 E6:0  <=> _ A6: :h  ;
-          _ A6: [:0]+ :i ;
+          _ A6: Null+ :i ;
 
 "öhe, pähe"
-Y3:e  <=> [:ä | :ö] [ :0 ]* H3:h _ ;
+Y3:e  <=> [:ä | :ö] Null* H3:h _ ;
 
 "sohu, suhu"
-Y3:u  <=> [:o | :u] [ :0 ]* H3:h _ ;
+Y3:u  <=> [:o | :u] Null* H3:h _ ;
 
 "h-illative"
 H3:h  <=> _ :* %{S%}: ;
@@ -549,12 +564,12 @@ H3:h  <=> _ :* %{S%}: ;
 !------
 "Verb vowel ö o to õ"
 
-Vx:õ  <=> Vx: _ [:0]+ :i ; 
+Vx:õ  <=> Vx: _ Null+ :i ; 
      where Vx in ( Ö6 O6 ) ; 
 
 "Verb vowel ö o to 0"
 
-Vx:0  <=> _ Vx:õ [:0]+ :i ; 
+Vx:0  <=> _ Vx:õ Null+ :i ; 
      where Vx in ( Ö6 O6 ) ; 
 
 ! lexical: l O6 O6 + i 
@@ -562,8 +577,8 @@ Vx:0  <=> _ Vx:õ [:0]+ :i ;
 
 "Verb vowel o ö to u ü"
 
-Vx:Vy  <=>  Vx: _  [:0]+ [:a | :e] ; 
-             _ :Vy [:0]+ [:a | :e] ;
+Vx:Vy  <=>  Vx: _  Null+ [:a | :e] ; 
+             _ :Vy Null+ [:a | :e] ;
      where Vx in ( Ö6 O6 ) 
            Vy in ( ü  u )
      matched ;
@@ -575,7 +590,7 @@ Vx:Vy  <=>  Vx: _  [:0]+ [:a | :e] ;
 ! a general rule, but has to be encoded with M1 to allow for komtuur, EMT etc
 "m pronounced as n before t"
 
-M1:n  <=> _ [:0]* [:t | :d ] ;
+M1:n  <=> _ Null* [:t | :d ] ;
 
 ! lexical: l e e M1 {stemill} {rare} + t
 ! surface: l e e  n      0        0   0 t 
@@ -589,7 +604,7 @@ M1:n  <=> _ [:0]* [:t | :d ] ;
 "ne to s (1/2)"
 
 n:s  =>       _ e: E1:  ;
-              _ e: [ :0 ]* I1: ;
+              _ e: Null* I1: ;
               _ e: A1:  ;
 
 "ne to s (2/2)"
@@ -600,13 +615,13 @@ e:0  /<= n:n _ E1: ;
 "e disappearing (ne - s)"
 
 e:0 =>        n: _ E1: ;                    ! kodune - kodust, koduse
-              n: _ [:0]* I1: ;               ! katkine - katkisil
+              n: _ Null* I1: ;               ! katkine - katkisil
               n: _ A1: ;                    ! pingne - pingsa
 
 "e disappearing (ne - s) 2"
 
 e:0 <=        n: _ E1: ;                    ! kodune - kodust, koduse
-              n: _ [:0]* I1: ;               ! katkine - katkisil
+              n: _ Null* I1: ;               ! katkine - katkisil
               n: _ A1: ;                    ! pingne - pingsa
 
 
@@ -624,11 +639,11 @@ E1:e   => n:s e:0 _ ;  ! -ne word
 ! -ne, -s word e deletion 
 "do not add e for inflecting some forms of ne/s word "
 
-E1:0  <=> _ [ :0 ]* s e ;          ! olulisse (haplology)
-          _ [ :0 ]* t WordEnd ;   ! soolast
-          _ [ :0 ]* t e ;        ! soolaste
+E1:0  <=> _ Null* s e ;          ! olulisse (haplology)
+          _ Null* t WordEnd ;   ! soolast
+          _ Null* t e ;        ! soolaste
          except 
-               :Consonant [ :0 ]* :s [ :0 ]* _ [ :0 ]* t ;   ! raudset, raudsete
+               :Consonant Null* :s Null* _ Null* t ;   ! raudset, raudsete
 
 ! lexical: o l u l i n e E1 + s e 
 ! surface: o l u l i s 0  0 + s e
@@ -646,8 +661,8 @@ E1:0  <=> _ [ :0 ]* s e ;          ! olulisse (haplology)
 ! i is a vowel that starts Pl Par or vowel plural affixes; use I1 as a trigger
 "I1 triggers -ne to be -s"
 
-I1:i   => n:s e:0 [ :0 ]* _ ;   ! -ne word
-          s [ :0 ]* _ ;       ! -s word
+I1:i   => n:s e:0 Null* _ ;   ! -ne word
+          s Null* _ ;       ! -s word
 
 ! lexical: k a t k i n e + I1
 ! surface: k a t k i s 0 0  i
@@ -717,12 +732,12 @@ I1:i   => n:s e:0 [ :0 ]* _ ;   ! -ne word
 
 "No sg stem vowel if no Pl Par with -sid (choose pl stem vowel instead)"
 
-Vx:0  <=>  PlSV:stemV [:0]* _ [:0]* %{s%}:0 ;
+Vx:0  <=>  PlSV:stemV Null* _ Null* %{s%}:0 ;
      where Vx in ( %{sg.a%} %{sg.e%} %{sg.u%} %{sg.i%} ); 
 
 "Choose pl stem vowel for Pl Par (sg stem vowel is 0) "
 
-Vx:Vy  <=>   :Consonant [:0]* _ [:0]+ %{s%}:0 ;     ! puud-puudi
+Vx:Vy  <=>   :Consonant Null* _ Null+ %{s%}:0 ;     ! puud-puudi
      where Vx in ( %{pl.e%} %{pl.i%} %{pl.u%} ) 
            Vy in (     e        i        u   )
      matched ;
@@ -747,7 +762,7 @@ Vx:Vy  <=>   :Consonant [:0]* _ [:0]+ %{s%}:0 ;     ! puud-puudi
 
 "final vowel substitution for plural vowel"
 
-a:0  <=> :Consonant _ %+: PlSV:stemV [:0]* %{s%}:0 %{i%}:0 %{d%}:0 ;
+a:0  <=> :Consonant _ %+: PlSV:stemV Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 
 ! lexical: m a j a + {pl.u} {stemill} + {s} {i} {d}
 ! surface: m a j 0 0    u       0     0  0   0   0
@@ -886,7 +901,10 @@ LT:0          =>  %{stemill%}: _ ;      ! stem illative usage tag in the lexicon
 ! Orthography: consonant (cluster) writing conventions
 "consonant de-doubling in consonant clusters (e.g. after vowel deletion)"
 
-Cx:0  <=> :Cx _ [:0]* :Consonant  ;
+Cx:0  <=> :Cx _ Null+ :Consonant  ;
+          :Cx _ [G1:g | B1:b | D1:d | K1:k | P1:p | T1:t | S1:s | G3:g | D3:d] ;
+       except
+          :Cx _ Null* WordEnd ;     ! particle -gi/-ki is an exception 
        where Cx in (Consonant) ;
 
 ! lexical: s p i k k e r + i
@@ -903,7 +921,7 @@ Cx:0  <=> :Cx _ [:0]* :Consonant  ;
 ! that do not follow this rule (lesginka)
 "gbd to kpt after voiceless consonants"
 
-Cx:Cy  <=> :voiceless [:0]* %+: _ ;
+Cx:Cy  <=> :voiceless Null* %+: _ ;
        where Cx in (g b d)
              Cy in (k p t)
        matched;
