@@ -276,6 +276,11 @@ Cx:Cy  <=> :sonor _ (%+:0) (SV:0) (LT:0) :stemV %{W%}: ;
 ! lexical: l õ t v e {W}
 ! surface: l õ d v e  0        ! Sg Nom
 
+!!€ kraapi%{W%}%+n
+!!€ kraabi00n
+!!$ kraapi00n
+
+
 "Weak grade for productive kk pp tt šš ff : k p t š f"
 
 Cx:0 <=>  Cx _ (%+:0) (SV:0) (LT:0) :stemV (lmnr) %{W%}:  ;  ! sepa, lepin, sipelda, aken, tütar, ...
@@ -643,11 +648,12 @@ E1:0  <=> _ Null* s e ;          ! olulisse (haplology)
           _ Null* t WordEnd ;   ! soolast
           _ Null* t e ;        ! soolaste
          except 
-               :Consonant Null* :s Null* _ Null* t ;   ! raudset, raudsete
+!               :Consonant Null* :s Null* _ Null* t ;   ! raudset, raudsete
+               :Consonant [ :0 - # ]* :s [ :0 - # ]* _ [ :0 - # ]* t ;   ! raudset, raudsete
 
 ! lexical: o l u l i n e E1 + s e 
 ! surface: o l u l i s 0  0 + s e
-! lexical: s o o l a n e E1 + t
+! lexical: s o o l a n e E1 + tˇˇˇˇˇ
 ! surface: s o o l a s 0  0 0 t
 ! lexical: g l o o b u s E1 + t 
 ! surface: g l o o b u s  0 0 t
