@@ -383,7 +383,7 @@ LEXICON PUU ! 11 words (kuu, maa, etc) that have possible vowel plural forms
 LEXICON PÕLV  ! only põlv
 
 :v%+%{pl.i%} EIT ;
-+Sg+Nom%+Use%/Rare:i GI ;  ! tali
++Sg+Nom%+Use%/Rare:i GI ;  ! põli
 %+Use%/Rare:v%+i N_VOWEL_PL_SUBPARA ;  ! põlvil etc
 +Pl+Trm%+Use%/Rare:v%+i%+ni GI ;  ! põlvini
 

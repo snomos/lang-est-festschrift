@@ -219,6 +219,10 @@ voiceless = f s š h stop ;
 ! possible stem- or ending vowels
 stemV = a e i u ;
 
+HighVowel = i ü u ;
+MidVowel = e ö õ o ;
+LowVowel = ä a ;
+
 ! last syllable nonstressed vowels that are not always pronounced 
 ! V0 = A2 E2 I2 U2 ;
 
@@ -231,14 +235,19 @@ SV = SgSV PlSV ;
 ! weak stops in the lexicon
 WS = G1 B1 D1 K1 P1 T1 ;
 
+! disappearing consonants (between vowels) in weak grade
+DC = G1 B1 D1 S1 ;
+
 ! Usage, style etc tags in lexicon
 LT = %{hyp%} %{rare%} %{notnorm%} %{commonnotnorm%} ;
 
 Definitions
 
 Border = [ .#. | # ];  ! word border
-WordEnd = [ (%+: [ :g | :k ] i) Border ];     ! final +gi is optional for almost any word
-Null = [ :0 - # ];                   ! something on the lexical side, but nothing on the surface (except word border)
+Gi = [ [ :g | :k ] i ] ;
+WordEnd = [ (%+: Gi) Border ];     ! final +gi is optional for almost any word
+Null = [ :0 - # ];            ! something on the lexical side, but nothing on the surface (except word border)
+Any  = [ : - # ];             ! anything except word border
 
 Rules 
  
@@ -334,7 +343,7 @@ Cx:Cy  <=> _ :* %{W%}: ;
 "Lexically determined weak grade for s:0"
 
 S1:0  <=> _ :* %{W%}: ;       ! paas - pae
-          _ Null+ :stop ;     ! vars - vart, varde
+          _ Null+ [ :t | :d ] ;     ! vars - vart, varde
 
 ! lexical: p a a S1 + {pl.e} {sg.i} {W}
 ! surface: p a 0  0 0   0       e    0
@@ -412,7 +421,7 @@ Vx:Vy  <=>    _ Null* [:Consonant - :stop] Null* :stemV  ;
 ! lexical: s p i k k E2 r + i
 ! surface: s p i k 0  0 r 0 i 
 
-! general case of vowel lowering; it is lexically conditioned
+! general case of vowel lowering; it is actually restricted here...
 "Vowel lowering"
 
 Vx:Vy  <=>  _ Null+ :Vowel ; 
@@ -430,59 +439,74 @@ Vx:Vy  <=>  _ Null+ :Vowel ;
 ! hence the need to use 2 rules instead of one <=> rule:
 ! there are other contexts where a vowel gets deleted
 
-"Long vowel shortening in vowel context 1/2"
+"Long vowel shortening 1/2"
 
-Vx:0 =>        :Vx _ Null+ :stemV ;            ! sae, puid, suid, soid; sohu, suhu
-               :Vx _ H3:h Y3:stemV ;            !  sohu, suhu, öhe, pähe
-            :Vowel _ Null+ :Vx ;               ! tõu
-               :Vx _ E4:e ;                    ! soe
-      except
-              [:i] _ Null+ :stemV        ;  ! siig - siia, hiid - hiiu
-         [:u | :ü] _ Null+ [:a | :e] ;      ! luua, huuata, müües
-              [:ü] _ Null+ [:u] ;           !  hüüu
-      where Vx in ( Vowel ) ;
+Vx:0 =>     :Vx _ Null+ :stemV ;            ! puid, suid, soid, sae, soe, nea
+         :Vowel _ Null+ :Vx ;               ! tõu, näub
+            :Vx _ E4:e ;                    ! soe
+      where Vx in ( Vowel ) ;  
 
-"Long vowel shortening in vowel context 2/2"
+"Long vowel shortening 2/2"
 
-Vx:Vx /<=      :Vx _ Null+ :stemV ;           ! sae, puid, suid, soid; sohu, suhu
-               :Vx _ H3:h Y3:stemV ;            !  sohu, suhu, öhe, pähe
-            :Vowel _ Null+ :Vx ;               ! tõu
-               :Vx _ E4:e ;                    ! soe
-      except
-              [:i] _ Null+ :stemV        ;  ! siig - siia, hiid - hiiu
-         [:u | :ü] _ Null+ [:a | :e] ;      ! luua, huuata, müües
-              [:ü] _ Null+ [:u] ;           !  hüüu
-      where Vx in ( Vowel ) ;
+Vx:Vx /<=    :Vx _ Null+ :i ;            ! puid, suid, soid
+          :Vowel _ Null+ :Vx ;               ! tõu, näub
+             :Vx _ E4:e ;                    ! soe
+      where Vx in ( Vowel ) ;  
 
+"Long high vowel does not shorten before a stem vowel , unless it is i"
+
+Vx:0 /<=  :Vx _ Null+ [:stemV - :i];            ! riiu, luua; puid
+      where Vx in ( HighVowel ) ;  
+
+"Long non-high vowel shortens before a stem vowel"
+
+Vx:Vx /<= :Vx _ Null+ :stemV ;            ! sae, soid, soe
+      where Vx in ( MidVowel LowVowel ) ;  
 
 ! lexical: s a a G1 + {pl.e} {sg.i} {W}
 ! surface: s a 0  0 0    0      e    0 
-! lexical: t õ u G1 + {pl.e} {sg.u} {W}
-! surface: t õ 0  0 0    0      u    0
-! lexical: p u u             {id} + {idsid} i d
-! surface: p u 0               0  0    0    i d
-! lexical: n ä u G1 u {W} + b 
-! surface: n ä 0  0 u  0  0 b
-! lexical: h u u G1 a {W} + n u d      NB! no shortening !
-! surface: h u u  0 a  0  0 n u d
+! lexical: h u u G1 a {W} + n u d      
+! surface: h u u  0 a  0  0 n u d     NB! no shortening !
 ! lexical: s o o E4 
 ! surface: s o 0 e
 
+! lexical: p u u             {id} + {idsid} i d
+! surface: p u 0               0  0    0    i d
+
+! lexical: t õ u G1 + {pl.e} {sg.u} {W}
+! surface: t õ 0  0 0    0      u    0
+! lexical: n ä u G1 u {W} + b 
+! surface: n ä 0  0 u  0  0 b
+
 ! -------- rules that operate on a small set of different words
+
+"Long vowel shortens before h 1/2"
+
+Vx:0 => :Vx _ H3:h  :stemV ;            !  sohu, suhu, öhe, pähe
+      where Vx in ( Vowel ) ;  
+
+"Long vowel shortens before h 2/2"
+
+Vx:Vx /<= :Vx _ H3:h  :stemV ;            !  sohu, suhu, öhe, pähe
+      where Vx in ( Vowel ) ;  
 
 ! vowel lowering special case in the current description:
 ! the vowels involved are stem vowels; the rule applies only to a small set
-! of old words - those that lose weak stop in certain case forms
-"Vowel lowering (?) for TAUD (e.g. mood), KOON (e.g. voog)"
+! of old words - those that lose weak stop or s in weak grade
+"Vowel lowering for TAUD (e.g. mood), KOON (e.g. voog)"
 
-Vx:Vy  <=>  a a: [WS:0 | S1:0] Null* _ \[:Vowel]; 
-            o o: [WS:0 | S1:0] Null* _ \[:Vowel];
+Vx:Vy  <=>  a a: DC:0 Null* _ \[:Vowel]; 
+            o o: DC:0 Null* _ \[:Vowel];
      where Vx in ( %{sg.i%} %{sg.u%} ) 
            Vy in (     e        o    )
      matched ;
 
 ! lexical: s a a G1 {W} + {sg.i}
 ! surface: s a 0  0  0  0    e
+! lexical: v o o G1 + {pl.e} {sg.u} {W} 
+! surface: v o 0  0 0    0      o    0
+! lexical: l i u G1 + {pl.e} {sg.u} {W}    
+! surface: l i 0  0 0    0      u    0    NB! no lowering!
 
 "e pronounced as j between vowels "
 
@@ -504,16 +528,21 @@ J1:i  <=> :Consonant _ Null* WordEnd ;
 ! lexical: a h J1 + {pl.e} {rare}
 ! surface: a h  i  0    0      0
 
-"j remains j if some (stem)vowel follows"
+"j remains j only if some (stem)vowel follows"
 
-J1:j  <=> _ Null* :Vowel ;
-        except
-          _ WS: ;
+J1:j  => _ Null* :Vowel ;
 
 ! lexical: a h J1 + {pl.e} {rare} {sg.u} {W}
 ! surface: a h j  0   0       0      u    0
 
-! J1:0 in cases like:
+"j is impossible before a weak stop (even if that disappears in weak grade)"
+
+J1:j /<= _ T1: ;
+
+"j is 0 only before a weak stop (even if that disappears in weak grade)"
+
+J1:0  => _ T1:  ;
+
 ! lexical: r o h J1 T1 + {pl.e} {rare}
 ! surface: r o h  0  t 0    e      0
 ! lexical: r o h J1 T1 + {pl.e} {rare} {sg.u} {W}
@@ -646,12 +675,14 @@ E1:e   => n:s e:0 _ ;  ! -ne word
 ! -ne, -s word e deletion 
 "do not add e for inflecting some forms of ne/s word "
 
-E1:0  <=> _ Null* s e ;          ! olulisse (haplology)
-          _ Null* t WordEnd ;   ! soolast
-          _ Null* t e ;        ! soolaste
-         except 
-!               :Consonant Null* :s Null* _ Null* t ;   ! raudset, raudsete
-               :Consonant [ :0 - # ]* :s [ :0 - # ]* _ [ :0 - # ]* t ;   ! raudset, raudsete
+E1:0  <=> Border ~[Any* :Consonant Null* :s Null*] _ Null* s e ;          ! olulisse (haplology)
+          Border ~[Any* :Consonant Null* :s Null*] _ Null* t WordEnd ;   ! soolast
+          Border ~[Any* :Consonant Null* :s Null*] _ Null* t e ;        ! soolaste
+
+!"cannot omit e because the result would be unpronouncable"
+
+!E1:0 /<=  :Consonant Null* :s Null* _ Null* t WordEnd ;   ! raudset
+!          :Consonant Null* :s Null* _ Null* t e ;         ! raudsete
 
 ! lexical: o l u l i n e E1 + s e 
 ! surface: o l u l i s 0  0 + s e
@@ -725,9 +756,9 @@ I1:i   => n:s e:0 Null* _ ;   ! -ne word
 ! rules for choosing the shorter wordform depend on info in the lexical entry
 "choosing short(er) affix: 0 vs sid, 0 vs sse, id vs sid"
 
-%{s%}:0     =>  PlSV:stemV   [:]* _ %{i%}:0 %{d%}:0; ! short Pl Par needs its stem vowel indicated in the lexicon
-                %{id%}:      [:]* _ i d ;            ! -id needs a trigger in the lexicon
-                %{stemill%}: [:]* _ %{s%}:0 %{e%}:0; ! stem (aka short) illative needs a trigger in the lexicon
+%{s%}:0     =>  PlSV:stemV   Any* _ %{i%}:0 %{d%}:0; ! short Pl Par needs its stem vowel indicated in the lexicon
+                %{id%}:      Any* _ i d ;            ! -id needs a trigger in the lexicon
+                %{stemill%}: Any* _ %{s%}:0 %{e%}:0; ! stem (aka short) illative needs a trigger in the lexicon
                                   %{s%}:0 _ %{e%}:0; ! the middle s is sometimes zero, of course  
 
 ! lexical: s a b a + {pl.u} {rare} {stemill} + {s} {i} {d} 
@@ -790,10 +821,10 @@ a:0  <=> :Consonant _ %+: PlSV:stemV Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 ! general relations between short illative and stem grade
 
 "weak grade is incompatible with exceptional stem (aka short) illative"
-%{W%}:0       /<=  _ [:]* %{s%}:0 %{s%}:0 %{e%}:0  ;    
+%{W%}:0       /<=  _ Any* %{s%}:0 %{s%}:0 %{e%}:0  ;    
 
 "(extra) strong grade is incompatible with sse-illative"
-%{S%}:0       /<=  _ [:]* %{s%}:s %{s%}:s %{e%}:e  ;      
+%{S%}:0       /<=  _ Any* %{s%}:s %{s%}:s %{e%}:e  ;      
 
 ! ------
 ! we (mis)use 2-level formalism to prune spurious branches that emerge from continuation lexicons
@@ -824,19 +855,19 @@ a:0  <=> :Consonant _ %+: PlSV:stemV Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 LT:0          =>  %{stemill%}: _ ;      ! stem illative usage tag in the lexicon follows the trigger
                          PlSV: _ ;      ! short pl partitive usage tag in the lexicon follows the plural stem vowel 
                        %{id%}: _ ;      ! -id plural partitive usage tag in the lexicon follows the trigger 
-                  %{stemill%}:  LT: [:]* %{s%}:0 %{s%}:0 %{e%}:0   _  ;   ! nimme is rare
-                  %{stemill%}: \LT: [:]* %{s%}:s %{s%}:s %{e%}:e   _  ;   ! majasse is rare
-                    PlSV:stemV  LT: [:]* %{s%}:0 %{i%}:0 %{d%}:0  _ ;   ! puudi is rare
-                    PlSV:0     \LT: [:]* %{s%}:s %{i%}:i %{d%}:d  _ ;   ! kaupasid is rare
-                       %{id%}:  LT: [:]* %{s%}:0 i d _  ;   ! esseid is rare
-                       %{id%}: \LT: [:]* %{s%}:s i d _  ;   ! puusid is rare
+                  %{stemill%}:  LT: Any* %{s%}:0 %{s%}:0 %{e%}:0   _  ;   ! nimme is rare
+                  %{stemill%}: \LT: Any* %{s%}:s %{s%}:s %{e%}:e   _  ;   ! majasse is rare
+                    PlSV:stemV  LT: Any* %{s%}:0 %{i%}:0 %{d%}:0  _ ;   ! puudi is rare
+                    PlSV:0     \LT: Any* %{s%}:s %{i%}:i %{d%}:d  _ ;   ! kaupasid is rare
+                       %{id%}:  LT: Any* %{s%}:0 i d _  ;   ! esseid is rare
+                       %{id%}: \LT: Any* %{s%}:s i d _  ;   ! puusid is rare
 
 
 "long plural partitive cannot be common if the word already has a common short plural partitive"
-%{s%}:s    /<= PlSV:0 \LT: [:]* _ %{i%}:i %{d%}:d \LT: ; 
+%{s%}:s    /<= PlSV:0 \LT: Any* _ %{i%}:i %{d%}:d \LT: ; 
 
 "short plural partitive cannot be common if the lexicon tag says it is rare"
-%{s%}:0    /<= PlSV:stemV LT: [:]* _ %{i%}:0 %{d%}:0 \LT: ; 
+%{s%}:0    /<= PlSV:stemV LT: Any* _ %{i%}:0 %{d%}:0 \LT: ; 
 
 ! lexical: p u u d + {pl.i} {hyp} {sg.a} + {s} {i} {d} {rare}
 ! surface: p u u d 0    i     0      0   0  0   0   0      0     
@@ -855,10 +886,10 @@ LT:0          =>  %{stemill%}: _ ;      ! stem illative usage tag in the lexicon
 ! surface: t ü n g                   a   0  s   i   d     0    FAIL
 
 "-id plural partitive cannot be common if the lexicon tag says it is rare"
-%{s%}:0  /<=  %{id%}: LT: [:]* _ i d \LT:  ;
+%{s%}:0  /<=  %{id%}: LT: Any* _ i d \LT:  ;
 
 "-sid plural partitive cannot be common if the word has a common -id plural partitive"
-%{s%}:s  /<= %{id%}: \LT: [:]* _ i d \LT:  ;
+%{s%}:s  /<= %{id%}: \LT: Any* _ i d \LT:  ;
 
 ! lexical: p u u     {id}        + {s} i d {rare}
 ! surface: p u u      0          0  s  i d   0
@@ -877,10 +908,10 @@ LT:0          =>  %{stemill%}: _ ;      ! stem illative usage tag in the lexicon
 ! --------------
 
 "long illative cannot be common if the word has a common short illative already"
-%{s%}:s      /<= %{stemill%}: \LT: [:]* _ %{s%}: %{e%}: \LT:  ;
+%{s%}:s      /<= %{stemill%}: \LT: Any* _ %{s%}: %{e%}: \LT:  ;
 
 "short illative cannot be common if the lexicon tag says it is rare"
-%{s%}:0      /<= %{stemill%}: LT: [:]* _ %{s%}: %{e%}: \LT:  ;
+%{s%}:0      /<= %{stemill%}: LT: Any* _ %{s%}: %{e%}: \LT:  ;
 
 ! majja is common, majasse is rare
 ! lexical: m a j 0 a + {pl.u} {stemill} {S} + {s} {s} {e}
@@ -907,16 +938,20 @@ LT:0          =>  %{stemill%}: _ ;      ! stem illative usage tag in the lexicon
 ! --------- orthography
 
 ! Orthography: consonant (cluster) writing conventions
+! 1) if a vowel is deleted, the resulting consonant cluster may have to be modified
+! 2) in this treatment, some consonants have been written as double in the lexicon 
+! because they are pronounced long;
+! this violates Estonian orthography, and this rule sets them right again
+! (note: no consonant deletion before particle -gi/ki)
+
 "consonant de-doubling in consonant clusters (e.g. after vowel deletion)"
 
-Cx:0  <=> :Cx _ Null+ :Consonant  ;
-          :Cx _ [G1:g | B1:b | D1:d | K1:k | P1:p | T1:t | S1:s | G3:g | D3:d] ;
-       except
-          :Cx _ Null* WordEnd ;     ! particle -gi/-ki is an exception 
-       where Cx in (Consonant) ;
+Cx:0 <=> :Cx _ Null+ [[:Consonant Any* Border] - [Gi Border]];
+         :Cx _ [G1:g | B1:b | D1:d | K1:k | P1:p | T1:t | S1:s | G3:g | D3:d] ;
+      where Cx in (Consonant) ;
 
-! lexical: s p i k k e r + i
-! surface: s p i k 0 0 r 0 i 
+! lexical: s p i k k E2 r + i
+! surface: s p i k 0  0 r 0 i 
 ! lexical: k a n n D1 E2 l e
 ! surface: k a n 0  d  0 l e 
 ! lexical: k õ r r S1 {stemill} {rare} + t e

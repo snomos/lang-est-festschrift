@@ -61,6 +61,8 @@ paste fs_lex tmp1twol \
 | sed 's/!\\K\\!&&!\\D\\!/!\\DK\\!/' \
 > fs_lex.gt1
 
+# NB! liitsõna sada tegemata !!
+
 # tsemnW on muuks vajalik info, mitte sõnaliik
 # GI võiks sobida jätkuleksikoniks ainult +Adv puhul, aga ka seal mitte igale sõnale...
 # oleks vaja vaadata muid sõnu, et otsustada ?
@@ -100,7 +102,17 @@ cat fs_lex.gt1 \
 | sed 's/| \([^!"]* !\\\)\(+[^\\]*\)\(\\[^@]*@\)\([^ ]*\) \([^:]*\):\([^"]*\)""/| \1\2\3 \5\2:\6 \4 ;""/g' \
 | sed 's/""$//' \
 | ./diacritics2.sed \
+\
+| sed 's/\(p.õl,\)v%+%{pl.i%} EIT /\1 PÕLV /' \
+| sed 's/\(t.al,\)v%+%{pl.i%}%{rare%} EIT /\1 TALV /' \
+| sed 's/\(p.urJ1\) EIT /\1 PURI /' \
+| sed 's/\(v.äi\) PÄIKE /\1 VÄIKE /' \
+| sed 's/:saD2a KAVA /:saD2a%+%{pl.u%} SADA /' \
+| sed 's/#&#p´ersse//' \
+| sed 's/#&#p´õrssa//' \
 > fs_gt.pre-inflecting
+
+# NB! perse, põrsas praegu osaliselt valesti 
 
 cat fs_gt.pre-inflecting \
 | sed 's/| \([^@]*\)@ /| /g' \
