@@ -70,8 +70,8 @@ Tests:
      minema+V+Impers+Prs+Ind+Aff+Use/NotNorm: mindakse
      olema+V+Inf: olla
      olema+V+Ger: olles
-     olema+V+Pers+Prs+Ind+Sg3+Aff: on
-     olema+V+Pers+Prs+Ind+Pl3+Aff: on
+     olema+V+Pers+Prs+Ind+Sg3+Aff: 'on'
+     olema+V+Pers+Prs+Ind+Pl3+Aff: 'on'
      olema+V+Pers+Sup+Ill: olema
      olema+V+Pers+Sup+Ela: olemast
      olema+V+Pers+Sup+Ine: olemas

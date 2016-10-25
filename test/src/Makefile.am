@@ -46,11 +46,9 @@ endif # CAN_YAML_TEST
 # be fixed *later*, but is not critical at the moment:
 XFAIL_TESTS=run-dict-gt-desc-anayaml-testcases.sh \
             run-dict-gt-norm-genyaml-testcases.sh \
-            run-gt-norm-yaml-testcases.sh \
             run-gt-desc-yaml-testcases.sh \
-            run-gt-norm-anayaml-testcases.sh \
-            run-gt-norm-genyaml-testcases.sh \
-            run-lexc-testcases.sh
+            run-lexc-testcases.sh \
+	    pair-test-hfst.sh
 
 ####### Other targets: ###########
 clean-local:
