@@ -1,19 +1,18 @@
 # remove Sg nom forms of some words that don't actually have them
 #
 define words [
-        {iseenese} |
-        {ligida} |
-        {läheda} |
-        {mõlema} |
-        {üksteise} |
-        {teineteise} |
-        {lühida} ] ;
+        [ {iseenese} "+Pron"] |
+        [ {ligida} "+A" ] |
+        [ {läheda} "+A" ] |
+        [ {mõlema} "+Pron" ] |
+        [ {üksteise} "+Pron" ] |
+        [ {teineteise} "+Pron" ] |
+        [ {lühida} "+A" ] ] ;
 define SGNOM [ "+Sg" "+Nom" ] ;
-define POS ["+Pron" | "+A" | "+N"] ;
 
 # make sure only word-final components are considered
 define WB [ "#" ] ;
 
-define lexicalw [ words POS [\WB]* SGNOM [\WB]* ] ;
+define lexicalw [ words SGNOM [\WB]* ] ;
 
 regex ~[lexicalw].i ;

@@ -24,7 +24,7 @@ GT_LEXC_ROOT=root.lexc
 # Set this to the names of all regular lexc source files:
 GT_LEXC_SRCS_L1_L2=\
                          stems/adjectives.lexc \
-                         stems/noninfecting_adjectives.lexc \
+                         stems/noninflecting_adjectives.lexc \
                          stems/comparative_adjectives.lexc \
                          stems/superlative_adjectives.lexc \
                          stems/adpositions.lexc \
@@ -35,9 +35,9 @@ GT_LEXC_SRCS_L1_L2=\
                          stems/nouns.lexc \
                          stems/numerals.lexc \
                          stems/pronouns.lexc \
-                         stems/proper_names.lexc \
+                         stems/propernouns.lexc \
                          stems/verbs.lexc \
-                         stems/noninfecting_verbs.lexc \
+                         stems/noninflecting_verbs.lexc \
 			 stems/abbreviations.lexc \
 			 stems/acronyms.lexc \
 			 affixes/regular_declinations.lexc \

@@ -388,18 +388,18 @@ N2  ! laas-laane
 LEXICON Root
 
 Adjectives ;
-NoninfectingAdjectives ;
+NoninflectingAdjectives ;
 ComparativeAdjectives ;
 SuperlativeAdjectives ;
 Adverbs ;
 Adpositions ;
 Conjunctions ;
 Nouns ;
-ProperNames ;
+ProperNouns ;
 Numerals ;
 Pronouns ;
 Verbs ;
-NoninfectingVerbs ;
+NoninflectingVerbs ;
 Interjections ;
 GenitiveAttributes ;
 

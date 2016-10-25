@@ -1,252 +1,248 @@
 # remove:
 #  Sg forms of plurale tantum words
 
-define plwords [{aganad} | 
-               {Aleuudid} | 
-               {algonkinid} | 
-               {alimendid} | 
-               {Alpid} | 
-               {aluspüksid} | 
-               {Andid} | 
-               {andmed} | 
-               {annaalid} | 
-               {Antillid} | 
-               {Apenniinid} | 
-               {aplodismendid} | 
-               {Ardennid} | 
-               {arstmed} | 
-               {arvandmed} | 
-               {Assoorid} | 
-               {bakid} | 
-               {bikiinid} | 
-               {danaiidid} | 
-               {Dardanellid} | 
-               {dionüüsiad} | 
-               {dressipüksid} | 
-               {džiinid} | 
-               {elejad} | 
-               {ergused} | 
-               {erinnüsed} | 
-               {eumeniidid} | 
-               {feeriad} | 
-               {fekaalid} | 
-               {Filipiinid} | 
-               {finantsid} | 
-               {gastropoodid} | 
-               {genitaalid} | 
-               {Hašimiidid} | 
-               {heitmed} | 
-               {hekslid} | 
-               {hesperiidid} | 
-               {hõõrmed} | 
-               {härrased} | 
-               {ihkmed} | 
-               {iidid} | 
-               {insiigniad} | 
-               {joodud} | 
-               {jõulud} | 
-               {järelmid} | 
-               {jäätmed} | 
-               {kaatsad} | 
-               {kalavinskid} | 
-               {kalifeed} | 
-               {kalifeepüksid} | 
-               {kaltsad} | 
-               {Kanaarid} | 
-               {Karpaadid} | 
-               {karupüksid} | 
-               {kastanjetid} | 
-               {katseandmed} | 
-               {kedrid} | 
-               {kihermed} | 
-               {kihlad} | 
-               {kintspüksid} | 
-               {kliid} | 
-               {kodinad} | 
-               {Komoorid} | 
-               {koolikud} | 
-               {Kordiljeerid} | 
-               {korntangid} | 
-               {kosjad} | 
-               {kottpüksid} | 
-               {kraasmed} | 
-               {kruubid} | 
-               {kruubitangud} | 
-               {kuluaarid} | 
-               {kummijäätmed} | 
-               {Kuriilid} | 
-               {kõrkmed} | 
-               {kõrvetised} | 
-               {käimad} | 
-               {kärajad} | 
-               {kärssed} | 
-               {käärid} | 
-               {lahinguristsed} | 
-               {Lakadiivid} | 
-               {lambakäärid} | 
-               {langud} | 
-               {leetrid} | 
-               {lendmed} | 
-               {liigud} | 
-               {limused} | 
-               {linnased} | 
-               {loimurid} | 
-               {looded} | 
-               {lõikmed} | 
-               {lõkad} | 
-               {lõpusesed} | 
-               {lähteandmed} | 
-               {Maldiivid} | 
-               {malid} | 
-               {Malviinid} | 
-               {mamelukid} | 
-               {matusejoodud} | 
-               {memuaarid} | 
-               {miasmid} | 
-               {missivalimised} | 
-               {mitmikud} | 
-               {murdmed} | 
-               {mõttetalgud} | 
-               {Myrtoonid} | 
-               {naglid} | 
-               {nahajäätmed} | 
-               {niied} | 
-               {ninaprillid} | 
-               {niuded} | 
-               {nopped} | 
-               {nõoksed} | 
-               {näpitsprillid} | 
-               {näpped} | 
-               {näärid} | 
-               {nöörmed} | 
-               {omaksed} | 
-               {padinad} | 
-               {paklad} | 
-               {pantaloonid} | 
-               {pantsid} | 
-               {parlamendivalimised} | 
-               {pealsed} | 
-               {peased} | 
-               {pebred} | 
-               {peied} | 
-               {penaadid} | 
-               {pihid} | 
-               {poised} | 
-               {populaarid} | 
-               {presentpüksid} | 
-               {presidendivalimised} | 
-               {prillid} | 
-               {pulmad} | 
-               {punetised} | 
-               {puurmed} | 
-               {põlvpüksid} | 
-               {päikeseprillid} | 
-               {päitsed} | 
-               {päramised} | 
-               {pärgsed} | 
-               {päädikud} | 
-               {pühkmed} | 
-               {püksid} | 
-               {püksikud} | 
-               {raidmed} | 
-               {rakmed} | 
-               {raksed} | 
-               {rangid} | 
-               {rapped} | 
-               {reaalid} | 
-               {retuusid} | 
-               {rihvlid} | 
-               {riismed} | 
-               {ristsed} | 
-               {rohundid} | 
-               {rookmed} | 
-               {rootud} | 
-               {rubid} | 
-               {rupskid} | 
-               {ruunid} | 
-               {rõuged} | 
-               {räätsad} | 
-               {saagmed} | 
-               {sabased} | 
-               {sademed} | 
-               {Sajaanid} | 
-               {sarlakid} | 
-               {saturnaalid} | 
-               {Seišellid} | 
-               {seldžukid} | 
-               {sipupüksid} | 
-               {spiikerivalimised} | 
-               {spordipüksid} | 
-               {subproduktid} | 
-               {suised} | 
-               {suitsed} | 
-               {sukkpüksid} | 
-               {supelpüksid} | 
-               {susped} | 
-               {suulised} | 
-               {suvisted} | 
-               {sõelmed} | 
-               {sõnasabased} | 
-               {sügelised} | 
-               {tagid} | 
-               {talgud} | 
-               {talvisted} | 
-               {tangid} | 
-               {tangud} | 
-               {taosed} | 
-               {tapatalgud} | 
-               {teismed} | 
-               {teksad} | 
-               {teksased} | 
-               {teksaspüksid} | 
-               {tinulised} | 
-               {toidujäätmed} | 
-               {tootmisjäätmed} | 
-               {treeningpüksid} | 
-               {treeningupüksid} | 
-               {trikoopüksid} | 
-               {trussikud} | 
-               {tsitrused} | 
-               {tšuudid} | 
-               {tuhud} | 
-               {tuleristsed} | 
-               {tulused} | 
-               {tunked} | 
-               {tuumajäätmed} | 
-               {töötlemisjäätmed} | 
-               {Türreenid} | 
-               {uhtmed} | 
-               {ujumispüksid} | 
-               {umbrid} | 
-               {valimised} | 
-               {valjad} | 
-               {varad} | 
-               {varrud} | 
-               {vaselised} | 
-               {vastlad} | 
-               {vatid} | 
-               {vedad} | 
-               {vedrupüksid} | 
-               {veimed} | 
-               {viigipüksid} | 
-               {viilmed} | 
-               {virmalised} | 
-               {voolmed} | 
-               {vurrud} | 
-               {võrdlusandmed} | 
-               {väitused} | 
-               {õeksed} | 
-               {õlpmed} | 
-               {õõssed} | 
-               {üldvalimised} | 
-               {üsked} ] ;
+define plwords [[ {aganad} "+N" ] | 
+               [ {Aleuudid} "+N" "+Prop" ] | 
+               [ {algonkinid} "+N" ] | 
+               [ {alimendid} "+N" ] | 
+               [ {Alpid} "+N" "+Prop" ] | 
+               [ {aluspüksid} "+N" ] | 
+               [ {Andid} "+N" "+Prop" ] | 
+               [ {andmed} "+N" ] | 
+               [ {annaalid} "+N" ] | 
+               [ {Antillid} "+N" "+Prop" ] | 
+               [ {Apenniinid} "+N" "+Prop" ] | 
+               [ {aplodismendid} "+N" ] | 
+               [ {Ardennid} "+N" "+Prop" ] | 
+               [ {arstmed} "+N" ] | 
+               [ {arvandmed} "+N" ] | 
+               [ {Assoorid} "+N" "+Prop" ] | 
+               [ {bakid} "+N" ] | 
+               [ {bikiinid} "+N" ] | 
+               [ {danaiidid} "+N" ] | 
+               [ {Dardanellid} "+N" "+Prop" ] | 
+               [ {dionüüsiad} "+N" ] | 
+               [ {dressipüksid} "+N" ] | 
+               [ {džiinid} "+N" ] | 
+               [ {elejad} "+N" ] | 
+               [ {ergused} "+N" ] | 
+               [ {erinnüsed} "+N" ] | 
+               [ {eumeniidid} "+N" ] | 
+               [ {feeriad} "+N" ] | 
+               [ {fekaalid} "+N" ] | 
+               [ {Filipiinid} "+N" "+Prop" ] | 
+               [ {finantsid} "+N" ] | 
+               [ {gastropoodid} "+N" ] | 
+               [ {genitaalid} "+N" ] | 
+               [ {Hašimiidid} "+N" "+Prop" ] | 
+               [ {heitmed} "+N" ] | 
+               [ {hekslid} "+N" ] | 
+               [ {hesperiidid} "+N" ] | 
+               [ {hõõrmed} "+N" ] | 
+               [ {härrased} "+N" ] | 
+               [ {ihkmed} "+N" ] | 
+               [ {iidid} "+N" ] | 
+               [ {insiigniad} "+N" ] | 
+               [ {joodud} "+N" ] | 
+               [ {jõulud} "+N" ] | 
+               [ {järelmid} "+N" ] | 
+               [ {jäätmed} "+N" ] | 
+               [ {kaatsad} "+N" ] | 
+               [ {kalavinskid} "+N" ] | 
+               [ {kalifeed} "+N" ] | 
+               [ {kalifeepüksid} "+N" ] | 
+               [ {kaltsad} "+N" ] | 
+               [ {Kanaarid} "+N" "+Prop" ] | 
+               [ {Karpaadid} "+N" "+Prop" ] | 
+               [ {karupüksid} "+N" ] | 
+               [ {kastanjetid} "+N" ] | 
+               [ {katseandmed} "+N" ] | 
+               [ {kedrid} "+N" ] | 
+               [ {kihermed} "+N" ] | 
+               [ {kihlad} "+N" ] | 
+               [ {kintspüksid} "+N" ] | 
+               [ {kliid} "+N" ] | 
+               [ {kodinad} "+N" ] | 
+               [ {Komoorid} "+N" "+Prop" ] | 
+               [ {koolikud} "+N" ] | 
+               [ {Kordiljeerid} "+N" "+Prop" ] | 
+               [ {korntangid} "+N" ] | 
+               [ {kosjad} "+N" ] | 
+               [ {kottpüksid} "+N" ] | 
+               [ {kraasmed} "+N" ] | 
+               [ {kruubid} "+N" ] | 
+               [ {kruubitangud} "+N" ] | 
+               [ {kuluaarid} "+N" ] | 
+               [ {kummijäätmed} "+N" ] | 
+               [ {Kuriilid} "+N" "+Prop" ] | 
+               [ {kõrkmed} "+N" ] | 
+               [ {kõrvetised} "+N" ] | 
+               [ {käimad} "+N" ] | 
+               [ {kärajad} "+N" ] | 
+               [ {kärssed} "+N" ] | 
+               [ {käärid} "+N" ] | 
+               [ {lahinguristsed} "+N" ] | 
+               [ {Lakadiivid} "+N" "+Prop" ] | 
+               [ {lambakäärid} "+N" ] | 
+               [ {langud} "+N" ] | 
+               [ {leetrid} "+N" ] | 
+               [ {lendmed} "+N" ] | 
+               [ {liigud} "+N" ] | 
+               [ {limused} "+N" ] | 
+               [ {linnased} "+N" ] | 
+               [ {loimurid} "+N" ] | 
+               [ {looded} "+N" ] | 
+               [ {lõikmed} "+N" ] | 
+               [ {lõkad} "+N" ] | 
+               [ {lõpusesed} "+N" ] | 
+               [ {lähteandmed} "+N" ] | 
+               [ {Maldiivid} "+N" "+Prop" ] | 
+               [ {malid} "+N" ] | 
+               [ {Malviinid} "+N" "+Prop" ] | 
+               [ {mamelukid} "+N" ] | 
+               [ {matusejoodud} "+N" ] | 
+               [ {memuaarid} "+N" ] | 
+               [ {miasmid} "+N" ] | 
+               [ {missivalimised} "+N" ] | 
+               [ {mitmikud} "+N" ] | 
+               [ {murdmed} "+N" ] | 
+               [ {mõttetalgud} "+N" ] | 
+               [ {Myrtoonid} "+N" "+Prop" ] | 
+               [ {naglid} "+N" ] | 
+               [ {nahajäätmed} "+N" ] | 
+               [ {niied} "+N" ] | 
+               [ {ninaprillid} "+N" ] | 
+               [ {niuded} "+N" ] | 
+               [ {nopped} "+N" ] | 
+               [ {nõoksed} "+N" ] | 
+               [ {näpitsprillid} "+N" ] | 
+               [ {näpped} "+N" ] | 
+               [ {näärid} "+N" ] | 
+               [ {nöörmed} "+N" ] | 
+               [ {omaksed} "+N" ] | 
+               [ {padinad} "+N" ] | 
+               [ {paklad} "+N" ] | 
+               [ {pantaloonid} "+N" ] | 
+               [ {pantsid} "+N" ] | 
+               [ {parlamendivalimised} "+N" ] | 
+               [ {pealsed} "+N" ] | 
+               [ {peased} "+N" ] | 
+               [ {pebred} "+N" ] | 
+               [ {peied} "+N" ] | 
+               [ {penaadid} "+N" ] | 
+               [ {pihid} "+N" ] | 
+               [ {poised} "+N" ] | 
+               [ {populaarid} "+N" ] | 
+               [ {presentpüksid} "+N" ] | 
+               [ {presidendivalimised} "+N" ] | 
+               [ {prillid} "+N" ] | 
+               [ {pulmad} "+N" ] | 
+               [ {punetised} "+N" ] | 
+               [ {puurmed} "+N" ] | 
+               [ {põlvpüksid} "+N" ] | 
+               [ {päikeseprillid} "+N" ] | 
+               [ {päitsed} "+N" ] | 
+               [ {päramised} "+N" ] | 
+               [ {pärgsed} "+N" ] | 
+               [ {päädikud} "+N" ] | 
+               [ {pühkmed} "+N" ] | 
+               [ {püksid} "+N" ] | 
+               [ {püksikud} "+N" ] | 
+               [ {raidmed} "+N" ] | 
+               [ {rakmed} "+N" ] | 
+               [ {rangid} "+N" ] | 
+               [ {rapped} "+N" ] | 
+               [ {reaalid} "+N" ] | 
+               [ {retuusid} "+N" ] | 
+               [ {rihvlid} "+N" ] | 
+               [ {riismed} "+N" ] | 
+               [ {ristsed} "+N" ] | 
+               [ {rohundid} "+N" ] | 
+               [ {rookmed} "+N" ] | 
+               [ {rubid} "+N" ] | 
+               [ {rupskid} "+N" ] | 
+               [ {ruunid} "+N" ] | 
+               [ {rõuged} "+N" ] | 
+               [ {räätsad} "+N" ] | 
+               [ {saagmed} "+N" ] | 
+               [ {sabased} "+N" ] | 
+               [ {sademed} "+N" ] | 
+               [ {Sajaanid} "+N" "+Prop" ] | 
+               [ {sarlakid} "+N" ] | 
+               [ {saturnaalid} "+N" ] | 
+               [ {Seišellid} "+N" "+Prop" ] | 
+               [ {seldžukid} "+N" ] | 
+               [ {sipupüksid} "+N" ] | 
+               [ {spiikerivalimised} "+N" ] | 
+               [ {spordipüksid} "+N" ] | 
+               [ {subproduktid} "+N" ] | 
+               [ {suised} "+N" ] | 
+               [ {suitsed} "+N" ] | 
+               [ {sukkpüksid} "+N" ] | 
+               [ {supelpüksid} "+N" ] | 
+               [ {susped} "+N" ] | 
+               [ {suulised} "+N" ] | 
+               [ {suvisted} "+N" ] | 
+               [ {sõelmed} "+N" ] | 
+               [ {sõnasabased} "+N" ] | 
+               [ {sügelised} "+N" ] | 
+               [ {tagid} "+N" ] | 
+               [ {talgud} "+N" ] | 
+               [ {talvisted} "+N" ] | 
+               [ {tangid} "+N" ] | 
+               [ {tangud} "+N" ] | 
+               [ {taosed} "+N" ] | 
+               [ {tapatalgud} "+N" ] | 
+               [ {teismed} "+N" ] | 
+               [ {teksad} "+N" ] | 
+               [ {teksased} "+N" ] | 
+               [ {teksaspüksid} "+N" ] | 
+               [ {tinulised} "+N" ] | 
+               [ {toidujäätmed} "+N" ] | 
+               [ {tootmisjäätmed} "+N" ] | 
+               [ {treeningpüksid} "+N" ] | 
+               [ {treeningupüksid} "+N" ] | 
+               [ {trikoopüksid} "+N" ] | 
+               [ {trussikud} "+N" ] | 
+               [ {tsitrused} "+N" ] | 
+               [ {tšuudid} "+N" ] | 
+               [ {tuhud} "+N" ] | 
+               [ {tuleristsed} "+N" ] | 
+               [ {tulused} "+N" ] | 
+               [ {tunked} "+N" ] | 
+               [ {tuumajäätmed} "+N" ] | 
+               [ {töötlemisjäätmed} "+N" ] | 
+               [ {Türreenid} "+N" "+Prop" ] | 
+               [ {uhtmed} "+N" ] | 
+               [ {ujumispüksid} "+N" ] | 
+               [ {umbrid} "+N" ] | 
+               [ {valimised} "+N" ] | 
+               [ {valjad} "+N" ] | 
+               [ {varad} "+N" ] | 
+               [ {varrud} "+N" ] | 
+               [ {vaselised} "+N" ] | 
+               [ {vastlad} "+N" ] | 
+               [ {vatid} "+N" ] | 
+               [ {vedad} "+N" ] | 
+               [ {vedrupüksid} "+N" ] | 
+               [ {veimed} "+N" ] | 
+               [ {viigipüksid} "+N" ] | 
+               [ {viilmed} "+N" ] | 
+               [ {virmalised} "+N" ] | 
+               [ {voolmed} "+N" ] | 
+               [ {vurrud} "+N" ] | 
+               [ {võrdlusandmed} "+N" ] | 
+               [ {väitused} "+N" ] | 
+               [ {õeksed} "+N" ] | 
+               [ {õlpmed} "+N" ] | 
+               [ {üldvalimised} "+N" ] | 
+               [ {üsked} "+N" ] ] ;
 
 define SG [ "+Sg" ] ;
-define POS ["+Pron" | "+A" | "+N"] ;
 
 # make sure only word-final components are considered
 define WB [ "#" ] ;
-define pllexical [ plwords POS [\WB]* SG [\WB]+ ] ;
+define pllexical [ plwords [\WB]* SG [\WB]+ ] ;
 
 regex ~[pllexical].i ;
 

@@ -13,7 +13,9 @@
 # and if a word belonged to several POS, keep them in the same line
 
 # määra muuttüübid
-cat fs_lex | ./fs_lex2tyyp.sed > ajutmp
+cat fs_lex | ./fs_lex2tyyp.sed \
+| sed '/Al\]pid/s/@TAUD/@FIAT/' \
+> ajutmp
 
 # määra lemmad
 # mitmuselised algvormid
@@ -24,6 +26,7 @@ cat ajutmp | ./fs_lex2algvorm.sed \
 # käändsõnade omad
 cat algtmp | ./fs_lex2lemma.sed \
 | sed '/ÕIGEVORM$/s/ \([^: ]*\):\([^ ]*\) \([^ ]*ÕIGEVORM\)/ \3 \1:\2/' \
+| sed '/ÕIGEVORM.*[^i]id:/s/id$//' \
 > decltmp1
 
 # pöördsõnade omad

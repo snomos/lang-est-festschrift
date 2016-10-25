@@ -2184,7 +2184,9 @@ vvs:0093|rajav rajava!\SA\.2+9!
 vvs:0093|rajune rajuse rajus[T!\A\.10+9!
 vvs:0093|rakendatav rakendatava!\A\.2+9!
 vvs:0093|r<akjas r<akja!\A\.2+9!
-vvs:0093|r<akne #r<akse[D#!\AS\.2+9!
+lisa:1016|r<akne r<akse!\AS\.2+9!
+lisa:1016|ainu_r<akne ainu_r<akse!\AS\.2+9!
+lisa:1016|h<ulk_r<akne h<ulk_r<akse!\AS\.2+9!
 vvs:0093|dispans<eerne dispans<eerse!\A\.2+9!
 vvs:0093|r<amb r<amba ramma!\B\.22^U^!
 vvs:0093|r<ambe!\A\.1+9!
@@ -2335,7 +2337,7 @@ vvs:0093|roosa!\SA\.16!
 vvs:0093|roosakas roosaka!\A\.2+9!
 vvs:0093|r<oostene r<oostese r<oostes[T!\A\.12^I^+7!&&!\A\.10+7!
 vvs:0093|rootsutu!\A\.1+9!
-vvs:0093|r<ootu #r<ootu[D#!\SA\.1+9!
+lisa:1016|s<el]g_r<ootu!\SA\.1+9!
 vvs:0093|ropane ropase ropas[T!\A\.10+9!
 vvs:0093|ropem ropema!\C\.2+9!
 vvs:0093|r<opp r<oppu ropu!\B\.22^E^!
@@ -3828,7 +3830,7 @@ vvs:0093|<õudne <õudse!\A\.2+9!
 vvs:0093|õunane õunase õunas[T!\A\.10+9!
 vvs:0093|faktoloogiline faktoloogilise faktoloogilis[T!\A\.12^I^+7!
 vvs:0093|õõnes <õõnsa!\A\.3+9!&&!\A\.5!
-vvs:0093|<õõsne #<õõsse[D#!\S\.2+9!
+vvs:0093|ainu_<õõsne ainu_<õõsse!\S\.2+9!
 vvs:0093|äbar äbara!\A\.2+9!
 vvs:0093|?äbar<ik ?äbar<ikku ?äbariku!\SA\.25^E^+11!
 vvs:0093|äge ägeda!\A\.2+9!
