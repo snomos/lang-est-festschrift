@@ -88,9 +88,6 @@ O6:o
 O6:õ    ! too+i - tõi
 O6:0
 
-E3:e   ! aed aia
-E3:i
-
 E4:e   ! aeg - aja; soe - sooja
 E4:j
 
@@ -115,6 +112,7 @@ U2:0   ! hirm sa
 J1:i   ! ahi, rohi
 J1:j   ! ahju
 J1:0   !      rohu
+J1:e   ! aed
 
 M1:m   ! lumi
 M1:n   ! lun d
@@ -330,7 +328,7 @@ Cx:Cy  <=> _ :* %{W%}: ;
 "Lexically determined weak grade for gbdkpt:0"
 
 Cx:Cy  <=> _ :* %{W%}: ;
-           J1: _ Null* WordEnd ; ! rohi sg nom is not {W}; has ij:
+           Consonant J1: _ Null* WordEnd ; ! rohi sg nom is not {W}; has ij:
      where Cx in (G1 B1 D1 K1 P1 T1 ) 
            Cy in ( 0  0  0  0  0  0 )
      matched ;
@@ -521,43 +519,47 @@ E4:j  <=> [:Vowel - :i] Null* _ Null* [:Vowel - :i] ;
 ! lexical: s o o E4 a 
 ! surface: s o o j  a 
 
-"j appears as i in word final position after consonant"
+! after a consonant, j may be i only in word final position
+! after a vowel, j may be i only if no consonant follows
+"j appears as i"
 
 J1:i  <=> :Consonant _ Null* WordEnd ;
+          :Vowel _ Null* :Vowel ;
 
 ! lexical: a h J1 + {pl.e} {rare}
 ! surface: a h  i  0    0      0
+! lexical: a J1 D1 + {pl.u} {sg.a} {W}
+! surface: a i   0 0    0      a    0
+
+! after a vowel...
+"j appears as e"
+
+J1:e  <=> :Vowel _ :Consonant ;
+
+! lexical: a J1 D1 
+! surface: a e   d 
+
+! after a consonant, j tends to disappear...
 
 "j remains j only if some (stem)vowel follows"
 
-J1:j  => _ Null* :Vowel ;
+J1:j  => :Consonant _ Null* :Vowel ;
 
 ! lexical: a h J1 + {pl.e} {rare} {sg.u} {W}
 ! surface: a h j  0   0       0      u    0
 
 "j is impossible before a weak stop (even if that disappears in weak grade)"
 
-J1:j /<= _ T1: ;
+J1:j /<= :Consonant _ T1: ;
 
-"j is 0 only before a weak stop (even if that disappears in weak grade)"
+"j is 0 before a weak stop (even if that disappears in weak grade)"
 
-J1:0  => _ T1:  ;
+J1:0  => :Consonant _ T1:  ;
 
 ! lexical: r o h J1 T1 + {pl.e} {rare}
 ! surface: r o h  0  t 0    e      0
 ! lexical: r o h J1 T1 + {pl.e} {rare} {sg.u} {W}
 ! surface: r o h  0  0 0    0      0     u     0
-
-!------
-! the only word where this is used: aed-aia
-"aed aia"
-
-E3:i  <=> [:Vowel - :i] Null* _ Null* [:Vowel - :i] ;
-
-! lexical: a E3 D1 
-! surface: a  e  d
-! lexical: a E3 D1 a
-! surface: a  i  0 a
 
 ! --- 
 ! juus-juuksed, kälis-käliksed, nõos-nõoksed, omas-omaksed, vennas-vennaksed, ões-õeksed 

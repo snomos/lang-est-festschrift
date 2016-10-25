@@ -228,6 +228,16 @@ LEXICON KEVAD              ! only küps, kevad, = REDEL, but stem vowel is e
 +Sg+Nom:%{no.apo%} GI ;              ! kevad
 :e 2C ;                              ! kevade etc
 
+LEXICON KODU    ! only kodu; stem illative is koju
+
++Sg+Nom:%{no.apo%} GI ;
+: N_SG_SUBPARA ;                      ! kodu etc; weak grade has no effect here
++Sg+Par: GI ;                              ! kodu
++Sg+Ill:%{W%} GI ;                  ! using weak grade incorrectly...
++Sg+Ill%+Use%/Rare:%+sse GI ;        !  
+:%+de N_PL_SUBPARA ;                       ! kodude etc
++Pl+Par:%+%{s%}%{i%}%{d%} PL_PAR ;       ! kodusid & ...
+
 LEXICON KOHUS                 ! only kohus-kohtu; like HOOLAS
 
 +Sg+Nom:s%{W%} GI ;                           ! kohus
