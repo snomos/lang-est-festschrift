@@ -19,7 +19,7 @@ helpertestrunner=run-yaml-testcases.sh
 # of the source tree, and will not be found if using VPATH building.
 while test ! -x $relpath/$maintestrunner ; do
     relpath="$relpath/.."                        # if not found, go one level up
-   echo relpath: $relpath                       # debug
+#   echo relpath: $relpath                       # debug
     if test "$(cd $relpath && pwd)" = "/" ; then # have we reached the root?
         echo "$0: No test runner found!"
         exit 77
