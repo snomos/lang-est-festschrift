@@ -16,8 +16,8 @@
 /@/s/\([hs][aeiu][^aeiuõäöü]*:.*[hs]\)k\([AEIU]2\)/\1K1\2/
 /@/s/\([hs][aeiu][^aeiuõäöü]*:.*[hs]\)p\([AEIU]2\)/\1P1\2/
 /@/s/\([hs][aeiu][^aeiuõäöü]*:.*[hs]\)t\([AEIU]2\)/\1T1\2/
-/@/s/\(j[aeiu][^aeiuõäöü]*:.*\)g\([AEIU]2\)/\1G2\2/
-/@/s/\(j[aeiu][^aeiuõäöü]*:.*\)d\([AEIU]2\)/\1D2\2/
+/@/s/\(j[aeiu][^aeiuõäöü]*:.*\)g\([AEIU]2\)/\1J1G1\2/
+/@/s/\(j[aeiu][^aeiuõäöü]*:.*\)d\([AEIU]2\)/\1J1D1\2/
 /@/s/\(v[aeiu][^aeiuõäöü]*:.*\)b\([AEIU]2\)/\1B2\2/
 /@/s/\(g[aeiu][^aeiuõäöü]*:.*\)k\([aeiu]\)$/\1K2\2/
 /@/s/\(b[aeiu][^aeiuõäöü]*:.*\)p\([aeiu]\)$/\1P2\2/
@@ -36,8 +36,8 @@
 /@/s/\([hs][aeiu][^aeiuõäöü]*:.*[hs]\)k\([aeiu]\)$/\1K1\2/
 /@/s/\([hs][aeiu][^aeiuõäöü]*:.*[hs]\)p\([aeiu]\)$/\1P1\2/
 /@/s/\([hs][aeiu][^aeiuõäöü]*:.*[hs]\)t\([aeiu]\)$/\1T1\2/
-/@/s/\(j[aeiu][^aeiuõäöü]*:.*\)g\([aeiu]\)$/\1G2\2/
-/@/s/\(j[aeiu][^aeiuõäöü]*:.*\)d\([aeiu]\)$/\1D2\2/
+/@/s/\(j[aeiu][^aeiuõäöü]*:.*\)g\([aeiu]\)$/\1J1G1\2/
+/@/s/\(j[aeiu][^aeiuõäöü]*:.*\)d\([aeiu]\)$/\1J1D1\2/
 /@/s/\(v[aeiu][^aeiuõäöü]*:.*\)b\([aeiu]\)$/\1B2\2/
 
 /@/s/\(.\)\([aeiu]\)\([^aeiuõäöü]*:.*\)\1g\2$/\1\2\3\1G1\2/

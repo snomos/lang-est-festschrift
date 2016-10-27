@@ -39,11 +39,11 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
  T1:t ! In strong grade, T1 is t
  T1:0 ! In weak grade, T1 is 0
 
- G2:g ! In strong grade, G2 is g; e.g. kärg
- G2:j ! In weak grade, G2 is j; e.g. kärje
- D2:d ! In strong grade, G2 is g; e.g. sõda
- D2:j ! In weak grade, G2 is j; e.g. sõja
- D2:t ! sõda sõtta
+! G2:g ! In strong grade, G2 is g; e.g. kärg
+! G2:j ! In weak grade, G2 is j; e.g. kärje
+! D2:d ! In strong grade, G2 is g; e.g. sõda
+! D2:j ! In weak grade, G2 is j; e.g. sõja
+! D2:t ! sõda sõtta
  B2:b ! In strong grade, B2 is b; e.g. tiib
  B2:v ! In weak grade, B2 is v; e.g. tiiva
  B2:p ! tõbi tõppe
@@ -315,20 +315,17 @@ s:0 <=> :Vowel :sonor :s _ (%+:0) (SV:0) (LT:0) :stemV %{W%}: ;
 ! lexical: m a r s s i {W} + n
 ! surface: m a r s 0 i  0  0 n
 
-"Lexically determined weak grade for gbd:jvj"
+"Lexically determined weak grade for b:v"
 
-Cx:Cy  <=> _ :* %{W%}: ;
-     where Cx in (G2 B2 D2) 
-           Cy in ( j  v  j)
-     matched ;
+B2:v  <=> _ Any* %{W%}: ;
 
-! lexical: k ä r G2 + {pl.i} {rare} {sg.e} {W}
-! surface: k ä r  j 0    0     0       e    0
+! lexical: k ä i B2 e {W}
+! surface: k ä i v  e  0
 
 "Lexically determined weak grade for gbdkpt:0"
 
-Cx:Cy  <=> _ :* %{W%}: ;
-           Consonant J1: _ Null* WordEnd ; ! rohi sg nom is not {W}; has ij:
+Cx:Cy  <=> _ Any* %{W%}: ;
+           h J1: _ Null* WordEnd ; ! rohi sg nom is not {W}; has ij:
      where Cx in (G1 B1 D1 K1 P1 T1 ) 
            Cy in ( 0  0  0  0  0  0 )
      matched ;
@@ -340,7 +337,7 @@ Cx:Cy  <=> _ :* %{W%}: ;
 
 "Lexically determined weak grade for s:0"
 
-S1:0  <=> _ :* %{W%}: ;       ! paas - pae
+S1:0  <=> _ Any* %{W%}: ;       ! paas - pae
           _ Null+ [ :t | :d ] ;     ! vars - vart, varde
 
 ! lexical: p a a S1 + {pl.e} {sg.i} {W}
@@ -350,7 +347,7 @@ S1:0  <=> _ :* %{W%}: ;       ! paas - pae
 
 "Lexically determined weak grade for kpt:gbd; sg nom for ader, lubi"
 
-Cx:Cy  <=>  _ :* %{W%}: ;
+Cx:Cy  <=>  _ Any* %{W%}: ;
             _ J1:  Null* WordEnd ; ! lubi sg nom is not {W}; has ij:
             _ E2:e [l | r] Null* WordEnd ;    ! ader sg nom is not {W}; has e2:e
       where Cx in ( K2 P2 T2 ) 
@@ -372,8 +369,8 @@ Cx:Cy  <=>  _ :* %{W%}: ;
 "short illative strong stem generation: consonant doubling"
 
 0:Cy  <=>  \[ :Vowel] :Vowel Cx:Cy _ Null* :Vowel Null* %{S%}: ; ! majja
-     where Cx in ( l m M1 n r v j h s g b d k p t G1 B1 B2 D1 D2 ) 
-           Cy in ( l m  m n r v j h s k p t k p t  k  p  p  t  t )
+     where Cx in ( l m M1 n r v j h s g b d k p t G1 B1 B2 D1 ) 
+           Cy in ( l m  m n r v j h s k p t k p t  k  p  p  t )
      matched ;
 
 ! lexical: t U5 B1 0 a + {pl.e} {stemill} {S} + {s} {s} {e}
@@ -382,8 +379,8 @@ Cx:Cy  <=>  _ :* %{W%}: ;
 "short illative strong stem generation: stop to stronger stop"
 
 Cx:Cy <=> :sonor Null* _ ( :Cy | j ) Null* :Vowel Null* %{S%}: ;
-     where Cx in ( g b d G1 B1 B2 D1 D2 G3 D3) 
-           Cy in ( k p t  k  p  p  t  t  g  d)
+     where Cx in ( g b d G1 B1 B2 D1 G3 D3 ) 
+           Cy in ( k p t  k  p  p  t  g  d )
      matched ;
 
 ! lexical: l a G1 0 {stemill} e  {S} + {s} {s} {e}
@@ -506,6 +503,10 @@ Vx:Vy  <=>  a a: DC:0 Null* _ \[:Vowel];
 ! lexical: l i u G1 + {pl.e} {sg.u} {W}    
 ! surface: l i 0  0 0    0      u    0    NB! no lowering!
 
+! ------ rules for j
+! ------ they affect a handful of words
+
+! --- j is not in the lexical side
 "e pronounced as j between vowels "
 
 E4:j  <=> [:Vowel - :i] Null* _ Null* [:Vowel - :i] ;
@@ -519,19 +520,22 @@ E4:j  <=> [:Vowel - :i] Null* _ Null* [:Vowel - :i] ;
 ! lexical: s o o E4 a 
 ! surface: s o o j  a 
 
-! after a consonant, j may be i only in word final position
-! after a vowel, j may be i only if no consonant follows
+! --- j is in the lexical side, but surfaces only in certain contexts
+
+! 1. after a consonant, j may be i only in word final position
+! 2. immediately after a vowel, j may be i only if the following stop has been deleted and a vowel follows
+! (this is ad hoc for aed - aia ... )
 "j appears as i"
 
 J1:i  <=> :Consonant _ Null* WordEnd ;
-          :Vowel _ Null* :Vowel ;
+          :Vowel _ :0 Null* :Vowel ;
 
 ! lexical: a h J1 + {pl.e} {rare}
 ! surface: a h  i  0    0      0
 ! lexical: a J1 D1 + {pl.u} {sg.a} {W}
 ! surface: a i   0 0    0      a    0
 
-! after a vowel...
+! only for one word - aed ...
 "j appears as e"
 
 J1:e  <=> :Vowel _ :Consonant ;
@@ -539,27 +543,53 @@ J1:e  <=> :Vowel _ :Consonant ;
 ! lexical: a J1 D1 
 ! surface: a e   d 
 
-! after a consonant, j tends to disappear...
+! ahju, härja, saja
 
-"j remains j only if some (stem)vowel follows"
+"j surfaces only if some (stem)vowel follows"
 
 J1:j  => :Consonant _ Null* :Vowel ;
+         :0 _ :Vowel ;
 
 ! lexical: a h J1 + {pl.e} {rare} {sg.u} {W}
 ! surface: a h j  0   0       0      u    0
+! lexical: h ä r J1 G1 + {pl.i} {sg.a} {W}
+! surface: h ä r j  0  0    0      a    0
+! lexical: s a D1 J1 a + {pl.u} {W}
+! surface: s a 0  j  a 0    0    0
 
-"j is impossible before a weak stop (even if that disappears in weak grade)"
+"j does not surface between consonants 1/2"
+    
+J1:j /<=           h _ T1:  ;
+             [l | r] _ :stop ;
 
-J1:j /<= :Consonant _ T1: ;
+"j does not surface between consonants 2/2"
 
-"j is 0 before a weak stop (even if that disappears in weak grade)"
-
-J1:0  => :Consonant _ T1:  ;
+J1:0  =>           h _ T1:  ;
+             [l | r] _ :stop ;
 
 ! lexical: r o h J1 T1 + {pl.e} {rare}
 ! surface: r o h  0  t 0    e      0
 ! lexical: r o h J1 T1 + {pl.e} {rare} {sg.u} {W}
 ! surface: r o h  0  0 0    0      0     u     0
+! lexical: h ä r J1 G1 + {pl.i} {sg.a} 
+! surface: h ä r 0  g  0    0      a   
+
+! only koda, pada, rada, sadu, sõda, sada, sadama
+! use D1 as a trigger instead of {W}
+! (D1 is non-zero only in weak grade) 
+
+"koda etc: j does not surface in weak grade 1/2"
+
+J1:j /<=  [D1:d | D1:t] (:t) _ Null* :Vowel ;
+
+"koda etc: j does not surface in weak grade 2/2"
+
+J1:0  =>  [D1:d | D1:t] (:t) _ Null* :Vowel ;
+
+! lexical: s a D1 J1 a 
+! surface: s a d  0  a 
+! lexical: s õ D1 0 J1 a + {pl.u} {stemill} {S} + {s} {s} {e}
+! surface: s õ t  t 0  a 0    0       0      0  0  0   0   0
 
 ! --- 
 ! juus-juuksed, kälis-käliksed, nõos-nõoksed, omas-omaksed, vennas-vennaksed, ões-õeksed 
@@ -803,7 +833,7 @@ Vx:Vy  <=>   :Consonant Null* _ Null+ %{s%}:0 ;     ! puud-puudi
 
 "final vowel substitution for plural vowel"
 
-a:0  <=> :Consonant _ %+: PlSV:stemV Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
+a:0  <=> :Consonant ( J1: ) _ %+: PlSV:stemV Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 
 ! lexical: m a j a + {pl.u} {stemill} + {s} {i} {d}
 ! surface: m a j 0 0    u       0     0  0   0   0
