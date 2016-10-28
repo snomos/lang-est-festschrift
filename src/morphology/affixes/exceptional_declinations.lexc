@@ -108,30 +108,30 @@ LEXICON NENO       ! need & nood common cont. lexicon
 
 :n%+de N_PL_SUBPARA ;      ! nende etc 
 +Pl+Par:%+id GI ;           ! neid
-+Pl:i STANDARD_LOCATIVES ;     ! neil etc
+! ??? +Pl:i STANDARD_LOCATIVES ;     ! neil etc
 +Pl+Trm:n%+de%+ni GI ;	  ! nendeni
 +Pl+Ess:n%+de%+na GI ;	  ! nendena
 +Pl+Abe:n%+de%+ta GI ;	  ! nendeta
 +Pl+Com:n%+de%+ga GI ;    ! nendega
-%+Use%/Rare:n%+de N_VOWEL_PL_SUBPARA ;      ! nendel etc 
+%+Use%/Rare:i N_VOWEL_PL_SUBPARA ;      ! neil etc 
 
 ! ----
-LEXICON ISE       ! ise, iseenese 
+LEXICON ISE       ! ise, iseenese NB! the usage info is possibly wrong...
 
 +Sg+Nom:ise GI ;                  ! ise
 +Sg:enese REGULAR_GEN_ET_AL ;                      ! enese, enesel etc
-+Sg:enda REGULAR_GEN_ET_AL ;                      ! enda, endal etc
++Sg%+Use%/Rare:enda REGULAR_GEN_ET_AL ;                      ! enda, endal etc
 +Sg+Par:ennas%+t GI ;                               
-+Sg+Par:en%+d GI ;                               
++Sg+Par%+Use%/Rare:en%+d GI ;                               
 +Sg+Ill:enese%+sse GI ;                            
-+Sg+Ill:enda%+sse GI ;                           
++Sg+Ill%+Use%/Rare:enda%+sse GI ;                           
 +Pl:enes%+te REGULAR_GEN_ET_AL ;
-+Pl:end%+i REGULAR_GEN_ET_AL ;
++Pl%+Use%/Rare:end%+i REGULAR_GEN_ET_AL ;
 
-LEXICON OMAENESE       ! omaenese 
+LEXICON OMAENESE       ! omaenese ; few forms; they could be regarded as parallel forms of 'ise'
 
-+Sg+Gen%+Use%/Rare:enese GI ;                      ! enese, enesel etc
-+Sg+Gen:enda GI ;                      ! enda, endal etc
++Sg+Gen%+Use%/Rare:enese GI ;                      
++Sg+Gen:enda GI ;                      
 +Pl+Gen:enes%+te GI ;
 +Pl+Gen%+Use%/Rare:end%+i GI ;
 
@@ -161,12 +161,12 @@ LEXICON KEEGI    ! only keegi; (kes+gi); nonstandard parallel forms kellegil etc
 
 +Sg+Nom:e GI ;
 : KEMISETO ;
-%+Use%/NotNorm:llegi STANDARD_SEM_CASES ;  ! kellegis, 
++Sg%+Use%/NotNorm:llegi STANDARD_SEM_CASES ;  ! kellegis, 
 
 LEXICON MISKI    ! only miski; mis+gi; nonstandard parallel forms millegil etc; miskid etc like REDEL
 
 : KES ;
-%+Use%/NotNorm:llegi STANDARD_SEM_CASES ;  ! millegis, millegil etc
++Sg%+Use%/NotNorm:llegi STANDARD_SEM_CASES ;  ! millegis, millegil etc
 %+Use%/NotNorm:skI5 2C ;                         ! miskid, miskite etc 
 
 
