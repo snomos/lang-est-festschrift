@@ -24,7 +24,7 @@ s/^\([^ ]*\) [^@]*@PEEN$/& \1:\1/
 s/^\([^ ]*\) [^@]*@NIIN$/& \1:\1/
 s/^\([^ ]*\)ke [^@]*@PÄIKE.*$/& \1ke:\1/
 s/^\([^ ]*\)e [^@]*@SEEME.*$/& \1e:\1E2/
-s/^\([^ ]*süda\) [^@]*@SÜDA.*$/& \1:\1/
+s/^\([^ ]*süda\) [^@]*@SÜDA.*$/& \1:\1%{stemill%}%{rare%}/
 s/^\([^ ]*ah\)er [^@]*@VAHER.*$/& \1er:\1T1E2r/
 s/^\([^ ]*\)ke [^@]*@VÄIKE.*$/& \1ke:\1/
 s/^\([^ ]*emand\) [^@]*@MAGUS.*$/& \1:\1/
@@ -200,6 +200,7 @@ s/^\([^ ]*mõ\)n\]i [^@]*@MERI.*$/& MÕNI \1ni:\1nD3/
 /[ _]kuse .*MERI/s/%{stemill%}/&%{rare%}/
 s/^\([^ ]*\)i [^@]*20[^@]*@NIMI.*$/& \1i:\1/
 /[ _]süle [^@]*20[^@]*@NIMI/s/$/%{stemill%}/
+/[ _]tüve [^@]*20[^@]*@NIMI/s/$/%{stemill%}%{rare%}/
 s/^\([^ ]*t\)ugi [^@]*21[^@]*@NIMI.*$/& \1ugi:\1U5G1/
 /@.*:/!s/^\([^ ]*\)gi [^@]*21[^@]*@NIMI.*$/& \1gi:\1G1%{stemill%}/
 /@.*:/!s/^\([^ ]*\)bi [^@]*21[^@]*@NIMI.*$/& \1bi:\1B2%{stemill%}/
@@ -262,6 +263,7 @@ s/^\([^ ]*t\)ugi [^@]*21[^@]*@NIMI.*$/& \1ugi:\1U5G1/
 /@.*:/!s/^\([^ ]*\]*\) \([^ ]*\) [^@]*\.19[^@]*@TAUD$/& \1:\1/
 
 /@TAUD/s/%+%{pl.e%}%{rare%}//
+/@KABINET/s/%+%{pl.e%}%{rare%}//
 /@FIAT/s/%+%{pl.e%}%{rare%}//
 /@ARGPÜKS/s/%+%{pl.e%}%{rare%}//
 /@POISS/s/%+%{pl.e%}%{rare%}}//
@@ -336,7 +338,6 @@ s/^\([^ ]*t\)ugi [^@]*21[^@]*@NIMI.*$/& \1ugi:\1U5G1/
 /[ =_-]k<orda .*PIIM/s/%{rare%}//
 /[ =_-]k<uhja .*PIIM/s/%{rare%}//
 /[ =_-]k?ujut<elma .*PIIM/s/%{rare%}//
-/[ =_-]k<ulda .*PIIM/s/%{rare%}//
 /[ =_-]k<õntsa .*PIIM/s/%{rare%}//
 /[ =_-]k<õrva .*PIIM/s/%{rare%}//
 /[ =_-]k<äppa .*PIIM/s/%{rare%}//
@@ -477,7 +478,6 @@ s/^\([^ ]*t\)ugi [^@]*21[^@]*@NIMI.*$/& \1ugi:\1U5G1/
 /[ _-]h<irmu .*KOON/s/%{rare%}//
 /[ _-]h<oogu .*KOON/s/%{rare%}//
 /[ _-]h<õimu .*KOON/s/%{rare%}//
-/[ _-]h<üüdu .*KOON/s/%{rare%}//
 /[ _-]j<ooksu .*KOON/s/%{rare%}//
 /[ _-]<ampsu .*KOON/s/%{rare%}//
 /[ _-]k<akku .*KOON/s/%{rare%}//
@@ -708,7 +708,6 @@ s/^\([^ ]*t\)ugi [^@]*21[^@]*@NIMI.*$/& \1ugi:\1U5G1/
 /[ =_-]k<ukke .*EIT/s/%{rare%}//
 /[ =_-]k<urge .*EIT/s/%{rare%}//
 /[ =_-]k<uuske .*EIT/s/%{rare%}//
-/[ =_-]k<ärge .*EIT/s/%{rare%}//
 /[ =_-]k<ül]ge .*EIT/s/%{rare%}//
 /[ =_-]l<ahte .*EIT/s/%{rare%}//
 /[ =_-]l<ehte .*EIT/s/%{rare%}//
@@ -777,6 +776,7 @@ s/^\([^ ]*\) .*@ELANIK/& \1:\1/
 
 /\.26.*ARMEE.*%{id%}$/s/ARMEE/PUU/
 
+/\\H.*ADT.*@AASTA/s/$/%{stemill%}/
 
 
 

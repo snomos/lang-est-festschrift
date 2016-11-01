@@ -678,7 +678,7 @@ vvs:0093|adess<iivne adess<iivse!\A\.2+9!
 vvs:0093|arvatav arvatava!\A\.2+9!
 vvs:0093|kõnekas kõneka!\A\.2+9!
 vvs:0093|kõntsane kõntsase kõntsas[T!\A\.10+9!
-vvs:0093|k<õrb k<õrbi kõrvi!\SB\.22^E^+8!
+vvs:0093|k<õrb k<õrbi kõrvi!\B\.22^E^+8!
 vvs:0093|k<õrbene k<õrbese k<õrbes[T!\A\.12^I^+7!&&!\A\.10+7!
 vvs:0093|k<õrge!\A\.1+9!
 vvs:0093|k<õrgune k<õrguse k<õrgus[T!\A\.12^I^+7!&&!\A\.10+7!
@@ -14353,7 +14353,6 @@ vvs:0093|lahutus lahutuse!\S\.11^I^+7!
 vvs:0093|lahvandus lahvanduse!\S\.11^I^+7!
 vvs:0093|lahvard lahvardi!\S\.2+9!%i>e[I%
 vvs:0093|lahvatus lahvatuse!\S\.11^I^+7!
-vvs:0093|l<aid l<aida laia!\S\.22^U^!
 vvs:0093|l<aid l<aidu laiu!\S\.22^E^!
 vvs:0093|laiend laiendi!\S\.2+9!%i>e[I%
 vvs:0093|laiendus laienduse!\S\.11^I^+7!
@@ -21193,7 +21192,6 @@ vvs:0093|s<uts s<utsu sutsu!\S\.22^E^!
 vvs:0093|sutsakas sutsaka!\S\.2+9!
 vvs:0093|sutsuke sutsukese sutsukes[T!\S\.12^I^+7!
 vvs:0093|s<ut]t s<ut]ti sut]i!\S\.22^E^!
-vvs:0093|s<uu!\S\.26!
 vvs:0093|s<uubla!\S\.1+9!
 vvs:0093|suude s<uute!\S\.6+9!
 vvs:0093|s<uudlus s<uudluse!\S\.11^I^+7!&&!\S\.9+7!
@@ -70940,3 +70938,5 @@ voorxp:0002|m<ail m<aili maili!\S\.22^E^!
 voorxp:0002|Share_P<oint Share_P<ointi Share_Pointi!\H\.22^E^!
 voorxp:0002|One_N<ote One_N<ote’i One_Note’i!\H\.22^E^!
 voorxp:0002|Info_P<ath Info_P<athi Info_Pathi!\H\.22^E^!
+lisa:1016|t<üng t<ünga tünga!\S\.22^I^!
+

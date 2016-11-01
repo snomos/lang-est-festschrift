@@ -27,6 +27,9 @@ cat ajutmp | ./fs_lex2algvorm.sed \
 cat algtmp | ./fs_lex2lemma.sed \
 | sed '/ÕIGEVORM$/s/ \([^: ]*\):\([^ ]*\) \([^ ]*ÕIGEVORM\)/ \3 \1:\2/' \
 | sed '/ÕIGEVORM.*[^i]id:/s/id$//' \
+| sed '/KÕRB/s/õrb$/õrB2/' \
+| sed '/@EIT laane_k<õrb:/s/@EIT laane_k<õrb:laane_k<õrB2%+%{pl.i%}%{rare%}/@KÕRB laane_k<õrb:laane_k<õrB2/' \
+| grep -v '@EIT k<õrb:' \
 > decltmp1
 
 # pöördsõnade omad
@@ -42,6 +45,7 @@ cat tmp1 | ./lemma2twol.sed \
 | sed 's/:\*\*\([^$:]*\)$/:\1/' \
 | sed '/KANNEL/s/\(.\)\([kpt]\)\([aeiu][lmnr]:.*<\)\1\2\([AEIU]2\)/\1\2\3\1\2\2\4/' \
 | sed '/PIPAR/s/\(.\)\([kpt]\)\([aeiu][lmnr]:.*<\)\1\2\([AEIU]2\)/\1\2\3\1\2\2\4/' \
+| ./post_lex2lemma.sed \
 > tmp1twol
 
 # tegemata: 

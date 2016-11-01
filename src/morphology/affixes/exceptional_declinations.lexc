@@ -251,19 +251,28 @@ LEXICON KURAT    ! only kurat; like redel
 +Sg+Nom:t GI ;                       ! kurat
 :dI5 2C ;                            ! kuradi etc
 
-LEXICON KÕRB   ! only kõrb
+LEXICON KÕRB   ! only kõrb; contains paradigms of 2 words: 
+               ! 1) Sg Gen kõrbe = land without plantlife (=desert)
+               ! 2) Sg Gen kõrve = uninhabitable forest
+               ! meaning (2) is lost today, so kõrve is used as an old wordform for desert...
 
 +Sg+Nom: GI ;                                  ! kõrb
-:%+e N_SG_SUBPARA ;                            ! kõrbe etc 
-+Sg+Par:e GI ;                                 ! kõrbe
-+Sg+Par%+Use%/Rare:e%+t GI ;                   ! kõrbet
-+Sg+Ill%+Use%/Rare:e GI ;                      ! kõrbe
-+Sg+Ill:e%{W%}%+sse GI ;                       ! kõrbesse 
-%+Use%/Rare:e%{W%}%+de N_PL_SUBPARA ;          ! kõrbede etc 
-:e%+te N_PL_SUBPARA ;                          ! kõrbete etc 
-+Pl+Par:e%+id GI ;                             ! kõrbeid 
+
+! type 1C kõrb-kõrve-kõrbe; like EIT
+%+Use%/Rare:%{W%}%+e N_SG_SUBPARA ;            ! kõrve etc 
++Sg+Par:e GI ;                                 ! kõrbe NB! not rare!
++Sg+Ill:e GI ;                                 ! kõrbe NB! not rare!
++Sg+Ill%+Use%/Rare:e%{W%}%+sse GI ;            ! kõrvesse 
+%+Use%/Rare:e%+de N_PL_SUBPARA ;          ! kõrbede etc 
 +Pl+Par%+Use%/Rare:i GI ;                      ! kõrbi
 +Pl+Par%+Use%/Rare:e%+sid GI ;                 ! kõrbesid
+
+! type 2C kõrb-kõrbe-kõrbet; like REDEL with stem vowel e
+:%+e N_SG_SUBPARA ;                            ! kõrbe etc 
++Sg+Par%+Use%/Rare:e%+t GI ;                   ! kõrbet NB! rare!
++Sg+Ill%+Use%/Rare:e%+sse GI ;                 ! kõrbesse NB! rare!
+:e%+te N_PL_SUBPARA ;                          ! kõrbete etc 
++Pl+Par:e%+id GI ;                             ! kõrbeid 
 
 LEXICON KÖÖMEN               ! only köömen; like KEVAD
 
