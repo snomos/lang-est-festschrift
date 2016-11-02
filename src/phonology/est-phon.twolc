@@ -245,7 +245,8 @@ Border = [ .#. | # ];  ! word border
 Gi = [ [ :g | :k ] i ] ;
 WordEnd = [ (%+: Gi) Border ];     ! final +gi is optional for almost any word
 Null = [ :0 - # ];            ! something on the lexical side, but nothing on the surface (except word border)
-Any  = [ : - # ];             ! anything except word border
+!Any  = [ : - # ];             ! anything except word border
+Any  = [ : - Border ];             ! anything except word border
 
 Rules 
  
@@ -701,15 +702,15 @@ E1:e   => n:s e:0 _ ;  ! -ne word
 
 ! lexical: s o o l a n e E1
 ! surface: s o o l a s 0 e
-! lexical: v i s k o o s n e E1
-! surface: v i s k o o s s 0 e
+! lexical: v i s k o o s n e E1 + t
+! surface: v i s k o o s s 0 e  0 t
 
 ! -ne, -s word e deletion 
 "do not add e for inflecting some forms of ne/s word "
 
-E1:0  <=> Border ~[Any* :Consonant Null* :s Null*] _ Null* s e ;          ! olulisse (haplology)
-          Border ~[Any* :Consonant Null* :s Null*] _ Null* t WordEnd ;   ! soolast
-          Border ~[Any* :Consonant Null* :s Null*] _ Null* t e ;        ! soolaste
+E1:0  <=> .#. ~[ :* :Consonant Null* :s Null*] _ Null* s e ;          ! olulisse (haplology)
+          .#. ~[ :* :Consonant Null* :s Null*] _ Null* t WordEnd ;   ! soolast
+          .#. ~[ :* :Consonant Null* :s Null*] _ Null* t e ;        ! soolaste
 
 !"cannot omit e because the result would be unpronouncable"
 
@@ -718,7 +719,7 @@ E1:0  <=> Border ~[Any* :Consonant Null* :s Null*] _ Null* s e ;          ! olul
 
 ! lexical: o l u l i n e E1 + s e 
 ! surface: o l u l i s 0  0 + s e
-! lexical: s o o l a n e E1 + tˇˇˇˇˇ
+! lexical: s o o l a n e E1 + t
 ! surface: s o o l a s 0  0 0 t
 ! lexical: g l o o b u s E1 + t 
 ! surface: g l o o b u s  0 0 t
@@ -728,6 +729,15 @@ E1:0  <=> Border ~[Any* :Consonant Null* :s Null*] _ Null* s e ;          ! olul
 ! surface: g l o o b u s  e 0 t a
 ! lexical: r a u d n e E1 + t    ! NB! no e deletion
 ! surface: r a u d s 0  e 0 t
+
+! lexical: v i s k o o s n e E1 + t  ! NB! no e deletion
+! surface: v i s k o o s s 0 e  0 t
+
+!!€ viskoosneE1+t
+!!€ viskooss0e0t
+
+!!$ viskoosneE1+t
+!!$ viskooss000t
 
 ! i is a vowel that starts Pl Par or vowel plural affixes; use I1 as a trigger
 "I1 triggers -ne to be -s"
@@ -1040,6 +1050,14 @@ Cx:Cy  <=> :voiceless Null* %+: _ ;
 ! > laud+N+Pl+Par	lauD1+{pl.u}{sg.a}+{sid}	0,000000
 
 ! echo 'l a u D1:d +:0 {pl.u}:u {sg.a}:0 +:0 {s}:0' | hfst-pair-test phonology/est-phon.compose.hfst
+
+! hfst & xfst:
+! echo 'raudne+A+Sg+Par' | hfst-lookup morphology/lexicon.hfst 
+! > raudne+A+Sg+Par	r´audneE1+t	0,000000
+
+!  echo 'r´audneE1+t' | ~/xfst/bin/lookup -flags mbTT morphology/lexicon.xfst 
+! > r´audneE1+t	raudne+A+Sg+Par
+ 
 
 ! a minimalistic way:
 ! make nets for lexc and twol:
