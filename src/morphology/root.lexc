@@ -10,7 +10,9 @@ Multichar_Symbols
 +N	! nimisõna		! substantive		! asi
 +Prop	! pärisnimi		! proper name		! Jaan
 +A	! omadussõna		! adjective		! asjalik
-+Num +Card +Ord
++Num
++Card
++Ord
 ! +Num+Card	! arvsõna		! numeral		! kaks
 ! +Num+Ord	! järgarv		! ordinal		! teine
 +Pron	! asesõna		! pronoun		! see
@@ -21,6 +23,10 @@ Multichar_Symbols
 !+N+Sg+Gen	! genitiivatribuut	! genitive attribute	! saksa
 +Adp	! kaassõna		! pre/postposition	! kaudu
 +Adv	! muu sõna		! other word		! kihku, kihla, minap
+
++CLB
++PUNCT
++ABBR
 
 ! Käändsõna             ! Noun
 
@@ -276,6 +282,8 @@ Multichar_Symbols
 +Use/NotNorm    ! not norm, but sometimes used: pöidlates:pöial+Pl+Ine+Use/NotNorm
 +Use/CommonNotNorm ! not norm, and used more than norm: peeneid:peen+Pl+Par+Use/CommonNotNorm
 
++Use/Circ
+
 !! Morphophonology
 
  %{W%} ! The weak grade trigger never appears on the surface side.
@@ -398,6 +406,7 @@ Nouns ;
 ProperNouns ;
 Numerals ;
 Pronouns ;
+Punctuation
 Verbs ;
 NoninflectingVerbs ;
 Interjections ;
