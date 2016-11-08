@@ -318,5 +318,15 @@ LEXICON COMMASECTION  ! these are not spellchecked!!!
 ! % násti% :%*     Root ; 
  % ja% :&          Root ; 
 
+
+! These four lexica are ad hoc ones, to get the code compile.
+LEXICON ZERO
+nolla:%0 # ;
+
+LEXICON TENM # ;
+LEXICON LÅGEVM # ;
+LEXICON LÅGEVT # ;
+
+
 LEXICON ENDLEX
  # ;
