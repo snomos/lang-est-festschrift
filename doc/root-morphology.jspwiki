@@ -6,8 +6,8 @@ Morphological Transducer for Estonian
 sõnaliik
 part of speech
 
-+N	  * {{@CODE}}: ! nimisõna		! substantive		! asi
-+Prop	  * {{@CODE}}: ! pärisnimi		! proper name		! Jaan
++N   * {{@CODE}}: ! nimisõna		! substantive		! asi
++Prop   * {{@CODE}}: ! pärisnimi		! proper name		! Jaan
 +A	  * {{@CODE}}: ! omadussõna		! adjective		! asjalik
 +Num	  * {{@CODE}}:+Card +Ord
 +Num+Card	! arvsõna		! numeral		! kaks
