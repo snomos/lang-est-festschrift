@@ -49,8 +49,8 @@ Tests:
      minema+V+Pers+Sup+Ine: minemas
      minema+V+Pers+Sup+Tra: minemaks
      minema+V+Pers+Sup+Abe: minemata
-     minema+V+Pers+Prc: minev
-     minema+V+Pers+Quot: minevat
+     minema+V+Pers+Prs+Prc: minev
+     minema+V+Pers+Prs+Quot: minevat
      minema+V+Pers+Prs+Imprt: mingu
      minema+V+Pers+Prs+Imprt+Pl2: minge
      minema+V+Pers+Prs+Imprt+Pl1: mingem
@@ -76,8 +76,8 @@ Tests:
      olema+V+Pers+Sup+Ine: olemas
      olema+V+Pers+Sup+Tra: olemaks
      olema+V+Pers+Sup+Abe: olemata
-     olema+V+Pers+Prc: olev
-     olema+V+Pers+Quot: olevat
+     olema+V+Pers+Prs+Prc: olev
+     olema+V+Pers+Prs+Quot: olevat
      olema+V+Pers+Prs+Imprt: olgu
      olema+V+Pers+Prs+Imprt+Pl2: olge
      olema+V+Pers+Prs+Imprt+Pl1: olgem
@@ -142,8 +142,8 @@ Tests:
      aeglema+V+Pers+Sup+Ine: aeglemas
      aeglema+V+Pers+Sup+Tra: aeglemaks
      aeglema+V+Pers+Sup+Abe: aeglemata
-     aeglema+V+Pers+Prc: aeglev
-     aeglema+V+Pers+Quot: aeglevat
+     aeglema+V+Pers+Prs+Prc: aeglev
+     aeglema+V+Pers+Prs+Quot: aeglevat
      aeglema+V+Pers+Prs+Ind+Sg2+Aff: aegled
      aeglema+V+Pers+Prs+Cond: aegleks
      aeglema+V+Pers+Prs+Cond+Pl3+Aff: aegleksid
@@ -177,8 +177,8 @@ Tests:
      ambuma+V+Pers+Sup+Ine: ambumas
      ambuma+V+Pers+Sup+Tra: ambumaks
      ambuma+V+Pers+Sup+Abe: ambumata
-     ambuma+V+Pers+Prc: ambuv
-     ambuma+V+Pers+Quot: ambuvat
+     ambuma+V+Pers+Prs+Prc: ambuv
+     ambuma+V+Pers+Prs+Quot: ambuvat
      ambuma+V+Pers+Prt+Quot: ambunuvat
      ambuma+V+Pers+Prt+Prc: ambunud
      ambuma+V+Pers+Prt+Ind+Neg: ambunud
@@ -226,8 +226,8 @@ Tests:
      ajama+V+Pers+Sup+Ine: ajamas
      ajama+V+Pers+Sup+Tra: ajamaks
      ajama+V+Pers+Sup+Abe: ajamata
-     ajama+V+Pers+Prc: ajav
-     ajama+V+Pers+Quot: ajavat
+     ajama+V+Pers+Prs+Prc: ajav
+     ajama+V+Pers+Prs+Quot: ajavat
      ajama+V+Pers+Prs+Ind+Sg2+Aff: ajad
      ajama+V+Pers+Prs+Cond: ajaks
      ajama+V+Pers+Prs+Cond+Pl3+Aff: ajaksid
@@ -300,7 +300,7 @@ Tests:
      naerma+V+Pers+Sup+Ine: naermas
      naerma+V+Pers+Sup+Tra: naermaks
      naerma+V+Pers+Sup+Abe: naermata
-     naerma+V+Pers+Quot: naervat
+     naerma+V+Pers+Prs+Quot: naervat
      naerma+V+Pers+Prt+Ind+Pl3+Aff: naersid
      naerma+V+Pers+Prt+Ind+Pl2+Aff: naersite
      naerma+V+Pers+Prt+Ind+Pl1+Aff: naersime
@@ -329,7 +329,7 @@ Tests:
      naerma+V+Impers+Prs+Imprt: naerdagu
      naerma+V+Impers+Sup: naerdama
      naerma+V+Impers+Prt+Ind+Aff: naerdi
-     naerma+V+Pers+Prc: naerev
+     naerma+V+Pers+Prs+Prc: naerev
      naerma+V+Pers+Prs+Ind+Sg2+Aff: naerad
      naerma+V+Pers+Prs+Cond: naeraks
      naerma+V+Pers+Prs+Cond+Pl3+Aff: naeraksid
@@ -372,8 +372,8 @@ Tests:
      naima+V+Pers+Sup+Ine: naimas
      naima+V+Pers+Sup+Tra: naimaks
      naima+V+Pers+Sup+Abe: naimata
-     naima+V+Pers+Prc: naiv
-     naima+V+Pers+Quot: naivat
+     naima+V+Pers+Prs+Prc: naiv
+     naima+V+Pers+Prs+Quot: naivat
      naima+V+Pers+Prs+Ind+Sg2+Aff: naid
      naima+V+Pers+Prs+Cond: naiks
      naima+V+Pers+Prs+Cond+Pl3+Aff: naiksid
@@ -402,7 +402,7 @@ Tests:
      needma+V+Pers+Sup+Ine: needmas
      needma+V+Pers+Sup+Tra: needmaks
      needma+V+Pers+Sup+Abe: needmata
-     needma+V+Pers+Quot: needvat
+     needma+V+Pers+Prs+Quot: needvat
      needma+V+Pers+Prt+Ind+Pl3+Aff: needsid
      needma+V+Pers+Prt+Ind+Pl2+Aff: needsite
      needma+V+Pers+Prt+Ind+Pl1+Aff: needsime
@@ -422,7 +422,7 @@ Tests:
      needma+V+Pers+Prs+Imprt: needku
      needma+V+Pers+Prs+Imprt+Pl2: needke
      needma+V+Pers+Prs+Imprt+Pl1: needkem
-     needma+V+Pers+Prc: needev
+     needma+V+Pers+Prs+Prc: needev
      needma+V+Pers+Prt+Ind+Sg3+Aff: needis
      needma+V+Impers+Prt+Prc: neetud
      needma+V+Impers+Prt+Ind+Neg: neetud
@@ -454,7 +454,7 @@ Tests:
      nutma+V+Pers+Sup+Ine: nutmas
      nutma+V+Pers+Sup+Tra: nutmaks
      nutma+V+Pers+Sup+Abe: nutmata
-     nutma+V+Pers+Quot: nutvat
+     nutma+V+Pers+Prs+Quot: nutvat
      nutma+V+Pers+Prt+Ind+Pl3+Aff: nutsid
      nutma+V+Pers+Prt+Ind+Pl2+Aff: nutsite
      nutma+V+Pers+Prt+Ind+Pl1+Aff: nutsime
@@ -499,7 +499,7 @@ Tests:
      nutma+V+Pers+Prs+Ind+Neg: nuta
      nutma+V+Inf: nutta
      nutma+V+Ger: nuttes
-     nutma+V+Pers+Prc: nuttev
+     nutma+V+Pers+Prs+Prc: nuttev
      nutma+V+Pers+Prt+Ind+Sg3+Aff: nuttis
      näuguma+V+Inf: näuguda
      näuguma+V+Ger: näugudes
@@ -514,8 +514,8 @@ Tests:
      näuguma+V+Pers+Sup+Ine: näugumas
      näuguma+V+Pers+Sup+Tra: näugumaks
      näuguma+V+Pers+Sup+Abe: näugumata
-     näuguma+V+Pers+Prc: näuguv
-     näuguma+V+Pers+Quot: näuguvat
+     näuguma+V+Pers+Prs+Prc: näuguv
+     näuguma+V+Pers+Prs+Quot: näuguvat
      näuguma+V+Pers+Prt+Quot: näugunuvat
      näuguma+V+Pers+Prt+Prc: näugunud
      näuguma+V+Pers+Prt+Ind+Neg: näugunud
@@ -555,8 +555,8 @@ Tests:
      näima+V+Pers+Sup+Ine: näimas
      näima+V+Pers+Sup+Tra: näimaks
      näima+V+Pers+Sup+Abe: näimata
-     näima+V+Pers+Prc: näiv
-     näima+V+Pers+Quot: näivat
+     näima+V+Pers+Prs+Prc: näiv
+     näima+V+Pers+Prs+Quot: näivat
      näima+V+Pers+Prs+Ind+Sg2+Aff: näid
      näima+V+Pers+Prs+Cond: näiks
      näima+V+Pers+Prs+Cond+Pl3+Aff: näiksid
@@ -635,8 +635,8 @@ Tests:
      laastama+V+Pers+Sup+Ine: laastamas
      laastama+V+Pers+Sup+Tra: laastamaks
      laastama+V+Pers+Sup+Abe: laastamata
-     laastama+V+Pers+Prc: laastav
-     laastama+V+Pers+Quot: laastavat
+     laastama+V+Pers+Prs+Prc: laastav
+     laastama+V+Pers+Prs+Quot: laastavat
      laastama+V+Pers+Prs+Ind+Sg2+Aff: laastad
      laastama+V+Pers+Prs+Cond: laastaks
      laastama+V+Pers+Prs+Cond+Pl3+Aff: laastaksid
@@ -668,7 +668,7 @@ Tests:
      laskma+V+Pers+Sup+Ine: laskmas
      laskma+V+Pers+Sup+Tra: laskmaks
      laskma+V+Pers+Sup+Abe: laskmata
-     laskma+V+Pers+Quot: laskvat
+     laskma+V+Pers+Prs+Quot: laskvat
      laskma+V+Pers+Prt+Ind+Pl3+Aff+Use/Rare: lasksid
      laskma+V+Pers+Prt+Ind+Pl2+Aff+Use/Rare: lasksite
      laskma+V+Pers+Prt+Ind+Pl1+Aff+Use/Rare: lasksime
@@ -683,7 +683,7 @@ Tests:
      laskma+V+Pers+Prt+Cond+Pl1+Aff: lasknuksime
      laskma+V+Pers+Prt+Cond+Sg2+Aff: lasknuksid
      laskma+V+Pers+Prt+Cond+Sg1+Aff: lasknuksin
-     laskma+V+Pers+Prc: laskev
+     laskma+V+Pers+Prs+Prc: laskev
      laskma+V+Pers+Prt+Ind+Sg3+Aff+Use/Rare: laskis
      laskma+V+Inf: lasta
      laskma+V+Ger: lastes
@@ -734,8 +734,8 @@ Tests:
      lekkima+V+Pers+Sup+Ine: lekkimas
      lekkima+V+Pers+Sup+Tra: lekkimaks
      lekkima+V+Pers+Sup+Abe: lekkimata
-     lekkima+V+Pers+Prc: lekkiv
-     lekkima+V+Pers+Quot: lekkivat
+     lekkima+V+Pers+Prs+Prc: lekkiv
+     lekkima+V+Pers+Prs+Quot: lekkivat
      lekkima+V+Pers+Prs+Ind+Sg2+Aff+Use/Rare: lekkid
      lekkima+V+Pers+Prs+Cond+Use/Rare: lekkiks
      lekkima+V+Pers+Prs+Cond+Pl3+Aff+Use/Rare: lekkiksid
@@ -811,8 +811,8 @@ Tests:
      leppima+V+Pers+Sup+Ine: leppimas
      leppima+V+Pers+Sup+Tra: leppimaks
      leppima+V+Pers+Sup+Abe: leppimata
-     leppima+V+Pers+Prc: leppiv
-     leppima+V+Pers+Quot: leppivat
+     leppima+V+Pers+Prs+Prc: leppiv
+     leppima+V+Pers+Prs+Quot: leppivat
      leppima+V+Pers+Prt+Quot: leppinuvat
      leppima+V+Pers+Prt+Prc: leppinud
      leppima+V+Pers+Prt+Ind+Neg: leppinud
@@ -861,8 +861,8 @@ Tests:
      lupjama+V+Pers+Sup+Ine: lupjamas
      lupjama+V+Pers+Sup+Tra: lupjamaks
      lupjama+V+Pers+Sup+Abe: lupjamata
-     lupjama+V+Pers+Prc: lupjav
-     lupjama+V+Pers+Quot: lupjavat
+     lupjama+V+Pers+Prs+Prc: lupjav
+     lupjama+V+Pers+Prs+Quot: lupjavat
      lupjama+V+Pers+Prs+Ind+Sg2+Aff: lupjad
      lupjama+V+Pers+Prs+Cond: lupjaks
      lupjama+V+Pers+Prs+Cond+Pl3+Aff: lupjaksid
@@ -915,8 +915,8 @@ Tests:
      liguma+V+Pers+Sup+Ine: ligumas
      liguma+V+Pers+Sup+Tra: ligumaks
      liguma+V+Pers+Sup+Abe: ligumata
-     liguma+V+Pers+Prc: liguv
-     liguma+V+Pers+Quot: liguvat
+     liguma+V+Pers+Prs+Prc: liguv
+     liguma+V+Pers+Prs+Quot: liguvat
      liguma+V+Pers+Prt+Quot: ligunuvat
      liguma+V+Pers+Prt+Prc: ligunud
      liguma+V+Pers+Prt+Ind+Neg: ligunud
@@ -948,8 +948,8 @@ Tests:
      looma+V+Pers+Sup+Ine: loomas
      looma+V+Pers+Sup+Tra: loomaks
      looma+V+Pers+Sup+Abe: loomata
-     looma+V+Pers+Prc: loov
-     looma+V+Pers+Quot: loovat
+     looma+V+Pers+Prs+Prc: loov
+     looma+V+Pers+Prs+Quot: loovat
      looma+V+Pers+Prs+Ind+Sg2+Aff: lood
      looma+V+Pers+Prs+Cond: looks
      looma+V+Pers+Prs+Cond+Pl3+Aff: looksid
@@ -984,8 +984,8 @@ Tests:
      lõugama+V+Pers+Sup+Ine: lõugamas
      lõugama+V+Pers+Sup+Tra: lõugamaks
      lõugama+V+Pers+Sup+Abe: lõugamata
-     lõugama+V+Pers+Prc: lõugav
-     lõugama+V+Pers+Quot: lõugavat
+     lõugama+V+Pers+Prs+Prc: lõugav
+     lõugama+V+Pers+Prs+Quot: lõugavat
      lõugama+V+Pers+Prs+Ind+Sg2+Aff: lõugad
      lõugama+V+Pers+Prs+Cond: lõugaks
      lõugama+V+Pers+Prs+Cond+Pl3+Aff: lõugaksid
@@ -1030,7 +1030,7 @@ Tests:
      lõpma+V+Pers+Sup+Ine: lõpmas
      lõpma+V+Pers+Sup+Tra: lõpmaks
      lõpma+V+Pers+Sup+Abe: lõpmata
-     lõpma+V+Pers+Quot: lõpvat
+     lõpma+V+Pers+Prs+Quot: lõpvat
      lõpma+V+Pers+Prt+Ind+Pl3+Aff: lõpsid
      lõpma+V+Pers+Prt+Ind+Pl2+Aff: lõpsite
      lõpma+V+Pers+Prt+Ind+Pl1+Aff: lõpsime
@@ -1075,7 +1075,7 @@ Tests:
      lõpma+V+Pers+Prs+Ind+Neg: lõpe
      lõpma+V+Inf: lõppa
      lõpma+V+Ger: lõppes
-     lõpma+V+Pers+Prc: lõppev
+     lõpma+V+Pers+Prs+Prc: lõppev
      lõpma+V+Pers+Prt+Ind+Sg3+Aff: lõppis
      lööma+V+Impers+Prt+Prc: löödud
      lööma+V+Impers+Prt+Ind+Neg: löödud
@@ -1096,8 +1096,8 @@ Tests:
      lööma+V+Pers+Sup+Ine: löömas
      lööma+V+Pers+Sup+Tra: löömaks
      lööma+V+Pers+Sup+Abe: löömata
-     lööma+V+Pers+Prc: lööv
-     lööma+V+Pers+Quot: löövat
+     lööma+V+Pers+Prs+Prc: lööv
+     lööma+V+Pers+Prs+Quot: löövat
      lööma+V+Pers+Prs+Ind+Sg2+Aff: lööd
      lööma+V+Pers+Prs+Cond: lööks
      lööma+V+Pers+Prs+Cond+Pl3+Aff: lööksid
@@ -1171,8 +1171,8 @@ Tests:
      elama+V+Pers+Sup+Ine: elamas
      elama+V+Pers+Sup+Tra: elamaks
      elama+V+Pers+Sup+Abe: elamata
-     elama+V+Pers+Prc: elav
-     elama+V+Pers+Quot: elavat
+     elama+V+Pers+Prs+Prc: elav
+     elama+V+Pers+Prs+Quot: elavat
      elama+V+Pers+Prs+Ind+Sg2+Aff: elad
      elama+V+Pers+Prs+Cond: elaks
      elama+V+Pers+Prs+Cond+Pl3+Aff: elaksid
@@ -1220,8 +1220,8 @@ Tests:
      uskuma+V+Pers+Sup+Ine: uskumas
      uskuma+V+Pers+Sup+Tra: uskumaks
      uskuma+V+Pers+Sup+Abe: uskumata
-     uskuma+V+Pers+Prc: uskuv
-     uskuma+V+Pers+Quot: uskuvat
+     uskuma+V+Pers+Prs+Prc: uskuv
+     uskuma+V+Pers+Prs+Quot: uskuvat
      uskuma+V+Pers+Prt+Ind+Sg3+Aff: uskus
      uskuma+V+Pers+Prt+Ind+Pl3+Aff: uskusid
      uskuma+V+Pers+Prt+Ind+Pl2+Aff: uskusite
@@ -1278,8 +1278,8 @@ Tests:
      kaeblema+V+Pers+Sup+Ine: kaeblemas
      kaeblema+V+Pers+Sup+Tra: kaeblemaks
      kaeblema+V+Pers+Sup+Abe: kaeblemata
-     kaeblema+V+Pers+Prc: kaeblev
-     kaeblema+V+Pers+Quot: kaeblevat
+     kaeblema+V+Pers+Prs+Prc: kaeblev
+     kaeblema+V+Pers+Prs+Quot: kaeblevat
      kaeblema+V+Pers+Prs+Ind+Sg2+Aff: kaebled
      kaeblema+V+Pers+Prs+Cond: kaebleks
      kaeblema+V+Pers+Prs+Cond+Pl3+Aff: kaebleksid
@@ -1332,7 +1332,7 @@ Tests:
      kaitsma+V+Pers+Sup+Ine: kaitsmas
      kaitsma+V+Pers+Sup+Tra: kaitsmaks
      kaitsma+V+Pers+Sup+Abe: kaitsmata
-     kaitsma+V+Pers+Quot: kaitsvat
+     kaitsma+V+Pers+Prs+Quot: kaitsvat
      kaitsma+V+Pers+Prt+Quot: kaitsnuvat
      kaitsma+V+Pers+Prt+Prc: kaitsnud
      kaitsma+V+Pers+Prt+Ind+Neg: kaitsnud
@@ -1356,7 +1356,7 @@ Tests:
      kaitsma+V+Impers+Prs+Imprt: kaitstagu
      kaitsma+V+Impers+Sup: kaitstama
      kaitsma+V+Impers+Prt+Ind+Aff: kaitsti
-     kaitsma+V+Pers+Prc: kaitsev
+     kaitsma+V+Pers+Prs+Prc: kaitsev
      kaitsma+V+Pers+Prs+Ind+Sg2+Aff: kaitsed
      kaitsma+V+Pers+Prs+Cond: kaitseks
      kaitsma+V+Pers+Prs+Cond+Pl3+Aff: kaitseksid
@@ -1382,7 +1382,7 @@ Tests:
      kastma+V+Pers+Sup+Ine: kastmas
      kastma+V+Pers+Sup+Tra: kastmaks
      kastma+V+Pers+Sup+Abe: kastmata
-     kastma+V+Pers+Quot: kastvat
+     kastma+V+Pers+Prs+Quot: kastvat
      kastma+V+Pers+Prt+Ind+Pl3+Aff: kastsid
      kastma+V+Pers+Prt+Ind+Pl2+Aff: kastsite
      kastma+V+Pers+Prt+Ind+Pl1+Aff: kastsime
@@ -1413,7 +1413,7 @@ Tests:
      kastma+V+Impers+Prs+Imprt: kastetagu
      kastma+V+Impers+Sup: kastetama
      kastma+V+Impers+Prt+Ind+Aff: kasteti
-     kastma+V+Pers+Prc: kastev
+     kastma+V+Pers+Prs+Prc: kastev
      kastma+V+Pers+Prs+Ind+Sg2+Aff: kastad
      kastma+V+Pers+Prs+Cond: kastaks
      kastma+V+Pers+Prs+Cond+Pl3+Aff: kastaksid
@@ -1434,7 +1434,7 @@ Tests:
      katma+V+Pers+Sup+Ine: katmas
      katma+V+Pers+Sup+Tra: katmaks
      katma+V+Pers+Sup+Abe: katmata
-     katma+V+Pers+Quot: katvat
+     katma+V+Pers+Prs+Quot: katvat
      katma+V+Pers+Prt+Ind+Pl3+Aff: katsid
      katma+V+Pers+Prt+Ind+Pl2+Aff: katsite
      katma+V+Pers+Prt+Ind+Pl1+Aff: katsime
@@ -1455,7 +1455,7 @@ Tests:
      katma+V+Inf: katta
      katma+V+Ger: kattes
      katma+V+Pers+Prt+Ind+Sg3+Aff: kattis
-     katma+V+Pers+Prc: kattev
+     katma+V+Pers+Prs+Prc: kattev
      katkuma+V+Inf: katkuda
      katkuma+V+Ger: katkudes
      katkuma+V+Impers+Prt+Prc: katkutud
@@ -1480,8 +1480,8 @@ Tests:
      katkuma+V+Pers+Sup+Ine: katkumas
      katkuma+V+Pers+Sup+Tra: katkumaks
      katkuma+V+Pers+Sup+Abe: katkumata
-     katkuma+V+Pers+Prc: katkuv
-     katkuma+V+Pers+Quot: katkuvat
+     katkuma+V+Pers+Prs+Prc: katkuv
+     katkuma+V+Pers+Prs+Quot: katkuvat
      katkuma+V+Pers+Prs+Ind+Sg2+Aff: katkud
      katkuma+V+Pers+Prs+Cond: katkuks
      katkuma+V+Pers+Prs+Cond+Pl3+Aff: katkuksid
@@ -1560,8 +1560,8 @@ Tests:
      keema+V+Pers+Sup+Ine: keemas
      keema+V+Pers+Sup+Tra: keemaks
      keema+V+Pers+Sup+Abe: keemata
-     keema+V+Pers+Prc: keev
-     keema+V+Pers+Quot: keevat
+     keema+V+Pers+Prs+Prc: keev
+     keema+V+Pers+Prs+Quot: keevat
      keema+V+Pers+Prs+Ind+Sg2+Aff: keed
      keema+V+Pers+Prs+Cond: keeks
      keema+V+Pers+Prs+Cond+Pl3+Aff: keeksid
@@ -1592,7 +1592,7 @@ Tests:
      kuulma+V+Pers+Sup+Ine: kuulmas
      kuulma+V+Pers+Sup+Tra: kuulmaks
      kuulma+V+Pers+Sup+Abe: kuulmata
-     kuulma+V+Pers+Quot: kuulvat
+     kuulma+V+Pers+Prs+Quot: kuulvat
      kuulma+V+Pers+Prt+Ind+Pl3+Aff: kuulsid
      kuulma+V+Pers+Prt+Ind+Pl2+Aff: kuulsite
      kuulma+V+Pers+Prt+Ind+Pl1+Aff: kuulsime
@@ -1621,7 +1621,7 @@ Tests:
      kuulma+V+Impers+Prs+Imprt: kuuldagu
      kuulma+V+Impers+Sup: kuuldama
      kuulma+V+Impers+Prt+Ind+Aff: kuuldi
-     kuulma+V+Pers+Prc: kuulev
+     kuulma+V+Pers+Prs+Prc: kuulev
      kuulma+V+Pers+Prs+Ind+Sg2+Aff: kuuled
      kuulma+V+Pers+Prs+Cond: kuuleks
      kuulma+V+Pers+Prs+Cond+Pl3+Aff: kuuleksid
@@ -1678,8 +1678,8 @@ Tests:
      kusema+V+Pers+Sup+Ine: kusemas
      kusema+V+Pers+Sup+Tra: kusemaks
      kusema+V+Pers+Sup+Abe: kusemata
-     kusema+V+Pers+Prc: kusev
-     kusema+V+Pers+Quot: kusevat
+     kusema+V+Pers+Prs+Prc: kusev
+     kusema+V+Pers+Prs+Quot: kusevat
      kusema+V+Pers+Prs+Ind+Sg2+Aff: kused
      kusema+V+Pers+Prs+Cond: kuseks
      kusema+V+Pers+Prs+Cond+Pl3+Aff: kuseksid
@@ -1705,7 +1705,7 @@ Tests:
      kurtma+V+Pers+Sup+Ine: kurtmas
      kurtma+V+Pers+Sup+Tra: kurtmaks
      kurtma+V+Pers+Sup+Abe: kurtmata
-     kurtma+V+Pers+Quot: kurtvat
+     kurtma+V+Pers+Prs+Quot: kurtvat
      kurtma+V+Pers+Prt+Ind+Pl3+Aff: kurtsid
      kurtma+V+Pers+Prt+Ind+Pl2+Aff: kurtsite
      kurtma+V+Pers+Prt+Ind+Pl1+Aff: kurtsime
@@ -1725,7 +1725,7 @@ Tests:
      kurtma+V+Pers+Prs+Imprt: kurtku
      kurtma+V+Pers+Prs+Imprt+Pl2: kurtke
      kurtma+V+Pers+Prs+Imprt+Pl1: kurtkem
-     kurtma+V+Pers+Prc: kurtev
+     kurtma+V+Pers+Prs+Prc: kurtev
      kurtma+V+Pers+Prt+Ind+Sg3+Aff: kurtis
      kurtma+V+Impers+Prt+Prc: kurdetud
      kurtma+V+Impers+Prt+Ind+Neg: kurdetud
@@ -1762,8 +1762,8 @@ Tests:
      kiskuma+V+Pers+Sup+Ine: kiskumas
      kiskuma+V+Pers+Sup+Tra: kiskumaks
      kiskuma+V+Pers+Sup+Abe: kiskumata
-     kiskuma+V+Pers+Prc: kiskuv
-     kiskuma+V+Pers+Quot: kiskuvat
+     kiskuma+V+Pers+Prs+Prc: kiskuv
+     kiskuma+V+Pers+Prs+Quot: kiskuvat
      kiskuma+V+Pers+Prt+Ind+Sg3+Aff: kiskus
      kiskuma+V+Pers+Prt+Ind+Pl3+Aff: kiskusid
      kiskuma+V+Pers+Prt+Ind+Pl2+Aff: kiskusite
@@ -1815,8 +1815,8 @@ Tests:
      kompama+V+Pers+Sup+Ine: kompamas
      kompama+V+Pers+Sup+Tra: kompamaks
      kompama+V+Pers+Sup+Abe: kompamata
-     kompama+V+Pers+Prc: kompav
-     kompama+V+Pers+Quot: kompavat
+     kompama+V+Pers+Prs+Prc: kompav
+     kompama+V+Pers+Prs+Quot: kompavat
      kompama+V+Pers+Prs+Ind+Sg2+Aff: kompad
      kompama+V+Pers+Prs+Cond: kompaks
      kompama+V+Pers+Prs+Cond+Pl3+Aff: kompaksid
@@ -1872,7 +1872,7 @@ Tests:
      kündma+V+Pers+Sup+Ine: kündmas
      kündma+V+Pers+Sup+Tra: kündmaks
      kündma+V+Pers+Sup+Abe: kündmata
-     kündma+V+Pers+Quot: kündvat
+     kündma+V+Pers+Prs+Quot: kündvat
      kündma+V+Pers+Prt+Ind+Pl3+Aff: kündsid
      kündma+V+Pers+Prt+Ind+Pl2+Aff: kündsite
      kündma+V+Pers+Prt+Ind+Pl1+Aff: kündsime
@@ -1892,7 +1892,7 @@ Tests:
      kündma+V+Pers+Prs+Imprt: kündku
      kündma+V+Pers+Prs+Imprt+Pl2: kündke
      kündma+V+Pers+Prs+Imprt+Pl1: kündkem
-     kündma+V+Pers+Prc: kündev
+     kündma+V+Pers+Prs+Prc: kündev
      kündma+V+Pers+Prt+Ind+Sg3+Aff: kündis
      kündma+V+Pers+Prs+Ind+Sg2+Aff: künnad
      kündma+V+Pers+Prs+Cond: künnaks
@@ -1913,7 +1913,7 @@ Tests:
      kütma+V+Pers+Sup+Ine: kütmas
      kütma+V+Pers+Sup+Tra: kütmaks
      kütma+V+Pers+Sup+Abe: kütmata
-     kütma+V+Pers+Quot: kütvat
+     kütma+V+Pers+Prs+Quot: kütvat
      kütma+V+Pers+Prt+Ind+Pl3+Aff: kütsid
      kütma+V+Pers+Prt+Ind+Pl2+Aff: kütsite
      kütma+V+Pers+Prt+Ind+Pl1+Aff: kütsime
@@ -1934,7 +1934,7 @@ Tests:
      kütma+V+Inf: kütta
      kütma+V+Ger: küttes
      kütma+V+Pers+Prt+Ind+Sg3+Aff: küttis
-     kütma+V+Pers+Prc: küttev
+     kütma+V+Pers+Prs+Prc: küttev
      kütma+V+Pers+Prs+Ind+Sg2+Aff: kütad
      kütma+V+Pers+Prs+Cond: kütaks
      kütma+V+Pers+Prs+Cond+Pl3+Aff: kütaksid
@@ -1962,8 +1962,8 @@ Tests:
      kraapima+V+Pers+Sup+Ine: kraapimas
      kraapima+V+Pers+Sup+Tra: kraapimaks
      kraapima+V+Pers+Sup+Abe: kraapimata
-     kraapima+V+Pers+Prc: kraapiv
-     kraapima+V+Pers+Quot: kraapivat
+     kraapima+V+Pers+Prs+Prc: kraapiv
+     kraapima+V+Pers+Prs+Quot: kraapivat
      kraapima+V+Pers+Prt+Quot: kraapinuvat
      kraapima+V+Pers+Prt+Prc: kraapinud
      kraapima+V+Pers+Prt+Ind+Neg: kraapinud
@@ -2012,8 +2012,8 @@ Tests:
      kõplama+V+Pers+Sup+Ine: kõplamas
      kõplama+V+Pers+Sup+Tra: kõplamaks
      kõplama+V+Pers+Sup+Abe: kõplamata
-     kõplama+V+Pers+Prc: kõplav
-     kõplama+V+Pers+Quot: kõplavat
+     kõplama+V+Pers+Prs+Prc: kõplav
+     kõplama+V+Pers+Prs+Quot: kõplavat
      kõplama+V+Pers+Prs+Ind+Sg2+Aff: kõplad
      kõplama+V+Pers+Prs+Cond: kõplaks
      kõplama+V+Pers+Prs+Cond+Pl3+Aff: kõplaksid
@@ -2079,8 +2079,8 @@ Tests:
      käima+V+Pers+Sup+Ine: käimas
      käima+V+Pers+Sup+Tra: käimaks
      käima+V+Pers+Sup+Abe: käimata
-     käima+V+Pers+Prc: käiv
-     käima+V+Pers+Quot: käivat
+     käima+V+Pers+Prs+Prc: käiv
+     käima+V+Pers+Prs+Quot: käivat
      käima+V+Pers+Prs+Ind+Sg2+Aff: käid
      käima+V+Pers+Prs+Cond: käiks
      käima+V+Pers+Prs+Cond+Pl3+Aff: käiksid
@@ -2116,8 +2116,8 @@ Tests:
      käskima+V+Pers+Sup+Ine: käskimas
      käskima+V+Pers+Sup+Tra: käskimaks
      käskima+V+Pers+Sup+Abe: käskimata
-     käskima+V+Pers+Prc: käskiv
-     käskima+V+Pers+Quot: käskivat
+     käskima+V+Pers+Prs+Prc: käskiv
+     käskima+V+Pers+Prs+Quot: käskivat
      käskima+V+Pers+Prt+Ind+Sg3+Aff: käskis
      käskima+V+Pers+Prt+Ind+Pl3+Aff: käskisid
      käskima+V+Pers+Prt+Ind+Pl2+Aff: käskisite
@@ -2176,7 +2176,7 @@ Tests:
      maitsma+V+Pers+Sup+Ine: maitsmas
      maitsma+V+Pers+Sup+Tra: maitsmaks
      maitsma+V+Pers+Sup+Abe: maitsmata
-     maitsma+V+Pers+Quot: maitsvat
+     maitsma+V+Pers+Prs+Quot: maitsvat
      maitsma+V+Pers+Prt+Quot: maitsnuvat
      maitsma+V+Pers+Prt+Prc: maitsnud
      maitsma+V+Pers+Prt+Ind+Neg: maitsnud
@@ -2200,7 +2200,7 @@ Tests:
      maitsma+V+Impers+Prs+Imprt: maitstagu
      maitsma+V+Impers+Sup: maitstama
      maitsma+V+Impers+Prt+Ind+Aff: maitsti
-     maitsma+V+Pers+Prc: maitsev
+     maitsma+V+Pers+Prs+Prc: maitsev
      maitsma+V+Pers+Prs+Ind+Sg2+Aff: maitsed
      maitsma+V+Pers+Prs+Cond: maitseks
      maitsma+V+Pers+Prs+Cond+Pl3+Aff: maitseksid
@@ -2234,8 +2234,8 @@ Tests:
      marssima+V+Pers+Sup+Ine: marssimas
      marssima+V+Pers+Sup+Tra: marssimaks
      marssima+V+Pers+Sup+Abe: marssimata
-     marssima+V+Pers+Prc: marssiv
-     marssima+V+Pers+Quot: marssivat
+     marssima+V+Pers+Prs+Prc: marssiv
+     marssima+V+Pers+Prs+Quot: marssivat
      marssima+V+Pers+Prt+Quot: marssinuvat
      marssima+V+Pers+Prt+Prc: marssinud
      marssima+V+Pers+Prt+Ind+Neg: marssinud
@@ -2300,8 +2300,8 @@ Tests:
      muuma+V+Pers+Sup+Ine: muumas
      muuma+V+Pers+Sup+Tra: muumaks
      muuma+V+Pers+Sup+Abe: muumata
-     muuma+V+Pers+Prc: muuv
-     muuma+V+Pers+Quot: muuvat
+     muuma+V+Pers+Prs+Prc: muuv
+     muuma+V+Pers+Prs+Quot: muuvat
      muuma+V+Pers+Prs+Ind+Sg2+Aff: muud
      muuma+V+Pers+Prs+Cond: muuks
      muuma+V+Pers+Prs+Cond+Pl3+Aff: muuksid
@@ -2330,8 +2330,8 @@ Tests:
      muiglema+V+Pers+Sup+Ine: muiglemas
      muiglema+V+Pers+Sup+Tra: muiglemaks
      muiglema+V+Pers+Sup+Abe: muiglemata
-     muiglema+V+Pers+Prc: muiglev
-     muiglema+V+Pers+Quot: muiglevat
+     muiglema+V+Pers+Prs+Prc: muiglev
+     muiglema+V+Pers+Prs+Quot: muiglevat
      muiglema+V+Pers+Prs+Ind+Sg2+Aff: muigled
      muiglema+V+Pers+Prs+Cond: muigleks
      muiglema+V+Pers+Prs+Cond+Pl3+Aff: muigleksid
@@ -2403,8 +2403,8 @@ Tests:
      müüma+V+Pers+Sup+Ine: müümas
      müüma+V+Pers+Sup+Tra: müümaks
      müüma+V+Pers+Sup+Abe: müümata
-     müüma+V+Pers+Prc: müüv
-     müüma+V+Pers+Quot: müüvat
+     müüma+V+Pers+Prs+Prc: müüv
+     müüma+V+Pers+Prs+Quot: müüvat
      müüma+V+Pers+Prs+Ind+Sg2+Aff: müüd
      müüma+V+Pers+Prs+Cond: müüks
      müüma+V+Pers+Prs+Cond+Pl3+Aff: müüksid
@@ -2435,7 +2435,7 @@ Tests:
      mõskma+V+Pers+Sup+Ine: mõskmas
      mõskma+V+Pers+Sup+Tra: mõskmaks
      mõskma+V+Pers+Sup+Abe: mõskmata
-     mõskma+V+Pers+Quot: mõskvat
+     mõskma+V+Pers+Prs+Quot: mõskvat
      mõskma+V+Pers+Prs+Imprt: mõsku
      mõskma+V+Pers+Prs+Imprt+Pl2: mõske
      mõskma+V+Pers+Prs+Imprt+Pl1: mõskem
@@ -2453,7 +2453,7 @@ Tests:
      mõskma+V+Pers+Prt+Cond+Pl1+Aff: mõsknuksime
      mõskma+V+Pers+Prt+Cond+Sg2+Aff: mõsknuksid
      mõskma+V+Pers+Prt+Cond+Sg1+Aff: mõsknuksin
-     mõskma+V+Pers+Prc: mõskev
+     mõskma+V+Pers+Prs+Prc: mõskev
      mõskma+V+Pers+Prt+Ind+Sg3+Aff: mõskis
      mõskma+V+Inf: mõsta
      mõskma+V+Ger: mõstes
@@ -2487,8 +2487,8 @@ Tests:
      mäslema+V+Pers+Sup+Ine: mäslemas
      mäslema+V+Pers+Sup+Tra: mäslemaks
      mäslema+V+Pers+Sup+Abe: mäslemata
-     mäslema+V+Pers+Prc: mäslev
-     mäslema+V+Pers+Quot: mäslevat
+     mäslema+V+Pers+Prs+Prc: mäslev
+     mäslema+V+Pers+Prs+Quot: mäslevat
      mäslema+V+Pers+Prs+Ind+Sg2+Aff: mäsled
      mäslema+V+Pers+Prs+Cond: mäsleks
      mäslema+V+Pers+Prs+Cond+Pl3+Aff: mäsleksid

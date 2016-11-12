@@ -1,290 +1,389 @@
-! Morphological Transducer for Estonian
+!! Morphological Transducer for Estonian
 
 Multichar_Symbols
 
-!! !!!Estonian morphological tags
+!! Estonian morphological tags
 
-! sõnaliik
+!! sõnaliik
 !! part of speech
 
-+N	! nimisõna		! substantive		! asi
-+Prop	! pärisnimi		! proper name		! Jaan
-+A	! omadussõna		! adjective		! asjalik
-+Num
-+Card
-+Ord
-! +Num+Card	! arvsõna		! numeral		! kaks
-! +Num+Ord	! järgarv		! ordinal		! teine
-+Pron	! asesõna		! pronoun		! see
-+V	! tegusõna 		! verb			! asjastama
-+Adv	! määrsõna		! adverb		! asjatult
-+Interj	! hüüdsõna		! interjection		! hei
-+CC +CS	! sidesõna		! conjunction		! ja
-!+N+Sg+Gen	! genitiivatribuut	! genitive attribute	! saksa
-+Adp	! kaassõna		! pre/postposition	! kaudu
-+Adv	! muu sõna		! other word		! kihku, kihla, minap
++N !!= * {{@CODE@}}: ! nimisõna		! substantive		
++A !!= * {{@CODE@}}: ! omadussõna		! adjective		
++Num !!= * {{@CODE@}}: ! arvsõna		! numeral
++Pron !!= * {{@CODE@}}: ! asesõna		! pronoun		
++V !!= * {{@CODE@}}: ! tegusõna 		! verb			
++Adv !!= * {{@CODE@}}: ! määrsõna		! adverb		
++Interj !!= * {{@CODE@}}: ! hüüdsõna		! interjection		
++CC !!= * {{@CODE@}}: ! rinnastav sidesõna		! co-ordinating conjunction
++CS !!= * {{@CODE@}}: ! alistav sidesõna		! subordinating conjunction		
++Adp !!= * {{@CODE@}}: ! kaassõna	! adposition, i.e. pre/postposition	
+
+!! +N+Sg+Gen	! genitiivatribuut	! genitive attribute	! saksa
+!! +Adv  ! muu sõna	! other word		! kihku, kihla, minap
 
 +CLB
 +PUNCT
 +ABBR
 
-! Käändsõna             ! Noun
+!! alamkategooriad
+!! sub-pos categories
 
-! arv 			! number
-+Sg	! ainsus	! singular
-+Pl	! mitmus	! plural
++Prop !!= * {{@CODE@}}: ! pärisnimi	! proper name		
++Card !!= * {{@CODE@}}: ! põhiarvsõna	! cardinal numeral
++Ord !!= * {{@CODE@}}: ! järgarvsõna	! ordinal numeral
 
-! käänded
-+Nom	! nimetav			! nominative	! part, maja		pardid, majad
-+Gen	! omastav 			! genitive	! pardi, maja		partide, majade
-+Par	! osastav			! partitive	! parti, maja		parte, maju
-+Ill	! sisseütlev			! illative	! pardisse, majasse	partidesse, majadesse
-+Ill	! suunduv (lühike sisseütlev?)	! aditive	! p'arti, majja
-+Ine	! seesütlev			! inessive	! pardis, majas		partides, majades
-+Ela	! seestütlev			! elative	! pardist, majast	partidest, majadest
-+All	! alaleütlev			! allative	! pardile, majale	partidele, majadele
-+Ade	! alalütlev			! adessive	! pardil, majal		partidel, majadel
-+Abl	! alaltütlev			! ablative	! pardilt, majalt	partidelt, majadelt
-+Tra	! saav				! translative	! pardiks, majaks	partideks, majadeks
-+Trm	! rajav				! terminative	! pardini, majani	partideni, majadeni
-+Ess	! olev				! essive	! pardina, majana	partidena, majadena
-+Abe	! ilmaütlev			! abessive	! pardita, majata	partideta, majadeta
-+Com	! kaasaütlev			! comitative	! pardiga, majaga	partidega, majadega
+!! võrdlusastmed
++Comp !!= * {{@CODE@}}: ! komparatiiv	! comparative
++Superl !!= * {{@CODE@}}: ! superlatiiv	! superlative
 
-! võrdlusastmed
-+Comp	! komparatiiv	! comparative
-+Superl	! superlatiiv	! superlative
+!! genitiivatribuut?
+!! +Attr   ! ???
 
-! genitiivatribuut?
-! +Attr   ! ???
+!!€gt-norm hfstol:
+!!€ asi: asi+N+Sg+Nom # thing
+!!€ Jaan: Jaan+N+Prop+Sg+Nom
+!!€ asjalik: asjalik+A+Sg+Nom # serious
+!!€ parem: parem+A+Comp+Sg+Nom # better
+!!€ parim: parim+A+Superl+Sg+Nom # best
+!!€ kaks: kaks+Num+Card+Sg+Nom # two
+!!€ teine: teine+Num+Ord+Sg+Nom # second
+!!€ see: see+Pron+Sg+Nom # that
+!!€ asjastama: asjastama+V+Pers+Sup+Ill # objectify
+!!€ asjatult: asjatult+Adv # 
+!!€ hei: hei+Interj
+!!€ ja: ja+CC # and
+!!€ et: et+CS # that
+!!€ kaudu: kaudu+Adp # via 
+
+!! Käändsõna             ! Noun
+
+!! arv 			! number
++Sg !!= * {{@CODE@}}: ! ainsus	! singular
++Pl !!= * {{@CODE@}}: ! mitmus	! plural
+
+!! kääne	! case
++Nom !!= * {{@CODE@}}: ! nimetav			! nominative	
++Gen !!= * {{@CODE@}}: ! omastav 			! genitive	
++Par !!= * {{@CODE@}}: ! osastav			! partitive	
++Ill !!= * {{@CODE@}}: ! sisseütlev			! illative	
+!! +Ill  ! suunduv (lühike sisseütlev?)	! aditive	! p'arti, majja
++Ine !!= * {{@CODE@}}: ! seesütlev			! inessive	
++Ela !!= * {{@CODE@}}: ! seestütlev			! elative	
++All !!= * {{@CODE@}}: ! alaleütlev			! allative	
++Ade !!= * {{@CODE@}}: ! alalütlev			! adessive	
++Abl !!= * {{@CODE@}}: ! alaltütlev			! ablative	
++Tra !!= * {{@CODE@}}: ! saav				! translative	
++Trm !!= * {{@CODE@}}: ! rajav				! terminative	
++Ess !!= * {{@CODE@}}: ! olev				! essive	
++Abe !!= * {{@CODE@}}: ! ilmaütlev			! abessive	
++Com !!= * {{@CODE@}}: ! kaasaütlev			! comitative	
+
+!!€gt-norm hfstol:
+!!€ part: part+N+Sg+Nom
+!!€ maja: maja+N+Sg+Nom
+!!€ pardid: part+N+Pl+Nom
+!!€ majad: maja+N+Pl+Nom
+!!€ pardi: part+N+Sg+Gen
+!!€ maja: maja+N+Sg+Gen
+!!€ partide: part+N+Pl+Gen
+!!€ majade: maja+N+Pl+Gen
+!!€ parti: part+N+Sg+Par
+!!€ maja: maja+N+Sg+Par
+!!€ parte: part+N+Pl+Par
+!!€ maju: maja+N+Pl+Par
+!!€ parti: part+N+Sg+Ill
+!!€ majja: maja+N+Sg+Ill
+!!€ pardisse: part+N+Sg+Ill+Use/Hyp
+!!€ majasse: maja+N+Sg+Ill+Use/Rare
+!!€ partidesse: part+N+Pl+Ill
+!!€ majadesse: maja+N+Pl+Ill
+!!€ pardis: part+N+Sg+Ine
+!!€ majas: maja+N+Sg+Ine
+!!€ partides: part+N+Pl+Ine
+!!€ majades: maja+N+Pl+Ine
+!!€ pardist: part+N+Sg+Ela
+!!€ majast: maja+N+Sg+Ela
+!!€ partidest: part+N+Pl+Ela
+!!€ majadest: maja+N+Pl+Ela
+!!€ pardile: part+N+Sg+All
+!!€ majale: maja+N+Sg+All
+!!€ partidele: part+N+Pl+All
+!!€ majadele: maja+N+Pl+All
+!!€ pardil: part+N+Sg+Ade
+!!€ majal: maja+N+Sg+Ade
+!!€ partidel: part+N+Pl+Ade
+!!€ majadel: maja+N+Pl+Ade
+!!€ pardilt: part+N+Sg+Abl
+!!€ majalt: maja+N+Sg+Abl
+!!€ partidelt: part+N+Pl+Abl
+!!€ majadelt: maja+N+Pl+Abl
+!!€ pardiks: part+N+Sg+Tra
+!!€ majaks: maja+N+Sg+Tra
+!!€ partideks: part+N+Pl+Tra
+!!€ majadeks: maja+N+Pl+Tra
+!!€ pardini: part+N+Sg+Trm
+!!€ majani: maja+N+Sg+Trm
+!!€ partideni: part+N+Pl+Trm
+!!€ majadeni: maja+N+Pl+Trm
+!!€ pardina: part+N+Sg+Ess
+!!€ majana: maja+N+Sg+Ess
+!!€ partidena: part+N+Pl+Ess
+!!€ majadena: maja+N+Pl+Ess
+!!€ pardita: part+N+Sg+Abe
+!!€ majata: maja+N+Sg+Abe
+!!€ partideta: part+N+Pl+Abe
+!!€ majadeta: maja+N+Pl+Abe
+!!€ pardiga: part+N+Sg+Com
+!!€ majaga: maja+N+Sg+Com
+!!€ partidega: part+N+Pl+Com
+!!€ majadega: maja+N+Pl+Com
+
+!! verb
+!! finiitsed (pöördelised) ja infiniitsed (nn käänduvad) vormid
+!! finite (conjugable) and infinite ("declinable") forms
+
+!! pöördelistel vormidel on kategooriad: 
+!! tegumood, aeg, kõneviis, isik, arv, kõneliik
+!! (tegumood ja aeg on ka mõnedel infiniitsetel vormidel)
+
+!! finite forms have categories: 
+!! voice, tense, mood, person, number, negation
+!! (some infinite forms also have voice and tense)
+
+!! tegumood		! voice
++Impers !!= * {{@CODE@}}: ! umbisikuline	! impersonal
++Pers !!= * {{@CODE@}}: ! isikuline	! personal
+
+!! aeg			! tense
++Prs !!= * {{@CODE@}}: ! olevik	! present
++Prt !!= * {{@CODE@}}: ! minevik	! past (i.e. not present)
+!! lihtminevik = minevik ! past imperfect = past
+!! täisminevik, past perfect: olema (pres) + nud/tud/dud (olen teinud)
+!! enneminevik, past pluperfect: olema (impf) + nud/tud/dud (olin teinud)
+
+!! kõneviis		! mood
++Ind !!= * {{@CODE@}}: ! kindel	! indicative
++Cond !!= * {{@CODE@}}: ! tingiv	! conditional
++Imprt !!= * {{@CODE@}}: ! käskiv	! imperative / jussive
++Quot !!= * {{@CODE@}}: ! kaudne	! quotative
+
+!! pööre	ja arv		        ! person and number
++Sg1 !!= * {{@CODE@}}: ! ainsuse 1. pööre	! singular 1st person
++Sg2 !!= * {{@CODE@}}: ! ainsuse 2. pööre	! singular 2nd person
++Sg3 !!= * {{@CODE@}}:  ! ainsuse 3. pööre	! singular 3rd person
++Pl1 !!= * {{@CODE@}}: ! mitmuse 1. pööre	! plural   1st person
++Pl2 !!= * {{@CODE@}}: ! mitmuse 2. pööre	! plural   2nd person
++Pl3 !!= * {{@CODE@}}:  ! mitmuse 3. pööre	! plural   3rd person
+
+!! kõneliik		! polarity
++Aff !!= * {{@CODE@}}:  ! jaatav kõne	! affirmative
++Neg !!= * {{@CODE@}}: ! eitav kõne	! negative
+
+!! infiniitsed (nn käänduvad) verbivormid
+!! infinite ("declinable") verb forms
+
++Sup !!= * {{@CODE@}}: ! ma-tegevusnimi ! supine (ma-infinitive)	! lugema
+
++Inf !!= * {{@CODE@}}: ! da-tegevusnimi ! infinitive (da-infinitive)	! lugeda
+
++Ger !!= * {{@CODE@}}: ! des-vorm	 ! gerund (des-form)		! lugedes
+
++Prc !!= * {{@CODE@}}: ! kesksõna	 ! participle
 
 
-! verb
-! finiitsed (pöördelised) ja infiniitsed (nn käänduvad) vormid
-! finite (conjugable) and infinite ("declinable") forms
+!! kategooriate võimalikud kombinatsioonid
+!! possible combinations of categories
+!! allikas / source :
+!! Heiki-Jaan Kaalep. Eesti verbi vormistik. Keel ja kirjandus 1/2015 lk 1-15. http://kjk.eki.ee/ee/issues/2015/1/582 
 
-! pöördelistel vormidel on kategooriad: 
-! tegumood, aeg, kõneviis, isik, arv, kõneliik
-! (tegumood ja aeg on ka mõnedel infiniitsetel vormidel)
+!! The categories are given in the order in which the allomorphs (if they can be
+!! distinguished) that represent them are attached to the word stem (note that the
+!! treatment of allomorphs is sloppy here). The justification is that the
+!! categories are not equal, but form an hierarchy: those closer to the word end 
+!! tend to be more optional, more often non-specified.   
+!!
+!!# __voice:__ personal vs. impersonal (0-morph vs. {{t/d[aiu]}}), eg. elaks vs
+!!  elataks, elav vs elatav
+!!# __tense:__ present vs. past (0-morph vs. s/si/nu), e.g. elan vs. elasin;
+!!  elaks vs. elanuks
+!!# __mood:__ indicative vs. conditional vs imperative vs quotative
+!!  (0-morph vs. ks vs. k/g[ue] vs. vat)
+!!# __person+number:__ notice that in personal present and past conditional, imperative 
+!!  and quotative moods one form is underspecified for person+number
+!!# __negation:__ affirmative vs. negative. It manifests itself via
+!!  lexical means: it is either present in an exceptional wordform (some forms of
+!!  olema) or gets adhered to a form, normally used in affirmative,
+!!  from an immediately preceding word ei, ega or ära (e.g. ei elaks).
+!!  The only case when negation has a dedicated form of its own is impersonal
+!!  present indicative negative (e.g. ei elata).  
+!!
+!! The forms of negative words pole and ära are included in order to capture really all 
+!!  the combinations; 
+!! also note that for olema, there are some constellations of categories that are the same for
+!! a wordform beginning with ole- and pole- 
+!! 
+!! * tähistab kategooriate kombinatsiooni või sõnavormi, mida 1.11.2016 ei genereerita ega tunta ära 
+!! * denotes the categories or word form that is not recognized nor generated as of Nov 1, 2016
+!!
+!! ---- personal finite forms ----
+!!
+!!€gt-norm hfstol:
+!!€ elan: elama+V+Pers+Prs+Ind+Sg1+Aff
+!!€ elad: elama+V+Pers+Prs+Ind+Sg2+Aff
+!!€ elab: elama+V+Pers+Prs+Ind+Sg3+Aff
+!!€ elame: elama+V+Pers+Prs+Ind+Pl1+Aff
+!!€ elate: elama+V+Pers+Prs+Ind+Pl2+Aff
+!!€ elavad: elama+V+Pers+Prs+Ind+Pl3+Aff
+!!
+!!€ ela: elama+V+Pers+Prs+Ind+Neg 
+!! NB! ei ole = pole
+!!€ pole: olema+V+Pers+Prs+Ind+Neg 
+!!€ ole: olema+V+Pers+Prs+Ind+Neg 
+!!
+!!€ elaksin: elama+V+Pers+Prs+Cond+Sg1+Aff
+!!€ elaksid: elama+V+Pers+Prs+Cond+Sg2+Aff
+!!€ elaks: elama+V+Pers+Prs+Cond
+!!€ elaksime: elama+V+Pers+Prs+Cond+Pl1+Aff
+!!€ elaksite: elama+V+Pers+Prs+Cond+Pl2+Aff
+!!€ elaksid: elama+V+Pers+Prs+Cond+Pl3+Aff
+!!
+!!€ poleksin: olema+V+Pers+Prs+Cond+Sg1+Neg
+!!€ poleksid: olema+V+Pers+Prs+Cond+Sg2+Neg
+!!€ poleks: olema+V+Pers+Prs+Cond+Neg
+!!€ poleksime: olema+V+Pers+Prs+Cond+Pl1+Neg
+!!€ poleksite: olema+V+Pers+Prs+Cond+Pl2+Neg
+!!€ poleksid: olema+V+Pers+Prs+Cond+Pl3+Neg
+!!
+!!€ ela: elama+V+Pers+Prs+Imprt+Sg2
+!!€ elagu: elama+V+Pers+Prs+Imprt
+!!€ elagem: elama+V+Pers+Prs+Imprt+Pl1
+!!€ elage: elama+V+Pers+Prs+Imprt+Pl2
+!!
+!!€ ära: ära+V+Pers+Prs+Imprt+Sg2+Neg
+!!€ ärgu: ära+V+Pers+Prs+Imprt+Neg
+!!€ ärgem: ära+V+Pers+Prs+Imprt+Pl1+Neg
+!!€ ärme: ära+V+Pers+Prs+Imprt+Pl1+Neg+Use/Rare
+!!€ ärge: ära+V+Pers+Prs+Imprt+Pl2+Neg
+!!
+!!€ elavat: elama+V+Pers+Prs+Quot
+!!€ polevat: olema+V+Pers+Prs+Quot+Neg
+!! 
+!!€ elasin: elama+V+Pers+Prt+Ind+Sg1+Aff
+!!€ elasid: elama+V+Pers+Prt+Ind+Sg2+Aff
+!!€ elas: elama+V+Pers+Prt+Ind+Sg3+Aff
+!!€ elasime: elama+V+Pers+Prt+Ind+Pl1+Aff
+!!€ elasite: elama+V+Pers+Prt+Ind+Pl2+Aff
+!!€ elasid: elama+V+Pers+Prt+Ind+Pl3+Aff
+!!
+!!€ elanud: elama+V+Pers+Prt+Ind+Neg
+!! NB! ei olnud = polnud
+!!€ polnud: olema+V+Pers+Prt+Ind+Neg
+!!€ olnud: olema+V+Pers+Prt+Ind+Neg
+!!
+!!€ elanuksin: elama+V+Pers+Prt+Cond+Sg1+Aff
+!!€ elanuksid: elama+V+Pers+Prt+Cond+Sg2+Aff
+!!€ elanuks: elama+V+Pers+Prt+Cond
+!!€ elanuksime: elama+V+Pers+Prt+Cond+Pl1+Aff
+!!€ elanuksite: elama+V+Pers+Prt+Cond+Pl2+Aff
+!!€ elanuksid: elama+V+Pers+Prt+Cond+Pl3+Aff
+!!
+!!€ polnuksin: olema+V+Pers+Prt+Cond+Sg1+Neg
+!!€ polnuksid: olema+V+Pers+Prt+Cond+Sg2+Neg
+!!€ polnuks: olema+V+Pers+Prt+Cond+Neg
+!!€ polnuksime: olema+V+Pers+Prt+Cond+Pl1+Neg
+!!€ polnuksite: olema+V+Pers+Prt+Cond+Pl2+Neg
+!!€ polnuksid: olema+V+Pers+Prt+Cond+Pl3+Neg
+!!
+!! *elanud: elama+V+Pers+Prt+Imprt 
+!!€ ärnud: ära+V+Pers+Prt+Imprt+Neg
+!!
+!!€ elanuvat: elama+V+Pers+Prt+Quot
+!!€ polnuvat: olema+V+Pers+Prt+Quot+Neg
+!!
+!! ---- personal infinite forms ----
+!!
+!!€ elav: elama+V+Pers+Prs+Prc
+!!€ elanud: elama+V+Pers+Prt+Prc
+!!          (on, oli, ...) + V+Pers+Prt+Prc = some analytical personal form 
+!!
+!!€ elama: elama+V+Pers+Sup+Ill
+!!€ elamas: elama+V+Pers+Sup+Ine
+!!€ elamast: elama+V+Pers+Sup+Ela
+!!€ elamaks: elama+V+Pers+Sup+Tra
+!!€ elamata: elama+V+Pers+Sup+Abe
+!!
+!! ---- impersonal finite forms ----
+!!
+!!€ elatakse: elama+V+Impers+Prs+Ind+Aff
+!!€ elata: elama+V+Impers+Prs+Ind+Neg 
+!!                   
+!! NB! ei olda = polda
+!!€ polda: olema+V+Impers+Prs+Ind+Neg 
+!!€ olda: olema+V+Impers+Prs+Ind+Neg 
+!!
+!!€ elataks: elama+V+Impers+Prs+Cond
+!!€ poldaks: olema+V+Impers+Prs+Cond+Neg
+!!
+!!€ elatagu: elama+V+Impers+Prs+Imprt
+!!€ ärdagu: ära+V+Impers+Prs+Imprt+Neg
+!!
+!!€ elatavat: elama+V+Impers+Prs+Quot
+!!€ poldavat: olema+V+Impers+Prs+Quot+Neg
+!!
+!!€ elati: elama+V+Impers+Prt+Ind+Aff
+!!€ elatud: elama+V+Impers+Prt+Ind+Neg 
+!!
+!! NB! ei oldud = poldud
+!!€ poldud: olema+V+Impers+Prt+Ind+Neg
+!!€ oldud: olema+V+Impers+Prt+Ind+Neg
+!!
+!!€ elatuks: elama+V+Impers+Prt+Cond
+!!€ polduks: olema+V+Impers+Prt+Cond+Neg
+!!
+!! ---- impersonal infinite forms ----
+!!
+!!€ elatav: elama+V+Impers+Prs+Prc
+!!€ elatud: elama+V+Impers+Prt+Prc
+!!          (on, oli, ...) + V+Impers+Prt+Prc = some analytical personal form 
+!!
+!!€ elatama: elama+V+Impers+Sup
+!!
+!! ---- infinite forms with no voice category ----
+!!
+!!€ elada: elama+V+Inf
+!!€ elades: elama+V+Ger
+!!
+!!
+!! Exceptional cases:
+!!
+!! personal present (Prs not implemented????), 3 words:  kuulukse, tunnukse, näikse
+!!
+!!€ kuulukse: kuulukse+V
+!!
+!! negation verb 
+!!
+!!€ ei: ei+V+Neg
+!!
+!! Analytical forms (olen elanud, olin elanud, oleksin elanud, ei olnud elanud,
+!! ei olnuks elanud etc) are not treated here...
 
-! finite forms have categories: 
-! voice, tense, mood, person, number, negation
-! (some infinite forms also have voice and tense)
+!! partikkel -gi/-ki
+!! particle -gi/-ki
++Foc/gi !!= * {{@CODE@}}:
 
-! tegumood		! voice
-+Impers	! umbisikuline	! impersonal
-+Pers	! isikuline	! personal
+!! kasutust (sagedust jm) iseloomustavad märgendid
+!! usage-related tags
++Emph !!= * {{@CODE@}}:      ! long inflectional forms of personal pronouns mina, sina, tema, meie, teie, nemad
 
-! aeg			! tense
-+Prs	! olevik	! present
-+Prt	! minevik	! past (i.e. not present)
-! lihtminevik = minevik ! past imperfect = past
-! täisminevik, past perfect: olema (pres) + nud/tud/dud (olen teinud)
-! enneminevik, past pluperfect: olema (impf) + nud/tud/dud (olin teinud)
+!! paralleelvormide erinevat kasutussagedust iseloomustavad
+!! usage info for parallel forms (either correct according to the norm, or incorrect)
 
-! kõneviis		! mood
-+Ind	! kindel	! indicative
-+Cond	! tingiv	! conditional
-+Imprt	! käskiv	! imperative / jussive
-+Quot	! kaudne	! quotative
++Use/Rare !!= * {{@CODE@}}:       ! norm, but rare: puusid:puu+Pl+Par+Use/Rare
++Use/Hyp !!= * {{@CODE@}}:        ! norm, but so rare that norm is probaly wrong: tiivasse:tiib+Sg+Ill+Use/Hyp
++Use/NotNorm !!= * {{@CODE@}}:    ! not norm, but sometimes used: pöidlates:pöial+Pl+Ine+Use/NotNorm
++Use/CommonNotNorm !!= * {{@CODE@}}: ! not norm, and used more than norm: peeneid:peen+Pl+Par+Use/CommonNotNorm
 
-! pööre	ja arv		        ! person and number
-+Sg1	! ainsuse 1. pööre	! singular 1st person
-+Sg2	! ainsuse 2. pööre	! singular 2nd person
-+Sg3 	! ainsuse 3. pööre	! singular 3rd person
-+Pl1	! mitmuse 1. pööre	! plural   1st person
-+Pl2	! mitmuse 2. pööre	! plural   2nd person
-+Pl3 	! mitmuse 3. pööre	! plural   3rd person
-
-! kõneliik		! polarity
-+Aff 	! jaatav kõne	! affirmative
-+Neg	! eitav kõne	! negative
-
-! infiniitsed (nn käänduvad) verbivormid
-! infinite ("declinable") verb forms
-
-+Sup	! ma-tegevusnimi ! supine (ma-infinitive)	! lugema
-
-+Inf	! da-tegevusnimi ! infinitive (da-infinitive)	! lugeda
-
-+Ger	! des-vorm	 ! gerund (des-form)		! lugedes
-
-+Prc	! kesksõna	 ! participle
-
-
-! kategooriate võimalikud kombinatsioonid
-! possible combinations of categories
-! allikas / source :
-! Heiki-Jaan Kaalep. Eesti verbi vormistik. Keel ja kirjandus 1/2015 lk 1-15. http://kjk.eki.ee/ee/issues/2015/1/582 
-
-! The categories are given in the order in which the allomorphs (if they can be
-! distinguished) that represent them are attached to the word stem (note that the
-! treatment of allomorphs is sloppy here). The justification is that the
-! categories are not equal, but form an hierarchy: those closer to the word end 
-! tend to be more optional, more often non-specified.   
-!
-!# __voice:__ personal vs. impersonal (0-morph vs. {{t/d[aiu]}}), eg. elaks vs
-!  elataks, elav vs elatav
-!# __tense:__ present vs. past (0-morph vs. s/si/nu), e.g. elan vs. elasin;
-!  elaks vs. elanuks
-!# __mood:__ indicative vs. conditional vs imperative vs quotative
-!  (0-morph vs. ks vs. k/g[ue] vs. vat)
-!# __person+number:__ notice that in personal present and past conditional, imperative 
-!  and quotative moods one form is underspecified for person+number
-!# __negation:__ affirmative vs. negative. It manifests itself via
-!  lexical means: it is either present in an exceptional wordform (some forms of
-!  olema) or gets adhered to a form, normally used in affirmative,
-!  from an immediately preceding word ei, ega or ära (e.g. ei elaks).
-!  The only case when negation has a dedicated form of its own is impersonal
-!  present indicative negative (e.g. ei elata).  
-!
-! Below, brackets are used to indicate the set of underspecified alternative values.
-! The forms of negative words pole and ära are included in order to capture really all 
-!  the combinations
-! 
-! * tähistab kategooriate kombinatsiooni või sõnavormi, mida 1.10.2015 ei genereerita ega tunta ära 
-! * denotes the categories or word form that is not recognized nor generated as of Oct 1, 2015
-!
-! ---- personal finite forms ----
-!
-! personal present indicative Sg1 affirmative                                    elan  
-! personal present indicative Sg2 affirmative                                    elad  
-! personal present indicative Sg3 affirmative                                    elab  
-! personal present indicative Pl1 affirmative                                    elame 
-! personal present indicative Pl2 affirmative                                    elate 
-! personal present indicative Pl3 affirmative                                    elavad
-!
-! personal present indicative (Sg1/Sg2/Sg3/Pl1/Pl2/Pl3) negative                 ela, pole
-!
-! personal present conditional Sg1 affirmative                                   elaksin
-! personal present conditional Sg2 affirmative                                   elaksid
-! personal present conditional (Sg1/Sg2/Sg3/Pl1/Pl2/Pl3) (affirmative/negative)  elaks 
-! personal present conditional Pl1 affirmative                                   elaksime
-! personal present conditional Pl2 affirmative                                   elaksite
-! personal present conditional Pl3 affirmative                                   elaksid
-!
-! personal present conditional Sg1 negative                                      poleksin*
-! personal present conditional Sg2 negative                                      poleksid*
-! personal present conditional (Sg1/Sg2/Sg3/Pl1/Pl2/Pl3) negative                poleks
-! personal present conditional Pl1 negative                                      poleksime*
-! personal present conditional Pl2 negative                                      poleksite*
-! personal present conditional Pl3 negative                                      poleksid*
-!
-! personal present imperative Sg2 (affirmative/negative)                         ela
-! personal present imperative (Sg1/Sg2/Sg3/Pl1/Pl2/Pl3) (affirmative/negative)   elagu 
-! personal present imperative Pl1 (affirmative/negative)                         elagem
-! personal present imperative Pl2 (affirmative/negative)                         elage 
-!
-! personal present imperative Sg2 negative                                       ära
-! personal present imperative (Sg1/Sg2/Sg3/Pl1/Pl2/Pl3) negative                 ärgu
-! personal present imperative Pl1 negative                                       ärgem, ärme
-! personal present imperative Pl2 negative                                       ärge
-!
-! personal present quotative (affirmative/negative)                              elavat
-! personal present quotative negative                                            polevat
-! 
-! personal past indicative Sg1 affirmative                                       elasin
-! personal past indicative Sg2 affirmative                                       elasid
-! personal past indicative Sg3 affirmative                                       elas  
-! personal past indicative Pl1 affirmative                                       elasime
-! personal past indicative Pl2 affirmative                                       elasite
-! personal past indicative Pl3 affirmative                                       elasid
-!
-! personal past indicative (Sg1/Sg2/Sg3/Pl1/Pl2/Pl3) negative                    polnud 
-!
-! personal past conditional Sg1 affirmative                                      elanuksin
-! personal past conditional Sg2 affirmative                                      elanuksid
-! personal past conditional (Sg1/Sg2/Sg3/Pl1/Pl2/Pl3) (affirmative/negative)     elanuks
-! personal past conditional Pl1 affirmative                                      elanuksime
-! personal past conditional Pl2 affirmative                                      elanuksite
-! personal past conditional Pl3 affirmative                                      elanuksid
-!
-! personal past conditional Sg1 negative                                         polnuksin*
-! personal past conditional Sg2 negative                                         polnuksid*
-! personal past conditional (Sg1/Sg2/Sg3/Pl1/Pl2/Pl3) negative                   polnuks
-! personal past conditional Pl1 negative                                         polnuksime*
-! personal past conditional Pl2 negative                                         polnuksite*
-! personal past conditional Pl3 negative                                         polnuksid*
-!
-! personal past imperative (Sg1/Sg2/Sg3/Pl1/Pl2/Pl3) (affirmative/negative) *    elanud 
-! personal past imperative (Sg1/Sg2/Sg3/Pl1/Pl2/Pl3) negative  *                 ärnud*
-!
-! personal past quotative (affirmative/negative)                                 elanuvat
-! personal past quotative negative                                               polnuvat
-!
-! ---- personal infinite forms ----
-!
-! personal present participle                                                     elav
-! personal past participle                                                        elanud
-!          (ei, on, oli, ...) + personal past participle = some analytical personal form 
-!
-! personal supine illative                                                        elama 
-! personal supine inessive                                                        elamas
-! personal supine elative                                                         elamast
-! personal supine translative                                                     elamaks
-! personal supine abessive                                                        elamata
-!
-! ---- impersonal finite forms ----
-!
-! impersonal present indicative affirmative                                       elatakse
-! impersonal present indicative negative                                          elata, polda 
-!                   
-! impersonal present conditional (affirmative/negative)                           elataks
-! impersonal present conditional negative                                         poldaks
-!
-! impersonal present imperative (affirmative/negative)                            elatagu
-! impersonal present imperative negative                                          ärdagu
-!
-! impersonal present quotative (affirmative/negative)                             elatavat
-! impersonal present quotative negative                                           poldavat
-!
-! impersonal past indicative affirmative                                          elati 
-! impersonal past indicative negative                                             elatud, poldud 
-!
-! impersonal past conditional (affirmative/negative)                              elatuks
-! impersonal past conditional negative                                            polduks*
-!
-! ---- impersonal infinite forms ----
-!
-! impersonal present participle                                                   elatav
-! impersonal past participle                                                      elatud
-!
-! impersonal supine                                                               elatama
-!
-! ---- infinite forms with no voice category ----
-!
-! infinitive                                                                      elada
-! gerund                                                                          elades
-!
-!
-! Exceptional cases:
-!
-! personal present (affirmative/negative), 3 words:  kuulukse, tunnukse, näikse
-! negative                                                           ei 
-!
-!
-! Analytical forms (olen elanud, olin elanud, oleksin elanud, ei olnud elanud,
-! ei olnuks elanud etc) are not treated here...
-
-! partikkel -gi/-ki
-! particle -gi/-ki
-+Foc/gi
-
-! kasutust (sagedust jm) iseloomustavad märgendid
-! usage-related tags
-+Emph      ! long inflectional forms of personal pronouns mina, sina, tema, meie, teie, nemad
-
-! paralleelvormide erinevat kasutussagedust iseloomustavad
-! usage info for parallel forms (either correct according to the norm, or incorrect)
-
-+Use/Rare       ! norm, but rare: puusid:puu+Pl+Par+Use/Rare
-+Use/Hyp        ! norm, but so rare that norm is probaly wrong: tiivasse:tiib+Sg+Ill+Use/Hyp
-+Use/NotNorm    ! not norm, but sometimes used: pöidlates:pöial+Pl+Ine+Use/NotNorm
-+Use/CommonNotNorm ! not norm, and used more than norm: peeneid:peen+Pl+Par+Use/CommonNotNorm
-
-+Use/Circ
-
-!! Morphophonology
+!!! Morphophonology
 
  %{W%} ! The weak grade trigger never appears on the surface side.
  %{WF%} ! The weak grade for foreign words trigger never appears on the surface side.
@@ -295,13 +394,13 @@ Multichar_Symbols
  %{apo%}   ! Apostrofy is needed separating inflectional affix from foreign word lemma
  %{no.apo%}  ! trigger for deleting apostrofy (used for foreign word inflections) from sg nom
 
-! short stops
+!! short stops
  G1 ! 0 g k   lagi lae lakke
  B1 ! 0 b p   saba sappa
  D1 ! 0 d t   idu eo; ida itta
 
-! G2 ! g j    kärg kärje
-! D2 ! 0 j t  sõda sõja sõtta
+!! G2 ! g j    kärg kärje
+!! D2 ! 0 j t  sõda sõja sõtta
  B2 ! b v p  tõbi tõve tõppe
 
  G3 ! 0 g  Riia Riiga
@@ -315,8 +414,8 @@ Multichar_Symbols
  
  S1 ! 0 s
   
-! orthographic convention: after voiceless (e.g. s or h), gbd is written as kpt
-! e.g. õhk-õhu, vask-vase
+!! orthographic convention: after voiceless (e.g. s or h), gbd is written as kpt
+!! e.g. õhk-õhu, vask-vase
 
  K1 ! k 0
  P1 ! p 0 ?? EKK: never happens ??
@@ -348,13 +447,13 @@ J1   ! i j ahi ahju
 
 M1   ! m n  lumi lund
 
-! Stem vowels for singular and plural
-! For plural partitive, the form is generated either with sg vowel + sid or plural vowel + 0
+!! Stem vowels for singular and plural
+!! For plural partitive, the form is generated either with sg vowel + sid or plural vowel + 0
 
  %{sg.a%}  ! a 0  Stem vowel tag in lexicon  tünga
  %{sg.e%}  ! e 0  Stem vowel tag in lexicon   neeme
  
-! default sg stem vowel for most types
+!! default sg stem vowel for most types
  %{sg.i%}  ! i 0  Stem vowel tag in lexicon
  
  %{sg.u%}  ! u 0  Stem vowel tag in lexicon   koonu
@@ -369,14 +468,14 @@ N2  ! laas-laane
  %. ! double the previous letter (kabinet - kabinetti)
  %{no.apo%}  ! no apostrofy; 
 
-! usage tag; never on the surface side
+!! usage tag; never on the surface side
 
  %{hyp%}        ! hypothetical form (norm, but never used); e.g. siilisid, puudi
  %{rare%}       ! rare or less used form (norm) ; e.g. kingasid
  %{notnorm%}    ! rare or less used form (not norm); e.g. piprate
  %{commonnotnorm%}   ! more commonly used form (but not norm); e.g. peeneid (norm: peeni)
 
-! Inflectional affixes having the same grammatical meaning
+!! Inflectional affixes having the same grammatical meaning
 
  %{i%}
  %{d%}
@@ -389,9 +488,9 @@ N2  ! laas-laane
  %{stemill%} ! lexicon flag for short sg ill, formed by stem change (jõgi-jõkke)
 
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!                       M O R P H O T A C T I C S                         !!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!                       M O R P H O T A C T I C S                         !!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 LEXICON Root
 
@@ -406,7 +505,6 @@ Nouns ;
 ProperNouns ;
 Numerals ;
 Pronouns ;
-Punctuation ;
 Verbs ;
 NoninflectingVerbs ;
 Interjections ;

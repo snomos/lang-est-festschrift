@@ -1,9 +1,12 @@
-! stressing affix gi/ki can be appended to almost any word form
+!! stressing affix gi/ki can be appended to almost any word form
 
-LEXICON GI  ! liide gi/ki
+LEXICON GI  !! liide gi/ki
 
  +Foc/gi:%+gi #;
  #;
 
+!!€gt-norm hfstol:
+!!€ siilgi: siil+N+Sg+Nom+Foc/gi
+!!€ kottki: kott+N+Sg+Nom+Foc/gi
 
 

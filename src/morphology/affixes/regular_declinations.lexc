@@ -19,7 +19,7 @@ LEXICON AASTA    ! default? for vowel-final; stress on penultimate syllable word
 LEXICON REDEL    ! VVS 2 default for consonant-ending, stress on penultimate syllable words
    
 +Sg+Nom:%{no.apo%} GI ;             ! redel, koppel
-:I5 2C ;                            ! redeli etc
+       :I5 2C ;                            ! redeli etc
 
 ! VVS 2
 LEXICON VIRSIK    ! VVS 2 default for -ik, -ing; stress on penultimate syllable words

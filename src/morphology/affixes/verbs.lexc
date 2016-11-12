@@ -557,8 +557,8 @@ LEXICON IMPERATIVE      ! imperative
 LEXICON SUPINE_V
 
 +Sup:ma SUPINE ;
-+Prc:v GI ;
-+Quot:vat GI ;
++Prs+Prc:v GI ;
++Prs+Quot:vat GI ;
 
 LEXICON SUPINE
 
