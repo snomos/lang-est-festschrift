@@ -14,152 +14,152 @@ LEXICON KES       ! kes, mis
 
 LEXICON SEE       ! see 
 
-+Sg+Nom:e GI ;
-+Sg+Ill%+Use%/Rare:%+sse GI ;   ! sesse
++Sg:e NOMINATIVE ;
++Sg%+Use%/Rare:%+sse ILLATIVE ;   ! sesse
 +Sg+Ine%+Use%/Rare:%+s #;   ! ses
-+Sg+Ela%+Use%/Rare:%+st GI ;  ! sest
-+Sg+Ade%+Use%/Rare:%+l GI ;   ! sel
-+Sg+Abl%+Use%/Rare:%+lt GI ;  ! selt	
-+Sg+Tra%+Use%/Rare:%+ks GI ;  ! seks
++Sg%+Use%/Rare:%+st ELATIVE ;  ! sest
++Sg%+Use%/Rare:%+l ADESSIVE ;   ! sel
++Sg%+Use%/Rare:%+lt ABLATIVE ;  ! selt	
++Sg%+Use%/Rare:%+ks TRANSLATIVE ;  ! seks
 : KEMISETO ;
 
 LEXICON TOO       ! too 
 
-+Sg+Nom:o GI ;
-+Sg+Ill%+Use%/Rare:%+sse GI ;   ! tosse
++Sg:o NOMINATIVE ;
++Sg%+Use%/Rare:%+sse ILLATIVE ;   ! tosse
 +Sg+Ine%+Use%/Rare:%+s #;   ! tos
-+Sg+Ela%+Use%/Rare:%+st GI ;  ! tost
-+Sg+Ade%+Use%/Rare:%+l GI ;   ! tol
++Sg%+Use%/Rare:%+st ELATIVE ;  ! tost
++Sg%+Use%/Rare:%+l ADESSIVE ;   ! tol
 : KEMISETO ;
 
 LEXICON KEMISETO      ! kes, mis, see, too common cont. lexicon
 
 +Sg:lle STANDARD_GEN_ET_AL ;                      ! kelle, tolle etc , excl Pl Nom
-+Sg+Par:%+da GI ;                               ! keda, toda etc
++Sg:%+da PARTITIVE ;                               ! keda, toda etc
 
 ! -----
 LEXICON MASA       ! ma & sa 
 
-+Sg+Nom+Emph:ina GI ;    ! mina, sina
++Sg+Emph:ina NOMINATIVE ;    ! mina, sina
 +Sg+Nom:a #;                  ! ma, sa
-+Sg+Gen+Emph:inu GI ;                  ! minu, sinu
++Sg+Emph:inu GENITIVE ;                  ! minu, sinu
 +Sg+Gen:u #;                  ! mu, su
-+Sg+Par:in%+d GI ;                               ! mind, sind
-+Sg+Ill:u%+sse GI ;   ! musse
++Sg:in%+d PARTITIVE ;                               ! mind, sind
++Sg:u%+sse ILLATIVE ;   ! musse
 +Sg+Ine:u%+s #;     ! mus
-+Sg+Ela:u%+st GI ;
-+Sg+All:ul%+le GI ;	! mulle
-+Sg+Ade:u%+l GI ;	
-+Sg+Abl:u%+lt GI ;	
++Sg:u%+st ELATIVE ;
++Sg:ul%+le ALLATIVE ;	! mulle
++Sg:u%+l ADESSIVE ;	
++Sg:u%+lt ABLATIVE ;	
 +Sg+Com:u%+ga #;     ! muga
 +Sg+Emph:inu STANDARD_LOCATIVES ;                      ! minul, sinul
-+Sg+Tra:inu%+ks GI ;
-+Sg+Trm:inu%+ni GI ;	  ! minuni
-+Sg+Ess:inu%+na GI ;	  ! minuna
-+Sg+Abe:inu%+ta GI ;	  ! minuta
-+Pl+Com+Emph:inu%+ga GI ;      ! minuga
++Sg:inu%+ks TRANSLATIVE ;
++Sg:inu%+ni TERMINATIVE ;	  ! minuni
++Sg:inu%+na ESSIVE ;	  ! minuna
++Sg:inu%+ta ABESSIVE ;	  ! minuta
++Pl+Emph:inu%+ga COMITATIVE ;      ! minuga
 
 LEXICON METE       ! me & te 
 
-+Pl+Nom+Emph:ie GI ;    ! meie, teie
++Pl+Emph:ie NOMINATIVE ;    ! meie, teie
 +Pl+Nom: #;                  ! me, te
-+Pl+Gen+Emph:ie GI ;    ! meie, teie
++Pl+Emph:ie GENITIVE ;    ! meie, teie
 +Pl+Gen: #;                  ! me, te
-+Pl+Par:i%+d GI ;                               ! meid, teid
++Pl:i%+d PARTITIVE ;                               ! meid, teid
 +Pl:i STANDARD_LOCATIVES ;                      ! meil, teil etc
-+Pl+Tra:ie%+ks GI ;
-+Pl+Trm:ie%+ni GI ;	  ! meieni
-+Pl+Ess:ie%+na GI ;	  ! meiena
-+Pl+Abe:ie%+ta GI ;	  ! meieta
-+Pl+Com:ie%+ga GI ;    ! meiega
++Pl:ie%+ks TRANSLATIVE ;
++Pl:ie%+ni TERMINATIVE ;	  ! meieni
++Pl:ie%+na ESSIVE ;	  ! meiena
++Pl:ie%+ta ABESSIVE ;	  ! meieta
++Pl:ie%+ga COMITATIVE ;    ! meiega
 
 LEXICON TEMA       ! ta 
 
-+Sg+Nom+Emph:ema GI ;    ! tema
++Sg+Emph:ema NOMINATIVE ;    ! tema
 +Sg+Nom:a #;                  ! ta
-+Sg+Gen+Emph:ema GI ;                  ! tema
++Sg+Emph:ema GENITIVE ;                  ! tema
 +Sg+Gen:a #;                  ! ta
-+Sg+Par:e%+da GI ;                               ! teda
++Sg:e%+da PARTITIVE ;                               ! teda
 +Sg+Emph:ema STANDARD_LOCATIVES ;                      ! temal etc
-+Sg+Tra:ema%+ks GI ;
-+Sg+Trm:ema%+ni GI ;	  ! temani
-+Sg+Ess:ema%+na GI ;	  ! temana
-+Sg+Abe:ema%+ta GI ;	  ! temata
-+Pl+Com:ema%+ga GI ;      ! temaga
++Sg:ema%+ks TRANSLATIVE ;
++Sg:ema%+ni TERMINATIVE ;	  ! temani
++Sg:ema%+na ESSIVE ;	  ! temana
++Sg:ema%+ta ABESSIVE ;	  ! temata
++Pl:ema%+ga COMITATIVE ;      ! temaga
 +Sg:a STANDARD_LOCATIVES ;                      ! tal etc
 
 LEXICON NEED       ! need 
 
-+Pl+Nom:e%+d GI ;           ! need
++Pl:e%+d NOMINATIVE ;           ! need
 : NENO ;
 
 LEXICON NEMAD       ! nemad 
 
-+Pl+Nom+Emph:ema%+d GI ;           ! nemad
-+Pl+Nom:a%+d GI ;           ! nad
++Pl+Emph:ema%+d NOMINATIVE ;           ! nemad
++Pl:a%+d NOMINATIVE ;           ! nad
 :e NENO ;
 
 LEXICON NOOD       ! nood 
 
-+Pl+Nom:o%+d GI ;           ! nood
++Pl:o%+d NOMINATIVE ;           ! nood
 : NENO ;
 
 LEXICON NENO       ! need & nood common cont. lexicon
 
 :n%+de N_PL_SUBPARA ;      ! nende etc 
-+Pl+Par:%+id GI ;           ! neid
++Pl:%+id PARTITIVE ;           ! neid
 ! ??? +Pl:i STANDARD_LOCATIVES ;     ! neil etc
-+Pl+Trm:n%+de%+ni GI ;	  ! nendeni
-+Pl+Ess:n%+de%+na GI ;	  ! nendena
-+Pl+Abe:n%+de%+ta GI ;	  ! nendeta
-+Pl+Com:n%+de%+ga GI ;    ! nendega
++Pl:n%+de%+ni TERMINATIVE ;	  ! nendeni
++Pl:n%+de%+na ESSIVE ;	  ! nendena
++Pl:n%+de%+ta ABESSIVE ;	  ! nendeta
++Pl:n%+de%+ga COMITATIVE ;    ! nendega
 %+Use%/Rare:i N_VOWEL_PL_SUBPARA ;      ! neil etc 
 
 ! ----
 LEXICON ISE       ! ise, iseenese NB! the usage info is possibly wrong...
 
-+Sg+Nom:ise GI ;                  ! ise
++Sg:ise NOMINATIVE ;                  ! ise
 +Sg:enese REGULAR_GEN_ET_AL ;                      ! enese, enesel etc
 +Sg%+Use%/Rare:enda REGULAR_GEN_ET_AL ;                      ! enda, endal etc
-+Sg+Par:ennas%+t GI ;                               
-+Sg+Par%+Use%/Rare:en%+d GI ;                               
-+Sg+Ill:enese%+sse GI ;                            
-+Sg+Ill%+Use%/Rare:enda%+sse GI ;                           
++Sg:ennas%+t PARTITIVE ;                               
++Sg%+Use%/Rare:en%+d PARTITIVE ;                               
++Sg:enese%+sse ILLATIVE ;                            
++Sg%+Use%/Rare:enda%+sse ILLATIVE ;                           
 +Pl:enes%+te REGULAR_GEN_ET_AL ;
 +Pl%+Use%/Rare:end%+i REGULAR_GEN_ET_AL ;
 
 LEXICON OMAENESE       ! omaenese ; few forms; they could be regarded as parallel forms of 'ise'
 
-+Sg+Gen%+Use%/Rare:enese GI ;                      
-+Sg+Gen:enda GI ;                      
-+Pl+Gen:enes%+te GI ;
-+Pl+Gen%+Use%/Rare:end%+i GI ;
++Sg%+Use%/Rare:enese GENITIVE ;                      
++Sg:enda GENITIVE ;                      
++Pl:enes%+te GENITIVE ;
++Pl%+Use%/Rare:end%+i GENITIVE ;
 
 ! ----
 LEXICON KÕIK
 
 +Sg+Nom: #;
 +Sg:e%{W%} STANDARD_GEN_ET_AL ;                      ! kõige etc
-+Sg+Par:e GI ;                              ! kõike
++Sg:e PARTITIVE ;                              ! kõike
 +Pl+Nom: #;                            ! kõik
 +Pl%+Use%/Rare:i%+de STANDARD_GEN_ET_AL ;                      ! kõikide etc
 +Pl:i%{W%} STANDARD_GEN_ET_AL ;                      ! kõigi etc
 
 LEXICON MÕNI    ! only mõni; similar to MERI
 
-+Sg+Nom:i GI ;
++Sg:i NOMINATIVE ;
 :e N_SG_SUBPARA ;                        ! mõne etc
-+Sg+Par%+Use%/Rare:%+d GI ;                         ! mõnd
-+Sg+Par:+da GI ;                     ! actually, mõnda is the preferred form...
-+Sg+Ill:+da GI ;                     ! actually, mõnda is the preferred form...
-+Sg+Ill%+Use%/Rare:e%{W%} SG_ILL ;     ! mõnesse 
++Sg%+Use%/Rare:%+d PARTITIVE ;                         ! mõnd
++Sg:+da PARTITIVE ;                     ! actually, mõnda is the preferred form...
++Sg:+da ILLATIVE ;                     ! actually, mõnda is the preferred form...
++Sg%+Use%/Rare:e%{W%}%+sse ILLATIVE ;     ! mõnesse 
 :%+e%+de N_PL_SUBPARA ;                  ! mõnede etc
-+Pl+Par:e%+sid GI ;                      ! mõnesid
++Pl:e%+sid PARTITIVE ;                      ! mõnesid
 
 ! -----
 LEXICON KEEGI    ! only keegi; (kes+gi); nonstandard parallel forms kellegil etc like REDEL
 
-+Sg+Nom:e GI ;
++Sg:e NOMINATIVE ;
 : KEMISETO ;
 +Sg%+Use%/NotNorm:llegi STANDARD_SEM_CASES ;  ! kellegis, 
 
@@ -172,7 +172,7 @@ LEXICON MISKI    ! only miski; mis+gi; nonstandard parallel forms millegil etc; 
 
 LEXICON KUMBKI    ! only kumbki; kumb like PIIM +gi; nonstandard parallel forms kummagil etc like REDEL
 
-+Sg+Nom:%{no.apo%} GI ;
++Sg:%{no.apo%} NOMINATIVE ;
 :%{sg.a%} 1C ;
 %+Use%/NotNorm:agI5%{W%} 2C ;  ! kummagis, kummagil etc
 
@@ -192,31 +192,31 @@ LEXICON JALG   ! only jalg
 
 LEXICON KAEL   ! VVS 23  almost = PIIM, except pl gen + 
 
-+Sg+Nom:%{no.apo%} GI ;
++Sg:%{no.apo%} NOMINATIVE ;
 :%{sg.a%} 1C_SG ;
 :%{W%}%+te N_PL_SUBPARA ;                     ! kaelte etc 
 %+Use%/Rare:%{sg.a%}%+de N_PL_SUBPARA ;       ! kaelade etc 
                                               ! pl par stem vowel (u, i, 0) is lexically determined 
                                               ! and usage-wise tagged
-+Pl+Par:%{sg.a%}%+%{s%}%{i%}%{d%} PL_PAR ;  ! kaelu, kaelasid+Use/Rare
++Pl:%{sg.a%}%+%{s%}%{i%}%{d%} PL_PAR_VARIANT ;  ! kaelu, kaelasid+Use/Rare
 
 LEXICON KALLIS    !  VVS 7, 5 only kallis, kaunis unstable (closed) type; 
 
-+Sg+Nom:s%{W%} GI ;                      ! kallis
-+Sg+Par:s%{W%}%+t GI ;                   ! kallist
++Sg:s%{W%} NOMINATIVE ;                      ! kallis
++Sg:s%{W%}%+t PARTITIVE ;                   ! kallist
 :%+te N_PL_SUBPARA ;                     ! kallite etc 
 %+Use%/Rare:s%{W%}%+te N_PL_SUBPARA ;    ! kalliste etc 
 : 2C_STRONG ;                            ! kalli etc, kalleid, kalleil etc
 
 LEXICON KAKS                  ! only üks, kaks
 
-+Sg+Nom:ks GI ;                                ! kaks
++Sg:ks NOMINATIVE ;                                ! kaks
 :he N_SG_SUBPARA ;                             ! kahe etc 
-+Sg+Par:h%+t GI ;                              ! kaht
-+Sg+Par%+Use%/Rare:h%+te GI ;                  ! kahte
-+Sg+Ill:he%+sse GI ;                           ! kahesse 
++Sg:h%+t PARTITIVE ;                              ! kaht
++Sg%+Use%/Rare:h%+te PARTITIVE ;                  ! kahte
++Sg:he%+sse ILLATIVE ;                           ! kahesse 
 :hte%+de N_PL_SUBPARA ;                         ! kahtede etc 
-+Pl+Par:hte%+sid GI ;                          ! kahtesid
++Pl:hte%+sid PARTITIVE ;                          ! kahtesid
 
 LEXICON KEEL    !  VVS 13 unstable (closed) type; 
 
@@ -225,30 +225,30 @@ LEXICON KEEL    !  VVS 13 unstable (closed) type;
 
 LEXICON KEVAD              ! only küps, kevad, = REDEL, but stem vowel is e
 
-+Sg+Nom:%{no.apo%} GI ;              ! kevad
++Sg:%{no.apo%} NOMINATIVE ;              ! kevad
 :e 2C ;                              ! kevade etc
 
 LEXICON KODU    ! only kodu; stem illative is koju, rare ablative is kodunt
 
-+Sg+Nom:du%{no.apo%} GI ;
++Sg:du%{no.apo%} NOMINATIVE ;
 :du N_SG_SUBPARA ;                      ! kodu etc; weak grade has no effect here
-+Sg+Par:du GI ;                              ! kodu
-+Sg+Ill:ju GI ;                  ! 
-+Sg+Ill%+Use%/Rare:du%+sse GI ;        !  
-+Sg+Abl%+Use%/Rare:dunt GI ;        !  
++Sg:du PARTITIVE ;                              ! kodu
++Sg:ju ILLATIVE ;                  ! 
++Sg%+Use%/Rare:du%+sse ILLATIVE ;        !  
++Sg%+Use%/Rare:dunt ABLATIVE ;        !  
 :du%+de N_PL_SUBPARA ;                       ! kodude etc
-+Pl+Par:du%+sid GI ;       ! kodusid 
++Pl:du%+sid PARTITIVE ;       ! kodusid 
 
 LEXICON KOHUS                 ! only kohus-kohtu; like HOOLAS
 
-+Sg+Nom:s%{W%} GI ;                           ! kohus
++Sg:s%{W%} NOMINATIVE ;                           ! kohus
 : 2C_EXCL_SG_PAR ;                            ! kohtu etc  
-+Sg+Par:%{W%}%+t GI ;                         ! kohut
-+Sg+Par%+Use%/Rare:%+t GI ;                   ! kohtut
++Sg:%{W%}%+t PARTITIVE ;                         ! kohut
++Sg%+Use%/Rare:%+t PARTITIVE ;                   ! kohtut
 
 LEXICON KURAT    ! only kurat; like redel
    
-+Sg+Nom:t GI ;                       ! kurat
++Sg:t NOMINATIVE ;                       ! kurat
 :dI5 2C ;                            ! kuradi etc
 
 LEXICON KÕRB   ! only kõrb; contains paradigms of 2 words: 
@@ -256,142 +256,142 @@ LEXICON KÕRB   ! only kõrb; contains paradigms of 2 words:
                ! 2) Sg Gen kõrve = uninhabitable forest
                ! meaning (2) is lost today, so kõrve is used as an old wordform for desert...
 
-+Sg+Nom: GI ;                                  ! kõrb
++Sg: NOMINATIVE ;                                  ! kõrb
 
 ! type 1C kõrb-kõrve-kõrbe; like EIT
 %+Use%/Rare:%{W%}%+e N_SG_SUBPARA ;            ! kõrve etc 
-+Sg+Par:e GI ;                                 ! kõrbe NB! not rare!
-+Sg+Ill:e GI ;                                 ! kõrbe NB! not rare!
-+Sg+Ill%+Use%/Rare:e%{W%}%+sse GI ;            ! kõrvesse 
++Sg:e PARTITIVE ;                                 ! kõrbe NB! not rare!
++Sg:e ILLATIVE ;                                 ! kõrbe NB! not rare!
++Sg%+Use%/Rare:e%{W%}%+sse ILLATIVE ;            ! kõrvesse 
 %+Use%/Rare:e%+de N_PL_SUBPARA ;          ! kõrbede etc 
-+Pl+Par%+Use%/Rare:i GI ;                      ! kõrbi
-+Pl+Par%+Use%/Rare:e%+sid GI ;                 ! kõrbesid
++Pl%+Use%/Rare:i PARTITIVE ;                      ! kõrbi
++Pl%+Use%/Rare:e%+sid PARTITIVE ;                 ! kõrbesid
 
 ! type 2C kõrb-kõrbe-kõrbet; like REDEL with stem vowel e
 :%+e N_SG_SUBPARA ;                            ! kõrbe etc 
-+Sg+Par%+Use%/Rare:e%+t GI ;                   ! kõrbet NB! rare!
-+Sg+Ill%+Use%/Rare:e%+sse GI ;                 ! kõrbesse NB! rare!
++Sg%+Use%/Rare:e%+t PARTITIVE ;                   ! kõrbet NB! rare!
++Sg%+Use%/Rare:e%+sse ILLATIVE ;                 ! kõrbesse NB! rare!
 :e%+te N_PL_SUBPARA ;                          ! kõrbete etc 
-+Pl+Par:e%+id GI ;                             ! kõrbeid 
++Pl:e%+id PARTITIVE ;                             ! kõrbeid 
 
 LEXICON KÖÖMEN               ! only köömen; like KEVAD
 
-+Sg+Nom:%{no.apo%} GI ;                        ! köömen
++Sg:%{no.apo%} NOMINATIVE ;                        ! köömen
 :e 2C ;                                        ! köömne etc  
-+Sg+Par%+Use%/CommonNotNorm:%+t GI ;           ! kööment
++Sg%+Use%/CommonNotNorm:%+t PARTITIVE ;           ! kööment
 
 LEXICON LAPS               ! only laps, uks; notice the weird (?) use of {W}
 
-+Sg+Nom: GI ;                                 ! laps
++Sg: NOMINATIVE ;                                 ! laps
 :e N_SG_SUBPARA ;                             ! lapse etc 
-+Sg+Par:%{W%}%+t GI ;                              ! last
-+Sg+Ill:e%+sse GI ;                           ! lapsesse 
++Sg:%{W%}%+t PARTITIVE ;                              ! last
++Sg:e%+sse ILLATIVE ;                           ! lapsesse 
 :%{W%}%+te N_PL_SUBPARA ;                          ! laste etc 
-+Pl+Par:%+i GI ;                              ! lapsi
++Pl:%+i PARTITIVE ;                              ! lapsi
 
 LEXICON LÕUNA                 ! only lõuna; almost like haare
 
-+Sg+Nom:%{W%} GI ;                      ! lõuna
-+Sg+Par:%{W%}%+t GI ;                   ! lõunat
++Sg:%{W%} NOMINATIVE ;                      ! lõuna
++Sg:%{W%}%+t PARTITIVE ;                   ! lõunat
 : 2C_EXCL_SG_PAR ;                      ! lõuna etc
 
 
 LEXICON MANNER    ! VVS 3 only manner, tanner
                   ! almost = VAHER, but stem vowel is i
 
-+Sg+Nom:%{W%} GI ;                     ! manner
++Sg:%{W%} NOMINATIVE ;                     ! manner
 :I5 2C ;                               ! mandri etc
 
 LEXICON MEES                  ! only mees
 
-+Sg+Nom:es GI ;                                ! mees
++Sg:es NOMINATIVE ;                                ! mees
 :he N_SG_SUBPARA ;                             ! mehe etc 
-+Sg+Par:es%+t GI ;                             ! meest
-+Sg+Ill:he%+sse GI ;                           ! mehesse 
++Sg:es%+t PARTITIVE ;                             ! meest
++Sg:he%+sse ILLATIVE ;                           ! mehesse 
 :es%+te N_PL_SUBPARA ;                         ! meeste etc 
-+Pl+Par:h%+i GI ;                              ! mehi
++Pl:h%+i PARTITIVE ;                              ! mehi
 
 LEXICON MERI   ! VVS 20 unstable type (passiivne muuttüüp) lumi, tuli, uni, veri
 
-+Sg+Nom:i GI ;
++Sg:i NOMINATIVE ;
 :e N_SG_SUBPARA ;                        ! mere etc
-+Sg+Par:%+d GI ;                         ! merd
-+Sg+Ill:e%{S%} SG_ILL ;            ! merre
-+Sg+Ill:e%{W%} SG_ILL ;     ! meresse 
++Sg:%+d PARTITIVE ;                         ! merd
++Sg:e%{S%} SG_ILL_VARIANT ;            ! merre
++Sg:e%{W%} SG_ILL_VARIANT ;     ! meresse 
 :%+e%+de N_PL_SUBPARA ;                  ! merede etc
-+Pl+Par:e%+sid GI ;                      ! meresid
++Pl:e%+sid PARTITIVE ;                      ! meresid
 
 LEXICON MESI     
 
-+Sg+Nom:i GI ;                                ! mesi
++Sg:i NOMINATIVE ;                                ! mesi
 :e%{W%} N_SG_SUBPARA ;                        ! mee etc 
-+Sg+Par:%+tt GI ;                             ! mett
-+Sg+Ill:e%{W%}%+sse GI ;                      ! meesse
++Sg:%+tt PARTITIVE ;                             ! mett
++Sg:e%{W%}%+sse ILLATIVE ;                      ! meesse
 :%{W%}%+te N_PL_SUBPARA ;                     ! mete etc 
-+Pl+Par:i GI ;                                ! mesi ?? meesid ???
++Pl:i PARTITIVE ;                                ! mesi ?? meesid ???
 ! +N%+Use%/Hyp: N_VOWEL_PL_SUBPARA ;          ! mesil? etc; except for some expressions (käsil) ?
 
 LEXICON NAINE   ! only naine; much like OLULINE
                   
-+Sg+Nom: GI ;
++Sg: NOMINATIVE ;
 : NE_S ;
-+Sg+Ill:E1%+sse GI ;             ! naisesse
-+Pl+Par:%+I1 GI ;                           ! naisi
++Sg:E1%+sse ILLATIVE ;             ! naisesse
++Pl:%+I1 PARTITIVE ;                           ! naisi
 %+Use%/Rare:%+I1 N_VOWEL_PL_SUBPARA ;       ! naisil etc
 
 LEXICON NIIN    ! only niin; almost like KEEL, but some forms are more regular
 
-+Sg+Nom: GI ;                                 ! niin
++Sg: NOMINATIVE ;                                 ! niin
 :e%{W%} N_SG_SUBPARA ;                        ! niine etc 
-+Sg+Par:%+t GI ;                              ! niint
-+Sg+Ill:e%{W%}%+sse GI ;                      ! niinesse 
++Sg:%+t PARTITIVE ;                              ! niint
++Sg:e%{W%}%+sse ILLATIVE ;                      ! niinesse 
 :%+te N_PL_SUBPARA ;                          ! niinte etc 
 ! +N%+Use%/Hyp:%+i N_VOWEL_PL_SUBPARA ;       ! impossible for rarer words
-+Pl+Par:e%+sid GI ;                           ! NB! niinesid (not niini)
++Pl:e%+sid PARTITIVE ;                           ! NB! niinesid (not niini)
 
 LEXICON NIMI   ! VVS 20, 21 unstable type (passiivne muuttüüp) suvi, lagi
 
-+Sg+Nom:i GI ;
++Sg:i NOMINATIVE ;
 :e%{W%} N_SG_SUBPARA ;                   ! suve etc
-+Sg+Par:e GI ;                           ! suve, lage
-+Sg+Ill:e%{S%} SG_ILL ;            ! nimme
-+Sg+Ill:e%{W%} SG_ILL ;     ! nimesse 
++Sg:e PARTITIVE ;                           ! suve, lage
++Sg:e%{S%} SG_ILL_VARIANT ;            ! nimme
++Sg:e%{W%} SG_ILL_VARIANT ;     ! nimesse 
 :%+e%+de N_PL_SUBPARA ;                  ! lagede etc
-+Pl+Par:e%+sid GI ;                      ! lagesid
++Pl:e%+sid PARTITIVE ;                      ! lagesid
 
 LEXICON PARAS      ! only paras; like LOHAKAS
 
-+Sg+Nom:s GI ;                         ! paras
++Sg:s NOMINATIVE ;                         ! paras
 :ja 2C ;                               ! paraja etc
 
 LEXICON PEEN    ! only peen, tüün; almost like KEEL, but some forms are more regular
 
-+Sg+Nom: GI ;                                  ! peen
++Sg: NOMINATIVE ;                                  ! peen
 :%+e N_SG_SUBPARA ;                            ! peene etc 
-+Sg+Par:%+t GI ;                               ! peent
-+Sg+Par%+Use%/NotNorm:e%+t GI ;                ! peenet
-+Sg+Ill%+Use%/Rare:%+de GI ;                   ! peende
-+Sg+Ill:e%{W%}%+sse GI ;                       ! peenesse 
++Sg:%+t PARTITIVE ;                               ! peent
++Sg%+Use%/NotNorm:e%+t PARTITIVE ;                ! peenet
++Sg%+Use%/Rare:%+de ILLATIVE ;                   ! peende
++Sg:e%{W%}%+sse ILLATIVE ;                       ! peenesse 
 :%+te N_PL_SUBPARA ;                           ! peente etc 
 %+Use%/NotNorm:e%+te N_PL_SUBPARA ;            ! peenete etc 
-+Pl+Par%+Use%/CommonNotNorm:e%+id GI ;         ! NB! peeneid 
-+Pl+Par:i GI ;                                 ! peeni
++Pl%+Use%/CommonNotNorm:e%+id PARTITIVE ;         ! NB! peeneid 
++Pl:i PARTITIVE ;                                 ! peeni
 %+Use%/Hyp:%{W%}%+i N_VOWEL_PL_SUBPARA ;       ! peenil etc
 
 
 LEXICON POISS   ! VVS 23 poiss, püks; almost = TAUD, except pl gen + 
 
-+Sg+Nom:%{no.apo%} GI ;
++Sg:%{no.apo%} NOMINATIVE ;
 :i 1C_SG ;                                  ! poisi etc
 :%{W%}%+te N_PL_SUBPARA ;                   ! poiste etc
 %+Use%/Rare:%+i%+de N_PL_SUBPARA ;          ! poisside etc
-+Pl+Par:e GI ;                              ! poisse
-+Pl+Par%+Use%/Hyp:i%+sid GI ;              ! poissisid+Use/Hyp
++Pl:e PARTITIVE ;                              ! poisse
++Pl%+Use%/Hyp:i%+sid PARTITIVE ;              ! poissisid+Use/Hyp
 
 LEXICON PURI  ! only puri
 
 : EIT ;
-+Pl+Par+Use%/Rare:e%+id GI ;  ! purjeid
++Pl+Use%/Rare:e%+id PARTITIVE ;  ! purjeid
 
 ! only if the plural partitive with -id is more frequent than the one with sid (puid-puusid),
 ! then the word may have vowel plural forms
@@ -403,15 +403,15 @@ LEXICON PUU ! 11 words (kuu, maa, etc) that have possible vowel plural forms
 LEXICON PÕLV  ! only põlv
 
 :v%+%{pl.i%} EIT ;
-+Sg+Nom%+Use%/Rare:i GI ;  ! põli
++Sg%+Use%/Rare:i NOMINATIVE ;  ! põli
 %+Use%/Rare:v%+i N_VOWEL_PL_SUBPARA ;  ! põlvil etc
-+Pl+Trm%+Use%/Rare:v%+i%+ni GI ;  ! põlvini
++Pl%+Use%/Rare:v%+i%+ni TERMINATIVE ;  ! põlvini
 
 LEXICON PÄIKE  ! only päike(ne), äike(ne)  VVS 10
 
 : XÄIKE ;
-+Pl+Par:kese%+id GI ;                      ! päikeseid
-+Pl+Par%+Use%/Rare:kse%+id GI ;            ! päikseid
++Pl:kese%+id PARTITIVE ;                      ! päikeseid
++Pl%+Use%/Rare:kse%+id PARTITIVE ;            ! päikseid
 
 LEXICON REHI   ! rehi, ruhi
 
@@ -426,48 +426,48 @@ LEXICON RIND   ! only rind, silm
 LEXICON RUBLA  ! about 20 words 
 
 : PERE ;
-+Sg+Par%+Use%/Rare: GI ;            ! (viis) rubla
++Sg%+Use%/Rare: PARTITIVE ;            ! (viis) rubla
 
 LEXICON SADA    ! only sada
 
 : KAVA ;
-+Sg+Par%+Use%/Rare:%+t GI ;            ! sadat
++Sg%+Use%/Rare:%+t PARTITIVE ;            ! sadat
 
 LEXICON SEEME    ! only kümme, seeme, kööme; like HAARE
 
-+Sg+Nom:%{W%} GI ;                      ! seeme
-+Sg+Par:%{W%}%+t GI ;                   ! seemet
++Sg:%{W%} NOMINATIVE ;                      ! seeme
++Sg:%{W%}%+t PARTITIVE ;                   ! seemet
 :ne 2C_EXCL_SG_PAR ;                    ! seemne etc
 
 LEXICON SÜDA                   ! only süda; like habe
 
-+Sg+Nom: GI ;                          ! süda
-+Sg+Par:n%+t GI ;                       ! südant
++Sg: NOMINATIVE ;                          ! süda
++Sg:n%+t PARTITIVE ;                       ! südant
 :me 2C_EXCL_SG_PAR ;                   ! südame etc
 
 LEXICON TALV  ! only talv
 
 :v%+%{pl.i%}%{rare%} EIT ;
-+Sg+Nom%+Use%/Rare:i GI ;  ! tali
++Sg%+Use%/Rare:i NOMINATIVE ;  ! tali
 
 LEXICON TEINE   ! only teine; almost = NAINE; much like OLULINE
                   
-+Sg+Nom: GI ;
++Sg: NOMINATIVE ;
 : NE_S ;
-+Sg+Ill:E1 GI ;                          ! teise (should be 3rd grade... )
-+Sg+Ill%+Use%/Rare:E1%+sse GI ;             ! teisesse
-+Pl+Par:%+I1 GI ;                           ! teisi
++Sg:E1 ILLATIVE ;                          ! teise (should be 3rd grade... )
++Sg%+Use%/Rare:E1%+sse ILLATIVE ;             ! teisesse
++Pl:%+I1 PARTITIVE ;                           ! teisi
 %+Use%/Rare:%+I1 N_VOWEL_PL_SUBPARA ;       ! teisil etc
 
 LEXICON TUHAT      ! only tuhat; like LOHAKAS
 
-+Sg+Nom:t GI ;                          ! tuhat
++Sg:t NOMINATIVE ;                          ! tuhat
 :nde 2C ;                               ! tuhande etc
-! ????  +Sg+Par:%+t GI ;                              ! tuhat
+! ????  +Sg:%+t PARTITIVE ;                              ! tuhat
 
 LEXICON VAHER    ! VVS 3 unstable (closed) type;  only vaher, aher
 
-+Sg+Nom:%{W%} GI ;                     ! vaher
++Sg:%{W%} NOMINATIVE ;                     ! vaher
 :a 2C ;                                ! vahtra etc
 
 LEXICON VARS     !  VVS 14 unstable (closed) type;
@@ -475,46 +475,46 @@ LEXICON VARS     !  VVS 14 unstable (closed) type;
 ! %{W%} here helps to select the right paradigm slots for stem change;
 ! it does not really stand for "weak grade"
 
-+Sg+Nom: GI ;                                 ! vars
++Sg: NOMINATIVE ;                                 ! vars
 :e%{W%} N_SG_SUBPARA ;                        ! varre etc 
-+Sg+Par:%+t GI ;                              ! vart
-+Sg+Ill:%{S%}%+de SG_ILL ;              ! varde
-+Sg+Ill:e%{W%} SG_ILL ;          ! varresse 
++Sg:%+t PARTITIVE ;                              ! vart
++Sg:%{S%}%+de SG_ILL_VARIANT ;              ! varde
++Sg:e%{W%} SG_ILL_VARIANT ;          ! varresse 
 :%+te N_PL_SUBPARA ;                          ! varte etc 
-+Pl+Par:%+i GI ;                              ! varsi
++Pl:%+i PARTITIVE ;                              ! varsi
 ! +N%+Use%/Hyp:%+i N_VOWEL_PL_SUBPARA ;       ! varsil?; except for some expressions (uusil)
 
 LEXICON VÄIKE  ! only väike(ne)  VVS 10
 
 : XÄIKE ;
-+Pl+Par%+Use%/Rare:kese%+id GI ;            ! väikeseid
-+Pl+Par:kse%+id GI ;                        ! väikseid
++Pl%+Use%/Rare:kese%+id PARTITIVE ;            ! väikeseid
++Pl:kse%+id PARTITIVE ;                        ! väikseid
 
 LEXICON XÄIKE  ! VVS 10 common part of väike(ne), päike(ne), äike(ne)
 
-+Sg+Nom:ke GI ;
-+Sg+Nom%+Use%/Rare:kene GI ;
++Sg:ke NOMINATIVE ;
++Sg%+Use%/Rare:kene NOMINATIVE ;
 :kene NE_S ;
 %+Use%/Rare:kse N_SG_SUBPARA ;                ! xäikse etc 
-+Sg+Par%+Use%/Rare:kse%+t GI ;                ! xäikset
-+Sg+Ill:kese%+sse GI ;                        ! xäikesesse
-+Sg+Ill%+Use%/Rare:kse%+sse GI ;              ! xäiksesse
-+Sg+Ill%+Use%/Rare:ke%+sse GI ;               ! xäikesse (haplology)
++Sg%+Use%/Rare:kse%+t PARTITIVE ;                ! xäikset
++Sg:kese%+sse ILLATIVE ;                        ! xäikesesse
++Sg%+Use%/Rare:kse%+sse ILLATIVE ;              ! xäiksesse
++Sg%+Use%/Rare:ke%+sse ILLATIVE ;               ! xäikesse (haplology)
 %+Use%/Rare:kse%+te N_PL_SUBPARA ;       
-+Pl+Par%+Use%/Rare:kes%+i GI ;                ! xäikesi
++Pl%+Use%/Rare:kes%+i PARTITIVE ;                ! xäikesi
 %+Use%/Rare:kes%+i N_VOWEL_PL_SUBPARA ;       ! xäikesil etc
 %+Use%/Rare:kese%+i N_VOWEL_PL_SUBPARA ;      ! xäikeseil etc
 %+Use%/Rare:kse%+i N_VOWEL_PL_SUBPARA ;       ! xäikseil etc
 
 LEXICON ÕLU                  ! only õlu
 
-+Sg+Nom:u GI ;                                ! õlu
++Sg:u NOMINATIVE ;                                ! õlu
 :le N_SG_SUBPARA ;                             ! õlle etc 
-+Sg+Par:u%+t GI ;                             ! õlut
-+Sg+Ill:le%+sse GI ;                           ! õllesse 
++Sg:u%+t PARTITIVE ;                             ! õlut
++Sg:le%+sse ILLATIVE ;                           ! õllesse 
 :le%+de N_PL_SUBPARA ;                         ! õllede etc 
-+Pl+Par:le%+sid GI ;                              ! õlusid
-+Pl+Par%+Use%/Rare:u%+sid GI ;                              ! õlusid
++Pl:le%+sid PARTITIVE ;                              ! õlusid
++Pl%+Use%/Rare:u%+sid PARTITIVE ;                              ! õlusid
 
 
 
