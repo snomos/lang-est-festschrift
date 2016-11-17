@@ -681,13 +681,13 @@ n:s  =>       _ e: E1:  ;
 e:0  /<= n:n _ E1: ;
          n:n _ A1: ;
 
-"e disappearing (ne - s)"
+"e disappearing (ne - s) 1/2"
 
 e:0 =>        n: _ E1: ;                    ! kodune - kodust, koduse
               n: _ Null* I1: ;               ! katkine - katkisil
               n: _ A1: ;                    ! pingne - pingsa
 
-"e disappearing (ne - s) 2"
+"e disappearing (ne - s) 2/2"
 
 e:0 <=        n: _ E1: ;                    ! kodune - kodust, koduse
               n: _ Null* I1: ;               ! katkine - katkisil
@@ -708,9 +708,9 @@ E1:e   => n:s e:0 _ ;  ! -ne word
 ! -ne, -s word e deletion 
 "do not add e for inflecting some forms of ne/s word "
 
-E1:0  <=> .#. ~[ :* :Consonant Null* :s Null*] _ Null* s e ;          ! olulisse (haplology)
-          .#. ~[ :* :Consonant Null* :s Null*] _ Null* t WordEnd ;   ! soolast
-          .#. ~[ :* :Consonant Null* :s Null*] _ Null* t e ;        ! soolaste
+E1:0  <=> :Vowel Null* :s Null* _ Null* s e ;          ! olulisse (haplology)
+          :Vowel Null* :s Null* _ Null* t WordEnd ;   ! soolast
+          :Vowel Null* :s Null* _ Null* t e ;        ! soolaste
 
 !"cannot omit e because the result would be unpronouncable"
 
