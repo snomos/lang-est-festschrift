@@ -1,11 +1,11 @@
 # remove non-gi forms of some words that *must* have gi
 # and the corresponding gi forms that should *not* have gi
 
-# these wo
+# these words *must* have gi
 define giw [
         {kumbki} | {keegi} | {miski} | {eikeegi} | {eimiski}] ;
 
-#these words should not have gi/ki ever attached
+#these words should *not* have gi/ki ever attached
 define nongiw [
         {kumb} | {kes} | {mis} ] ;
 

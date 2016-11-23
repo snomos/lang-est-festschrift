@@ -167,14 +167,14 @@ LEXICON MISKI    ! only miski; mis+gi; nonstandard parallel forms millegil etc; 
 
 : KES ;
 +Sg%+Use%/NotNorm:llegi STANDARD_SEM_CASES ;  ! millegis, millegil etc
-%+Use%/NotNorm:skI5 2C ;                         ! miskid, miskite etc 
+%+Use%/NotNorm:ski 2C ;                         ! miskid, miskite etc 
 
 
 LEXICON KUMBKI    ! only kumbki; kumb like PIIM +gi; nonstandard parallel forms kummagil etc like REDEL
 
 +Sg:%{no.apo%} NOMINATIVE ;
 :%{sg.a%} 1C ;
-%+Use%/NotNorm:agI5%{W%} 2C ;  ! kummagis, kummagil etc
+%+Use%/NotNorm:agi%{W%} 2C ;  ! kummagis, kummagil etc
 
 !---------------
 ! exceptional inflectional types, i.e. covering very few words each
@@ -250,7 +250,7 @@ LEXICON KOHUS                 ! only kohus-kohtu; like HOOLAS
 LEXICON KURAT    ! only kurat; like redel
    
 +Sg:t NOMINATIVE ;                       ! kurat
-:dI5 2C ;                            ! kuradi etc
+:di 2C ;                            ! kuradi etc
 
 LEXICON KÕRB   ! only kõrb; contains paradigms of 2 words: 
                ! 1) Sg Gen kõrbe = land without plantlife (=desert)
@@ -302,7 +302,7 @@ LEXICON MANNER    ! VVS 3 only manner, tanner
                   ! almost = VAHER, but stem vowel is i
 
 +Sg:%{W%} NOMINATIVE ;                     ! manner
-:I5 2C ;                               ! mandri etc
+:i 2C ;                               ! mandri etc
 
 LEXICON MEES                  ! only mees
 

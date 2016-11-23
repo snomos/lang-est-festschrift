@@ -70,6 +70,8 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
 
 I5:e   ! vowel lowering in vowel context
 I5:i
+i:e    ! i lowering before inflectional i
+i:i    
 Ü5:ö   ! vowel lowering in vowel context
 Ü5:ü
 U5:o   ! vowel lowering in vowel context
@@ -430,6 +432,14 @@ Vx:Vy  <=>  _ Null+ :Vowel ;
 ! surface: r u k  k  e 0 i d
 ! lexical: s Ü5 S1 e {W}
 ! surface: s  ö  0 e  0
+
+"i to e before inflectional i"
+
+i:e  <=> \[ :Vowel ] _ Null* %+: :i ;
+
+! lexical: v o o d i + i d
+! surface: v o o d e 0 i d
+
 
 ! here long vowel shortening is formally equivalent to one vowel deletion
 ! hence the need to use 2 rules instead of one <=> rule:
