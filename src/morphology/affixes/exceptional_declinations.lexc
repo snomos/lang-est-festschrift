@@ -242,9 +242,10 @@ LEXICON KODU    ! only kodu; stem illative is koju, rare ablative is kodunt
 LEXICON KOHUS                 ! only kohus-kohtu; like HOOLAS
 
 +Sg:s%{W%} NOMINATIVE ;                           ! kohus
-: 2C_EXCL_SG_PAR ;                            ! kohtu etc  
 +Sg:%{W%}%+t PARTITIVE ;                         ! kohut
 +Sg%+Use%/Rare:%+t PARTITIVE ;                   ! kohtut
+:%+te N_PL_SUBPARA ;                 ! kohtute etc
+: 2C_STRONG ;                   ! kohtusse etc
 
 LEXICON KURAT    ! only kurat; like redel
    
@@ -293,7 +294,8 @@ LEXICON LÕUNA                 ! only lõuna; almost like haare
 
 +Sg:%{W%} NOMINATIVE ;                      ! lõuna
 +Sg:%{W%}%+t PARTITIVE ;                   ! lõunat
-: 2C_EXCL_SG_PAR ;                      ! lõuna etc
+:%+te N_PL_SUBPARA ;                 ! lõunate etc
+: 2C_STRONG ;                   ! lõuna, lõunasse etc
 
 
 LEXICON MANNER    ! VVS 3 only manner, tanner
@@ -437,13 +439,15 @@ LEXICON SEEME    ! only kümme, seeme, kööme; like HAARE
 
 +Sg:%{W%} NOMINATIVE ;                      ! seeme
 +Sg:%{W%}%+t PARTITIVE ;                   ! seemet
-:ne 2C_EXCL_SG_PAR ;                    ! seemne etc
+:ne%+te N_PL_SUBPARA ;
+:ne 2C_STRONG ;                    ! seemne etc
 
-LEXICON SÜDA                   ! only süda; like habe
+LEXICON SÜDA                   ! only süda; like HAARE
 
 +Sg: NOMINATIVE ;                          ! süda
-+Sg:n%+t PARTITIVE ;                       ! südant
-:me 2C_EXCL_SG_PAR ;                   ! südame etc
++Sg:n%+t PARTITIVE ;                       ! südant NB! Not südat 
+:me%+te N_PL_SUBPARA ;                 ! südamete etc
+:me 2C_STRONG ;                   ! südame etc
 
 LEXICON TALV  ! only talv
 

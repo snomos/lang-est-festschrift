@@ -63,7 +63,7 @@ kääne	! case
  * {{+Gen }}: ! omastav 			! genitive	
  * {{+Par }}: ! osastav			! partitive	
  * {{+Ill }}: ! sisseütlev			! illative	
-+Ill  ! suunduv (lühike sisseütlev?)	! aditive	! p'arti, majja
++Ill  ! suunduv (lühike sisseütlev?)	! additive aka short illative (p'arti, majja)
  * {{+Ine }}: ! seesütlev			! inessive	
  * {{+Ela }}: ! seestütlev			! elative	
  * {{+All }}: ! alaleütlev			! allative	
@@ -92,7 +92,7 @@ __hfstol: examples:__
 * __parti: __ {{part+N+Sg+Ill }}
 * __majja: __ {{maja+N+Sg+Ill }}
 * __pardisse: __ {{part+N+Sg+Ill+Use/Hyp }}
-* __majasse: __ {{maja+N+Sg+Ill+Use/Hyp }}
+* __majasse: __ {{maja+N+Sg+Ill+Use/Rare }}
 * __partidesse: __ {{part+N+Pl+Ill }}
 * __majadesse: __ {{maja+N+Pl+Ill }}
 * __pardis: __ {{part+N+Sg+Ine }}
@@ -209,7 +209,9 @@ tend to be more optional, more often non-specified.
  The only case when negation has a dedicated form of its own is impersonal
  present indicative negative (e.g. ei elata).  
 The forms of negative words pole and ära are included in order to capture really all 
- the combinations
+ the combinations; 
+also note that for olema, there are some constellations of categories that are the same for
+a wordform beginning with ole- and pole- 
 
 * tähistab kategooriate kombinatsiooni või sõnavormi, mida 1.11.2016 ei genereerita ega tunta ära 
 * denotes the categories or word form that is not recognized nor generated as of Nov 1, 2016
@@ -223,7 +225,9 @@ __hfstol: examples:__
 * __elate: __ {{elama+V+Pers+Prs+Ind+Pl2+Aff }}
 * __elavad: __ {{elama+V+Pers+Prs+Ind+Pl3+Aff }}
 * __ela: __ {{elama+V+Pers+Prs+Ind+Neg }}
+NB! ei ole = pole
 * __pole: __ {{olema+V+Pers+Prs+Ind+Neg }}
+* __ole: __ {{olema+V+Pers+Prs+Ind+Neg }}
 * __elaksin: __ {{elama+V+Pers+Prs+Cond+Sg1+Aff }}
 * __elaksid: __ {{elama+V+Pers+Prs+Cond+Sg2+Aff }}
 * __elaks: __ {{elama+V+Pers+Prs+Cond }}
@@ -243,7 +247,7 @@ __hfstol: examples:__
 * __ära: __ {{ära+V+Pers+Prs+Imprt+Sg2+Neg }}
 * __ärgu: __ {{ära+V+Pers+Prs+Imprt+Neg }}
 * __ärgem: __ {{ära+V+Pers+Prs+Imprt+Pl1+Neg }}
-* __ärme: __ {{ära+V+Pers+Prs+Imprt+Pl1+Neg }}
+* __ärme: __ {{ära+V+Pers+Prs+Imprt+Pl1+Neg+Use/Rare }}
 * __ärge: __ {{ära+V+Pers+Prs+Imprt+Pl2+Neg }}
 * __elavat: __ {{elama+V+Pers+Prs+Quot }}
 * __polevat: __ {{olema+V+Pers+Prs+Quot+Neg }}
@@ -254,7 +258,10 @@ __hfstol: examples:__
 * __elasime: __ {{elama+V+Pers+Prt+Ind+Pl1+Aff }}
 * __elasite: __ {{elama+V+Pers+Prt+Ind+Pl2+Aff }}
 * __elasid: __ {{elama+V+Pers+Prt+Ind+Pl3+Aff }}
+* __elanud: __ {{elama+V+Pers+Prt+Ind+Neg }}
+NB! ei olnud = polnud
 * __polnud: __ {{olema+V+Pers+Prt+Ind+Neg }}
+* __olnud: __ {{olema+V+Pers+Prt+Ind+Neg }}
 * __elanuksin: __ {{elama+V+Pers+Prt+Cond+Sg1+Aff }}
 * __elanuksid: __ {{elama+V+Pers+Prt+Cond+Sg2+Aff }}
 * __elanuks: __ {{elama+V+Pers+Prt+Cond }}
@@ -267,14 +274,14 @@ __hfstol: examples:__
 * __polnuksime: __ {{olema+V+Pers+Prt+Cond+Pl1+Neg }}
 * __polnuksite: __ {{olema+V+Pers+Prt+Cond+Pl2+Neg }}
 * __polnuksid: __ {{olema+V+Pers+Prt+Cond+Pl3+Neg }}
-+Pers+Prt+Imprt *    elanud 
-* __ärnud: __ {{ära+Pers+Prt+Imprt+Neg }}
+*elanud: elama+V+Pers+Prt+Imprt 
+* __ärnud: __ {{ära+V+Pers+Prt+Imprt+Neg }}
 * __elanuvat: __ {{elama+V+Pers+Prt+Quot }}
 * __polnuvat: __ {{olema+V+Pers+Prt+Quot+Neg }}
 ---- personal infinite forms ----
 * __elav: __ {{elama+V+Pers+Prs+Prc }}
 * __elanud: __ {{elama+V+Pers+Prt+Prc }}
-         (ei, on, oli, ...) + V+Pers+Prt+Prc = some analytical personal form 
+         (on, oli, ...) + V+Pers+Prt+Prc = some analytical personal form 
 * __elama: __ {{elama+V+Pers+Sup+Ill }}
 * __elamas: __ {{elama+V+Pers+Sup+Ine }}
 * __elamast: __ {{elama+V+Pers+Sup+Ela }}
@@ -284,7 +291,9 @@ __hfstol: examples:__
 * __elatakse: __ {{elama+V+Impers+Prs+Ind+Aff }}
 * __elata: __ {{elama+V+Impers+Prs+Ind+Neg }}
                   
+NB! ei olda = polda
 * __polda: __ {{olema+V+Impers+Prs+Ind+Neg }}
+* __olda: __ {{olema+V+Impers+Prs+Ind+Neg }}
 * __elataks: __ {{elama+V+Impers+Prs+Cond }}
 * __poldaks: __ {{olema+V+Impers+Prs+Cond+Neg }}
 * __elatagu: __ {{elama+V+Impers+Prs+Imprt }}
@@ -293,13 +302,15 @@ __hfstol: examples:__
 * __poldavat: __ {{olema+V+Impers+Prs+Quot+Neg }}
 * __elati: __ {{elama+V+Impers+Prt+Ind+Aff }}
 * __elatud: __ {{elama+V+Impers+Prt+Ind+Neg }}
-         (ei, on, oli, ...) + V+Impers+Prt+Prc = some analytical personal form 
+NB! ei oldud = poldud
 * __poldud: __ {{olema+V+Impers+Prt+Ind+Neg }}
+* __oldud: __ {{olema+V+Impers+Prt+Ind+Neg }}
 * __elatuks: __ {{elama+V+Impers+Prt+Cond }}
 * __polduks: __ {{olema+V+Impers+Prt+Cond+Neg }}
 ---- impersonal infinite forms ----
 * __elatav: __ {{elama+V+Impers+Prs+Prc }}
 * __elatud: __ {{elama+V+Impers+Prt+Prc }}
+         (on, oli, ...) + V+Impers+Prt+Prc = some analytical personal form 
 * __elatama: __ {{elama+V+Impers+Sup }}
 ---- infinite forms with no voice category ----
 * __elada: __ {{elama+V+Inf }}
@@ -314,6 +325,7 @@ ei olnuks elanud etc) are not treated here...
 
 partikkel -gi/-ki
 particle -gi/-ki
+ * {{+Foc/gi }}:
 
 kasutust (sagedust jm) iseloomustavad märgendid
 usage-related tags
@@ -326,6 +338,8 @@ usage info for parallel forms (either correct according to the norm, or incorrec
  * {{+Use/Hyp }}:        ! norm, but so rare that norm is probaly wrong: tiivasse:tiib+Sg+Ill+Use/Hyp
  * {{+Use/NotNorm }}:    ! not norm, but sometimes used: pöidlates:pöial+Pl+Ine+Use/NotNorm
  * {{+Use/CommonNotNorm }}: ! not norm, and used more than norm: peeneid:peen+Pl+Par+Use/CommonNotNorm
+
+ * {{+Use/Circ }}: ! for arabic and roman numerals
 
 
 

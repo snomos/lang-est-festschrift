@@ -45,6 +45,8 @@ cat tmp1 | ./lemma2twol.sed \
 | sed 's/:\*\*\([^$:]*\)$/:\1/' \
 | sed '/KANNEL/s/\(.\)\([kpt]\)\([aeiu][lmnr]:.*<\)\1\2\([AEIU]2\)/\1\2\3\1\2\2\4/' \
 | sed '/PIPAR/s/\(.\)\([kpt]\)\([aeiu][lmnr]:.*<\)\1\2\([AEIU]2\)/\1\2\3\1\2\2\4/' \
+| sed 's/HABE/HAARE/' \
+| sed 's/I5/i/g' \
 | ./post_lex2lemma.sed \
 > tmp1twol
 
