@@ -29,8 +29,11 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
  D1:0 ! In weak grade, D1 is 0
  D1:t ! ida itta
 
-! orthographic convention: after voiceless (e.g. s or h), gbd is written as kpt
+! orthographic convention: after voiceless (e.g. s or h, or k p t (?)), gbd is written as kpt
 ! e.g. õhk-õhu, vask-vase
+! K1 also in: uks, jooksma
+! P1 also in: laps
+! T1 also in: jätma, katma, kütma, matma, võtma, mõtlema, ütlema
 
  K1:k ! In strong grade, K1 is k
  K1:0 ! In weak grade, K1 is 0
@@ -39,11 +42,6 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
  T1:t ! In strong grade, T1 is t
  T1:0 ! In weak grade, T1 is 0
 
-! G2:g ! In strong grade, G2 is g; e.g. kärg
-! G2:j ! In weak grade, G2 is j; e.g. kärje
-! D2:d ! In strong grade, G2 is g; e.g. sõda
-! D2:j ! In weak grade, G2 is j; e.g. sõja
-! D2:t ! sõda sõtta
  B2:b ! In strong grade, B2 is b; e.g. tiib
  B2:v ! In weak grade, B2 is v; e.g. tiiva
  B2:p ! tõbi tõppe
@@ -67,15 +65,6 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
 
  S1:s ! In strong grade, S1 is s
  S1:0 ! In weak grade, S1 is 0; before stop, S1 is 0
-
-I5:e   ! vowel lowering in vowel context
-I5:i
-i:e    ! i lowering before inflectional i
-i:i    
-Ü5:ö   ! vowel lowering in vowel context
-Ü5:ü
-U5:o   ! vowel lowering in vowel context
-U5:u
 
 A6:a   ! pea - pähe, päid
 A6:ä
@@ -153,6 +142,15 @@ n:s   ! soolas+e, soolas+t etc
 e:e   ! soolane
 e:0   ! soolas0+e 
 
+! high vowel lowering in certain contexts
+ i:e    
+ i:i 
+ u:o
+ u:u
+ ü:ö
+ ü:ü   
+
+
 N2:n   ! laane
 N2:s   ! laas
 
@@ -223,6 +221,8 @@ HighVowel = i ü u ;
 MidVowel = e ö õ o ;
 LowVowel = ä a ;
 
+LowerBackVowel = o a ;
+
 ! last syllable nonstressed vowels that are not always pronounced 
 ! V0 = A2 E2 I2 U2 ;
 
@@ -232,11 +232,8 @@ SgSV = %{sg.a%} %{sg.e%} %{sg.i%} %{sg.u%} ;
 PlSV = %{pl.e%} %{pl.i%} %{pl.u%};
 SV = SgSV PlSV ;
 
-! weak stops in the lexicon
-WS = G1 B1 D1 K1 P1 T1 ;
-
-! disappearing consonants (between vowels) in weak grade
-DC = G1 B1 D1 S1 ;
+! weak stops in the lexicon plus s; they disappear in weak grade
+WS = G1 B1 D1 K1 P1 T1 S1 ;
 
 ! Usage, style etc tags in lexicon
 LT = %{hyp%} %{rare%} %{notnorm%} %{commonnotnorm%} ;
@@ -376,8 +373,8 @@ Cx:Cy  <=>  _ Any* %{W%}: ;
            Cy in ( l m  m n r v j h s k p t k p t  k  p  p  t )
      matched ;
 
-! lexical: t U5 B1 0 a + {pl.e} {stemill} {S} + {s} {s} {e}
-! surface: t  u  p p a 0    0       0      0  0  0   0   0 
+! lexical: t u B1 0 a + {pl.e} {stemill} {S} + {s} {s} {e}
+! surface: t u  p p a 0    0       0      0  0  0   0   0 
 
 "short illative strong stem generation: stop to stronger stop"
 
@@ -419,27 +416,51 @@ Vx:Vy  <=>    _ Null* [:Consonant - :stop] Null* :stemV  ;
 ! lexical: s p i k k E2 r + i
 ! surface: s p i k 0  0 r 0 i 
 
-! general case of vowel lowering; it is actually restricted here...
-"Vowel lowering"
+! vowel lowering; 
+! it is triggered by g b d t s disappearing or morpheme border between i and i
 
-Vx:Vy  <=>  _ Null+ :Vowel ; 
-           :Vowel Null+ _ ; 
-     where Vx in ( I5 Ü5 U5 ) 
-           Vy in (  e  ö  o )
-     matched ;
+"i lowers to e before inflectional i 1/2"
 
-! lexical: r u k K1 I5 + i d
-! surface: r u k  k  e 0 i d
-! lexical: s Ü5 S1 e {W}
-! surface: s  ö  0 e  0
+i:e  =>  [ :Consonant | %{apo%}:' ] (%+:0) _ Null* %+:0 :i ;
+         
+"i lowers to e before inflectional i 2/2"
 
-"i to e before inflectional i"
-
-i:e  <=> \[ :Vowel ] _ Null* %+: :i ;
-
+i:e  <=  [ :Consonant | %{apo%}:' ] (%+:0) _ Null* %+: :i ;
+       
 ! lexical: v o o d i + i d
 ! surface: v o o d e 0 i d
+! lexical: r u k K1 i + i d
+! surface: r u k  k e 0 i d
+! lexical: S c h e d u l e {apo} i + i d
+! surface: S c h e d u l e   '   e 0 i d
 
+"single short high vowel lowers if it obtains a neighboring vowel after stop or s disappears 1/2"
+
+Vx:Vy  =>  [Border | Consonant] :Vowel (LowerBackVowel:0) WS:0 Null* _  ;
+           [Border | Consonant] _ WS:0 :Vowel ;
+       where Vx in ( i u ü %{sg.i%} %{sg.u%} )
+             Vy in ( e o ö     e        o    )
+       matched;
+
+"single short high vowel lowers if it obtains a neighboring vowel after stop or s disappears 2/2"
+
+Vx:Vy  <=  [Border | Consonant] :Vowel (LowerBackVowel:0) WS:0 Null* _  ;
+           [Border | Consonant] _ WS:0 :Vowel ;
+       where Vx in ( i u ü %{sg.i%} %{sg.u%} )
+             Vy in ( e o ö     e        o    )
+       matched;
+
+! lexical: v i G1 a
+! surface: v e  0 a
+! lexical: s ü S1 e {W}
+! surface: s ö  0 e  0
+
+! lexical: s a a G1 {W} + {sg.i}
+! surface: s a 0  0  0  0    e
+! lexical: v o o G1 + {pl.e} {sg.u} {W} 
+! surface: v o 0  0 0    0      o    0
+! lexical: l i u G1 + {pl.e} {sg.u} {W}    
+! surface: l i 0  0 0    0      u    0    NB! no lowering!
 
 ! here long vowel shortening is formally equivalent to one vowel deletion
 ! hence the need to use 2 rules instead of one <=> rule:
@@ -495,24 +516,6 @@ Vx:0 => :Vx _ H3:h  :stemV ;            !  sohu, suhu, öhe, pähe
 
 Vx:Vx /<= :Vx _ H3:h  :stemV ;            !  sohu, suhu, öhe, pähe
       where Vx in ( Vowel ) ;  
-
-! vowel lowering special case in the current description:
-! the vowels involved are stem vowels; the rule applies only to a small set
-! of old words - those that lose weak stop or s in weak grade
-"Vowel lowering for TAUD (e.g. mood), KOON (e.g. voog)"
-
-Vx:Vy  <=>  a a: DC:0 Null* _ \[:Vowel]; 
-            o o: DC:0 Null* _ \[:Vowel];
-     where Vx in ( %{sg.i%} %{sg.u%} ) 
-           Vy in (     e        o    )
-     matched ;
-
-! lexical: s a a G1 {W} + {sg.i}
-! surface: s a 0  0  0  0    e
-! lexical: v o o G1 + {pl.e} {sg.u} {W} 
-! surface: v o 0  0 0    0      o    0
-! lexical: l i u G1 + {pl.e} {sg.u} {W}    
-! surface: l i 0  0 0    0      u    0    NB! no lowering!
 
 ! ------ rules for j
 ! ------ they affect a handful of words
@@ -823,12 +826,13 @@ I1:i   => n:s e:0 Null* _ ;   ! -ne word
 
 "No sg stem vowel if no Pl Par with -sid (choose pl stem vowel instead)"
 
-Vx:0  <=>  PlSV:stemV Null* _ Null* %{s%}:0 ;
+Vx:0  <=>  %+:0 PlSV:stemV Null* _ Null* %{s%}:0 ;
      where Vx in ( %{sg.a%} %{sg.e%} %{sg.u%} %{sg.i%} ); 
 
 "Choose pl stem vowel for Pl Par (sg stem vowel is 0) "
 
-Vx:Vy  <=>   :Consonant Null* _ Null+ %{s%}:0 ;     ! puud-puudi
+Vx:Vy  <=>  :Consonant Null* %+:0 _ Null+ %{s%}:0 ;     ! puud-puudi, maja - maju
+                     i Null* %+:0 _ Null+ %{s%}:0 ;     ! sai - saiu
      where Vx in ( %{pl.e%} %{pl.i%} %{pl.u%} ) 
            Vy in (     e        i        u   )
      matched ;
@@ -978,10 +982,10 @@ LT:0          =>  %{stemill%}: _ ;      ! stem illative usage tag in the lexicon
 ! surface: n i m       0        0   e  0  0  s   s   e  
 
 ! tuppa is common, toasse is rare
-! lexical: t U5 B1 0 a + {pl.e} {stemill} {S} + {s} {s} {e}
-! surface: t  u  p p a 0    0       0      0  0  0   0   0 
-! lexical: t U5 B1   a + {pl.e} {stemill} {W} + {s} {s} {e} {rare}
-! surface: t  o  0   a 0    0       0      0  0  s   s   e     0
+! lexical: t u B1 0 a + {pl.e} {stemill} {S} + {s} {s} {e}
+! surface: t u  p p a 0    0       0      0  0  0   0   0 
+! lexical: t u B1   a + {pl.e} {stemill} {W} + {s} {s} {e} {rare}
+! surface: t o  0   a 0    0       0      0  0  s   s   e     0
 
 ! loppa is impossible, lobasse is common
 ! lexical: l o b a                       {W} + {s} {s} {e}
