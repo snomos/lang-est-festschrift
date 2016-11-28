@@ -47,6 +47,8 @@ cat tmp1 | ./lemma2twol.sed \
 | sed '/PIPAR/s/\(.\)\([kpt]\)\([aeiu][lmnr]:.*<\)\1\2\([AEIU]2\)/\1\2\3\1\2\2\4/' \
 | sed 's/HABE/HAARE/' \
 | sed 's/I5/i/g' \
+| sed 's/:Rõngu/:RõnG4u/' \
+| sed 's/:Sommerlingi/:SommerlinG4i/' \
 | ./post_lex2lemma.sed \
 > tmp1twol
 

@@ -33,3 +33,20 @@ Tests:
     sai+N+Sg+Par: saia
     sai+N+Pl+Par: saiu
 
+    foto+N+Sg+Nom: foto
+    foto+N+Sg+Par: fotot
+    foto+N+Sg+Ill: fotosse
+    foto+N+Pl+Par: fotosid
+
+    Saku+N+Prop+Sg+Nom: Saku
+    Saku+N+Prop+Sg+Par: Sakut
+    Saku+N+Prop+Sg+Ill: Sakku
+    Saku+N+Prop+Sg+Ill+Use/Rare: Sakusse
+    Saku+N+Prop+Pl+Par: Sakusid
+
+    Rõngu+N+Prop+Sg+Nom: Rõngu
+    Rõngu+N+Prop+Sg+Par: Rõngut
+    Rõngu+N+Prop+Sg+Ill: Rõngu
+    Rõngu+N+Prop+Sg+Ill+Use/Rare: Rõngusse
+    Rõngu+N+Prop+Pl+Par: Rõngusid
+

@@ -57,6 +57,10 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
  G3:0 ! In weak grade, G3 is 0   Riia
  D3:d ! In strong grade, D3 is d Randu
  D3:0 ! In weak grade, D3 is 0   Rannu
+
+ G4:g ! ad hoc solution for some proper nouns like Rõngu, 
+      ! where strong grade is also Rõngu (not Rõnku)
+
  H3:h ! for 4 instances of h-illative: sohu, suhu, öhe, pähe 
  H3:0 
  Y3:u ! sohu, suhu
@@ -261,11 +265,12 @@ Rules
 ! (because declinables may have additional info in the stem lexicon entries)
 ! left context has to be sonorous because of orthographic conventions:
 ! gbd are written as kpt after voiceless consonants
+! 
 "Weak grade for productive kpt:gbd"
 
-Cx:Cy  <=> :sonor _ (%+:0) (SV:0) (LT:0) :stemV %{W%}: ;
-           :sonor _ ([l | r | j | v]) :stemV %{W%}: ;
-           :sonor _               :stemV (l) %{W%}: ;  ! võidelda
+Cx:Cy  <=> :Vowel :sonor _ (%+:0) (SV:0) (LT:0) :stemV %{W%}: ;    ! kaup
+                  :sonor _ [l | r | j | v]      :stemV %{W%}: ;    ! kõblata
+                  :sonor _                      :stemV l %{W%}: ;  ! võidelda
      where Cx in ( p t k ) 
            Cy in ( b d g )
      matched ;
@@ -878,6 +883,11 @@ a:0  <=> :Consonant ( J1: ) _ %+: PlSV:stemV Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 
 "weak grade is incompatible with exceptional stem (aka short) illative"
 %{W%}:0       /<=  _ Any* %{s%}:0 %{s%}:0 %{e%}:0  ;    
+
+! use {WF} in PERE, to prevent pere+Ill:pere
+
+"less strict weak grade is incompatible with exceptional stem (aka short) illative"
+%{WF%}:0       /<=  _ Any* %{s%}:0 %{s%}:0 %{e%}:0  ;    
 
 "(extra) strong grade is incompatible with sse-illative"
 %{S%}:0       /<=  _ Any* %{s%}:s %{s%}:s %{e%}:e  ;      
