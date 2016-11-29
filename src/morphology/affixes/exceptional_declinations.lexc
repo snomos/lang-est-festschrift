@@ -211,12 +211,8 @@ LEXICON KALLIS    !  VVS 7, 5 only kallis, kaunis unstable (closed) type;
 LEXICON KAKS    ! only üks, kaks
 
                +Sg:ks NOMINATIVE ;    ! kaks
-                  :he N_SG_SUBPARA ;    ! kahe etc 
-               +Sg:h%+t PARTITIVE ;    ! kaht
-    +Sg%+Use%/Rare:h%+te PARTITIVE ;    ! kahte
-               +Sg:he%+sse ILLATIVE ;    ! kahesse 
-                  :hte%+de N_PL_SUBPARA ;    ! kahtede etc 
-               +Pl:hte%+sid PARTITIVE ;    ! kahtesid
+                  :hT1%{sg.e%} 1C ;   ! like EIT
+    +Sg%+Use%/Rare:h%+t PARTITIVE ;    ! kahte
 
 LEXICON KEEL    !  VVS 13 unstable (closed) type; 
 
@@ -484,7 +480,7 @@ LEXICON VARS    !  VVS 14 unstable (closed) type;
                +Sg:%+t PARTITIVE ;    ! vart
                +Sg:%{S%}%+de SG_ILL_VARIANT ;    ! varde
                +Sg:e%{W%} SG_ILL_VARIANT ;    ! varresse 
-                  :%+te N_PL_SUBPARA ;    ! varte etc 
+                  :%{W%}%+te N_PL_SUBPARA ;    ! varte etc 
                +Pl:%+i PARTITIVE ;    ! varsi
     ! +N%+Use%/Hyp:%+i N_VOWEL_PL_SUBPARA ;    ! varsil?; except for some expressions (uusil)
 
@@ -517,7 +513,7 @@ LEXICON ÕLU    ! only õlu
                +Sg:u%+t PARTITIVE ;    ! õlut
                +Sg:le%+sse ILLATIVE ;    ! õllesse 
                   :le%+de N_PL_SUBPARA ;    ! õllede etc 
-               +Pl:le%+sid PARTITIVE ;    ! õlusid
+               +Pl:le%+sid PARTITIVE ;    ! õllesid
     +Pl%+Use%/Rare:u%+sid PARTITIVE ;    ! õlusid
 
 
