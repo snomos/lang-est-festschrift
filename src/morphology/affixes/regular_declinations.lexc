@@ -161,8 +161,8 @@ LEXICON MUUSEUM    ! VVS 2 & 19; undecided which stable type (aktiivne muuttüü
            +Sg:%{no.apo%} NOMINATIVE ;
               :i%{W%} N_SG_SUBPARA ; 
            +Sg:i PARTITIVE ;    ! muuseumi
-           +Sg:i ILLATIVE ;    ! muuseumi  ! ?? not sure; rare ??
-+Sg%+Use%/Rare:i%{W%}%+sse ILLATIVE ;    ! muuseumisse ?? not sure; rare ??
++Sg%+Use%/Rare:i ILLATIVE ;    ! muuseumi  ! in TAUD, this is the default ill
+           +Sg:i%{W%}%+sse ILLATIVE ;    ! muuseumisse ! in TAUD, this is the rare ill
               :i%+de N_PL_SUBPARA ;    ! muuseumide etc 
            +Pl:e PARTITIVE ;    ! muuseume
 
