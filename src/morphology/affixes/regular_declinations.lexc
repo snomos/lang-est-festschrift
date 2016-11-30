@@ -129,10 +129,10 @@ LEXICON PEENIKE    ! VVS 12; affix -ke; almost = OLULINE, except sg nom
            +Sg: NOMINATIVE ;
 +Sg%+Use%/Rare:ne NOMINATIVE ;
               :ne NE_S ;
-+Sg%+Use%/Rare:se%+sse ILLATIVE ;    ! olulisesse, harjutusesse
-           +Sg:s%+se ILLATIVE ;    ! olulisse, harjutusse (haplology)
-           +Pl:s%+i PARTITIVE ;    ! olulisi, harjutusi
-   %+Use%/Rare:s%+i N_VOWEL_PL_SUBPARA ;    ! vocal pl cases  olulisil, harjutusil
++Sg%+Use%/Rare:neE1%+sse ILLATIVE ;    ! olulisesse, harjutusesse
+           +Sg:neE1%+se ILLATIVE ;    ! olulisse, harjutusse (haplology)
+           +Pl:ne%+I1 PARTITIVE ;    ! olulisi, harjutusi
+   %+Use%/Rare:ne%+I1 N_VOWEL_PL_SUBPARA ;    ! olulisil, harjutusil etc
 
 LEXICON PERE    ! VVS 16
 
