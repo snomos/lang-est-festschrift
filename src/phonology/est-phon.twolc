@@ -343,12 +343,14 @@ Cx:Cy  <=> _ Any* %{W%}: ;
 "Lexically determined weak grade for s:0"
 
 S1:0  <=> _ Any* %{W%}: ;       ! paas - pae
-          _ Null+ [ :t | :d ] ;     ! vars - vart, varde
+          _ Null* [ :t | :d ] ;     ! vars - vart, varde
 
 ! lexical: p a a S1 + {pl.e} {sg.i} {W}
 ! surface: p a 0  0 0   0       e    0
 ! lexical: v a r r S1 {stemill} {S} + d e + {s} {s} {e}
 ! surface: v a r 0  0      0     0  0 d e 0  0   0   0
+! lexical: k o l m a n S1 d a
+! surface: k o l m a n  0 d a
 
 "Lexically determined weak grade for kpt:gbd; sg nom for ader, lubi"
 
@@ -622,11 +624,10 @@ K3:k  <=> _ s E1:e ;
 !------
 "laas-laane"
 
-N2:s  <=> _ Null* WordEnd ;   ! laas, tuhandes
-          _ Null* i ;         ! laasi
+n:0  <=  _ S1:s ;   ! laas, tuhandes
 
-! lexical: l a a N2 
-! surface: l a a s
+! lexical: l a a n S1 
+! surface: l a a 0 s
 !------
 ! Only pea, hea 
 "Pea, hea vs häid, päid, pähe 1"
@@ -1005,25 +1006,49 @@ LT:0          =>  %{stemill%}: _ ;      ! stem illative usage tag in the lexicon
 
 ! Orthography: consonant (cluster) writing conventions
 ! 1) if a vowel is deleted, the resulting consonant cluster may have to be modified
-! 2) in this treatment, some consonants have been written as double in the lexicon 
-! because they are pronounced long;
-! this violates Estonian orthography, and this rule sets them right again
 ! (note: no consonant deletion before particle -gi/ki)
 
 "consonant de-doubling in consonant clusters (e.g. after vowel deletion)"
 
-Cx:0 <=> :Cx _ Null+ [[:Consonant Any* Border] - [Gi Border]];
-         :Cx _ [G1:g | B1:b | D1:d | K1:k | P1:p | T1:t | S1:s | G3:g | D3:d] ;
+Cx:0 <=> :Cx _ Null+ [[Consonant Any* Border] - [Gi Border]];
       where Cx in (Consonant) ;
 
 ! lexical: s p i k k E2 r + i
 ! surface: s p i k 0  0 r 0 i 
+! lexical: k õ r r S1 {stemill} {rare} + t e
+! surface: k õ r 0  0     0        0   0 t e
+
+! 2) in this treatment, some consonants have been written as double in the lexicon 
+! because they are pronounced long;
+! this violates Estonian orthography, and this rule sets them right again
+! need 3 rules because e.g. n may get deleted in another context, e.g. lääs-lääne
+
+! l m n r may be 0 before a lexical WS that surfaces as a real WS
+"repair lmnr 1"
+
+Cx:0 => _ [G1:g | B1:b | D1:d | K1:k | P1:p | T1:t | S1:s | G3:g | D3:d] ;
+      where Cx in (lmnr) ;
+
+! there might be palatalisation mark between consonants, hence Null*
+"repair lmnr 2"
+
+Cx:0 <= Cx Null* _ [G1:g | B1:b | D1:d | K1:k | P1:p | T1:t | S1:s | G3:g | D3:d] ;
+      where Cx in (lmnr) ;
+
+! this should avoid deleting lmnr in e.g. jalg
+"repair lmnr 3"
+
+Cx:0 /<= :Vowel _ [G1:g | B1:b | D1:d | K1:k | P1:p | T1:t | G3:g | D3:d] ;
+      where Cx in (lmnr) ;
+
 ! lexical: k a n n D1 E2 l e
 ! surface: k a n 0  d  0 l e 
 ! lexical: k õ r r S1 {stemill} {rare} + t e
 ! surface: k õ r 0  0     0        0   0 t e
 ! lexical: k u l l D1 + {pl.i} {hyp}
 ! surface: k u l 0  d 0    0     0
+! lexical: s ´ u n , n D1 i + m a
+! surface: s 0 u n 0 0  d i 0 m a
 
 ! g b d is written as k p t after voiceless consonants
 ! this rule is restricted to affixes, because foreign words have conventions

@@ -397,7 +397,7 @@ LEXICON KEEMA
              +Pers+Prs:%{W%}%+ IND_COND_PRS ;    ! 
 
 ! VVS 37   saama, jääma
-LEXICON SAAMA
+LEXICON SAAMA !!= @CODE@ is a lexicon for saama-type words.
 
                +Impers:%{W%}%+d IMPERS ;    ! impersonal forms, except -akse
                  +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
@@ -426,7 +426,7 @@ LEXICON TOOMA
 
                +Impers:%{W%}%+d IMPERS1 ;    ! impersonal forms, except -akse
    +Impers+Prs+Ind+Aff:%{W%}%+akse GI ;
-+Impers+Prs+Ind+Aff%+Use%/NotNorm:%{W%}%+dakse GI ;
++Impers+Prs+Ind+Aff%+Use%/NotNorm:%{W%}%+dakse GI ; 
                  +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
                       :%+ INFINITIVE ;    ! infinitive, gerund (des-form)
        +Pers+Prs+Imprt:%{W%}%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
