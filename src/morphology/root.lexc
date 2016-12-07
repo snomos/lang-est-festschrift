@@ -388,7 +388,7 @@ Multichar_Symbols
 !!! Morphophonology
 
  %{W%} ! The weak grade trigger never appears on the surface side.
- %{WF%} ! The weak grade for foreign words trigger never appears on the surface side.
+ %{WL%} ! The weak grade for foreign words trigger never appears on the surface side.
  %{S%}  ! Strong stem trigger (for short illatives only) never appears on the surface side.
 
  %+    ! The morpheme boundary never appears on the surface side.

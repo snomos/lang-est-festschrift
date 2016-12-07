@@ -6,7 +6,8 @@ a b c d e f g h i j k l m n o p q r s š z ž t u v w õ ä ö ü x y
 A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y 
 
  %{W%}:0 ! The weak grade trigger never appears on the surface side.
- %{WF%}:0 ! The weak grade for foreign words trigger never appears on the surface side.
+ %{WL%}:0 ! The weak grade trigger that triggers only lexically determined weak grade forms,
+          ! so that it does not trigger Fiadi as the weak grade form of Fiat.
  %{S%}:0  ! Strong stem trigger (for short illatives only) never appears on the surface side.
           ! (necessary for words with no stem gradation, having only short illative in a strong grade, e.g. Riia - Riiga, Rannu - Randu)
 
@@ -194,7 +195,7 @@ Diacritics
 ! Originally in the Filosoft lexicon; keep them for future 
 
 ´    ! kolmas aste ! 3rd grade: l´aud
-`    ! rõhk        ! stress: sem`antiline  ˈ
+`    ! rõhk        ! stress: sem`antiline
 %,    ! peenendus   ! palatalisation: k´on,t
 
 ;
@@ -248,16 +249,17 @@ Border = [ .#. | # ];  ! word border
 Gi = [ [ :g | :k ] i ] ;
 WordEnd = [ (%+: Gi) Border ];     ! final +gi is optional for almost any word
 Null = [ :0 - # ];            ! something on the lexical side, but nothing on the surface (except word border)
-!Any  = [ : - # ];             ! anything except word border
 Any  = [ : - Border ];             ! anything except word border
+WeakGrade = [%{W%}:0 | %{WL%}:0] ;
+StrongGrade = %{S%}:0 ;
 
 Rules 
  
 ! -----
 ! general 
 "strong and weak gradation triggers cannot co-exist"
-%{S%}:0  /<= _ :* [%{W%}: | %{WF%}:] ;
-             [%{W%}: | %{WF%}:] :* _ ;
+%{S%}:0  /<= _ :* WeakGrade ;
+             WeakGrade :* _ ;
 
 ! ----- consonant gradation
 
@@ -322,30 +324,30 @@ s:0 <=> :Vowel :sonor :s _ (%+:0) (SV:0) (LT:0) :stemV %{W%}: ;
 
 "Lexically determined weak grade for b:v"
 
-B2:v  <=> _ Any* %{W%}: ;
+B2:v  <=> _ Any* WeakGrade ;
 
 ! lexical: k ä i B2 e {W}
 ! surface: k ä i v  e  0
 
 "Lexically determined weak grade for gbdkpt:0"
 
-Cx:Cy  <=> _ Any* %{W%}: ;
-           h J1: _ Null* WordEnd ; ! rohi sg nom is not {W}; has ij:
+Cx:Cy  <=> _ Any* WeakGrade ;
+           h J1: _ Null* WordEnd ; ! rohi sg nom is not WeakGrade; has ij:
      where Cx in (G1 B1 D1 K1 P1 T1 ) 
            Cy in ( 0  0  0  0  0  0 )
      matched ;
 
 ! lexical: l a u D1 + {pl.u} {sg.a} {W}
 ! surface: l a u  0 0    0      a    0
-! lexical: l a G1 {stemill} e {W}
+! lexical: l a G1 {stemill} e {WL}
 ! surface: l a  0     0     e  0
 
 "Lexically determined weak grade for s:0"
 
-S1:0  <=> _ Any* %{W%}: ;       ! paas - pae
+S1:0  <=> _ Any* WeakGrade ;       ! paas - pae
           _ Null* [ :t | :d ] ;     ! vars - vart, varde
 
-! lexical: p a a S1 + {pl.e} {sg.i} {W}
+! lexical: p a a S1 + {pl.e} {sg.i} {WL}
 ! surface: p a 0  0 0   0       e    0
 ! lexical: v a r r S1 {stemill} {S} + d e + {s} {s} {e}
 ! surface: v a r 0  0      0     0  0 d e 0  0   0   0
@@ -354,15 +356,15 @@ S1:0  <=> _ Any* %{W%}: ;       ! paas - pae
 
 "Lexically determined weak grade for kpt:gbd; sg nom for ader, lubi"
 
-Cx:Cy  <=>  _ Any* %{W%}: ;
-            _ J1:  Null* WordEnd ; ! lubi sg nom is not {W}; has ij:
-            _ E2:e [l | r] Null* WordEnd ;    ! ader sg nom is not {W}; has e2:e
+Cx:Cy  <=>  _ Any* WeakGrade ;
+            _ J1:  Null* WordEnd ; ! lubi sg nom is not WeakGrade; has ij:
+            _ E2:e [l | r] Null* WordEnd ;    ! ader sg nom is not WeakGrade; has e2:e
       where Cx in ( K2 P2 T2 ) 
             Cy in (  g  b  d )
       matched ;
 
-! lexical: e r K2 A2 s {W}
-! surface: e r  g   a s  0
+! lexical: e r K2 A2 s {WL}
+! surface: e r  g  a s  0
 ! lexical: e r K2 A2 s + a
 ! surface: e r  k  0 s 0 a
 ! lexical: a T2 E2 r + {pl.u} {rare}
@@ -375,7 +377,7 @@ Cx:Cy  <=>  _ Any* %{W%}: ;
 
 "short illative strong stem generation: consonant doubling"
 
-0:Cy  <=>  \[ :Vowel] :Vowel Cx:Cy _ Null* :Vowel Null* %{S%}: ; ! majja
+0:Cy  <=>  \[ :Vowel] :Vowel Cx:Cy _ Null* :Vowel Null* StrongGrade ; ! majja
      where Cx in ( l m M1 n r v j h s g b d k p t G1 B1 B2 D1 ) 
            Cy in ( l m  m n r v j h s k p t k p t  k  p  p  t )
      matched ;
@@ -385,7 +387,7 @@ Cx:Cy  <=>  _ Any* %{W%}: ;
 
 "short illative strong stem generation: stop to stronger stop"
 
-Cx:Cy <=> :sonor Null* _ ( :Cy | j ) Null* :Vowel Null* %{S%}: ;
+Cx:Cy <=> :sonor Null* _ ( :Cy | j ) Null* :Vowel Null* StrongGrade ;
      where Cx in ( g b d G1 B1 B2 D1 G3 D3 ) 
            Cy in ( k p t  k  p  p  t  g  d )
      matched ;
@@ -647,7 +649,7 @@ Y3:e  <=> [:ä | :ö] Null* H3:h _ ;
 Y3:u  <=> [:o | :u] Null* H3:h _ ;
 
 "h-illative"
-H3:h  <=> _ :* %{S%}: ;
+H3:h  <=> _ :* StrongGrade ;
 
 !------
 "Verb vowel ö o to õ"
@@ -671,7 +673,7 @@ Vx:Vy  <=>  Vx: _  Null+ [:a | :e] ;
            Vy in ( ü  u )
      matched ;
 
-! lexical: l O6 O6 {W} + a k s e 
+! lexical: l O6 O6 {WL} + a k s e 
 ! surface: l u   u  0  0 a k s e 
 !------
 
@@ -888,7 +890,7 @@ a:0  <=> :Consonant ( J1: ) _ %+: PlSV:stemV Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 ! use {WF} in PERE, to prevent pere+Ill:pere
 
 "less strict weak grade is incompatible with exceptional stem (aka short) illative"
-%{WF%}:0       /<=  _ Any* %{s%}:0 %{s%}:0 %{e%}:0  ;    
+%{WL%}:0       /<=  _ Any* %{s%}:0 %{s%}:0 %{e%}:0  ;    
 
 "(extra) strong grade is incompatible with sse-illative"
 %{S%}:0       /<=  _ Any* %{s%}:s %{s%}:s %{e%}:e  ;      
@@ -1066,7 +1068,7 @@ Cx:Cy  <=> :voiceless Null* %+: _ ;
 ! Orthographical convention for recent loans (kabinet) and -ik suffix
 "Double the previous consonant"
 
-%.:Cx  <=> :Vowel :Cx _ \[%{W%}:]* WordEnd ;
+%.:Cx  <=> :Vowel :Cx _ \[WeakGrade]* WordEnd ;
       where Cx in (Consonant) ;
 
 ! lexical: k a b i n e t . + {pl.e} {sg.i}

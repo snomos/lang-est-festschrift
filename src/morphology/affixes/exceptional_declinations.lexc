@@ -194,7 +194,7 @@ LEXICON KAEL    ! VVS 23  almost = PIIM, except pl gen +
 
                +Sg:%{no.apo%} NOMINATIVE ;
                   :%{sg.a%} 1C_SG ;
-                  :%{W%}%+te N_PL_SUBPARA ;    ! kaelte etc 
+                  :%+te N_PL_SUBPARA ;    ! kaelte etc 
        %+Use%/Rare:%{sg.a%}%+de N_PL_SUBPARA ;    ! kaelade etc 
                                ! pl par stem vowel (u, i, 0) is lexically determined 
                                ! and usage-wise tagged
@@ -212,7 +212,7 @@ LEXICON KAKS    ! only üks, kaks
 
                +Sg:ks NOMINATIVE ;    ! kaks
                   :hT1%{sg.e%} 1C ;   ! like EIT
-    +Sg%+Use%/Rare:h%+t PARTITIVE ;    ! kahte
+    +Sg%+Use%/Rare:h%+t PARTITIVE ;    ! kaht
 
 LEXICON KEEL    !  VVS 13 unstable (closed) type; 
 
@@ -314,10 +314,8 @@ LEXICON MERI    ! VVS 20 unstable type (passiivne muuttüüp) lumi, tuli, uni, v
                +Sg:i NOMINATIVE ;
                   :e N_SG_SUBPARA ;    ! mere etc
                +Sg:%+d PARTITIVE ;    ! merd
-               +Sg:e%{S%} SG_ILL_VARIANT ;    ! merre
-               +Sg:e%{W%} SG_ILL_VARIANT ;    ! meresse 
-                  :%+e%+de N_PL_SUBPARA ;    ! merede etc
-               +Pl:e%+sid PARTITIVE ;    ! meresid
+                  :e 2V_ILLATIVE ;    ! merre, meresse
+                  :e DE_PL ;
 
 LEXICON MESI     
 
@@ -332,7 +330,7 @@ LEXICON MESI
 LEXICON NAINE    ! only naine; much like OLULINE
                   
                +Sg: NOMINATIVE ;
-                  : NE_S ;
+                  : NE_S_COMMON ;
                +Sg:E1%+sse ILLATIVE ;    ! naisesse
                +Pl:%+I1 PARTITIVE ;    ! naisi
        %+Use%/Rare:%+I1 N_VOWEL_PL_SUBPARA ;    ! naisil etc
@@ -352,10 +350,8 @@ LEXICON NIMI    ! VVS 20, 21 unstable type (passiivne muuttüüp) suvi, lagi
                +Sg:i NOMINATIVE ;
                   :e%{W%} N_SG_SUBPARA ;    ! suve etc
                +Sg:e PARTITIVE ;    ! suve, lage
-               +Sg:e%{S%} SG_ILL_VARIANT ;    ! nimme
-               +Sg:e%{W%} SG_ILL_VARIANT ;    ! nimesse 
-                  :%+e%+de N_PL_SUBPARA ;    ! lagede etc
-               +Pl:e%+sid PARTITIVE ;    ! lagesid
+                  :e 2V_ILLATIVE ;    ! nimme, nimesse; lakke, laesse
+                  :e DE_PL ;
 
 LEXICON PARAS    ! only paras; like LOHAKAS
 
@@ -381,7 +377,7 @@ LEXICON POISS    ! VVS 23 poiss, püks; almost = TAUD, except pl gen +
 
                +Sg:%{no.apo%} NOMINATIVE ;
                   :i 1C_SG ;    ! poisi etc
-                  :%{W%}%+te N_PL_SUBPARA ;    ! poiste etc
+                  :%+te N_PL_SUBPARA ;    ! poiste etc
        %+Use%/Rare:%+i%+de N_PL_SUBPARA ;    ! poisside etc
                +Pl:e PARTITIVE ;    ! poisse
      +Pl%+Use%/Hyp:i%+sid PARTITIVE ;    ! poissisid+Use/Hyp
@@ -392,10 +388,11 @@ LEXICON PURI    ! only puri
      +Pl+Use%/Rare:e%+id PARTITIVE ;    ! purjeid
 
 LEXICON PUU    ! 11 words (kuu, maa, etc) that have possible vowel plural forms 
-               ! only if the Pl Par with -id is more frequent -sid (puid vs puusid),
+               ! only if the Pl Par with -id is more frequent than -sid (puid vs puusid),
                ! then the word may have vowel plural forms
 
-                  : ARMEE ;
+                  : 1V ;
+                  : 2V_ILLATIVE ;              ! öösse, öhe
        %+Use%/Rare:%+i N_VOWEL_PL_SUBPARA ;    ! puil etc
 
 LEXICON PÕLV    ! only põlv
@@ -453,7 +450,7 @@ LEXICON TALV    ! only talv
 LEXICON TEINE    ! only teine; almost = NAINE; much like OLULINE
                   
                +Sg: NOMINATIVE ;
-                  : NE_S ;
+                  : NE_S_COMMON ;
                +Sg:E1 ILLATIVE ;    ! teise (should be 3rd grade... )
     +Sg%+Use%/Rare:E1%+sse ILLATIVE ;    ! teisesse
                +Pl:%+I1 PARTITIVE ;    ! teisi
@@ -494,7 +491,7 @@ LEXICON XÄIKE    ! VVS 10 common part of väike(ne), päike(ne), äike(ne)
 
                +Sg:ke NOMINATIVE ;
     +Sg%+Use%/Rare:kene NOMINATIVE ;
-                  :kene NE_S ;
+                  :kene NE_S_COMMON ;
        %+Use%/Rare:kse N_SG_SUBPARA ;    ! xäikse etc 
     +Sg%+Use%/Rare:kse%+t PARTITIVE ;    ! xäikset
                +Sg:kese%+sse ILLATIVE ;    ! xäikesesse
