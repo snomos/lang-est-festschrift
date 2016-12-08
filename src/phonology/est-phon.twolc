@@ -155,9 +155,10 @@ e:0   ! soolas0+e
  ü:ö
  ü:ü   
 
-
-N2:n   ! laane
-N2:s   ! laas
+! if we say that plural affix +te appears as +de for tütar-type words,
+! then the cont. lexicons will be simpler 
+ t:t  
+ t:d  ! tütar+de
 
 %.:0 ! double the previous letter (kabinet - kabinetti)
 
@@ -733,11 +734,6 @@ E1:0  <=> :Vowel Null* :s Null* _ Null* s e ;          ! olulisse (haplology)
           :Vowel Null* :s Null* _ Null* t WordEnd ;   ! soolast
           :Vowel Null* :s Null* _ Null* t e ;        ! soolaste
 
-!"cannot omit e because the result would be unpronouncable"
-
-!E1:0 /<=  :Consonant Null* :s Null* _ Null* t WordEnd ;   ! raudset
-!          :Consonant Null* :s Null* _ Null* t e ;         ! raudsete
-
 ! lexical: o l u l i n e E1 + s e 
 ! surface: o l u l i s 0  0 + s e
 ! lexical: s o o l a n e E1 + t
@@ -770,6 +766,16 @@ I1:i   => n:s e:0 Null* _ ;   ! -ne word
 ! surface: k a t k i s 0 0  i
 ! lexical: g l o o b u s + I1
 ! surface: g l o o b u s 0  i
+
+! ---------
+! affix allomorphs
+
+"+te appears as +de in tütar-type words"
+
+t:d <=> [A2:a | E2:e] lmnr WeakGrade %+: _ e ; 
+
+! lexical: s ´ õ s t A2 r {W} + t e
+! surface: s 0 õ s t  a r  0  0 d e
 
 ! ---------
 ! Rules for selecting 

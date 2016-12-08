@@ -194,7 +194,7 @@ LEXICON KAEL    ! VVS 23  almost = PIIM, except pl gen +
 
                +Sg:%{no.apo%} NOMINATIVE ;
                   :%{sg.a%} 1C_SG ;
-                  :%+te N_PL_SUBPARA ;    ! kaelte etc 
+                  :%{W%}%+te N_PL_SUBPARA ;    ! kaelte etc 
        %+Use%/Rare:%{sg.a%}%+de N_PL_SUBPARA ;    ! kaelade etc 
                                ! pl par stem vowel (u, i, 0) is lexically determined 
                                ! and usage-wise tagged
@@ -202,11 +202,9 @@ LEXICON KAEL    ! VVS 23  almost = PIIM, except pl gen +
 
 LEXICON KALLIS    !  VVS 7, 5 only kallis, kaunis unstable (closed) type; 
 
-               +Sg:s%{W%} NOMINATIVE ;    ! kallis
-               +Sg:s%{W%}%+t PARTITIVE ;    ! kallist
-                  :%+te N_PL_SUBPARA ;    ! kallite etc 
-       %+Use%/Rare:s%{W%}%+te N_PL_SUBPARA ;    ! kalliste etc 
-                  : 2C_STRONG ;    ! kalli etc, kalleid, kalleil etc
+                  :s%{W%} 2C_LEMMA2 ;         ! kallis, kallist
+                  : 2C_STRONGPL ;             ! kalli etc, kallite, kalleid, kalleil etc
+       %+Use%/Rare:s%{W%}%+te N_PL_SUBPARA ;  ! kalliste etc 
 
 LEXICON KAKS    ! only üks, kaks
 
@@ -240,8 +238,7 @@ LEXICON KOHUS    ! only kohus-kohtu; like HOOLAS
                +Sg:s%{W%} NOMINATIVE ;    ! kohus
                +Sg:%{W%}%+t PARTITIVE ;    ! kohut
     +Sg%+Use%/Rare:%+t PARTITIVE ;    ! kohtut
-                  :%+te N_PL_SUBPARA ;    ! kohtute etc
-                  : 2C_STRONG ;    ! kohtusse etc
+                  : 2C_STRONGPL ;    ! kohtusse etc, kohtute etc
 
 LEXICON KURAT    ! only kurat; like redel
    
@@ -288,10 +285,8 @@ LEXICON LAPS    ! only laps, uks; notice the weird (?) use of {W}
 
 LEXICON LÕUNA    ! only lõuna; almost like haare
 
-               +Sg:%{W%} NOMINATIVE ;    ! lõuna
-               +Sg:%{W%}%+t PARTITIVE ;    ! lõunat
-                  :%+te N_PL_SUBPARA ;    ! lõunate etc
-                  : 2C_STRONG ;    ! lõuna, lõunasse etc
+                  :%{W%} 2C_LEMMA2 ;    ! lõuna, lõunat
+                  : 2C_STRONGPL ;    ! lõuna, lõunate, lõunasse etc
 
 
 LEXICON MANNER    ! VVS 3 only manner, tanner
@@ -341,7 +336,7 @@ LEXICON NIIN    ! only niin; almost like KEEL, but some forms are more regular
                   :e%{W%} N_SG_SUBPARA ;    ! niine etc 
                +Sg:%+t PARTITIVE ;    ! niint
                +Sg:e%{W%}%+sse ILLATIVE ;    ! niinesse 
-                  :%+te N_PL_SUBPARA ;    ! niinte etc 
+                  :%{W%}%+te N_PL_SUBPARA ;    ! niinte etc 
     ! +N%+Use%/Hyp:%+i N_VOWEL_PL_SUBPARA ;    ! impossible for rarer words
                +Pl:e%+sid PARTITIVE ;    ! NB! niinesid (not niini)
 
@@ -366,7 +361,7 @@ LEXICON PEEN    ! only peen, tüün; almost like KEEL, but some forms are more r
  +Sg%+Use%/NotNorm:e%+t PARTITIVE ;    ! peenet
     +Sg%+Use%/Rare:%+de ILLATIVE ;    ! peende
                +Sg:e%{W%}%+sse ILLATIVE ;    ! peenesse 
-                  :%+te N_PL_SUBPARA ;    ! peente etc 
+                  :%{W%}%+te N_PL_SUBPARA ;    ! peente etc 
     %+Use%/NotNorm:e%+te N_PL_SUBPARA ;    ! peenete etc 
 +Pl%+Use%/CommonNotNorm:e%+id PARTITIVE ;    ! NB! peeneid 
                +Pl:i PARTITIVE ;    ! peeni
@@ -430,10 +425,8 @@ LEXICON SADA    ! only sada
 
 LEXICON SEEME    ! only kümme, seeme, kööme; like HAARE
 
-               +Sg:%{W%} NOMINATIVE ;    ! seeme
-               +Sg:%{W%}%+t PARTITIVE ;    ! seemet
-                  :ne%+te N_PL_SUBPARA ;
-                  :ne 2C_STRONG ;    ! seemne etc
+                  :%{W%} 2C_LEMMA2 ;    ! seeme, seemet
+                  :ne 2C_STRONGPL ;    ! seemne etc, seemnete etc
 
 LEXICON SÜDA    ! only süda; like HAARE
 
@@ -474,7 +467,7 @@ LEXICON VARS    !  VVS 14 unstable (closed) type;
 
                +Sg: NOMINATIVE ;    ! vars
                   :e%{W%} N_SG_SUBPARA ;    ! varre etc 
-               +Sg:%+t PARTITIVE ;    ! vart
+               +Sg:%{W%}%+t PARTITIVE ;    ! vart
                +Sg:%{S%}%+de SG_ILL_VARIANT ;    ! varde
                +Sg:e%{W%} SG_ILL_VARIANT ;    ! varresse 
                   :%{W%}%+te N_PL_SUBPARA ;    ! varte etc 

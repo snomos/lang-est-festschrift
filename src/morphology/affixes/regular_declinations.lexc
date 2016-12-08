@@ -53,41 +53,31 @@ LEXICON HOOLAS    ! VVS 3 unstable (closed) type; strengthening gradation
 
 LEXICON HAARE    ! VVS 4, VVS 5 unstable (closed) type
 
-           +Sg:%{W%} NOMINATIVE ;        ! haare
-           +Sg:%{W%}%+t PARTITIVE ;      ! haaret
-              :me%+te N_PL_SUBPARA ;     ! haarmete, habemete etc 
-              :me 2C_STRONG ;            ! haarme, habeme etc, haarmeid, haarmeil etc
+              :%{W%} 2C_LEMMA2 ;         ! haare, haaret
+              :me 2C_STRONGPL ;          ! haarme, habeme etc, haarmeid, haarmeil etc
 
 LEXICON PINGE    ! VVS 6 stable (open) + unstable (closed) type; 
                  ! open to verbal derivations, e.g. kiune from kiunuma
 
-           +Sg:%{W%} NOMINATIVE ;         ! pinge
-           +Sg:%{W%}%+t PARTITIVE ;       ! pinget
-              :%{W%}%+te N_PL_SUBPARA ;   ! pingete etc 
+              :%{W%} 2C_LEMMA3 ;          ! pinge, pinget, pingete
               : 2C_STRONG ;               ! pinge etc, pingeid, pingeil etc
 
 LEXICON KOTKAS    !  VVS 7 unstable (closed) type; 
 
-           +Sg:s%{W%} NOMINATIVE ;        ! kotkas
-           +Sg:s%{W%}%+t PARTITIVE ;      ! kotkast
-              :s%{W%}%+te N_PL_SUBPARA ;  ! kotkaste etc 
+              :s%{W%} 2C_LEMMA3 ;         ! kotkas, kotkast, kotkaste
               : 2C_STRONG ;               ! kotka etc, kotkaid, kotkail etc
 
 LEXICON PIPAR    !  VVS 8 unstable (closed) type; = HOOLAS
 
-           +Sg:%{W%} NOMINATIVE ;         ! pipar
-           +Sg:%{W%}%+t PARTITIVE ;       ! pipart
-              :%{W%}%+de N_PL_SUBPARA ;   ! piparde etc 
-%+Use%/NotNorm:a%+te N_PL_SUBPARA ;       ! piprate etc 
+              :%{W%} 2C_LEMMA3 ;          ! pipar, pipart, piparde
               :a 2C_STRONG ;
+%+Use%/NotNorm:a%+te N_PL_SUBPARA ;       ! piprate etc 
 
 LEXICON KANNEL    ! VVS 8 unstable (closed) type; = PIPAR, but stem vowel -e instead of -a
 
-           +Sg:%{W%} NOMINATIVE ;         ! kannel, tütar
-           +Sg:%{W%}%+t PARTITIVE ;       ! kannelt, tütart
-              :%{W%}%+de N_PL_SUBPARA ;   ! kannelde, tütarde etc 
-%+Use%/NotNorm:e%+te N_PL_SUBPARA ;       ! kandlete, tütrete etc 
+              :%{W%} 2C_LEMMA3 ;          ! kannel, kannelt, kannelde
               :e 2C_STRONG ;
+%+Use%/NotNorm:e%+te N_PL_SUBPARA ;       ! kandlete, tütrete etc 
 
 LEXICON SOOLANE    ! VVS 9 simplex words ending with -s (katus), VVS 10 affix -ne; 
                        
@@ -233,6 +223,7 @@ LEXICON LINE_US_NORM  ! part of line_us_specific
 
 LEXICON 1C    ! consonant ending, stress NOT on penultimate syllable
 
+                           ! NOMINATIVE is without stem vowel
               : 1C_SG ;    ! singular forms + pl nom
               : DE_PL ;
 
@@ -247,16 +238,36 @@ LEXICON 1V    ! vowel ending, stress on the last syllable
 LEXICON 2C    ! stress on penultimate syllable & word ends with a consonant; 
               ! or stressed penult. syllable extra heavy (e.g. -aania)  
 
+                                          ! NOMINATIVE is without stem vowel
            +Sg:%+t PARTITIVE ;            ! redelit, virsikut
-              :%+te N_PL_SUBPARA ;        ! redelite etc
-              : 2C_STRONG ;               ! redeleid, redeleil etc
+              : 2C_STRONGPL ;             ! redeleid, redeleil etc
 
-LEXICON 2C_STRONG    ! strong grade forms (for strengthening gradation)
+! strengthening gradation paradigm consists of:
+! 2C_LEMMA2 + 2C_STRONGPL or 
+! 2C_LEMMA3 + 2C_STRONG
+
+LEXICON 2C_LEMMA2    ! forms where 2 stems = lemma  
+
+           +Sg: NOMINATIVE ;              ! pinge
+           +Sg:%+t PARTITIVE ;            ! pinget
+
+LEXICON 2C_LEMMA3    ! forms where 3 stems = lemma  
+
+           +Sg: NOMINATIVE ;              ! pinge
+           +Sg:%+t PARTITIVE ;            ! pinget
+              :%+te N_PL_SUBPARA ;        ! pingete etc
+
+LEXICON 2C_STRONG    ! forms that would usually be in strong grade in strengthening gradation
 
               : N_SG_SUBPARA ;             ! redeli, kotka etc
            +Sg: SG_ILL_VARIANT ;           ! taskusse or tasku
            +Pl:%+id PARTITIVE ;            ! kotkaid
    %+Use%/Rare:%+i N_VOWEL_PL_SUBPARA ;    ! kotkail etc
+
+LEXICON 2C_STRONGPL   ! forms that would sometimes be in strong grade in strengthening gradation
+
+              : 2C_STRONG;
+              :%+te N_PL_SUBPARA ; 
 
 LEXICON 2V    ! stress on penultimate syllable, word ends with vowel 
               ! & stressed syllable NOT extra heavy (kava, sõda, pere)
