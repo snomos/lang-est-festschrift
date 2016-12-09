@@ -1,5 +1,5 @@
 ! inflectional types and analogue rules for nouns, adjectives and other declinables
-! VVS stands for Ü. Viks "Väike vormisõnastik" for reference purposes
+! VVS stands for types from Ü. Viks "Väike vormisõnastik" for reference purposes
 
 !---------------
 ! inflectional types
@@ -9,77 +9,78 @@
 ! not-so-exceptional inflectional types
 !---------------
 
-LEXICON AASTA    ! VVS 1 default? for vowel-final; stress on penultimate syllable words
+LEXICON AASTA    ! VVS 1 (productive) for vowel-final; stress on penultimate syllable words
 
            +Sg:%{no.apo%} NOMINATIVE ;    ! aasta
               : 2C ;    ! aasta etc
 
-LEXICON REDEL    ! VVS 2 default for consonant-ending, stress on penultimate syllable words
+LEXICON REDEL    ! VVS 2 (productive) for consonant-ending, stress on penultimate syllable words
    
            +Sg:%{no.apo%} NOMINATIVE ;    ! redel, koppel
               :i 2C ;    ! redeli etc
 
-LEXICON VIRSIK    ! VVS 2 default for -ik, -ing; stress on penultimate syllable words
+LEXICON VIRSIK    ! VVS 2 (productive) for -ik, -ing; stress on penultimate syllable words
 
            +Sg:%{no.apo%} NOMINATIVE ;    ! virsik
               :u 2C ;    ! virsiku etc
 
-LEXICON LOHAKAS    ! VVS 2 -kas, -jas etc ending words (incl derivations)
+LEXICON LOHAKAS    ! VVS 2 (productive) -kas, -jas etc ending words (incl derivations)
 
            +Sg:s NOMINATIVE ;    ! lohakas
               : 2C ;    ! lohaka etc
 
-LEXICON TUNTUD    ! VVS 2 -d ending words (incl derivations)
+LEXICON TUNTUD    ! VVS 2 (productive) -d ending words (incl derivations)
 
            +Sg:d NOMINATIVE ;    ! tuntud
               : 2C ;    ! tuntu etc
  
-LEXICON MAGUS    ! VVS 2 unstable (closed) type
+LEXICON MAGUS    ! VVS 2 (unproductive) i.e. unstable (closed) type
 
            +Sg: NOMINATIVE ;    ! magus
               :A1 2C ;    ! magusa; A1 is necessary for pingne - pingsa
 
-LEXICON HALE    ! VVS 2 unstable (closed) type
+LEXICON HALE    ! VVS 2 (unproductive) i.e. unstable (closed) type
 
            +Sg: NOMINATIVE ;    ! hale, sajas
               :da 2C ;    ! haleda, sajanda
 
-LEXICON HOOLAS    ! VVS 3 unstable (closed) type; strengthening gradation
+LEXICON HOOLAS    ! VVS 3 (unproductive) i.e. unstable (closed) type; strengthening gradation
 
            +Sg:%{W%} NOMINATIVE ;        ! hoolas
               :a 2C ;                    ! hoolsa etc
 +Sg%+Use%/Rare:%{W%}%+t PARTITIVE ;      ! hoolast
 %+Use%/NotNorm:%{W%}%+te N_PL_SUBPARA ;  ! hoolaste etc 
 
-LEXICON HAARE    ! VVS 4, VVS 5 unstable (closed) type
+LEXICON HAARE    ! VVS 4, VVS 5 (unproductive) i.e. unstable (closed) type
 
               :%{W%} 2C_LEMMA2 ;         ! haare, haaret
               :me 2C_STRONGPL ;          ! haarme, habeme etc, haarmeid, haarmeil etc
 
-LEXICON PINGE    ! VVS 6 stable (open) + unstable (closed) type; 
-                 ! open to verbal derivations, e.g. kiune from kiunuma
+LEXICON PINGE    ! VVS 6 (productive) i.e. stable 
+                 ! (open to verbal derivations, e.g. kiune from kiunuma)
+                 ! + (unproductive) i.e. unstable (closed) type; 
 
               :%{W%} 2C_LEMMA3 ;          ! pinge, pinget, pingete
               : 2C_STRONG ;               ! pinge etc, pingeid, pingeil etc
 
-LEXICON KOTKAS    !  VVS 7 unstable (closed) type; 
+LEXICON KOTKAS    !  VVS 7 (unproductive) i.e. unstable (closed) type; 
 
               :s%{W%} 2C_LEMMA3 ;         ! kotkas, kotkast, kotkaste
               : 2C_STRONG ;               ! kotka etc, kotkaid, kotkail etc
 
-LEXICON PIPAR    !  VVS 8 unstable (closed) type; = HOOLAS
+LEXICON PIPAR    !  VVS 8 (unproductive) i.e. unstable (closed) type; = HOOLAS
 
               :%{W%} 2C_LEMMA3 ;          ! pipar, pipart, piparde
               :a 2C_STRONG ;
 %+Use%/NotNorm:a%+te N_PL_SUBPARA ;       ! piprate etc 
 
-LEXICON KANNEL    ! VVS 8 unstable (closed) type; = PIPAR, but stem vowel -e instead of -a
+LEXICON KANNEL    ! VVS 8 (unproductive) i.e.unstable (closed) type; = PIPAR, but stem vowel -e instead of -a
 
               :%{W%} 2C_LEMMA3 ;          ! kannel, kannelt, kannelde
               :e 2C_STRONG ;
 %+Use%/NotNorm:e%+te N_PL_SUBPARA ;       ! kandlete, tütrete etc 
 
-LEXICON SOOLANE    ! VVS 9 simplex words ending with -s (katus), VVS 10 affix -ne; 
+LEXICON SOOLANE    ! VVS 9 (productive) simplex words ending with -s (katus), VVS 10 affix -ne; 
                        
            +Sg: NOMINATIVE ;
               : NE_S_COMMON ;
@@ -87,47 +88,55 @@ LEXICON SOOLANE    ! VVS 9 simplex words ending with -s (katus), VVS 10 affix -n
            +Pl:E1%+id PARTITIVE ;            ! soolaseid, katuseid
    %+Use%/Rare:E1%+i N_VOWEL_PL_SUBPARA ;    ! soolaseil, katuseil etc
 
-LEXICON OLULINE    ! VVS 12 affixes -lane, -line, -mine, -tine, -ke(ne), -stikune (?)
-                   ! VVS 11 derived words ending with -us, -is (?) (harjutus)
+LEXICON OLULINE    ! VVS 11, 12 (productive)
+                   ! VVS 12: affixes -lane, -line, -mine, -tine, -ke(ne), -stikune (?)
+                   ! VVS 11: derived words ending with -us, -is (?) (harjutus)
                   
            +Sg: NOMINATIVE ;
               : NE_S_COMMON ;
               : LINE_US_SPECIFIC ;
 
-LEXICON KATKINE    ! VVS 10 & (12); affix -ne, but sg ill, pl part and vocal cases also like -line
-                   !  VVS 9 & (11); simplex -s, but also like -us (gloobus) 
+LEXICON KATKINE    ! VVS 9 & (11), 10 & (12) (productive)
+                   ! VVS 10 & (12): affix -ne, but sg ill, pl part and vocal cases also like -line
+                   ! VVS  9 & (11): simplex -s, but also like -us (gloobus) 
                  
               : SOOLANE ;
    %+Use%/Rare: LINE_US_NORM ;              ! like OLULINE: katkisse, katkisi
    %+Use%/Rare:%+I1 N_VOWEL_PL_SUBPARA ;    ! like OLULINE: katkisil etc; (ever used?)
 
-LEXICON SUULINE    ! VVS (10) & 12; affix -line, but pl part and vowel cases also like -ne
-                   ! VVS (9) & 11; derived -us, but pl part and vowel cases (?) also like simplex -s (vaatlus) 
+LEXICON SUULINE    ! VVS (9) & 11, (10) & 12 (productive)
+                   ! VVS (10) & 12: affix -line, but pl part and vowel cases also like -ne
+                   ! VVS  (9) & 11: derived -us, but pl part and vowel cases (?) also like simplex -s (vaatlus) 
 
               : OLULINE ;
 +Pl%+Use%/Rare:E1%+id PARTITIVE ;            ! like SOOLANE: suuliseid, vaatluseid
    %+Use%/Rare:E1%+i N_VOWEL_PL_SUBPARA ;    ! like SOOLANE: suuliseil, vaatluseil etc
 
-LEXICON PEENIKE    ! VVS 12; affix -ke; almost = OLULINE, except sg nom
+LEXICON PEENIKE    ! VVS 12 (productive): affix -ke; almost = OLULINE, except sg nom
 
            +Sg: NOMINATIVE ;
 +Sg%+Use%/Rare:ne NOMINATIVE ;
               :ne NE_S_COMMON ;
               :ne LINE_US_SPECIFIC ;
 
-LEXICON PERE    ! VVS 16
+LEXICON PERE    ! VVS 16 (productive)
 
            +Sg:%{no.apo%} NOMINATIVE ;
               : 2V ;
            +Sg:%+t PARTITIVE ;    ! peret
 
-LEXICON KAVA    ! VVS 17, 18
+LEXICON KAVA    ! VVS 17, 18 (productive) + (unproductive)
+                ! VVS 17 (productive)
+                ! VVS 18 (unproductive): words with quality gradation
 
            +Sg:%{no.apo%} NOMINATIVE ;
               : 2V ;
            +Sg: PARTITIVE ;       ! kava
 
-LEXICON MUUSEUM    ! VVS 2 & 19; undecided which stable type (aktiivne muuttüüp): TAUD or REDEL 
+LEXICON MUUSEUM    ! VVS 2 & 19 (productive)
+                   ! forms may be based on 2 productive, i.e. stable types (aktiivne muuttüüp)
+                   ! if prononunced as 2-syllable word (muus-jum), then like REDEL
+                   ! if prononunced as 3-syllable word (muus-e-um), then like TAUD 
 
            +Sg:%{no.apo%} NOMINATIVE ;
               :i%{W%} N_SG_SUBPARA ; 
@@ -142,27 +151,28 @@ LEXICON MUUSEUM    ! VVS 2 & 19; undecided which stable type (aktiivne muuttüü
 +Pl%+Use%/Rare:e%+id PARTITIVE ;         ! muuseumeid
    %+Use%/Rare:e%+i N_VOWEL_PL_SUBPARA ; ! muuseumeil etc
 
-LEXICON PIIM    ! VVS 22; unstable type (passiivne muuttüüp) sepp, kaup, ...
+LEXICON PIIM    ! VVS 22; (unproductive) i.e. unstable type (passiivne muuttüüp) sepp, kaup, ...
 
            +Sg:%{no.apo%} NOMINATIVE ;
               :%{sg.a%} 1C ;
 
-LEXICON KOON    ! VVS 22; unstable type (passiivne muuttüüp) lõpp, laug
+LEXICON KOON    ! VVS 22; (unproductive) i.e. unstable type (passiivne muuttüüp) lõpp, laug
 
            +Sg:%{no.apo%} NOMINATIVE ;
               :%{sg.u%} 1C ;
 
-LEXICON EIT    ! VVS 22; unstable type (passiivne muuttüüp) kuusk, kärg
+LEXICON EIT    ! VVS 22; (unproductive) i.e. unstable type (passiivne muuttüüp) kuusk, kärg
 
            +Sg:%{no.apo%} NOMINATIVE ;
               :%{sg.e%} 1C ;
 
-LEXICON TAUD    ! VVS 22; stable type (aktiivne muuttüüp) siil, president, ...
+LEXICON TAUD    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp) siil, president, ...
 
            +Sg:%{no.apo%} NOMINATIVE ;
               :%+%{pl.e%}%{sg.i%} 1C ;    ! {pl.e} is here so it need not be in the stem lexicon
 
-LEXICON FIAT    ! VVS 22; stable type (aktiivne muuttüüp) almost == TAUD, but final stop weak grade does not change 
+LEXICON FIAT    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp) 
+                ! almost == TAUD, but final stop weak grade does not change 
 
            +Sg:%{no.apo%} NOMINATIVE ;
               :i%{WL%} N_SG_SUBPARA ;      ! Fiati etc
@@ -171,7 +181,8 @@ LEXICON FIAT    ! VVS 22; stable type (aktiivne muuttüüp) almost == TAUD, but 
  +Sg%+Use%/Hyp:i%{WL%}%+sse ILLATIVE ;     ! Fiatisse
               :%+%{pl.e%}%{sg.i%} DE_PL ;  ! Fiatide, Fiate, Fiatisid+Use/Rare 
 
-LEXICON KABINET    ! VVS 22; stable type (aktiivne muuttüüp) almost == TAUD
+LEXICON KABINET    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp) 
+                   ! almost == TAUD, but Sg Nom orthography with single final stop instead of 2
 
            +Sg:%{no.apo%} NOMINATIVE ;    ! kabinet
                                           ! sg nom has a single final stop instead of double, 
@@ -180,7 +191,8 @@ LEXICON KABINET    ! VVS 22; stable type (aktiivne muuttüüp) almost == TAUD
 
 ! VVS 24 is lexical variants under VVS 22 various subtypes
 
-LEXICON ELANIK    ! VVS 25; stable type (aktiivne muuttüüp) almost == KABINET == TAUD
+LEXICON ELANIK    ! VVS 25; (productive) i.e. stable type (aktiivne muuttüüp) 
+                  ! almost == KABINET == TAUD
 
            +Sg:%{no.apo%} NOMINATIVE ;    ! elanik
                                           ! sg nom has a single final stop instead of double, 
@@ -190,7 +202,7 @@ LEXICON ELANIK    ! VVS 25; stable type (aktiivne muuttüüp) almost == KABINET 
    %+Use%/Rare:%.%{sg.u%}%+de N_PL_SUBPARA ;    ! elanikkude etc   
             +Pl:%.%+%{pl.e%}%{sg.u%}%+%{s%}%{i%}%{d%} PL_PAR_VARIANT ;    ! elanikke; elanikkusid+Use/Rare
 
-LEXICON ARMEE    ! VVS 26
+LEXICON ARMEE    ! VVS 26 ; (productive) i.e. stable type (aktiivne muuttüüp)
 
               : 1V ;
            +Sg:%+sse ILLATIVE ;    ! armeesse

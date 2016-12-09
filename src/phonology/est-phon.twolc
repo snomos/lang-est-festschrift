@@ -572,7 +572,7 @@ J1:e  <=> :Vowel _ :Consonant ;
 "j surfaces only if some (stem)vowel follows"
 
 J1:j  => :Consonant _ Null* :Vowel ;
-         :0 _ :Vowel ;
+         D1:0 _ :Vowel ;
 
 ! lexical: a h J1 + {pl.e} {rare} {sg.u} {W}
 ! surface: a h j  0   0       0      u    0
@@ -599,14 +599,14 @@ J1:0  =>           h _ T1:  ;
 ! surface: h ä r 0  g  0    0      a   
 
 ! only koda, pada, rada, sadu, sõda, sada, sadama
-! use D1 as a trigger instead of {W}
+! use D1 as a trigger 
 ! (D1 is non-zero only in strong grade) 
 
-"koda etc: j does not surface in weak grade 1/2"
+"koda etc: j does not surface in strong grade 1/2"
 
 J1:j /<=  [D1:d | D1:t] (:t) _ Null* :Vowel ;
 
-"koda etc: j does not surface in weak grade 2/2"
+"koda etc: j does not surface in strong grade 2/2"
 
 J1:0  =>  [D1:d | D1:t] (:t) _ Null* :Vowel ;
 
@@ -776,6 +776,14 @@ t:d <=> [A2:a | E2:e] lmnr WeakGrade %+: _ e ;
 
 ! lexical: s ´ õ s t A2 r {W} + t e
 ! surface: s 0 õ s t  a r  0  0 d e
+
+! for 8 words like käsi, mesi
+"+t doubles at the end of a short-syllable word"
+
+0:t <=> Border (Consonant) Vowel Null* %+: t _ WordEnd ;
+
+! lexical: k ä S1 + t 0
+! surface: k ä  0 + t t
 
 ! ---------
 ! Rules for selecting 

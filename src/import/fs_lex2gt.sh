@@ -49,6 +49,8 @@ cat tmp1 | ./lemma2twol.sed \
 | sed 's/I5/i/g' \
 | sed 's/:Rõngu/:RõnG4u/' \
 | sed 's/:Sommerlingi/:SommerlinG4i/' \
+| sed '/käsi:/s/käS1/&%{stemill%}/' \
+| sed '/vesi:/s/veS1/&%{stemill%}/' \
 | ./post_lex2lemma.sed \
 > tmp1twol
 
