@@ -35,6 +35,9 @@ cat algtmp | ./fs_lex2lemma.sed \
 # pöördsõnade omad
 cat decltmp1 | ./fs_lex2verblemma.sed \
 | sed '/n<eed.MA/s/n<eedma:n<eeD1 n<eedma:n<eeD1/n<eedma:n<eeD1/' \
+| sed '/SIPLEMA/s/E2\([lr]\)$/\1e/' \
+| sed 's/SIPLEMA/HAKKAMA/' \
+| sed '/RABELEMA/s/$/e/' \
 > tmp1
 
 # kirjuta mõnedesse lemmadesse sisse leksikaalse tasandi märgid

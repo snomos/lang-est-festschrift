@@ -273,7 +273,7 @@ Rules
 
 Cx:Cy  <=> :Vowel :sonor _ (%+:0) (SV:0) (LT:0) :stemV %{W%}: ;    ! kaup
                   :sonor _ [l | r | j | v]      :stemV %{W%}: ;    ! kõblata
-                  :sonor _                      :stemV l %{W%}: ;  ! võidelda
+           :Vowel :sonor _ 0:e [l | r]           e:0 %{W%}: ;    ! võidelda
      where Cx in ( p t k ) 
            Cy in ( b d g )
      matched ;
@@ -286,8 +286,10 @@ Cx:Cy  <=> :Vowel :sonor _ (%+:0) (SV:0) (LT:0) :stemV %{W%}: ;    ! kaup
 ! surface: k a t k u  0  0 n
 ! lexical: k õ p l a {W} + t a
 ! surface: k õ b l a  0  0 t a
-! lexical: v õ i t E2 l {W} + d a
-! surface: v õ i d e  l  0  0 d a
+! lexical: v õ i t 0 l {W} + d a
+! surface: v õ i d e l  0  0 d a
+! lexical: s i p 0 l e {W} + d a
+! surface: s i p e l 0  0  0 d a  ! no visible change
 ! lexical: l õ t v e {W}
 ! surface: l õ d v e  0        ! Sg Nom
 
@@ -300,7 +302,7 @@ Cx:Cy  <=> :Vowel :sonor _ (%+:0) (SV:0) (LT:0) :stemV %{W%}: ;    ! kaup
 
 "Weak grade for productive kk pp tt šš ff : k p t š f"
 
-Cx:0 <=>  Cx _ (%+:0) (SV:0) (LT:0) :stemV (lmnr) %{W%}:  ;  ! sepa, lepin, sipelda, aken, tütar, ...
+Cx:0 <=>  Cx _ (%+:0) (SV:0) (LT:0) :stemV (lmnr) %{W%}:  ;  ! sepa, lepin, aken, tütar, ...
      where Cx in ( p t k š f) ;
 
 ! lexical: k e p p + {pl.e} {sg.i} {W}
@@ -309,8 +311,6 @@ Cx:0 <=>  Cx _ (%+:0) (SV:0) (LT:0) :stemV (lmnr) %{W%}:  ;  ! sepa, lepin, sipe
 ! surface: s e p 0 0    0      a    0 
 ! lexical: l e p p i {W} + n
 ! surface: l e p 0 i  0  0 n 
-! lexical: s i p p E2 l {W} + d a
-! surface: s i p 0 e  l  0  0 d a 
 ! lexical: t ü t t A2 r {W}
 ! surface: t ü t 0 a  r 0 
 
@@ -770,20 +770,50 @@ I1:i   => n:s e:0 Null* _ ;   ! -ne word
 ! ---------
 ! affix allomorphs
 
-"+te appears as +de in tütar-type words"
+! noun pl affix te -> de; 
+! thus tütar, kannel, pinge, kotkas appear similar
 
-t:d <=> [A2:a | E2:e] lmnr WeakGrade %+: _ e ; 
+"+te appears as +de in tütar-type words"
+ t:d <=> [A2:a | E2:e] lmnr WeakGrade %+: _ e ; 
 
 ! lexical: s ´ õ s t A2 r {W} + t e
 ! surface: s 0 õ s t  a r  0  0 d e
 
-! for 8 words like käsi, mesi
-"+t doubles at the end of a short-syllable word"
+! verb affixes ta, takse, tud, ti; ku etc -> da, dakse, dud, di, gu etc
+! thus siplema, hakkama appear similar
 
-0:t <=> Border (Consonant) Vowel Null* %+: t _ WordEnd ;
+"t, k to d, g in le el verbs"
 
-! lexical: k ä S1 + t 0
-! surface: k ä  0 + t t
+Kx:Ky <=> :e [l | r] e:0 WeakGrade %+: _ stemV ; 
+     where Kx in ( k t ) 
+           Ky in ( g d )
+     matched ;
+
+! lexical: s i p 0 l e {W} + t u d
+! surface: s i p e l 0  0  0 d u d
+
+
+! --------- verbs only -------
+! siplema-sipelda
+
+"el-le 1/3"
+
+e:0 <=> :e [l | r] _ WeakGrade %+: ;
+
+"el-le 2/3"
+
+0:e <=> [:Consonant | WS:0] _ [l | r] e:0 WeakGrade %+: ;
+
+! in weak grade, -le- is impossible (has to be -el-)
+"el-le 3/3"
+
+e:e /<= [:Consonant | WS:0] [l | r] _ WeakGrade %+: ;
+
+! lexical: s i p 0 l e {W} + d a
+! surface: s i p e l 0  0  0 d a
+! hüüdlema-hüüelda
+! lexical: h ´ ü ü D1 0 l e {W} + d a
+! surface: h ´ ü ü 0  e l 0  0  0 d a
 
 ! ---------
 ! Rules for selecting 
@@ -1021,6 +1051,8 @@ LT:0          =>  %{stemill%}: _ ;      ! stem illative usage tag in the lexicon
 ! --------- orthography
 
 ! Orthography: consonant (cluster) writing conventions
+! NB! Foreign names may contain them, e.g. Uppsala, Mannheim
+! Treffner, Gottlieb, Seattle
 ! 1) if a vowel is deleted, the resulting consonant cluster may have to be modified
 ! (note: no consonant deletion before particle -gi/ki)
 
@@ -1036,8 +1068,8 @@ Cx:0 <=> :Cx _ Null+ [[Consonant Any* Border] - [Gi Border]];
 
 ! 2) in this treatment, some consonants have been written as double in the lexicon 
 ! because they are pronounced long;
-! this violates Estonian orthography, and this rule sets them right again
-! need 3 rules because e.g. n may get deleted in another context, e.g. lääs-lääne
+! this violates Estonian orthography, and these rules set them right again
+! need several rules for lmnr because e.g. n may get deleted in another context, e.g. lääs-lääne
 
 ! l m n r may be 0 before a lexical WS that surfaces as a real WS
 "repair lmnr 1"
@@ -1059,8 +1091,8 @@ Cx:0 /<= :Vowel _ [G1:g | B1:b | D1:d | K1:k | P1:p | T1:t | G3:g | D3:d] ;
 
 ! lexical: k a n n D1 E2 l e
 ! surface: k a n 0  d  0 l e 
-! lexical: k õ r r S1 {stemill} {rare} + t e
-! surface: k õ r 0  0     0        0   0 t e
+! lexical: k õ r r S1 
+! surface: k õ r 0  s 
 ! lexical: k u l l D1 + {pl.i} {hyp}
 ! surface: k u l 0  d 0    0     0
 ! lexical: s ´ u n , n D1 i + m a
@@ -1087,6 +1119,25 @@ Cx:Cy  <=> :voiceless Null* %+: _ ;
 
 ! lexical: k a b i n e t . + {pl.e} {sg.i}
 ! surface: k a b i n e t t 0    0      i
+
+! native monosyllabic word cannot be kät, has to be kätt 
+! for 8 words like käsi, mesi
+"+t doubles at the end of a short-syllable word"
+
+0:t <=> Border (Consonant) Vowel Null* %+: t _ WordEnd ;
+
+! lexical: k ä S1 + t 0
+! surface: k ä  0 + t t
+
+! in weak grade, the true length of a consonant becomes apparent...
+! mäslema - mässelda is the only example, but the process itself is not unique
+
+"mäslema"
+
+0:s <=> Vowel s _ 0:e l e:0 WeakGrade ;
+
+! lexical: m ä s 0 0 l e {W} + d a
+! surface: m ä s s e l 0  0  0 d a     
 
 ! If a foreign word is pronounced not according to Estonian writing conventions (Braille - brai)
 ! then its inflectional ending is separated with an apostrophy (superscript 9) ’ 
