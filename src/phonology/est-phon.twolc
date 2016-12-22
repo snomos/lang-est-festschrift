@@ -147,6 +147,8 @@ n:s   ! soolas+e, soolas+t etc
 e:e   ! soolane
 e:0   ! soolas0+e 
 
+! -le/-el stem alternations also use e:0, in addition to 0:e (sip0lema-sipel0da)
+
 ! high vowel lowering in certain contexts
  i:e    
  i:i 
@@ -155,12 +157,35 @@ e:0   ! soolas0+e
  ü:ö
  ü:ü   
 
+! verb affixes have k-g and t-d-0 alternations
+! imperative mood affixes gu/ku, ge/kem etc
+G7:g
+G7:k
+
+! infinitive and gerund ta/da/a, tes/des/es
+D7:d
+D7:t
+D7:0
+
+! impersonal voice affixes tud/tud, takse/dakse etc
+T7:d
+T7:t
+
+
+! for making verb form pronouncable
+I7:i  ! naeris
+I7:0  ! naer sin
+
+! personal past indicative forms
+S7:s  ! naeris
+S7:0  ! pani
+
 ! if we say that plural affix +te appears as +de for tütar-type words,
 ! then the cont. lexicons will be simpler 
  t:t  
  t:d  ! tütar+de
 
-%.:0 ! double the previous letter (kabinet - kabinetti)
+%.:0 ! double the previous letter (kabinet - kabinetti; tulema - tulla)
 
 ! usage tag; never on the surface side
 
@@ -241,6 +266,9 @@ SV = SgSV PlSV ;
 ! weak stops in the lexicon plus s; they disappear in weak grade
 WS = G1 B1 D1 K1 P1 T1 S1 ;
 
+! lexical side of consonants that participate in gradation
+! LexGrad = G1 B1 D1 K1 P1 T1 S1 B2 K2 P2 T2 g b d k p t f s š ;
+
 ! Usage, style etc tags in lexicon
 LT = %{hyp%} %{rare%} %{notnorm%} %{commonnotnorm%} ;
 
@@ -249,10 +277,19 @@ Definitions
 Border = [ .#. | # ];  ! word border
 Gi = [ [ :g | :k ] i ] ;
 WordEnd = [ (%+: Gi) Border ];     ! final +gi is optional for almost any word
-Null = [ :0 - # ];            ! something on the lexical side, but nothing on the surface (except word border)
+
+Null = [ :0 - Border ];            ! something on the lexical side, but nothing on the surface (except word border)
 Any  = [ : - Border ];             ! anything except word border
+
 WeakGrade = [%{W%}:0 | %{WL%}:0] ;
 StrongGrade = %{S%}:0 ;
+GradeTrigger = [ WeakGrade | StrongGrade ] ;
+
+NullNoTrigger = [ Null - GradeTrigger ] ;
+AnyNoTrigger = [ Any - GradeTrigger ] ;
+
+! NonGrad = \[ LexGrad: ] ;  ! smth non-grading 
+! AnyNonGrad = [ NonGrad - [ Border | GradeTrigger ] ] ;  ! anything non-grading except word border, and not the trigger either 
 
 Rules 
  
@@ -325,28 +362,52 @@ s:0 <=> :Vowel :sonor :s _ (%+:0) (SV:0) (LT:0) :stemV %{W%}: ;
 
 "Lexically determined weak grade for b:v"
 
-B2:v  <=> _ Any* WeakGrade ;
+B2:v  <=> _ AnyNoTrigger* WeakGrade ;
 
 ! lexical: k ä i B2 e {W}
 ! surface: k ä i v  e  0
 
-"Lexically determined weak grade for gbdkpt:0"
+"Lexically determined weak grade for gk:0"
 
-Cx:Cy  <=> _ Any* WeakGrade ;
-           h J1: _ Null* WordEnd ; ! rohi sg nom is not WeakGrade; has ij:
-     where Cx in (G1 B1 D1 K1 P1 T1 ) 
-           Cy in ( 0  0  0  0  0  0 )
+Cx:Cy  <=> _ AnyNoTrigger* WeakGrade ;
+           _ Null* %+: :k ;                ! assimilation on affix border
+           _ Null* %+: :t ;                ! assimilation on affix border
+     where Cx in ( G1 K1 ) 
+           Cy in (  0  0 )
+     matched ;
+
+! lexical: l a G1 {stemill} e {WL}
+! surface: l a  0     0     e  0
+! lexical: p u s K1 + G7 u
+! surface: p u s  0 +  k u
+! lexical: p u s K1 + T7 u d
+! surface: p u s  0 +  t u d
+
+"Lexically determined weak grade for dt:0"
+
+Cx:Cy  <=> _ AnyNoTrigger* WeakGrade ;
+           h J1: _ Null* WordEnd ;         ! rohi: word-final J1: makes sg nom "weak grade"
+           _ Null* %+: :t ;                ! assimilation on affix border
+     where Cx in ( D1 T1 ) 
+           Cy in (  0  0 )
      matched ;
 
 ! lexical: l a u D1 + {pl.u} {sg.a} {W}
 ! surface: l a u  0 0    0      a    0
-! lexical: l a G1 {stemill} e {WL}
-! surface: l a  0     0     e  0
+! lexical: a n D1 + T7 u d
+! surface: a n  0 0  t u d
+
+"Lexically determined weak grade for bp:0"
+
+Cx:Cy  <=> _ AnyNoTrigger* WeakGrade ;
+     where Cx in (B1 P1 ) 
+           Cy in ( 0  0 )
+     matched ;
 
 "Lexically determined weak grade for s:0"
 
-S1:0  <=> _ Any* WeakGrade ;       ! paas - pae
-          _ Null* [ :t | :d ] ;     ! vars - vart, varde
+S1:0  <=> _ AnyNoTrigger* WeakGrade ;       ! paas - pae
+          _ Null* [ :t | :d ] ;             ! vars - vart, varde
 
 ! lexical: p a a S1 + {pl.e} {sg.i} {WL}
 ! surface: p a 0  0 0   0       e    0
@@ -357,9 +418,9 @@ S1:0  <=> _ Any* WeakGrade ;       ! paas - pae
 
 "Lexically determined weak grade for kpt:gbd; sg nom for ader, lubi"
 
-Cx:Cy  <=>  _ Any* WeakGrade ;
-            _ J1:  Null* WordEnd ; ! lubi sg nom is not WeakGrade; has ij:
-            _ E2:e [l | r] Null* WordEnd ;    ! ader sg nom is not WeakGrade; has e2:e
+Cx:Cy  <=>  _ AnyNoTrigger* WeakGrade ;
+            _ J1:  Null* WordEnd ;          ! word-final ij: makes sg nom "weak grade" 
+            _ E2:e [l | r] Null* WordEnd ;  ! ader sg nom is not WeakGrade; has e2:e
       where Cx in ( K2 P2 T2 ) 
             Cy in (  g  b  d )
       matched ;
@@ -378,7 +439,7 @@ Cx:Cy  <=>  _ Any* WeakGrade ;
 
 "short illative strong stem generation: consonant doubling"
 
-0:Cy  <=>  \[ :Vowel] :Vowel Cx:Cy _ Null* :Vowel Null* StrongGrade ; ! majja
+0:Cy  <=>  \[ :Vowel] :Vowel Cx:Cy _ NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ; ! majja
      where Cx in ( l m M1 n r v j h s g b d k p t G1 B1 B2 D1 ) 
            Cy in ( l m  m n r v j h s k p t k p t  k  p  p  t )
      matched ;
@@ -388,7 +449,7 @@ Cx:Cy  <=>  _ Any* WeakGrade ;
 
 "short illative strong stem generation: stop to stronger stop"
 
-Cx:Cy <=> :sonor Null* _ ( :Cy | j ) Null* :Vowel Null* StrongGrade ;
+Cx:Cy <=> :sonor Null* _ ( :Cy | j ) NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ;
      where Cx in ( g b d G1 B1 B2 D1 G3 D3 ) 
            Cy in ( k p t  k  p  p  t  g  d )
      matched ;
@@ -421,8 +482,6 @@ Vx:Vy  <=>    _ Null* [:Consonant - :stop] Null* :stemV  ;
 ! surface: s e a d 0  m 0 e 
 ! lexical: a T2 E2 r + a
 ! surface: a  d  0 r 0 a 
-! lexical: s i p E2 l e + v
-! surface: s i p  0 l e 0 v
 ! lexical: s p i k k E2 r + i
 ! surface: s p i k 0  0 r 0 i 
 
@@ -559,10 +618,10 @@ J1:i  <=> :Consonant _ Null* WordEnd ;
 ! lexical: a J1 D1 + {pl.u} {sg.a} {W}
 ! surface: a i   0 0    0      a    0
 
-! only for one word - aed ...
+! only for 2 words - aed, aetud ...
 "j appears as e"
 
-J1:e  <=> :Vowel _ :Consonant ;
+J1:e  <=> :Vowel _ Null* :Consonant ;
 
 ! lexical: a J1 D1 
 ! surface: a e   d 
@@ -572,7 +631,7 @@ J1:e  <=> :Vowel _ :Consonant ;
 "j surfaces only if some (stem)vowel follows"
 
 J1:j  => :Consonant _ Null* :Vowel ;
-         D1:0 _ :Vowel ;
+         :Vowel (D1:0) _ :Vowel ;
 
 ! lexical: a h J1 + {pl.e} {rare} {sg.u} {W}
 ! surface: a h j  0   0       0      u    0
@@ -624,6 +683,16 @@ K3:k  <=> _ s E1:e ;
 ! lexical: v e n n a K3 s E1 + d 
 ! surface: v e n n a k  s  e 0 d
 
+! -----
+! olema, tulema, minema, panema, surema
+! olla, tulla, minna, panna, surra; ollakse etc
+! the context is limited by a few inflectional forms
+
+"double l m n r"
+
+%.:Cx <=> :Cx _ Null* [D7:0 | [a k s e]];
+      where Cx in (lmnr) ;
+
 !------
 "laas-laane"
 
@@ -674,8 +743,8 @@ Vx:Vy  <=>  Vx: _  Null+ [:a | :e] ;
            Vy in ( ü  u )
      matched ;
 
-! lexical: l O6 O6 {WL} + a k s e 
-! surface: l u   u  0  0 a k s e 
+! lexical: l O6 O6 {WL} + T7 a k s e 
+! surface: l u   u   0  0  0 a k s e 
 !------
 
 ! a general rule, but has to be encoded with M1 to allow for komtuur, EMT etc
@@ -779,21 +848,157 @@ I1:i   => n:s e:0 Null* _ ;   ! -ne word
 ! lexical: s ´ õ s t A2 r {W} + t e
 ! surface: s 0 õ s t  a r  0  0 d e
 
-! verb affixes ta, takse, tud, ti; ku etc -> da, dakse, dud, di, gu etc
-! thus siplema, hakkama appear similar
+! similar to imperative mood affixes
+! default: D7:d
+! lexical: s i p 0 l e {W} + D7 a
+! surface: s i p e l 0  0  0  d a
 
-"t, k to d, g in le el verbs"
+"infinitive and gerund affixes begin in t"
 
-Kx:Ky <=> :e [l | r] e:0 WeakGrade %+: _ stemV ; 
-     where Kx in ( k t ) 
-           Ky in ( g d )
-     matched ;
+D7:t  <=> :Vowel Null* WeakGrade %+: _ ;
+          :s Null* %+: _ ;
 
-! lexical: s i p 0 l e {W} + t u d
-! surface: s i p e l 0  0  0 d u d
+! lexical: h ü p p a {W} + D7 a
+! surface: h ü p 0 a {W} +  t a
+! lexical: s e i s + D7 a 
+! surface: s e i s 0  t u
+
+"infinitive and gerund affixes begin in 0"
+
+D7:0  <=>  [:l :l | :n :n | :r :r | :p :p] Null* %+: _ ; ! minna, tappa, ... 
+           :h                              Null* %+: _ ; ! teha
+           :Consonant Null* [:t | :d]      Null* %+: _ ; ! kasta, nutta, anda
+           :Vowel :Vowel [:t | :d]         Null* %+: _ ; ! niita, nõuda
+
+! lexical: m i n . {W} + D7 a 
+! surface: m i n n  0  0  0 a 
+! lexical: k ü T1 t + D7 a 
+! surface: k ü  t t 0  0 a
+! lexical: k e e T2 + D7 a 
+! surface: k e e  t 0  0 a
+! lexical: k ü n n D1 + D7 a
+! surface: k ü n 0  d 0  0 a
+
+! d cannot follow a voiceless consonant; 
+! this is a general rule that is repeated here for the D7:d case
+
+"orthography for da, des"
+
+D7:d /<= :voiceless Null* _ ;
+
+! lexical: k a T1 t + D7 a 
+! surface: k a  0 t 0  d a   <-- FAIL
+! lexical: l a s K1 + D7 a 
+! surface: l a s  k 0  d a   <-- FAIL
+
+! only for minema, olema, tulema, surema, panema
+"minema, olema, tulema, surema, panema cannot have da as infinitive affix"
+
+D7:d /<= [l %.:0 | n %.:0 | r %.:0] Null* %+: _ ;
+
+! lexical: t u l . + D7 a 
+! surface: t u l 0 0  d a  <-- FAIL
 
 
-! --------- verbs only -------
+! NB! kaema, laiuma, treima, täima are exceptions to this rule!
+
+"impersonal voice affix may begin in d"
+
+T7:d  <=> [l | n | r] (e:0) (WeakGrade) %+: _ ;
+
+!:Vowel [l | n | r] (e:0) (WeakGrade) %+: _ ;
+!          \[:Vowel] :Vowel :Vowel    %+: _ ;
+!          [l l:0  | n n:0  | r r:0 ]  %+: _ ;            ! surdud
+!          [l %.:0 | n %.:0 | r %.:0]  %+: _ ;            ! surdud
+
+! lexical: s i p 0 l e {W} + T7 u d
+! surface: s i p e l 0  0  0  d u d
+! lexical: s ö ö + T7 u d
+! surface: s ö ö 0  d u d
+! lexical: m ä ä + T7 a k s e
+! surface: m ä ä 0  d a k s e
+
+
+!"rrt etc is impossible"
+
+!T7:t /<= [l :l   | n :n   | r :r  ] Null* %+: _ ;   ! surrtud
+!         [l %.:0 | n %.:0 | r %.:0] Null* %+: _ ;   ! oltakse
+
+! default: T7:t
+!
+! lexical: e l a + T7 a k s e
+! surface: e l a 0  t a k s e
+! lexical: l e p p i {W} + T7 a k s e
+! surface: l e p 0 i  0  0  t a k s e
+! lexical: s e i s + T7 a k s e
+! surface: s e i s 0  t a k s e
+! lexical: a n n D1 + T7 a k s e
+! surface: a n 0  0 0  t a k s e
+! lexical: j o o K1 s {W} + T7 a k s e
+! surface: j o o  0 s  0  0  t a k s e
+
+! this rule applies to 16 words...
+!"impersonal voice affix -akse begins in 0"
+
+!T7:0  <=>  [l l    | n n    | r r]    Null* WeakGrade %+: _ a k s e ; ! minnakse 
+!           [l %.:l | n %.:n | r %.:r] Null* WeakGrade %+: _ a k s e ; ! minnakse
+!           :Vowel :Vowel     Null* WeakGrade %+: _ a k s e ;
+!           :h                Null* WeakGrade %+: _ a k s e ;  ! only tehakse, nähakse
+
+! lexical: s ö ö {W} + T7 a k s e
+! surface: s ü ü  0  0  0 a k s e
+! lexical: m i n . {W} + T7 a k s e
+! surface: m i n n  0  0  0 a k s e
+
+"imperative mood affix begins in k"
+
+G7:k  <=> :Consonant Null* :Vowel Null* WeakGrade %+: _ ;
+            :Vowel WS:0    :Vowel Null* WeakGrade %+: _ ;
+          :voiceless Null* %+: _ ;
+
+! lexical: h ü p p a {W} + G7 u
+! surface: h ü p 0 a {W} +  k u
+! lexical: l õ u G1 a {W} + G7 u
+! surface: l õ u  0 a {W} +  k u
+! lexical: s e i s + G7 u 
+! surface: s e i s 0  k u
+
+! add a vowel to make the wordform pronouncable
+
+"-v/-ev"
+
+0:e <=> :Consonant Null* %+: _ v WordEnd ;
+
+! lexical: n ´ a e r + 0 v
+! surface: n ´ a e r 0 e v
+
+"-s to -is"
+
+I7:i <=> :Consonant Null* %+: _ S7: WordEnd ;
+
+! lexical: n ´ a e r + I7 S7
+! surface: n ´ a e r 0  i  s
+
+"-is to -i"
+
+S7:0 <=> [:Consonant | Border] Null* :Vowel :Consonant %+: I7: _ ;
+         [:Consonant | Border] Null* :Vowel :Consonant Null* %+: I7: _ WordEnd ;  ! lasi
+         :s Null* _ ;    ! to eliminate jookssid, seissid
+
+! lexical: p e s + I7 S7
+! surface: p e s 0  i  0
+! lexical: l a s K1 {W} + I7 S7 i n
+! surface: l a s  0  0  0  0  0 i n
+! lexical: l a s K1 {W} + I7 S7      
+! surface: l a s  0  0  0  i  0       
+! lexical: s e i s + I7 S7
+! surface: s e i s 0  i  s          NB! S7:s
+! lexical: k ´ ü T1 t + I7 S7 i n
+! surface: k ´ ü  t 0 0  0  s i n   NB! S7:s
+
+! --------- verb stem changes -------
+! not really gradation; some may depend on affix
+
 ! siplema-sipelda
 
 "el-le 1/3"
@@ -1059,12 +1264,15 @@ LT:0          =>  %{stemill%}: _ ;      ! stem illative usage tag in the lexicon
 "consonant de-doubling in consonant clusters (e.g. after vowel deletion)"
 
 Cx:0 <=> :Cx _ Null+ [[Consonant Any* Border] - [Gi Border]];
+         :Cx _ Null* %+: Null* [[:Consonant Any* Border] - [Gi Border]];
       where Cx in (Consonant) ;
 
 ! lexical: s p i k k E2 r + i
 ! surface: s p i k 0  0 r 0 i 
 ! lexical: k õ r r S1 {stemill} {rare} + t e
 ! surface: k õ r 0  0     0        0   0 t e
+! lexical: k ü n n D1 + T7 u d
+! surface: k ü n 0  0 +  t u d 
 
 ! 2) in this treatment, some consonants have been written as double in the lexicon 
 ! because they are pronounced long;
@@ -1101,12 +1309,17 @@ Cx:0 /<= :Vowel _ [G1:g | B1:b | D1:d | K1:k | P1:p | T1:t | G3:g | D3:d] ;
 ! g b d is written as k p t after voiceless consonants
 ! this rule is restricted to affixes, because foreign words have conventions
 ! that do not follow this rule (lesginka)
-"gbd to kpt after voiceless consonants"
+"gbd to kpt after voiceless consonants 1/2"
 
-Cx:Cy  <=> :voiceless Null* %+: _ ;
+Cx:Cy   => :voiceless Null* %+: _ ;
        where Cx in (g b d)
              Cy in (k p t)
        matched;
+
+"gbd to kpt after voiceless consonants 1/2"
+
+Cx:Cx /<= :voiceless Null* %+: _ ;
+       where Cx in (g b d) ;
 
 ! lexical: s e i s + d u d
 ! surface: s e i s 0 t u d
@@ -1114,8 +1327,8 @@ Cx:Cy  <=> :voiceless Null* %+: _ ;
 ! Orthographical convention for recent loans (kabinet) and -ik suffix
 "Double the previous consonant"
 
-%.:Cx  <=> :Vowel :Cx _ \[WeakGrade]* WordEnd ;
-      where Cx in (Consonant) ;
+%.:Cx  <=> :Vowel :Cx _ AnyNoTrigger* WordEnd ;
+      where Cx in (k p t) ;
 
 ! lexical: k a b i n e t . + {pl.e} {sg.i}
 ! surface: k a b i n e t t 0    0      i

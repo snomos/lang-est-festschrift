@@ -467,8 +467,12 @@ M1   ! m n  lumi lund
  %{pl.e%}  ! e 0  Stem vowel tag in lexicon   tõuge
  %{pl.u%}  ! u 0  Stem vowel tag in lexicon   laudu
  
-
-N2  ! laas-laane
+! verb affixes have k-g and t-d-0 alternations
+ G7 ! g k
+ D7 ! d t 0
+ T7 ! d t 0
+ I7 ! i 0
+ S7 ! s 0
 
  %. ! double the previous letter (kabinet - kabinetti)
  %{no.apo%}  ! no apostrofy; 

@@ -4,40 +4,40 @@
 
 LEXICON ELAMA    ! VVS 27
 
-               +Impers:%+t IMPERS ;        ! impersonal forms
+                      : IMPERS ;        ! impersonal forms
                  +Pers:%+ SUPINE_V ;       ! -ma etc, -v, -vat
-                      :%+d INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:%+nu NU ;           !  NU-affixes
-         +Pers+Prt+Ind:%+s IND_PAST ;      ! indicative past
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;      ! indicative past
              +Pers+Prs:%+ IND_COND_PRS ;   ! 
 
 LEXICON JULGEMA   ! VVS 27 julgema; like ELAMA, but there are parallel weak grade forms
 
                       : ELAMA ;    
-    +Impers%+Use%/Rare:%{W%}%+t IMPERS ;    ! impersonal forms  juleta...
+           %+Use%/Rare:%{W%} IMPERS ;    ! impersonal forms  juleta...
   +Pers+Prt%+Use%/Rare:%{W%}%+nu NU ;       !  NU-affixes julenud...
 
 LEXICON LEPPIMA   ! VVS 28
 
                       : LEPPIMA_STRONG ;
-               +Impers:%{W%}%+t IMPERS ;         ! impersonal forms
+                      :%{W%} IMPERS ;         ! impersonal forms
              +Pers+Prs:%{W%}%+ IND_COND_PRS ;    ! 
 
 LEXICON LEPPIMA_STRONG   ! strong grade sub-paradigm
 
                  +Pers:%+ SUPINE_V ;       ! -ma etc, -v, -vat
-                      :%+d INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:%+nu NU ;           !  NU-affixes
-         +Pers+Prt+Ind:%+s IND_PAST ;      ! indicative past
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;      ! indicative past
 
 
 LEXICON LEKKIMA   ! VVS 28 & 27
                   ! like SÜTTIMA, but non-grading forms are less used
 
-               +Impers:%{W%}%+t IMPERS ;    ! impersonal forms
-    +Impers%+Use%/Rare:%+t IMPERS ;         ! impersonal forms;  non-grading forms are less used
+                      :%{W%} IMPERS ;    ! impersonal forms
+           %+Use%/Rare: IMPERS ;         ! impersonal forms;  non-grading forms are less used
                       : LEPPIMA_STRONG ;
              +Pers+Prs:%{W%}%+ IND_COND_PRS ;    ! 
   +Pers+Prs%+Use%/Rare:%+ IND_COND_PRS ;         ! non-grading forms are less used
@@ -45,249 +45,242 @@ LEXICON LEKKIMA   ! VVS 28 & 27
 LEXICON SÜTTIMA   ! VVS 28 & 27
                   ! like LEKKIMA, but weak grade forms are less used
 
-    +Impers%+Use%/Rare:%{W%}%+t IMPERS ;    ! impersonal forms; weak grade forms are less used
-               +Impers:%+t IMPERS ;         ! impersonal forms
+           %+Use%/Rare:%{W%} IMPERS ;    ! impersonal forms; weak grade forms are less used
+                      : IMPERS ;         ! impersonal forms
                       : LEPPIMA_STRONG ;
   +Pers+Prs%+Use%/Rare:%{W%}%+ IND_COND_PRS ;    ! weak grade forms are less used
              +Pers+Prs:%+ IND_COND_PRS ;         ! 
 
 LEXICON HAKKAMA    ! VVS 29
 
-               +Impers:%{W%}%+t IMPERS ;        ! impersonal forms
+                      :%{W%} IMPERS ;        ! impersonal forms
                  +Pers:%+ SUPINE_V ;            ! -ma etc, -v, -vat
-                      :%{W%}%+t INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%{W%}%+k IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      :%{W%}%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:%{W%}%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:%{W%}%+nu NU ;           !  NU-affixes
-         +Pers+Prt+Ind:%+s IND_PAST ;           ! indicative past
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;           ! indicative past
              +Pers+Prs:%+ IND_COND_PRS ;        ! 
 
 ! LEXICON SIPLEMA    ! VVS 30 = HAKKAMA VVS 29
 
 
 LEXICON ÜTLEMA    ! VVS 30  only ütlema, mõtlema; like SIPLEMA, but some parallel forms
+                  ! either t disappears in weak grade, or not
 
-               +Impers:E2l%{W%}%+d IMPERS ;    ! impersonal forms öeld..
-    +Impers%+Use%/Rare:tE2l%{W%}%+d IMPERS ;    ! impersonal forms üteld...
-                 +Pers:E2le%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :E2l%{W%}%+d INFINITIVE ;    ! infinitive, gerund (des-form) öeld...
-           %+Use%/Rare:tE2l%{W%}%+d INFINITIVE ;    ! infinitive, gerund (des-form) üteld...
-       +Pers+Prs+Imprt:E2l%{W%}%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem  öelg...
-+Pers+Prs+Imprt%+Use%/Rare:tE2l%{W%}%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem ütelg...
-             +Pers+Prt:E2l%{W%}%+nu NU ;    !  NU-affixes öeln...
-  +Pers+Prt%+Use%/Rare:tE2l%{W%}%+nu NU ;    !  NU-affixes üteln...
-         +Pers+Prt+Ind:E2le%+s IND_PAST ;    ! indicative past
-             +Pers+Prs:E2le%+ IND_COND_PRS ;    ! 
+                      :le%{W%} IMPERS ;    ! impersonal forms öeld..
+           %+Use%/Rare:tle%{W%} IMPERS ;    ! impersonal forms üteld...
+                 +Pers:le%+ SUPINE_V ;    ! -ma etc, -v, -vat
+                      :le%{W%}%+D7 INFINITIVE ;    ! infinitive, gerund (des-form) öeld...
+           %+Use%/Rare:tle%{W%}%+D7 INFINITIVE ;    ! infinitive, gerund (des-form) üteld...
+       +Pers+Prs+Imprt:le%{W%}%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem  öelg...
++Pers+Prs+Imprt%+Use%/Rare:tle%{W%}%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem ütelg...
+             +Pers+Prt:le%{W%}%+nu NU ;    !  NU-affixes öeln...
+  +Pers+Prt%+Use%/Rare:tle%{W%}%+nu NU ;    !  NU-affixes üteln...
+         +Pers+Prt+Ind:le%+I7S7 IND_PAST ;    ! indicative past
+             +Pers+Prs:le%+ IND_COND_PRS ;    ! 
 
 LEXICON RABELEMA    ! VVS 31; = SIPLEMA + ELAMA 
                     ! assuming that rabel- is less used than rabele- ...
 
                        : ELAMA ;
-     +Impers%+Use%/Rare:%{W%}%+t IMPERS ;    ! rabeldakse impersonal forms
-            %+Use%/Rare:%{W%}%+t INFINITIVE ;    ! rabeldes infinitive, gerund (des-form)
-+Pers+Prs+Imprt%+Use%/Rare:%{W%}%+k IMPERATIVE ;    ! rabel-gu/ku, -ge/ke, -gem/kem
+            %+Use%/Rare:%{W%} IMPERS ;    ! rabeldakse impersonal forms
+            %+Use%/Rare:%{W%}%+D7 INFINITIVE ;    ! rabeldes infinitive, gerund (des-form)
++Pers+Prs+Imprt%+Use%/Rare:%{W%}%+G7 IMPERATIVE ;    ! rabel-gu/ku, -ge/ke, -gem/kem
    +Pers+Prt%+Use%/Rare:%{W%}%+nu NU ;    ! rabelnu NU-affixes
 
 LEXICON SEISMA    ! VVS 32  seisma, maksma, peksma, lüpsma
 
-               +Impers:%+d IMPERS ;    ! impersonal forms
-                 +Pers:E2%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+d INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      : IMPERS ;    ! impersonal forms
+                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
+                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:%+ IND_PAST1 ;    ! indicative past1 seis+in
- +Pers+Prt+Ind+Sg3+Aff:%+is GI ;    ! seis+is
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;           ! indicative past
              +Pers+Prs:a%{W%}%+ IND_COND_PRS ;    ! 
 
 LEXICON TÕUSMA    ! VVS 32  tõusma, naasma almost like SEISMA, but tõuseb (not tõusab)
 
-               +Impers:%+d IMPERS ;    ! impersonal forms
-                 +Pers:E2%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+d INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      : IMPERS ;    ! impersonal forms
+                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
+                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:%+ IND_PAST1 ;    ! indicative past1 tõus+in
- +Pers+Prt+Ind+Sg3+Aff:%+is GI ;    ! tõus+is
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;           ! indicative past
              +Pers+Prs:e%{W%}%+ IND_COND_PRS ;    ! 
 
 LEXICON PESEMA    ! VVS 32 pesema
 
-               +Impers:%+d IMPERS ;    ! impersonal forms
+                      : IMPERS ;    ! impersonal forms
                  +Pers:e%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+d INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:%+ IND_PAST1 ;    ! indicative past1
- +Pers+Prt+Ind+Sg3+Aff:%+i GI ;    ! pesi
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;           ! indicative past
              +Pers+Prs:e%+ IND_COND_PRS ;    ! 
 
 LEXICON KUSEMA    ! VVS 32 kusema
 
-               +Impers:%+d IMPERS ;    ! impersonal forms
+                      : IMPERS ;    ! impersonal forms
                  +Pers:e%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+d INFINITIVE ;    ! infinitive, gerund (des-form)
-        %+Use%/NotNorm:e%+d INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+        %+Use%/NotNorm:e%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
 +Pers+Prs+Imprt%+Use%/NotNorm:e%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:%+ IND_PAST1 ;    ! indicative past1
- +Pers+Prt+Ind+Sg3+Aff:%+i GI ;    ! pesi
-+Pers+Prt+Ind%+Use%/NotNorm:e%+s IND_PAST ;    ! indicative past
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;           ! indicative past
++Pers+Prt+Ind%+Use%/NotNorm:e%+I7S7 IND_PAST ;    ! indicative past
              +Pers+Prs:e%+ IND_COND_PRS ;    ! 
 
 LEXICON KAITSMA    ! VVS 32  kaitsma, maitsma
 
-               +Impers:%+d IMPERS ;    ! impersonal forms
-                 +Pers:E2%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+d INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      : IMPERS ;    ! impersonal forms
+                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
+                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:e%+s IND_PAST ;    ! indicative past
+         +Pers+Prt+Ind:e%+I7S7 IND_PAST ;    ! indicative past
              +Pers+Prs:e%+ IND_COND_PRS ;    ! 
 
 ! VVS 33  naerma, laulma, veenma, möönma, siirma 
 LEXICON NAERMA
 
-               +Impers:%+d IMPERS ;    ! impersonal forms
-                 +Pers:E2%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+d INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      : IMPERS ;    ! impersonal forms
+                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
+                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:I2%+s IND_PAST ;    ! indicative past
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;    ! indicative past
              +Pers+Prs:a%{W%}%+ IND_COND_PRS ;    ! 
 
 ! VVS 33  koolma, kuulma; almost like NAERMA, but kuuleb (not kuulab)
 LEXICON KUULMA
 
-               +Impers:%+d IMPERS ;    ! impersonal forms
-                 +Pers:E2%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+d INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      : IMPERS ;    ! impersonal forms
+                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
+                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:I2%+s IND_PAST ;    ! indicative past
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;    ! indicative past
              +Pers+Prs:e%{W%}%+ IND_COND_PRS ;    ! 
 
 ! VVS 34   hoidma
 LEXICON HOIDMA
 
-               +Impers:%{W%}%+t IMPERS ;    ! impersonal forms
-                 +Pers:E2%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+ INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      : IMPERS ;    ! impersonal forms
+                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
+                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:I2%+s IND_PAST ;    ! indicative past
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;    ! indicative past
              +Pers+Prs:a%{W%}%+ IND_COND_PRS ;    ! 
 
 ! VVS 34   tundma
 LEXICON TUNDMA
 
-               +Impers:%{W%}%+t IMPERS ;    ! impersonal forms
-                 +Pers:E2%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%{W%}%+d INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      : IMPERS ;    ! impersonal forms
+                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
+                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:I2%+s IND_PAST ;    ! indicative past
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;    ! indicative past
              +Pers+Prs:e%{W%}%+ IND_COND_PRS ;    ! 
 
 ! VVS 34   puskma, mõskma; almost like tundma
 LEXICON PUSKMA
 
-               +Impers:%{W%}%+d IMPERS ;    ! impersonal forms
-                 +Pers:E2%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%{W%}%+d INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+ IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      : IMPERS ;    ! impersonal forms
+                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
+                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:I2%+s IND_PAST ;    ! indicative past
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;    ! indicative past
              +Pers+Prs:e%{W%}%+ IND_COND_PRS ;    ! 
 
 ! VVS 34   jooksma
 LEXICON JOOKSMA
 
-               +Impers:%{W%}%+t IMPERS ;    ! impersonal forms joostakse, ...
-    +Impers%+Use%/Rare:%+t IMPERS ;    ! impersonal forms jookstakse,...
-                 +Pers:E2%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%{W%}%+t INFINITIVE ;    ! infinitive, gerund (des-form)  joosta, joostes
-           %+Use%/Rare:%+t INFINITIVE ;    ! infinitive, gerund (des-form)  jooksta, jookstes
-       +Pers+Prs+Imprt:%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-+Pers+Prs+Imprt%+Use%/Rare:%{W%}%+g IMPERATIVE ;    ! joos-gu/ku, -ge/ke, -gem/kem
+                      :%{W%} IMPERS ;    ! impersonal forms joostakse, ... 
+           %+Use%/Rare: IMPERS ;    ! impersonal forms jookstakse,...
+                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
+                      :%{W%}%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)  joosta, joostes 
+           %+Use%/Rare:%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)  jooksta, jookstes
+       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
++Pers+Prs+Imprt%+Use%/Rare:%{W%}%+G7 IMPERATIVE ;    ! joos-gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:%+ IND_PAST1 ;    ! indicative past1 jooks+in
- +Pers+Prt+Ind+Sg3+Aff:%+is GI ;    ! jooks+is
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;    ! indicative past
              +Pers+Prs:e%+ IND_COND_PRS ;    ! 
 
 ! VVS 34   laskma
 LEXICON LASKMA
 
-               +Impers:%{W%}%+t IMPERS ;    ! impersonal forms lastakse, ...
-                 +Pers:E2%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%{W%}%+t INFINITIVE ;    ! infinitive, gerund (des-form)  
-       +Pers+Prs+Imprt:%{W%}%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      : IMPERS ;    ! impersonal forms lastakse, ...
+                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
+                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)  
+       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:%+nu NU ;    !  NU-affixes
-+Pers+Prt+Ind%+Use%/Rare:I2%+s IND_PAST ;    ! indicative past laskis, ...
-         +Pers+Prt+Ind:%{W%}%+ IND_PAST1 ;    ! indicative past1 lasin, ...
- +Pers+Prt+Ind+Sg3+Aff:%{W%}%+i GI ;    ! lasi
++Pers+Prt+Ind%+Use%/Rare:%+I7S7 IND_PAST ;    ! indicative past laskis, ...
+         +Pers+Prt+Ind:%{W%}%+I7S7 IND_PAST ;    ! indicative past
              +Pers+Prs:e%{W%}%+ IND_COND_PRS ;    ! 
 
 ! VVS 34, 35   söötma, nutma
 LEXICON SAATMA
 
-               +Impers:e%{W%}%+t IMPERS ;    ! impersonal forms
-                 +Pers:E2%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+ INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      :e%{W%} IMPERS ;    
+                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
+                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:I2%+s IND_PAST ;    ! indicative past
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;    ! indicative past
              +Pers+Prs:a%{W%}%+ IND_COND_PRS ;    ! 
 
 ! VVS 35   lõpma; almost like SAATMA
 LEXICON LÕPMA
 
-               +Impers:e%{W%}%+t IMPERS ;    ! impersonal forms
-                 +Pers:E2%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+ INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      :e%{W%} IMPERS ;    
+                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
+                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:I2%+s IND_PAST ;    ! indicative past
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;    ! indicative past
              +Pers+Prs:e%{W%}%+ IND_COND_PRS ;    ! 
 
 ! VVS 35   katma kütma matma võtma jätma
 ! almost like SAATMA, but IMPERS are even weaker grade
 LEXICON KATMA
 
-               +Impers:e%{W%}%+t IMPERS ;    ! impersonal forms
-                 +Pers:tE2%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :t%+ INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:t%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      :e%{W%} IMPERS ;    
+                 +Pers:t%+ SUPINE_V ;    ! -ma etc, -v, -vat
+                      :t%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:t%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:t%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:tI2%+s IND_PAST ;    ! indicative past
-             +Pers+Prs:ta%{W%}%+ IND_COND_PRS ;    ! 
+         +Pers+Prt+Ind:t%+I7S7 IND_PAST ;    ! indicative past
+             +Pers+Prs:a%+ IND_COND_PRS ;    ! 
 
-! VVS 36   tulema
+! VVS 36   tulema, panema, surema
 LEXICON TULEMA
 
-               +Impers:%+d IMPERS1 ;    ! impersonal forms, except -akse
-   +Impers+Prs+Ind+Aff:%.%+akse GI ;
-+Impers+Prs+Ind+Aff%+Use%/NotNorm:%+dakse GI ;
+               +Impers:%.%+d IMPERS_DUD ;    
+               +Impers:%.%{W%}%+ IMPERS_AKSE ;
+ +Impers%+Use%/NotNorm:%.%+d IMPERS_AKSE ;
                  +Pers:e%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%.%+ INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%{W%}%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      :%.%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:%{W%}%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:%+ IND_PAST1 ;    ! indicative past1
- +Pers+Prt+Ind+Sg3+Aff:%+i GI ;    ! tuli
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;    ! indicative past
              +Pers+Prs:e%{W%}%+ IND_COND_PRS ;    ! 
 
 ! VVS 36   olema
 ! (3rd grade symbols missing)
 LEXICON OLEMA
 
-               +Impers:ol%+d IMPERS1 ;    ! impersonal forms, except -akse
-   +Impers+Prs+Ind+Aff:ol%.%+akse GI ;
-+Impers+Prs+Ind+Aff%+Use%/NotNorm:ol%+dakse GI ;
+               +Impers:ol%.%+d IMPERS_DUD ;    ! impersonal forms, except -akse
+               +Impers:ol%.%{W%}%+ IMPERS_AKSE ;
+ +Impers%+Use%/NotNorm:ol%.%+d IMPERS_AKSE ;
                  +Pers:ole%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :ol%.%+ INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:ol%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      :ol%.%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:ol%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:ol%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:ol%+ IND_PAST1 ;    ! indicative past1
- +Pers+Prt+Ind+Sg3+Aff:ol%+i GI ;    ! tuli
+         +Pers+Prt+Ind:ol%+I7S7 IND_PAST ;    ! indicative past
 
    +Pers+Prs+Imprt+Sg2:ole%+ GI ;
      +Pers+Prs+Ind+Neg:ole%+ GI ;
@@ -327,12 +320,12 @@ LEXICON OLEMA
 ! (3rd grade symbols missing)
 LEXICON MINEMA
 
-               +Impers:min%+d IMPERS1 ;    ! impersonal forms, except -akse
-   +Impers+Prs+Ind+Aff:min%.%+akse GI ;
-+Impers+Prs+Ind+Aff%+Use%/NotNorm:min%+dakse GI ;
+               +Impers:min%.%+d IMPERS_DUD ;        ! mindud
+               +Impers:min%.%{W%}%+ IMPERS_AKSE ;   ! minnakse
+ +Impers%+Use%/NotNorm:min%.%+d IMPERS_AKSE ;       ! mindakse
                  +Pers:mine%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :min%.%+ INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:min%{W%}%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      :min%.%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:min%.%{W%}%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:läi%+nu NU ;    !  NU-affixes
          +Pers+Prt+Ind:läk%+s IND_PAST ;    ! indicative past1
 
@@ -352,22 +345,24 @@ LEXICON MINEMA
 ! VVS 37   laama, keema, leema, naima, võima, näima
 LEXICON KEEMA
 
-               +Impers:%{W%}%+d IMPERS ;    ! impersonal forms
+               +Impers:%+d IMPERS_DUD ;    ! keedud
+               +Impers:%+d IMPERS_AKSE ;   ! keedakse
                  +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+d INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%{W%}%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:%+s IND_PAST ;    ! indicative past
+                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:%{W%}%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+             +Pers+Prt:%{W%}%+nu NU ;    !  NU-affixes
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;    ! indicative past
              +Pers+Prs:%{W%}%+ IND_COND_PRS ;    ! 
 
 ! VVS 37   saama, jääma
 LEXICON SAAMA !!= @CODE@ is a lexicon for saama-type words.
 
-               +Impers:%{W%}%+d IMPERS ;    ! impersonal forms, except -akse
+               +Impers:%+d IMPERS_DUD ;    ! saadud
+               +Impers:%+d IMPERS_AKSE ;   ! saadakse
                  +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+d INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%{W%}%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:%+nu NU ;    !  NU-affixes
+                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:%{W%}%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+             +Pers+Prt:%{W%}%+nu NU ;    !  NU-affixes
          +Pers+Prt+Ind:%+ IND_PAST1 ;    ! indicative past1
  +Pers+Prt+Ind+Sg3+Aff:%+i GI ;    ! sai
              +Pers+Prs:%{W%}%+ IND_COND_PRS ;    ! 
@@ -375,26 +370,26 @@ LEXICON SAAMA !!= @CODE@ is a lexicon for saama-type words.
 ! VVS 38   viima, käima, pooma, müüma
 LEXICON VIIMA
 
-               +Impers:%{W%}%+d IMPERS1 ;    ! impersonal forms, except -akse
-   +Impers+Prs+Ind+Aff:%{W%}%+akse GI ;
-+Impers+Prs+Ind+Aff%+Use%/NotNorm:%{W%}%+dakse GI ;
+               +Impers:%+d IMPERS_DUD ;        ! viidud
+               +Impers:%{W%}%+ IMPERS_AKSE ;   ! viiakse
+ +Impers%+Use%/NotNorm:%+d IMPERS_AKSE ;       ! viidakse
                  +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
                       :%+ INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%{W%}%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:%+s IND_PAST ;    ! indicative past
+       +Pers+Prs+Imprt:%{W%}%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+             +Pers+Prt:%{W%}%+nu NU ;    !  NU-affixes
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;    ! indicative past
              +Pers+Prs:%{W%}%+ IND_COND_PRS ;    ! 
 
 ! VVS 38   jooma, looma, tooma, lööma, sööma
 LEXICON TOOMA
 
-               +Impers:%{W%}%+d IMPERS1 ;    ! impersonal forms, except -akse
-   +Impers+Prs+Ind+Aff:%{W%}%+akse GI ;
-+Impers+Prs+Ind+Aff%+Use%/NotNorm:%{W%}%+dakse GI ; 
+               +Impers:%+d IMPERS_DUD ;        ! joodud
+               +Impers:%{W%}%+ IMPERS_AKSE ;   ! juuakse
+ +Impers%+Use%/NotNorm:%+d IMPERS_AKSE ;       ! joodakse
                  +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
                       :%+ INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%{W%}%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:%+nu NU ;    !  NU-affixes
+       +Pers+Prs+Imprt:%{W%}%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+             +Pers+Prt:%{W%}%+nu NU ;    !  NU-affixes
          +Pers+Prt+Ind:%+ IND_PAST1 ;    ! indicative past1
  +Pers+Prt+Ind+Sg3+Aff:%+i GI ;    ! jõi
              +Pers+Prs:%{W%}%+ IND_COND_PRS ;    ! 
@@ -402,32 +397,32 @@ LEXICON TOOMA
 ! VVS 27 ajama; almost like VEDAMA
 LEXICON AJAMA
 
-               +Impers:%+t IMPERS ;    ! impersonal forms
+                      :%{W%} IMPERS ;    
                  +Pers:a%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :a%+d INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:a%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      :a%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:a%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:a%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:a%+s IND_PAST ;    ! indicative past
+         +Pers+Prt+Ind:a%+I7S7 IND_PAST ;    ! indicative past
              +Pers+Prs:a%+ IND_COND_PRS ;    ! 
 
 ! VVS 28 vedama, pügama, pidama
 LEXICON VEDAMA
 
-               +Impers:e%{W%}%+t IMPERS ;    ! impersonal forms
+                      :e%{W%} IMPERS ;    
                  +Pers:a%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :a%+d INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:a%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      :a%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:a%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:a%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:a%+s IND_PAST ;    ! indicative past
+         +Pers+Prt+Ind:a%+I7S7 IND_PAST ;    ! indicative past
              +Pers+Prs:a%{W%}%+ IND_COND_PRS ;    ! 
 
 ! VVS 28 pidama-pidi
 LEXICON PIDAMA
 
-            !+V+Impers:e%{W%}%+t IMPERS ;    ! no impersonal forms
+                      ! no impersonal forms
                  +Pers:a%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :a%+d INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:a%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      :a%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:a%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:a%+nu NU ;    !  NU-affixes
          +Pers+Prt+Ind:%+ IND_PAST1 ;    ! indicative past1
  +Pers+Prt+Ind+Sg3+Aff:%+i GI ;    ! pidi
@@ -436,48 +431,50 @@ LEXICON PIDAMA
 ! VVS 28 tegema, nägema
 LEXICON TEGEMA
 
-               +Impers:h%+t IMPERS1 ;    ! impersonal forms, except -akse
-   +Impers+Prs+Ind+Aff:h%+akse GI ;
+               +Impers:h%+d IMPERS_DUD ;       ! tehtud
+               +Impers:h%{W%}%+ IMPERS_AKSE ;  ! tehakse
+ +Impers%+Use%/NotNorm:h%+d IMPERS_AKSE ;      ! tehtakse
                  +Pers:ge%+ SUPINE_V ;    ! -ma etc, -v, -vat
                       :h%+ INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:h%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+       +Pers+Prs+Imprt:h%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:i%+nu NU ;    !  NU-affixes
          +Pers+Prt+Ind:g%+ IND_PAST1 ;    ! indicative past1
  +Pers+Prt+Ind+Sg3+Aff:g%+i GI ;    ! pidi
-             +Pers+Prs:e%+ IND_COND_PRS ;    ! 
+             +Pers+Prs:e%{W%}%+ IND_COND_PRS ;    ! 
 
 ! VVS 28 käskima
 LEXICON KÄSKIMA
 
-               +Impers:%{W%}%+t IMPERS ;    ! impersonal forms
+                      : IMPERS ;    
                  +Pers:i%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :i%+d INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:i%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      :i%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:i%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:i%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:i%+s IND_PAST ;    ! indicative past
+         +Pers+Prt+Ind:i%+I7S7 IND_PAST ;    ! indicative past
              +Pers+Prs:i%{W%}%+ IND_COND_PRS ;    ! 
 
 ! VVS 28 kiskuma ; like käskima, but u instead of i
 LEXICON KISKUMA
 
-               +Impers:%{W%}%+t IMPERS ;    ! impersonal forms
+                      : IMPERS ;             ! kistud
+           %+Use%/Rare:u%{W%} IMPERS ;       ! kisutud etc
                  +Pers:u%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :u%+d INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:u%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      :u%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:u%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:u%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:u%+s IND_PAST ;    ! indicative past
+         +Pers+Prt+Ind:u%+I7S7 IND_PAST ;    ! indicative past
              +Pers+Prs:u%{W%}%+ IND_COND_PRS ;    ! 
 
 ! VVS 28 uskuma ; = kiskuma + parallel forms
 LEXICON USKUMA
 
-    +Impers%+Use%/Rare:%{W%}%+t IMPERS ;    ! impersonal forms
-               +Impers:u%{W%}%+t IMPERS ;    ! impersonal forms
+           %+Use%/Rare: IMPERS ;          ! ustud etc
+                      :u%{W%} IMPERS ;    ! usutud etc
                  +Pers:u%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :u%+d INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:u%+g IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
+                      :u%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
+       +Pers+Prs+Imprt:u%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
              +Pers+Prt:u%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:u%+s IND_PAST ;    ! indicative past
+         +Pers+Prt+Ind:u%+I7S7 IND_PAST ;    ! indicative past
              +Pers+Prs:u%{W%}%+ IND_COND_PRS ;    ! 
 
 LEXICON IND_COND_PRS    ! indicative, conditional present + imp sg2
@@ -533,10 +530,11 @@ LEXICON SUPINE
                   +Abe:ta GI ;
 
 LEXICON IMPERS    ! impersonal forms
-                      : IMPERS1 ;
-          +Prs+Ind+Aff:akse GI ;
 
-LEXICON IMPERS1    ! impersonal forms, except -[td]akse
+               +Impers:%+T7 IMPERS_DUD ;
+               +Impers:%+T7 IMPERS_AKSE ;
+
+LEXICON IMPERS_DUD    ! impersonal forms -[td]ud
 
              +Prs+Cond:aks GI ;
             +Prs+Imprt:agu GI ;
@@ -548,6 +546,10 @@ LEXICON IMPERS1    ! impersonal forms, except -[td]akse
           +Prt+Ind+Neg:ud GI ;
               +Prt+Prc:ud GI ;
                   +Sup:ama GI ;
+
+LEXICON IMPERS_AKSE    ! impersonal form -[td0]akse
+
+          +Prs+Ind+Aff:akse GI ;
 
 LEXICON INFINITIVE    ! infinitive, gerund (des-form)
 
@@ -562,5 +564,6 @@ LEXICON CONDITIONAL    ! conditional present and past
          +Cond+Pl1+Aff:ksime GI ;
          +Cond+Pl2+Aff:ksite GI ;
          +Cond+Pl3+Aff:ksid GI ;
+
 
 

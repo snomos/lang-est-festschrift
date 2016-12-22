@@ -43,7 +43,7 @@ define Ct  [ Number | Case | Voice | Tense | Mood | PN | Polarity | Sup | Inf | 
            [Number Case] | 
            [PN Polarity] | [Mood PN Polarity] | [Mood PN] | [Mood Polarity] |
            [Tense Mood] | [Tense Mood Polarity] | [Tense Prc] ] ;
-define Cat [ Ct | GI | [Ct GI] ];
+define Cat [ Ct | GI | [Ct GI] | Voice Ct | Voice Ct GI ];
 
 define MoveR Cat @-> ... OK RTag || RTag _ ;  # replicate tag from left also to the right
 define MoveH Cat @-> ... OK HTag || HTag _ ; 

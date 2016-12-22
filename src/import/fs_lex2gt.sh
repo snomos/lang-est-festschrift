@@ -38,6 +38,8 @@ cat decltmp1 | ./fs_lex2verblemma.sed \
 | sed '/SIPLEMA/s/E2\([lr]\)$/\1e/' \
 | sed 's/SIPLEMA/HAKKAMA/' \
 | sed '/RABELEMA/s/$/e/' \
+| sed '/SAATMA/s/T2$/t/' \
+| sed '/ajama/s/aE4/aJ1/' \
 > tmp1
 
 # kirjuta mõnedesse lemmadesse sisse leksikaalse tasandi märgid
