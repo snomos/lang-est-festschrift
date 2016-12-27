@@ -686,11 +686,11 @@ K3:k  <=> _ s E1:e ;
 ! -----
 ! olema, tulema, minema, panema, surema
 ! olla, tulla, minna, panna, surra; ollakse etc
-! the context is limited by a few inflectional forms
+! the context is limited to a few inflectional forms
 
 "double l m n r"
 
-%.:Cx <=> :Cx _ Null* [D7:0 | [a k s e]];
+%.:Cx <=> :Cx _ (WeakGrade) %+: [ :a | :e ] ;
       where Cx in (lmnr) ;
 
 !------
@@ -866,7 +866,7 @@ D7:t  <=> :Vowel Null* WeakGrade %+: _ ;
 "infinitive and gerund affixes begin in 0"
 
 D7:0  <=>  [:l :l | :n :n | :r :r | :p :p] Null* %+: _ ; ! minna, tappa, ... 
-           :h                              Null* %+: _ ; ! teha
+!           :h                              Null* %+: _ ; ! teha
            :Consonant Null* [:t | :d]      Null* %+: _ ; ! kasta, nutta, anda
            :Vowel :Vowel [:t | :d]         Null* %+: _ ; ! niita, nõuda
 
@@ -892,37 +892,19 @@ D7:d /<= :voiceless Null* _ ;
 ! surface: l a s  k 0  d a   <-- FAIL
 
 ! only for minema, olema, tulema, surema, panema
-"minema, olema, tulema, surema, panema cannot have da as infinitive affix"
+!"minema, olema, tulema, surema, panema cannot have da as infinitive affix"
 
-D7:d /<= [l %.:0 | n %.:0 | r %.:0] Null* %+: _ ;
+!D7:d /<= [l %.:0 | n %.:0 | r %.:0] Null* %+: _ ;
 
 ! lexical: t u l . + D7 a 
 ! surface: t u l 0 0  d a  <-- FAIL
-
-
-! NB! kaema, laiuma, treima, täima are exceptions to this rule!
 
 "impersonal voice affix may begin in d"
 
 T7:d  <=> [l | n | r] (e:0) (WeakGrade) %+: _ ;
 
-!:Vowel [l | n | r] (e:0) (WeakGrade) %+: _ ;
-!          \[:Vowel] :Vowel :Vowel    %+: _ ;
-!          [l l:0  | n n:0  | r r:0 ]  %+: _ ;            ! surdud
-!          [l %.:0 | n %.:0 | r %.:0]  %+: _ ;            ! surdud
-
 ! lexical: s i p 0 l e {W} + T7 u d
 ! surface: s i p e l 0  0  0  d u d
-! lexical: s ö ö + T7 u d
-! surface: s ö ö 0  d u d
-! lexical: m ä ä + T7 a k s e
-! surface: m ä ä 0  d a k s e
-
-
-!"rrt etc is impossible"
-
-!T7:t /<= [l :l   | n :n   | r :r  ] Null* %+: _ ;   ! surrtud
-!         [l %.:0 | n %.:0 | r %.:0] Null* %+: _ ;   ! oltakse
 
 ! default: T7:t
 !
@@ -936,19 +918,6 @@ T7:d  <=> [l | n | r] (e:0) (WeakGrade) %+: _ ;
 ! surface: a n 0  0 0  t a k s e
 ! lexical: j o o K1 s {W} + T7 a k s e
 ! surface: j o o  0 s  0  0  t a k s e
-
-! this rule applies to 16 words...
-!"impersonal voice affix -akse begins in 0"
-
-!T7:0  <=>  [l l    | n n    | r r]    Null* WeakGrade %+: _ a k s e ; ! minnakse 
-!           [l %.:l | n %.:n | r %.:r] Null* WeakGrade %+: _ a k s e ; ! minnakse
-!           :Vowel :Vowel     Null* WeakGrade %+: _ a k s e ;
-!           :h                Null* WeakGrade %+: _ a k s e ;  ! only tehakse, nähakse
-
-! lexical: s ö ö {W} + T7 a k s e
-! surface: s ü ü  0  0  0 a k s e
-! lexical: m i n . {W} + T7 a k s e
-! surface: m i n n  0  0  0 a k s e
 
 "imperative mood affix begins in k"
 
@@ -965,24 +934,36 @@ G7:k  <=> :Consonant Null* :Vowel Null* WeakGrade %+: _ ;
 
 ! add a vowel to make the wordform pronouncable
 
-"-v/-ev"
+"from -v to -ev"
 
 0:e <=> :Consonant Null* %+: _ v WordEnd ;
 
 ! lexical: n ´ a e r + 0 v
 ! surface: n ´ a e r 0 e v
 
-"-s to -is"
+"from t+t to te+t"
+
+0:e <=> [t: | T1:] _ WeakGrade %+: T7:t ;
+
+! lexical: n ´ u t 0 + T7 u d
+! surface: n ´ u t e 0  t u d
+
+! i is added to make s-ending preteritum form pronouncable,
+! or i is actually the only morpheme indicating preteritum
+
+"i surfaces in preteritum"
 
 I7:i <=> :Consonant Null* %+: _ S7: WordEnd ;
+         _ WordEnd ;
 
 ! lexical: n ´ a e r + I7 S7
 ! surface: n ´ a e r 0  i  s
+! lexical: s a a + I7
+! surface: s a 0 0  i
 
-"-is to -i"
+"from -is to -i"
 
-S7:0 <=> [:Consonant | Border] Null* :Vowel :Consonant %+: I7: _ ;
-         [:Consonant | Border] Null* :Vowel :Consonant Null* %+: I7: _ WordEnd ;  ! lasi
+S7:0 <=> [:Consonant | Border] Null* :Vowel :Consonant Null* %+: I7: _ WordEnd ;  ! lasi
          :s Null* _ ;    ! to eliminate jookssid, seissid
 
 ! lexical: p e s + I7 S7
