@@ -1,234 +1,217 @@
 
 !! !!!Verb inflection
 ! VVS stands for Ü. Viks "Väike vormisõnastik" for reference purposes
+! VVS type numbers = type numbers of Õigekeesussõnastik 2013
 
 LEXICON ELAMA    ! VVS 27
 
-                      : IMPERS ;        ! impersonal forms
-                 +Pers:%+ SUPINE_V ;       ! -ma etc, -v, -vat
-                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:%+nu NU ;           !  NU-affixes
-         +Pers+Prt+Ind:%+I7S7 IND_PAST ;      ! indicative past
-             +Pers+Prs:%+ IND_COND_PRS ;   ! 
+                      : IMPERS ;           ! elatud
+                 +Pers:%+ SUPINE_V ;       ! elama
+                      :%+D7 INFINITIVE ;   ! elada
+       +Pers+Prs+Imprt: IMPERATIVE ;       ! elagu
+             +Pers+Prt:%+nu NU ;           ! elanud
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;   ! elas
+             +Pers+Prs:%+ IND_COND_PRS ;   ! elan, elaksin
 
-LEXICON JULGEMA   ! VVS 27 julgema; like ELAMA, but there are parallel weak grade forms
+LEXICON JULGEMA   ! only julgema
 
                       : ELAMA ;    
-           %+Use%/Rare:%{W%} IMPERS ;    ! impersonal forms  juleta...
-  +Pers+Prt%+Use%/Rare:%{W%}%+nu NU ;       !  NU-affixes julenud...
+           %+Use%/Rare:%{W%} IMPERS ;      ! impersonal forms  juleta...
+  +Pers+Prt%+Use%/Rare:%{W%}%+nu NU ;      ! NU-affixes julenud...
 
 LEXICON LEPPIMA   ! VVS 28
 
                       : LEPPIMA_STRONG ;
-                      :%{W%} IMPERS ;         ! impersonal forms
-             +Pers+Prs:%{W%}%+ IND_COND_PRS ;    ! 
+                      :%{W%} LEPPIMA_WEAK ;
 
 LEXICON LEPPIMA_STRONG   ! strong grade sub-paradigm
 
-                 +Pers:%+ SUPINE_V ;       ! -ma etc, -v, -vat
-                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:%+nu NU ;           !  NU-affixes
-         +Pers+Prt+Ind:%+I7S7 IND_PAST ;      ! indicative past
+                 +Pers:%+ SUPINE_V ;        ! leppima
+                      :%+D7 INFINITIVE ;    ! leppida
+       +Pers+Prs+Imprt: IMPERATIVE ;        ! leppigu
+             +Pers+Prt:%+nu NU ;            ! leppinud
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;    ! leppis
 
+LEXICON LEPPIMA_WEAK    ! weak grade sub-paradigm
+
+                      : IMPERS ;           ! lepitud
+             +Pers+Prs:%+ IND_COND_PRS ;   ! lepin, lepiksin
 
 LEXICON LEKKIMA   ! VVS 28 & 27
                   ! like SÜTTIMA, but non-grading forms are less used
 
-                      :%{W%} IMPERS ;    ! impersonal forms
-           %+Use%/Rare: IMPERS ;         ! impersonal forms;  non-grading forms are less used
-                      : LEPPIMA_STRONG ;
-             +Pers+Prs:%{W%}%+ IND_COND_PRS ;    ! 
-  +Pers+Prs%+Use%/Rare:%+ IND_COND_PRS ;         ! non-grading forms are less used
+                      : LEPPIMA_STRONG ;         ! lekkima, lekib, lekitud, ...
+                      :%{W%} LEPPIMA_WEAK ;      ! lekib, lekiks
+           %+Use%/Rare: LEPPIMA_WEAK ;           ! lekkitud, lekkib, ...
 
 LEXICON SÜTTIMA   ! VVS 28 & 27
                   ! like LEKKIMA, but weak grade forms are less used
 
-           %+Use%/Rare:%{W%} IMPERS ;    ! impersonal forms; weak grade forms are less used
-                      : IMPERS ;         ! impersonal forms
-                      : LEPPIMA_STRONG ;
-  +Pers+Prs%+Use%/Rare:%{W%}%+ IND_COND_PRS ;    ! weak grade forms are less used
-             +Pers+Prs:%+ IND_COND_PRS ;         ! 
+                      : LEPPIMA_STRONG ;         ! süttima
+                      : LEPPIMA_WEAK ;           ! süttib, süttiks
+           %+Use%/Rare:%{W%} LEPPIMA_WEAK ;      ! sütitud, sütib, sütiks
 
-LEXICON HAKKAMA    ! VVS 29
+LEXICON HAKKAMA    ! VVS 29 (hakkama), 30 (riidlema)
 
-                      :%{W%} IMPERS ;        ! impersonal forms
-                 +Pers:%+ SUPINE_V ;            ! -ma etc, -v, -vat
-                      :%{W%}%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%{W%}%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:%{W%}%+nu NU ;           !  NU-affixes
-         +Pers+Prt+Ind:%+I7S7 IND_PAST ;           ! indicative past
-             +Pers+Prs:%+ IND_COND_PRS ;        ! 
+                      :%{W%} HAKKAMA_WEAK ;
+                 +Pers:%+ SUPINE_V ;            ! hakkama, riidlema
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;        ! hakkas, riidles
+             +Pers+Prs:%+ IND_COND_PRS ;        ! hakkan, riidlen
 
-! LEXICON SIPLEMA    ! VVS 30 = HAKKAMA VVS 29
+LEXICON HAKKAMA_WEAK    ! weak grade sub-paradigm
 
+                      : IMPERS ;            ! hakatud, riieldud etc
+                      :%+D7 INFINITIVE ;    ! hakata, riielda
+       +Pers+Prs+Imprt: IMPERATIVE ;        ! hakaku, riielgu
+             +Pers+Prt:%+nu NU ;            ! hakanud, riielnud
 
-LEXICON ÜTLEMA    ! VVS 30  only ütlema, mõtlema; like SIPLEMA, but some parallel forms
-                  ! either t disappears in weak grade, or not
+LEXICON ÜTLEMA    ! only ütlema, mõtlema
+                  ! parallel forms: either t disappears in weak grade, or not
 
-                      :le%{W%} IMPERS ;    ! impersonal forms öeld..
-           %+Use%/Rare:tle%{W%} IMPERS ;    ! impersonal forms üteld...
-                 +Pers:le%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :le%{W%}%+D7 INFINITIVE ;    ! infinitive, gerund (des-form) öeld...
-           %+Use%/Rare:tle%{W%}%+D7 INFINITIVE ;    ! infinitive, gerund (des-form) üteld...
-       +Pers+Prs+Imprt:le%{W%}%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem  öelg...
-+Pers+Prs+Imprt%+Use%/Rare:tle%{W%}%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem ütelg...
-             +Pers+Prt:le%{W%}%+nu NU ;    !  NU-affixes öeln...
-  +Pers+Prt%+Use%/Rare:tle%{W%}%+nu NU ;    !  NU-affixes üteln...
-         +Pers+Prt+Ind:le%+I7S7 IND_PAST ;    ! indicative past
-             +Pers+Prs:le%+ IND_COND_PRS ;    ! 
+                      :le HAKKAMA ;             ! ütlema, ..., öeldud, öelda, öelgu, öelnud
+           %+Use%/Rare:tle%{W%} HAKKAMA_WEAK ;  ! üteldud, ütelda, ütelgu, ütelnud
 
-LEXICON RABELEMA    ! VVS 31; = SIPLEMA + ELAMA 
+LEXICON RABELEMA    ! VVS 31; = HAKKAMA + ELAMA 
                     ! assuming that rabel- is less used than rabele- ...
 
-                       : ELAMA ;
-            %+Use%/Rare:%{W%} IMPERS ;    ! rabeldakse impersonal forms
-            %+Use%/Rare:%{W%}%+D7 INFINITIVE ;    ! rabeldes infinitive, gerund (des-form)
-+Pers+Prs+Imprt%+Use%/Rare:%{W%}%+G7 IMPERATIVE ;    ! rabel-gu/ku, -ge/ke, -gem/kem
-   +Pers+Prt%+Use%/Rare:%{W%}%+nu NU ;    ! rabelnu NU-affixes
+                      : ELAMA ;                 ! rabelema
+           %+Use%/Rare:%{W%} HAKKAMA_WEAK ;     ! rabeldud, rabelda, ...
 
-! VVS 32, 33  naerma, seisma etc 
-LEXICON NAERMA
+LEXICON KÄSKIMA     ! only käskima
 
-                      : IMPERS ;    ! impersonal forms
-                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:%+I7S7 IND_PAST ;    ! indicative past
-             +Pers+Prs:a%{W%}%+ IND_COND_PRS ;    ! 
+                      :i LEPPIMA_STRONG ;         ! käskima etc
+                      : IMPERS ;                  ! kästud
+             +Pers+Prs:i%{W%}%+ IND_COND_PRS ;    ! käsin etc
 
-! VVS 32, 33  kuulma, tõusma etc; almost like NAERMA, but kuuleb (not kuulab)
-LEXICON KUULMA
+LEXICON KISKUMA     ! only kiskuma 
 
-                      : IMPERS ;    ! impersonal forms
-                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:%+I7S7 IND_PAST ;    ! indicative past
-             +Pers+Prs:e%{W%}%+ IND_COND_PRS ;    ! 
+                      :u LEPPIMA_STRONG ;         ! kiskuma etc
+                      : IMPERS ;                  ! kistud
+           %+Use%/Rare:u%{W%} IMPERS ;            ! kisutud etc
+             +Pers+Prs:u%{W%}%+ IND_COND_PRS ;    ! kisun etc
 
-LEXICON PESEMA    ! VVS 32 pesema
+LEXICON USKUMA      ! only uskuma 
 
-                      : IMPERS ;    ! impersonal forms
-                 +Pers:e%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:%+I7S7 IND_PAST ;           ! indicative past
-             +Pers+Prs:e%+ IND_COND_PRS ;    ! 
+           %+Use%/Rare: IMPERS ;          ! ustud etc
+                      :u LEPPIMA ;        ! uskuma, usutud etc
 
-LEXICON KUSEMA    ! VVS 32 kusema
+! ---------------
+LEXICON NAERMA      ! VVS 32, 33  naerma, seisma etc (24 words)
 
-                      : IMPERS ;    ! impersonal forms
-                 +Pers:e%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
-        %+Use%/NotNorm:e%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-+Pers+Prs+Imprt%+Use%/NotNorm:e%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:%+I7S7 IND_PAST ;           ! indicative past
-+Pers+Prt+Ind%+Use%/NotNorm:e%+I7S7 IND_PAST ;    ! indicative past
-             +Pers+Prs:e%+ IND_COND_PRS ;    ! 
+                      : C_COMMON ;              ! naerda, seista, naergu, seisku, naernud, seisnud
+                      : IMPERS ;                ! naerdud, seistud
+                 +Pers:%+ SUPINE_V ;            ! naerma, seisma
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;        ! naeris, seisis
+             +Pers+Prs:a%{W%}%+ IND_COND_PRS ;  ! naerab, seisab
 
-LEXICON KAITSMA    ! VVS 32  kaitsma, maitsma
+LEXICON KUULMA      ! VVS 32, 33  kuulma, tõusma etc; (7 words) like NAERMA, but kuuleb (not kuulab)
 
-                      : IMPERS ;    ! impersonal forms
-                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:e%+I7S7 IND_PAST ;    ! indicative past
-             +Pers+Prs:e%+ IND_COND_PRS ;    ! 
+                      : C_COMMON ;             ! kuulda, tõusta, kuulgu, tõusku, kuulnud, tõusnud
+                      : IMPERS ;               ! kuuldud, tõustud
+                 +Pers:%+ SUPINE_V ;           ! kuulma, tõusma
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;       ! kuulis, tõusis
+             +Pers+Prs:e%{W%}%+ IND_COND_PRS ; ! kuuleb, tõuseb
 
-! VVS 34   jooksma
-LEXICON JOOKSMA
+LEXICON PESEMA    ! only pesema
 
-                      :%{W%} IMPERS ;    ! impersonal forms joostakse, ... 
-           %+Use%/Rare: IMPERS ;    ! impersonal forms jookstakse,...
-                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%{W%}%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)  joosta, joostes 
-           %+Use%/Rare:%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)  jooksta, jookstes
-       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-+Pers+Prs+Imprt%+Use%/Rare:%{W%}%+G7 IMPERATIVE ;    ! joos-gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:%+I7S7 IND_PAST ;    ! indicative past
-             +Pers+Prs:e%+ IND_COND_PRS ;    ! 
+                      : C_COMMON ;            ! pesta, pesku, pesnud
+                      : IMPERS ;              ! pestud
+                 +Pers:e%+ SUPINE_V ;         ! pesema
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;      ! pesi
+             +Pers+Prs:e%+ IND_COND_PRS ;     ! peseb
 
-! VVS 34   laskma
-LEXICON LASKMA
+LEXICON KUSEMA    ! only kusema
 
-                      : IMPERS ;    ! impersonal forms lastakse, ...
-                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)  
-       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:%+nu NU ;    !  NU-affixes
-+Pers+Prt+Ind%+Use%/Rare:%+I7S7 IND_PAST ;    ! indicative past laskis, ...
-         +Pers+Prt+Ind:%{W%}%+I7S7 IND_PAST ;    ! indicative past
-             +Pers+Prs:e%{W%}%+ IND_COND_PRS ;    ! 
+                      : PESEMA ;    
+        %+Use%/NotNorm:e%+D7 INFINITIVE ;         ! kuseda
++Pers+Prs+Imprt%+Use%/NotNorm:e IMPERATIVE ;      ! kusegu
++Pers+Prt+Ind%+Use%/NotNorm:e%+I7S7 IND_PAST ;    ! kuses
 
-! VVS 34, 35   söötma, nutma
-LEXICON SAATMA
+LEXICON KAITSMA    ! only  kaitsma, maitsma
 
-                      :%{W%} IMPERS ;    
-                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:%+I7S7 IND_PAST ;    ! indicative past
-             +Pers+Prs:a%{W%}%+ IND_COND_PRS ;    ! 
+                      : C_COMMON ;            ! kaitsta, kaitsku, kaitsnud
+                      : IMPERS ;              ! kaitstu
+                 +Pers:%+ SUPINE_V ;          ! kaitsma
+         +Pers+Prt+Ind:e%+I7S7 IND_PAST ;     ! kaitses
+             +Pers+Prs:e%+ IND_COND_PRS ;     ! kaitseb
 
-! VVS 35   lõpma; almost like SAATMA
-LEXICON LÕPMA
+LEXICON SAATMA      ! VVS 34, 35   söötma, nutma
 
-                      :e%{W%} IMPERS ;    
-!                      :%{W%} IMPERS ;    
-                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:%+I7S7 IND_PAST ;    ! indicative past
-             +Pers+Prs:e%{W%}%+ IND_COND_PRS ;    ! 
+                      : C_COMMON ;              ! sööta, nutta, söötke, nutke, söötnud, nutnud
+                      :%{W%} IMPERS ;           ! söödetud, nutetud
+                 +Pers:%+ SUPINE_V ;            ! söötma, nutma
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;        ! söötis, nuttis
+             +Pers+Prs:a%{W%}%+ IND_COND_PRS ;  ! söödab, nutab
 
-! VVS 35   katma kütma matma võtma jätma
-! almost like SAATMA, but IMPERS are even weaker grade
-LEXICON KATMA
+LEXICON JOOKSMA     ! only jooksma
 
-                      :%{W%} IMPERS ;    
-                 +Pers:t%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :t%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:t%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:t%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:t%+I7S7 IND_PAST ;    ! indicative past
-             +Pers+Prs:a%+ IND_COND_PRS ;    ! 
+                      :%{W%} IMPERS ;           ! impersonal forms joostakse, ... 
+           %+Use%/Rare: IMPERS ;                ! impersonal forms jookstakse,...
+                 +Pers:%+ SUPINE_V ;            ! jooksma
+                      :%{W%}%+D7 INFINITIVE ;   ! joosta, joostes 
+           %+Use%/Rare:%+D7 INFINITIVE ;        ! jooksta, jookstes
+       +Pers+Prs+Imprt: IMPERATIVE ;            ! jooksku
++Pers+Prs+Imprt%+Use%/Rare:%{W%} IMPERATIVE ;   ! joosku
+             +Pers+Prt:%+nu NU ;                ! jooksnud
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;        ! jooksis, jooksin
+             +Pers+Prs:e%+ IND_COND_PRS ;       ! jookseb
 
-! VVS 36   tulema, panema, surema
-LEXICON TULEMA
+LEXICON LASKMA    ! only laskma
 
-               +Impers:%.%+d IMPERS_DUD ;    
-               +Impers:%.%{W%}%+ IMPERS_AKSE ;
- +Impers%+Use%/NotNorm:%.%+d IMPERS_AKSE ;
-                 +Pers:e%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%.%+ INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%{W%}%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:%+I7 IND_PAST ;    ! indicative past
-             +Pers+Prs:e%{W%}%+ IND_COND_PRS ;    ! 
+                      : C_COMMON ;                ! lasta, lasku, lasknud
+                      : IMPERS ;                  ! impersonal forms lastakse, ...
+                 +Pers:%+ SUPINE_V ;              ! laskma
++Pers+Prt+Ind%+Use%/Rare:%+I7S7 IND_PAST ;        ! indicative past laskis, ...
+         +Pers+Prt+Ind:%{W%}%+I7S7 IND_PAST ;     ! indicative past lasi, ...
+             +Pers+Prs:e%{W%}%+ IND_COND_PRS ;    ! laseb
 
-! VVS 36   olema
-! (3rd grade symbols missing)
-LEXICON OLEMA
+LEXICON LÕPMA      ! only lõpma; almost like SAATMA
 
-               +Impers:ol%.%+d IMPERS_DUD ;    ! impersonal forms, except -akse
-               +Impers:ol%.%{W%}%+ IMPERS_AKSE ;
- +Impers%+Use%/NotNorm:ol%.%+d IMPERS_AKSE ;
-                 +Pers:ole%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :ol%.%+ INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:ol%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:ol%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:ol%+I7 IND_PAST ;    ! indicative past
+                      : C_COMMON ;                ! lõppa, lõpku, lõpnud
+                      :%{W%} IMPERS ;             ! lõpetud
+                 +Pers:%+ SUPINE_V ;              ! lõpma
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;          ! lõppes
+             +Pers+Prs:e%{W%}%+ IND_COND_PRS ;    ! lõpeb
+
+LEXICON KATMA      ! VVS 35   katma kütma matma võtma jätma
+                   ! almost like SAATMA, but IMPERS are even weaker grade
+
+                      :t C_COMMON ;          ! kütta
+                      :%{W%} IMPERS ;        ! köetud
+                 +Pers:t%+ SUPINE_V ;        ! kütma
+         +Pers+Prt+Ind:t%+I7S7 IND_PAST ;    ! küttis
+             +Pers+Prs:a%+ IND_COND_PRS ;    ! kütab
+
+LEXICON C_COMMON  ! common to almost all words of types 32-35 (supine stem ends with C)
+
+                      :%+D7 INFINITIVE ;    ! naerda, seista, sööta, nutta, kütta
+       +Pers+Prs+Imprt: IMPERATIVE ;        ! naergu, seisku, söötku, nutku, kütku
+             +Pers+Prt:%+nu NU ;            ! kütnud
+
+
+! ---------------
+LEXICON TULEMA     ! only tulema, panema, surema
+
+               +Impers:%.%+d IMPERS_DUD ;        ! surdud
+               +Impers:%.%{W%}%+ IMPERS_AKSE ;   ! surrakse
+ +Impers%+Use%/NotNorm:%.%+d IMPERS_AKSE ;       ! surdakse
+                 +Pers:e%+ SUPINE_V ;            ! surema
+                      :%.%+ INFINITIVE ;         ! surra
+       +Pers+Prs+Imprt:%{W%} IMPERATIVE ;        ! surgu
+             +Pers+Prt:%+nu NU ;                 ! surnud
+         +Pers+Prt+Ind:%+I7 IND_PAST ;           ! suri, surin, ...
+             +Pers+Prs:e%{W%}%+ IND_COND_PRS ;   ! sureb
+
+LEXICON OLEMA    ! only olema (3rd grade symbols missing here)
+
+               +Impers:ol%.%+d IMPERS_DUD ;        ! oldud
+               +Impers:ol%.%{W%}%+ IMPERS_AKSE ;   ! ollakse
+ +Impers%+Use%/NotNorm:ol%.%+d IMPERS_AKSE ;       ! oldakse
+                 +Pers:ole%+ SUPINE_V ;            ! olema
+                      :ol%.%+ INFINITIVE ;         ! olla
+       +Pers+Prs+Imprt:ol IMPERATIVE ;             ! olgu
+             +Pers+Prt:ol%+nu NU ;                 ! olnud
+         +Pers+Prt+Ind:ol%+I7 IND_PAST ;           ! oli, olin, ...
 
    +Pers+Prs+Imprt+Sg2:ole%+ GI ;
      +Pers+Prs+Ind+Neg:ole%+ GI ;
@@ -263,19 +246,16 @@ LEXICON OLEMA
    +Impers+Prt+Ind+Neg:pol%+dud GI ;
   +Impers+Prt+Cond+Neg:pol%+duks GI ;    ! almost non-attested form (by Google search) ... 
 
-
-! VVS 36   minema
-! (3rd grade symbols missing)
-LEXICON MINEMA
+LEXICON MINEMA    ! only minema (3rd grade symbols missing here)
 
                +Impers:min%.%+d IMPERS_DUD ;        ! mindud
                +Impers:min%.%{W%}%+ IMPERS_AKSE ;   ! minnakse
  +Impers%+Use%/NotNorm:min%.%+d IMPERS_AKSE ;       ! mindakse
-                 +Pers:mine%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :min%.%+ INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:min%.%{W%}%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:läi%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:läk%+s IND_PAST ;    ! indicative past1
+                 +Pers:mine%+ SUPINE_V ;            ! minema
+                      :min%.%+ INFINITIVE ;         ! minna
+       +Pers+Prs+Imprt:min%.%{W%} IMPERATIVE ;      ! mingu
+             +Pers+Prt:läi%+nu NU ;                 ! läinud
+         +Pers+Prt+Ind:läk%+s IND_PAST ;            ! läks, läksin etc
 
    +Pers+Prs+Imprt+Sg2:mine%{W%}%+ GI ;
      +Pers+Prs+Ind+Neg:lähe%{W%}%+ GI ;
@@ -283,157 +263,109 @@ LEXICON MINEMA
  +Pers+Prs+Ind+Sg2+Aff:lähe%{W%}%+d GI ;
  +Pers+Prs+Ind+Sg3+Aff:lähe%{W%}%+b GI ;
  +Pers+Prs+Ind+Pl1+Aff:lähe%{W%}%+me GI ;
-+Pers+Prs+Ind+Pl1+Aff%+Use%/Rare:läh%{W%}%+me GI ;    ! more colloquial...
++Pers+Prs+Ind+Pl1+Aff%+Use%/Rare:läh%{W%}%+me GI ;    ! lähme more colloquial...
  +Pers+Prs+Ind+Pl2+Aff:lähe%{W%}%+te GI ;
  +Pers+Prs+Ind+Pl3+Aff:lähe%{W%}%+vad GI ;
              +Pers+Prs:lähe%{W%}%+ CONDITIONAL ;
 
+! ---------------
+LEXICON KEEMA   ! VVS 37   laama, keema, leema, naima, võima, näima
 
+                      : VV_COMMON ;
+               +Impers:%+d IMPERS_DUD ;     ! keedud
+               +Impers:%+d IMPERS_AKSE ;    ! keedakse
+                      :%+D7 INFINITIVE ;    ! keeda
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;    ! kees
 
-! VVS 37   laama, keema, leema, naima, võima, näima
-LEXICON KEEMA
+LEXICON SAAMA !!= @CODE@ is a lexicon for saama-type words. ! VVS 37   saama, jääma
 
-               +Impers:%+d IMPERS_DUD ;    ! keedud
-               +Impers:%+d IMPERS_AKSE ;   ! keedakse
-                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%{W%}%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:%{W%}%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:%+I7S7 IND_PAST ;    ! indicative past
-             +Pers+Prs:%{W%}%+ IND_COND_PRS ;    ! 
+                      : VV_COMMON ;
+               +Impers:%+d IMPERS_DUD ;     ! saadud
+               +Impers:%+d IMPERS_AKSE ;    ! saadakse
+                      :%+D7 INFINITIVE ;    ! saada
+         +Pers+Prt+Ind:%+I7 IND_PAST ;      ! sai
 
-! VVS 37   saama, jääma
-LEXICON SAAMA !!= @CODE@ is a lexicon for saama-type words.
+LEXICON VIIMA     ! VVS 38   viima, käima, pooma, müüma
 
-               +Impers:%+d IMPERS_DUD ;    ! saadud
-               +Impers:%+d IMPERS_AKSE ;   ! saadakse
-                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%{W%}%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:%{W%}%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:%+I7 IND_PAST ;    ! indicative past1
-! +Pers+Prt+Ind+Sg3+Aff:%+i GI ;    ! sai
-             +Pers+Prs:%{W%}%+ IND_COND_PRS ;    ! 
-
-! VVS 38   viima, käima, pooma, müüma
-LEXICON VIIMA
-
+                      : VV_COMMON ;
                +Impers:%+d IMPERS_DUD ;        ! viidud
                +Impers:%{W%}%+ IMPERS_AKSE ;   ! viiakse
  +Impers%+Use%/NotNorm:%+d IMPERS_AKSE ;       ! viidakse
-                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+ INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%{W%}%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:%{W%}%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:%+I7S7 IND_PAST ;    ! indicative past
-             +Pers+Prs:%{W%}%+ IND_COND_PRS ;    ! 
+                      :%+ INFINITIVE ;         ! viia
+         +Pers+Prt+Ind:%+I7S7 IND_PAST ;       ! viis
 
-! VVS 38   jooma, looma, tooma, lööma, sööma
-LEXICON TOOMA
+LEXICON TOOMA     ! VVS 38   jooma, looma, tooma, lööma, sööma
 
+                      : VV_COMMON ;
                +Impers:%+d IMPERS_DUD ;        ! joodud
                +Impers:%{W%}%+ IMPERS_AKSE ;   ! juuakse
  +Impers%+Use%/NotNorm:%+d IMPERS_AKSE ;       ! joodakse
-                 +Pers:%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :%+ INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:%{W%}%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:%{W%}%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:%+I7 IND_PAST ;    ! indicative past
-             +Pers+Prs:%{W%}%+ IND_COND_PRS ;    ! 
+                      :%+ INFINITIVE ;         ! juua
+         +Pers+Prt+Ind:%+I7 IND_PAST ;         ! jõi
+ 
+LEXICON VV_COMMON  ! common to all 17 words of types 37, 38 (supine stem ends with VV)
 
-! VVS 27 ajama; almost like VEDAMA
-LEXICON AJAMA
+                 +Pers:%+ SUPINE_V ;             ! keema, saama etc
+       +Pers+Prs+Imprt:%{W%} IMPERATIVE ;        ! keegu, saagu etc
+             +Pers+Prt:%{W%}%+nu NU ;            ! keenud, saanud etc
+             +Pers+Prs:%{W%}%+ IND_COND_PRS ;    ! keeb, saab etc
 
-                      :%{W%} IMPERS ;    
-                 +Pers:a%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :a%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:a%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:a%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:a%+I7S7 IND_PAST ;    ! indicative past
-             +Pers+Prs:a%+ IND_COND_PRS ;    ! 
+! ---------------
 
-! VVS 28 vedama, pügama, pidama
-LEXICON VEDAMA
+LEXICON AJAMA      ! only ajama; almost like VEDAMA
 
-                      :e%{W%} IMPERS ;    
-                 +Pers:a%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :a%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:a%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:a%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:a%+I7S7 IND_PAST ;    ! indicative past
-             +Pers+Prs:a%{W%}%+ IND_COND_PRS ;    ! 
+                      :%{W%} IMPERS ;        ! aetud
+                 +Pers:a%+ SUPINE_V ;        ! ajama
+                      :a%+D7 INFINITIVE ;    ! ajada
+       +Pers+Prs+Imprt:a IMPERATIVE ;        ! ajagu
+             +Pers+Prt:a%+nu NU ;            ! ajanud
+         +Pers+Prt+Ind:a%+I7S7 IND_PAST ;    ! ajas
+             +Pers+Prs:a%+ IND_COND_PRS ;    ! ajab
 
-! VVS 28 pidama-pidi
-LEXICON PIDAMA
+LEXICON VEDAMA     ! VVS 28 vedama, pügama, pidama
+
+                      :e%{W%} IMPERS ;       ! veetud
+                 +Pers:a%+ SUPINE_V ;        ! vedama
+                      :a%+D7 INFINITIVE ;    ! vedada
+       +Pers+Prs+Imprt:a IMPERATIVE ;        ! vedagu
+             +Pers+Prt:a%+nu NU ;            ! vedanud
+         +Pers+Prt+Ind:a%+I7S7 IND_PAST ;    ! vedas
+             +Pers+Prs:a%{W%}%+ IND_COND_PRS ;    ! veab
+
+LEXICON PIDAMA     ! only pidama-pidi
 
                       ! no impersonal forms
-                 +Pers:a%+ SUPINE_V ;    ! -ma etc, -v, -vat
+                 +Pers:a%+ SUPINE_V ;        ! -ma etc, -v, -vat
                       :a%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:a%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:a%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:%+I7 IND_PAST ;    ! indicative past1
-             +Pers+Prs:a%{W%}%+ IND_COND_PRS ;    ! 
+       +Pers+Prs+Imprt:a IMPERATIVE ;        ! -gu/ku, -ge/ke, -gem/kem
+             +Pers+Prt:a%+nu NU ;            !  NU-affixes
+         +Pers+Prt+Ind:%+I7 IND_PAST ;       ! pidi
+             +Pers+Prs:a%{W%}%+ IND_COND_PRS ;    ! peab
 
-! VVS 28 tegema, nägema
-LEXICON TEGEMA
+LEXICON TEGEMA     ! only tegema, nägema
 
                +Impers:h%+d IMPERS_DUD ;       ! tehtud
                +Impers:h%{W%}%+ IMPERS_AKSE ;  ! tehakse
  +Impers%+Use%/NotNorm:h%+d IMPERS_AKSE ;      ! tehtakse
-                 +Pers:ge%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :h%+ INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:h%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:i%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:g%+I7 IND_PAST ;    ! indicative past1
-             +Pers+Prs:e%{W%}%+ IND_COND_PRS ;    ! 
-
-! VVS 28 käskima
-LEXICON KÄSKIMA
-
-                      : IMPERS ;    
-                 +Pers:i%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :i%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:i%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:i%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:i%+I7S7 IND_PAST ;    ! indicative past
-             +Pers+Prs:i%{W%}%+ IND_COND_PRS ;    ! 
-
-! VVS 28 kiskuma ; like käskima, but u instead of i
-LEXICON KISKUMA
-
-                      : IMPERS ;             ! kistud
-           %+Use%/Rare:u%{W%} IMPERS ;       ! kisutud etc
-                 +Pers:u%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :u%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:u%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:u%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:u%+I7S7 IND_PAST ;    ! indicative past
-             +Pers+Prs:u%{W%}%+ IND_COND_PRS ;    ! 
-
-! VVS 28 uskuma ; = kiskuma + parallel forms
-LEXICON USKUMA
-
-           %+Use%/Rare: IMPERS ;          ! ustud etc
-                      :u%{W%} IMPERS ;    ! usutud etc
-                 +Pers:u%+ SUPINE_V ;    ! -ma etc, -v, -vat
-                      :u%+D7 INFINITIVE ;    ! infinitive, gerund (des-form)
-       +Pers+Prs+Imprt:u%+G7 IMPERATIVE ;    ! -gu/ku, -ge/ke, -gem/kem
-             +Pers+Prt:u%+nu NU ;    !  NU-affixes
-         +Pers+Prt+Ind:u%+I7S7 IND_PAST ;    ! indicative past
-             +Pers+Prs:u%{W%}%+ IND_COND_PRS ;    ! 
+                 +Pers:ge%+ SUPINE_V ;         ! tegema
+                      :h%+ INFINITIVE ;        ! teha
+       +Pers+Prs+Imprt:h IMPERATIVE ;          ! tehku
+             +Pers+Prt:i%+nu NU ;              ! teinud
+         +Pers+Prt+Ind:g%+I7 IND_PAST ;        ! tegi
+             +Pers+Prs:e%{W%}%+ IND_COND_PRS ;    ! teeb
 
 LEXICON IND_COND_PRS    ! indicative, conditional present + imp sg2
 
             +Imprt+Sg2: GI ;
               +Ind+Neg: GI ;
-          +Ind+Sg1+Aff:n GI ;
-          +Ind+Sg2+Aff:d GI ;
-          +Ind+Sg3+Aff:b GI ;
-          +Ind+Pl1+Aff:me GI ;
-          +Ind+Pl2+Aff:te GI ;
-          +Ind+Pl3+Aff:vad GI ;
+                  +Ind: SG1 ;
+                  +Ind: SG2 ;
+                  +Ind: SG3B ;
+                  +Ind: PL1 ;
+                  +Ind: PL2 ;
+                  +Ind: PL3VAD ;
                       : CONDITIONAL ;
-
+            
 LEXICON IND_PAST    ! indicative past
                       :i MARKED_PERSON ;
                       : SG3 ;
@@ -448,9 +380,9 @@ LEXICON NU    !  NU-affixes
 
 LEXICON IMPERATIVE    ! imperative
 
-                      :u GI ;    ! elagu
-                  +Pl1:em GI ;    ! elagem
-                  +Pl2:e GI ;    ! elage
+                      :%+G7u GI ;    ! elagu
+                  +Pl1:%+G7em GI ;    ! elagem
+                  +Pl2:%+G7e GI ;    ! elage
 
 LEXICON SUPINE_V
 
@@ -460,11 +392,11 @@ LEXICON SUPINE_V
 
 LEXICON SUPINE
 
-                  +Ill: GI ;    ! elama
-                  +Ine:s GI ;    ! elamas
-                  +Ela:st GI ;
-                  +Tra:ks GI ;
-                  +Abe:ta GI ;
+                      : ILLATIVE ;    ! elama
+                      :s INESSIVE ;    ! elamas
+                      :st ELATIVE ;
+                      :ks TRANSLATIVE ;
+                      :ta ABESSIVE ;
 
 LEXICON IMPERS    ! impersonal forms
 

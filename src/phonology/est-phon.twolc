@@ -853,7 +853,9 @@ I1:i   => n:s e:0 Null* _ ;   ! -ne word
 ! lexical: s i p 0 l e {W} + D7 a
 ! surface: s i p e l 0  0  0  d a
 
-"infinitive and gerund affixes begin in t"
+! default for infinitive and gerund affixes is D7:d
+
+"infinitive and gerund affixes may begin in t"
 
 D7:t  <=> :Vowel Null* WeakGrade %+: _ ;
           :s Null* %+: _ ;
@@ -861,17 +863,12 @@ D7:t  <=> :Vowel Null* WeakGrade %+: _ ;
 ! lexical: h ü p p a {W} + D7 a
 ! surface: h ü p 0 a {W} +  t a
 ! lexical: s e i s + D7 a 
-! surface: s e i s 0  t u
+! surface: s e i s 0  t a
 
-"infinitive and gerund affixes begin in 0"
+"infinitive and gerund affixes may assimilate to 0"
 
-D7:0  <=>  [:l :l | :n :n | :r :r | :p :p] Null* %+: _ ; ! minna, tappa, ... 
-!           :h                              Null* %+: _ ; ! teha
-           :Consonant Null* [:t | :d]      Null* %+: _ ; ! kasta, nutta, anda
-           :Vowel :Vowel [:t | :d]         Null* %+: _ ; ! niita, nõuda
+D7:0  <=>  [:p | :t | :d] Null* %+: _ ; ! tappa, kasta, nutta, anda, niita, nõuda, ... 
 
-! lexical: m i n . {W} + D7 a 
-! surface: m i n n  0  0  0 a 
 ! lexical: k ü T1 t + D7 a 
 ! surface: k ü  t t 0  0 a
 ! lexical: k e e T2 + D7 a 
@@ -886,18 +883,8 @@ D7:0  <=>  [:l :l | :n :n | :r :r | :p :p] Null* %+: _ ; ! minna, tappa, ...
 
 D7:d /<= :voiceless Null* _ ;
 
-! lexical: k a T1 t + D7 a 
-! surface: k a  0 t 0  d a   <-- FAIL
 ! lexical: l a s K1 + D7 a 
 ! surface: l a s  k 0  d a   <-- FAIL
-
-! only for minema, olema, tulema, surema, panema
-!"minema, olema, tulema, surema, panema cannot have da as infinitive affix"
-
-!D7:d /<= [l %.:0 | n %.:0 | r %.:0] Null* %+: _ ;
-
-! lexical: t u l . + D7 a 
-! surface: t u l 0 0  d a  <-- FAIL
 
 "impersonal voice affix may begin in d"
 
@@ -941,12 +928,13 @@ G7:k  <=> :Consonant Null* :Vowel Null* WeakGrade %+: _ ;
 ! lexical: n ´ a e r + 0 v
 ! surface: n ´ a e r 0 e v
 
+! impersonal voice for söötma, nutma, lõpma: söödetud, nutetud, lõpetud
 "from t+t to te+t"
 
-0:e <=> [t: | T1:] _ WeakGrade %+: T7:t ;
+0:e <=> [t: | T1: | p:] _ WeakGrade %+: T7:t ;
 
-! lexical: n ´ u t 0 + T7 u d
-! surface: n ´ u t e 0  t u d
+! lexical: n ´ u t t 0 + T7 u d
+! surface: n ´ u t 0 e 0  t u d
 
 ! i is added to make s-ending preteritum form pronouncable,
 ! or i is actually the only morpheme indicating preteritum
@@ -1302,8 +1290,8 @@ Cx:Cy   => :voiceless Null* %+: _ ;
 Cx:Cx /<= :voiceless Null* %+: _ ;
        where Cx in (g b d) ;
 
-! lexical: s e i s + d u d
-! surface: s e i s 0 t u d
+! lexical: s e i s + g i
+! surface: s e i s 0 k i
 
 ! Orthographical convention for recent loans (kabinet) and -ik suffix
 "Double the previous consonant"
