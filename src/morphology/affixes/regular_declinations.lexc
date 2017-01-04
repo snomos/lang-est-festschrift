@@ -254,16 +254,16 @@ LEXICON 2C    ! stress on penultimate syllable & word ends with a consonant;
            +Sg:%+t PARTITIVE ;            ! redelit, virsikut
               : 2C_STRONGPL ;             ! redeleid, redeleil etc
 
-! strengthening gradation paradigm consists of:
-! 2C_LEMMA2 + 2C_STRONGPL or 
+! strengthening gradation paradigm consists of either:
+! 2C_LEMMA2 + 2C_STRONGPL, or 
 ! 2C_LEMMA3 + 2C_STRONG
 
-LEXICON 2C_LEMMA2    ! forms where 2 stems = lemma  
+LEXICON 2C_LEMMA2    ! subparadigm where 2 stems = lemma  
 
-           +Sg: NOMINATIVE ;              ! pinge
-           +Sg:%+t PARTITIVE ;            ! pinget
+           +Sg: NOMINATIVE ;              ! ase, haare
+           +Sg:%+t PARTITIVE ;            ! aset, haaret
 
-LEXICON 2C_LEMMA3    ! forms where 3 stems = lemma  
+LEXICON 2C_LEMMA3    ! subparadigm where 3 stems = lemma  
 
            +Sg: NOMINATIVE ;              ! pinge
            +Sg:%+t PARTITIVE ;            ! pinget
@@ -278,8 +278,8 @@ LEXICON 2C_STRONG    ! forms that would usually be in strong grade in strengthen
 
 LEXICON 2C_STRONGPL   ! forms that would sometimes be in strong grade in strengthening gradation
 
-              : 2C_STRONG;
-              :%+te N_PL_SUBPARA ; 
+              : 2C_STRONG;                ! aseme, haarme etc
+              :%+te N_PL_SUBPARA ;        ! asemete, haarmete
 
 LEXICON 2V    ! stress on penultimate syllable, word ends with vowel 
               ! & stressed syllable NOT extra heavy (kava, sõda, pere)
@@ -377,7 +377,7 @@ LEXICON 1C_ILLATIVE       ! sse-illative is very rare;
  +Sg%+Use%/Hyp:%{W%}%+sse ILLATIVE ;    ! kotisse
 
 LEXICON 2V_ILLATIVE       ! sse-illative is the default; few words have the short form also
-           +Sg:%{S%} SG_ILL_VARIANT ;    ! kavva
+           +Sg:%{S%} SG_ILL_VARIANT ;     ! kavva
            +Sg:%{WL%} SG_ILL_VARIANT ;    ! kavasse 
 
 ! the preferred form for Pl Par and Sg Ill is indicated in the stem lexicon
@@ -387,12 +387,12 @@ LEXICON 2V_ILLATIVE       ! sse-illative is the default; few words have the shor
 LEXICON PL_PAR_VARIANT    ! for TAUD, PIIM, KOON etc types
 
    %+Use%/Rare:%{rare%} PARTITIVE ;    ! less used pl par form for that word
-              : PARTITIVE ;    ! default pl par form for that word
+              : PARTITIVE ;            ! default pl par form for that word
 
 LEXICON SG_ILL_VARIANT    ! for KEEL etc types
 
-   %+Use%/Rare:%+%{s%}%{s%}%{e%}%{rare%} ILLATIVE ;    ! less used sg ill form for that word
-              :%+%{s%}%{s%}%{e%} ILLATIVE ;    ! default sg ill form for that word
+   %+Use%/Rare:%+%{s%}%{s%}%{e%}%{rare%} ILLATIVE ;  ! less used sg ill form for that word
+              :%+%{s%}%{s%}%{e%} ILLATIVE ;          ! default sg ill form for that word
 
 LEXICON NOMINATIVE
           +Nom: GI ;

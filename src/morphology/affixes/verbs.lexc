@@ -244,7 +244,7 @@ LEXICON MINEMA    ! only minema
 
                       :min%. A_AKSE ;            ! minna, minnakse, mindud
                       :mine SUPINE_V ;           ! minema
-                      :min%.%{W%} IMPERATIVE ;   ! mingu
+                      :min%{W%} IMPERATIVE ;   ! mingu
                       :läi%{W%} NU ;             ! läinud
                       :läk%+s IND_PAST ;         ! läks, läksin etc
 

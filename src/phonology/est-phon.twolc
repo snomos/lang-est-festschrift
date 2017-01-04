@@ -264,7 +264,7 @@ PlSV = %{pl.e%} %{pl.i%} %{pl.u%};
 SV = SgSV PlSV ;
 
 ! weak stops in the lexicon plus s; they disappear in weak grade
-WS = G1 B1 D1 K1 P1 T1 S1 ;
+WS = G1 B1 D1 K1 P1 T1 G3 D3 S1 ;
 
 ! lexical side of consonants that participate in gradation
 ! LexGrad = G1 B1 D1 K1 P1 T1 S1 B2 K2 P2 T2 g b d k p t f s š ;
@@ -683,20 +683,10 @@ K3:k  <=> _ s E1:e ;
 ! lexical: v e n n a K3 s E1 + d 
 ! surface: v e n n a k  s  e 0 d
 
-! -----
-! olema, tulema, minema, panema, surema
-! olla, tulla, minna, panna, surra; ollakse etc
-! the context is limited to a few inflectional forms
-
-"double l m n r"
-
-%.:Cx <=> :Cx _ (WeakGrade) %+: [ :a | :e ] ;
-      where Cx in (lmnr) ;
-
 !------
 "laas-laane"
 
-n:0  <=  _ S1:s ;   ! laas, tuhandes
+n:0  <=> \[:Consonant] _ S1:s ;   ! laas-laane, tuhandes-tuhendenda etc
 
 ! lexical: l a a n S1 
 ! surface: l a a 0 s
@@ -774,16 +764,9 @@ e:0  /<= n:n _ E1: ;
 
 "e disappearing (ne - s) 1/2"
 
-e:0 =>        n: _ E1: ;                    ! kodune - kodust, koduse
+e:0 <=>       n: _ E1: ;                    ! kodune - kodust, koduse
               n: _ Null* I1: ;               ! katkine - katkisil
               n: _ A1: ;                    ! pingne - pingsa
-
-"e disappearing (ne - s) 2/2"
-
-e:0 <=        n: _ E1: ;                    ! kodune - kodust, koduse
-              n: _ Null* I1: ;               ! katkine - katkisil
-              n: _ A1: ;                    ! pingne - pingsa
-
 
 ! we postulate that there is a special stem vowel e that is added both for -ne and -s words
 "add e for inflecting a ne/s word "
@@ -906,10 +889,13 @@ T7:d  <=> [l | n | r] (e:0) (WeakGrade) %+: _ ;
 ! lexical: j o o K1 s {W} + T7 a k s e
 ! surface: j o o  0 s  0  0  t a k s e
 
-"imperative mood affix begins in k"
+"imperative mood affix may begin in k"
 
-G7:k  <=> :Consonant Null* :Vowel Null* WeakGrade %+: _ ;
-            :Vowel WS:0    :Vowel Null* WeakGrade %+: _ ;
+!G7:k  <=> :Consonant Null* :Vowel Null* WeakGrade %+: _ ;
+!            :Vowel WS:0    :Vowel Null* WeakGrade %+: _ ;
+!          :voiceless Null* %+: _ ;
+
+G7:k  <=> \[:Vowel] a Null* WeakGrade %+: _ ;
           :voiceless Null* %+: _ ;
 
 ! lexical: h ü p p a {W} + G7 u
@@ -1248,23 +1234,14 @@ Cx:0 <=> :Cx _ Null+ [[Consonant Any* Border] - [Gi Border]];
 ! this violates Estonian orthography, and these rules set them right again
 ! need several rules for lmnr because e.g. n may get deleted in another context, e.g. lääs-lääne
 
-! l m n r may be 0 before a lexical WS that surfaces as a real WS
-"repair lmnr 1"
+"repair lmnr lmnr stop"
 
-Cx:0 => _ [G1:g | B1:b | D1:d | K1:k | P1:p | T1:t | S1:s | G3:g | D3:d] ;
+Cx:0 <=> :Cx _ WS:stop ;
       where Cx in (lmnr) ;
 
-! there might be palatalisation mark between consonants, hence Null*
-"repair lmnr 2"
+"repair rrs"
 
-Cx:0 <= Cx Null* _ [G1:g | B1:b | D1:d | K1:k | P1:p | T1:t | S1:s | G3:g | D3:d] ;
-      where Cx in (lmnr) ;
-
-! this should avoid deleting lmnr in e.g. jalg
-"repair lmnr 3"
-
-Cx:0 /<= :Vowel _ [G1:g | B1:b | D1:d | K1:k | P1:p | T1:t | G3:g | D3:d] ;
-      where Cx in (lmnr) ;
+r:0 <=> :r _ S1:s ; ! kõrs
 
 ! lexical: k a n n D1 E2 l e
 ! surface: k a n 0  d  0 l e 
@@ -1278,29 +1255,35 @@ Cx:0 /<= :Vowel _ [G1:g | B1:b | D1:d | K1:k | P1:p | T1:t | G3:g | D3:d] ;
 ! g b d is written as k p t after voiceless consonants
 ! this rule is restricted to affixes, because foreign words have conventions
 ! that do not follow this rule (lesginka)
-"gbd to kpt after voiceless consonants 1/2"
+"gbd to kpt after voiceless consonants"
 
-Cx:Cy   => :voiceless Null* %+: _ ;
+Cx:Cy  <=> :voiceless Null* %+: _ ;
        where Cx in (g b d)
              Cy in (k p t)
        matched;
-
-"gbd to kpt after voiceless consonants 1/2"
-
-Cx:Cx /<= :voiceless Null* %+: _ ;
-       where Cx in (g b d) ;
 
 ! lexical: s e i s + g i
 ! surface: s e i s 0 k i
 
 ! Orthographical convention for recent loans (kabinet) and -ik suffix
-"Double the previous consonant"
 
-%.:Cx  <=> :Vowel :Cx _ AnyNoTrigger* WordEnd ;
+"double k p t"
+
+%.:Cx  <=> :Cx _ AnyNoTrigger* WordEnd ;
       where Cx in (k p t) ;
 
 ! lexical: k a b i n e t . + {pl.e} {sg.i}
 ! surface: k a b i n e t t 0    0      i
+
+! -----
+! olema, tulema, minema, panema, surema --> 
+! olla, tulla, minna, panna, surra; ollakse etc, olles etc
+! the context is limited to a few inflectional forms
+
+"double l m n r"
+
+%.:Cx <=> :Cx _ Null* [ :a | :e ] ;
+      where Cx in (lmnr) ;
 
 ! native monosyllabic word cannot be kät, has to be kätt 
 ! for 8 words like käsi, mesi
