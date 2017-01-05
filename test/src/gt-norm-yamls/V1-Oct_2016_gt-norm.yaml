@@ -1377,6 +1377,28 @@ Tests:
      kaitsma+V+Pers+Prt+Ind+Pl1+Aff: kaitsesime
      kaitsma+V+Pers+Prt+Ind+Sg2+Aff: kaitsesid
      kaitsma+V+Pers+Prt+Ind+Sg1+Aff: kaitsesin
+
+     kaitsma+V+Inf+Use/Rare: kaitseda
+     kaitsma+V+Ger+Use/Rare: kaitsedes
+     kaitsma+V+Pers+Sup+Ill+Use/Rare: kaitsema
+     kaitsma+V+Pers+Sup+Ela+Use/Rare: kaitsemast
+     kaitsma+V+Pers+Sup+Ine+Use/Rare: kaitsemas
+     kaitsma+V+Pers+Sup+Tra+Use/Rare: kaitsemaks
+     kaitsma+V+Pers+Sup+Abe+Use/Rare: kaitsemata
+     kaitsma+V+Pers+Prs+Quot+Use/Rare: kaitsevat
+     kaitsma+V+Pers+Prt+Quot+Use/Rare: kaitsenuvat
+     kaitsma+V+Pers+Prt+Prc+Use/Rare: kaitsenud
+     kaitsma+V+Pers+Prt+Ind+Neg+Use/Rare: kaitsenud
+     kaitsma+V+Pers+Prt+Cond+Use/Rare: kaitsenuks
+     kaitsma+V+Pers+Prt+Cond+Pl3+Aff+Use/Rare: kaitsenuksid
+     kaitsma+V+Pers+Prt+Cond+Pl2+Aff+Use/Rare: kaitsenuksite
+     kaitsma+V+Pers+Prt+Cond+Pl1+Aff+Use/Rare: kaitsenuksime
+     kaitsma+V+Pers+Prt+Cond+Sg2+Aff+Use/Rare: kaitsenuksid
+     kaitsma+V+Pers+Prt+Cond+Sg1+Aff+Use/Rare: kaitsenuksin
+     kaitsma+V+Pers+Prs+Imprt+Use/Rare: kaitsegu
+     kaitsma+V+Pers+Prs+Imprt+Pl2+Use/Rare: kaitsege
+     kaitsma+V+Pers+Prs+Imprt+Pl1+Use/Rare: kaitsegem
+
      kastma+V+Pers+Sup+Ill: kastma
      kastma+V+Pers+Sup+Ela: kastmast
      kastma+V+Pers+Sup+Ine: kastmas

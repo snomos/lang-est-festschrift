@@ -122,8 +122,10 @@ LEXICON KUSEMA    ! only kusema
 LEXICON KAITSMA    ! only  kaitsma, maitsma
 
                       : C_COMMON ;            ! kaitsta, kaitsku, kaitsnud
-                      : IMPERS ;              ! kaitstu
+           %+Use%/Rare:e C_COMMON ;           ! kaitseda, kaitsegu, kaitsenud
+                      : IMPERS ;              ! kaitstud
                       : SUPINE_V ;            ! kaitsma
+           %+Use%/Rare:e SUPINE_V ;           ! kaitsema
                       :e%+I7S7 IND_PAST ;     ! kaitses
                       :e IND_COND_PRS ;       ! kaitseb
 
