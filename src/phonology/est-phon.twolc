@@ -105,6 +105,11 @@ I2:0   ! õil sa
 U2:u   ! hirmus
 U2:0   ! hirm sa
 
+A7:a   ! naerab
+A7:0   ! naer ma
+E7:e   ! jookseb
+E7:0   ! jooks ma
+
 J1:i   ! ahi, rohi
 J1:j   ! ahju
 J1:0   !      rohu
@@ -180,10 +185,8 @@ I7:0  ! naer sin
 S7:s  ! naeris
 S7:0  ! pani
 
-! if we say that plural affix +te appears as +de for tütar-type words,
+! t:d ... if we say that plural affix +te appears as +de for tütar-type words,
 ! then the cont. lexicons will be simpler 
- t:t  
- t:d  ! tütar+de
 
 %.:0 ! double the previous letter (kabinet - kabinetti; tulema - tulla)
 
@@ -308,9 +311,12 @@ Rules
 ! 
 "Weak grade for productive kpt:gbd"
 
-Cx:Cy  <=> :Vowel :sonor _ (%+:0) (SV:0) (LT:0) :stemV %{W%}: ;    ! kaup
-                  :sonor _ [l | r | j | v]      :stemV %{W%}: ;    ! kõblata
-           :Vowel :sonor _ 0:e [l | r]           e:0 %{W%}: ;    ! võidelda
+!Cx:Cy  <=> :Vowel :sonor _ (%+:0) (SV:0) (LT:0) :stemV %{W%}: ;    ! kaup
+!                  :sonor _ [l | r | j | v]      :stemV %{W%}: ;    ! kõblata
+!           :Vowel :sonor _ 0:e [l | r]           e:0 %{W%}: ;    ! võidelda
+Cx:Cy  <=> :Vowel :sonor _ Null*           :stemV %{W%}: ;  ! kaup-kauba, kurtma-kurdetud
+                  :sonor _ [l | r | j | v] :stemV %{W%}: ;  ! kõblata
+           :Vowel :sonor _ 0:e [l | r]        e:0 %{W%}: ;  ! võidelda
      where Cx in ( p t k ) 
            Cy in ( b d g )
      matched ;
@@ -329,6 +335,9 @@ Cx:Cy  <=> :Vowel :sonor _ (%+:0) (SV:0) (LT:0) :stemV %{W%}: ;    ! kaup
 ! surface: s i p e l 0  0  0 d a  ! no visible change
 ! lexical: l õ t v e {W}
 ! surface: l õ d v e  0        ! Sg Nom
+! lexical: k u r t A7 0 {W} + T7 u d
+! surface: k u r d  0 e  0  0  t u d
+
 
 !!€ kraapi%{W%}%+n
 !!€ kraabi00n
@@ -339,7 +348,8 @@ Cx:Cy  <=> :Vowel :sonor _ (%+:0) (SV:0) (LT:0) :stemV %{W%}: ;    ! kaup
 
 "Weak grade for productive kk pp tt šš ff : k p t š f"
 
-Cx:0 <=>  Cx _ (%+:0) (SV:0) (LT:0) :stemV (lmnr) %{W%}:  ;  ! sepa, lepin, aken, tütar, ...
+!Cx:0 <=>  Cx _ (%+:0) (SV:0) (LT:0) :stemV (lmnr) %{W%}:  ;  ! sepa, lepin, aken, tütar, ...
+Cx:0 <=>  Cx _ Null* :stemV (lmnr) %{W%}:  ;  ! sepa, lepin, aken, tütar, ...
      where Cx in ( p t k š f) ;
 
 ! lexical: k e p p + {pl.e} {sg.i} {W}
@@ -351,9 +361,13 @@ Cx:0 <=>  Cx _ (%+:0) (SV:0) (LT:0) :stemV (lmnr) %{W%}:  ;  ! sepa, lepin, aken
 ! lexical: t ü t t A2 r {W}
 ! surface: t ü t 0 a  r 0 
 
+! ss is different from kk pp tt šš ff
+! buss Sg Gen (weak grade) is bussi, not busi...
+
 "Weak grade for productive ss:s kauss, jamss"
 
-s:0 <=> :Vowel :sonor :s _ (%+:0) (SV:0) (LT:0) :stemV %{W%}: ;
+!s:0 <=> :Vowel :sonor :s _ (%+:0) (SV:0) (LT:0) :stemV %{W%}: ;
+s:0 <=> :Vowel :sonor :s _ Null* :stemV %{W%}: ;
 
 ! lexical: k a u s s + {pl.e} {sg.i} {W}
 ! surface: k a u s 0 0    0      i    0
@@ -485,17 +499,24 @@ Vx:Vy  <=>    _ Null* [:Consonant - :stop] Null* :stemV  ;
 ! lexical: s p i k k E2 r + i
 ! surface: s p i k 0  0 r 0 i 
 
+! some older verbs lose the stem final vowel in strong grade forms
+"verb stem final vowel in weak grade (excl. impersonal)"
+
+Vx:Vy  <=> _ WeakGrade %+: \[T7:] ;
+     where Vx in ( A7 E7 ) 
+           Vy in (  a  e )
+     matched ;
+
+! lexical: s e i s A7 {W} + b
+! surface: s e i s  a  0  0 b 
+
 ! vowel lowering; 
 ! it is triggered by g b d t s disappearing or morpheme border between i and i
 
-"i lowers to e before inflectional i 1/2"
+"i lowers to e before inflectional i"
 
-i:e  =>  [ :Consonant | %{apo%}:' ] (%+:0) _ Null* %+:0 :i ;
-         
-"i lowers to e before inflectional i 2/2"
-
-i:e  <=  [ :Consonant | %{apo%}:' ] (%+:0) _ Null* %+: :i ;
-       
+i:e  <=>  [ :Consonant | %{apo%}:' ] (%+:0) _ Null* %+:0 :i ;
+      
 ! lexical: v o o d i + i d
 ! surface: v o o d e 0 i d
 ! lexical: r u k K1 i + i d
@@ -503,17 +524,9 @@ i:e  <=  [ :Consonant | %{apo%}:' ] (%+:0) _ Null* %+: :i ;
 ! lexical: S c h e d u l e {apo} i + i d
 ! surface: S c h e d u l e   '   e 0 i d
 
-"single short high vowel lowers if it obtains a neighboring vowel after stop or s disappears 1/2"
+"single short high vowel lowers if it obtains a neighboring vowel after stop or s disappears"
 
-Vx:Vy  =>  [Border | Consonant] :Vowel (LowerBackVowel:0) WS:0 Null* _  ;
-           [Border | Consonant] _ WS:0 :Vowel ;
-       where Vx in ( i u ü %{sg.i%} %{sg.u%} )
-             Vy in ( e o ö     e        o    )
-       matched;
-
-"single short high vowel lowers if it obtains a neighboring vowel after stop or s disappears 2/2"
-
-Vx:Vy  <=  [Border | Consonant] :Vowel (LowerBackVowel:0) WS:0 Null* _  ;
+Vx:Vy  <=>  [Border | Consonant] :Vowel (LowerBackVowel:0) WS:0 Null* _  ;
            [Border | Consonant] _ WS:0 :Vowel ;
        where Vx in ( i u ü %{sg.i%} %{sg.u%} )
              Vy in ( e o ö     e        o    )
@@ -573,6 +586,61 @@ Vx:Vx /<= :Vx _ Null+ :stemV ;            ! sae, soid, soe
 ! surface: t õ 0  0 0    0      u    0
 ! lexical: n ä u G1 u {W} + b 
 ! surface: n ä 0  0 u  0  0 b
+
+!-----
+! add a vowel to make the wordform pronouncable
+
+"from -v to -ev"
+
+0:e <=> :Consonant Null* %+: _ v WordEnd ;
+
+! lexical: n ´ a e r + 0 v
+! surface: n ´ a e r 0 e v
+
+! impersonal voice for söötma, nutma, lõpma: söödetud, nutetud, lõpetud
+"from t+t to te+t"
+
+0:e <=> [t: | T1: | p:] Null* _ WeakGrade %+: T7:t ;
+
+! lexical: n ´ u t t A7 0 {W} + T7 u d
+! surface: n ´ u t 0  0 e  0  0  t u d
+
+! i is added to make s-ending preteritum form pronouncable,
+! or i is actually the only morpheme indicating preteritum
+
+"i surfaces in preteritum"
+
+I7:i <=> :Consonant Null* %+: _ S7: WordEnd ;
+         _ WordEnd ;
+
+! lexical: n ´ a e r + I7 S7
+! surface: n ´ a e r 0  i  s
+! lexical: s a a + I7
+! surface: s a 0 0  i
+
+! --------- verb stem changes -------
+! not really gradation
+
+! siplema-sipelda
+
+"el-le 1/3"
+
+e:0 <=> :e [l | r] _ WeakGrade %+: ;
+
+"el-le 2/3"
+
+0:e <=> [:Consonant | WS:0] _ [l | r] e:0 WeakGrade %+: ;
+
+! in weak grade, -le- is impossible (has to be -el-)
+"el-le 3/3"
+
+e:e /<= [:Consonant | WS:0] [l | r] _ WeakGrade %+: ;
+
+! lexical: s i p 0 l e {W} + d a
+! surface: s i p e l 0  0  0 d a
+! hüüdlema-hüüelda
+! lexical: h ´ ü ü D1 0 l e {W} + d a
+! surface: h ´ ü ü 0  e l 0  0  0 d a
 
 ! -------- rules that operate on a small set of different words
 
@@ -871,10 +939,13 @@ D7:d /<= :voiceless Null* _ ;
 
 "impersonal voice affix may begin in d"
 
-T7:d  <=> [l | n | r] (e:0) (WeakGrade) %+: _ ;
+T7:d  <=> [l | n | r] e:0 WeakGrade %+: _ ;
+          [l | n | r] [A7:0 | E7:0] %+: _ ;
 
 ! lexical: s i p 0 l e {W} + T7 u d
 ! surface: s i p e l 0  0  0  d u d
+! lexical: n a e r A7 + T7 u d
+! surface: n a e r  0 0  d u d
 
 ! default: T7:t
 !
@@ -891,10 +962,6 @@ T7:d  <=> [l | n | r] (e:0) (WeakGrade) %+: _ ;
 
 "imperative mood affix may begin in k"
 
-!G7:k  <=> :Consonant Null* :Vowel Null* WeakGrade %+: _ ;
-!            :Vowel WS:0    :Vowel Null* WeakGrade %+: _ ;
-!          :voiceless Null* %+: _ ;
-
 G7:k  <=> \[:Vowel] a Null* WeakGrade %+: _ ;
           :voiceless Null* %+: _ ;
 
@@ -904,36 +971,6 @@ G7:k  <=> \[:Vowel] a Null* WeakGrade %+: _ ;
 ! surface: l õ u  0 a {W} +  k u
 ! lexical: s e i s + G7 u 
 ! surface: s e i s 0  k u
-
-! add a vowel to make the wordform pronouncable
-
-"from -v to -ev"
-
-0:e <=> :Consonant Null* %+: _ v WordEnd ;
-
-! lexical: n ´ a e r + 0 v
-! surface: n ´ a e r 0 e v
-
-! impersonal voice for söötma, nutma, lõpma: söödetud, nutetud, lõpetud
-"from t+t to te+t"
-
-0:e <=> [t: | T1: | p:] _ WeakGrade %+: T7:t ;
-
-! lexical: n ´ u t t 0 + T7 u d
-! surface: n ´ u t 0 e 0  t u d
-
-! i is added to make s-ending preteritum form pronouncable,
-! or i is actually the only morpheme indicating preteritum
-
-"i surfaces in preteritum"
-
-I7:i <=> :Consonant Null* %+: _ S7: WordEnd ;
-         _ WordEnd ;
-
-! lexical: n ´ a e r + I7 S7
-! surface: n ´ a e r 0  i  s
-! lexical: s a a + I7
-! surface: s a 0 0  i
 
 "from -is to -i"
 
@@ -950,30 +987,6 @@ S7:0 <=> [:Consonant | Border] Null* :Vowel :Consonant Null* %+: I7: _ WordEnd ;
 ! surface: s e i s 0  i  s          NB! S7:s
 ! lexical: k ´ ü T1 t + I7 S7 i n
 ! surface: k ´ ü  t 0 0  0  s i n   NB! S7:s
-
-! --------- verb stem changes -------
-! not really gradation; some may depend on affix
-
-! siplema-sipelda
-
-"el-le 1/3"
-
-e:0 <=> :e [l | r] _ WeakGrade %+: ;
-
-"el-le 2/3"
-
-0:e <=> [:Consonant | WS:0] _ [l | r] e:0 WeakGrade %+: ;
-
-! in weak grade, -le- is impossible (has to be -el-)
-"el-le 3/3"
-
-e:e /<= [:Consonant | WS:0] [l | r] _ WeakGrade %+: ;
-
-! lexical: s i p 0 l e {W} + d a
-! surface: s i p e l 0  0  0 d a
-! hüüdlema-hüüelda
-! lexical: h ´ ü ü D1 0 l e {W} + d a
-! surface: h ´ ü ü 0  e l 0  0  0 d a
 
 ! ---------
 ! Rules for selecting 

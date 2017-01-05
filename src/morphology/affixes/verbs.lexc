@@ -96,21 +96,13 @@ LEXICON USKUMA      ! only uskuma
                       :u LEPPIMA ;        ! uskuma, usutud etc
 
 ! ---------------
-LEXICON NAERMA      ! VVS 32, 33  naerma, seisma etc (24 words)
+LEXICON NAERMA      ! VVS 32, 33  naerma, kuulma, seisma, tõusma etc (31 words)
 
                       : C_COMMON ;           ! naerda, seista, naergu, seisku, naernud, seisnud
                       : IMPERS ;             ! naerdud, seistud
                       : SUPINE_V ;           ! naerma, seisma
                       :%+I7S7 IND_PAST ;     ! naeris, seisis
-                      :a%{W%} IND_COND_PRS ; ! naerab, seisab
-
-LEXICON KUULMA      ! VVS 32, 33  kuulma, tõusma etc; (7 words) like NAERMA, but kuuleb (not kuulab)
-
-                      : C_COMMON ;            ! kuulda, tõusta, kuulgu, tõusku, kuulnud, tõusnud
-                      : IMPERS ;              ! kuuldud, tõustud
-                      : SUPINE_V ;            ! kuulma, tõusma
-                      :%+I7S7 IND_PAST ;      ! kuulis, tõusis
-                      :e%{W%} IND_COND_PRS ;  ! kuuleb, tõuseb
+                      :%{W%} IND_COND_PRS ;  ! naerab, seisab, kuuleb, tõuseb
 
 LEXICON PESEMA    ! only pesema
 
@@ -118,7 +110,7 @@ LEXICON PESEMA    ! only pesema
                       : IMPERS ;              ! pestud
                       :e SUPINE_V ;           ! pesema
                       :%+I7S7 IND_PAST ;      ! pesi
-                      :e IND_COND_PRS ;       ! peseb
+                      :%{W%} IND_COND_PRS ;       ! peseb
 
 LEXICON KUSEMA    ! only kusema
 
@@ -135,13 +127,13 @@ LEXICON KAITSMA    ! only  kaitsma, maitsma
                       :e%+I7S7 IND_PAST ;     ! kaitses
                       :e IND_COND_PRS ;       ! kaitseb
 
-LEXICON SAATMA      ! VVS 34, 35   söötma, nutma
+LEXICON SAATMA      ! VVS 34, 35   söötma, nutma; lõpma
 
                       : C_COMMON ;            ! sööta, nutta, söötke, nutke, söötnud, nutnud
                       :%{W%} IMPERS ;         ! söödetud, nutetud
                       : SUPINE_V ;            ! söötma, nutma
                       :%+I7S7 IND_PAST ;      ! söötis, nuttis
-                      :a%{W%} IND_COND_PRS ;  ! söödab, nutab
+                      :%{W%} IND_COND_PRS ;   ! söödab, nutab; lõpeb
 
 LEXICON JOOKSMA     ! only jooksma
 
@@ -164,14 +156,6 @@ LEXICON LASKMA    ! only laskma
            %+Use%/Rare:%+I7S7 IND_PAST ;      ! indicative past laskis, ...
                       :%{W%}%+I7S7 IND_PAST ; ! indicative past lasi, ...
                       :e%{W%} IND_COND_PRS ;  ! laseb
-
-LEXICON LÕPMA      ! only lõpma; almost like SAATMA
-
-                      : C_COMMON ;            ! lõppa, lõpku, lõpnud
-                      :%{W%} IMPERS ;         ! lõpetud
-                      : SUPINE_V ;            ! lõpma
-                      :%+I7S7 IND_PAST ;      ! lõppes
-                      :e%{W%} IND_COND_PRS ;  ! lõpeb
 
 LEXICON KATMA      ! VVS 35   katma kütma matma võtma jätma
                    ! almost like SAATMA, but IMPERS are even weaker grade

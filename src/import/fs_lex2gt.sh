@@ -39,11 +39,18 @@ cat decltmp1 | ./fs_lex2verblemma.sed \
 | sed 's/SIPLEMA/HAKKAMA/' \
 | sed '/RABELEMA/s/$/e/' \
 | sed '/SAATMA/s/T2$/t/' \
-| sed 's/TUNDMA/KUULMA/' \
+| sed 's/TUNDMA/NAERMA/' \
 | sed 's/HOIDMA/NAERMA/' \
-| sed 's/TÕUSMA/KUULMA/' \
+| sed 's/TÕUSMA/NAERMA/' \
 | sed 's/SEISMA/NAERMA/' \
-| sed 's/PUSKMA/KUULMA/' \
+| sed 's/PUSKMA/NAERMA/' \
+| sed 's/LÕPMA/SAATMA/' \
+| sed 's/KUULMA/NAERMA/' \
+| sed '/a\[B.*\.3[2345]/s/$/A7/' \
+| sed '/e\[B.*\.3[2345]/s/$/E7/' \
+| sed '/KATMA/s/[AE]7//' \
+| sed '/JOOKSMA/s/[AE]7//' \
+| sed '/LASKMA/s/[AE]7//' \
 > tmp1
 
 # kirjuta mõnedesse lemmadesse sisse leksikaalse tasandi märgid
