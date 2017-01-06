@@ -190,7 +190,7 @@ LEXICON JALG    ! only jalg
                   : PIIM ;
        %+Use%/Rare:%+e N_VOWEL_PL_SUBPARA ;    ! jalge
 
-LEXICON KAEL    ! VVS 23  almost = PIIM, except pl gen + 
+LEXICON KAEL    ! VVS 23  17 words; almost = PIIM, except pl gen + 
 
                +Sg:%{no.apo%} NOMINATIVE ;
                   :%{sg.a%} 1C_SG ;
@@ -212,7 +212,13 @@ LEXICON KAKS    ! only üks, kaks
                   :hT1%{sg.e%} 1C ;   ! like EIT
     +Sg%+Use%/Rare:h%+t PARTITIVE ;    ! kaht
 
-LEXICON KEEL    !  VVS 13 unstable (closed) type; 
+LEXICON KANNEL    ! only kannel, tütar, kärbes, lemmel; = PIPAR, but stem vowel -e instead of -a
+
+              :%{W%} 2C_LEMMA3 ;          ! kannel, kannelt, kannelde
+              :e 2C_STRONG ;
+%+Use%/NotNorm:e%+te N_PL_SUBPARA ;       ! kandlete, tütrete etc 
+
+LEXICON KEEL    !  VVS 13 unstable (closed) type; 27 words
 
                   : VARS ;
         %+Use%/Hyp:%{W%}%+i N_VOWEL_PL_SUBPARA ;    ! vowel pl cases  keelil; except for some expressions (suuril silmil)
@@ -229,9 +235,8 @@ LEXICON KODU    ! only kodu; stem illative is koju, rare ablative is kodunt
                +Sg:du PARTITIVE ;    ! kodu
                +Sg:ju ILLATIVE ;    ! 
     +Sg%+Use%/Rare:du%+sse ILLATIVE ;    !  
-    +Sg%+Use%/Rare:dunt ABLATIVE ;    !  
-                  :du%+de N_PL_SUBPARA ;    ! kodude etc
-               +Pl:du%+sid PARTITIVE ;    ! kodusid 
+    +Sg%+Use%/Rare:dunt ABLATIVE ;    ! 
+                  :du DE_PL ; 
 
 LEXICON KOHUS    ! only kohus-kohtu; like HOOLAS
 
@@ -304,15 +309,13 @@ LEXICON MEES    ! only mees
                   :es%+te N_PL_SUBPARA ;    ! meeste etc 
                +Pl:h%+i PARTITIVE ;    ! mehi
 
-LEXICON MERI    ! VVS 20 unstable type (passiivne muuttüüp) lumi, tuli, uni, veri
+LEXICON MERI    ! VVS 20 unstable type (passiivne muuttüüp) 8 words (lumi, tuli, uni, veri...)
 
                +Sg:i NOMINATIVE ;
-                  :e N_SG_SUBPARA ;    ! mere etc
+                  :e 2V ;       ! mere etc
                +Sg:%+d PARTITIVE ;    ! merd
-                  :e 2V_ILLATIVE ;    ! merre, meresse
-                  :e DE_PL ;
 
-LEXICON MESI     
+LEXICON MESI     ! VVS 15 unstable type (passiivne muuttüüp) 8 words
 
                +Sg:i NOMINATIVE ;    ! mesi
                   :e%{W%} N_SG_SUBPARA ;    ! mee etc 
@@ -341,13 +344,11 @@ LEXICON NIIN    ! only niin; almost like KEEL, but some forms are more regular
     ! +N%+Use%/Hyp:%+i N_VOWEL_PL_SUBPARA ;    ! impossible for rarer words
                +Pl:e%+sid PARTITIVE ;    ! NB! niinesid (not niini)
 
-LEXICON NIMI    ! VVS 20, 21 unstable type (passiivne muuttüüp) suvi, lagi
+LEXICON NIMI    ! VVS 20, 21 unstable type (passiivne muuttüüp) 17 words; suvi, lagi
 
                +Sg:i NOMINATIVE ;
-                  :e%{W%} N_SG_SUBPARA ;    ! suve etc
+                  :e 2V ;       ! nime, lae etc
                +Sg:e PARTITIVE ;    ! suve, lage
-                  :e 2V_ILLATIVE ;    ! nimme, nimesse; lakke, laesse
-                  :e DE_PL ;
 
 LEXICON PARAS    ! only paras; like LOHAKAS
 
@@ -369,7 +370,7 @@ LEXICON PEEN    ! only peen, tüün; almost like KEEL, but some forms are more r
         %+Use%/Hyp:%{W%}%+i N_VOWEL_PL_SUBPARA ;    ! peenil etc
 
 
-LEXICON POISS    ! VVS 23 poiss, püks; almost = TAUD, except pl gen + 
+LEXICON POISS    ! only poiss, püks; like KAEL; almost = TAUD, except pl gen + 
 
                +Sg:%{no.apo%} NOMINATIVE ;
                   :i 1C_SG ;                 ! poisi etc
@@ -377,6 +378,7 @@ LEXICON POISS    ! VVS 23 poiss, püks; almost = TAUD, except pl gen +
        %+Use%/Rare:%+i%+de N_PL_SUBPARA ;    ! poisside etc
                +Pl:e PARTITIVE ;             ! poisse
      +Pl%+Use%/Hyp:i%+sid PARTITIVE ;        ! poissisid+Use/Hyp
+
 
 LEXICON PURI    ! only puri
 
@@ -446,9 +448,8 @@ LEXICON TEINE    ! only teine; almost = NAINE; much like OLULINE
                +Sg: NOMINATIVE ;
                   : NE_S_COMMON ;
                +Sg:E1 ILLATIVE ;                ! teise (should be 3rd grade... )
-    +Sg%+Use%/Rare:E1%+sse ILLATIVE ;           ! teisesse
                +Pl:%+I1 PARTITIVE ;             ! teisi
-       %+Use%/Rare:%+I1 N_VOWEL_PL_SUBPARA ;    ! teisil etc
+                  : LINE_US_RARE ;              ! teisesse, teisil etc
 
 LEXICON TUHAT    ! only tuhat; like LOHAKAS
 
@@ -503,8 +504,7 @@ LEXICON ÕLU    ! only õlu
                   :le N_SG_SUBPARA ;    ! õlle etc 
                +Sg:u%+t PARTITIVE ;    ! õlut
                +Sg:le%+sse ILLATIVE ;    ! õllesse 
-                  :le%+de N_PL_SUBPARA ;    ! õllede etc 
-               +Pl:le%+sid PARTITIVE ;    ! õllesid
+                  :le DE_PL ;
     +Pl%+Use%/Rare:u%+sid PARTITIVE ;    ! õlusid
 
 

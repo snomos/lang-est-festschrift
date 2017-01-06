@@ -34,7 +34,8 @@ LEXICON TUNTUD    ! VVS 2 (productive) -d ending words (incl derivations)
            +Sg:d NOMINATIVE ;    ! tuntud
               : 2C ;    ! tuntu etc
  
-LEXICON MAGUS    ! VVS 2 (unproductive) i.e. unstable (closed) type
+LEXICON MAGUS    ! VVS 2 (productive) for -v, -tav derivations
+                 ! + (unproductive) i.e. unstable (closed) type
 
            +Sg: NOMINATIVE ;    ! magus
               :A1 2C ;    ! magusa; A1 is necessary for pingne - pingsa
@@ -73,12 +74,6 @@ LEXICON PIPAR    !  VVS 8 (unproductive) i.e. unstable (closed) type; = HOOLAS
               :%{W%} 2C_LEMMA3 ;          ! pipar, pipart, piparde
               :a 2C_STRONG ;
 %+Use%/NotNorm:a%+te N_PL_SUBPARA ;       ! piprate etc 
-
-LEXICON KANNEL    ! VVS 8 (unproductive) i.e.unstable (closed) type; = PIPAR, but stem vowel -e instead of -a
-
-              :%{W%} 2C_LEMMA3 ;          ! kannel, kannelt, kannelde
-              :e 2C_STRONG ;
-%+Use%/NotNorm:e%+te N_PL_SUBPARA ;       ! kandlete, tütrete etc 
 
 LEXICON SOOLANE    ! VVS 9 (productive) simplex words ending with -s (katus), VVS 10 affix -ne; 
                        
@@ -254,7 +249,8 @@ LEXICON 2C    ! stress on penultimate syllable & word ends with a consonant;
            +Sg:%+t PARTITIVE ;            ! redelit, virsikut
               : 2C_STRONGPL ;             ! redeleid, redeleil etc
 
-! strengthening gradation paradigm consists of either:
+! in addition to Sg NOMINATIVE + 2C,
+! a strengthening gradation paradigm may consist of either:
 ! 2C_LEMMA2 + 2C_STRONGPL, or 
 ! 2C_LEMMA3 + 2C_STRONG
 

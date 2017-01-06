@@ -264,7 +264,7 @@ s/^\([^ ]*t\)ugi [^@]*21[^@]*@NIMI.*$/& \1ugi:\1uG1/
 /@KABINET/s/%+%{pl.e%}%{rare%}//
 /@FIAT/s/%+%{pl.e%}%{rare%}//
 /@ARGPÜKS/s/%+%{pl.e%}%{rare%}//
-/@POISS/s/%+%{pl.e%}%{rare%}}//
+/@POISS/s/%+%{pl.e%}%{rare%}//
 /@KAEL/s/%{rare%}//
 
 /k<*onnD1/s/%{rare%}//

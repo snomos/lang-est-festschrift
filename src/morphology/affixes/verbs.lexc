@@ -74,7 +74,7 @@ LEXICON ÜTLEMA    ! only ütlema, mõtlema
 LEXICON RABELEMA    ! VVS 31; = HAKKAMA + ELAMA 
                     ! assuming that rabel- is less used than rabele- ...
 
-                      : ELAMA ;                 ! rabelema
+                      : ELAMA ;                 ! rabelema; rabeletud, rabeleda, ...
            %+Use%/Rare:%{W%} HAKKAMA_WEAK ;     ! rabeldud, rabelda, ...
 
 LEXICON KÄSKIMA     ! only käskima
@@ -110,7 +110,7 @@ LEXICON PESEMA    ! only pesema
                       : IMPERS ;              ! pestud
                       :e SUPINE_V ;           ! pesema
                       :%+I7S7 IND_PAST ;      ! pesi
-                      :%{W%} IND_COND_PRS ;       ! peseb
+                      :%{W%} IND_COND_PRS ;   ! peseb
 
 LEXICON KUSEMA    ! only kusema
 
