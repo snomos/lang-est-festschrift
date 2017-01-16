@@ -17,6 +17,8 @@ part of speech
  * {{+CS }}: ! alistav sidesõna		! subordinating conjunction		
  * {{+Adp }}: ! kaassõna	! adposition, i.e. pre/postposition	
 
++N+Sg+Gen	! genitiivatribuut	! genitive attribute	! saksa
++Adv  ! muu sõna	! other word		! kihku, kihla, minap
 
 
 alamkategooriad
@@ -30,6 +32,8 @@ võrdlusastmed
  * {{+Comp }}: ! komparatiiv	! comparative
  * {{+Superl }}: ! superlatiiv	! superlative
 
+genitiivatribuut?
++Attr   ! ???
 
 
 __hfstol: examples:__
@@ -185,8 +189,142 @@ infinite ("declinable") verb forms
  * {{+Prc }}: ! kesksõna	 ! participle
 
 
+kategooriate võimalikud kombinatsioonid
+possible combinations of categories
+allikas / source :
+Heiki-Jaan Kaalep. Eesti verbi vormistik. Keel ja kirjandus 1/2015 lk 1-15. http://kjk.eki.ee/ee/issues/2015/1/582 
 
+The categories are given in the order in which the allomorphs (if they can be
+distinguished) that represent them are attached to the word stem (note that the
+treatment of allomorphs is sloppy here). The justification is that the
+categories are not equal, but form an hierarchy: those closer to the word end 
+tend to be more optional, more often non-specified.   
+ elataks, elav vs elatav
+ elaks vs. elanuks
+ (0-morph vs. ks vs. k/g(ue) vs. vat)
+ and quotative moods one form is underspecified for person+number
+ lexical means: it is either present in an exceptional wordform (some forms of
+ olema) or gets adhered to a form, normally used in affirmative,
+ from an immediately preceding word ei, ega or ära (e.g. ei elaks).
+ The only case when negation has a dedicated form of its own is impersonal
+ present indicative negative (e.g. ei elata).  
+The forms of negative words pole and ära are included in order to capture really all 
+ the combinations; 
+also note that for olema, there are some constellations of categories that are the same for
+a wordform beginning with ole- and pole- 
 
+* tähistab kategooriate kombinatsiooni või sõnavormi, mida 1.11.2016 ei genereerita ega tunta ära 
+* denotes the categories or word form that is not recognized nor generated as of Nov 1, 2016
+---- personal finite forms ----
+
+__hfstol: examples:__
+* __elan: __ {{elama+V+Pers+Prs+Ind+Sg1+Aff }}
+* __elad: __ {{elama+V+Pers+Prs+Ind+Sg2+Aff }}
+* __elab: __ {{elama+V+Pers+Prs+Ind+Sg3+Aff }}
+* __elame: __ {{elama+V+Pers+Prs+Ind+Pl1+Aff }}
+* __elate: __ {{elama+V+Pers+Prs+Ind+Pl2+Aff }}
+* __elavad: __ {{elama+V+Pers+Prs+Ind+Pl3+Aff }}
+* __ela: __ {{elama+V+Pers+Prs+Ind+Neg }}
+NB! ei ole = pole
+* __pole: __ {{olema+V+Pers+Prs+Ind+Neg }}
+* __ole: __ {{olema+V+Pers+Prs+Ind+Neg }}
+* __elaksin: __ {{elama+V+Pers+Prs+Cond+Sg1+Aff }}
+* __elaksid: __ {{elama+V+Pers+Prs+Cond+Sg2+Aff }}
+* __elaks: __ {{elama+V+Pers+Prs+Cond }}
+* __elaksime: __ {{elama+V+Pers+Prs+Cond+Pl1+Aff }}
+* __elaksite: __ {{elama+V+Pers+Prs+Cond+Pl2+Aff }}
+* __elaksid: __ {{elama+V+Pers+Prs+Cond+Pl3+Aff }}
+* __poleksin: __ {{olema+V+Pers+Prs+Cond+Sg1+Neg }}
+* __poleksid: __ {{olema+V+Pers+Prs+Cond+Sg2+Neg }}
+* __poleks: __ {{olema+V+Pers+Prs+Cond+Neg }}
+* __poleksime: __ {{olema+V+Pers+Prs+Cond+Pl1+Neg }}
+* __poleksite: __ {{olema+V+Pers+Prs+Cond+Pl2+Neg }}
+* __poleksid: __ {{olema+V+Pers+Prs+Cond+Pl3+Neg }}
+* __ela: __ {{elama+V+Pers+Prs+Imprt+Sg2 }}
+* __elagu: __ {{elama+V+Pers+Prs+Imprt }}
+* __elagem: __ {{elama+V+Pers+Prs+Imprt+Pl1 }}
+* __elage: __ {{elama+V+Pers+Prs+Imprt+Pl2 }}
+* __ära: __ {{ära+V+Pers+Prs+Imprt+Sg2+Neg }}
+* __ärgu: __ {{ära+V+Pers+Prs+Imprt+Neg }}
+* __ärgem: __ {{ära+V+Pers+Prs+Imprt+Pl1+Neg }}
+* __ärme: __ {{ära+V+Pers+Prs+Imprt+Pl1+Neg+Use/Rare }}
+* __ärge: __ {{ära+V+Pers+Prs+Imprt+Pl2+Neg }}
+* __elavat: __ {{elama+V+Pers+Prs+Quot }}
+* __polevat: __ {{olema+V+Pers+Prs+Quot+Neg }}
+
+* __elasin: __ {{elama+V+Pers+Prt+Ind+Sg1+Aff }}
+* __elasid: __ {{elama+V+Pers+Prt+Ind+Sg2+Aff }}
+* __elas: __ {{elama+V+Pers+Prt+Ind+Sg3+Aff }}
+* __elasime: __ {{elama+V+Pers+Prt+Ind+Pl1+Aff }}
+* __elasite: __ {{elama+V+Pers+Prt+Ind+Pl2+Aff }}
+* __elasid: __ {{elama+V+Pers+Prt+Ind+Pl3+Aff }}
+* __elanud: __ {{elama+V+Pers+Prt+Ind+Neg }}
+NB! ei olnud = polnud
+* __polnud: __ {{olema+V+Pers+Prt+Ind+Neg }}
+* __olnud: __ {{olema+V+Pers+Prt+Ind+Neg }}
+* __elanuksin: __ {{elama+V+Pers+Prt+Cond+Sg1+Aff }}
+* __elanuksid: __ {{elama+V+Pers+Prt+Cond+Sg2+Aff }}
+* __elanuks: __ {{elama+V+Pers+Prt+Cond }}
+* __elanuksime: __ {{elama+V+Pers+Prt+Cond+Pl1+Aff }}
+* __elanuksite: __ {{elama+V+Pers+Prt+Cond+Pl2+Aff }}
+* __elanuksid: __ {{elama+V+Pers+Prt+Cond+Pl3+Aff }}
+* __polnuksin: __ {{olema+V+Pers+Prt+Cond+Sg1+Neg }}
+* __polnuksid: __ {{olema+V+Pers+Prt+Cond+Sg2+Neg }}
+* __polnuks: __ {{olema+V+Pers+Prt+Cond+Neg }}
+* __polnuksime: __ {{olema+V+Pers+Prt+Cond+Pl1+Neg }}
+* __polnuksite: __ {{olema+V+Pers+Prt+Cond+Pl2+Neg }}
+* __polnuksid: __ {{olema+V+Pers+Prt+Cond+Pl3+Neg }}
+*elanud: elama+V+Pers+Prt+Imprt 
+* __ärnud: __ {{ära+V+Pers+Prt+Imprt+Neg }}
+* __elanuvat: __ {{elama+V+Pers+Prt+Quot }}
+* __polnuvat: __ {{olema+V+Pers+Prt+Quot+Neg }}
+---- personal infinite forms ----
+* __elav: __ {{elama+V+Pers+Prs+Prc }}
+* __elanud: __ {{elama+V+Pers+Prt+Prc }}
+         (on, oli, ...) + V+Pers+Prt+Prc = some analytical personal form 
+* __elama: __ {{elama+V+Pers+Sup+Ill }}
+* __elamas: __ {{elama+V+Pers+Sup+Ine }}
+* __elamast: __ {{elama+V+Pers+Sup+Ela }}
+* __elamaks: __ {{elama+V+Pers+Sup+Tra }}
+* __elamata: __ {{elama+V+Pers+Sup+Abe }}
+---- impersonal finite forms ----
+* __elatakse: __ {{elama+V+Impers+Prs+Ind+Aff }}
+* __elata: __ {{elama+V+Impers+Prs+Ind+Neg }}
+                  
+NB! ei olda = polda
+* __polda: __ {{olema+V+Impers+Prs+Ind+Neg }}
+* __olda: __ {{olema+V+Impers+Prs+Ind+Neg }}
+* __elataks: __ {{elama+V+Impers+Prs+Cond }}
+* __poldaks: __ {{olema+V+Impers+Prs+Cond+Neg }}
+* __elatagu: __ {{elama+V+Impers+Prs+Imprt }}
+* __ärdagu: __ {{ära+V+Impers+Prs+Imprt+Neg }}
+* __elatavat: __ {{elama+V+Impers+Prs+Quot }}
+* __poldavat: __ {{olema+V+Impers+Prs+Quot+Neg }}
+* __elati: __ {{elama+V+Impers+Prt+Ind+Aff }}
+* __elatud: __ {{elama+V+Impers+Prt+Ind+Neg }}
+NB! ei oldud = poldud
+* __poldud: __ {{olema+V+Impers+Prt+Ind+Neg }}
+* __oldud: __ {{olema+V+Impers+Prt+Ind+Neg }}
+* __elatuks: __ {{elama+V+Impers+Prt+Cond }}
+* __polduks: __ {{olema+V+Impers+Prt+Cond+Neg }}
+---- impersonal infinite forms ----
+* __elatav: __ {{elama+V+Impers+Prs+Prc }}
+* __elatud: __ {{elama+V+Impers+Prt+Prc }}
+         (on, oli, ...) + V+Impers+Prt+Prc = some analytical personal form 
+* __elatama: __ {{elama+V+Impers+Sup }}
+---- infinite forms with no voice category ----
+* __elada: __ {{elama+V+Inf }}
+* __elades: __ {{elama+V+Ger }}
+Exceptional cases:
+personal present (Prs not implemented????), 3 words:  kuulukse, tunnukse, näikse
+* __kuulukse: __ {{kuulukse+V }}
+negation verb 
+* __ei: __ {{ei+V+Neg }}
+Analytical forms (olen elanud, olin elanud, oleksin elanud, ei olnud elanud,
+ei olnuks elanud etc) are not treated here...
+
+partikkel -gi/-ki
+particle -gi/-ki
  * {{+Foc/gi }}:
 
 kasutust (sagedust jm) iseloomustavad märgendid
@@ -209,6 +347,8 @@ usage info for parallel forms (either correct according to the norm, or incorrec
 
 short stops
 
+G2 ! g j    kärg kärje
+D2 ! 0 j t  sõda sõja sõtta
 
 
 
@@ -247,7 +387,6 @@ Inflectional affixes having the same grammatical meaning
 
 
 
- LEXICON Root 
 
 
 

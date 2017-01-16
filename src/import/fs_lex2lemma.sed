@@ -186,7 +186,8 @@ s/^\([^ ]*\) [^@]*@AASTA.*$/& \1:\1/
 /kõva .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
 /paha .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
 /vaga .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
-/ala .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
+/^ala .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
+/_ala .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
 /huvi .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
 /keha .*17^U^!@KAVA/s/%+%{pl\..%}/&%{rare%}/
 
@@ -707,7 +708,6 @@ s/^\([^ ]*t\)ugi [^@]*21[^@]*@NIMI.*$/& \1ugi:\1uG1/
 /[ =_-]k<urge .*EIT/s/%{rare%}//
 /[ =_-]k<uuske .*EIT/s/%{rare%}//
 /[ =_-]k<ül]ge .*EIT/s/%{rare%}//
-/[ =_-]l<ahte .*EIT/s/%{rare%}//
 /[ =_-]l<ehte .*EIT/s/%{rare%}//
 /[ =_-]l<eske .*EIT/s/%{rare%}//
 /[ =_-]l<ille .*EIT/s/%{rare%}//
