@@ -308,6 +308,15 @@ LEXICON N_SG_SUBPARA    ! sg gen + sg cases depending on it + pl nom; excl sg il
 
            +Pl:%+d NOMINATIVE ;
            +Sg: REGULAR_GEN_ET_AL ;
+              : KE_DERIVATION ;
+              : LIK_DERIVATIONS ;
+              : LINE_DERIVATIONS ;
+              : M_DERIVATIONS ;
+              : LT_DERIVATION ;
+              : STI_DERIVATION ;
+              : INI_DERIVATION ;
+              : TI_DERIVATION ;
+
 
 LEXICON N_PL_SUBPARA    ! pl gen + pl cases depending on it 
 
@@ -392,33 +401,43 @@ LEXICON SG_ILL_VARIANT    ! for KEEL etc types
 
 LEXICON NOMINATIVE
           +Nom: GI ;
+        +Nom-#:%- Nouns ;   ! täna-homme koer-kass ... koerad-kassid ?
 
 LEXICON GENITIVE
           +Gen: GI ;
+        +Gen-#:- Nouns ;    ! koera-kassi
 
 LEXICON PARTITIVE
           +Par: GI ;	
+        +Par-#:- Nouns ;
 
 LEXICON ILLATIVE
           +Ill: GI ;	
+        +Ill-#:- Nouns ;
 
 LEXICON INESSIVE
           +Ine: GI ;	
+        +Ine-#:- Nouns ;
 
 LEXICON ELATIVE
           +Ela: GI ;	
+        +Ela-#:- Nouns ;
 
 LEXICON ALLATIVE
           +All: GI ;	
+        +All-#:- Nouns ;
 
 LEXICON ADESSIVE
           +Ade: GI ;	
+        +Ade-#:- Nouns ;
 
 LEXICON ABLATIVE
           +Abl: GI ;	
+        +Abl-#:- Nouns ;
 
 LEXICON TRANSLATIVE
           +Tra: GI ;	
+        +Tra-#:- Nouns ;
 
 LEXICON TERMINATIVE
           +Trm: GI ;	
@@ -431,4 +450,59 @@ LEXICON ABESSIVE
 
 LEXICON COMITATIVE
           +Com: GI ;	
+
+! paradigmatic derivation, i.e. very regular
+
+LEXICON M_DERIVATIONS
+          +Der/m+A+Comp:%+m MAGUS ;           ! suurem, elanum,  etc
+          +Der/m+A+Comp:%+ma LT_DERIVATION ;  ! suuremalt, elanumalt,  etc
+          +Der/m+A+Comp:%+m INI_DERIVATION ;  ! suuremini, elanumini (?),  etc
+
+LEXICON IM_DERIVATIONS
+       +Der/im+A+Superl:m MAGUS ;         ! suurim, elanuim, õnnelikem etc; NB! notice that %+ is missing!
+       +Der/im+A+Superl:m LT_DERIVATION ; ! suurimalt, elanuimalt, õnnelikemalt
+
+LEXICON NNA_DERIVATIONS
+            +Der/nna+N:%+nna PERE ;             ! õpetajanna
+            +Der/nna+N:%+nna KE_DERIVATION ;    ! õpetajannake
+            +Der/nna+N:%+nna LIK_DERIVATIONS ;  ! õpetajannalik, õpetajannalikkus, etc
+
+LEXICON LIK_DERIVATIONS
+            +Der/lik+A:%+l´ik ELANIK ;           ! elajalik etc
+            +Der/lik+A:%+l´ikk US_DERIVATIONS ;  ! elajalikkus etc
+            +Der/lik+A:%+liku LT_DERIVATION ;    ! elajalikult
+            +Der/lik+A:%+liku M_DERIVATIONS ;    ! elajalikum,  etc
+            +Der/lik+A:%+lik%+e IM_DERIVATIONS ; ! elajalikem, etc
+
+LEXICON LINE_DERIVATIONS
+            +Der/line+A:%+line OLULINE ;          ! põõsaline etc
+            +Der/line+A:%+lis US_DERIVATIONS ;    ! põõsalisus etc
+            +Der/line+A:%+lise LT_DERIVATION ;    ! põõsaliselt
+            +Der/line+A:%+lise M_DERIVATIONS ;    ! põõsalisem,  etc
+            +Der/line+A:%+lis%+i IM_DERIVATIONS ; ! põõsajalisim, etc
+
+LEXICON KOND_DERIVATIONS
+           +Der/kond+N:%+k´onnD1%+%{pl.i%} PIIM ;  ! elajaskond etc
+           +Der/kond+N:%+konna KE_DERIVATION ;     ! elanikkonnake
+           +Der/kond+N:%+k´ond LIK_DERIVATIONS ;   ! elanikkondlik, elanikkondlikkus, etc
+           +Der/kond+N:%+konni TI_DERIVATION ;     ! elanikkonniti
+
+LEXICON US_DERIVATIONS
+             +Der/us+N:%+us OLULINE ;         ! elajalikkus, elavus, ...
+             +Der/us+N:%+use KE_DERIVATION ;  ! elajalikkuseke, elavuseke, ...
+
+LEXICON LT_DERIVATION
+            +Der/lt+Adv:%+lt GI ;         ! derivation: suurelt, elanult, ...
+
+LEXICON STI_DERIVATION
+          +Der/sti+Adv:%+sti GI ;        ! valusasti, kuuldavasti
+
+LEXICON INI_DERIVATION
+          +Der/ini+Adv:%+ini GI ;        ! valusamini
+
+LEXICON TI_DERIVATION
+           +Der/ti+Adv:%+ti GI ;        ! maakonniti
+
+LEXICON KE_DERIVATION
+               +Dim/ke:%+ke PEENIKE ;         ! suureke, majake, õpetajannake, ...
 

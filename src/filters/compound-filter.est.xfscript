@@ -1,0 +1,9 @@
+# remove concatenated forms that are not valid words
+# 1. longer than 5 components
+
+define WB [ "#" ] ;
+define toolong [ ?* WB [\WB]* WB [\WB]* WB [\WB]* WB [\WB]* WB ?* ] ;
+
+#regex [~toolong].i ;
+regex [~toolong] ;
+

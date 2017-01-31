@@ -277,9 +277,10 @@ LT = %{hyp%} %{rare%} %{notnorm%} %{commonnotnorm%} ;
 
 Definitions
 
-Border = [ .#. | # ];  ! word border
+WordBorder = [ .#. | # ];  ! word border
+Border = [ WordBorder | %- ];   ! "noad-kahvlid" is 2 words
 Gi = [ [ :g | :k ] i ] ;
-WordEnd = [ (%+: Gi) Border ];     ! final +gi is optional for almost any word
+WordEnd = [ (%+: Gi) WordBorder ];     ! final +gi is optional for almost any word
 
 Null = [ :0 - Border ];            ! something on the lexical side, but nothing on the surface (except word border)
 Any  = [ : - Border ];             ! anything except word border

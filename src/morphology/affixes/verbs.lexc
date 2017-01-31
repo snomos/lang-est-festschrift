@@ -275,15 +275,15 @@ LEXICON VV_COMMON  ! common to all 17 words of types 37, 38 (supine stem ends wi
 
 LEXICON A_AKSE     ! if infinitive affix is -a, then ...
 
-               +Impers:%+d IMPERS_DUD ;        ! surdud, söödud
-               +Impers:%{W%}%+ IMPERS_AKSE ;   ! surrakse, süüakse
- %+Use%/NotNorm+Impers:%+d IMPERS_AKSE ;       ! surdakse, söödakse
+                      :%+d IMPERS_DUD ;        ! surdud, söödud
+                      :%{W%}%+ IMPERS_AKSE ;   ! surrakse, süüakse
+        %+Use%/NotNorm:%+d IMPERS_AKSE ;       ! surdakse, söödakse
                       :%+ A_INFINITIVE ;       ! surra, süüa
 
 LEXICON DA_DAKSE     ! if infinitive affix is -da, then ...
 
-               +Impers:%+d IMPERS_DUD ;     ! keedud
-               +Impers:%+d IMPERS_AKSE ;    ! keedakse
+                      :%+d IMPERS_DUD ;     ! keedud
+                      :%+d IMPERS_AKSE ;    ! keedakse
                       : INFINITIVE ;        ! keeda
 
 
@@ -353,7 +353,8 @@ LEXICON NU    !  NU-affixes
       !+Pers+Prt+Imprt:%+nud GI ;         ! omitted for now because it would create homonymy
      +Pers+Prt+Ind+Neg:%+nud GI ;
          +Pers+Prt+Prc:%+nud GI ;
-         +Pers+Prt+Quot:%+nuvat GI ;
+        +Pers+Prt+Quot:%+nuvat GI ;
+                      : NU_DERIVATIONS ;
 
 LEXICON IMPERATIVE    ! imperative
 
@@ -366,6 +367,11 @@ LEXICON SUPINE_V
              +Pers+Sup:%+ma SUPINE ;
          +Pers+Prs+Prc:%+v GI ;
         +Pers+Prs+Quot:%+vat GI ;
+                      : MINE_DERIVATIONS ;    ! elamine
+                      : JA_DERIVATIONS ;      ! elaja, õpetaja, õpetajanna, õpetajake, õpetajalik, ...
+                      : V_DERIVATIONS ;       ! õpetav, õpetavalt, õpetavus, õpetavam, ...
+                      : MATU_DERIVATIONS ;    ! segamatu, segamatult, segamatus, segamatum, ...
+                      : MATA_DERIVATION ;     ! segamata
 
 LEXICON SUPINE
 
@@ -377,25 +383,28 @@ LEXICON SUPINE
 
 LEXICON IMPERS    ! impersonal forms for most paradigms
 
-               +Impers:%+T7 IMPERS_DUD ;
-               +Impers:%+T7 IMPERS_AKSE ;
+                      :%+T7 IMPERS_DUD ;
+                      :%+T7 IMPERS_AKSE ;
 
 LEXICON IMPERS_DUD    ! impersonal forms -[td]ud
 
-             +Prs+Cond:aks GI ;
-            +Prs+Imprt:agu GI ;
-          +Prs+Ind+Neg:a GI ;
-              +Prs+Prc:av GI ;
-             +Prs+Quot:avat GI ;
-             +Prt+Cond:uks GI ;
-          +Prt+Ind+Aff:i GI ;
-          +Prt+Ind+Neg:ud GI ;
-              +Prt+Prc:ud GI ;
-                  +Sup:ama GI ;
+      +Impers+Prs+Cond:aks GI ;
+     +Impers+Prs+Imprt:agu GI ;
+   +Impers+Prs+Ind+Neg:a GI ;
+       +Impers+Prs+Prc:av GI ;
+      +Impers+Prs+Quot:avat GI ;
+      +Impers+Prt+Cond:uks GI ;
+   +Impers+Prt+Ind+Aff:i GI ;
+   +Impers+Prt+Ind+Neg:ud GI ;
+       +Impers+Prt+Prc:ud GI ;
+           +Impers+Sup:ama GI ;
+                      : TAV_DERIVATIONS ;       ! elatav, elatavalt, elatavam, elatavaim, ... 
+                      : TAMATU_DERIVATIONS ;       ! elatav, elatavalt, elatavam, elatavaim, ... 
+                      : TU_DERIVATIONS ;       ! elatu, elatult, elatum, elatuim 
 
 LEXICON IMPERS_AKSE    ! impersonal form -[td0]akse
 
-          +Prs+Ind+Aff:akse GI ;
+   +Impers+Prs+Ind+Aff:akse GI ;
 
 LEXICON INFINITIVE    ! infinitive, gerund (des-form)
 
@@ -442,4 +451,69 @@ LEXICON PL3
 
 LEXICON PL3VAD
               +Pl3+Aff:vad GI ;
+
+! paradigmatic derivation, i.e. very regular
+
+LEXICON NU_DERIVATIONS
+
+             +Der/nu+N:%+nu AASTA ;             ! derivation: elanu etc
+             +Der/nu+N:%+nu LT_DERIVATION ;     ! derivation: elanult
+             +Der/nu+N:%+nu M_DERIVATIONS ;     ! derivation: elanum,  etc
+             +Der/nu+N:%+nu%+i IM_DERIVATIONS ; ! derivation: elanuim, etc
+
+LEXICON TU_DERIVATIONS  !    NB! the morpheme border + d/t is assigned before this lexicon
+
+             +Der/tu+A:u AASTA ;              ! derivation: elatu etc
+             +Der/tu+A:u LT_DERIVATION ;      ! derivation: elatult
+             +Der/tu+A:u M_DERIVATIONS ;      ! derivation: elatum,  etc
+             +Der/tu+A:u%+i IM_DERIVATIONS ;  ! derivation: elatuim, etc
+
+LEXICON MATA_DERIVATION
+           +Der/mata+A:%+mata GI ;            ! elamata 
+
+LEXICON MATU_DERIVATIONS
+           +Der/matu+A:%+matu AASTA ;             ! segamatu etc
+!          +Der/matu+A:%+matu KE_DERIVATION ;     ! segamatuke etc
+           +Der/matu+A:%+matu LT_DERIVATION ;     ! segamatult
+           +Der/matu+A:%+mat US_DERIVATIONS ;     ! segamatus etc
+           +Der/matu+A:%+matu M_DERIVATIONS ;     ! segamatum
+           +Der/matu+A:%+matu%+i IM_DERIVATIONS ; ! segamatuim
+
+LEXICON TAMATU_DERIVATIONS  !    NB! the morpheme border + d/t is assigned before this lexicon
+           +Der/tamatu+A:amatu AASTA ;             ! segatamatu etc
+!          +Der/tamatu+A:amatu KE_DERIVATION ;     ! segatamatuke etc
+           +Der/tamatu+A:amatu LT_DERIVATION ;     ! segatamatult
+           +Der/tamatu+A:amat US_DERIVATIONS ;     ! segatamatus etc
+           +Der/tamatu+A:amatu M_DERIVATIONS ;     ! segatamatum
+           +Der/tamatu+A:amatu%+i IM_DERIVATIONS ; ! segatamatuim
+
+LEXICON V_DERIVATIONS
+              +Der/v+A:%+v MAGUS ;              ! elav, elava etc
+              +Der/v+A:%+va KE_DERIVATION ;     ! elavake etc
+              +Der/v+A:%+va LT_DERIVATION ;     ! elavalt
+              +Der/v+A:%+v US_DERIVATIONS ;     ! elavus etc
+              +Der/v+A:%+va M_DERIVATIONS ;     ! elavam
+              +Der/v+A:%+va%+i IM_DERIVATIONS ; ! elavaim
+
+LEXICON TAV_DERIVATIONS   !    NB! the morpheme border + d/t is assigned before this lexicon
+            +Der/tav+A:av MAGUS ;              ! elatav, elatava etc
+            +Der/tav+A:ava KE_DERIVATION ;     ! elatavake etc
+            +Der/tav+A:ava LT_DERIVATION ;     ! elatavalt
+            +Der/tav+A:ava STI_DERIVATION ;    ! kuuldavasti
+            +Der/tav+A:av US_DERIVATIONS ;     ! elatavus etc
+            +Der/tav+A:ava M_DERIVATIONS ;     ! elatavam
+            +Der/tav+A:ava%+i IM_DERIVATIONS ; ! elatavaim
+
+LEXICON MINE_DERIVATIONS
+           +Der/mine+N:%+mine OLULINE ;         ! elamine
+           +Der/mine+N:%+mise KE_DERIVATION ;   ! elamiseke
+
+LEXICON JA_DERIVATIONS
+             +Der/ja+N:%+ja AASTA ;             ! elaja, elajat etc
+             +Der/ja+N:%+ja KE_DERIVATION ;     ! elajake, elajakese etc
+             +Der/ja+N:%+ja NNA_DERIVATIONS ;   ! õpetajanna, õpetajannake, õpetajannalik, etc
+             +Der/ja+N:%+ja LIK_DERIVATIONS ;   ! õpetajannalik, õpetajannalikkus, etc
+             +Der/ja+N:%+jas KOND_DERIVATIONS ; ! õpetajaskond, õpetajaskondlik, etc
+
+
 

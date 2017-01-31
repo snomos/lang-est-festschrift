@@ -385,6 +385,58 @@ Multichar_Symbols
 
 +Use/Circ !!= * {{@CODE@}}: ! for arabic and roman numerals
 
+!! derivatsioon
+!! derivation
+
+!! V --> N
+
++Der/mine !!= * {{@CODE@}}:       ! jahumine:jahuma+V+Der/mine+N+Sg+Nom
++Der/ja !!= * {{@CODE@}}:       ! jahuja:jahuma+V+Der/ja+N+Sg+Nom
++Der/nu !!= * {{@CODE@}}:       ! elanu:elama+V+Der/nu+S+Sg+Nom
+
+!! V --> A
+
++Der/v !!= * {{@CODE@}}:       ! jahuv:jahuma+V+Der/v+A+Sg+Nom
++Der/tav !!= * {{@CODE@}}:       ! öeldav:ütlema+V+Der/tav+A+Sg+Nom
++Der/mata !!= * {{@CODE@}}:       ! elamata:elama+V+Der/mata+A  ! NB! noninflecting!
++Der/matu !!= * {{@CODE@}}:       ! segamatu:segama+V+Der/matu+A+Sg+Nom
++Der/tamatu !!= * {{@CODE@}}:       ! mõeldamatu:mõtlema+V+Der/tamatu+A+Sg+Nom
++Der/tu !!= * {{@CODE@}}:       ! elatu:elama+V+Der/tu+A+Sg+Nom
+
+!! N --> A
+
++Der/lik !!= * {{@CODE@}}:       ! vaatajaskondlik:vaatama+V+Der/ja+N+Der/kond+N+Der/lik+A+Sg+Nom
++Der/line !!= * {{@CODE@}}:       ! põõsaline:põõsas+N+Der/line+A+Sg+Nom
+
+!! A --> Adv
+
++Der/lt !!= * {{@CODE@}}:       ! jahuvalt:jahuma+V+Der/v+A+Der/lt+Adv
++Der/sti !!= * {{@CODE@}}:       ! kuuldavasti:kuulama+V+Der/tav+A+Der/sti+Adv
++Der/ini !!= * {{@CODE@}}:       ! jahuvamini:jahuma+V+Der/v+A+Der/m+A+Comp+Der/ini+Adv
+
+!! A --> A
+
++Der/m !!= * {{@CODE@}}:       ! jahuvam:jahuma+V+Der/v+A+Der/m+A+Comp+Sg+Nom
++Der/im !!= * {{@CODE@}}:       ! jahuvaim:jahuma+V+Der/v+A+Der/im+A+Superl+Sg+Nom
+
+!! N --> N
+
++Der/nna !!= * {{@CODE@}}:       ! õpetajanna:õpetama+V+Der/ja+N+Der/nna+N+Sg+Nom
++Der/kond !!= * {{@CODE@}}:       ! vaatajaskond:vaatama+V+Der/ja+N+Der/kond+N+Sg+Nom
+
+!! A --> N
+
++Der/us !!= * {{@CODE@}}:       ! jahuvus:jahuma+V+Der/v+A+Der/us+N+Sg+Nom
+
+!! N --> Adv
+
++Der/ti !!= * {{@CODE@}}:       ! vaatajaskonniti:vaatama+V+Der/ja+N+Der/kond+N+Der/ti+Adv
+! +Der/lane !!= * {{@CODE@}}:       ! põõsaslane:põõsas+N+Der/lane+N+Sg+Nom ??
+
+!! S --> S, A --> A
+
++Dim/ke !!= * {{@CODE@}}:       ! diminutive 
+
 !!! Morphophonology
 
  %{W%} ! The weak grade trigger never appears on the surface side.

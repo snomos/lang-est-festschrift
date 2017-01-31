@@ -1,64 +1,32 @@
-# move (usage-related) tags to the right
-# algorithm: 
-# 0) if 2 tags are adjacent, remove the less informative one
-# 1) tag categories -> tag categories OK tag
-# 2) delete tag if there is OK somewhere in the right side
-# 3) delete OK
+# move (usage-related) tags to the right end, and 
+# if there are more than one, keep the most informative one
+# moving algorithm by Mans Hulden (via Francis Tyers) 
 
-define RTag [ "+Use/Rare" ] ;       # norm, but rare 
-define HTag [ "+Use/Hyp" ] ;         # norm, but so rare that norm is probaly wrong
-define NTag [ "+Use/NotNorm" ] ; # not norm, but sometimes used
-define CNTag [ "+Use/CommonNotNorm" ] ; # not norm, and used more than norm
-define ETag [ "+Emph" ] ;       # emphasized form (mina, sina, tema, meie, teie, nemad) 
+define RTag [ "+Use/Rare" ] ;          # norm, but rare 
+define HTag [ "+Use/Hyp" ] ;           # norm, but so rare that norm is probaly wrong
+define NTag [ "+Use/NotNorm" ] ;       # not norm, but sometimes used
+define CTag [ "+Use/CommonNotNorm" ] ; # not norm, and used more than norm
+define ETag [ "+Emph" ] ;              # emphasized form (mina, sina, tema, meie, teie, nemad) 
 
-# we currently deal only with this instance
+define Hyphen [ "-" ] ;  # in future, this will be smth different? 
+define WB [Hyphen | "#" | .#.] ;  # just to make sure that moving does not cross word boundary in compounds
+
+define MoveR [  [..] -> RTag || RTag \WB* _ WB .o. RTag -> 0 || _ \WB* RTag WB ];
+define MoveH [  [..] -> HTag || HTag \WB* _ WB .o. HTag -> 0 || _ \WB* HTag WB ];
+define MoveN [  [..] -> NTag || NTag \WB* _ WB .o. NTag -> 0 || _ \WB* NTag WB ];
+define MoveC [  [..] -> CTag || CTag \WB* _ WB .o. CTag -> 0 || _ \WB* CTag WB ];
+define MoveE [  [..] -> ETag || ETag \WB* _ WB .o. ETag -> 0 || _ \WB* ETag WB ];
+
+# move all usage-related tags to the right end 
+define MoveTag [MoveR .o. MoveH .o. MoveN .o. MoveC .o. MoveE] ;
+
+# if 2 usage-related tags are adjacent, remove the less informative one
+# 
+# we currently deal only with this instance:
+# remove +Use/Rare if +Use/Hyp or +Use/NotNorm are also present 
+
 define RemRTag1 RTag -> 0 || [NTag | HTag] _ ; # 
 define RemRTag2 RTag -> 0 || _ [NTag | HTag] ; # 
 define RemRTag [RemRTag1 .o. RemRTag2] ; 
 
-define UTag [ RTag | HTag | NTag | CNTag | ETag ] ; # usage-related tag
-
-define OK [ %+ O K ] ;   # temporary 
-
-# grammatical categories
-# missing: derivational tags???
-
-define Number [%+Pl | %+Sg ] ;
-define Case [ %+Nom | %+Gen | %+Par | %+Ill | %+Ine | %+Ela | 
-              %+All | %+Ade | %+Abl | %+Tra | %+Trm | %+Ess | %+Abe | %+Com  ] ;
-define Voice [ %+Impers | %+Pers ] ;
-define Tense [ %+Prs | %+Prt ] ;
-define Mood [ %+Ind | %+Cond | %+Imprt | %+Quot ] ;
-define PN [ %+Sg1 | %+Sg2 | %+Sg3 | %+Pl1 | %+Pl2 | %+Pl3 ] ;
-define Polarity [ %+Aff | %+Neg ] ;
-define Sup [ %+Sup ] ;
-define Inf [ %+Inf ] ;
-define Ger [ %+Ger ] ;
-define Prc [ %+Prc ] ;
-define GI [ "+Foc/gi" ] ;
-
-# combinations of categories that may happen to be on the left from a usage tag
-# (according to the present continuation lexicons...)
-define Ct  [ Number | Case | Voice | Tense | Mood | PN | Polarity | Sup | Inf | Ger | Prc |
-           [Number Case] | 
-           [PN Polarity] | [Mood PN Polarity] | [Mood PN] | [Mood Polarity] |
-           [Tense Mood] | [Tense Mood Polarity] | [Tense Mood PN] |
-           [Tense Mood PN Polarity] | [Tense Prc] ] |
-           [Sup Case] ;
-define Cat [ Ct | GI | [Ct GI] | Voice Ct | Voice Ct GI ];
-
-define MoveR Cat @-> ... OK RTag || RTag _ ;  # replicate tag from left also to the right
-define MoveH Cat @-> ... OK HTag || HTag _ ; 
-define MoveN Cat @-> ... OK NTag || NTag _ ; 
-define MoveCN Cat @-> ... OK CNTag || CNTag _ ; 
-define MoveE Cat @-> ... OK ETag || ETag _ ; 
-
-define DelUTag UTag -> 0 || _ ?* OK ;    # clean up: remove tags from left
-define DelOK OK -> 0  ;                  # clean up: remove temporary tags
-
-define CleanUp [ DelUTag .o. DelOK ] ;
-
-# move tag over any categories 
-define MoveCat [MoveR .o. MoveH .o. MoveN .o. MoveCN .o. MoveE] ;
-
-regex [RemRTag .o. MoveCat .o. CleanUp].i ;
+regex [MoveTag .o. RemRTag].i ;

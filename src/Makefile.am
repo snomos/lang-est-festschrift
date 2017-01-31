@@ -63,8 +63,8 @@ endif # CAN_FOMA
 #################################################
 #### Add language-specific build rules here: ####
 
-EST_EXTRA_PRE_FILTERS=filters/remove-sg-forms.est filters/remove-pl-forms.est filters/remove-sg-nom-forms.est filters/remove-non-gi-forms.est # filters/remove-usage-tags.est
-EST_EXTRA_POST_FILTERS=
+EST_EXTRA_PRE_FILTERS=filters/remove-sg-forms.est filters/remove-pl-forms.est filters/remove-sg-nom-forms.est filters/remove-non-gi-forms.est filters/disallow-derivations.est # filters/remove-usage-tags.est
+EST_EXTRA_POST_FILTERS=filters/compound-filter.est
 
 
 # We need to add processing of language-specific tags in the analyser:

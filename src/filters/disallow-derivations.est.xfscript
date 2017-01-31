@@ -1,0 +1,42 @@
+# disallow a derivation if its base belongs to a wrong word class
+# (this happens because derivation is attached to a case form, 
+# but by that time the word class is not available for the fst)
+
+#
+#define Hyphen [ "-" ] ;  # in future, this will be smth different? 
+#define WB [Hyphen | "#" | .#.] ;  # just to make sure that moving does not cross word boundary in compounds
+
+define N [ "+N" ];
+define A [ "+A" ];
+define AComp [ "+A+Comp" ] ;
+define ASuperl [ "+A+Superl"];
+define Num [ "+Num+Card" ];
+define V [ "+V" ];
+
+# 
+define BadDer [
+    [\V "+Der/mine"] |
+    [\V "+Der/ja"] |
+    [\V "+Der/nu"] |
+    [\V "+Der/v"] |
+    [\V "+Der/tav"] |
+    [\V "+Der/mata"] |
+    [\V "+Der/matu"] |
+    [\V "+Der/tamatu"] |
+    [\V "+Der/tu"] |
+    [\[N | Num] "+Der/lik"] |
+    [\[N | Num] "+Der/line"] |
+    [\[A | AComp | ASuperl] "+Der/lt"] |
+    [\A "+Der/sti"] |
+    [\[A | AComp | ASuperl] "+Der/ini"] |
+    [\A "+Der/m"] |
+    [\A "+Der/im"] |
+    [\N "+Der/nna"] |
+    [\[N | Num] "+Der/kond"] |
+    [\[A | AComp | ASuperl] "+Der/us"] |
+    [\N "+Der/ti"] |
+    [\[N | A | AComp | ASuperl | Num] "+Dim/ke"]
+    ] ;
+
+regex ~[.#. ?* BadDer ?* .#.].i ;
+
