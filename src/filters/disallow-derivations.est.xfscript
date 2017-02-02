@@ -3,40 +3,33 @@
 # but by that time the word class is not available for the fst)
 
 #
-#define Hyphen [ "-" ] ;  # in future, this will be smth different? 
-#define WB [Hyphen | "#" | .#.] ;  # just to make sure that moving does not cross word boundary in compounds
 
 define N [ "+N" ];
 define A [ "+A" ];
-define AComp [ "+A+Comp" ] ;
-define ASuperl [ "+A+Superl"];
-define Num [ "+Num+Card" ];
-define V [ "+V" ];
+define Comp [ "+Comp" ] ;
+define Superl [ "+Superl"];
+define Num [ "+Num" ];
+define Card [ "+Card" ];
 
-# 
+# a BadDer is a string +Der/..., preceded by an unsuitable symbol or string, 
+# expressed here as a negation of the suitable one
+# notice that if the preceding thing is a string, then the negations must have equal length
+# (hence [? \N])
+ 
 define BadDer [
-    [\V "+Der/mine"] |
-    [\V "+Der/ja"] |
-    [\V "+Der/nu"] |
-    [\V "+Der/v"] |
-    [\V "+Der/tav"] |
-    [\V "+Der/mata"] |
-    [\V "+Der/matu"] |
-    [\V "+Der/tamatu"] |
-    [\V "+Der/tu"] |
-    [\[N | Num] "+Der/lik"] |
-    [\[N | Num] "+Der/line"] |
-    [\[A | AComp | ASuperl] "+Der/lt"] |
+    [[[? \N] & [\Num \Card]] "+Der/lik"] |
+    [[[? \N] & [\Num \Card]] "+Der/line"] |
+    [[[? \A] & [\A \Comp] & [\A \Superl]] "+Der/lt"] |
     [\A "+Der/sti"] |
-    [\[A | AComp | ASuperl] "+Der/ini"] |
+    [[[? \A] & [\A \Comp] & [\A \Superl]] "+Der/ini"] |
     [\A "+Der/m"] |
     [\A "+Der/im"] |
     [\N "+Der/nna"] |
-    [\[N | Num] "+Der/kond"] |
-    [\[A | AComp | ASuperl] "+Der/us"] |
+    [[[? \N] & [\Num \Card]] "+Der/kond"] |
+    [[[? \A] & [\A \Comp] & [\A \Superl]] "+Der/us"] |
     [\N "+Der/ti"] |
-    [\[N | A | AComp | ASuperl | Num] "+Dim/ke"]
+    [[[? \N] & [\Num \Card] & [? \A] & [\A \Comp] & [\A \Superl]] "+Dim/ke"]
     ] ;
 
-regex ~[.#. ?* BadDer ?* .#.].i ;
+regex ~[ ?* BadDer ?* ].i ;
 
