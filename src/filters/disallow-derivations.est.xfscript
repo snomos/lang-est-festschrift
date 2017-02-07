@@ -3,7 +3,9 @@
 # but by that time the word class is not available for the fst)
 
 #
+define WB [ "#" ];
 
+define V [ "+V" ];
 define N [ "+N" ];
 define A [ "+A" ];
 define Comp [ "+Comp" ] ;
@@ -11,25 +13,32 @@ define Superl [ "+Superl"];
 define Num [ "+Num" ];
 define Card [ "+Card" ];
 
-# a BadDer is a string +Der/..., preceded by an unsuitable symbol or string, 
+# a BadDer1 is a string +Der/..., preceded by an unsuitable symbol or string, 
 # expressed here as a negation of the suitable one
-# notice that if the preceding thing is a string, then the negations must have equal length
-# (hence [? \N])
  
-define BadDer [
-    [[[? \N] & [\Num \Card]] "+Der/lik"] |
-    [[[? \N] & [\Num \Card]] "+Der/line"] |
-    [[[? \A] & [\A \Comp] & [\A \Superl]] "+Der/lt"] |
+define BadDer1 [
+    [[~[?+ N] & ~[?+ Num Card]] "+Der/lik"] |
+    [[~[?+ N] & ~[?+ Num Card]] "+Der/line"] |
+    [[~[?+ A] & ~[?+ A Comp] & ~[?+ A Superl]] "+Der/lt"] |
     [\A "+Der/sti"] |
-    [[[? \A] & [\A \Comp] & [\A \Superl]] "+Der/ini"] |
+    [[~[?+ A Comp] ] "+Der/ini"] |
     [\A "+Der/m"] |
     [\A "+Der/im"] |
-    [\N "+Der/nna"] |
-    [[[? \N] & [\Num \Card]] "+Der/kond"] |
-    [[[? \A] & [\A \Comp] & [\A \Superl]] "+Der/us"] |
+    [ ~[?+ j a N] "+Der/nna"] |
+    [[~[?+ N] & ~[?+ Num Card]] "+Der/kond"] |
+    [[~[?+ A] & ~[?+ A Comp] & ~[?+ A Superl] & ~[?+ t a V]] "+Der/us"] |
     [\N "+Der/ti"] |
-    [[[? \N] & [\Num \Card] & [? \A] & [\A \Comp] & [\A \Superl]] "+Dim/ke"]
+    [[~[?+ N] & ~[?+ Num Card] & ~[?+ A] & ~[?+ A Comp] & ~[?+ A Superl]] "+Dim/ke"]
     ] ;
 
-regex ~[ ?* BadDer ?* ].i ;
+# re-applying a suffix is not allowed
+define BadDer2 [
+    ["+Der/lik" \WB* "+Der/lik"] |
+    ["+Der/line" \WB* "+Der/line"] |
+    [["+Der/m" | "+Der/im"] \WB* ["+Der/m" | "+Der/im"]] |
+    ["+Der/lik" \WB* "+Der/lik"] |
+    ["+Der/us" \WB* "+Der/us"] 
+    ] ;
+
+regex ~[ BadDer1 ?* ].i .o. ~[ ?* BadDer2 ?* ].i;
 

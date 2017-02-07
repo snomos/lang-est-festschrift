@@ -1,6 +1,6 @@
 # move (usage-related) tags to the right end, and 
 # if there are more than one, keep the most informative one
-# moving algorithm by Mans Hulden (via Francis Tyers) 
+# moving algorithm from Karttunen, Beesley "2-level rule compiler" 4.3 (via Mans Hulden via Francis Tyers) 
 
 define RTag [ "+Use/Rare" ] ;          # norm, but rare 
 define HTag [ "+Use/Hyp" ] ;           # norm, but so rare that norm is probaly wrong

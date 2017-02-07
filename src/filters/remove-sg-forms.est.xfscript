@@ -242,7 +242,15 @@ define SG [ "+Sg" ] ;
 
 # make sure only word-final components are considered
 define WB [ "#" ] ;
-define pllexical [ plwords [\WB]* SG [\WB]+ ] ;
+
+# derivations are attached to the stem, and it is ok to have SG after a derivation tag 
+# only derivations that attach to nouns are listed here
+# (TODO: derivations to proper nouns)
+
+define DER [ "+Der/lik" | "+Der/line" | "+Der/nna" | "+Der/ti" ] ;
+define plnonder[ plwords ~[ DER ?+] ] ;    # plwords that have no +Der attached
+ 
+define pllexical [ plnonder [\WB]* SG [\WB]+ ] ;
 
 regex ~[pllexical].i ;
 

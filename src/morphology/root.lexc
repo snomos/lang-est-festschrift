@@ -398,10 +398,12 @@ Multichar_Symbols
 
 +Der/v !!= * {{@CODE@}}:       ! jahuv:jahuma+V+Der/v+A+Sg+Nom
 +Der/tav !!= * {{@CODE@}}:       ! öeldav:ütlema+V+Der/tav+A+Sg+Nom
++Der/nud !!= * {{@CODE@}}:       ! elanud:elama+V+Der/nud+A+Sg+Nom
 +Der/mata !!= * {{@CODE@}}:       ! elamata:elama+V+Der/mata+A  ! NB! noninflecting!
 +Der/matu !!= * {{@CODE@}}:       ! segamatu:segama+V+Der/matu+A+Sg+Nom
 +Der/tamatu !!= * {{@CODE@}}:       ! mõeldamatu:mõtlema+V+Der/tamatu+A+Sg+Nom
 +Der/tu !!= * {{@CODE@}}:       ! elatu:elama+V+Der/tu+A+Sg+Nom
++Der/tud !!= * {{@CODE@}}:       ! elatud:elama+V+Der/tud+A  ! noninflecting?
 
 !! N --> A
 
@@ -424,9 +426,9 @@ Multichar_Symbols
 +Der/nna !!= * {{@CODE@}}:       ! õpetajanna:õpetama+V+Der/ja+N+Der/nna+N+Sg+Nom
 +Der/kond !!= * {{@CODE@}}:       ! vaatajaskond:vaatama+V+Der/ja+N+Der/kond+N+Sg+Nom
 
-!! A --> N
+!! A --> N, V --> N
 
-+Der/us !!= * {{@CODE@}}:       ! jahuvus:jahuma+V+Der/v+A+Der/us+N+Sg+Nom
++Der/us !!= * {{@CODE@}}:       ! jahuvus:jahuma+V+Der/v+A+Der/us+N+Sg+Nom; õpetama+V+Der/us+N+Sg+Nom
 
 !! N --> Adv
 

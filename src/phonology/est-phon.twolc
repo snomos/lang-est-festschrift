@@ -92,6 +92,7 @@ E1:0    ! soolas t
 
 I1:i    ! an ugly trigger for ne/s words katkine - katkisil
 A1:a    ! an ugly trigger for ne/s words pingne - pingsa
+A1:0    ! pingne - pingsus
 
 K3:k    ! vennakse
 K3:0    ! venna s
@@ -312,9 +313,6 @@ Rules
 ! 
 "Weak grade for productive kpt:gbd"
 
-!Cx:Cy  <=> :Vowel :sonor _ (%+:0) (SV:0) (LT:0) :stemV %{W%}: ;    ! kaup
-!                  :sonor _ [l | r | j | v]      :stemV %{W%}: ;    ! kõblata
-!           :Vowel :sonor _ 0:e [l | r]           e:0 %{W%}: ;    ! võidelda
 Cx:Cy  <=> :Vowel :sonor _ Null*           :stemV %{W%}: ;  ! kaup-kauba, kurtma-kurdetud
                   :sonor _ [l | r | j | v] :stemV %{W%}: ;  ! kõblata
            :Vowel :sonor _ 0:e [l | r]        e:0 %{W%}: ;  ! võidelda
@@ -349,7 +347,6 @@ Cx:Cy  <=> :Vowel :sonor _ Null*           :stemV %{W%}: ;  ! kaup-kauba, kurtma
 
 "Weak grade for productive kk pp tt šš ff : k p t š f"
 
-!Cx:0 <=>  Cx _ (%+:0) (SV:0) (LT:0) :stemV (lmnr) %{W%}:  ;  ! sepa, lepin, aken, tütar, ...
 Cx:0 <=>  Cx _ Null* :stemV (lmnr) %{W%}:  ;  ! sepa, lepin, aken, tütar, ...
      where Cx in ( p t k š f) ;
 
@@ -367,7 +364,6 @@ Cx:0 <=>  Cx _ Null* :stemV (lmnr) %{W%}:  ;  ! sepa, lepin, aken, tütar, ...
 
 "Weak grade for productive ss:s kauss, jamss"
 
-!s:0 <=> :Vowel :sonor :s _ (%+:0) (SV:0) (LT:0) :stemV %{W%}: ;
 s:0 <=> :Vowel :sonor :s _ Null* :stemV %{W%}: ;
 
 ! lexical: k a u s s + {pl.e} {sg.i} {W}
@@ -421,7 +417,7 @@ Cx:Cy  <=> _ AnyNoTrigger* WeakGrade ;
 
 "Lexically determined weak grade for s:0"
 
-S1:0  <=> _ AnyNoTrigger* WeakGrade ;       ! paas - pae
+S1:0  <=> _ AnyNoTrigger* WeakGrade ;       ! paas - pae; this is the only word here...
           _ Null* [ :t | :d ] ;             ! vars - vart, varde
 
 ! lexical: p a a S1 + {pl.e} {sg.i} {WL}
@@ -528,7 +524,7 @@ i:e  <=>  [ :Consonant | %{apo%}:' ] (%+:0) _ Null* %+:0 :i ;
 "single short high vowel lowers if it obtains a neighboring vowel after stop or s disappears"
 
 Vx:Vy  <=>  [Border | Consonant] :Vowel (LowerBackVowel:0) WS:0 Null* _  ;
-           [Border | Consonant] _ WS:0 :Vowel ;
+            [Border | Consonant] _ WS:0 :Vowel ;
        where Vx in ( i u ü %{sg.i%} %{sg.u%} )
              Vy in ( e o ö     e        o    )
        matched;
@@ -621,21 +617,23 @@ I7:i <=> :Consonant Null* %+: _ S7: WordEnd ;
 
 ! --------- verb stem changes -------
 ! not really gradation
+! if [l | r] does not border with a vowel, then schwa surfaces (or appears?)
+! schwa surfaces either before or after [l | r]
 
 ! siplema-sipelda
 
 "el-le 1/3"
 
-e:0 <=> :e [l | r] _ WeakGrade %+: ;
+e:0 <=> :e [l | r] _ WeakGrade %+: :Consonant ;
 
 "el-le 2/3"
 
-0:e <=> [:Consonant | WS:0] _ [l | r] e:0 WeakGrade %+: ;
+0:e <=> [:Consonant | WS:0] _ [l | r] e:0 WeakGrade %+: :Consonant ;
 
 ! in weak grade, -le- is impossible (has to be -el-)
 "el-le 3/3"
 
-e:e /<= [:Consonant | WS:0] [l | r] _ WeakGrade %+: ;
+e:e /<= [:Consonant | WS:0] [l | r] _ WeakGrade %+: :Consonant ;
 
 ! lexical: s i p 0 l e {W} + d a
 ! surface: s i p e l 0  0  0 d a
@@ -854,6 +852,8 @@ E1:e   => n:s e:0 _ ;  ! -ne word
 E1:0  <=> :Vowel Null* :s Null* _ Null* s e ;          ! olulisse (haplology)
           :Vowel Null* :s Null* _ Null* t WordEnd ;   ! soolast
           :Vowel Null* :s Null* _ Null* t e ;        ! soolaste
+                       :s Null* _ Null* u s ;        ! soolasus
+                        
 
 ! lexical: o l u l i n e E1 + s e 
 ! surface: o l u l i s 0  0 + s e
@@ -868,6 +868,8 @@ E1:0  <=> :Vowel Null* :s Null* _ Null* s e ;          ! olulisse (haplology)
 ! lexical: r a u d n e E1 + t    ! NB! no e deletion
 ! surface: r a u d s 0  e 0 t
 
+! lexical: v i s k o o s n e E1 + u s  
+! surface: v i s k o o s s 0  0 0 u s
 ! lexical: v i s k o o s n e E1 + t  ! NB! no e deletion
 ! surface: v i s k o o s s 0 e  0 t
 
@@ -988,6 +990,19 @@ S7:0 <=> [:Consonant | Border] Null* :Vowel :Consonant Null* %+: I7: _ WordEnd ;
 ! surface: s e i s 0  i  s          NB! S7:s
 ! lexical: k ´ ü T1 t + I7 S7 i n
 ! surface: k ´ ü  t 0 0  0  s i n   NB! S7:s
+
+! us-suffix attaches to a consonant, so a preceding vowel is deleted
+! in reality, only a u e are the preceding vowels
+
+"delete vowel before -us"
+
+Vx:0 <=> :Consonant Null* _ %+: u s ;
+     where Vx in ( a u e A1) ; 
+
+! lexical: a h h e t a + u s
+! surface: a h h e t 0 + u s
+! lexical: p i n g n e A1 + u s
+! surface: p i n g s 0  0 + u s
 
 ! ---------
 ! Rules for selecting 
