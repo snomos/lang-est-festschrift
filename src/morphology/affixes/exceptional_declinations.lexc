@@ -352,6 +352,7 @@ LEXICON PARAS    ! only paras; like LOHAKAS
 
                   :s SG_NOMINATIVE ;    ! paras
                   :ja 2C ;    ! paraja etc
+                  :ja US_DERIVATION ;
 
 LEXICON PEEN    ! only peen, tüün; almost like KEEL, but some forms are more regular
 
@@ -366,6 +367,7 @@ LEXICON PEEN    ! only peen, tüün; almost like KEEL, but some forms are more r
 %+Use%/CommonNotNorm:e%+id PL_PARTITIVE ;    ! NB! peeneid 
                   :i PL_PARTITIVE ;    ! peeni
         %+Use%/Hyp:%{W%}%+i N_VOWEL_PL_SUBPARA ;    ! peenil etc
+                  : US_DERIVATION ;
 
 
 LEXICON POISS    ! only poiss, püks; like KAEL; almost = TAUD, except pl gen + 

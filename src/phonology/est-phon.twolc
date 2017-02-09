@@ -991,12 +991,13 @@ S7:0 <=> [:Consonant | Border] Null* :Vowel :Consonant Null* %+: I7: _ WordEnd ;
 ! lexical: k ´ ü T1 t + I7 S7 i n
 ! surface: k ´ ü  t 0 0  0  s i n   NB! S7:s
 
-! us-suffix attaches to a consonant, so a preceding vowel is deleted
+! us-suffix and ini-suffix attache to a consonant, so a preceding vowel is deleted
 ! in reality, only a u e are the preceding vowels
 
-"delete vowel before -us"
+"delete vowel before -us or -ini"
 
 Vx:0 <=> :Consonant Null* _ %+: u s ;
+         :Consonant Null* _ %+: i n i ;
      where Vx in ( a u e A1) ; 
 
 ! lexical: a h h e t a + u s

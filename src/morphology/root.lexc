@@ -393,6 +393,8 @@ Multichar_Symbols
 +Der/mine !!= * {{@CODE@}}:       ! jahumine:jahuma+V+Der/mine+N+Sg+Nom
 +Der/ja !!= * {{@CODE@}}:       ! jahuja:jahuma+V+Der/ja+N+Sg+Nom
 +Der/nu !!= * {{@CODE@}}:       ! elanu:elama+V+Der/nu+S+Sg+Nom
++Der/mus !!= * {{@CODE@}}:       ! elamus:elama+V+Der/mus+N+Sg+Nom; 
++Der/ng !!= * {{@CODE@}}:       ! devalveering:devalveerima+V+Der/ng+N+Sg+Nom; 
 
 !! V --> A
 

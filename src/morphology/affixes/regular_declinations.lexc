@@ -13,11 +13,13 @@ LEXICON AASTA    ! VVS 1 (productive) for vowel-final; stress on penultimate syl
 
               : SG_NOMINATIVE ;    ! aasta
               : 2C ;    ! aasta etc
+              : US_DERIVATION ;
 
 LEXICON REDEL    ! VVS 2 (productive) for consonant-ending, stress on penultimate syllable words
    
               : SG_NOMINATIVE ;    ! redel, koppel
               :i 2C ;    ! redeli etc
+              : US_DERIVATION ;
 
 LEXICON VIRSIK    ! VVS 2 (productive) for -ik, -ing; stress on penultimate syllable words
 
@@ -28,22 +30,26 @@ LEXICON LOHAKAS    ! VVS 2 (productive) -kas, -jas etc ending words (incl deriva
 
               :s SG_NOMINATIVE ;    ! lohakas
               : 2C ;    ! lohaka etc
+              : US_DERIVATION ;
 
 LEXICON TUNTUD    ! VVS 2 (productive) -d ending words (incl derivations)
 
               :d SG_NOMINATIVE ;    ! tuntud
               : 2C ;    ! tuntu etc
+              : US_DERIVATION ;
  
 LEXICON MAGUS    ! VVS 2 (productive) for -v, -tav derivations
                  ! + (unproductive) i.e. unstable (closed) type
 
               : SG_NOMINATIVE ;    ! magus
               :A1 2C ;    ! magusa; A1 is necessary for pingne - pingsa
+              :A1 US_DERIVATION ;
 
 LEXICON HALE    ! VVS 2 (unproductive) i.e. unstable (closed) type
 
               : SG_NOMINATIVE ;    ! hale, sajas
               :da 2C ;    ! haleda, sajanda
+              :da US_DERIVATION ;
 
 LEXICON HOOLAS    ! VVS 3 (unproductive) i.e. unstable (closed) type; strengthening gradation
 
@@ -51,6 +57,7 @@ LEXICON HOOLAS    ! VVS 3 (unproductive) i.e. unstable (closed) type; strengthen
               :a 2C ;                    ! hoolsa etc
    %+Use%/Rare:%{W%}%+t SG_PARTITIVE ;      ! hoolast
 %+Use%/NotNorm:%{W%}%+te N_PL_SUBPARA ;  ! hoolaste etc 
+              :a US_DERIVATION ;
 
 LEXICON HAARE    ! VVS 4, VVS 5 (unproductive) i.e. unstable (closed) type
 
@@ -63,11 +70,13 @@ LEXICON PINGE    ! VVS 6 (productive) i.e. stable
 
               :%{W%} 2C_LEMMA3 ;          ! pinge, pinget, pingete
               : 2C_STRONG ;               ! pinge etc, pingeid, pingeil etc
+              : US_DERIVATION ;
 
 LEXICON KOTKAS    !  VVS 7 (unproductive) i.e. unstable (closed) type; 
 
               :s%{W%} 2C_LEMMA3 ;         ! kotkas, kotkast, kotkaste
               : 2C_STRONG ;               ! kotka etc, kotkaid, kotkail etc
+              : US_DERIVATION ;
 
 LEXICON PIPAR    !  VVS 8 (unproductive) i.e. unstable (closed) type; = HOOLAS
 
@@ -82,6 +91,7 @@ LEXICON SOOLANE    ! VVS 9 (productive) simplex words ending with -s (katus), VV
               :E1%+sse SG_ILLATIVE ;            ! soolasesse, katusesse
               :E1%+id PL_PARTITIVE ;            ! soolaseid, katuseid
    %+Use%/Rare:E1%+i N_VOWEL_PL_SUBPARA ;    ! soolaseil, katuseil etc
+              :E1%+i IM_DERIVATION ;            ! soolaseim
 
 LEXICON OLULINE    ! VVS 11, 12 (productive)
                    ! VVS 12: affixes -lane, -line, -mine, -tine, -ke(ne), -stikune (?)
@@ -106,6 +116,7 @@ LEXICON SUULINE    ! VVS (9) & 11, (10) & 12 (productive)
               : OLULINE ;
    %+Use%/Rare:E1%+id PL_PARTITIVE ;            ! like SOOLANE: suuliseid, vaatluseid
    %+Use%/Rare:E1%+i N_VOWEL_PL_SUBPARA ;    ! like SOOLANE: suuliseil, vaatluseil etc
+   %+Use%/Rare:E1%+i IM_DERIVATION ;            ! like SOOLANE: suuliseim
 
 LEXICON PEENIKE    ! VVS 12 (productive): affix -ke; almost = OLULINE, except sg nom
 
@@ -150,6 +161,7 @@ LEXICON PIIM    ! VVS 22; (unproductive) i.e. unstable type (passiivne muuttüü
 
               : SG_NOMINATIVE ;
               :%{sg.a%} 1C ;
+              :a US_DERIVATION ;
 
 LEXICON KOON    ! VVS 22; (unproductive) i.e. unstable type (passiivne muuttüüp) lõpp, laug
 
@@ -196,6 +208,8 @@ LEXICON ELANIK    ! VVS 25; (productive) i.e. stable type (aktiivne muuttüüp)
               :%.e%{W%}%+ N_PL_SUBPARA ;    ! NB! elanike etc
    %+Use%/Rare:%.%{sg.u%}%+de N_PL_SUBPARA ;    ! elanikkude etc   
               :%.%+%{pl.e%}%{sg.u%}%+%{s%}%{i%}%{d%} PL_PAR_VARIANT ;    ! elanikke; elanikkusid+Use/Rare
+              :%. US_DERIVATION ;            ! õnnelikkus
+              :%.e%{W%}%+ IM_DERIVATION ;    ! õnnelikem
 
 LEXICON ARMEE    ! VVS 26 ; (productive) i.e. stable type (aktiivne muuttüüp)
 
@@ -211,6 +225,7 @@ LEXICON NE_S_COMMON ! VVS 9, 10, 11, 12 common forms for affix -ne, -line, -s, -
               :E1 N_SG_SUBPARA ;                
               :E1%+t SG_PARTITIVE ;         ! soolast, raudset, olulist
               :E1%+te N_PL_SUBPARA ;        
+              :E1 US_DERIVATION ;
 
 LEXICON LINE_US_SPECIFIC   ! -line, -us ending words
               : LINE_US_NORM ;
@@ -225,6 +240,7 @@ LEXICON LINE_US_NORM  ! part of line_us_specific
 
               :E1%+se SG_ILLATIVE ;           ! olulisse, harjutusse (haplology)
               :%+I1 PL_PARTITIVE ;            ! olulisi, harjutusi
+              :%+I1 IM_DERIVATION ;           ! olulisim
       
 ! ------
 
@@ -271,6 +287,7 @@ LEXICON 2C_STRONG    ! forms that would usually be in strong grade in strengthen
               : SG_ILL_VARIANT ;           ! taskusse or tasku
               :%+id PL_PARTITIVE ;            ! kotkaid
    %+Use%/Rare:%+i N_VOWEL_PL_SUBPARA ;    ! kotkail etc
+              :%+i IM_DERIVATION ;         ! magusaim, rentaableim, ...
 
 LEXICON 2C_STRONGPL   ! forms that would sometimes be in strong grade in strengthening gradation
 
@@ -406,7 +423,6 @@ LEXICON SG_GENITIVE
               : STI_DERIVATION ;
               : INI_DERIVATION ;
               : TI_DERIVATION ;
-              : US_DERIVATION ;
               : NNA_DERIVATION ;
 
 LEXICON SG_PARTITIVE
@@ -417,7 +433,6 @@ LEXICON SG_ILLATIVE
 
 LEXICON PL_PARTITIVE
            +Pl: PARTITIVE ;
-              : IM_DERIVATION ;
 
 ! --------- the 14 individual cases ------------
 
@@ -477,8 +492,6 @@ LEXICON COMITATIVE
 
 LEXICON M_DERIVATION
           +Der/m+A+Comp:%+m MAGUS ;           ! suurem, elanum,  etc
-!          +Der/m+A+Comp:%+ma LT_DERIVATION ;  ! suuremalt, elanumalt,  etc
-!          +Der/m+A+Comp:%+m INI_DERIVATION ;  ! suuremini, elanumini (?),  etc
 
 LEXICON IM_DERIVATION
        +Der/im+A+Superl:m MAGUS ;         ! suurim, elanuim, õnnelikem etc; NB! notice that %+ is missing!
@@ -486,32 +499,20 @@ LEXICON IM_DERIVATION
 
 LEXICON NNA_DERIVATION
             +Der/nna+N:%+nna PERE ;             ! õpetajanna
-!            +Der/nna+N:%+nna KE_DERIVATION ;    ! õpetajannake
-!            +Der/nna+N:%+nna LIK_DERIVATIONS ;  ! õpetajannalik, õpetajannalikkus, etc
 
 LEXICON LIK_DERIVATION
             +Der/lik+A:%+l´ik ELANIK ;           ! elajalik etc
             +Der/lik+A:%+l´ikk US_DERIVATION ;  ! elajalikkus etc
-!            +Der/lik+A:%+liku LT_DERIVATION ;    ! elajalikult
-!            +Der/lik+A:%+liku M_DERIVATIONS ;    ! elajalikum,  etc
-!            +Der/lik+A:%+lik%+e IM_DERIVATIONS ; ! elajalikem, etc
 
 LEXICON LINE_DERIVATION
             +Der/line+A:%+line OLULINE ;          ! põõsaline etc
-!            +Der/line+A:%+lis US_DERIVATIONS ;    ! põõsalisus etc
-!            +Der/line+A:%+lise LT_DERIVATION ;    ! põõsaliselt
-!            +Der/line+A:%+lise M_DERIVATIONS ;    ! põõsalisem,  etc
-!            +Der/line+A:%+lis%+i IM_DERIVATIONS ; ! põõsajalisim, etc
 
 LEXICON KOND_DERIVATION
            +Der/kond+N:%+k´onnD1%+%{pl.i%} PIIM ;  ! elajaskond etc
-!           +Der/kond+N:%+konna KE_DERIVATION ;     ! elanikkonnake
-!           +Der/kond+N:%+k´ond LIK_DERIVATIONS ;   ! elanikkondlik, elanikkondlikkus, etc
            +Der/kond+N:%+konni TI_DERIVATION ;     ! elanikkonniti
 
 LEXICON US_DERIVATION
              +Der/us+N:%+us OLULINE ;         ! elajalikkus, elavus, ...
-!             +Der/us+N:%+use KE_DERIVATION ;  ! elajalikkuseke, elavuseke, ...
 
 LEXICON LT_DERIVATION
             +Der/lt+Adv:%+lt GI ;         ! derivation: suurelt, elanult, ...

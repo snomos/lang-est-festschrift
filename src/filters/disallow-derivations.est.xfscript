@@ -1,10 +1,17 @@
-# disallow a derivation if its base belongs to a wrong word class
+# disallow a derivation if:
+# * its base belongs to a wrong word class
 # (this happens because derivation is attached to a case form, 
 # but by that time the word class is not available for the fst)
+# * its base ends with an unsuitable string
+# * the derivations' sequence is not right
+# etc...
 
 #
 define WB [ "#" ];
 
+define W [ a | e | i |o | õ | ä | ö | ü ]; 
+define C [ b | d | f | g | h | j | k | l | m | n | p | r | s | t | v ] ;
+define ZZ [W C+ W+ C*] ;   # at least 2 syllables (kind of...)
 define V [ "+V" ];
 define N [ "+N" ];
 define A [ "+A" ];
@@ -20,14 +27,20 @@ define BadDer1 [
     [[~[?+ N] & ~[?+ Num Card]] "+Der/lik"] |
     [[~[?+ N] & ~[?+ Num Card]] "+Der/line"] |
     [[~[?+ A] & ~[?+ A Comp] & ~[?+ A Superl]] "+Der/lt"] |
-    [\A "+Der/sti"] |
+    [~[?+ A] "+Der/sti"] |
     [[~[?+ A Comp] ] "+Der/ini"] |
-    [\A "+Der/m"] |
-    [\A "+Der/im"] |
+    [~[?+ A] "+Der/m"] |
+    [~[?+ A] "+Der/im"] |
     [ ~[?+ j a N] "+Der/nna"] |
     [[~[?+ N] & ~[?+ Num Card]] "+Der/kond"] |
-    [[~[?+ A] & ~[?+ A Comp] & ~[?+ A Superl] & ~[?+ t a V]] "+Der/us"] |
-    [\N "+Der/ti"] |
+    [[   ~[?+ A] & 
+         ~[?+ A Comp] & 
+         ~[?+ A Superl] & 
+         ~[?* [[ ZZ {tama}] | [ ZZ {dama}] | {tsema} | {lema} ] V]] 
+         "+Der/us"] |
+    [[~[?+ {uma} V] ] "+Der/mus"] |           # devalveeruma - devalveerumus
+    [[~[?+ {eerima} V] ] "+Der/ng"] |           # devalveerima - devalveering
+    [~[?+ N] "+Der/ti"] |
     [[~[?+ N] & ~[?+ Num Card] & ~[?+ A] & ~[?+ A Comp] & ~[?+ A Superl]] "+Dim/ke"]
     ] ;
 
@@ -37,8 +50,27 @@ define BadDer2 [
     ["+Der/line" \WB* "+Der/line"] |
     [["+Der/m" | "+Der/im"] \WB* ["+Der/m" | "+Der/im"]] |
     ["+Der/lik" \WB* "+Der/lik"] |
-    ["+Der/us" \WB* "+Der/us"] 
+    [["+Der/us" | "+Der/mus"] \WB* ["+Der/us" | "+Der/mus"]] 
     ] ;
 
-regex ~[ BadDer1 ?* ].i .o. ~[ ?* BadDer2 ?* ].i;
+# some words are not suitable for certain suffixes 
+# although their word class, inflectional type and stem ending would suggest otherwise;
+# in other words, BadDer3 adds exceptions to BadDer1
+
+define BadDer3 [
+    [{valmis} A "+Der/us"] | 
+    [{audio} A "+Der/us"] | 
+    [{väeti} A "+Der/us"] | 
+    [{kirju} A "+Der/us"] | 
+    [{ja} A "+Der/us"] | 
+    [{jas} A "+Der/us"] | 
+    [{ke} A "+Der/us"] | 
+    [{nud} A "+Der/us"] | 
+    [{aitama} V "+Der/us"] |
+    [{hea} A "+Der/m"] |
+    [{ke} A "+Der/im"] | 
+    [{hea} A "+Der/im"]
+    ] ;
+
+regex ~[ BadDer1 ?* ].i .o. ~[ ?* BadDer2 ?* ].i .o. ~[ ?* BadDer3 ?* ].i ;
 
