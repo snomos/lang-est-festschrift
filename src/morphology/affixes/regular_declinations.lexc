@@ -14,31 +14,35 @@ LEXICON AASTA    ! VVS 1 (productive) for vowel-final; stress on penultimate syl
               : SG_NOMINATIVE ;    ! aasta
               : 2C ;    ! aasta etc
               : US_DERIVATION ;
+              : LIK_DERIVATION ;
 
 LEXICON REDEL    ! VVS 2 (productive) for consonant-ending, stress on penultimate syllable words
    
               : SG_NOMINATIVE ;    ! redel, koppel
               :i 2C ;    ! redeli etc
               : US_DERIVATION ;
+              : LIK_DERIVATION ;
 
 LEXICON VIRSIK    ! VVS 2 (productive) for -ik, -ing; stress on penultimate syllable words
 
               : SG_NOMINATIVE ;    ! virsik
               :u 2C ;    ! virsiku etc
+              : LIK_DERIVATION ;
 
 LEXICON LOHAKAS    ! VVS 2 (productive) -kas, -jas etc ending words (incl derivations)
 
               :s SG_NOMINATIVE ;    ! lohakas
               : 2C ;    ! lohaka etc
               : US_DERIVATION ;
+              : LIK_DERIVATION ;
 
-LEXICON TUNTUD    ! VVS 2 (productive) -d ending words (incl derivations)
+LEXICON TUNTUD    ! VVS 2 (productive) -d ending words (incl derivations); only adjectives
 
               :d SG_NOMINATIVE ;    ! tuntud
               : 2C ;    ! tuntu etc
               : US_DERIVATION ;
  
-LEXICON MAGUS    ! VVS 2 (productive) for -v, -tav derivations
+LEXICON MAGUS    ! VVS 2 (productive) for -v, -tav derivations (adjectives)
                  ! + (unproductive) i.e. unstable (closed) type
 
               : SG_NOMINATIVE ;    ! magus
@@ -63,6 +67,7 @@ LEXICON HAARE    ! VVS 4, VVS 5 (unproductive) i.e. unstable (closed) type
 
               :%{W%} 2C_LEMMA2 ;         ! haare, haaret
               :me 2C_STRONGPL ;          ! haarme, habeme etc, haarmeid, haarmeil etc
+              :me LIK_DERIVATION ;
 
 LEXICON PINGE    ! VVS 6 (productive) i.e. stable 
                  ! (open to verbal derivations, e.g. kiune from kiunuma)
@@ -71,18 +76,21 @@ LEXICON PINGE    ! VVS 6 (productive) i.e. stable
               :%{W%} 2C_LEMMA3 ;          ! pinge, pinget, pingete
               : 2C_STRONG ;               ! pinge etc, pingeid, pingeil etc
               : US_DERIVATION ;
+              : LIK_DERIVATION ;
 
 LEXICON KOTKAS    !  VVS 7 (unproductive) i.e. unstable (closed) type; 
 
               :s%{W%} 2C_LEMMA3 ;         ! kotkas, kotkast, kotkaste
               : 2C_STRONG ;               ! kotka etc, kotkaid, kotkail etc
               : US_DERIVATION ;
+              : LIK_DERIVATION ;
 
 LEXICON PIPAR    !  VVS 8 (unproductive) i.e. unstable (closed) type; = HOOLAS
 
               :%{W%} 2C_LEMMA3 ;          ! pipar, pipart, piparde
               :a 2C_STRONG ;
 %+Use%/NotNorm:a%+te N_PL_SUBPARA ;       ! piprate etc 
+              :a LIK_DERIVATION ;
 
 LEXICON SOOLANE    ! VVS 9 (productive) simplex words ending with -s (katus), VVS 10 affix -ne; 
                        
@@ -100,6 +108,7 @@ LEXICON OLULINE    ! VVS 11, 12 (productive)
               : SG_NOMINATIVE ;
               : NE_S_COMMON ;
               : LINE_US_SPECIFIC ;
+              :E1 LIK_DERIVATION ;
 
 LEXICON KATKINE    ! VVS 9 & (11), 10 & (12) (productive)
                    ! VVS 10 & (12): affix -ne, but sg ill, pl part and vocal cases also like -line
@@ -108,6 +117,7 @@ LEXICON KATKINE    ! VVS 9 & (11), 10 & (12) (productive)
               : SOOLANE ;
    %+Use%/Rare: LINE_US_NORM ;              ! like OLULINE: katkisse, katkisi
    %+Use%/Rare:%+I1 N_VOWEL_PL_SUBPARA ;    ! like OLULINE: katkisil etc; (ever used?)
+              :E1 LIK_DERIVATION ;
 
 LEXICON SUULINE    ! VVS (9) & 11, (10) & 12 (productive)
                    ! VVS (10) & 12: affix -line, but pl part and vowel cases also like -ne
@@ -117,6 +127,7 @@ LEXICON SUULINE    ! VVS (9) & 11, (10) & 12 (productive)
    %+Use%/Rare:E1%+id PL_PARTITIVE ;            ! like SOOLANE: suuliseid, vaatluseid
    %+Use%/Rare:E1%+i N_VOWEL_PL_SUBPARA ;    ! like SOOLANE: suuliseil, vaatluseil etc
    %+Use%/Rare:E1%+i IM_DERIVATION ;            ! like SOOLANE: suuliseim
+              :E1 LIK_DERIVATION ;
 
 LEXICON PEENIKE    ! VVS 12 (productive): affix -ke; almost = OLULINE, except sg nom
 
@@ -124,12 +135,14 @@ LEXICON PEENIKE    ! VVS 12 (productive): affix -ke; almost = OLULINE, except sg
    %+Use%/Rare:ne SG_NOMINATIVE ;
               :ne NE_S_COMMON ;
               :ne LINE_US_SPECIFIC ;
+              :E1 LIK_DERIVATION ;
 
 LEXICON PERE    ! VVS 16 (productive)
 
               : SG_NOMINATIVE ;
               : 2V ;
               :%+t SG_PARTITIVE ;    ! peret
+              : LIK_DERIVATION ;
 
 LEXICON KAVA    ! VVS 17, 18 (productive) + (unproductive)
                 ! VVS 17 (productive)
@@ -138,6 +151,7 @@ LEXICON KAVA    ! VVS 17, 18 (productive) + (unproductive)
               : SG_NOMINATIVE ;
               : 2V ;
               : SG_PARTITIVE ;       ! kava
+              : LIK_DERIVATION ;
 
 LEXICON MUUSEUM    ! VVS 2 & 19 (productive)
                    ! forms may be based on 2 productive, i.e. stable types (aktiivne muuttüüp)
@@ -156,27 +170,36 @@ LEXICON MUUSEUM    ! VVS 2 & 19 (productive)
    %+Use%/Rare:i%+te N_PL_SUBPARA ;      ! muuseumite etc 
    %+Use%/Rare:e%+id PL_PARTITIVE ;         ! muuseumeid
    %+Use%/Rare:e%+i N_VOWEL_PL_SUBPARA ; ! muuseumeil etc
+              : LIK_DERIVATION ;
 
 LEXICON PIIM    ! VVS 22; (unproductive) i.e. unstable type (passiivne muuttüüp) sepp, kaup, ...
 
               : SG_NOMINATIVE ;
               :%{sg.a%} 1C ;
               :a US_DERIVATION ;
+              : LIK_DERIVATION ;          ! NB! not checked on real usage
+              :a LIK_DERIVATION ;         ! NB! not checked on real usage
 
 LEXICON KOON    ! VVS 22; (unproductive) i.e. unstable type (passiivne muuttüüp) lõpp, laug
 
               : SG_NOMINATIVE ;
               :%{sg.u%} 1C ;
+              : LIK_DERIVATION ;          ! NB! not checked on real usage
+              :u LIK_DERIVATION ;         ! NB! not checked on real usage
 
 LEXICON EIT    ! VVS 22; (unproductive) i.e. unstable type (passiivne muuttüüp) kuusk, kärg
 
               : SG_NOMINATIVE ;
               :%{sg.e%} 1C ;
+              : LIK_DERIVATION ;          ! NB! not checked on real usage
+              :e LIK_DERIVATION ;         ! NB! not checked on real usage
 
 LEXICON TAUD    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp) siil, president, ...
 
               : SG_NOMINATIVE ;
               :%+%{pl.e%}%{sg.i%} 1C ;    ! {pl.e} is here so it need not be in the stem lexicon
+              : LIK_DERIVATION ;          ! NB! not checked on real usage
+              :i LIK_DERIVATION ;         ! NB! not checked on real usage
 
 LEXICON FIAT    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp) 
                 ! almost == TAUD, but final stop weak grade does not change 
@@ -187,6 +210,7 @@ LEXICON FIAT    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp)
               :i SG_ILLATIVE ;                ! Fiati
     %+Use%/Hyp:i%{WL%}%+sse SG_ILLATIVE ;     ! Fiatisse
               :%+%{pl.e%}%{sg.i%} DE_PL ;  ! Fiatide, Fiate, Fiatisid+Use/Rare 
+              :i LIK_DERIVATION ;          ! ?? lowercasing also ??
 
 LEXICON KABINET    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp) 
                    ! almost == TAUD, but Sg Nom orthography with single final stop instead of 2
@@ -195,6 +219,8 @@ LEXICON KABINET    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp)
                                           ! sg nom has a single final stop instead of double, 
                                           ! so it has to be doubled to get the forms right
               :%.%+%{pl.e%}%{sg.i%} 1C ;
+              : LIK_DERIVATION ;          ! NB! not checked on real usage
+              :i LIK_DERIVATION ;         ! NB! not checked on real usage
 
 ! VVS 24 is lexical variants under VVS 22 various subtypes
 
@@ -205,16 +231,18 @@ LEXICON ELANIK    ! VVS 25; (productive) i.e. stable type (aktiivne muuttüüp)
                                           ! sg nom has a single final stop instead of double, 
                                           ! so it has to be doubled to get the forms right
               :%.%{sg.u%} 1C_SG ;         ! elaniku etc
-              :%.e%{W%}%+ N_PL_SUBPARA ;    ! NB! elanike etc
+              :%.e%{W%} N_PL_SUBPARA ;    ! NB! elanike etc
    %+Use%/Rare:%.%{sg.u%}%+de N_PL_SUBPARA ;    ! elanikkude etc   
               :%.%+%{pl.e%}%{sg.u%}%+%{s%}%{i%}%{d%} PL_PAR_VARIANT ;    ! elanikke; elanikkusid+Use/Rare
               :%. US_DERIVATION ;            ! õnnelikkus
               :%.e%{W%}%+ IM_DERIVATION ;    ! õnnelikem
+              :u LIK_DERIVATION ;
 
 LEXICON ARMEE    ! VVS 26 ; (productive) i.e. stable type (aktiivne muuttüüp)
 
               : 1V ;
               :%+sse SG_ILLATIVE ;    ! armeesse
+              : LIK_DERIVATION ;
 
 ! ---------------
 ! sub-paradigms common to several inflectional types
@@ -416,7 +444,6 @@ LEXICON SG_NOMINATIVE
 LEXICON SG_GENITIVE
            +Sg: GENITIVE ;
               : KE_DERIVATION ;
-              : LIK_DERIVATION ;
               : LINE_DERIVATION ;
               : M_DERIVATION ;
               : LT_DERIVATION ;

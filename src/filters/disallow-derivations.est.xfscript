@@ -69,7 +69,8 @@ define BadDer3 [
     [{aitama} V "+Der/us"] |
     [{hea} A "+Der/m"] |
     [{ke} A "+Der/im"] | 
-    [{hea} A "+Der/im"]
+    [{hea} A "+Der/im"] |
+    [{ll} N "+Der/lik"]          # to keep the twol rule of consonant clusters simpler (vasall+lik)
     ] ;
 
 regex ~[ BadDer1 ?* ].i .o. ~[ ?* BadDer2 ?* ].i .o. ~[ ?* BadDer3 ?* ].i ;

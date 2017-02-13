@@ -852,6 +852,7 @@ E1:e   => n:s e:0 _ ;  ! -ne word
 E1:0  <=> :Vowel Null* :s Null* _ Null* s e ;          ! olulisse (haplology)
           :Vowel Null* :s Null* _ Null* t WordEnd ;   ! soolast
           :Vowel Null* :s Null* _ Null* t e ;        ! soolaste
+          :Vowel Null* :s Null* _ Null* l i k ;        ! vaatluslik
                        :s Null* _ Null* u s ;        ! soolasus
                         
 
