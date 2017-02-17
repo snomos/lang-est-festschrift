@@ -447,7 +447,7 @@ Multichar_Symbols
  %{WL%} ! The weak grade for foreign words trigger never appears on the surface side.
  %{S%}  ! Strong stem trigger (for short illatives only) never appears on the surface side.
 
- %+    ! The morpheme boundary never appears on the surface side.
+ %>    ! The morpheme boundary never appears on the surface side.
 
  %{apo%}   ! Apostrofy is needed separating inflectional affix from foreign word lemma
  %{no.apo%}  ! trigger for deleting apostrofy (used for foreign word inflections) from sg nom

@@ -341,6 +341,61 @@ usage info for parallel forms (either correct according to the norm, or incorrec
 
  * {{+Use/Circ }}: ! for arabic and roman numerals
 
+derivatsioon
+derivation
+
+V --> N
+
+ * {{+Der/mine }}:       ! jahumine:jahuma+V+Der/mine+N+Sg+Nom
+ * {{+Der/ja }}:       ! jahuja:jahuma+V+Der/ja+N+Sg+Nom
+ * {{+Der/nu }}:       ! elanu:elama+V+Der/nu+S+Sg+Nom
+ * {{+Der/mus }}:       ! elamus:elama+V+Der/mus+N+Sg+Nom; 
+ * {{+Der/ng }}:       ! devalveering:devalveerima+V+Der/ng+N+Sg+Nom; 
+
+V --> A
+
+ * {{+Der/v }}:       ! jahuv:jahuma+V+Der/v+A+Sg+Nom
+ * {{+Der/tav }}:       ! öeldav:ütlema+V+Der/tav+A+Sg+Nom
+ * {{+Der/nud }}:       ! elanud:elama+V+Der/nud+A+Sg+Nom
+ * {{+Der/mata }}:       ! elamata:elama+V+Der/mata+A  ! NB! noninflecting!
+ * {{+Der/matu }}:       ! segamatu:segama+V+Der/matu+A+Sg+Nom
+ * {{+Der/tamatu }}:       ! mõeldamatu:mõtlema+V+Der/tamatu+A+Sg+Nom
+ * {{+Der/tu }}:       ! elatu:elama+V+Der/tu+A+Sg+Nom
+ * {{+Der/tud }}:       ! elatud:elama+V+Der/tud+A  ! noninflecting?
+
+N --> A
+
+ * {{+Der/lik }}:       ! vaatajaskondlik:vaatama+V+Der/ja+N+Der/kond+N+Der/lik+A+Sg+Nom
+ * {{+Der/line }}:       ! põõsaline:põõsas+N+Der/line+A+Sg+Nom
+
+A --> Adv
+
+ * {{+Der/lt }}:       ! jahuvalt:jahuma+V+Der/v+A+Der/lt+Adv
+ * {{+Der/sti }}:       ! kuuldavasti:kuulama+V+Der/tav+A+Der/sti+Adv
+ * {{+Der/ini }}:       ! jahuvamini:jahuma+V+Der/v+A+Der/m+A+Comp+Der/ini+Adv
+
+A --> A
+
+ * {{+Der/m }}:       ! jahuvam:jahuma+V+Der/v+A+Der/m+A+Comp+Sg+Nom
+ * {{+Der/im }}:       ! jahuvaim:jahuma+V+Der/v+A+Der/im+A+Superl+Sg+Nom
+
+N --> N
+
+ * {{+Der/nna }}:       ! õpetajanna:õpetama+V+Der/ja+N+Der/nna+N+Sg+Nom
+ * {{+Der/kond }}:       ! vaatajaskond:vaatama+V+Der/ja+N+Der/kond+N+Sg+Nom
+
+A --> N, V --> N
+
+ * {{+Der/us }}:       ! jahuvus:jahuma+V+Der/v+A+Der/us+N+Sg+Nom; õpetama+V+Der/us+N+Sg+Nom
+
+N --> Adv
+
+ * {{+Der/ti }}:       ! vaatajaskonniti:vaatama+V+Der/ja+N+Der/kond+N+Der/ti+Adv
+
+S --> S, A --> A
+
+ * {{+Dim/ke }}:       ! diminutive 
+
 
 
 

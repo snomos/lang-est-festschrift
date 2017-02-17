@@ -28,7 +28,7 @@ cat algtmp | ./fs_lex2lemma.sed \
 | sed '/ÕIGEVORM$/s/ \([^: ]*\):\([^ ]*\) \([^ ]*ÕIGEVORM\)/ \3 \1:\2/' \
 | sed '/ÕIGEVORM.*[^i]id:/s/id$//' \
 | sed '/KÕRB/s/õrb$/õrB2/' \
-| sed '/@EIT laane_k<õrb:/s/@EIT laane_k<õrb:laane_k<õrB2%+%{pl.i%}%{rare%}/@KÕRB laane_k<õrb:laane_k<õrB2/' \
+| sed '/@EIT laane_k<õrb:/s/@EIT laane_k<õrb:laane_k<õrB2%>%{pl.i%}%{rare%}/@KÕRB laane_k<õrb:laane_k<õrB2/' \
 | grep -v '@EIT k<õrb:' \
 > decltmp1
 
@@ -133,11 +133,11 @@ cat fs_lex.gt1 \
 | sed 's/""$//' \
 | ./diacritics2.sed \
 \
-| sed 's/\(p.õl,\)v%+%{pl.i%} EIT /\1 PÕLV /' \
-| sed 's/\(t.al,\)v%+%{pl.i%}%{rare%} EIT /\1 TALV /' \
+| sed 's/\(p.õl,\)v%>%{pl.i%} EIT /\1 PÕLV /' \
+| sed 's/\(t.al,\)v%>%{pl.i%}%{rare%} EIT /\1 TALV /' \
 | sed 's/\(p.urJ1\) EIT /\1 PURI /' \
 | sed 's/\(v.äi\) PÄIKE /\1 VÄIKE /' \
-| sed 's/:saD2a KAVA /:saD2a%+%{pl.u%} SADA /' \
+| sed 's/:saD2a KAVA /:saD2a%>%{pl.u%} SADA /' \
 | sed 's/#&#p´ersse//' \
 | sed 's/#&#p´õrssa//' \
 > fs_gt.pre-inflecting
