@@ -1,43 +1,36 @@
-!! Morphological Transducer for Estonian
+! -*- mode: lexc; coding: utf-8 -*-
+
+!! !!!Morphology
+
+!! !!Multicharacter symbols
 
 Multichar_Symbols
 
-!! Estonian morphological tags
+!! !Sõnaliik / Part of speech
 
-!! sõnaliik
-!! part of speech
++N !!= * {{@CODE@}}: nimisõna		/ substantive		
++A !!= * {{@CODE@}}: omadussõna		/ adjective		
++Num !!= * {{@CODE@}}: arvsõna		/ numeral
++Pron !!= * {{@CODE@}}: asesõna		/ pronoun		
++V !!= * {{@CODE@}}: tegusõna 		/ verb			
++Adv !!= * {{@CODE@}}: määrsõna		/ adverb		
++Interj !!= * {{@CODE@}}: hüüdsõna		/ interjection		
++CC !!= * {{@CODE@}}: rinnastav sidesõna		/ co-ordinating conjunction
++CS !!= * {{@CODE@}}: alistav sidesõna		/ subordinating conjunction		
++Adp !!= * {{@CODE@}}: kaassõna	/ adposition, i.e. pre/postposition	
 
-+N !!= * {{@CODE@}}: ! nimisõna		! substantive		
-+A !!= * {{@CODE@}}: ! omadussõna		! adjective		
-+Num !!= * {{@CODE@}}: ! arvsõna		! numeral
-+Pron !!= * {{@CODE@}}: ! asesõna		! pronoun		
-+V !!= * {{@CODE@}}: ! tegusõna 		! verb			
-+Adv !!= * {{@CODE@}}: ! määrsõna		! adverb		
-+Interj !!= * {{@CODE@}}: ! hüüdsõna		! interjection		
-+CC !!= * {{@CODE@}}: ! rinnastav sidesõna		! co-ordinating conjunction
-+CS !!= * {{@CODE@}}: ! alistav sidesõna		! subordinating conjunction		
-+Adp !!= * {{@CODE@}}: ! kaassõna	! adposition, i.e. pre/postposition	
+!! Genitiivatribuut pole eraldi kategooria / No special tag for genitive attribute : ''angoora+N+Sg+Gen''	
 
-!! +N+Sg+Gen	! genitiivatribuut	! genitive attribute	! saksa
-!! +Adv  ! muu sõna	! other word		! kihku, kihla, minap
+!! !Alamkategooriad / Sub-pos categories
 
-+CLB
-+PUNCT
-+ABBR
++Prop !!= * {{@CODE@}}: pärisnimi	/ proper name		
++Card !!= * {{@CODE@}}: põhiarvsõna	/ cardinal numeral
++Ord !!= * {{@CODE@}}: järgarvsõna	/ ordinal numeral
 
-!! alamkategooriad
-!! sub-pos categories
+!! !Võrdlusastmed / Comparation
 
-+Prop !!= * {{@CODE@}}: ! pärisnimi	! proper name		
-+Card !!= * {{@CODE@}}: ! põhiarvsõna	! cardinal numeral
-+Ord !!= * {{@CODE@}}: ! järgarvsõna	! ordinal numeral
-
-!! võrdlusastmed
-+Comp !!= * {{@CODE@}}: ! komparatiiv	! comparative
-+Superl !!= * {{@CODE@}}: ! superlatiiv	! superlative
-
-!! genitiivatribuut?
-!! +Attr   ! ???
++Comp !!= * {{@CODE@}}: komparatiiv	/ comparative
++Superl !!= * {{@CODE@}}: superlatiiv	/ superlative
 
 !!€gt-norm hfstol:
 !!€ asi: asi+N+Sg+Nom # thing
@@ -49,399 +42,501 @@ Multichar_Symbols
 !!€ teine: teine+Num+Ord+Sg+Nom # second
 !!€ see: see+Pron+Sg+Nom # that
 !!€ asjastama: asjastama+V+Pers+Sup+Ill # objectify
-!!€ asjatult: asjatult+Adv # 
-!!€ hei: hei+Interj
+!!€ asjatult: asjatult+Adv # in vain
+!!€ hei: hei+Interj # hi
 !!€ ja: ja+CC # and
 !!€ et: et+CS # that
 !!€ kaudu: kaudu+Adp # via 
 
-!! Käändsõna             ! Noun
+!! !Sõnamuutus / Inflection
 
-!! arv 			! number
-+Sg !!= * {{@CODE@}}: ! ainsus	! singular
-+Pl !!= * {{@CODE@}}: ! mitmus	! plural
+!! !Käändsõna             / Noun
 
-!! kääne	! case
-+Nom !!= * {{@CODE@}}: ! nimetav			! nominative	
-+Gen !!= * {{@CODE@}}: ! omastav 			! genitive	
-+Par !!= * {{@CODE@}}: ! osastav			! partitive	
-+Ill !!= * {{@CODE@}}: ! sisseütlev			! illative	
-!! +Ill  ! suunduv (lühike sisseütlev?)	! additive aka short illative (p'arti, majja)
-+Ine !!= * {{@CODE@}}: ! seesütlev			! inessive	
-+Ela !!= * {{@CODE@}}: ! seestütlev			! elative	
-+All !!= * {{@CODE@}}: ! alaleütlev			! allative	
-+Ade !!= * {{@CODE@}}: ! alalütlev			! adessive	
-+Abl !!= * {{@CODE@}}: ! alaltütlev			! ablative	
-+Tra !!= * {{@CODE@}}: ! saav				! translative	
-+Trm !!= * {{@CODE@}}: ! rajav				! terminative	
-+Ess !!= * {{@CODE@}}: ! olev				! essive	
-+Abe !!= * {{@CODE@}}: ! ilmaütlev			! abessive	
-+Com !!= * {{@CODE@}}: ! kaasaütlev			! comitative	
+!! !Arv 			/ number
 
-!!€gt-norm hfstol:
++Sg !!= * {{@CODE@}}: ainsus	/ singular
++Pl !!= * {{@CODE@}}: mitmus	/ plural
+
+!! !Kääne	/ Case
+
++Nom !!= * {{@CODE@}}: nimetav			/ nominative	
 !!€ part: part+N+Sg+Nom
 !!€ maja: maja+N+Sg+Nom
 !!€ pardid: part+N+Pl+Nom
 !!€ majad: maja+N+Pl+Nom
+
++Gen !!= * {{@CODE@}}: omastav 			/ genitive	
 !!€ pardi: part+N+Sg+Gen
 !!€ maja: maja+N+Sg+Gen
 !!€ partide: part+N+Pl+Gen
 !!€ majade: maja+N+Pl+Gen
+
++Par !!= * {{@CODE@}}: osastav			/ partitive	
 !!€ parti: part+N+Sg+Par
 !!€ maja: maja+N+Sg+Par
 !!€ parte: part+N+Pl+Par
+!!€ partisid: part+N+Pl+Par+Use/Rare
 !!€ maju: maja+N+Pl+Par
+!!€ majasid: maja+N+Pl+Par+Use/Rare
+
++Ill !!= * {{@CODE@}}: sisseütlev			/ illative	
+
+!! Lühike sisseütlev e suunduv pole eraldi kääne (''parti'', ''majja'') / Short illative or additive is not a separate case 
 !!€ parti: part+N+Sg+Ill
 !!€ majja: maja+N+Sg+Ill
 !!€ pardisse: part+N+Sg+Ill+Use/Hyp
 !!€ majasse: maja+N+Sg+Ill+Use/Rare
 !!€ partidesse: part+N+Pl+Ill
 !!€ majadesse: maja+N+Pl+Ill
+
++Ine !!= * {{@CODE@}}: seesütlev			/ inessive	
 !!€ pardis: part+N+Sg+Ine
 !!€ majas: maja+N+Sg+Ine
 !!€ partides: part+N+Pl+Ine
 !!€ majades: maja+N+Pl+Ine
+
++Ela !!= * {{@CODE@}}: seestütlev			/ elative	
 !!€ pardist: part+N+Sg+Ela
 !!€ majast: maja+N+Sg+Ela
 !!€ partidest: part+N+Pl+Ela
 !!€ majadest: maja+N+Pl+Ela
+
++All !!= * {{@CODE@}}: alaleütlev			/ allative	
 !!€ pardile: part+N+Sg+All
 !!€ majale: maja+N+Sg+All
 !!€ partidele: part+N+Pl+All
 !!€ majadele: maja+N+Pl+All
+
++Ade !!= * {{@CODE@}}: alalütlev			/ adessive	
 !!€ pardil: part+N+Sg+Ade
 !!€ majal: maja+N+Sg+Ade
 !!€ partidel: part+N+Pl+Ade
 !!€ majadel: maja+N+Pl+Ade
+
++Abl !!= * {{@CODE@}}: alaltütlev			/ ablative	
 !!€ pardilt: part+N+Sg+Abl
 !!€ majalt: maja+N+Sg+Abl
 !!€ partidelt: part+N+Pl+Abl
 !!€ majadelt: maja+N+Pl+Abl
+
++Tra !!= * {{@CODE@}}: saav				/ translative	
 !!€ pardiks: part+N+Sg+Tra
 !!€ majaks: maja+N+Sg+Tra
 !!€ partideks: part+N+Pl+Tra
 !!€ majadeks: maja+N+Pl+Tra
+
++Trm !!= * {{@CODE@}}: rajav				/ terminative	
 !!€ pardini: part+N+Sg+Trm
 !!€ majani: maja+N+Sg+Trm
 !!€ partideni: part+N+Pl+Trm
 !!€ majadeni: maja+N+Pl+Trm
+
++Ess !!= * {{@CODE@}}: olev				/ essive	
 !!€ pardina: part+N+Sg+Ess
 !!€ majana: maja+N+Sg+Ess
 !!€ partidena: part+N+Pl+Ess
 !!€ majadena: maja+N+Pl+Ess
+
++Abe !!= * {{@CODE@}}: ilmaütlev			/ abessive	
 !!€ pardita: part+N+Sg+Abe
 !!€ majata: maja+N+Sg+Abe
 !!€ partideta: part+N+Pl+Abe
 !!€ majadeta: maja+N+Pl+Abe
+
++Com !!= * {{@CODE@}}: kaasaütlev			/ comitative	
 !!€ pardiga: part+N+Sg+Com
 !!€ majaga: maja+N+Sg+Com
 !!€ partidega: part+N+Pl+Com
 !!€ majadega: maja+N+Pl+Com
 
-!! verb
-!! finiitsed (pöördelised) ja infiniitsed (nn käänduvad) vormid
-!! finite (conjugable) and infinite ("declinable") forms
+!! !Verb
 
-!! pöördelistel vormidel on kategooriad: 
+!! Verbil on finiitsed (pöördelised) ja infiniitsed (nn käänduvad) vormid. 
+!! Pöördelistel vormidel on kategooriad: 
 !! tegumood, aeg, kõneviis, isik, arv, kõneliik
-!! (tegumood ja aeg on ka mõnedel infiniitsetel vormidel)
+!! (tegumood ja aeg on ka mõnedel infiniitsetel vormidel).
 
-!! finite forms have categories: 
+!! Verbs have finite (conjugable) and infinite ("declinable") forms.
+!! The finite forms have categories: 
 !! voice, tense, mood, person, number, negation
-!! (some infinite forms also have voice and tense)
+!! (some infinite forms also have voice and tense).
 
-!! tegumood		! voice
-+Impers !!= * {{@CODE@}}: ! umbisikuline	! impersonal
-+Pers !!= * {{@CODE@}}: ! isikuline	! personal
+!! !Pöördelised vormid / Conjugable forms
 
-!! aeg			! tense
-+Prs !!= * {{@CODE@}}: ! olevik	! present
-+Prt !!= * {{@CODE@}}: ! minevik	! past (i.e. not present)
-!! lihtminevik = minevik ! past imperfect = past
-!! täisminevik, past perfect: olema (pres) + nud/tud/dud (olen teinud)
-!! enneminevik, past pluperfect: olema (impf) + nud/tud/dud (olin teinud)
+!! !Tegumood		/ Voice
 
-!! kõneviis		! mood
-+Ind !!= * {{@CODE@}}: ! kindel	! indicative
-+Cond !!= * {{@CODE@}}: ! tingiv	! conditional
-+Imprt !!= * {{@CODE@}}: ! käskiv	! imperative / jussive
-+Quot !!= * {{@CODE@}}: ! kaudne	! quotative
++Impers !!= * {{@CODE@}}: umbisikuline	/ impersonal
++Pers !!= * {{@CODE@}}: isikuline	/ personal
 
-!! pööre	ja arv		        ! person and number
-+Sg1 !!= * {{@CODE@}}: ! ainsuse 1. pööre	! singular 1st person
-+Sg2 !!= * {{@CODE@}}: ! ainsuse 2. pööre	! singular 2nd person
-+Sg3 !!= * {{@CODE@}}:  ! ainsuse 3. pööre	! singular 3rd person
-+Pl1 !!= * {{@CODE@}}: ! mitmuse 1. pööre	! plural   1st person
-+Pl2 !!= * {{@CODE@}}: ! mitmuse 2. pööre	! plural   2nd person
-+Pl3 !!= * {{@CODE@}}:  ! mitmuse 3. pööre	! plural   3rd person
+!! !Aeg			/ Tense
 
-!! kõneliik		! polarity
-+Aff !!= * {{@CODE@}}:  ! jaatav kõne	! affirmative
-+Neg !!= * {{@CODE@}}: ! eitav kõne	! negative
++Prs !!= * {{@CODE@}}: olevik	/ present
++Prt !!= * {{@CODE@}}: minevik	/ past (i.e. not present)
 
-!! infiniitsed (nn käänduvad) verbivormid
-!! infinite ("declinable") verb forms
+!! Lihtminevik = minevik / Past imperfect = past
 
-+Sup !!= * {{@CODE@}}: ! ma-tegevusnimi ! supine (ma-infinitive)	! lugema
+!! Täisminevik / Past perfect: ''olema'' (pres) + ''nud/tud/dud'' (''olen teinud'')
 
-+Inf !!= * {{@CODE@}}: ! da-tegevusnimi ! infinitive (da-infinitive)	! lugeda
+!! Enneminevik / Past pluperfect: ''olema'' (impf) + ''nud/tud/dud'' (''olin teinud'')
 
-+Ger !!= * {{@CODE@}}: ! des-vorm	 ! gerund (des-form)		! lugedes
+!! !Kõneviis		/ Mood
 
-+Prc !!= * {{@CODE@}}: ! kesksõna	 ! participle
++Ind !!= * {{@CODE@}}: kindel	/ indicative
++Cond !!= * {{@CODE@}}: tingiv	/ conditional
++Imprt !!= * {{@CODE@}}: käskiv	/ imperative / jussive
++Quot !!= * {{@CODE@}}: kaudne	/ quotative
+
+!! !Pööre ja arv	/ Person and number
+
++Sg1 !!= * {{@CODE@}}: ainsuse 1. pööre	/ singular 1st person
++Sg2 !!= * {{@CODE@}}: ainsuse 2. pööre	/ singular 2nd person
++Sg3 !!= * {{@CODE@}}: ainsuse 3. pööre	/ singular 3rd person
++Pl1 !!= * {{@CODE@}}: mitmuse 1. pööre	/ plural   1st person
++Pl2 !!= * {{@CODE@}}: mitmuse 2. pööre	/ plural   2nd person
++Pl3 !!= * {{@CODE@}}: mitmuse 3. pööre	/ plural   3rd person
+
+!! !Kõneliik		/ Polarity
+
++Aff !!= * {{@CODE@}}: jaatav kõne	/ affirmative
++Neg !!= * {{@CODE@}}: eitav kõne	/ negative
+
+!! !Infiniitsed (nn käänduvad) verbivormid / Infinite ("declinable") verb forms
+
++Sup !!= * {{@CODE@}}: ma-tegevusnimi / supine (ma-infinitive)
+
++Inf !!= * {{@CODE@}}: da-tegevusnimi / infinitive (da-infinitive)a
+
++Ger !!= * {{@CODE@}}: des-vorm	 / gerund (des-form)	
+
++Prc !!= * {{@CODE@}}: kesksõna	 / participle
 
 
-!! kategooriate võimalikud kombinatsioonid
-!! possible combinations of categories
+!! !Kategooriate võimalikud kombinatsioonid / Possible combinations of categories
+
 !! allikas / source :
-!! Heiki-Jaan Kaalep. Eesti verbi vormistik. Keel ja kirjandus 1/2015 lk 1-15. http://kjk.eki.ee/ee/issues/2015/1/582 
+!! [Heiki-Jaan Kaalep. Eesti verbi vormistik. Keel ja kirjandus 1/2015 lk 1-15.|http://kjk.eki.ee/ee/issues/2015/1/582] 
 
 !! The categories are given in the order in which the allomorphs (if they can be
 !! distinguished) that represent them are attached to the word stem (note that the
 !! treatment of allomorphs is sloppy here). The justification is that the
 !! categories are not equal, but form an hierarchy: those closer to the word end 
 !! tend to be more optional, more often non-specified.   
-!!
-!!# __voice:__ personal vs. impersonal (0-morph vs. {{t/d[aiu]}}), eg. elaks vs
-!!  elataks, elav vs elatav
-!!# __tense:__ present vs. past (0-morph vs. s/si/nu), e.g. elan vs. elasin;
-!!  elaks vs. elanuks
-!!# __mood:__ indicative vs. conditional vs imperative vs quotative
-!!  (0-morph vs. ks vs. k/g(ue) vs. vat)
-!!# __person+number:__ notice that in personal present and past conditional, imperative 
+
+!! # __voice:__ personal vs. impersonal (0-morph vs. ''t/d(aiu)''), eg. ''elaks'' vs.
+!!  ''elataks'', ''elav'' vs. ''elatav''
+!! # __tense:__ present vs. past (0-morph vs. ''s/si/nu''), e.g. ''elan'' vs. ''elasin'',
+!!  ''elaks'' vs. ''elanuks''
+!! # __mood:__ indicative vs. conditional vs imperative vs quotative
+!!  (0-morph vs. ''ks'' vs. ''k/g(ue)'' vs. ''vat'')
+!! # __person+number:__ notice that in personal present and past conditional, imperative 
 !!  and quotative moods one form is underspecified for person+number
-!!# __negation:__ affirmative vs. negative. It manifests itself via
+!! # __negation:__ affirmative vs. negative. It manifests itself via
 !!  lexical means: it is either present in an exceptional wordform (some forms of
-!!  olema) or gets adhered to a form, normally used in affirmative,
-!!  from an immediately preceding word ei, ega or ära (e.g. ei elaks).
+!!  ''olema'') or gets adhered to a form, normally used in affirmative,
+!!  from an immediately preceding word ''ei'', ''ega'' or ''ära'' (e.g. ''ei elaks'').
 !!  The only case when negation has a dedicated form of its own is impersonal
-!!  present indicative negative (e.g. ei elata).  
-!!
-!! The forms of negative words pole and ära are included in order to capture really all 
+!!  present indicative negative (e.g. ''ei elata'').  
+
+!! The forms of negative words ''pole'' and ''ära'' are included in order to capture really all 
 !!  the combinations; 
-!! also note that for olema, there are some constellations of categories that are the same for
-!! a wordform beginning with ole- and pole- 
-!! 
-!! * tähistab kategooriate kombinatsiooni või sõnavormi, mida 1.11.2016 ei genereerita ega tunta ära 
-!! * denotes the categories or word form that is not recognized nor generated as of Nov 1, 2016
-!!
-!! ---- personal finite forms ----
-!!
-!!€gt-norm hfstol:
+!! also note that for ''olema'', there are some constellations of categories that are the same for
+!! a wordform beginning with ''ole-'' and ''pole-'' 
+
+!! !---- Personal finite forms ----
+
 !!€ elan: elama+V+Pers+Prs+Ind+Sg1+Aff
 !!€ elad: elama+V+Pers+Prs+Ind+Sg2+Aff
 !!€ elab: elama+V+Pers+Prs+Ind+Sg3+Aff
 !!€ elame: elama+V+Pers+Prs+Ind+Pl1+Aff
 !!€ elate: elama+V+Pers+Prs+Ind+Pl2+Aff
 !!€ elavad: elama+V+Pers+Prs+Ind+Pl3+Aff
-!!
-!!€ ela: elama+V+Pers+Prs+Ind+Neg 
-!! NB! ei ole = pole
+
+!! \\
+!!€ ela: elama+V+Pers+Prs+Ind+Neg
 !!€ pole: olema+V+Pers+Prs+Ind+Neg 
 !!€ ole: olema+V+Pers+Prs+Ind+Neg 
-!!
+
+!! NB! ''ei ole'' = ''pole''
+
+
 !!€ elaksin: elama+V+Pers+Prs+Cond+Sg1+Aff
 !!€ elaksid: elama+V+Pers+Prs+Cond+Sg2+Aff
 !!€ elaks: elama+V+Pers+Prs+Cond
 !!€ elaksime: elama+V+Pers+Prs+Cond+Pl1+Aff
 !!€ elaksite: elama+V+Pers+Prs+Cond+Pl2+Aff
 !!€ elaksid: elama+V+Pers+Prs+Cond+Pl3+Aff
-!!
+
+!! \\
 !!€ poleksin: olema+V+Pers+Prs+Cond+Sg1+Neg
 !!€ poleksid: olema+V+Pers+Prs+Cond+Sg2+Neg
 !!€ poleks: olema+V+Pers+Prs+Cond+Neg
 !!€ poleksime: olema+V+Pers+Prs+Cond+Pl1+Neg
 !!€ poleksite: olema+V+Pers+Prs+Cond+Pl2+Neg
 !!€ poleksid: olema+V+Pers+Prs+Cond+Pl3+Neg
-!!
+
+!! \\
 !!€ ela: elama+V+Pers+Prs+Imprt+Sg2
 !!€ elagu: elama+V+Pers+Prs+Imprt
 !!€ elagem: elama+V+Pers+Prs+Imprt+Pl1
 !!€ elage: elama+V+Pers+Prs+Imprt+Pl2
-!!
+
+!! \\
 !!€ ära: ära+V+Pers+Prs+Imprt+Sg2+Neg
 !!€ ärgu: ära+V+Pers+Prs+Imprt+Neg
 !!€ ärgem: ära+V+Pers+Prs+Imprt+Pl1+Neg
 !!€ ärme: ära+V+Pers+Prs+Imprt+Pl1+Neg+Use/Rare
 !!€ ärge: ära+V+Pers+Prs+Imprt+Pl2+Neg
-!!
+
+!! \\
 !!€ elavat: elama+V+Pers+Prs+Quot
 !!€ polevat: olema+V+Pers+Prs+Quot+Neg
-!! 
+
+!! \\ 
 !!€ elasin: elama+V+Pers+Prt+Ind+Sg1+Aff
 !!€ elasid: elama+V+Pers+Prt+Ind+Sg2+Aff
 !!€ elas: elama+V+Pers+Prt+Ind+Sg3+Aff
 !!€ elasime: elama+V+Pers+Prt+Ind+Pl1+Aff
 !!€ elasite: elama+V+Pers+Prt+Ind+Pl2+Aff
 !!€ elasid: elama+V+Pers+Prt+Ind+Pl3+Aff
-!!
+
+!! \\
 !!€ elanud: elama+V+Pers+Prt+Ind+Neg
-!! NB! ei olnud = polnud
 !!€ polnud: olema+V+Pers+Prt+Ind+Neg
 !!€ olnud: olema+V+Pers+Prt+Ind+Neg
-!!
+
+!! NB! ''ei olnud'' = ''polnud''
+
+
 !!€ elanuksin: elama+V+Pers+Prt+Cond+Sg1+Aff
 !!€ elanuksid: elama+V+Pers+Prt+Cond+Sg2+Aff
 !!€ elanuks: elama+V+Pers+Prt+Cond
 !!€ elanuksime: elama+V+Pers+Prt+Cond+Pl1+Aff
 !!€ elanuksite: elama+V+Pers+Prt+Cond+Pl2+Aff
 !!€ elanuksid: elama+V+Pers+Prt+Cond+Pl3+Aff
-!!
+
+!! \\
 !!€ polnuksin: olema+V+Pers+Prt+Cond+Sg1+Neg
 !!€ polnuksid: olema+V+Pers+Prt+Cond+Sg2+Neg
 !!€ polnuks: olema+V+Pers+Prt+Cond+Neg
 !!€ polnuksime: olema+V+Pers+Prt+Cond+Pl1+Neg
 !!€ polnuksite: olema+V+Pers+Prt+Cond+Pl2+Neg
 !!€ polnuksid: olema+V+Pers+Prt+Cond+Pl3+Neg
-!!
-!! *elanud: elama+V+Pers+Prt+Imprt 
+
+!! \\
+!! elanud: elama+V+Pers+Prt+Imprt: 1.11.2016 ei genereerita ega tunta ära / not recognized nor generated as of Nov 1, 2016
 !!€ ärnud: ära+V+Pers+Prt+Imprt+Neg
-!!
+
+!! \\
 !!€ elanuvat: elama+V+Pers+Prt+Quot
 !!€ polnuvat: olema+V+Pers+Prt+Quot+Neg
-!!
-!! ---- personal infinite forms ----
-!!
+
+!! !---- Personal infinite forms ----
+
 !!€ elav: elama+V+Pers+Prs+Prc
 !!€ elanud: elama+V+Pers+Prt+Prc
+
 !!          (on, oli, ...) + V+Pers+Prt+Prc = some analytical personal form 
-!!
+
 !!€ elama: elama+V+Pers+Sup+Ill
 !!€ elamas: elama+V+Pers+Sup+Ine
 !!€ elamast: elama+V+Pers+Sup+Ela
 !!€ elamaks: elama+V+Pers+Sup+Tra
 !!€ elamata: elama+V+Pers+Sup+Abe
-!!
-!! ---- impersonal finite forms ----
-!!
+
+!! !---- Impersonal finite forms ----
+
 !!€ elatakse: elama+V+Impers+Prs+Ind+Aff
 !!€ elata: elama+V+Impers+Prs+Ind+Neg 
-!!                   
-!! NB! ei olda = polda
+                
 !!€ polda: olema+V+Impers+Prs+Ind+Neg 
 !!€ olda: olema+V+Impers+Prs+Ind+Neg 
-!!
+
+!! NB! ei olda = polda
+
 !!€ elataks: elama+V+Impers+Prs+Cond
 !!€ poldaks: olema+V+Impers+Prs+Cond+Neg
-!!
+
+!! \\
 !!€ elatagu: elama+V+Impers+Prs+Imprt
 !!€ ärdagu: ära+V+Impers+Prs+Imprt+Neg
-!!
+
+!! \\
 !!€ elatavat: elama+V+Impers+Prs+Quot
 !!€ poldavat: olema+V+Impers+Prs+Quot+Neg
-!!
+
+!! \\
 !!€ elati: elama+V+Impers+Prt+Ind+Aff
 !!€ elatud: elama+V+Impers+Prt+Ind+Neg 
-!!
-!! NB! ei oldud = poldud
+
 !!€ poldud: olema+V+Impers+Prt+Ind+Neg
 !!€ oldud: olema+V+Impers+Prt+Ind+Neg
-!!
+
+!! NB! ei oldud = poldud
+
 !!€ elatuks: elama+V+Impers+Prt+Cond
 !!€ polduks: olema+V+Impers+Prt+Cond+Neg
-!!
-!! ---- impersonal infinite forms ----
-!!
+
+!! !---- Impersonal infinite forms ----
+
 !!€ elatav: elama+V+Impers+Prs+Prc
 !!€ elatud: elama+V+Impers+Prt+Prc
-!!          (on, oli, ...) + V+Impers+Prt+Prc = some analytical personal form 
-!!
+
+!! (''on'', ''oli'', ...) + V+Impers+Prt+Prc = some analytical personal form 
+
+
 !!€ elatama: elama+V+Impers+Sup
-!!
-!! ---- infinite forms with no voice category ----
-!!
+
+!! !---- Infinite forms with no voice category ----
+
 !!€ elada: elama+V+Inf
 !!€ elades: elama+V+Ger
-!!
-!!
-!! Exceptional cases:
-!!
-!! personal present (Prs not implemented????), 3 words:  kuulukse, tunnukse, näikse
-!!
+
+!! !Exceptional cases:
+
+!! personal present (Prs not implemented????), 3 words:  ''kuulukse'', ''tunnukse'', ''näikse''
+
 !!€ kuulukse: kuulukse+V
-!!
-!! negation verb 
-!!
+
+!! !Negation verb 
+
 !!€ ei: ei+V+Neg
-!!
-!! Analytical forms (olen elanud, olin elanud, oleksin elanud, ei olnud elanud,
-!! ei olnuks elanud etc) are not treated here...
 
-!! partikkel -gi/-ki
-!! particle -gi/-ki
-+Foc/gi !!= * {{@CODE@}}:
+!! Analytical forms (''olen elanud'', ''olin elanud'', ''oleksin elanud'', ''ei olnud elanud'',
+!! ''ei olnuks elanud'' etc) are not treated here...
 
-!! kasutust (sagedust jm) iseloomustavad märgendid
-!! usage-related tags
-+Emph !!= * {{@CODE@}}:      ! long inflectional forms of personal pronouns mina, sina, tema, meie, teie, nemad
+!! !Partikkel -gi/-ki / Particle -gi/-ki
 
-!! paralleelvormide erinevat kasutussagedust iseloomustavad
-!! usage info for parallel forms (either correct according to the norm, or incorrect)
++Foc/gi !!= * {{@CODE@}}
+!!€ pulkki: pulk+N+Sg+Nom+Foc/gi
 
-+Use/Rare !!= * {{@CODE@}}:       ! norm, but rare: puusid:puu+Pl+Par+Use/Rare
-+Use/Hyp !!= * {{@CODE@}}:        ! norm, but so rare that norm is probaly wrong: tiivasse:tiib+Sg+Ill+Use/Hyp
-+Use/NotNorm !!= * {{@CODE@}}:    ! not norm, but sometimes used: pöidlates:pöial+Pl+Ine+Use/NotNorm
-+Use/CommonNotNorm !!= * {{@CODE@}}: ! not norm, and used more than norm: peeneid:peen+Pl+Par+Use/CommonNotNorm
+!! ! Kasutust (sagedust jm) iseloomustavad märgendid / Usage-related tags
 
-+Use/Circ !!= * {{@CODE@}}: ! for arabic and roman numerals
++Emph !!= * {{@CODE@}}: long inflectional forms of personal pronouns ''mina'', ''sina'', ''tema'', ''meie'', ''teie'', ''nemad''
+!!€ temale: tema+Pron+Sg+All+Emph
 
-!! derivatsioon
-!! derivation
+!! !Paralleelvormide erinevat kasutussagedust iseloomustavad / Usage info for parallel forms (either correct according to the norm, or incorrect)
+
++Use/Rare !!= * {{@CODE@}}: norm, but rare 
+!!€ puusid: puu+N+Pl+Par+Use/Rare
+
++Use/Hyp !!= * {{@CODE@}}:  norm, but so rare that norm is probaly wrong 
+!!€ tiivasse: tiib+N+Sg+Ill+Use/Hyp
+
++Use/NotNorm !!= * {{@CODE@}}:  not norm, but sometimes used 
+!!€ pöidlates: pöial+N+Pl+Ine+Use/NotNorm
+
++Use/CommonNotNorm !!= * {{@CODE@}}:  not norm, and used more than norm 
+!!€ peeneid: peen+A+Pl+Par+Use/CommonNotNorm
+
+!! !Tuletus / Derivation
 
 !! V --> N
 
-+Der/mine !!= * {{@CODE@}}:       ! jahumine:jahuma+V+Der/mine+N+Sg+Nom
-+Der/ja !!= * {{@CODE@}}:       ! jahuja:jahuma+V+Der/ja+N+Sg+Nom
-+Der/nu !!= * {{@CODE@}}:       ! elanu:elama+V+Der/nu+S+Sg+Nom
-+Der/mus !!= * {{@CODE@}}:       ! elamus:elama+V+Der/mus+N+Sg+Nom; 
-+Der/ng !!= * {{@CODE@}}:       ! devalveering:devalveerima+V+Der/ng+N+Sg+Nom; 
++Der/mine !!= * {{@CODE@}}
+!!€ jahumine: jahuma+V+Der/mine+N+Sg+Nom
+
++Der/ja !!= * {{@CODE@}}
+!!€ jahuja: jahuma+V+Der/ja+N+Sg+Nom
+
++Der/nu !!= * {{@CODE@}}
+!!€ elanu: elama+V+Der/nu+N+Sg+Nom
+
++Der/mus !!= * {{@CODE@}}
+!!€ küllastumus: küllastuma+V+Der/mus+N+Sg+Nom 
+
++Der/ng !!= * {{@CODE@}}
+!!€ devalveering: devalveerima+V+Der/ng+N+Sg+Nom 
 
 !! V --> A
 
-+Der/v !!= * {{@CODE@}}:       ! jahuv:jahuma+V+Der/v+A+Sg+Nom
-+Der/tav !!= * {{@CODE@}}:       ! öeldav:ütlema+V+Der/tav+A+Sg+Nom
-+Der/nud !!= * {{@CODE@}}:       ! elanud:elama+V+Der/nud+A+Sg+Nom
-+Der/mata !!= * {{@CODE@}}:       ! elamata:elama+V+Der/mata+A  ! NB! noninflecting!
-+Der/matu !!= * {{@CODE@}}:       ! segamatu:segama+V+Der/matu+A+Sg+Nom
-+Der/tamatu !!= * {{@CODE@}}:       ! mõeldamatu:mõtlema+V+Der/tamatu+A+Sg+Nom
-+Der/tu !!= * {{@CODE@}}:       ! elatu:elama+V+Der/tu+A+Sg+Nom
-+Der/tud !!= * {{@CODE@}}:       ! elatud:elama+V+Der/tud+A  ! noninflecting?
++Der/v !!= * {{@CODE@}}
+!!€ jahuv: jahuma+V+Der/v+A+Sg+Nom
+
++Der/tav !!= * {{@CODE@}}
+!!€ öeldav: ütlema+V+Der/tav+A+Sg+Nom
+
++Der/nud !!= * {{@CODE@}}
+!!€ elanud: elama+V+Der/nud+A+Sg+Nom
+
++Der/mata !!= * {{@CODE@}}
+!!€ elamata: elama+V+Der/mata+A
+
++Der/matu !!= * {{@CODE@}}
+!!€ segamatu: segama+V+Der/matu+A+Sg+Nom
+
++Der/tamatu !!= * {{@CODE@}}
+!!€ mõeldamatu: mõtlema+V+Der/tamatu+A+Sg+Nom
+
++Der/tu !!= * {{@CODE@}}
+!!€ elatu: elama+V+Der/tu+A+Sg+Nom
+
++Der/tud !!= * {{@CODE@}}
+!!€ elatud: elama+V+Der/tud+A
 
 !! N --> A
 
-+Der/lik !!= * {{@CODE@}}:       ! vaatajaskondlik:vaatama+V+Der/ja+N+Der/kond+N+Der/lik+A+Sg+Nom
-+Der/line !!= * {{@CODE@}}:       ! põõsaline:põõsas+N+Der/line+A+Sg+Nom
++Der/lik !!= * {{@CODE@}}
+!!€ kotkalik: kotkas+N+Der/lik+A+Sg+Nom
+!!€ kotkaslik: kotkas+N+Der/lik+A+Sg+Nom
+
++Der/line !!= * {{@CODE@}}
+!!€ põõsaline: põõsas+N+Der/line+A+Sg+Nom
 
 !! A --> Adv
 
-+Der/lt !!= * {{@CODE@}}:       ! jahuvalt:jahuma+V+Der/v+A+Der/lt+Adv
-+Der/sti !!= * {{@CODE@}}:       ! kuuldavasti:kuulama+V+Der/tav+A+Der/sti+Adv
-+Der/ini !!= * {{@CODE@}}:       ! jahuvamini:jahuma+V+Der/v+A+Der/m+A+Comp+Der/ini+Adv
++Der/lt !!= * {{@CODE@}}
+!!€ roosalt: roosa+A+Der/lt+Adv
+
++Der/sti !!= * {{@CODE@}}
+!!€ valusasti: valus+A+Der/sti+Adv
+
++Der/ini !!= * {{@CODE@}}
+!!€ paremini: parem+A+Comp+Der/ini+Adv
 
 !! A --> A
 
-+Der/m !!= * {{@CODE@}}:       ! jahuvam:jahuma+V+Der/v+A+Der/m+A+Comp+Sg+Nom
-+Der/im !!= * {{@CODE@}}:       ! jahuvaim:jahuma+V+Der/v+A+Der/im+A+Superl+Sg+Nom
++Der/m !!= * {{@CODE@}}
+!!€ valusam: valus+A+Der/m+A+Comp+Sg+Nom
+
++Der/im !!= * {{@CODE@}}
+!!€ valusaim: valus+A+Der/im+A+Superl+Sg+Nom
 
 !! N --> N
 
-+Der/nna !!= * {{@CODE@}}:       ! õpetajanna:õpetama+V+Der/ja+N+Der/nna+N+Sg+Nom
-+Der/kond !!= * {{@CODE@}}:       ! vaatajaskond:vaatama+V+Der/ja+N+Der/kond+N+Sg+Nom
++Der/nna !!= * {{@CODE@}}
+!!€ õmblejanna: õmbleja+N+Der/nna+N+Sg+Nom
+
++Der/kond !!= * {{@CODE@}}
+!!€ vaatajaskond: vaatama+V+Der/ja+N+Der/kond+N+Sg+Nom
 
 !! A --> N, V --> N
 
-+Der/us !!= * {{@CODE@}}:       ! jahuvus:jahuma+V+Der/v+A+Der/us+N+Sg+Nom; õpetama+V+Der/us+N+Sg+Nom
++Der/us !!= * {{@CODE@}}
+!!€ porisus: porine+A+Der/us+N+Sg+Nom
+!!€ õpetus: õpetama+V+Der/us+N+Sg+Nom
 
 !! N --> Adv
 
-+Der/ti !!= * {{@CODE@}}:       ! vaatajaskonniti:vaatama+V+Der/ja+N+Der/kond+N+Der/ti+Adv
-! +Der/lane !!= * {{@CODE@}}:       ! põõsaslane:põõsas+N+Der/lane+N+Sg+Nom ??
++Der/ti !!= * {{@CODE@}}
+!!€ lauati: laud+N+Der/ti+Adv
+
+! +Der/lane !!= * {{@CODE@}}:  põõsaslane:põõsas+N+Der/lane+N+Sg+Nom ??
 
 !! S --> S, A --> A
 
-+Dim/ke !!= * {{@CODE@}}:       ! diminutive 
++Dim/ke !!= * {{@CODE@}}:  diminutive 
+!!€ põõsake: põõsas+N+Dim/ke+Sg+Nom
 
-!!! Morphophonology
+!! !Muud / Other tags
+
++Use/Circ !!= * {{@CODE@}}: for arabic and roman numerals
+
++ABBR !!= * {{@CODE@}}: Lühend / Abbreviation
++CLB !!= * {{@CODE@}}: Osalause piir (punkt, koma) / Clause border (full stop, comma..)
++PUNCT !!= * {{@CODE@}}: Kirjavahemärk / Punctuation
+
+
+! Morphophonology
 
  %{W%} ! The weak grade trigger never appears on the surface side.
  %{WL%} ! The weak grade for foreign words trigger never appears on the surface side.
@@ -452,13 +547,11 @@ Multichar_Symbols
  %{apo%}   ! Apostrofy is needed separating inflectional affix from foreign word lemma
  %{no.apo%}  ! trigger for deleting apostrofy (used for foreign word inflections) from sg nom
 
-!! short stops
+! short stops
  G1 ! 0 g k   lagi lae lakke
  B1 ! 0 b p   saba sappa
  D1 ! 0 d t   idu eo; ida itta
 
-!! G2 ! g j    kärg kärje
-!! D2 ! 0 j t  sõda sõja sõtta
  B2 ! b v p  tõbi tõve tõppe
 
  G3 ! 0 g  Riia Riiga
@@ -475,8 +568,8 @@ Multichar_Symbols
  
  S1 ! 0 s
   
-!! orthographic convention: after voiceless (e.g. s or h), gbd is written as kpt
-!! e.g. õhk-õhu, vask-vase
+! orthographic convention: after voiceless (e.g. s or h), gbd is written as kpt
+! e.g. õhk-õhu, vask-vase
 
  K1 ! k 0
  P1 ! p 0 ?? EKK: never happens ??
@@ -510,13 +603,13 @@ J1   ! i j ahi ahju
 
 M1   ! m n  lumi lund
 
-!! Stem vowels for singular and plural
-!! For plural partitive, the form is generated either with sg vowel + sid or plural vowel + 0
+! Stem vowels for singular and plural
+! For plural partitive, the form is generated either with sg vowel + sid or plural vowel + 0
 
  %{sg.a%}  ! a 0  Stem vowel tag in lexicon  tünga
  %{sg.e%}  ! e 0  Stem vowel tag in lexicon   neeme
  
-!! default sg stem vowel for most types
+! default sg stem vowel for most types
  %{sg.i%}  ! i 0  Stem vowel tag in lexicon
  
  %{sg.u%}  ! u 0  Stem vowel tag in lexicon   koonu
@@ -535,14 +628,14 @@ M1   ! m n  lumi lund
  %. ! double the previous letter (kabinet - kabinetti)
  %{no.apo%}  ! no apostrofy; 
 
-!! usage tag; never on the surface side
+! usage tag; never on the surface side
 
  %{hyp%}        ! hypothetical form (norm, but never used); e.g. siilisid, puudi
  %{rare%}       ! rare or less used form (norm) ; e.g. kingasid
  %{notnorm%}    ! rare or less used form (not norm); e.g. piprate
  %{commonnotnorm%}   ! more commonly used form (but not norm); e.g. peeneid (norm: peeni)
 
-!! Inflectional affixes having the same grammatical meaning
+! Inflectional affixes having the same grammatical meaning
 
  %{i%}
  %{d%}
@@ -555,27 +648,26 @@ M1   ! m n  lumi lund
  %{stemill%} ! lexicon flag for short sg ill, formed by stem change (jõgi-jõkke)
 
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!                       M O R P H O T A C T I C S                         !!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-LEXICON Root
+!! !!Lexicons  
 
-Adjectives ;
-NoninflectingAdjectives ;
-ComparativeAdjectives ;
-SuperlativeAdjectives ;
-Adverbs ;
-Adpositions ;
-Conjunctions ;
-Nouns ;
-ProperNouns ;
-Numerals ;
-Pronouns ;
-Verbs ;
-NoninflectingVerbs ;
-Interjections ;
-GenitiveAttributes ;
+LEXICON Root !!= * {{@CODE@}} is the starting point of everything
 
-Punctuation ;
+Adjectives ;              !!= * {{@CODE@}}
+NoninflectingAdjectives ; !!= * {{@CODE@}}
+ComparativeAdjectives ;   !!= * {{@CODE@}}
+SuperlativeAdjectives ;   !!= * {{@CODE@}}  
+Adverbs ;                 !!= * {{@CODE@}}
+Adpositions ;             !!= * {{@CODE@}}
+Conjunctions ;            !!= * {{@CODE@}}
+Nouns ;                   !!= * {{@CODE@}}
+ProperNouns ;             !!= * {{@CODE@}}
+Numerals ;                !!= * {{@CODE@}}
+Pronouns ;                !!= * {{@CODE@}}
+Verbs ;                   !!= * {{@CODE@}}
+NoninflectingVerbs ;      !!= * {{@CODE@}}
+Interjections ;           !!= * {{@CODE@}}
+GenitiveAttributes ;      !!= * {{@CODE@}}
+
+Punctuation ;             !!= * {{@CODE@}}
 
