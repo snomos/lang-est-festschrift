@@ -1,0 +1,48 @@
+# Estonian tag -> Sami tag 
+# Sami tag will be later changed with apertium.postproc.relabel
+[
+  [ %<superl%> -> %<sup%> ] .o.
+  [ %<n%> %<prop%> -> %<np%> ] .o.
+  [ "<use_rare>" -> "<use_ng>" ] .o.
+  [ "<use_commonnotnorm>" -> "<use_ng>" ] .o.
+  [ "<use_notnorm>" -> "<use_ng>" ] .o.
+  [ "<use_hyp>" -> "<use_ng>" ] .o.
+  [ "<emph>" -> "<use_ng>" ] .o.
+  [ "<pron>" "<sg>" ->  "<pron>" "<pers>" "<sg1>" || {mina} _ ] .o.
+  [ "<pron>" "<sg>" ->  "<pron>" "<pers>" "<sg2>" || {sina} _ ] .o.
+  [ "<pron>" "<sg>" ->  "<pron>" "<pers>" "<sg3>" || {tema} _ ] .o.
+  [ "<pron>" "<pl>" ->  "<pron>" "<pers>" "<pl1>" || {meie} _ ] .o.
+  [ "<pron>" "<pl>" ->  "<pron>" "<pers>" "<pl2>" || {teie} _ ] .o.
+  [ "<pron>" "<pl>" ->  "<pron>" "<pers>" "<pl3>" || {nemad} _ ] .o.
+  [ %<aff%> -> [] ] .o.
+  [ "<v>" "<pers>"  ->	"<v>" "<actv>" ] .o.
+  [ "<v>" "<impers>"  ->	"<v>" "<pasv>" ] .o.
+  [ "<vblex>" "<pers>"  ->	"<vblex>" "<actv>" ] .o.
+  [ "<vblex>" "<impers>"  ->	"<vblex>" "<pasv>" ] .o.
+  [ "<adp>" "<pr>"  ->	"<pr>" ] .o.
+  [ "<adp>" "<po>"  ->	"<post>" ] .o.
+  [ "<adp>" "<post>"  ->	"<post>" ] .o.
+  [ "<part>" "<cnjsub>" -> "<cnjsub>" ] .o.
+  [ "#"            ->	"+" ] .o.
+  [ "^"          ->		0 ] .o.
+  [ "!" "<clb>" -> "!" "<sent>" ] .o.
+  [ {excl} "<clb>" -> "!" "<sent>" ] .o.
+  [ {pipe} "<clb>" -> "|" "<sent>" ] .o.
+  [ "<clb>"   -> "<cm>"   || "," _ ] .o.
+  [ "<clb>"   -> "<sent>" || "." _ ] .o.
+  [ "<clb>"   -> "<sent>" || "…" _ ] .o.
+  [ "<clb>"   -> "<sent>" || {..} _ ] .o.
+  [ "<clb>"   -> "<sent>" || {...} _ ] .o.
+  [ "<clb>"   -> "<sent>" || "¿" _ ] .o.
+  [ "<clb>"   -> "<sent>" || "¶" _ ] .o.
+  [ "<clb>"   -> "<sent>" || "?" _ ] .o.
+  [ "<clb>"   -> "<sent>" || ":" _ ] .o.
+  [ "<clb>"   -> "<sent>" || ";" _ ] .o.
+  [ "<punct>" -> "<guio>" || "-" _ ] .o.
+  [ "-"       -> "<guio>" || [ "<cmp>" ] _ ] .o.
+  [ "<punct>" "<left>"  -> "<lquot>"  ] .o.
+  [ "<punct>" "<right>" -> "<rquot>" ] .o.
+  [ "<punct>" -> "<quot>" || %" _ ] .o.
+  [ %<clb%> -> %<punct%> ] 
+];
+
