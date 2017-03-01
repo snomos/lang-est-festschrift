@@ -23,25 +23,6 @@
   [ "<adp>" "<post>"  ->	"<post>" ] .o.
   [ "<part>" "<cnjsub>" -> "<cnjsub>" ] .o.
   [ "#"            ->	"+" ] .o.
-  [ "^"          ->		0 ] .o.
-  [ "!" "<clb>" -> "!" "<sent>" ] .o.
-  [ {excl} "<clb>" -> "!" "<sent>" ] .o.
-  [ {pipe} "<clb>" -> "|" "<sent>" ] .o.
-  [ "<clb>"   -> "<cm>"   || "," _ ] .o.
-  [ "<clb>"   -> "<sent>" || "." _ ] .o.
-  [ "<clb>"   -> "<sent>" || "…" _ ] .o.
-  [ "<clb>"   -> "<sent>" || {..} _ ] .o.
-  [ "<clb>"   -> "<sent>" || {...} _ ] .o.
-  [ "<clb>"   -> "<sent>" || "¿" _ ] .o.
-  [ "<clb>"   -> "<sent>" || "¶" _ ] .o.
-  [ "<clb>"   -> "<sent>" || "?" _ ] .o.
-  [ "<clb>"   -> "<sent>" || ":" _ ] .o.
-  [ "<clb>"   -> "<sent>" || ";" _ ] .o.
-  [ "<punct>" -> "<guio>" || "-" _ ] .o.
-  [ "-"       -> "<guio>" || [ "<cmp>" ] _ ] .o.
-  [ "<punct>" "<left>"  -> "<lquot>"  ] .o.
-  [ "<punct>" "<right>" -> "<rquot>" ] .o.
-  [ "<punct>" -> "<quot>" || %" _ ] .o.
-  [ %<clb%> -> %<punct%> ] 
+  [ "^"          ->		0 ]
 ];
 
