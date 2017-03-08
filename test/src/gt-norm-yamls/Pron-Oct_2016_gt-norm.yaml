@@ -982,8 +982,8 @@ Tests:
     tema+Pron+Sg+Ade: tal
     tema+Pron+Sg+All+Emph: temale
     tema+Pron+Sg+All+Foc/gi+Emph: temalegi
-    tema+Pron+Sg+All+Foc/gi: talegi
-    tema+Pron+Sg+All: tale
+    tema+Pron+Sg+All+Foc/gi: tallegi
+    tema+Pron+Sg+All: talle
     tema+Pron+Sg+Ela+Emph: temast
     tema+Pron+Sg+Ela+Foc/gi+Emph: temastki
     tema+Pron+Sg+Ela+Foc/gi: tastki
@@ -999,7 +999,6 @@ Tests:
     tema+Pron+Sg+Ill: tasse
     tema+Pron+Sg+Ine+Emph: temas
     tema+Pron+Sg+Ine+Foc/gi+Emph: temaski
-    tema+Pron+Sg+Ine+Foc/gi: taski
     tema+Pron+Sg+Ine: tas
     tema+Pron+Sg+Nom+Emph: tema
     tema+Pron+Sg+Nom+Foc/gi+Emph: temagi

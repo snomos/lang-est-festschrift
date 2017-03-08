@@ -6,6 +6,8 @@
   [ "<use_hyp>" -> "<use_ng>" ] .o.
   [ "<emph>" -> "<use_ng>" ] .o.
   [ %<aff%> -> [] ] .o.
+  [ "<a>" "<der_im>" -> [] ] .o.
+  [ "<a>" "<der_m>" -> [] ] .o.
   [ "<v>" "<pers>"  ->	"<v>" "<actv>" ] .o.
   [ "<v>" "<impers>"  ->	"<v>" "<pasv>" ] .o.
   [ "<vblex>" "<pers>"  ->	"<vblex>" "<actv>" ] .o.

@@ -51,7 +51,7 @@ LEXICON MASA    ! ma & sa
                +Sg:ul%>le ALLATIVE ;	! mulle
                +Sg:u%>l ADESSIVE ;	
                +Sg:u%>lt ABLATIVE ;	
-           +Sg+Com:u%>ga #;    ! muga
+           +Sg+Com:u%>ga #;                  ! muga
           +Sg+Emph:inu STANDARD_LOCATIVES ;    ! minul, sinul
                +Sg:inu%>ks TRANSLATIVE ;
                +Sg:inu%>ni TERMINATIVE ;	  ! minuni
@@ -86,7 +86,12 @@ LEXICON TEMA    ! ta
                +Sg:ema%>na ESSIVE ;	  ! temana
                +Sg:ema%>ta ABESSIVE ;	  ! temata
                +Pl:ema%>ga COMITATIVE ;    ! temaga
-               +Sg:a STANDARD_LOCATIVES ;    ! tal etc
+                  :a%>sse SG_ILLATIVE ;    ! tasse
+           +Sg+Ine:a%>s #;                ! tas
+               +Sg:a%>st ELATIVE ;
+               +Sg:al%>le ALLATIVE ;	! talle
+               +Sg:a%>l ADESSIVE ;	
+               +Sg:a%>lt ABLATIVE ;	
 
 LEXICON NEED    ! need 
 

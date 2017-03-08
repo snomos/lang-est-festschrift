@@ -67,10 +67,52 @@ define BadDer3 [
     [{ke} A "+Der/us"] | 
     [{nud} A "+Der/us"] | 
     [{aitama} V "+Der/us"] |
+    [{arg} A "+Der/m"] |
+    [{hahk} A "+Der/m"] |
+    [{halb} A "+Der/m"] |
+    [{harv} A "+Der/m"] |
     [{hea} A "+Der/m"] |
+    [{hell} A "+Der/m"] |
+    [{julm} A "+Der/m"] |
+    [{jäik} A "+Der/m"] |
+    [{kaua} A "+Der/m"] |
+    [{kehv} A "+Der/m"] |
+    [{kelp} A "+Der/m"] |
+    [{koer} A "+Der/m"] |
+    [{kuiv} A "+Der/m"] |
+    [{kuri} A "+Der/m"] |
+    [{kurb} A "+Der/m"] |
+    [{kuum} A "+Der/m"] |
+    [{kõhn} A "+Der/m"] |
+    [{kõva} A "+Der/m"] |
+    [{külm} A "+Der/m"] |
+    [{lahja} A "+Der/m"] |
+    [{lai} A "+Der/m"] |
+    [{lõtv} A "+Der/m"] |
+    [{must} A "+Der/m"] |
+    [{märg} A "+Der/m"] |
+    [{nõder} A "+Der/m"] |
+    [{nõrk} A "+Der/m"] |
+    [{närb} A "+Der/m"] |
+    [{paha} A "+Der/m"] |
+    [{pikk} A "+Der/m"] |
+    [{ramb} A "+Der/m"] |
+    [{ränk} A "+Der/m"] |
+    [{sitt} A "+Der/m"] |
+    [{soe} A "+Der/m"] |
+    [{sünk} A "+Der/m"] |
+    [{tark} A "+Der/m"] |
+    [{tuim} A "+Der/m"] |
+    [{tumm} A "+Der/m"] |
+    [{turd} A "+Der/m"] |
+    [{turb} A "+Der/m"] |
+    [{tühi} A "+Der/m"] |
+    [{vana} A "+Der/m"] |
+    [{vara} A "+Der/m"] |
+    [{õrn} A "+Der/m"] |
     [{ke} A "+Der/im"] | 
     [{hea} A "+Der/im"] |
-    [{ll} N "+Der/lik"]          # to keep the twol rule of consonant clusters simpler (vasall+lik)
+    [{ll} N "+Der/lik"]    # do not allow vasall+lik because the normal cons cluster phon rule would turn it into vasallik
     ] ;
 
 regex ~[ BadDer1 ?* ].i .o. ~[ ?* BadDer2 ?* ].i .o. ~[ ?* BadDer3 ?* ].i ;
