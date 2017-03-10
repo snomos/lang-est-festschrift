@@ -527,8 +527,8 @@ Tests:
     meie+Pron+Pl+Tra: meieks
     meie+Pron+Pl+Trm+Foc/gi: meienigi
     meie+Pron+Pl+Trm: meieni
-    mina+Pron+Pl+Com+Emph: minuga
-    mina+Pron+Pl+Com+Foc/gi+Emph: minugagi
+    mina+Pron+Sg+Com+Emph: minuga
+    mina+Pron+Sg+Com+Foc/gi+Emph: minugagi
     mina+Pron+Sg+Abe+Foc/gi: minutagi
     mina+Pron+Sg+Abe: minuta
     mina+Pron+Sg+Abl+Emph: minult
@@ -896,8 +896,8 @@ Tests:
     see+Pron+Sg+Tra+Use/Rare: seks
     see+Pron+Sg+Trm+Foc/gi: sellenigi
     see+Pron+Sg+Trm: selleni
-    sina+Pron+Pl+Com+Emph: sinuga
-    sina+Pron+Pl+Com+Foc/gi+Emph: sinugagi
+    sina+Pron+Sg+Com+Emph: sinuga
+    sina+Pron+Sg+Com+Foc/gi+Emph: sinugagi
     sina+Pron+Sg+Abe+Foc/gi: sinutagi
     sina+Pron+Sg+Abe: sinuta
     sina+Pron+Sg+Abl+Emph: sinult
@@ -968,8 +968,8 @@ Tests:
     teie+Pron+Pl+Tra: teieks
     teie+Pron+Pl+Trm+Foc/gi: teienigi
     teie+Pron+Pl+Trm: teieni
-    tema+Pron+Pl+Com+Foc/gi: temagagi
-    tema+Pron+Pl+Com: temaga
+    tema+Pron+Sg+Com+Foc/gi: temagagi
+    tema+Pron+Sg+Com: temaga
     tema+Pron+Sg+Abe+Foc/gi: tematagi
     tema+Pron+Sg+Abe: temata
     tema+Pron+Sg+Abl+Emph: temalt

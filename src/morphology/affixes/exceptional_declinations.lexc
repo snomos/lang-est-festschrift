@@ -57,7 +57,7 @@ LEXICON MASA    ! ma & sa
                +Sg:inu%>ni TERMINATIVE ;	  ! minuni
                +Sg:inu%>na ESSIVE ;	  ! minuna
                +Sg:inu%>ta ABESSIVE ;	  ! minuta
-          +Pl+Emph:inu%>ga COMITATIVE ;    ! minuga
+          +Sg+Emph:inu%>ga COMITATIVE ;    ! minuga
 
 LEXICON METE    ! me & te 
 
@@ -85,7 +85,7 @@ LEXICON TEMA    ! ta
                +Sg:ema%>ni TERMINATIVE ;	  ! temani
                +Sg:ema%>na ESSIVE ;	  ! temana
                +Sg:ema%>ta ABESSIVE ;	  ! temata
-               +Pl:ema%>ga COMITATIVE ;    ! temaga
+               +Sg:ema%>ga COMITATIVE ;    ! temaga
                   :a%>sse SG_ILLATIVE ;    ! tasse
            +Sg+Ine:a%>s #;                ! tas
                +Sg:a%>st ELATIVE ;
