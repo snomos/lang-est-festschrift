@@ -533,6 +533,14 @@ S --> S, A --> A
  * {{+CLB }}: Osalause piir (punkt, koma) / Clause border (full stop, comma..)
  * {{+PUNCT }}: Kirjavahemärk / Punctuation
 
+!!Flag diacritics
+Use the following flag diacritics to control downcasing of derived proper
+nouns (e.g. Finnish Pariisi -> pariisilainen). See e.g. North Sámi for how to use
+these flags. There exists a ready-made regex that will do the actual down-casing
+given the proper use of these flags.
+ | @U.Cap.Obl@ | Allowing downcasing of derived names: deatnulasj.
+ | @U.Cap.Opt@ | Allowing downcasing of derived names: deatnulasj.
+
 
 
 
@@ -582,6 +590,7 @@ S --> S, A --> A
  * {{Adpositions ;             }}
  * {{Conjunctions ;            }}
  * {{Nouns ;                   }}
+ * {{ProperNouns ;             }}
  * {{ProperNouns ;             }}
  * {{Numerals ;                }}
  * {{Pronouns ;                }}

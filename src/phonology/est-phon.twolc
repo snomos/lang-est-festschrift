@@ -717,7 +717,8 @@ Vx:Vx /<= :Vx _ H3:h  :stemV ;            !  sohu, suhu, öhe, pähe
 ! --- j is not in the lexical side
 "e pronounced as j between vowels "
 
-E4:j  <=> [:Vowel - :i] Null* _ Null* [:Vowel - :i] ;
+!E4:j  <=> [:Vowel - :i] Null* _ Null* [:Vowel - :i] ;
+E4:j  <=> :Vowel Null* _ Null* :Vowel ;
 
 ! lexical: a E4 G1 
 ! surface: a  e  g

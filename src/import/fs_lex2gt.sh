@@ -112,6 +112,7 @@ cat fs_lex.gt1 \
 | sed '/+Interj/s/ GI ;/ #;/g' \
 | sed '/+C[SC]/s/ GI ;/ #;/g' \
 | ./diacritics.sed \
+| ./eemalda_gi.sed \
 | sort -k 2 \
 > fs_gt.noninfl
 

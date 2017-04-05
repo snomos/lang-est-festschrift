@@ -11,7 +11,7 @@ define WB [ "#" ];
 
 define W [ a | e | i |o | õ | ä | ö | ü ]; 
 define C [ b | d | f | g | h | j | k | l | m | n | p | r | s | t | v ] ;
-define ZZ [W C+ W+ C*] ;   # at least 2 syllables (kind of...)
+define ZZ [[W C+ W+ C*] | [W W W C*]];   # at least 2 syllables (kind of...)
 define V [ "+V" ];
 define N [ "+N" ];
 define A [ "+A" ];
@@ -40,7 +40,7 @@ define BadDer1 [
          "+Der/us"] |
     [[~[?+ {uma} V] ] "+Der/mus"] |           # devalveeruma - devalveerumus
     [[~[?+ {eerima} V] ] "+Der/ng"] |           # devalveerima - devalveering
-    [~[?+ N] "+Der/ti"] |
+    [~[?* ? ? ? ? N]  "+Der/ti"] |    # should we eliminate pee+N+Der/ti ?
     [[~[?+ N] & ~[?+ Num Card] & ~[?+ A] & ~[?+ A Comp] & ~[?+ A Superl]] "+Dim/ke"]
     ] ;
 
