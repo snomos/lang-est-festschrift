@@ -21,7 +21,7 @@ Also, tulema, panema, surema, olema, minema have tulla, tulles etc...
 
 !Special surface side symbols, used in rule contexts
 
- * __%>:0__ Morpheme boundary
+ * __%>__ Morpheme boundary
  * __#__ Word boundary for both lexicalised and dynamic compounds
 
 !Apostrophy
@@ -299,11 +299,11 @@ high vowel lowering in certain contexts
 
 
 
-* __kraapi%{W%}%>n __
-* __kraabi00n __
+* __kraapi%{W%}>n __
+* __kraabi0>n __
 
-* __*kraapi%{W%}%>n __ (is not standard language)
-* __*kraapi00n __ (is not standard language)
+* __*kraapi%{W%}>n __ (is not standard language)
+* __*kraapi0>n __ (is not standard language)
 
 
 
@@ -455,10 +455,10 @@ high vowel lowering in certain contexts
 
 
 * __viskoosneE1>t __
-* __viskooss0e0t __
+* __viskooss0e>t __
 
 * __*viskoosneE1>t __ (is not standard language)
-* __*viskooss000t __ (is not standard language)
+* __*viskooss00>t __ (is not standard language)
 
 
 

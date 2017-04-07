@@ -476,10 +476,10 @@ N --> A
 
  * {{+Der/lik }}
 * __kotkalik: __ {{kotkas+N+Der/lik+A+Sg+Nom }}
-* __kotkaslik: __ {{kotkas+N+Der/lik+A+Sg+Nom }}
 
  * {{+Der/line }}
 * __põõsaline: __ {{põõsas+N+Der/line+A+Sg+Nom }}
+* __onomastiline: __ {{onomastika+N+Der/line+A+Sg+Nom }}
 
 A --> Adv
 
@@ -590,7 +590,6 @@ given the proper use of these flags.
  * {{Adpositions ;             }}
  * {{Conjunctions ;            }}
  * {{Nouns ;                   }}
- * {{ProperNouns ;             }}
  * {{ProperNouns ;             }}
  * {{Numerals ;                }}
  * {{Pronouns ;                }}

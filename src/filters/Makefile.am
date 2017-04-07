@@ -29,6 +29,7 @@ GIELLA_FILTER_LOCAL_XFSCRIPT_SRCS=reorder-tags.est.xfscript \
                                   remove-sg-nom-forms.est.xfscript \
                                   remove-non-gi-forms.est.xfscript \
                                   remove-usage-tags.est.xfscript \
+                                  modify-derivations.est.xfscript \
                                   compound-filter.est.xfscript \
                                   disallow-derivations.est.xfscript
 

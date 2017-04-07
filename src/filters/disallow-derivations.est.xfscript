@@ -9,11 +9,12 @@
 #
 define WB [ "#" ];
 
-define W [ a | e | i |o | õ | ä | ö | ü ]; 
+define W [ a | e | i | o | u | õ | ä | ö | ü ]; 
 define C [ b | d | f | g | h | j | k | l | m | n | p | r | s | t | v ] ;
 define ZZ [[W C+ W+ C*] | [W W W C*]];   # at least 2 syllables (kind of...)
 define V [ "+V" ];
 define N [ "+N" ];
+define Prop [ "+Prop" ] ;
 define A [ "+A" ];
 define Comp [ "+Comp" ] ;
 define Superl [ "+Superl"];
@@ -24,8 +25,9 @@ define Card [ "+Card" ];
 # expressed here as a negation of the suitable one
  
 define BadDer1 [
-    [[~[?+ N] & ~[?+ Num Card]] "+Der/lik"] |
-    [[~[?+ N] & ~[?+ Num Card]] "+Der/line"] |
+    [[~[?+ N] & ~[?+ Num Card] & ~[?+ N Prop]] "+Der/lik"] |
+    [ ~[?+ N Prop] "+Der/lane"] |
+    [[~[?+ N] & ~[?+ Num Card] | [?+ N Prop]] "+Der/line"] |
     [[~[?+ A] & ~[?+ A Comp] & ~[?+ A Superl]] "+Der/lt"] |
     [~[?+ A] "+Der/sti"] |
     [[~[?+ A Comp] ] "+Der/ini"] |

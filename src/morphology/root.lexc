@@ -477,10 +477,10 @@ Multichar_Symbols
 
 +Der/lik !!= * {{@CODE@}}
 !!€ kotkalik: kotkas+N+Der/lik+A+Sg+Nom
-!!€ kotkaslik: kotkas+N+Der/lik+A+Sg+Nom
 
 +Der/line !!= * {{@CODE@}}
 !!€ põõsaline: põõsas+N+Der/line+A+Sg+Nom
+!!€ onomastiline: onomastika+N+Der/line+A+Sg+Nom
 
 !! A --> Adv
 
@@ -670,7 +670,8 @@ Adpositions ;             !!= * {{@CODE@}}
 Conjunctions ;            !!= * {{@CODE@}}
 Nouns ;                   !!= * {{@CODE@}}
 ProperNouns ;             !!= * {{@CODE@}}
-ProperNouns ;             !!= * {{@CODE@}}
+! @U.Cap.Obl@ ProperNouns ; !!= * {{@CODE@}}  ! always uppercase
+! @U.Cap.Opt@ ProperNouns ; !!= * {{@CODE@}}  ! downcased for derivations
 Numerals ;                !!= * {{@CODE@}}
 Pronouns ;                !!= * {{@CODE@}}
 Verbs ;                   !!= * {{@CODE@}}

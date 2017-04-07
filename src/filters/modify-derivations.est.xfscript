@@ -1,0 +1,40 @@
+# modify stems
+# Sirje Mäearu "Sõnamoodustus" http://keeleabi.eki.ee/pdf/095.pdf
+# i(k)a gets deleted from foreign word ends:
+# onomastika+line -> onomastiline
+# apooria + line -> apooriline
+# Ibeeria + lane = ibeerlane
+
+define WB [ "#" ] ;
+define MB [ ">" ] ;  # morpheme border
+define line [{line} | {lis}] ;
+define lane [{lane} | {las}] ;
+
+define EstW [ a | e | i | o | u | õ | ä | ö | ü ] ; 
+define W [ EstW | y ];
+define EstC [ b | d | f | g | h | j | k | l | m | n | p | r | s | t | v ] ;
+define C [ EstC | c | q | w | x] ;
+
+define SS [C* W] ;              # short syllable
+define LS [SS [W | C] C*] ;      # long syllable
+define Syll [SS | LS] ;
+
+define Pre1  [ Syll C LS] & ~[?* [l|s]] ;  # NOT biopsia, meelika
+define Pre2  [ Syll C LS]  ;  # NOT biopsia, meelika
+
+define IKA [i (k) a] ;
+define IA  [i a] ;
+
+define shorten1 [ IKA -> i || Pre1 _ MB line ] ;
+define shorten2 [ IA -> 0 || Pre2 _ MB lane ] ;
+
+# filter out karl+lik; the only lik-derivation is then karli+lik
+# (because they both are generated at first...)
+
+define lik [{lik} \WB*] ;
+
+define CVl [Syll l] ;      # 1C word stem ending in l
+define CVLIK [\WB* (Syll Syll) CVl MB lik \WB*] ;
+
+regex [shorten1 .o. shorten2 .o. ~CVLIK] ;
+

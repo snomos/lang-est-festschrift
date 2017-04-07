@@ -26,7 +26,7 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
 
 !! !Special surface side symbols, used in rule contexts
 
- %>:0   !!≈ * __@CODE@__ Morpheme boundary
+ %>     !!≈ * __@CODE@__ Morpheme boundary
  #      !!≈ * __@CODE@__ Word boundary for both lexicalised and dynamic compounds
 
 !! !Apostrophy
@@ -339,9 +339,9 @@ Definitions
 WordBorder = [ .#. | # ];  ! word border
 Border = [ WordBorder | %- ];   ! "noad-kahvlid" is 2 words
 Gi = [ [ :g | :k ] i ] ;
-WordEnd = [ (%>: Gi) WordBorder ];     ! final +gi is optional for almost any word
+WordEnd = [ (%> Gi) WordBorder ];     ! final +gi is optional for almost any word
 
-Null = [ :0 - Border ];            ! something on the lexical side, but nothing on the surface (except word border)
+Null = [ :0 | %> ];            ! something on the lexical side, but nothing on the surface 
 Any  = [ : - Border ];             ! anything except word border
 
 WeakGrade = [%{W%}:0 | %{WL%}:0] ;
@@ -396,11 +396,11 @@ Cx:Cy  <=> :Vowel :sonor _ Null*           :stemV %{W%}: ;  ! kaup-kauba, kurtma
 ! surface: k u r d  0 e  0  0  t u d
 
 
-!!€ kraapi%{W%}%>n
-!!€ kraabi00n
+!!€ kraapi%{W%}>n
+!!€ kraabi0>n
 
-!!$ kraapi%{W%}%>n
-!!$ kraapi00n
+!!$ kraapi%{W%}>n
+!!$ kraapi0>n
 
 
 "Weak grade for productive kk pp tt šš ff : k p t š f"
@@ -439,8 +439,8 @@ B2:v  <=> _ AnyNoTrigger* WeakGrade ;
 "Lexically determined weak grade for gk:0"
 
 Cx:Cy  <=> _ AnyNoTrigger* WeakGrade ;
-           _ Null* %>: :k ;                ! assimilation on affix border
-           _ Null* %>: :t ;                ! assimilation on affix border
+           _ Null* %> :k ;                ! assimilation on affix border
+           _ Null* %> :t ;                ! assimilation on affix border
      where Cx in ( G1 K1 ) 
            Cy in (  0  0 )
      matched ;
@@ -456,7 +456,7 @@ Cx:Cy  <=> _ AnyNoTrigger* WeakGrade ;
 
 Cx:Cy  <=> _ AnyNoTrigger* WeakGrade ;
            h J1: _ Null* WordEnd ;         ! rohi: word-final J1: makes sg nom "weak grade"
-           _ Null* %>: :t ;                ! assimilation on affix border
+           _ Null* %> :t ;                ! assimilation on affix border
      where Cx in ( D1 T1 ) 
            Cy in (  0  0 )
      matched ;
@@ -557,7 +557,7 @@ Vx:Vy  <=>    _ Null* [:Consonant - :stop] Null* :stemV  ;
 ! some older verbs lose the stem final vowel in strong grade forms
 "verb stem final vowel in weak grade (excl. impersonal)"
 
-Vx:Vy  <=> _ WeakGrade %>: \[T7:] ;
+Vx:Vy  <=> _ WeakGrade %> \[T7:] ;
      where Vx in ( A7 E7 ) 
            Vy in (  a  e )
      matched ;
@@ -570,7 +570,7 @@ Vx:Vy  <=> _ WeakGrade %>: \[T7:] ;
 
 "i lowers to e before inflectional i"
 
-i:e  <=>  [ :Consonant | %{apo%}:' ] (%>:0) _ Null* %>:0 :i ;
+i:e  <=>  [ :Consonant | %{apo%}:' ] (%>) _ Null* %> :i ;
       
 ! lexical: v o o d i > i d
 ! surface: v o o d e 0 i d
@@ -647,7 +647,7 @@ Vx:Vx /<= :Vx _ Null+ :stemV ;            ! sae, soid, soe
 
 "from -v to -ev"
 
-0:e <=> :Consonant Null* %>: _ v WordEnd ;
+0:e <=> :Consonant Null* %> _ v WordEnd ;
 
 ! lexical: n ´ a e r > 0 v
 ! surface: n ´ a e r 0 e v
@@ -655,7 +655,7 @@ Vx:Vx /<= :Vx _ Null+ :stemV ;            ! sae, soid, soe
 ! impersonal voice for söötma, nutma, lõpma: söödetud, nutetud, lõpetud
 "from t+t to te+t"
 
-0:e <=> [t: | T1: | p:] Null* _ WeakGrade %>: T7:t ;
+0:e <=> [t: | T1: | p:] Null* _ WeakGrade %> T7:t ;
 
 ! lexical: n ´ u t t A7 0 {W} > T7 u d
 ! surface: n ´ u t 0  0 e  0  0  t u d
@@ -665,7 +665,7 @@ Vx:Vx /<= :Vx _ Null+ :stemV ;            ! sae, soid, soe
 
 "i surfaces in preteritum"
 
-I7:i <=> :Consonant Null* %>: _ S7: WordEnd ;
+I7:i <=> :Consonant Null* %> _ S7: WordEnd ;
          _ WordEnd ;
 
 ! lexical: n ´ a e r > I7 S7
@@ -682,16 +682,16 @@ I7:i <=> :Consonant Null* %>: _ S7: WordEnd ;
 
 "el-le 1/3"
 
-e:0 <=> :e [l | r] _ WeakGrade %>: :Consonant ;
+e:0 <=> :e [l | r] _ WeakGrade %> :Consonant ;
 
 "el-le 2/3"
 
-0:e <=> [:Consonant | WS:0] _ [l | r] e:0 WeakGrade %>: :Consonant ;
+0:e <=> [:Consonant | WS:0] _ [l | r] e:0 WeakGrade %> :Consonant ;
 
 ! in weak grade, -le- is impossible (has to be -el-)
 "el-le 3/3"
 
-e:e /<= [:Consonant | WS:0] [l | r] _ WeakGrade %>: :Consonant ;
+e:e /<= [:Consonant | WS:0] [l | r] _ WeakGrade %> :Consonant ;
 
 ! lexical: s i p 0 l e {W} > d a
 ! surface: s i p e l 0  0  0 d a
@@ -934,10 +934,10 @@ E1:0  <=> :Vowel Null* :s Null* _ Null* s e ;          ! olulisse (haplology)
 ! surface: v i s k o o s s 0 e  0 t
 
 !!€ viskoosneE1>t
-!!€ viskooss0e0t
+!!€ viskooss0e>t
 
 !!$ viskoosneE1>t
-!!$ viskooss000t
+!!$ viskooss00>t
 
 ! i is a vowel that starts Pl Par or vowel plural affixes; use I1 as a trigger
 "I1 triggers -ne to be -s"
@@ -957,7 +957,7 @@ I1:i   => n:s e:0 Null* _ ;   ! -ne word
 ! thus tütar, kannel, pinge, kotkas appear similar
 
 "+te appears as +de in tütar-type words"
- t:d <=> [A2:a | E2:e] lmnr WeakGrade %>: _ e ; 
+ t:d <=> [A2:a | E2:e] lmnr WeakGrade %> _ e ; 
 
 ! lexical: s ´ õ s t A2 r {W} > t e
 ! surface: s 0 õ s t  a r  0  0 d e
@@ -971,8 +971,8 @@ I1:i   => n:s e:0 Null* _ ;   ! -ne word
 
 "infinitive and gerund affixes may begin in t"
 
-D7:t  <=> :Vowel Null* WeakGrade %>: _ ;
-          :s Null* %>: _ ;
+D7:t  <=> :Vowel Null* WeakGrade %> _ ;
+          :s Null* %> _ ;
 
 ! lexical: h ü p p a {W} > D7 a
 ! surface: h ü p 0 a {W} >  t a
@@ -981,7 +981,7 @@ D7:t  <=> :Vowel Null* WeakGrade %>: _ ;
 
 "infinitive and gerund affixes may assimilate to 0"
 
-D7:0  <=>  [:p | :t | :d] Null* %>: _ ; ! tappa, kasta, nutta, anda, niita, nõuda, ... 
+D7:0  <=>  [:p | :t | :d] Null* %> _ ; ! tappa, kasta, nutta, anda, niita, nõuda, ... 
 
 ! lexical: k ü T1 t > D7 a 
 ! surface: k ü  t t 0  0 a
@@ -1002,8 +1002,8 @@ D7:d /<= :voiceless Null* _ ;
 
 "impersonal voice affix may begin in d"
 
-T7:d  <=> [l | n | r] e:0 WeakGrade %>: _ ;
-          [l | n | r] [A7:0 | E7:0] %>: _ ;
+T7:d  <=> [l | n | r] e:0 WeakGrade %> _ ;
+          [l | n | r] [A7:0 | E7:0] %> _ ;
 
 ! lexical: s i p 0 l e {W} > T7 u d
 ! surface: s i p e l 0  0  0  d u d
@@ -1025,8 +1025,8 @@ T7:d  <=> [l | n | r] e:0 WeakGrade %>: _ ;
 
 "imperative mood affix may begin in k"
 
-G7:k  <=> \[:Vowel] a Null* WeakGrade %>: _ ;
-          :voiceless Null* %>: _ ;
+G7:k  <=> \[:Vowel] a Null* WeakGrade %> _ ;
+          :voiceless Null* %> _ ;
 
 ! lexical: h ü p p a {W} > G7 u
 ! surface: h ü p 0 a {W} >  k u
@@ -1037,7 +1037,7 @@ G7:k  <=> \[:Vowel] a Null* WeakGrade %>: _ ;
 
 "from -is to -i"
 
-S7:0 <=> [:Consonant | Border] Null* :Vowel :Consonant Null* %>: I7: _ WordEnd ;  ! lasi
+S7:0 <=> [:Consonant | Border] Null* :Vowel :Consonant Null* %> I7: _ WordEnd ;  ! lasi
          :s Null* _ ;    ! to eliminate jookssid, seissid
 
 ! lexical: p e s > I7 S7
@@ -1056,8 +1056,8 @@ S7:0 <=> [:Consonant | Border] Null* :Vowel :Consonant Null* %>: I7: _ WordEnd ;
 
 "delete vowel before -us or -ini"
 
-Vx:0 <=> :Consonant Null* _ %>: u s ;
-         :Consonant Null* _ %>: i n i ;
+Vx:0 <=> :Consonant Null* _ %> u s ;
+         :Consonant Null* _ %> i n i ;
      where Vx in ( a u e A1) ; 
 
 ! lexical: a h h e t a > u s
@@ -1128,13 +1128,13 @@ Vx:0 <=> :Consonant Null* _ %>: u s ;
 
 "No sg stem vowel if no Pl Par with -sid (choose pl stem vowel instead)"
 
-Vx:0  <=>  %>:0 PlSV:stemV Null* _ Null* %{s%}:0 ;
+Vx:0  <=>  %> PlSV:stemV Null* _ Null* %{s%}:0 ;
      where Vx in ( %{sg.a%} %{sg.e%} %{sg.u%} %{sg.i%} ); 
 
 "Choose pl stem vowel for Pl Par (sg stem vowel is 0) "
 
-Vx:Vy  <=>  :Consonant Null* %>:0 _ Null+ %{s%}:0 ;     ! puud-puudi, maja - maju
-                     i Null* %>:0 _ Null+ %{s%}:0 ;     ! sai - saiu
+Vx:Vy  <=>  :Consonant Null* %> _ Null+ %{s%}:0 ;     ! puud-puudi, maja - maju
+                     i Null* %> _ Null+ %{s%}:0 ;     ! sai - saiu
      where Vx in ( %{pl.e%} %{pl.i%} %{pl.u%} ) 
            Vy in (     e        i        u   )
      matched ;
@@ -1159,7 +1159,7 @@ Vx:Vy  <=>  :Consonant Null* %>:0 _ Null+ %{s%}:0 ;     ! puud-puudi, maja - maj
 
 "final vowel substitution for plural vowel"
 
-a:0  <=> :Consonant ( J1: ) _ %>: PlSV:stemV Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
+a:0  <=> :Consonant ( J1: ) _ %> PlSV:stemV Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 
 ! lexical: m a j a > {pl.u} {stemill} > {s} {i} {d}
 ! surface: m a j 0 0    u       0     0  0   0   0
@@ -1309,7 +1309,7 @@ LT:0          =>  %{stemill%}: _ ;      ! stem illative usage tag in the lexicon
 "consonant de-doubling in consonant clusters (e.g. after vowel deletion)"
 
 Cx:0 <=> :Cx _ Null+ [[Consonant Any* Border] - [Gi Border]];
-         :Cx _ Null* %>: Null* [[:Consonant Any* Border] - [Gi Border]];
+         :Cx _ Null* %> Null* [[:Consonant Any* Border] - [Gi Border]];
       where Cx in (Consonant) ;
 
 ! lexical: s p i k k E2 r > i
@@ -1347,7 +1347,7 @@ r:0 <=> :r _ S1:s ; ! kõrs
 ! that do not follow this rule (lesginka)
 "gbd to kpt after voiceless consonants"
 
-Cx:Cy  <=> :voiceless Null* %>: _ ;
+Cx:Cy  <=> :voiceless Null* %> _ ;
        where Cx in (g b d)
              Cy in (k p t)
        matched;
@@ -1379,7 +1379,7 @@ Cx:Cy  <=> :voiceless Null* %>: _ ;
 ! for 8 words like käsi, mesi
 "+t doubles at the end of a short-syllable word"
 
-0:t <=> Border (Consonant) Vowel Null* %>: t _ WordEnd ;
+0:t <=> Border (Consonant) Vowel Null* %> t _ WordEnd ;
 
 ! lexical: k ä S1 > t 0
 ! surface: k ä  0 > t t
@@ -1421,16 +1421,16 @@ Cx:Cy  <=> :voiceless Null* %>: _ ;
 ! > laudu	laud+N+Pl+Par	0,000000
 
 ! echo 'laud+N+Pl+Par' | hfst-lookup morphology/lexicon.hfst
-! > laud+N+Pl+Par	lauD1+{pl.u}{sg.a}+{sid}	0,000000
+! > laud+N+Pl+Par	lauD1>{pl.u}{sg.a}>{sid}	0,000000
 
 ! echo 'l a u D1:d +:0 {pl.u}:u {sg.a}:0 +:0 {s}:0' | hfst-pair-test phonology/est-phon.compose.hfst
 
 ! hfst & xfst:
 ! echo 'raudne+A+Sg+Par' | hfst-lookup morphology/lexicon.hfst 
-! > raudne+A+Sg+Par	r´audneE1+t	0,000000
+! > raudne+A+Sg+Par	r´audneE1>t	0,000000
 
-!  echo 'r´audneE1+t' | ~/xfst/bin/lookup -flags mbTT morphology/lexicon.xfst 
-! > r´audneE1+t	raudne+A+Sg+Par
+!  echo 'r´audneE1>t' | ~/xfst/bin/lookup -flags mbTT morphology/lexicon.xfst 
+! > r´audneE1>t	raudne+A+Sg+Par
  
 
 ! a minimalistic way:
@@ -1439,7 +1439,7 @@ Cx:Cy  <=> :voiceless Null* %>: _ ;
 ! hfst-twolc -o tmp.twol phonology/est-phon.twolc
 ! echo 'laud+N+Pl+Par' | hfst-lookup tmp.lexc
 
-! echo 'l a u D1:d +:0 {pl.u}:u {sg.a}:0 +:0 {s}:0' | hfst-pair-test tmp.twol
+! echo 'l a u D1:d > {pl.u}:u {sg.a}:0 +:0 {s}:0' | hfst-pair-test tmp.twol
 
 
 

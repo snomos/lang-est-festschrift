@@ -34,7 +34,7 @@ LEXICON LOHAKAS    ! VVS 2 (productive) -kas, -jas etc ending words (incl deriva
               :s SG_NOMINATIVE ;    ! lohakas
               : 2C ;    ! lohaka etc
               : US_DERIVATION ;
-              : LIK_DERIVATION ;
+              : LIK_DERIVATION ;   ! kaabakalik ???
 
 LEXICON TUNTUD    ! VVS 2 (productive) -d ending words (incl derivations); only adjectives
 
@@ -178,28 +178,28 @@ LEXICON PIIM    ! VVS 22; (unproductive) i.e. unstable type (passiivne muuttüü
               :%{sg.a%} 1C ;
               :a US_DERIVATION ;
               : LIK_DERIVATION ;          ! NB! not checked on real usage
-              :a LIK_DERIVATION ;         ! NB! not checked on real usage
+              :a%{W%} LIK_DERIVATION ;         ! NB! not checked on real usage
 
 LEXICON KOON    ! VVS 22; (unproductive) i.e. unstable type (passiivne muuttüüp) lõpp, laug
 
               : SG_NOMINATIVE ;
               :%{sg.u%} 1C ;
               : LIK_DERIVATION ;          ! NB! not checked on real usage
-              :u LIK_DERIVATION ;         ! NB! not checked on real usage
+              :u%{W%} LIK_DERIVATION ;         ! NB! not checked on real usage
 
 LEXICON EIT    ! VVS 22; (unproductive) i.e. unstable type (passiivne muuttüüp) kuusk, kärg
 
               : SG_NOMINATIVE ;
               :%{sg.e%} 1C ;
               : LIK_DERIVATION ;          ! NB! not checked on real usage
-              :e LIK_DERIVATION ;         ! NB! not checked on real usage
+              :e%{W%} LIK_DERIVATION ;         ! NB! not checked on real usage
 
 LEXICON TAUD    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp) siil, president, ...
 
               : SG_NOMINATIVE ;
               :%>%{pl.e%}%{sg.i%} 1C ;    ! {pl.e} is here so it need not be in the stem lexicon
               : LIK_DERIVATION ;          ! NB! not checked on real usage
-              :i LIK_DERIVATION ;         ! NB! not checked on real usage
+              :i%{W%} LIK_DERIVATION ;         ! NB! not checked on real usage
 
 LEXICON FIAT    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp) 
                 ! almost == TAUD, but final stop weak grade does not change 
@@ -210,7 +210,8 @@ LEXICON FIAT    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp)
               :i SG_ILLATIVE ;                ! Fiati
     %+Use%/Hyp:i%{WL%}%>sse SG_ILLATIVE ;     ! Fiatisse
               :%>%{pl.e%}%{sg.i%} DE_PL ;  ! Fiatide, Fiate, Fiatisid+Use/Rare 
-              :i LIK_DERIVATION ;          ! ?? lowercasing also ??
+              : LIK_DERIVATION ;          ! ?? lowercasing also ??
+              :i%{WL%} LIK_DERIVATION ;          ! ?? lowercasing also ??
 
 LEXICON KABINET    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp) 
                    ! almost == TAUD, but Sg Nom orthography with single final stop instead of 2
@@ -220,7 +221,7 @@ LEXICON KABINET    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp)
                                           ! so it has to be doubled to get the forms right
               :%.%>%{pl.e%}%{sg.i%} 1C ;
               : LIK_DERIVATION ;          ! NB! not checked on real usage
-              :i LIK_DERIVATION ;         ! NB! not checked on real usage
+              :i%{W%} LIK_DERIVATION ;         ! NB! not checked on real usage
 
 ! VVS 24 is lexical variants under VVS 22 various subtypes
 
@@ -236,7 +237,7 @@ LEXICON ELANIK    ! VVS 25; (productive) i.e. stable type (aktiivne muuttüüp)
               :%.%>%{pl.e%}%{sg.u%}%>%{s%}%{i%}%{d%} PL_PAR_VARIANT ;    ! elanikke; elanikkusid+Use/Rare
               :%. US_DERIVATION ;            ! õnnelikkus
               :%.e%{W%}%> IM_DERIVATION ;    ! õnnelikem
-              :u LIK_DERIVATION ;
+              :u%{W%} LIK_DERIVATION ;
 
 LEXICON ARMEE    ! VVS 26 ; (productive) i.e. stable type (aktiivne muuttüüp)
 
@@ -439,7 +440,7 @@ LEXICON SG_ILL_VARIANT    ! for KEEL etc types
 
 LEXICON SG_NOMINATIVE
            +Sg:%{no.apo%} NOMINATIVE ;
-              : LIK_DERIVATION ;
+              : LANE_DERIVATION ;
 
 LEXICON SG_GENITIVE
            +Sg: GENITIVE ;
@@ -530,6 +531,9 @@ LEXICON NNA_DERIVATION
 LEXICON LIK_DERIVATION
             +Der/lik+A:%>l´ik ELANIK ;           ! elajalik etc
             +Der/lik+A:%>l´ikk US_DERIVATION ;  ! elajalikkus etc
+
+LEXICON LANE_DERIVATION
+            +Der/lane+N:%>lane OLULINE ;          ! põõsaline etc
 
 LEXICON LINE_DERIVATION
             +Der/line+A:%>line OLULINE ;          ! põõsaline etc
