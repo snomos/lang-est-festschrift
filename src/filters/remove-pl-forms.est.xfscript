@@ -19,5 +19,5 @@ define WB [ "#" ] ;
 
 define plwords [ sgwords POS [\WB]* PL [\WB & \NOM & \NOTNORM]+ ] ;
 
-regex ~[plwords].i ;
+regex ~[plwords] ;
 

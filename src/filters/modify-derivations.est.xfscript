@@ -6,9 +6,9 @@
 # Ibeeria + lane = ibeerlane
 
 define WB [ "#" ] ;
-define MB [ ">" ] ;  # morpheme border
+define MB [ "»" ] ;  # morpheme border
 define line [{line} | {lis}] ;
-define lane [{lane} | {las}] ;
+define lane [[{lane}] | [{las}] ] ;
 
 define EstW [ a | e | i | o | u | õ | ä | ö | ü ] ; 
 define W [ EstW | y ];
@@ -31,7 +31,7 @@ define shorten2 [ IA -> 0 || Pre2 _ MB lane ] ;
 # filter out karl+lik; the only lik-derivation is then karli+lik
 # (because they both are generated at first...)
 
-define lik [{lik} \WB*] ;
+define lik [? ? {lik} \WB*] ;
 
 define CVl [Syll l] ;      # 1C word stem ending in l
 define CVLIK [\WB* (Syll Syll) CVl MB lik \WB*] ;

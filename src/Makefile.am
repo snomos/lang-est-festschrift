@@ -64,7 +64,7 @@ endif # CAN_FOMA
 #### Add language-specific build rules here: ####
 
 EST_EXTRA_PRE_FILTERS=filters/remove-sg-forms.est filters/remove-pl-forms.est filters/remove-sg-nom-forms.est filters/remove-non-gi-forms.est filters/disallow-derivations.est # filters/remove-usage-tags.est
-EST_EXTRA_POST_FILTERS=filters/modify-derivations.est filters/compound-filter.est
+EST_EXTRA_POST_FILTERS=filters/compound-filter.est filters/modify-derivations.est 
 
 
 # We need to add processing of language-specific tags in the analyser:
@@ -101,15 +101,15 @@ generator-raw-gt-%.hfst: generator-raw-gt-%.tmp.hfst $(EST_EXTRA_PRE_FILTERS:%=%
 		> $@
 
 # Xerox:
-generator-raw-gt-%.xfst: generator-raw-gt-%.tmp.xfst $(EST_EXTRA_PRE_FILTERS:%=%.xfst) $(EST_EXTRA_POST_FILTERS:%=%.xfst)
-	$(AM_V_XFST)$(PRINTF) "read regex                         \
-			$(EST_EXTRA_PRE_FILTERS:%=@\"%.xfst\" .o.)    \
-			@\"$<\"                                       \
-			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.xfst\")   \
-			;\n\
-		 invert net\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
+#generator-raw-gt-%.xfst: generator-raw-gt-%.tmp.xfst $(EST_EXTRA_PRE_FILTERS:%=%.xfst) $(EST_EXTRA_POST_FILTERS:%=%.xfst)
+#	$(AM_V_XFST)$(PRINTF) "read regex                         \
+#			$(EST_EXTRA_PRE_FILTERS:%=@\"%.xfst\" .o.)    \
+#			@\"$<\"                                       \
+#			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.xfst\")   \
+#			;\n\
+#		 invert net\n\
+#		 save stack $@\n\
+#		 quit\n" | $(XFST) $(VERBOSITY)
 
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######

@@ -27,6 +27,7 @@ cat ajutmp | ./fs_lex2algvorm.sed \
 cat algtmp | ./fs_lex2lemma.sed \
 | sed '/ÕIGEVORM$/s/ \([^: ]*\):\([^ ]*\) \([^ ]*ÕIGEVORM\)/ \3 \1:\2/' \
 | sed '/ÕIGEVORM.*[^i]id:/s/id$//' \
+| sed '/ÕIGEVORM.*eed:/s/eed$/ee/' \
 | sed '/KÕRB/s/õrb$/õrB2/' \
 | sed '/@EIT laane_k<õrb:/s/@EIT laane_k<õrb:laane_k<õrB2%>%{pl.i%}%{rare%}/@KÕRB laane_k<õrb:laane_k<õrB2/' \
 | grep -v '@EIT k<õrb:' \
@@ -96,6 +97,7 @@ paste fs_lex tmp1twol \
 # tsemnW on muuks vajalik info, mitte sõnaliik
 # GI võiks sobida jätkuleksikoniks ainult +Adv puhul, aga ka seal mitte igale sõnale...
 # oleks vaja vaadata muid sõnu, et otsustada ?
+# tosin~kond, soon~kond puhul ~ lihtsalt eemaldatakse
 
 # create the nearly final lexicons
 cat fs_lex.gt1 \

@@ -23,10 +23,11 @@ define Card [ "+Card" ];
 
 # a BadDer1 is a string +Der/..., preceded by an unsuitable symbol or string, 
 # expressed here as a negation of the suitable one
- 
+# (the two question marks ? ? "+Der/lik" stand for "@U.Cap.Opt@" "@C.Cap@" )
+
 define BadDer1 [
-    [[~[?+ N] & ~[?+ Num Card] & ~[?+ N Prop]] "+Der/lik"] |
-    [ ~[?+ N Prop] "+Der/lane"] |
+    [[~[?+ N] & ~[?+ Num Card] & ~[?+ N Prop]] ? ? "+Der/lik"] |
+    [ ~[?+ N Prop] ? ? "+Der/lane"] |
     [[~[?+ N] & ~[?+ Num Card] | [?+ N Prop]] "+Der/line"] |
     [[~[?+ A] & ~[?+ A Comp] & ~[?+ A Superl]] "+Der/lt"] |
     [~[?+ A] "+Der/sti"] |
@@ -117,5 +118,5 @@ define BadDer3 [
     [{ll} N "+Der/lik"]    # do not allow vasall+lik because the normal cons cluster phon rule would turn it into vasallik
     ] ;
 
-regex ~[ BadDer1 ?* ].i .o. ~[ ?* BadDer2 ?* ].i .o. ~[ ?* BadDer3 ?* ].i ;
+regex ~[ BadDer1 ?* ] .o. ~[ ?* BadDer2 ?* ] .o. ~[ ?* BadDer3 ?* ] ;
 

@@ -10,123 +10,80 @@
 ! also available in the file $GTHOME/LICENSE.txt.
 !
 ! Other licensing options are available upon request, please contact
-! giellatekno@hum.uit.no or divvun@samediggi.no
+! giellatekno@hum.uit.no or feedback@divvun.no
 
 LEXICON Punctuation
 
 ! Clause boundary symbols:
-    %,+CLB:%,     # ;
-    %.+CLB:%.     # ;
-  %.%.+CLB:%.%.   # ;
-%.%.%.+CLB:%.%.%. # ;
-    %:+CLB:%:     # ;
-    %;+CLB:%;     # ;
- ^excl+CLB:%!     # ;
- ^pipe+CLB:%|     # ;
-    %?+CLB:%?     # ; ! Question mark
-     …+CLB:…      # ;
-     ¿+CLB:¿      # ; ! Only seen as noise.
-     ¶+CLB:¶      # ; ! This sign is for titles, it is introduced by the
+    %,+CLB:%,     PunctEnd ;
+    %.+CLB:%.     PunctEnd ;
+  %.%.+CLB:%.%.   PunctEnd ;
+%.%.%.+CLB:%.%.%. PunctEnd ;
+    %:+CLB:%:     PunctEnd ;
+    %;+CLB:%;     PunctEnd ;
+ ^excl+CLB:%!     PunctEnd ;
+ ^pipe+CLB:%|     PunctEnd ;
+    %?+CLB:%?     PunctEnd ; ! Question mark
+     …+CLB:…      PunctEnd ;
+     ¿+CLB:¿      PunctEnd ; ! Only seen as noise.
+     ¶+CLB:¶      PunctEnd ; ! This sign is for titles, it is introduced by the
                       ! catxml script, and may be changed if it interferes 
                       ! with real pilcrow signs.
 
-! Miscellaneous symbols, abbreviation symbols (could be moved to abbr-sme-lex.txt) 
-  
- §+N+ABBR+Use/Circ:§ PUNCTconnector ;    ! §:s	!
- §§+N+ABBR+Use/Circ:§§ PUNCTconnector ;  ! §:ain	!
- $+N+ABBR+Use/Circ:$  PUNCTconnector ;    ! $:s	!
- €+N+ABBR+Use/Circ:€  PUNCTconnector ;    ! €:s	!
- £+N+ABBR+Use/Circ:£  PUNCTconnector ;    ! €:s	!
-®+N+ABBR:® # ;
-©+N+ABBR:© # ;
-
 ! Single punctuation marks
 
-  •+PUNCT:•   # ;
-  ●+PUNCT:●   # ;
-  ·+PUNCT:·   # ;
-   ּ+PUNCT:ּ    # ;
-  ·+PUNCT:·   # ;
-  -+PUNCT:-   # ; ! hyphen
- --+PUNCT:--  # ; ! double hyphen
-  –+PUNCT:–   # ; ! endash
-  —+PUNCT:—   # ; ! emdash
-  ―+PUNCT:―   # ; ! horizontal bar
-  =+PUNCT:=   # ;
-  ≈+PUNCT:≈   # ;
- %%+PUNCT:%%  # ;
-  &+PUNCT:&   # ;
- %"+PUNCT:%"  # ;
-  '+PUNCT:'7  # ; ! We use "'7" to avoid the CG symbol of ái'gi etc.
- %*+PUNCT:%*  # ;
-  ++PUNCT:+   # ;
-  ±+PUNCT:±   # ;
-  `+PUNCT:`   # ;
-  ´+PUNCT:´   # ;
-  /+PUNCT:/   # ; 
-+/-+PUNCT:+/- # ;
- %~+PUNCT:%~  # ;
+  •+PUNCT:•   PunctEnd ;
+  ●+PUNCT:●   PunctEnd ;
+  ·+PUNCT:·   PunctEnd ;
+   ּ+PUNCT:ּ    PunctEnd ;
+  ·+PUNCT:·   PunctEnd ;
+  -+PUNCT:-   PunctEnd ; ! hyphen
+ --+PUNCT:--  PunctEnd ; ! double hyphen
+  –+PUNCT:–   PunctEnd ; ! endash
+  —+PUNCT:—   PunctEnd ; ! emdash
+  ―+PUNCT:―   PunctEnd ; ! horizontal bar
+  =+PUNCT:=   PunctEnd ;
+  ≈+PUNCT:≈   PunctEnd ;
+ %%+PUNCT:%%  PunctEnd ;
+  &+PUNCT:&   PunctEnd ;
+ %"+PUNCT:%"  PunctEnd ;
+  '+PUNCT:'7  PunctEnd ; ! We use "'7" to avoid the CG symbol of ái'gi etc.
+ %*+PUNCT:%*  PunctEnd ;
+  ++PUNCT:+   PunctEnd ;
+  ±+PUNCT:±   PunctEnd ;
+  `+PUNCT:`   PunctEnd ;
+  ´+PUNCT:´   PunctEnd ;
+  /+PUNCT:/   PunctEnd ; 
++/-+PUNCT:+/- PunctEnd ;
+ %~+PUNCT:%~  PunctEnd ;
 
 ! Paired punctuation marks
 
-  «+PUNCT+LEFT:«7     # ;
-  »+PUNCT+RIGHT:»7    # ;
- %“+PUNCT+LEFT:%“     # ;
- %”+PUNCT+RIGHT:%”    # ;
- %‘+PUNCT+LEFT:%‘     # ;
- %’+PUNCT+RIGHT:%’    # ;
- %„+PUNCT+LEFT:%„     # ;
- %‹+PUNCT+LEFT:%‹     # ;
- %›+PUNCT+RIGHT:%›    # ;
- %(+PUNCT+LEFT:%(     # ;
- %)+PUNCT+RIGHT:%)    # ;
- %[+PUNCT+LEFT:%[     # ;
- %]+PUNCT+RIGHT:%]    # ;
- %{+PUNCT+LEFT:%{     # ;
- %}+PUNCT+RIGHT:%}    # ;
- %<+PUNCT+LEFT:%[%<%] # ;
- %>+PUNCT+LEFT:%[%>%] # ;
-
-
-
-LEXICON PUNCTconnector    !^C^
- +Sg+Nom+Use/Circ: # ;	! §       !
-!+Sg+Gen: # ;	! §       !^C^
-!+Sg+Acc: # ;	! §       !^C^
- +Use/Sub+Use/Circ: PUNCTsuff ;		! §as              ! !
- +Use/Circ:%: PUNCTsuff ;	! §:s                   !
- +Use/Sub+Use/Circ:%- PUNCTsuff ;	! §-as  ! Perhaps. ! !
- +Use/Sub+Use/Circ:%' PUNCTsuff ;	! §'as  ! Perhaps. ! !
- 
-LEXICON PUNCTsuff
-! # ;		! § 14 (no case on the bare §). Oh, yes. Case.
- +Sg+Gen: # ;	! §    (case suffix on the rest, in case of explicit
- +Sg+Acc: # ;	!       suffix)
- +Sg+Gen+Use/Sub:a # ;	! §:a  (case suffix on the rest, in case of explicit  !
- +Sg+Acc+Use/Sub:a # ;	!       suffix)                                       !
- +Sg+Ill+Use/Sub:ij # ;  !       !
- +Sg+Ill:i # ;   !
- +Sg+Loc:s # ;   ! §:s
- +Sg+Loc+Use/Sub:as # ;  ! §:as  !
-+Sg+Com:in # ;
-   +Ess:n # ;
- +Ess+Use/Sub:an # ;          !
-+Pl+Nom:t # ;
-+Pl+Gen:id # ;
-+Pl+Acc:id # ;
-+Pl+Ill:ide # ;
-+Pl+Loc:in # ;
-+Pl+Com:igujn # ;
- +Pl+Nom+Use/Sub:at # ;     !
- +Pl+Gen+Use/Sub:ajd # ;    !
- +Pl+Acc+Use/Sub:ajd # ;    !
- +Pl+Ill+Use/Sub:ajde # ;   !
- +Pl+Loc+Use/Sub:ajn # ;    !
- +Pl+Com+Use/Sub:ajgujn # ; !
+  «+PUNCT+LEFT:«7     PunctEnd ;
+  »+PUNCT+RIGHT:»7    PunctEnd ;
+ %“+PUNCT+LEFT:%“     PunctEnd ;
+ %”+PUNCT+RIGHT:%”    PunctEnd ;
+ %‘+PUNCT+LEFT:%‘     PunctEnd ;
+ %’+PUNCT+RIGHT:%’    PunctEnd ;
+ %„+PUNCT+LEFT:%„     PunctEnd ;
+ %‹+PUNCT+LEFT:%‹     PunctEnd ;
+ %›+PUNCT+RIGHT:%›    PunctEnd ;
+ %(+PUNCT+LEFT:%(     PunctEnd ;
+ %)+PUNCT+RIGHT:%)    PunctEnd ;
+ %[+PUNCT+LEFT:%[     PunctEnd ;
+ %]+PUNCT+RIGHT:%]    PunctEnd ;
+ %{+PUNCT+LEFT:%{     PunctEnd ;
+ %}+PUNCT+RIGHT:%}    PunctEnd ;
+ %<+PUNCT+LEFT:%[%<%] PunctEnd ;
+ %>+PUNCT+LEFT:%[%>%] PunctEnd ;
 
 
 ! Todo: Some symbols from non-ISO code pages do not work
 
-!+PUNCT:"\150" # ; ! trying to capture some hyphens
-!+PUNCT:"\151" # ; ! trying to capture some hyphens
+!+PUNCT:"\150" PunctEnd ; ! trying to capture some hyphens
+!+PUNCT:"\151" PunctEnd ; ! trying to capture some hyphens
 ! Did not work.
+
+
+LEXICON PunctEnd
+    # ;

@@ -15,4 +15,4 @@ define WB [ "#" ] ;
 
 define lexicalw [ words SGNOM [\WB]* ] ;
 
-regex ~[lexicalw].i ;
+regex ~[lexicalw] ;

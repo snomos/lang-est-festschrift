@@ -480,6 +480,7 @@ N --> A
  * {{+Der/line }}
 * __põõsaline: __ {{põõsas+N+Der/line+A+Sg+Nom }}
 * __onomastiline: __ {{onomastika+N+Der/line+A+Sg+Nom }}
+* __apooriline: __ {{apooria+N+Der/line+A+Sg+Nom }}
 
 A --> Adv
 
@@ -519,8 +520,10 @@ N --> Adv
  * {{+Der/ti }}
 * __lauati: __ {{laud+N+Der/ti+Adv }}
 
+ * {{+Der/lane }}:  helveetslane:Helveetsia+N+Prop+Der/lane+N+Sg+Nom
+* __firenzelane: __ {{Firenze+N+Prop+Der/lane+N+Sg+Nom }}
 
-S --> S, A --> A
+N --> N, A --> A
 
  * {{+Dim/ke }}:  diminutive 
 * __põõsake: __ {{põõsas+N+Dim/ke+Sg+Nom }}
@@ -590,7 +593,8 @@ given the proper use of these flags.
  * {{Adpositions ;             }}
  * {{Conjunctions ;            }}
  * {{Nouns ;                   }}
- * {{ProperNouns ;             }}
+ * {{@U.Cap.Obl@ ProperNouns ; }}  ! always uppercase
+ * {{@U.Cap.Opt@ ProperNouns ; }}  ! downcased for derivations
  * {{Numerals ;                }}
  * {{Pronouns ;                }}
  * {{Verbs ;                   }}

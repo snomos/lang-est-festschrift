@@ -481,6 +481,7 @@ Multichar_Symbols
 +Der/line !!= * {{@CODE@}}
 !!€ põõsaline: põõsas+N+Der/line+A+Sg+Nom
 !!€ onomastiline: onomastika+N+Der/line+A+Sg+Nom
+!!€ apooriline: apooria+N+Der/line+A+Sg+Nom
 
 !! A --> Adv
 
@@ -520,9 +521,10 @@ Multichar_Symbols
 +Der/ti !!= * {{@CODE@}}
 !!€ lauati: laud+N+Der/ti+Adv
 
-! +Der/lane !!= * {{@CODE@}}:  põõsaslane:põõsas+N+Der/lane+N+Sg+Nom ??
++Der/lane !!= * {{@CODE@}}:  helveetslane:Helveetsia+N+Prop+Der/lane+N+Sg+Nom
+!!€ firenzelane: Firenze+N+Prop+Der/lane+N+Sg+Nom
 
-!! S --> S, A --> A
+!! N --> N, A --> A
 
 +Dim/ke !!= * {{@CODE@}}:  diminutive 
 !!€ põõsake: põõsas+N+Dim/ke+Sg+Nom
@@ -542,6 +544,7 @@ Multichar_Symbols
 !! given the proper use of these flags.
  @U.Cap.Obl@        !!≈ | @CODE@ | Allowing downcasing of derived names: deatnulasj.
  @U.Cap.Opt@        !!≈ | @CODE@ | Allowing downcasing of derived names: deatnulasj.
+ @C.Cap@
 
 
 ! Morphophonology
@@ -550,7 +553,9 @@ Multichar_Symbols
  %{WL%} ! The weak grade for foreign words trigger never appears on the surface side.
  %{S%}  ! Strong stem trigger (for short illatives only) never appears on the surface side.
 
- %>    ! The morpheme boundary never appears on the surface side.
+ %>     ! Inflectional suffix boundary
+ »      ! Derivational suffix boundary
+ #      ! Word boundary for both lexicalised and dynamic compounds
 
  %{apo%}   ! Apostrofy is needed separating inflectional affix from foreign word lemma
  %{no.apo%}  ! trigger for deleting apostrofy (used for foreign word inflections) from sg nom
@@ -669,9 +674,9 @@ Adverbs ;                 !!= * {{@CODE@}}
 Adpositions ;             !!= * {{@CODE@}}
 Conjunctions ;            !!= * {{@CODE@}}
 Nouns ;                   !!= * {{@CODE@}}
-ProperNouns ;             !!= * {{@CODE@}}
-! @U.Cap.Obl@ ProperNouns ; !!= * {{@CODE@}}  ! always uppercase
-! @U.Cap.Opt@ ProperNouns ; !!= * {{@CODE@}}  ! downcased for derivations
+! ProperNouns ;             !!= * {{@CODE@}}
+@U.Cap.Obl@ ProperNouns ; !!= * {{@CODE@}}  ! always uppercase
+@U.Cap.Opt@ ProperNouns ; !!= * {{@CODE@}}  ! downcased for derivations
 Numerals ;                !!= * {{@CODE@}}
 Pronouns ;                !!= * {{@CODE@}}
 Verbs ;                   !!= * {{@CODE@}}

@@ -1,26 +1,18 @@
 # remove:
 #  Sg forms of plurale tantum words
 
-define plwords [[ {aganad} "+N" ] | 
-               [ {Aleuudid} "+N" "+Prop" ] | 
+define pln    [[ {aganad} "+N" ] | 
                [ {algonkinid} "+N" ] | 
                [ {alimendid} "+N" ] | 
-               [ {Alpid} "+N" "+Prop" ] | 
                [ {aluspüksid} "+N" ] | 
-               [ {Andid} "+N" "+Prop" ] | 
                [ {andmed} "+N" ] | 
                [ {annaalid} "+N" ] | 
-               [ {Antillid} "+N" "+Prop" ] | 
-               [ {Apenniinid} "+N" "+Prop" ] | 
                [ {aplodismendid} "+N" ] | 
-               [ {Ardennid} "+N" "+Prop" ] | 
                [ {arstmed} "+N" ] | 
                [ {arvandmed} "+N" ] | 
-               [ {Assoorid} "+N" "+Prop" ] | 
                [ {bakid} "+N" ] | 
                [ {bikiinid} "+N" ] | 
                [ {danaiidid} "+N" ] | 
-               [ {Dardanellid} "+N" "+Prop" ] | 
                [ {dionüüsiad} "+N" ] | 
                [ {dressipüksid} "+N" ] | 
                [ {džiinid} "+N" ] | 
@@ -30,11 +22,9 @@ define plwords [[ {aganad} "+N" ] |
                [ {eumeniidid} "+N" ] | 
                [ {feeriad} "+N" ] | 
                [ {fekaalid} "+N" ] | 
-               [ {Filipiinid} "+N" "+Prop" ] | 
                [ {finantsid} "+N" ] | 
                [ {gastropoodid} "+N" ] | 
                [ {genitaalid} "+N" ] | 
-               [ {Hašimiidid} "+N" "+Prop" ] | 
                [ {heitmed} "+N" ] | 
                [ {hekslid} "+N" ] | 
                [ {hesperiidid} "+N" ] | 
@@ -52,8 +42,6 @@ define plwords [[ {aganad} "+N" ] |
                [ {kalifeed} "+N" ] | 
                [ {kalifeepüksid} "+N" ] | 
                [ {kaltsad} "+N" ] | 
-               [ {Kanaarid} "+N" "+Prop" ] | 
-               [ {Karpaadid} "+N" "+Prop" ] | 
                [ {karupüksid} "+N" ] | 
                [ {kastanjetid} "+N" ] | 
                [ {katseandmed} "+N" ] | 
@@ -63,9 +51,7 @@ define plwords [[ {aganad} "+N" ] |
                [ {kintspüksid} "+N" ] | 
                [ {kliid} "+N" ] | 
                [ {kodinad} "+N" ] | 
-               [ {Komoorid} "+N" "+Prop" ] | 
                [ {koolikud} "+N" ] | 
-               [ {Kordiljeerid} "+N" "+Prop" ] | 
                [ {korntangid} "+N" ] | 
                [ {kosjad} "+N" ] | 
                [ {kottpüksid} "+N" ] | 
@@ -74,7 +60,6 @@ define plwords [[ {aganad} "+N" ] |
                [ {kruubitangud} "+N" ] | 
                [ {kuluaarid} "+N" ] | 
                [ {kummijäätmed} "+N" ] | 
-               [ {Kuriilid} "+N" "+Prop" ] | 
                [ {kõrkmed} "+N" ] | 
                [ {kõrvetised} "+N" ] | 
                [ {käimad} "+N" ] | 
@@ -82,7 +67,6 @@ define plwords [[ {aganad} "+N" ] |
                [ {kärssed} "+N" ] | 
                [ {käärid} "+N" ] | 
                [ {lahinguristsed} "+N" ] | 
-               [ {Lakadiivid} "+N" "+Prop" ] | 
                [ {lambakäärid} "+N" ] | 
                [ {langud} "+N" ] | 
                [ {leetrid} "+N" ] | 
@@ -96,9 +80,7 @@ define plwords [[ {aganad} "+N" ] |
                [ {lõkad} "+N" ] | 
                [ {lõpusesed} "+N" ] | 
                [ {lähteandmed} "+N" ] | 
-               [ {Maldiivid} "+N" "+Prop" ] | 
                [ {malid} "+N" ] | 
-               [ {Malviinid} "+N" "+Prop" ] | 
                [ {mamelukid} "+N" ] | 
                [ {matusejoodud} "+N" ] | 
                [ {memuaarid} "+N" ] | 
@@ -107,7 +89,6 @@ define plwords [[ {aganad} "+N" ] |
                [ {mitmikud} "+N" ] | 
                [ {murdmed} "+N" ] | 
                [ {mõttetalgud} "+N" ] | 
-               [ {Myrtoonid} "+N" "+Prop" ] | 
                [ {naglid} "+N" ] | 
                [ {nahajäätmed} "+N" ] | 
                [ {niied} "+N" ] | 
@@ -167,10 +148,8 @@ define plwords [[ {aganad} "+N" ] |
                [ {saagmed} "+N" ] | 
                [ {sabased} "+N" ] | 
                [ {sademed} "+N" ] | 
-               [ {Sajaanid} "+N" "+Prop" ] | 
                [ {sarlakid} "+N" ] | 
                [ {saturnaalid} "+N" ] | 
-               [ {Seišellid} "+N" "+Prop" ] | 
                [ {seldžukid} "+N" ] | 
                [ {sipupüksid} "+N" ] | 
                [ {spiikerivalimised} "+N" ] | 
@@ -212,7 +191,6 @@ define plwords [[ {aganad} "+N" ] |
                [ {tunked} "+N" ] | 
                [ {tuumajäätmed} "+N" ] | 
                [ {töötlemisjäätmed} "+N" ] | 
-               [ {Türreenid} "+N" "+Prop" ] | 
                [ {uhtmed} "+N" ] | 
                [ {ujumispüksid} "+N" ] | 
                [ {umbrid} "+N" ] | 
@@ -238,19 +216,44 @@ define plwords [[ {aganad} "+N" ] |
                [ {üldvalimised} "+N" ] | 
                [ {üsked} "+N" ] ] ;
 
+define plpn   [[ {Aleuudid} "+N" "+Prop" ] | 
+               [ {Alpid} "+N" "+Prop" ] | 
+               [ {Andid} "+N" "+Prop" ] | 
+               [ {Antillid} "+N" "+Prop" ] | 
+               [ {Apenniinid} "+N" "+Prop" ] | 
+               [ {Ardennid} "+N" "+Prop" ] | 
+               [ {Assoorid} "+N" "+Prop" ] | 
+               [ {Dardanellid} "+N" "+Prop" ] | 
+               [ {Filipiinid} "+N" "+Prop" ] | 
+               [ {Hašimiidid} "+N" "+Prop" ] | 
+               [ {Kanaarid} "+N" "+Prop" ] | 
+               [ {Karpaadid} "+N" "+Prop" ] | 
+               [ {Komoorid} "+N" "+Prop" ] | 
+               [ {Kordiljeerid} "+N" "+Prop" ] | 
+               [ {Kuriilid} "+N" "+Prop" ] | 
+               [ {Lakadiivid} "+N" "+Prop" ] | 
+               [ {Maldiivid} "+N" "+Prop" ] | 
+               [ {Malviinid} "+N" "+Prop" ] | 
+               [ {Myrtoonid} "+N" "+Prop" ] | 
+               [ {Püreneed} "+N" "+Prop" ] | 
+               [ {Sajaanid} "+N" "+Prop" ] | 
+               [ {Seišellid} "+N" "+Prop" ] | 
+               [ {Türreenid} "+N" "+Prop" ] ] ;
+
 define SG [ "+Sg" ] ;
 
 # make sure only word-final components are considered
-define WB [ "#" ] ;
+define WB [ "#" | .#. ] ;
 
 # derivations are attached to the stem, and it is ok to have SG after a derivation tag 
 # only derivations that attach to nouns are listed here
 # (TODO: derivations to proper nouns)
 
-define DER [ "+Der/lik" | "+Der/line" | "+Der/nna" | "+Der/ti" ] ;
-define plnonder[ plwords ~[ DER ?+] ] ;    # plwords that have no +Der attached
+define DER [ [? ? "+Der/lik"] | "+Der/line" | [? ? "+Der/lane"] | "+Der/nna" | "+Der/ti" ] ;
+define plnonder1 [ pln ~[ DER ?+] ] ;    # plwords that have no +Der attached
+define plnonder2 [ ? plpn ~[ DER ?+] ] ;    # plwords that have no +Der attached
  
-define pllexical [ plnonder [\WB]* SG [\WB]+ ] ;
+define pllexical [ [plnonder1 | plnonder2] [\WB]* SG [\WB]+ ] ; # pl words with sg
 
-regex ~[pllexical].i ;
+regex ~[pllexical] ;
 

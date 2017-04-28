@@ -378,16 +378,19 @@ LEXICON SUPINE_V
 
 LEXICON SUPINE
 
-                      : ILLATIVE ;        ! elama
-                      :s INESSIVE ;       ! elamas
-                      :st ELATIVE ;
-                      :ks TRANSLATIVE ;
-                      :ta ABESSIVE ;
+                      : ILLATIVE ;          ! elama
+                      :%>s INESSIVE ;       ! elamas
+                      :%>st ELATIVE ;
+                      :%>ks TRANSLATIVE ;
+                      :%>ta ABESSIVE ;
 
 LEXICON IMPERS    ! impersonal forms for most paradigms
 
                       :%>T7 IMPERS_DUD ;
                       :%>T7 IMPERS_AKSE ;
+                      :»T7 TAV_DERIVATION ;       ! elatav, elatavalt, elatavam, elatavaim, ... 
+                      :»T7 TAMATU_DERIVATION ;       ! elatav, elatavalt, elatavam, elatavaim, ... 
+                      :»T7 TU_DERIVATION ;       ! elatu, elatult, elatum, elatuim 
 
 LEXICON IMPERS_DUD    ! impersonal forms -[td]ud
 
@@ -401,9 +404,6 @@ LEXICON IMPERS_DUD    ! impersonal forms -[td]ud
    +Impers+Prt+Ind+Neg:ud GI ;
        +Impers+Prt+Prc:ud GI ;
            +Impers+Sup:ama GI ;
-                      : TAV_DERIVATION ;       ! elatav, elatavalt, elatavam, elatavaim, ... 
-                      : TAMATU_DERIVATION ;       ! elatav, elatavalt, elatavam, elatavaim, ... 
-                      : TU_DERIVATION ;       ! elatu, elatult, elatum, elatuim 
 
 LEXICON IMPERS_AKSE    ! impersonal form -[td0]akse
 
@@ -459,42 +459,42 @@ LEXICON PL3VAD
 
 LEXICON NU_DERIVATION
 
-             +Der/nu+N:%>nu AASTA ;             ! derivation: elanu etc
-             +Der/nud+A:%>nu TUNTUD ;             ! derivation: elanud etc
-             +Der/nud+A:%>nud GI ;             ! derivation: noninflecting A: elanud 
+             +Der/nu+N:»nu AASTA ;             ! derivation: elanu etc
+             +Der/nud+A:»nu TUNTUD ;             ! derivation: elanud etc
+             +Der/nud+A:»nud # ;             ! derivation: noninflecting A: elanud 
 
 LEXICON TU_DERIVATION  !    NB! the morpheme border + d/t is assigned before this lexicon
 
              +Der/tu+A:u AASTA ;              ! derivation: elatu etc
-             +Der/tud+A:%>ud GI ;             ! derivation: noninflecting A: elatud 
+             +Der/tud+A:ud # ;             ! derivation: noninflecting A: elatud 
 
 LEXICON MATA_DERIVATION
-           +Der/mata+A:%>mata GI ;            ! elamata 
+           +Der/mata+A:»mata GI ;            ! elamata 
 
 LEXICON MATU_DERIVATION
-           +Der/matu+A:%>matu AASTA ;             ! segamatu etc
+           +Der/matu+A:»matu AASTA ;             ! segamatu etc
 
 LEXICON TAMATU_DERIVATION  !    NB! the morpheme border + d/t is assigned before this lexicon
            +Der/tamatu+A:amatu AASTA ;             ! segatamatu etc
 
 LEXICON V_DERIVATION
-              +Der/v+A:%>v MAGUS ;              ! elav, elava etc
+              +Der/v+A:»v MAGUS ;              ! elav, elava etc
 
 LEXICON TAV_DERIVATION   !    NB! the morpheme border + d/t is assigned before this lexicon
             +Der/tav+A:av MAGUS ;              ! elatav, elatava etc
 
 LEXICON MINE_DERIVATION
-           +Der/mine+N:%>mine OLULINE ;         ! elamine
+           +Der/mine+N:»mine OLULINE ;         ! elamine
 
 LEXICON JA_DERIVATION
-             +Der/ja+N:%>ja AASTA ;             ! elaja, elajat etc
-             +Der/ja+N:%>jas KOND_DERIVATION ; ! õpetajaskond, õpetajaskondlik, etc
+             +Der/ja+N:»ja AASTA ;             ! elaja, elajat etc
+             +Der/ja+N:»jas KOND_DERIVATION ; ! õpetajaskond, õpetajaskondlik, etc
 
 LEXICON MUS_DERIVATION
-             +Der/mus+N:%>mus OLULINE ;         ! promoveerumus, elamus, ...
+             +Der/mus+N:»mus OLULINE ;         ! promoveerumus, elamus, ...
 
 LEXICON NG_DERIVATION
-             +Der/ng+N:%>ng VIRSIK ;         ! annoteering 
+             +Der/ng+N:»ng VIRSIK ;         ! annoteering 
 
 
 

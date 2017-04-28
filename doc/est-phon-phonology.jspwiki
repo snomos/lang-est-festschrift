@@ -21,7 +21,8 @@ Also, tulema, panema, surema, olema, minema have tulla, tulles etc...
 
 !Special surface side symbols, used in rule contexts
 
- * __%>__ Morpheme boundary
+ * __%>__ Inflectional suffix boundary
+ * __»__ Derivational suffix boundary
  * __#__ Word boundary for both lexicalised and dynamic compounds
 
 !Apostrophy

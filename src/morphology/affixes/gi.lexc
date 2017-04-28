@@ -1,7 +1,9 @@
 !! stressing affix gi/ki can be appended to almost any word form
 
 LEXICON GI  !! liide gi/ki
+@U.Cap.Obl@ GI_CAP ;        !! this ensures that downcasing derivation (helveetslane) works
 
+LEXICON GI_CAP
  +Foc/gi:%>gi #;
  #;
 

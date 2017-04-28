@@ -99,7 +99,7 @@ LEXICON SOOLANE    ! VVS 9 (productive) simplex words ending with -s (katus), VV
               :E1%>sse SG_ILLATIVE ;            ! soolasesse, katusesse
               :E1%>id PL_PARTITIVE ;            ! soolaseid, katuseid
    %+Use%/Rare:E1%>i N_VOWEL_PL_SUBPARA ;    ! soolaseil, katuseil etc
-              :E1%>i IM_DERIVATION ;            ! soolaseim
+              :E1»i IM_DERIVATION ;            ! soolaseim
 
 LEXICON OLULINE    ! VVS 11, 12 (productive)
                    ! VVS 12: affixes -lane, -line, -mine, -tine, -ke(ne), -stikune (?)
@@ -126,7 +126,7 @@ LEXICON SUULINE    ! VVS (9) & 11, (10) & 12 (productive)
               : OLULINE ;
    %+Use%/Rare:E1%>id PL_PARTITIVE ;            ! like SOOLANE: suuliseid, vaatluseid
    %+Use%/Rare:E1%>i N_VOWEL_PL_SUBPARA ;    ! like SOOLANE: suuliseil, vaatluseil etc
-   %+Use%/Rare:E1%>i IM_DERIVATION ;            ! like SOOLANE: suuliseim
+   %+Use%/Rare:E1»i IM_DERIVATION ;            ! like SOOLANE: suuliseim
               :E1 LIK_DERIVATION ;
 
 LEXICON PEENIKE    ! VVS 12 (productive): affix -ke; almost = OLULINE, except sg nom
@@ -236,7 +236,7 @@ LEXICON ELANIK    ! VVS 25; (productive) i.e. stable type (aktiivne muuttüüp)
    %+Use%/Rare:%.%{sg.u%}%>de N_PL_SUBPARA ;    ! elanikkude etc   
               :%.%>%{pl.e%}%{sg.u%}%>%{s%}%{i%}%{d%} PL_PAR_VARIANT ;    ! elanikke; elanikkusid+Use/Rare
               :%. US_DERIVATION ;            ! õnnelikkus
-              :%.e%{W%}%> IM_DERIVATION ;    ! õnnelikem
+              :%.e%{W%}» IM_DERIVATION ;    ! õnnelikem
               :u%{W%} LIK_DERIVATION ;
 
 LEXICON ARMEE    ! VVS 26 ; (productive) i.e. stable type (aktiivne muuttüüp)
@@ -269,7 +269,7 @@ LEXICON LINE_US_NORM  ! part of line_us_specific
 
               :E1%>se SG_ILLATIVE ;           ! olulisse, harjutusse (haplology)
               :%>I1 PL_PARTITIVE ;            ! olulisi, harjutusi
-              :%>I1 IM_DERIVATION ;           ! olulisim
+              :»I1 IM_DERIVATION ;           ! olulisim
       
 ! ------
 
@@ -316,7 +316,7 @@ LEXICON 2C_STRONG    ! forms that would usually be in strong grade in strengthen
               : SG_ILL_VARIANT ;           ! taskusse or tasku
               :%>id PL_PARTITIVE ;            ! kotkaid
    %+Use%/Rare:%>i N_VOWEL_PL_SUBPARA ;    ! kotkail etc
-              :%>i IM_DERIVATION ;         ! magusaim, rentaableim, ...
+              :»i IM_DERIVATION ;         ! magusaim, rentaableim, ...
 
 LEXICON 2C_STRONGPL   ! forms that would sometimes be in strong grade in strengthening gradation
 
@@ -519,44 +519,50 @@ LEXICON COMITATIVE
 ! paradigmatic derivation, i.e. very regular
 
 LEXICON M_DERIVATION
-          +Der/m+A+Comp:%>m MAGUS ;           ! suurem, elanum,  etc
+          +Der/m+A+Comp:»m MAGUS ;           ! suurem, elanum,  etc
 
 LEXICON IM_DERIVATION
-       +Der/im+A+Superl:m MAGUS ;         ! suurim, elanuim, õnnelikem etc; NB! notice that %> is missing!
+       +Der/im+A+Superl:m MAGUS ;         ! suurim, elanuim, õnnelikem etc; NB! notice that » is missing!
 !       +Der/im+A+Superl:m LT_DERIVATION ; ! suurimalt, elanuimalt, õnnelikemalt
 
 LEXICON NNA_DERIVATION
-            +Der/nna+N:%>nna PERE ;             ! õpetajanna
-
-LEXICON LIK_DERIVATION
-            +Der/lik+A:%>l´ik ELANIK ;           ! elajalik etc
-            +Der/lik+A:%>l´ikk US_DERIVATION ;  ! elajalikkus etc
+            +Der/nna+N:»nna PERE ;             ! õpetajanna
 
 LEXICON LANE_DERIVATION
-            +Der/lane+N:%>lane OLULINE ;          ! põõsaline etc
+@U.Cap.Opt@@C.Cap@ LANE_DERIVATION_CAP ;         ! proper name must be downcased 
+
+LEXICON LANE_DERIVATION_CAP
+            +Der/lane+N:»lane OLULINE ;          ! helveetslane etc
+
+LEXICON LIK_DERIVATION
+@U.Cap.Opt@@C.Cap@ LIK_DERIVATION_CAP ;         ! proper name must be downcased
+
+LEXICON LIK_DERIVATION_CAP
+            +Der/lik+A:»l´ik ELANIK ;           ! elajalik etc
+            +Der/lik+A:»l´ikk US_DERIVATION ;  ! elajalikkus etc
 
 LEXICON LINE_DERIVATION
-            +Der/line+A:%>line OLULINE ;          ! põõsaline etc
+            +Der/line+A:»line OLULINE ;          ! põõsaline etc
 
 LEXICON KOND_DERIVATION
-           +Der/kond+N:%>k´onnD1%>%{pl.i%} PIIM ;  ! elajaskond etc
-           +Der/kond+N:%>konni TI_DERIVATION ;     ! elanikkonniti
+           +Der/kond+N:»k´onnD1%>%{pl.i%} PIIM ;  ! elajaskond etc
+           +Der/kond+N:»konni TI_DERIVATION ;     ! elanikkonniti
 
 LEXICON US_DERIVATION
-             +Der/us+N:%>us OLULINE ;         ! elajalikkus, elavus, ...
+             +Der/us+N:»us OLULINE ;         ! elajalikkus, elavus, ...
 
 LEXICON LT_DERIVATION
-            +Der/lt+Adv:%>lt GI ;         ! derivation: suurelt, elanult, ...
+            +Der/lt+Adv:»lt GI ;         ! derivation: suurelt, elanult, ...
 
 LEXICON STI_DERIVATION
-          +Der/sti+Adv:%>sti GI ;        ! valusasti, kuuldavasti
+          +Der/sti+Adv:»sti GI ;        ! valusasti, kuuldavasti
 
 LEXICON INI_DERIVATION
-          +Der/ini+Adv:%>ini GI ;        ! valusamini
+          +Der/ini+Adv:»ini GI ;        ! valusamini
 
 LEXICON TI_DERIVATION
-           +Der/ti+Adv:%>ti GI ;        ! maakonniti
+           +Der/ti+Adv:»ti GI ;        ! maakonniti
 
 LEXICON KE_DERIVATION
-               +Dim/ke:%>ke PEENIKE ;         ! suureke, majake, õpetajannake, ...
+               +Dim/ke:»ke PEENIKE ;         ! suureke, majake, õpetajannake, ...
 
