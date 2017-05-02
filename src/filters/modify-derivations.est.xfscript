@@ -7,8 +7,8 @@
 
 define WB [ "#" ] ;
 define MB [ "»" ] ;  # morpheme border
-define line [{line} | {lis}] ;
-define lane [[{lane}] | [{las}] ] ;
+define LINE [    MB [{line} | {lis}] ];
+define LANE [? ? MB [{lane} | {las}] ] ;
 
 define EstW [ a | e | i | o | u | õ | ä | ö | ü ] ; 
 define W [ EstW | y ];
@@ -25,16 +25,17 @@ define Pre2  [ Syll C LS]  ;  # NOT biopsia, meelika
 define IKA [i (k) a] ;
 define IA  [i a] ;
 
-define shorten1 [ IKA -> i || Pre1 _ MB line ] ;
-define shorten2 [ IA -> 0 || Pre2 _ MB lane ] ;
+define shorten1 [ IKA -> i || Pre1 _ LINE ] ;
+define shorten2 [  IA -> 0 || Pre2 _ LANE ] ;
 
 # filter out karl+lik; the only lik-derivation is then karli+lik
 # (because they both are generated at first...)
 
-define lik [? ? {lik} \WB*] ;
+define LIK [? ? MB {lik} \WB*] ;
 
 define CVl [Syll l] ;      # 1C word stem ending in l
-define CVLIK [\WB* (Syll Syll) CVl MB lik \WB*] ;
+define CVLIK [\WB* (Syll Syll) CVl LIK \WB*] ;
 
 regex [shorten1 .o. shorten2 .o. ~CVLIK] ;
+
 
