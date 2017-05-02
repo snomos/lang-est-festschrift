@@ -47,13 +47,11 @@ define BadDer1 [
     [[~[?+ N] & ~[?+ Num Card] & ~[?+ A] & ~[?+ A Comp] & ~[?+ A Superl]] "+Dim/ke"]
     ] ;
 
-# re-applying a suffix is not allowed
+# re-applying a similar suffix is not allowed
 define BadDer2 [
-    ["+Der/lik" \WB* "+Der/lik"] |
-    ["+Der/line" \WB* "+Der/line"] |
-    [["+Der/m" | "+Der/im"] \WB* ["+Der/m" | "+Der/im"]] |
-    ["+Der/lik" \WB* "+Der/lik"] |
-    [["+Der/us" | "+Der/mus"] \WB* ["+Der/us" | "+Der/mus"]] 
+    [["+Der/lik" | "+Der/line"] \WB* ["+Der/lik" | "+Der/line"]] |
+    [  ["+Der/m" | "+Der/im"]   \WB*   ["+Der/m" | "+Der/im"]  ] |
+    [ ["+Der/us" | "+Der/mus"]  \WB*  ["+Der/us" | "+Der/mus"] ] 
     ] ;
 
 # some words are not suitable for certain suffixes 
