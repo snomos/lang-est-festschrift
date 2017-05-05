@@ -54,11 +54,16 @@ define BadDer2 [
     [ ["+Der/us" | "+Der/mus"]  \WB*  ["+Der/us" | "+Der/mus"] ] 
     ] ;
 
+# some suffix sequences are actually bad
+define BadDer3 [
+    [[ "+Der/nu" | "+Der/us" | "+Der/lane" ] N "+Der/ti"] 
+    ] ;
+
 # some words are not suitable for certain suffixes 
 # although their word class, inflectional type and stem ending would suggest otherwise;
-# in other words, BadDer3 adds exceptions to BadDer1
+# in other words, BadDer4 adds exceptions to BadDer1
 
-define BadDer3 [
+define BadDer4 [
     [{valmis} A "+Der/us"] | 
     [{audio} A "+Der/us"] | 
     [{väeti} A "+Der/us"] | 
@@ -116,5 +121,5 @@ define BadDer3 [
     [{ll} N "+Der/lik"]    # do not allow vasall+lik because the normal cons cluster phon rule would turn it into vasallik
     ] ;
 
-regex ~[ BadDer1 ?* ] .o. ~[ ?* BadDer2 ?* ] .o. ~[ ?* BadDer3 ?* ] ;
+regex ~[ BadDer1 ?* ] .o. ~[ ?* BadDer2 ?* ] .o. ~[ ?* BadDer3 ?* ] .o. ~[ ?* BadDer4 ?* ] ;
 
