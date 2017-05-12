@@ -1,0 +1,10 @@
+! Initial word (e.g. emb) of paired words (e.g. emb-kumb)
+
+
+LEXICON Root
+
+emb:emmB1%>%{pl.i%}%{rare%} PIIM ;
+kihin+N:kihin MAGUS ;
+
+
+

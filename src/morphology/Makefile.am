@@ -94,7 +94,9 @@ GT_LEXC_L2_SRCS=\
 #
 
 # Define any additional lexc sources here (compiled on their own):
-GT_LOCAL_SRCS=
+GT_LOCAL_SRCS=\
+                        pair_initial.tmp.lexc \
+                        pair_final.tmp.lexc 
 
 # Define local xfscripts here:
 GT_LOCAL_XFSCRIPT_SRCS=
@@ -103,6 +105,20 @@ GT_LOCAL_XFSCRIPT_SRCS=
 GT_DISTRO_SRCS=
 
 ### BEGIN: Local processing: ###
+EST_AFFIX_FILES=affixes/regular_declinations affixes/exceptional_declinations affixes/verbs affixes/gi
+
+# make the parts inflect 
+# by re-using root.lexc and affixes, and omitting all the stem lexicons
+ 
+pair_initial.tmp.lexc: pair_initial.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
+	cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
+	cat $< >> $@ && \
+	cat $(EST_AFFIX_FILES:%=%.lexc) >> $@
+
+pair_final.tmp.lexc: pair_final.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
+	cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
+	cat $< >> $@ && \
+	cat $(EST_AFFIX_FILES:%=%.lexc) >> $@
 
 
 ### END: Local processing: ###

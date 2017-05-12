@@ -1,0 +1,30 @@
+#
+
+#define WB [ "#" ] ;
+
+define SameNumber $[["+Sg" ?* "+Sg"] | ["+Pl" ?* "+Pl"]] ;
+define SameCase [["+Nom" ?* "+Nom"] | 
+                 ["+Gen" ?* "+Gen"] | 
+                 ["+Par" ?* "+Par"] | 
+                 ["+Ill" ?* "+Ill"] | 
+                 ["+Ine" ?* "+Ine"] | 
+                 ["+Ela" ?* "+Ela"] | 
+                 ["+All" ?* "+All"] | 
+                 ["+Ade" ?* "+Ade"] | 
+                 ["+Abl" ?* "+Abl"] | 
+                 ["+Tra" ?* "+Tra"]] ; 
+
+define NinaTaga [["+Gen" ?* "+Trm"] | 
+                 ["+Gen" ?* "+Ess"] | 
+                 ["+Gen" ?* "+Abe"] | 
+                 ["+Gen" ?* "+Com"]] ; 
+
+define PairedCase [ ?* [SameCase | NinaTaga] ?* ];
+
+define Pairs [[{emb} ?* {kumb}] | [{kihin} ?* {kahin}]] ;
+
+define WordPairs [?* Pairs ?*] ;
+
+regex [WordPairs .o. SameNumber .o. PairedCase] ;
+
+
