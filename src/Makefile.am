@@ -65,7 +65,7 @@ endif # CAN_FOMA
 
 EST_EXTRA_PRE_FILTERS=filters/remove-sg-forms.est filters/remove-pl-forms.est filters/remove-sg-nom-forms.est filters/remove-non-gi-forms.est filters/disallow-derivations.est # filters/remove-usage-tags.est
 EST_EXTRA_POST_FILTERS=filters/compound-filter.est filters/modify-derivations.est 
-EST_WORDPAIR_FILTERS=filters/wordpair-filter.est
+EST_WORDPAIR_FILTERS=filters/wordpair-reorder-tags.est filters/wordpair-filter.est
 
 # paired words are words whose both parts inflect, e.g. emb-kumb, kihin-kahin
 # paired words: initial part
@@ -81,6 +81,13 @@ pair_initial.tmp1.hfst: morphology/pair_initial.tmp.hfst \
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-o $@
 
+# XEROX
+pair_initial.tmp1.xfst: morphology/pair_initial.tmp.xfst \
+			 phonology/$(GTLANG)-phon.compose.xfst
+	$(AM_V_LEXC)$(PRINTF) \
+		"read-source morphology/pair_initial.tmp.xfst\nread-rules phonology/$(GTLANG)-phon.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
+		| $(LEXC) $(VERBOSITY)
+
 # paired words: final part
 # HFST:
 pair_final.tmp1.hfst: morphology/pair_final.tmp.hfst \
@@ -94,7 +101,19 @@ pair_final.tmp1.hfst: morphology/pair_final.tmp.hfst \
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-o $@ 
 
-# HFST: generator
+# XEROX
+pair_final.tmp1.xfst: morphology/pair_final.tmp.xfst \
+			 phonology/$(GTLANG)-phon.compose.xfst
+	$(AM_V_LEXC)$(PRINTF) \
+		"read-source morphology/pair_final.tmp.xfst\nread-rules phonology/$(GTLANG)-phon.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
+		| $(LEXC) $(VERBOSITY)
+
+# FOMA
+# not implemented...
+
+# HFST: generator 
+# Xerox & FOMA: analyser
+# (with a language-specific tag reordering script applied)
 pair_initial.tmp.%: pair_initial.tmp1.% \
 					filters/reorder-tags.$(GTLANG).% \
 					filters/reorder-semantic-tags.%       \
@@ -110,7 +129,10 @@ pair_initial.tmp.%: pair_initial.tmp1.% \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
-# HFST: generator
+
+# HFST: generator 
+# Xerox & FOMA: analyser
+# (with a language-specific tag reordering script applied)
 pair_final.tmp.%: pair_final.tmp1.% \
 					filters/reorder-tags.$(GTLANG).% \
 					filters/reorder-semantic-tags.%       \
@@ -126,10 +148,15 @@ pair_final.tmp.%: pair_final.tmp1.% \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
+# HFST: generator 
+# Xerox & FOMA: analyser
 # put parts together
+# .......		regex [{#-}:{-}] ; \n\
+#
+
 redundant_wordpairs.%: pair_final.tmp.% pair_initial.tmp.%
 	$(AM_V_XFST_TOOL)$(PRINTF) 'read regex @\"pair_final.tmp.$*\" .o. ~$$[»] ; \n\
-		regex [{#-}:{-}] ; \n\
+		regex ["-"] ; \n\
 		concatenate net\n\
 		read regex ~$$[\"+Foc/gi\"] .o. @\"pair_initial.tmp.$*\" .o. ~$$[»] ; \n\
 		concatenate net\n\
@@ -146,11 +173,20 @@ generator-wordpairs-raw.aaa.hfst: redundant_wordpairs.hfst $(EST_WORDPAIR_FILTER
 		| $(HFST_REGEXP2FST) $(VERBOSITY) $(HFST_FLAGS) -S --xerox-composition=ON \
 		> $@
 
+# XEROX:
+analyser--wordpairs-raw.aaa.xfst: redundant_wordpairs.xfst $(EST_WORDPAIR_FILTERS:%=%.xfst)
+	$(AM_V_XFST)$(PRINTF) "read regex                         \
+			$(EST_WORDPAIR_FILTERS:%=@\"%.xfst\" .o.)    \
+			@\"$<\"                                       \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
 # We need to add processing of language-specific tags in the analyser:
 # HFST:
 
-# Xerox:
-analyser-raw-gt-%.xfst: analyser-raw-gt-%.tmp.xfst $(EST_EXTRA_PRE_FILTERS:%=%.xfst) $(EST_EXTRA_POST_FILTERS:%=%.xfst)
+# XEROX:
+analyser-raw-gt-%.aaa.xfst: analyser-raw-gt-%.tmp.xfst $(EST_EXTRA_PRE_FILTERS:%=%.xfst) $(EST_EXTRA_POST_FILTERS:%=%.xfst)
 	$(AM_V_XFST)$(PRINTF) "read regex                         \
 			$(EST_EXTRA_PRE_FILTERS:%=@\"%.xfst\" .o.)    \
 			@\"$<\"                                       \
@@ -170,16 +206,33 @@ generator-raw-gt-%.aaa.hfst: generator-raw-gt-%.tmp.hfst $(EST_EXTRA_PRE_FILTERS
 		| $(HFST_REGEXP2FST) $(VERBOSITY) $(HFST_FLAGS) -S --xerox-composition=ON \
 		> $@
 
-# include paired words in the raw generator
 # HFST:
+# include paired words in the raw generator
 generator-raw-gt-%.hfst: generator-raw-gt-%.aaa.hfst \
 					generator-wordpairs-raw.aaa.hfst 
 	hfst-union -1 $< -2 generator-wordpairs-raw.aaa.hfst -o $@
 
 # ... also the raw analyser
-# HFST:
 analyser-raw-gt-%.hfst: generator-raw-gt-%.hfst
 		$(HFST_INVERT) $(VERBOSITY) $(HFST_FLAGS) < $< > $@
+
+# XEROX:
+# include paired words in the raw analyser
+analyser-raw-gt-%.xfst: analyser-raw-gt-%.aaa.xfst \
+					analyser-wordpairs-raw.aaa.xfst 
+	$(AM_V_XFST_TOOL)$(PRINTF) 'read regex @\"$<\" ; \n\
+		read regex @\"analyser-wordpairs-raw.aaa.xfst\" ; \n\
+		union net\n\
+		save stack $@\n\
+		quit\n' | $(XFST) $(VERBOSITY)
+
+# ... also the raw generator
+generator-raw-gt-%.xfst: analyser-raw-gt-%.xfst
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "\
+		 load stack $$<\n\
+		 $$(INVERT_XFST)$$(INVERT_FOMA)\
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
 
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######

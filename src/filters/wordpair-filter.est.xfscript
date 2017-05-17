@@ -1,9 +1,13 @@
 #
 
-#define WB [ "#" ] ;
+define Hyphen [ "-" ] ;
+define Number ["+Sg" | "+Pl" ];
+define Case10 ["+Nom" | "+Gen" | "+Par" | "+Ill" | "+Ine" | "+Ela" | "+All" | "+Ade" | "+Abl" | "+Tra" ]; 
+define CaseNinaTaga ["+Trm" | "+Ess" | "+Abe" | "+Com"] ;
+define Case [ Case10 | CaseNinaTaga ] ;
 
 define SameNumber $[["+Sg" ?* "+Sg"] | ["+Pl" ?* "+Pl"]] ;
-define SameCase [["+Nom" ?* "+Nom"] | 
+define SameCase10 [["+Nom" ?* "+Nom"] | 
                  ["+Gen" ?* "+Gen"] | 
                  ["+Par" ?* "+Par"] | 
                  ["+Ill" ?* "+Ill"] | 
@@ -14,17 +18,16 @@ define SameCase [["+Nom" ?* "+Nom"] |
                  ["+Abl" ?* "+Abl"] | 
                  ["+Tra" ?* "+Tra"]] ; 
 
-define NinaTaga [["+Gen" ?* "+Trm"] | 
-                 ["+Gen" ?* "+Ess"] | 
-                 ["+Gen" ?* "+Abe"] | 
-                 ["+Gen" ?* "+Com"]] ; 
+define GenNinaTaga ["+Gen" ?* CaseNinaTaga] ; 
 
-define PairedCase [ ?* [SameCase | NinaTaga] ?* ];
+define PairedCase [ ?* [SameCase10 | GenNinaTaga] ?* ];
 
 define Pairs [[{emb} ?* {kumb}] | [{kihin} ?* {kahin}]] ;
 
 define WordPairs [?* Pairs ?*] ;
 
-regex [WordPairs .o. SameNumber .o. PairedCase] ;
+define CleanUp [[..] <- Case || Number _ ?* Hyphen ?* Number Case ,, [..] <- Number || _ Case ?* Hyphen ?* Number Case ] ;
+
+regex [ CleanUp .o. [WordPairs & SameNumber & PairedCase] ] ;
 
 
