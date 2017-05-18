@@ -156,13 +156,7 @@ pair_final.tmp.%: pair_final.tmp1.% \
 #
 
 redundant_wordpairs.%: pair_final.tmp.% pair_initial.tmp.%
-	$(AM_V_XFST_TOOL)$(PRINTF) 'read regex @"pair_final.tmp.$*" .o. ~$$[»] ; \n'\
-		'regex ["-"] ; \n'\
-		'concatenate net\n'\
-		'read regex ~$$["+Foc/gi"] .o. @"pair_initial.tmp.$*" .o. ~$$[»] ; \n'\
-		'concatenate net\n'\
-		'save stack $@\n'\
-		'quit\n' | $(XFST_TOOL)
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"pair_final.tmp.$*\" .o. ~[?* » ?*] ; \nregex [\"-\"] ; \nconcatenate net\nread regex ~[?* \"+Foc/gi\" ?*] .o. @\"pair_initial.tmp.$*\" .o. ~[?* » ?*] ; \nconcatenate net\nsave stack $@\nquit\n" | $(XFST_TOOL)
 
 # We need to add processing of language-specific tags in the generator for paired words:
 # HFST:
@@ -221,19 +215,15 @@ analyser-raw-gt-%.hfst: generator-raw-gt-%.hfst
 # include paired words in the raw analyser
 analyser-raw-gt-%.xfst: analyser-raw-gt-%.aaa.xfst \
 					analyser-wordpairs-raw.aaa.xfst 
-	$(AM_V_XFST_TOOL)$(PRINTF) 'read regex @\"$<\" ; \n\
-		read regex @\"analyser-wordpairs-raw.aaa.xfst\" ; \n\
-		union net\n\
-		save stack $@\n\
-		quit\n' | $(XFST) $(VERBOSITY)
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"analyser-wordpairs-raw.aaa.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
 # ... also the raw generator
-generator-raw-gt-%.xfst: analyser-raw-gt-%.xfst
-	$$(AM_V_XFST_TOOL)$$(PRINTF) "\
-		 load stack $$<\n\
-		 $$(INVERT_XFST)$$(INVERT_FOMA)\
-		 save stack $$@\n\
-		 quit\n" | $$(XFST_TOOL)
+#generator-raw-gt-%.xfst: analyser-raw-gt-%.xfst
+#	$$(AM_V_XFST_TOOL)$$(PRINTF) "\
+#		 load stack $$<\n\
+#		 $$(INVERT_XFST)$$(INVERT_FOMA)\
+#		 save stack $$@\n\
+#		 quit\n" | $$(XFST_TOOL)
 
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######
