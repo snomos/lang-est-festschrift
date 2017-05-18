@@ -148,6 +148,7 @@ pair_final.tmp.%: pair_final.tmp1.% \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
+
 # HFST: generator 
 # Xerox & FOMA: analyser
 # put parts together
@@ -155,13 +156,13 @@ pair_final.tmp.%: pair_final.tmp1.% \
 #
 
 redundant_wordpairs.%: pair_final.tmp.% pair_initial.tmp.%
-	$(AM_V_XFST_TOOL)$(PRINTF) 'read regex @\"pair_final.tmp.$*\" .o. ~$$[»] ; \n\
-		regex ["-"] ; \n\
-		concatenate net\n\
-		read regex ~$$[\"+Foc/gi\"] .o. @\"pair_initial.tmp.$*\" .o. ~$$[»] ; \n\
-		concatenate net\n\
-		save stack $@\n\
-		quit\n' | $(XFST_TOOL)
+	$(AM_V_XFST_TOOL)$(PRINTF) 'read regex @"pair_final.tmp.$*" .o. ~$$[»] ; \n'\
+		'regex ["-"] ; \n'\
+		'concatenate net\n'\
+		'read regex ~$$["+Foc/gi"] .o. @"pair_initial.tmp.$*" .o. ~$$[»] ; \n'\
+		'concatenate net\n'\
+		'save stack $@\n'\
+		'quit\n' | $(XFST_TOOL)
 
 # We need to add processing of language-specific tags in the generator for paired words:
 # HFST:
@@ -174,7 +175,7 @@ generator-wordpairs-raw.aaa.hfst: redundant_wordpairs.hfst $(EST_WORDPAIR_FILTER
 		> $@
 
 # XEROX:
-analyser--wordpairs-raw.aaa.xfst: redundant_wordpairs.xfst $(EST_WORDPAIR_FILTERS:%=%.xfst)
+analyser-wordpairs-raw.aaa.xfst: redundant_wordpairs.xfst $(EST_WORDPAIR_FILTERS:%=%.xfst)
 	$(AM_V_XFST)$(PRINTF) "read regex                         \
 			$(EST_WORDPAIR_FILTERS:%=@\"%.xfst\" .o.)    \
 			@\"$<\"                                       \
