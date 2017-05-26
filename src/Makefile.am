@@ -160,7 +160,8 @@ redundant_wordpairs.%: pair_final.tmp.% pair_initial.tmp.%
 
 # We need to add processing of language-specific tags in the generator for paired words:
 # HFST:
-generator-wordpairs-raw.aaa.hfst: redundant_wordpairs.hfst $(EST_WORDPAIR_FILTERS:%=%.hfst)
+generator-wordpairs-raw.aaa.hfst: redundant_wordpairs.hfst \
+					$(EST_WORDPAIR_FILTERS:%=%.hfst)
 	$(AM_V_RGX2FST)$(PRINTF) "\
 			$(EST_WORDPAIR_FILTERS:%=@\"%.hfst\" .o.)    \
 			@\"$<\"                                       \
@@ -169,7 +170,8 @@ generator-wordpairs-raw.aaa.hfst: redundant_wordpairs.hfst $(EST_WORDPAIR_FILTER
 		> $@
 
 # XEROX:
-analyser-wordpairs-raw.aaa.xfst: redundant_wordpairs.xfst $(EST_WORDPAIR_FILTERS:%=%.xfst)
+analyser-wordpairs-raw.aaa.xfst: redundant_wordpairs.xfst \
+					$(EST_WORDPAIR_FILTERS:%=%.xfst)
 	$(AM_V_XFST)$(PRINTF) "read regex                         \
 			$(EST_WORDPAIR_FILTERS:%=@\"%.xfst\" .o.)    \
 			@\"$<\"                                       \

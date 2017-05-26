@@ -3,8 +3,30 @@
 
 LEXICON Root
 
-emb:emmB1%>%{pl.i%}%{rare%} PIIM ;
-kihin:kihin MAGUS ;
+ajalehed:aja#l´ehT1%>%{pl.i%} EIT ;
+kimpsud:k´imps%>%{pl.e%} KOON ;
+kopsud:k´ops%>%{pl.e%}%{rare%} KOON ;
+luud:l´uu%>%{id%} PUU ;
 
+emb:emmB1%>%{pl.i%}%{rare%} PIIM ;
+mitu:m´ittU2 HAARE ;
+tühi:t´ühJ1%>%{pl.e%} PIIM ;
+
+ematu:ematu AASTA ;
+istumine:istumine OLULINE ;
+
+kibin:kibin MAGUS ;
+kigin:kigin MAGUS ;
+kihin:kihin MAGUS ;
+kilin:kilin MAGUS ;
+kirin:kirin MAGUS ;
+klibin:klibin MAGUS ;
+prigin:prigin MAGUS ;
+rigin:rigin MAGUS ;
+sidin:sidin MAGUS ;
+sigin:sigin MAGUS ;
+sihin:sihin MAGUS ;
+sirin:sirin MAGUS ;
+sisin:sisin MAGUS ;
 
 

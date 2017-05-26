@@ -6,7 +6,13 @@ define Case10 ["+Nom" | "+Gen" | "+Par" | "+Ill" | "+Ine" | "+Ela" | "+All" | "+
 define CaseNinaTaga ["+Trm" | "+Ess" | "+Abe" | "+Com"] ;
 define Case [ Case10 | CaseNinaTaga ] ;
 
+# final parts of paired words in plural
+define BadSgWord [{ajakirjad} | {kompsud} | {maksad} | {kondid} | {liikmed} ] ;
+
+define BadSingular $[ BadSgWord "+N" "+Sg" ] ;
+
 define SameNumber $[["+Sg" \Number* "+Sg"] | ["+Pl" \Number* "+Pl"]] ;
+
 define SameCase10 [["+Nom" \Case* "+Nom"] | 
                  ["+Gen" \Case* "+Gen"] | 
                  ["+Par" \Case* "+Par"] | 
@@ -22,13 +28,40 @@ define GenNinaTaga ["+Gen" \Case* CaseNinaTaga] ;
 
 define PairedCase [ \Case* [SameCase10 | GenNinaTaga] \Case* ];
 
-define Pairs [[{emb} ?* {kumb}] | [{kihin} ?* {kahin}]] ;
+# between words may be (including a flag diacritic and a usage tag as '?'):
+define Middle [Number Case ? (?) Hyphen] ;
+
+define Pairs [ [{ajalehed} Middle {ajakirjad}]
+| [{kimpsud} Middle {kompsud}]
+| [{kopsud} Middle {maksad}]
+| [{luud} Middle {kondid}]
+| [{luud} Middle {liikmed}]
+| [{emb} Middle {kumb}]
+| [{mitu} Middle {setu}]
+| [{tühi} Middle {tähi}]
+| [{ematu} Middle {isatu}]
+| [{istumine} Middle {astumine}]
+| [{kibin} Middle {kabin}]
+| [{kigin} Middle {kägin}]
+| [{kihin} Middle {kahin}]
+| [{kilin} Middle {kolin}]
+| [{kilin} Middle {kõlin}]
+| [{kirin} Middle {kärin}]
+| [{klibin} Middle {klobin}]
+| [{prigin} Middle {pragin}]
+| [{rigin} Middle {ragin}]
+| [{sidin} Middle {sädin}]
+| [{sigin} Middle {sagin}]
+| [{sihin} Middle {sahin}]
+| [{sirin} Middle {sorin}]
+| [{sisin} Middle {susin}]
+] ;
 
 define WordPairs [?* Pairs ?*] ;
 
-define CleanUp [[..] <- Case || Number _ \[Number | Case]* Hyphen \[Number | Case]* Number Case ,, 
-                [..] <- Number || _ Case \[Number | Case]* Hyphen \[Number | Case]* Number Case ] ;
+define CleanUp [[..] <- Case || Number _ ? (?) Hyphen \[Number | Case]* Number Case ,, 
+                [..] <- Number || _ Case ? (?) Hyphen \[Number | Case]* Number Case ] ;
 
-regex [ CleanUp .o. [WordPairs & SameNumber & PairedCase] ] ;
+regex [ CleanUp .o. [WordPairs & SameNumber & ~BadSingular & PairedCase] ] ;
 
 
