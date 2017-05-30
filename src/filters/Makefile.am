@@ -33,7 +33,7 @@ GIELLA_FILTER_LOCAL_XFSCRIPT_SRCS=reorder-tags.est.xfscript \
                                   compound-filter.est.xfscript \
                                   disallow-derivations.est.xfscript \
                                   wordpair-filter.est.xfscript \
-                                  wordpair-reorder-tags.est.xfscript
+                                  numeral-filter.est.xfscript
 
 # List any local filter lexc files here:
 GIELLA_FILTER_LOCAL_LEXC_SRCS=

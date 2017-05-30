@@ -282,6 +282,13 @@ LEXICON KÖÖMEN    ! only köömen; like KEVAD
                   :e 2C ;    ! köömne etc  
 %+Use%/CommonNotNorm:%>t SG_PARTITIVE ;    ! kööment
 
+LEXICON KÜMMEND   ! only kümmend; like KÖÖMEN? SEEME?
+
+                  :nd SG_NOMINATIVE ;    ! kümmend
+                  :%>t SG_PARTITIVE ;    ! (viit)kümmet
+       %+Use%/Rare:nd SG_PARTITIVE ;     ! (viit)kümmend
+                  :ne 2C_STRONGPL ;      ! (viie)kümne etc
+
 LEXICON LAPS    ! only laps, uks; notice the weird (?) use of {W}
 
                   : SG_NOMINATIVE ;    ! laps
@@ -455,6 +462,27 @@ LEXICON TEINE    ! only teine; almost = NAINE; much like OLULINE
                   :E1 SG_ILLATIVE ;                ! teise (should be 3rd grade... )
                   :%>I1 PL_PARTITIVE ;             ! teisi
                   : LINE_US_RARE ;              ! teisesse, teisil etc
+
+LEXICON TEIST    ! only -teist(kümmend); much like KÜMMEND
+                  
+                  : SG_NOMINATIVE ;            ! viisteist
+       %+Use%/Rare:#kümmend SG_NOMINATIVE ;    ! viisteistkümmend
+                  : SG_PARTITIVE ;             ! viitteist
+       %+Use%/Rare:#kümme%>t SG_PARTITIVE ;    ! viitteistkümmet
+       %+Use%/Rare:#kümmend SG_PARTITIVE ;     ! viitteistkümmend
+       %+Use%/Rare: SG_GENITIVE ;              ! viieteist
+                  :#kümne 2C_STRONGPL ;        ! viieteistkümne etc
+
+LEXICON POOLTEIST     ! only (pool)teist; much like TEINE ?
+                  
+                  :#teist SG_NOMINATIVE ;
+                  :e#teise N_SG_SUBPARA ;      ! pooleteise etc          
+                  :t#teis%>t SG_PARTITIVE ;    ! pooltteist
+       %+Use%/Rare:#teis NE_S_COMMON ;         ! poolteise etc
+                  :e#teise%>sse SG_ILLATIVE ;  ! 
+       %+Use%/Rare:#teise%>sse SG_ILLATIVE ;   ! 
+
+
 
 LEXICON TUHAT    ! only tuhat; like LOHAKAS
 

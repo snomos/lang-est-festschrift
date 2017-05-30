@@ -22,7 +22,7 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
            !! at the end of a Sg Nom word is written k p t, 
            !! so it must be doubled  (kabinet - kabinetti). 
            !! Also, tulema, panema, surema, olema, minema have tulla, tulles etc...
- %{no.apo%}:0  !!≈ * __@CODE@__ trigger for deleting apostrofy (normally used for foreign word inflections) from Sg Nom
+ %{no.apo%}:0  !!≈ * __@CODE@__ trigger for deleting apostrophe (normally used for foreign word inflections) from Sg Nom
 
 !! !Special surface side symbols, used in rule contexts
 
@@ -34,7 +34,7 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
 
  %{apo%}:'   !! Apostrofy is used for separating inflectional affix from a foreign word lemma
 
- %{apo%}:0   !!≈ * __@CODE@__ ... but Sg Nom is without apostrofy
+ %{apo%}:0   !!≈ * __@CODE@__ ... but Sg Nom is without apostrophe
 
 !! !Morphophonemes
 
@@ -1400,10 +1400,10 @@ Cx:Cy  <=> :voiceless Null* SuffixBorder _ ;
 ! surface: m ä s s e l 0  0  0 d a     
 
 ! If a foreign word is pronounced not according to Estonian writing conventions (Braille - brai)
-! then its inflectional ending is separated with an apostrophy (superscript 9) ’ 
+! then its inflectional ending is separated with an apostrophe (superscript 9) ’ 
 ! This applies even to Sg Gen: Braille’
 ! The only form without ’ is Sg Nom, so {no_apo} is a standard trigger in continuation lexicons
-"No apostrofy"
+"No apostrophe"
 
 %{apo%}:0  <=> _ %{no.apo%}: ;
 

@@ -48,3 +48,4 @@ cat fs_gt.inflecting.tmp1 | grep '+V:' >> verbs.lexc
 cat pronouns_exceptions.handmade >> pronouns.lexc
 cat ara.handmade >> noninflecting_verbs.lexc
 
+echo 'poolteist+Num+Card:p´ool#t´eist POOLTEIST ;' >> numerals.lexc
