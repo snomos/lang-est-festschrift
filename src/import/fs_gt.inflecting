@@ -1,3 +1,36 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 voor:0904| 1/16-finaal+N:1/16-fin´aal TAUD ;
 voor:0405| 1/2-finaal+N:1/2-fin´aal TAUD ;
 voor:0904| 1/4-finaal+N:1/4-fin´aal TAUD ;
@@ -14942,12 +14975,10 @@ sagem:0905| kaheksandikfinaal+N:k`aheksand´ik#fin´aal TAUD ;
 lisa:0094| kaheksandik+N:k`aheksand´ik ELANIK ;""lisa:0094| kaheksandik+Num+Card:k`aheksand´ik ELANIK ;
 vvs:0093| kaheksane+A:kaheksane OLULINE ;
 lisa:0094| kaheksa+Num+Card:kaheksa AASTA ;
-lisa:0094| kaheksasada+Num+Card:kaheksa#saD1J1a SADA ;
 lisa:0094| kaheksasajas+Num+Ord:kaheksa#sajanS1 HALE ;
 lisa:0094| kaheksas+Num+Ord:kaheksanS1 HALE ;
 lisa:0094| kaheksateistkümnendik+Num+Card:kaheksa#t´eist#k´ümnend´ik ELANIK ;
 lisa:0094| kaheksateistkümnes+Num+Ord:kaheksa#t´eist#k´ümnenS1 HALE ;
-lisa:0094| kaheksatuhat+Num+Card:kaheksa#tuha TUHAT ;
 tes:0802| kahekõneline+A:kahe#kõneline OLULINE ;
 tes:0802| kahekõne+N:kahe#kõne PERE ;
 tes:0802| kahekülgne+A:kahe#k´ül,gne SOOLANE ;
@@ -15279,8 +15310,6 @@ tesm:0802| kakskeelne+A:k´aks#k´eelne SOOLANE ;
 lisa:1001| kakskeelsus+N:k´aks#k´eelsus SUULINE ;
 lisa:0094| kaks+Num+Card:k´a KAKS ;
 lisa:1102| kakspunkt+N:k´aks#p´unkt TAUD ;
-lisa:0094| kakssada+Num+Card:k´aks#saD1J1a SADA ;
-lisa:0094| kakstuhat+Num+Card:k´aks#tuha TUHAT ;
 tes:0902| kaksuslik+A:k´aksusl´ik ELANIK ;
 vvs:0093| kaksus+N:k´aksus SUULINE ;
 vvs:0093| kaktus+N:k´aktus SUULINE ;
@@ -19711,12 +19740,9 @@ lisa:0094| kolmisruse+N:kol,mis#r´usK1E2 HAARE ;
 vvsv:0093| kolmitama+V:kol,mita ELAMA ;
 tes:0802| kolmjalg+N:k´olm#j´alG1%>%{pl.u%} JALG ;
 lisa:0901| kolmkõla+N:k´olm#kõla%{stemill%}%{rare%} KAVA ;
-sage:0905| kolm-nelisada+Num+Card:k´olm-nel,i#saD1J1a SADA ;
 lisa:0094| kolm+Num+Card:k´olm%>%{pl.i%}%{rare%} EIT ;
 sagem:0905| kolmnurkne+A:k´olm#n´urkne SOOLANE ;
 lisa:0094| kolmnurk+N:k´olm#n´urk%>%{pl.i%} PIIM ;
-lisa:0094| kolmsada+Num+Card:k´olm#saD1J1a SADA ;
-lisa:0094| kolmtuhat+Num+Card:k´olm#tuha TUHAT ;
 sage:0905| kolmveerand+Num+Card:k´olm#veerand REDEL ;""sage:0905| kolmveerand+N:k´olm#veerand REDEL ;
 lisa:0094| kolmveerandsada+Num+Card:k´olm#veerand#saD1J1a SADA ;
 vvs:0093| kolombiin+N:kolomb´iin TAUD ;
@@ -22536,8 +22562,6 @@ vvs:0093| kuusk+N:k´uusK1%>%{pl.i%} EIT ;
 tes:0802| kuusmann+N:k´uus#m´an,n TAUD ;
 lisa:0094| kuus+Num+Card:k´uuS1%{stemill%} VARS ;
 lisa:0094| kuusnurk+N:k´uus#n´urk%>%{pl.i%} PIIM ;
-lisa:0094| kuussada+Num+Card:k´uus#saD1J1a SADA ;
-lisa:0094| kuustuhat+Num+Card:k´uus#tuha TUHAT ;
 lisa:0403| kuutaja+N:k´uutaja AASTA ;""lisa:0403| kuutaja+A:k´uutaja AASTA ;
 vvs:0093| kuut+N:k´uut, TAUD ;
 lisa:0094| Kuutse+N+Prop:Kuutse PERE ;
@@ -24024,7 +24048,6 @@ lisa:0094| kümmekond+Num+Card:k`ümmek´onnD1%>%{pl.i%} PIIM ;
 vvs:0093| kümmel+N:k´ümmE2l REDEL ;
 lisa:0094| kümme+Num+Card:kümmE2 SEEME ;
 lisa:0094| kümmepäevak+N:kümme#päevak VIRSIK ;
-lisa:0094| kümmetuhat+Num+Card:kümme#tuha TUHAT ;
 sage:0905| kümneaastane+A:k´ümne#´aastane KATKINE ;
 lisa:1001| kümnekas+N:kümneka LOHAKAS ;
 lisav:0094| kümnekordistama+V:k´ümne#kordista ELAMA ;
@@ -26657,7 +26680,6 @@ tes:0802| lisasissetulek+N:lisa#s´isse#tulek VIRSIK ;
 tes:0802| lisatasu+N:lisa#tasu KAVA ;
 tes:0802| lisateenistus+N:lisa#teenistus OLULINE ;
 tes:0802| lisatingimus+N:lisa#t´ingimus OLULINE ;
-lisa:0094| lisatuhat+N:lisa#tuha TUHAT ;
 tes:0802| lisatulu+N:lisa#tulu KAVA ;
 sage:0905| lisatund+N:lisa#t´unnD1 TAUD ;
 sage:0905| lisatöö+N:lisa#t´öö%>%{id%} PUU ;
@@ -31037,8 +31059,6 @@ lisa:0094| mitteühinemisliikumine+N:m´itte#ühinemis#l´iikumine OLULINE ;
 tes:0802| mitteühtlane+A:m´itte#´ühtlane SUULINE ;
 lisa:0094| Mitt+N+Prop:M´itt TAUD ;
 vvs:0093| mitu+Pron:m´ittU2 HAARE ;
-lisa:0094| mitusada+Num+Card:mitu#saD1J1a SADA ;
-lisa:0094| mitutuhat+Num+Card:mitu#tuha TUHAT ;
 vvs:0093| mnemoonika+N:mnemoonika AASTA ;
 vvs:0093| mnemooniline+A:mnemooniline OLULINE ;
 tes:0096| mnemoturniir+N:mnemo#turn´iir TAUD ;
@@ -32049,11 +32069,9 @@ lisa:0602| mõnetine+A:mõnetine OLULINE ;
 vvs:0093| mõningane+Pron:mõningane OLULINE ;
 vvs:0093| mõningas+Pron:mõninga LOHAKAS ;
 vvs:0093| mõni+Pron:mõnD3 MÕNI ;
-lisa:0094| mõnisada+Num+Card:mõni#saD1J1a SADA ;
 lisa:0094| Mõniste+N+Prop:Mõniste AASTA ;
 vvsv:0093| mõnitama+V:mõnita ELAMA ;
 tes:0902| mõnitamine+N:mõnitamine OLULINE ;
-lisa:0094| mõnituhat+Num+Card:mõni#tuha TUHAT ;
 vvs:0093| mõnitus+N:mõnitus OLULINE ;
 lisa:0605| Mõntu+N+Prop:Mõntu PERE ;
 sage:0905| mõnuaine+N:mõnu#´aine PINGE ;
@@ -33400,8 +33418,6 @@ lisa:0094| neli+Num+Card:n´el,J1%>%{pl.u%} PIIM ;
 sage:0905| nelinurkne+A:neli#n´urkne SOOLANE ;
 lisa:0094| nelinurk+N:neli#n´urk%>%{pl.i%} PIIM ;
 tes:0802| nelipüha+N:neli#püha%>%{pl.i%} KAVA ;
-lisa:0094| nelisada+Num+Card:neli#saD1J1a SADA ;
-lisa:0094| nelituhat+Num+Card:neli#tuha TUHAT ;
 sage:0905| nelja-aastane+A:nel,ja-´aastane KATKINE ;
 tes:0802| neljajalgne+A:nelja#j´algne SOOLANE ;""tes:0802| neljajalgne+N:nelja#j´algne SOOLANE ;
 sage:0905| neljakandiline+A:nelja#kan,diline OLULINE ;
@@ -35915,12 +35931,9 @@ vvsv:0093| paaritama+V:paarita ELAMA ;
 vvs:0093| paaritu+A:paaritu AASTA ;
 vvsv:0093| paarituma+V:paaritu ELAMA ;
 vvs:0093| paaritus+N:paaritus OLULINE ;
-sage:0905| paar-kolmsada+Num+Card:p´aar-k´olm#saD1J1a SADA ;
 lisa:0094| paar+Num+Card:p´aar TAUD ;""lisa:0094| paar+N:p´aar TAUD ;
-lisa:0094| paarsada+Num+Card:p´aar#saD1J1a SADA ;
 lisa:1102| paarsus+N:p´aarsus SUULINE ;
 sage:0905| paartee+N:p´aar#t´ee%>%{id%} PUU ;
-lisa:0094| paartuhat+Num+Card:p´aar#tuha TUHAT ;
 lisa:0094| paasapüha+N:paasa#püha%>%{pl.i%} KAVA ;
 lisa:0094| paasatoit+N:paasa#t´oit%>%{pl.e%} KOON ;
 vvs:0093| paas+N:p´aaS1 TAUD ;
@@ -39286,8 +39299,6 @@ sagem:0905| poolpime+A:p´ool#pime HALE ;
 sage:0905| poolring+N:p´ool#r´ing TAUD ;
 sage:0905| poolsaabas+N:p´ool#s´aaP2a KOTKAS ;
 sage:0905| poolsaar+N:p´ool#s´aar%{stemill%} KEEL ;
-lisa:0094| poolsada+Num+Card:p´ool#saD1J1a SADA ;
-lisa:1001| poolsadatuhat+Num+Card:p´ool#sada#tuha TUHAT ;
 sage:0905| poolsajand+N:p´ool#sajand REDEL ;
 sage:0905| poolsalajane+A:p´ool#salajane OLULINE ;
 sage:0905| poolsosin+N:p´ool#sosin MAGUS ;
@@ -39298,13 +39309,9 @@ lisa:0093| poolsus+N:p´oolsus SUULINE ;
 sage:0905| poolsõõr+N:p´ool#s´õõr TAUD ;
 lisa:0904| pooltargument+N:p´oolt#`argum´en,t TAUD ;
 tesv:0902| poolteist=käima+V:p´ool#t´eist=k´äi VIIMA ;
-lisa:0094| poolteistsada+N:p´ool#t´eist#saD1J1a SADA ;
-lisa:0094| poolteistsada+N:p´ool#t´eist#saD1J1a SADA ;
-lisa:0094| poolteisttuhat+Num+Card:p´ool#t´eist#tuha TUHAT ;
 lisa:0094| poolthääl+N:p´oolt#h´ääl%{stemill%} KEEL ;
 tesv:0902| poolt=olema+V:p´oolt= OLEMA ;
 tes:0802| pooltoores+A:p´ool#t´oore KOTKAS ;
-lisa:0094| pooltuhat+Num+Card:p´ool#tuha TUHAT ;
 sage:0905| pooltund+N:p´ool#t´unnD1 TAUD ;
 tes:0802| pooltuul+N:p´ool#t´uul%{stemill%} KEEL ;
 sage:0905| pooltühi+A:p´ool#t´ühJ1%>%{pl.e%} PIIM ;
@@ -46078,8 +46085,6 @@ voor:1102| Seišellid+N+Prop:Seišell TAUD ;
 vvs:0093| seitel+N:s´eitE2l REDEL ;
 lisa:0094| seitseaastak+N:seitse#´aastak VIRSIK ;
 lisa:0094| seitse+Num+Card:s´eitsE2 HAARE ;
-lisa:0094| seitsesada+Num+Card:seitse#saD1J1a SADA ;
-lisa:0094| seitsetuhat+Num+Card:seitse#tuha TUHAT ;
 sage:0905| seitsmeaastane+A:s´eitsme#´aastane KATKINE ;
 lisav:0094| seitsmekordistama+V:s´eitsme#kordista ELAMA ;
 lisav:0094| seitsmekordistuma+V:s´eitsme#kordistu ELAMA ;
@@ -59112,8 +59117,6 @@ vvs:0093| viisk+N:v´iisK1%>%{pl.e%} KOON ;
 lisa:0094| viis+Num+Card:v´iiS1%{stemill%} VARS ;
 lisa:0094| viisnurk+N:v´iis#n´urk%>%{pl.i%} PIIM ;
 vvs:0093| viis+N:v´iis TAUD ;
-lisa:0094| viissada+Num+Card:v´iis#saD1J1a SADA ;
-lisa:0094| viistuhat+Num+Card:v´iis#tuha TUHAT ;
 vvsv:0093| viitama+V:v´iita HAKKAMA ;
 tes:0902| viitamine+N:v´iitamine OLULINE ;
 vvs:0093| viitane+A:v´iitane KATKINE ;
@@ -62105,12 +62108,10 @@ lisa:0094| üheksakümnes+Num+Ord:üheksa#k´ümnenS1 HALE ;
 lisa:0094| üheksandik+N:`üheksand´ik ELANIK ;""lisa:0094| üheksandik+Num+Card:`üheksand´ik ELANIK ;
 vvs:0093| üheksane+A:üheksane OLULINE ;
 lisa:0094| üheksa+Num+Card:üheksa AASTA ;
-lisa:0094| üheksasada+Num+Card:üheksa#saD1J1a SADA ;
 lisa:0094| üheksasajas+Num+Ord:üheksa#sajanS1 HALE ;
 lisa:0094| üheksas+Num+Ord:üheksanS1 HALE ;
 lisa:0094| üheksateistkümnendik+Num+Card:üheksa#t´eist#k´ümnend´ik ELANIK ;
 lisa:0094| üheksateistkümnes+Num+Ord:üheksa#t´eist#k´ümnenS1 HALE ;
-lisa:0094| üheksatuhat+Num+Card:üheksa#tuha TUHAT ;
 tes:0802| ühekõneline+A:ühe#kõneline OLULINE ;
 tes:0802| ühekõne+N:ühe#kõne PERE ;
 tes:0802| ühekülamees+N:ühe#küla#me MEES ;
@@ -62324,7 +62325,6 @@ lisa:0094| üksmeelne+A:´üks#m´eelne SOOLANE ;
 tes:0802| üksmeel+N:´üks#m´eel%{stemill%} KEEL ;
 lisa:0094| üks+Num+Card:´ü KAKS ;""lisa:0094| üks+Pron:´ü KAKS ;
 sage:0905| ükspäev+N:´üks#p´äev%>%{pl.i%} PIIM ;
-lisa:0094| ükssada+Num+Card:´üks#saD1J1a SADA ;
 lisa:0094| üksteisemõistmine+N:´üks#teise#m´õistmine OLULINE ;
 lisa:0093| üksteise+Pron:´üks#teine OLULINE ;
 vvs:0093| üksus+N:´üksus SUULINE ;

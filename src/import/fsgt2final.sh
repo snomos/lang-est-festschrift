@@ -41,11 +41,14 @@ cat fs_gt.inflecting.tmp1 | grep '+A+Comp' >> comparative_adjectives.lexc
 cat fs_gt.inflecting.tmp1 | grep '+A+Superl' >> superlative_adjectives.lexc
 cat fs_gt.inflecting.tmp1 | grep '+N:' >> nouns.lexc
 cat fs_gt.inflecting.tmp1 | grep '+N+Prop' >> propernouns.lexc
-cat fs_gt.inflecting.tmp1 | grep '+Num' >> numerals.lexc
+cat fs_gt.inflecting.tmp1 | grep '+Num' \
+| grep -v '#p.aar ' \
+>> numerals.lexc
+
 cat fs_gt.inflecting.tmp1 | grep '+Pron' >> pronouns.lexc
 cat fs_gt.inflecting.tmp1 | grep '+V:' >> verbs.lexc
 
 cat pronouns_exceptions.handmade >> pronouns.lexc
 cat ara.handmade >> noninflecting_verbs.lexc
 
-echo 'poolteist+Num+Card:p´ool#t´eist POOLTEIST ;' >> numerals.lexc
+echo 'poolteist+Num+Card:p´ool POOLTEIST ;' >> numerals.lexc

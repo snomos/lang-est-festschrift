@@ -140,7 +140,14 @@ cat fs_lex.gt1 \
 | sed 's/\(t.al,\)v%>%{pl.i%}%{rare%} EIT /\1 TALV /' \
 | sed 's/\(p.urJ1\) EIT /\1 PURI /' \
 | sed 's/\(v.äi\) PÄIKE /\1 VÄIKE /' \
+\
 | sed 's/:saD2a KAVA /:saD2a%>%{pl.u%} SADA /' \
+| sed '/_.*#.* SADA /s/$/EEMALDADA/' \
+| sed '/_.*#.* TUHAT /s/$/EEMALDADA/' \
+| sed '/veerand.*EEMALDADA/s/EEMALDADA//' \
+| sed '/aasta.*EEMALDADA/s/EEMALDADA//' \
+| sed '/EEMALDADA/s/^.*$//' \
+\
 | sed 's/#&#p´ersse//' \
 | sed 's/#&#p´õrssa//' \
 > fs_gt.pre-inflecting
