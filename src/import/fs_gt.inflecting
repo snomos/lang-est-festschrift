@@ -33,6 +33,7 @@
 
 
 
+
 voor:0904| 1/16-finaal+N:1/16-fin´aal TAUD ;
 voor:0405| 1/2-finaal+N:1/2-fin´aal TAUD ;
 voor:0904| 1/4-finaal+N:1/4-fin´aal TAUD ;
@@ -62290,7 +62291,6 @@ vvsv:0093| ühtsustama+V:ühtsusta ELAMA ;
 tes:0902| ühtsustamine+N:ühtsustamine OLULINE ;
 vvsv:0093| ühtsustuma+V:ühtsustu ELAMA ;
 tes:1002| ühtsustus+N:ühtsustus OLULINE ;
-tes:0802| üksainuke+A:´üks#ainuke PEENIKE ;
 sage:0905| üksijäetus+N:üksi#j´äetus SUULINE ;
 tes:0802| üksikasi+N:üksik#´as,J1%>%{pl.u%} PIIM ;
 lisa:0093| üksikasjalik+A:üksik#`asjal´ik ELANIK ;
