@@ -31,6 +31,8 @@
 
 
 
+
+
 voor:0904| 1/16-finaal+N:1/16-fin´aal TAUD ;
 voor:0405| 1/2-finaal+N:1/2-fin´aal TAUD ;
 voor:0904| 1/4-finaal+N:1/4-fin´aal TAUD ;
@@ -59034,7 +59036,6 @@ tesm:1002| viimistletud+A:viimistletu TUNTUD ;
 tes:0902| viimistletus+N:viimistletus OLULINE ;
 vvs:0093| viimistlus+N:viimistlus OLULINE ;
 vvs:0093| viimne+A:v´iimne SOOLANE ;
-tes:0802| viimnepäev+N:v´iimne#p´äev%>%{pl.i%} PIIM ;
 lisa:0094| Viimsi+N+Prop:V´iimsi AASTA ;
 tes:0802| viinaajaja+N:viina#ajaja AASTA ;
 tes:0802| viinaarmastaja+N:viina#armastaja AASTA ;
@@ -62290,7 +62291,6 @@ tes:0902| ühtsustamine+N:ühtsustamine OLULINE ;
 vvsv:0093| ühtsustuma+V:ühtsustu ELAMA ;
 tes:1002| ühtsustus+N:ühtsustus OLULINE ;
 tes:0802| üksainuke+A:´üks#ainuke PEENIKE ;
-tes:0802| üksainus+N:´üks#´ainU2s HOOLAS ;""tes:0802| üksainus+A:´üks#´ainU2s HOOLAS ;
 sage:0905| üksijäetus+N:üksi#j´äetus SUULINE ;
 tes:0802| üksikasi+N:üksik#´as,J1%>%{pl.u%} PIIM ;
 lisa:0093| üksikasjalik+A:üksik#`asjal´ik ELANIK ;

@@ -144,6 +144,9 @@ cat fs_lex.gt1 \
 | sed 's/:saD2a KAVA /:saD2a%>%{pl.u%} SADA /' \
 | sed '/_.*#.* SADA /s/$/EEMALDADA/' \
 | sed '/_.*#.* TUHAT /s/$/EEMALDADA/' \
+| sed '/üksainus+N:/s/$/EEMALDADA/' \
+| sed '/üksainuke+N:/s/$/EEMALDADA/' \
+| sed '/viimnepäev+N:/s/$/EEMALDADA/' \
 | sed '/veerand.*EEMALDADA/s/EEMALDADA//' \
 | sed '/aasta.*EEMALDADA/s/EEMALDADA//' \
 | sed '/EEMALDADA/s/^.*$//' \

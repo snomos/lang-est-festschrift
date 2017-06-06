@@ -228,7 +228,7 @@ num_final.tmp.%: num_final.tmp1.% \
 #
 
 redundant_wordpairs.%: pair_final.tmp.% pair_initial.tmp.%
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"pair_final.tmp.$*\" .o. ~[?* » ?*] ; \nregex [\"-\"] ; \nconcatenate net\nread regex ~[?* \"+Foc/gi\" ?*] .o. @\"pair_initial.tmp.$*\" .o. ~[?* » ?*] ; \nconcatenate net\nsave stack $@\nquit\n" | $(XFST_TOOL)
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"pair_final.tmp.$*\" .o. ~[?* » ?*] ; \nregex [(\"-\")] ; \nconcatenate net\nread regex ~[?* \"+Foc/gi\" ?*] .o. @\"pair_initial.tmp.$*\" .o. ~[?* » ?*] ; \nconcatenate net\nsave stack $@\nquit\n" | $(XFST_TOOL)
 
 redundant_numerals.%: num_final.tmp.% num_initial.tmp.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"num_final.tmp.$*\" .o. ~[?* » ?*] ; \nread regex ~[?* \"+Foc/gi\" ?*] .o. @\"num_initial.tmp.$*\" .o. ~[?* » ?*] ; \nconcatenate net\nsave stack $@\nquit\n" | $(XFST_TOOL)

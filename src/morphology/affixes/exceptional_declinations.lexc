@@ -298,6 +298,24 @@ LEXICON LAPS    ! only laps, uks; notice the weird (?) use of {W}
                   :%{W%}%>te N_PL_SUBPARA ;    ! laste etc 
                   :%>i PL_PARTITIVE ;    ! lapsi
 
+LEXICON LAPSELAPS    ! only lapselaps; the N_PL_SUBPARA is different...
+
+                  :lapse#l´aP1s SG_NOMINATIVE ;    ! laps
+                  :lapse#l´aP1se N_SG_SUBPARA ;    ! lapse etc 
+                  :lapse#l´aP1s%{W%}%>t SG_PARTITIVE ;    ! last
+                  :lapse#l´aP1se%>sse SG_ILLATIVE ;    ! lapsesse 
+                  :laste#l´aP1s%{W%}%>te N_PL_SUBPARA ;    ! laste etc 
+                  :lapse#l´aP1s%>i PL_PARTITIVE ;    ! lapsi
+
+LEXICON LAPSELAPSELAPS    ! only lapselapselaps; the N_PL_SUBPARA is different...
+
+                  :lapse#lapse#l´aP1s SG_NOMINATIVE ;    ! laps
+                  :lapse#lapse#l´aP1se N_SG_SUBPARA ;    ! lapse etc 
+                  :lapse#lapse#l´aP1s%{W%}%>t SG_PARTITIVE ;    ! last
+                  :lapse#lapse#l´aP1se%>sse SG_ILLATIVE ;    ! lapsesse 
+                  :laste#laste#l´aP1s%{W%}%>te N_PL_SUBPARA ;    ! laste etc 
+                  :lapse#lapse#l´aP1s%>i PL_PARTITIVE ;    ! lapsi
+
 LEXICON LÕUNA    ! only lõuna; almost like haare
 
                   :%{W%} 2C_LEMMA2 ;    ! lõuna, lõunat
@@ -442,6 +460,14 @@ LEXICON SEEME    ! only kümme, seeme, kööme; like HAARE
 
                   :%{W%} 2C_LEMMA2 ;    ! seeme, seemet
                   :ne 2C_STRONGPL ;     ! seemne etc, seemnete etc
+
+LEXICON SINANE    ! only (see)sinane; like SOOLANE, but additionally parallel forms sinatse-
+
+                  :sinane SOOLANE ;
+       %+Use%/Rare:sinats NE_S_COMMON ;
+       %+Use%/Rare:sinatsE1%>sse SG_ILLATIVE ;            ! soolasesse, katusesse
+       %+Use%/Rare:sinatsE1%>id PL_PARTITIVE ;            ! soolaseid, katuseid
+       %+Use%/Rare:sinatsE1%>i N_VOWEL_PL_SUBPARA ;    ! soolaseil, katuseil etc
 
 LEXICON SÜDA    ! only süda; like HAARE
 

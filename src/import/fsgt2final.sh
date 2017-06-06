@@ -52,3 +52,6 @@ cat pronouns_exceptions.handmade >> pronouns.lexc
 cat ara.handmade >> noninflecting_verbs.lexc
 
 echo 'poolteist+Num+Card:p´ool POOLTEIST ;' >> numerals.lexc
+echo 'lapselaps+N: LAPSELAPS ;' >> nouns.lexc
+echo 'lapselapselaps+N: LAPSELAPSELAPS ;' >> nouns.lexc
+
