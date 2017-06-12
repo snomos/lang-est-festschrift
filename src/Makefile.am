@@ -63,7 +63,7 @@ endif # CAN_FOMA
 #################################################
 #### Add language-specific build rules here: ####
 
-EST_EXTRA_PRE_FILTERS=filters/remove-sg-forms.est filters/remove-pl-forms.est filters/remove-sg-nom-forms.est filters/remove-non-gi-forms.est filters/disallow-derivations.est # filters/remove-usage-tags.est
+EST_EXTRA_PRE_FILTERS=filters/remove-sg-forms.est filters/remove-pl-forms.est filters/remove-sg-nom-forms.est filters/remove-non-gi-forms.est filters/block-derivations.est # filters/remove-usage-tags.est
 EST_EXTRA_POST_FILTERS=filters/compound-filter.est filters/modify-derivations.est 
 EST_WORDPAIR_FILTERS=filters/reorder-tags.est filters/wordpair-filter.est
 EST_NUMERAL_FILTERS=filters/reorder-tags.est filters/numeral-filter.est
@@ -228,10 +228,10 @@ num_final.tmp.%: num_final.tmp1.% \
 #
 
 redundant_wordpairs.%: pair_final.tmp.% pair_initial.tmp.%
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"pair_final.tmp.$*\" .o. ~[?* » ?*] ; \nregex [(\"-\")] ; \nconcatenate net\nread regex ~[?* \"+Foc/gi\" ?*] .o. @\"pair_initial.tmp.$*\" .o. ~[?* » ?*] ; \nconcatenate net\nsave stack $@\nquit\n" | $(XFST_TOOL)
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex [ [~[?* \"+Foc/gi\" ?*] .o. @\"pair_initial.tmp.$*\"] (\"-\") @\"pair_final.tmp.$*\"] .o. ~[?* » ?*] ; \nsave stack $@\nquit\n" | $(XFST_TOOL)
 
 redundant_numerals.%: num_final.tmp.% num_initial.tmp.%
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"num_final.tmp.$*\" .o. ~[?* » ?*] ; \nread regex ~[?* \"+Foc/gi\" ?*] .o. @\"num_initial.tmp.$*\" .o. ~[?* » ?*] ; \nconcatenate net\nsave stack $@\nquit\n" | $(XFST_TOOL)
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex [ [~[?* \"+Foc/gi\" ?*] .o. @\"num_initial.tmp.$*\"] @\"num_final.tmp.$*\"] .o. ~[?* » ?*] ; \nsave stack $@\nquit\n" | $(XFST_TOOL)
 
 # We need to add processing of language-specific tags in the generator for paired words:
 # HFST:
@@ -312,7 +312,9 @@ analyser-raw-gt-%.hfst: generator-raw-gt-%.hfst
 analyser-raw-gt-%.xfst: analyser-raw-gt-%.aaa.xfst \
 					analyser-wordpairs-raw.aaa.xfst \
 					analyser-numerals-raw.aaa.xfst 
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"analyser-wordpairs-raw.aaa.xfst\" ; \nunion net\nread regex @\"analyser-numerals-raw.aaa.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex [@\"$<\" | @\"analyser-wordpairs-raw.aaa.xfst\" | @\"analyser-numerals-raw.aaa.xfst\"] ; \nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
+
+#	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"analyser-wordpairs-raw.aaa.xfst\" ; \nunion net\nread regex @\"analyser-numerals-raw.aaa.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
 
 ##################################################################

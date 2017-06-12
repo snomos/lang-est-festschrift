@@ -14,23 +14,27 @@ LEXICON KES    ! kes, mis
 
 LEXICON SEE    ! see 
 
-                  :e SG_NOMINATIVE ;
-       %+Use%/Rare:%>sse SG_ILLATIVE ;    ! sesse
-+Sg+Ine%+Use%/Rare:%>s #;    ! ses
-    +Sg%+Use%/Rare:%>st ELATIVE ;    ! sest
-    +Sg%+Use%/Rare:%>l ADESSIVE ;    ! sel
-    +Sg%+Use%/Rare:%>lt ABLATIVE ;    ! selt	
-    +Sg%+Use%/Rare:%>ks TRANSLATIVE ;    ! seks
-                  : KEMISETO ;
+                  :see SG_NOMINATIVE ;
+       %+Use%/Rare:se%>sse SG_ILLATIVE ;    ! sesse
++Sg+Ine%+Use%/Rare:se%>s #;    ! ses
+    +Sg%+Use%/Rare:se%>st ELATIVE ;    ! sest
+    +Sg%+Use%/Rare:se%>l ADESSIVE ;    ! sel
+    +Sg%+Use%/Rare:se%>lt ABLATIVE ;    ! selt	
+    +Sg%+Use%/Rare:se%>ks TRANSLATIVE ;    ! seks
+                  :se KEMISETO ;
+               +Pl:nee%>d NOMINATIVE ;    ! need
+                  :ne NENO ;
 
 LEXICON TOO    ! too 
 
-                  :o SG_NOMINATIVE ;
-    +Sg%+Use%/Rare:%>sse ILLATIVE ;    ! tosse
-+Sg+Ine%+Use%/Rare:%>s #;    ! tos
-    +Sg%+Use%/Rare:%>st ELATIVE ;    ! tost
-    +Sg%+Use%/Rare:%>l ADESSIVE ;    ! tol
-                  : KEMISETO ;
+                  :too SG_NOMINATIVE ;
+    +Sg%+Use%/Rare:to%>sse ILLATIVE ;    ! tosse
++Sg+Ine%+Use%/Rare:to%>s #;    ! tos
+    +Sg%+Use%/Rare:to%>st ELATIVE ;    ! tost
+    +Sg%+Use%/Rare:to%>l ADESSIVE ;    ! tol
+                  :to KEMISETO ;
+               +Pl:noo%>d NOMINATIVE ;    ! nood
+                  :no NENO ;
 
 LEXICON KEMISETO    ! kes, mis, see, too common cont. lexicon
 
@@ -93,23 +97,13 @@ LEXICON TEMA    ! ta
                +Sg:a%>l ADESSIVE ;	
                +Sg:a%>lt ABLATIVE ;	
 
-LEXICON NEED    ! need 
-
-               +Pl:e%>d NOMINATIVE ;    ! need
-                  : NENO ;
-
 LEXICON NEMAD    ! nemad 
 
           +Pl+Emph:ema%>d NOMINATIVE ;    ! nemad
                +Pl:a%>d NOMINATIVE ;    ! nad
                   :e NENO ;
 
-LEXICON NOOD    ! nood 
-
-               +Pl:o%>d NOMINATIVE ;    ! nood
-                  : NENO ;
-
-LEXICON NENO    ! need & nood common cont. lexicon
+LEXICON NENO    ! nemad, need & nood common cont. lexicon
 
                   :n%>de N_PL_SUBPARA ;    ! nende etc 
                   :%>id PL_PARTITIVE ;    ! neid
