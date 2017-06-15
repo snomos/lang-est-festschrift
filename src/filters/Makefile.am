@@ -32,6 +32,7 @@ GIELLA_FILTER_LOCAL_XFSCRIPT_SRCS=reorder-tags.est.xfscript \
                                   modify-derivations.est.xfscript \
                                   compound-filter.est.xfscript \
                                   block-derivations.est.xfscript \
+                                  block-compounds.est.xfscript \
                                   wordpair-filter.est.xfscript \
                                   numeral-filter.est.xfscript
 

@@ -9,13 +9,13 @@
 #
 define WB [ "#" ];
 
-define W [ a | e | i | o | u | õ | ä | ö | ü ]; 
-define C [ b | d | f | g | h | j | k | l | m | n | p | r | s | t | v ] ;
-define ZZ [[W C+ W+ C*] | [W W W C*]];   # at least 2 syllables (kind of...)
-define V [ "+V" ];
-define N [ "+N" ];
+define WW [ a | e | i | o | u | õ | ä | ö | ü ]; 
+define CC [ b | d | f | g | h | j | k | l | m | n | p | r | s | t | v ] ;
+define ZZ [[WW CC+ WW+ CC*] | [WW WW WW CC*]];   # at least 2 syllables (kind of...)
+#define V [ "+V" ];
+#define N [ "+N" ];
 define Prop [ "+Prop" ] ;
-define A [ "+A" ];
+#define A [ "+A" ];
 define Comp [ "+Comp" ] ;
 define Superl [ "+Superl"];
 define Num [ "+Num" ];
@@ -26,25 +26,25 @@ define Card [ "+Card" ];
 # (the two question marks ? ? "+Der/lik" stand for "@U.Cap.Opt@" "@C.Cap@" )
 
 define BadDer1 [
-    [[~[?+ N] & ~[?+ Num Card] & ~[?+ N Prop]] ? ? "+Der/lik"] |
-    [ ~[?+ N Prop] ? ? "+Der/lane"] |
-    [[~[?+ N] & ~[?+ Num Card] | [?+ N Prop]] "+Der/line"] |
-    [[~[?+ A] & ~[?+ A Comp] & ~[?+ A Superl]] "+Der/lt"] |
-    [~[?+ A] "+Der/sti"] |
-    [[~[?+ A Comp] ] "+Der/ini"] |
-    [~[?+ A] "+Der/m"] |
-    [~[?+ A] "+Der/im"] |
-    [ ~[?+ j a N] "+Der/nna"] |
-    [[~[?+ N] & ~[?+ Num Card]] "+Der/kond"] |
-    [[   ~[?+ A] & 
-         ~[?+ A Comp] & 
-         ~[?+ A Superl] & 
-         ~[?* [[ ZZ {tama}] | [ ZZ {dama}] | {tsema} | {lema} ] V]] 
+    [[~[?+ "+N"] & ~[?+ Num Card] & ~[?+ "+N" Prop]] ? ? "+Der/lik"] |
+    [ ~[?+ "+N" Prop] ? ? "+Der/lane"] |
+    [[~[?+ "+N"] & ~[?+ Num Card] | [?+ "+N" Prop]] "+Der/line"] |
+    [[~[?+ "+A"] & ~[?+ "+A" Comp] & ~[?+ "+A" Superl]] "+Der/lt"] |
+    [~[?+ "+A"] "+Der/sti"] |
+    [[~[?+ "+A" Comp] ] "+Der/ini"] |
+    [~[?+ "+A"] "+Der/m"] |
+    [~[?+ "+A"] "+Der/im"] |
+    [ ~[?+ j a "+N"] "+Der/nna"] |
+    [[~[?+ "+N"] & ~[?+ Num Card]] "+Der/kond"] |
+    [[   ~[?+ "+A"] & 
+         ~[?+ "+A" Comp] & 
+         ~[?+ "+A" Superl] & 
+         ~[?* [[ ZZ {tama}] | [ ZZ {dama}] | {tsema} | {lema} ] "+V"]] 
          "+Der/us"] |
-    [[~[?+ {uma} V] ] "+Der/mus"] |           # devalveeruma - devalveerumus
-    [[~[?+ {eerima} V] ] "+Der/ng"] |           # devalveerima - devalveering
-    [~[?* ? ? ? ? N]  "+Der/ti"] |    # should we eliminate pee+N+Der/ti ?
-    [[~[?+ N] & ~[?+ Num Card] & ~[?+ A] & ~[?+ A Comp] & ~[?+ A Superl]] "+Dim/ke"]
+    [[~[?+ {uma} "+V"] ] "+Der/mus"] |           # devalveeruma - devalveerumus
+    [[~[?+ {eerima} "+V"] ] "+Der/ng"] |           # devalveerima - devalveering
+    [~[?* ? ? ? ? "+N"]  "+Der/ti"] |    # should we eliminate pee+N+Der/ti ?
+    [[~[?+ "+N"] & ~[?+ Num Card] & ~[?+ "+A"] & ~[?+ "+A" Comp] & ~[?+ "+A" Superl]] "+Dim/ke"]
     ] ;
 
 # re-applying a similar suffix is not allowed
@@ -64,61 +64,61 @@ define BadDer3 [
 # in other words, BadDer4 adds exceptions to BadDer1
 
 define BadDer4 [
-    [{valmis} A "+Der/us"] | 
-    [{audio} A "+Der/us"] | 
-    [{väeti} A "+Der/us"] | 
-    [{kirju} A "+Der/us"] | 
-    [{ja} A "+Der/us"] | 
-    [{jas} A "+Der/us"] | 
-    [{ke} A "+Der/us"] | 
-    [{nud} A "+Der/us"] | 
-    [{aitama} V "+Der/us"] |
-    [{arg} A "+Der/m"] |
-    [{hahk} A "+Der/m"] |
-    [{halb} A "+Der/m"] |
-    [{harv} A "+Der/m"] |
-    [{hea} A "+Der/m"] |
-    [{hell} A "+Der/m"] |
-    [{julm} A "+Der/m"] |
-    [{jäik} A "+Der/m"] |
-    [{kaua} A "+Der/m"] |
-    [{kehv} A "+Der/m"] |
-    [{kelp} A "+Der/m"] |
-    [{koer} A "+Der/m"] |
-    [{kuiv} A "+Der/m"] |
-    [{kuri} A "+Der/m"] |
-    [{kurb} A "+Der/m"] |
-    [{kuum} A "+Der/m"] |
-    [{kõhn} A "+Der/m"] |
-    [{kõva} A "+Der/m"] |
-    [{külm} A "+Der/m"] |
-    [{lahja} A "+Der/m"] |
-    [{lai} A "+Der/m"] |
-    [{lõtv} A "+Der/m"] |
-    [{must} A "+Der/m"] |
-    [{märg} A "+Der/m"] |
-    [{nõder} A "+Der/m"] |
-    [{nõrk} A "+Der/m"] |
-    [{närb} A "+Der/m"] |
-    [{paha} A "+Der/m"] |
-    [{pikk} A "+Der/m"] |
-    [{ramb} A "+Der/m"] |
-    [{ränk} A "+Der/m"] |
-    [{sitt} A "+Der/m"] |
-    [{soe} A "+Der/m"] |
-    [{sünk} A "+Der/m"] |
-    [{tark} A "+Der/m"] |
-    [{tuim} A "+Der/m"] |
-    [{tumm} A "+Der/m"] |
-    [{turd} A "+Der/m"] |
-    [{turb} A "+Der/m"] |
-    [{tühi} A "+Der/m"] |
-    [{vana} A "+Der/m"] |
-    [{vara} A "+Der/m"] |
-    [{õrn} A "+Der/m"] |
-    [{ke} A "+Der/im"] | 
-    [{hea} A "+Der/im"] |
-    [{ll} N "+Der/lik"]    # do not allow vasall+lik because the normal cons cluster phon rule would turn it into vasallik
+    [{valmis} "+A" "+Der/us"] | 
+    [{audio} "+A" "+Der/us"] | 
+    [{väeti} "+A" "+Der/us"] | 
+    [{kirju} "+A" "+Der/us"] | 
+    [{ja} "+A" "+Der/us"] | 
+    [{jas} "+A" "+Der/us"] | 
+    [{ke} "+A" "+Der/us"] | 
+    [{nud} "+A" "+Der/us"] | 
+    [{aitama} "+V" "+Der/us"] |
+    [{arg} "+A" "+Der/m"] |
+    [{hahk} "+A" "+Der/m"] |
+    [{halb} "+A" "+Der/m"] |
+    [{harv} "+A" "+Der/m"] |
+    [{hea} "+A" "+Der/m"] |
+    [{hell} "+A" "+Der/m"] |
+    [{julm} "+A" "+Der/m"] |
+    [{jäik} "+A" "+Der/m"] |
+    [{kaua} "+A" "+Der/m"] |
+    [{kehv} "+A" "+Der/m"] |
+    [{kelp} "+A" "+Der/m"] |
+    [{koer} "+A" "+Der/m"] |
+    [{kuiv} "+A" "+Der/m"] |
+    [{kuri} "+A" "+Der/m"] |
+    [{kurb} "+A" "+Der/m"] |
+    [{kuum} "+A" "+Der/m"] |
+    [{kõhn} "+A" "+Der/m"] |
+    [{kõva} "+A" "+Der/m"] |
+    [{külm} "+A" "+Der/m"] |
+    [{lahja} "+A" "+Der/m"] |
+    [{lai} "+A" "+Der/m"] |
+    [{lõtv} "+A" "+Der/m"] |
+    [{must} "+A" "+Der/m"] |
+    [{märg} "+A" "+Der/m"] |
+    [{nõder} "+A" "+Der/m"] |
+    [{nõrk} "+A" "+Der/m"] |
+    [{närb} "+A" "+Der/m"] |
+    [{paha} "+A" "+Der/m"] |
+    [{pikk} "+A" "+Der/m"] |
+    [{ramb} "+A" "+Der/m"] |
+    [{ränk} "+A" "+Der/m"] |
+    [{sitt} "+A" "+Der/m"] |
+    [{soe} "+A" "+Der/m"] |
+    [{sünk} "+A" "+Der/m"] |
+    [{tark} "+A" "+Der/m"] |
+    [{tuim} "+A" "+Der/m"] |
+    [{tumm} "+A" "+Der/m"] |
+    [{turd} "+A" "+Der/m"] |
+    [{turb} "+A" "+Der/m"] |
+    [{tühi} "+A" "+Der/m"] |
+    [{vana} "+A" "+Der/m"] |
+    [{vara} "+A" "+Der/m"] |
+    [{õrn} "+A" "+Der/m"] |
+    [{ke} "+A" "+Der/im"] | 
+    [{hea} "+A" "+Der/im"] |
+    [{ll} "+N" "+Der/lik"]    # do not allow vasall+lik because the normal cons cluster phon rule would turn it into vasallik
     ] ;
 
 regex ~[ BadDer1 ?* ] .o. ~[ ?* BadDer2 ?* ] .o. ~[ ?* BadDer3 ?* ] .o. ~[ ?* BadDer4 ?* ] ;

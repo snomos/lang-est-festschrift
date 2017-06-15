@@ -11,16 +11,16 @@ define LINE [    MB [{line} | {lis}] ];
 define LANE [? ? MB [{lane} | {las}] ] ;
 
 define EstW [ a | e | i | o | u | õ | ä | ö | ü ] ; 
-define W [ EstW | y ];
+define WW [ EstW | y ];
 define EstC [ b | d | f | g | h | j | k | l | m | n | p | r | s | t | v ] ;
-define C [ EstC | c | q | w | x] ;
+define CC [ EstC | c | q | w | x] ;
 
-define SS [C* W] ;              # short syllable
-define LS [SS [W | C] C*] ;      # long syllable
+define SS [CC* WW] ;              # short syllable
+define LS [SS [WW | CC] CC*] ;      # long syllable
 define Syll [SS | LS] ;
 
-define Pre1  [ Syll C LS] & ~[?* [l|s]] ;  # NOT biopsia, meelika
-define Pre2  [ Syll C LS]  ;  # NOT biopsia, meelika
+define Pre1  [ Syll CC LS] & ~[?* [l|s]] ;  # NOT biopsia, meelika
+define Pre2  [ Syll CC LS]  ;  # NOT biopsia, meelika
 
 define IKA [i (k) a] ;
 define IA  [i a] ;
