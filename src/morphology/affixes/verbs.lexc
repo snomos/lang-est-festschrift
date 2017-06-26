@@ -179,7 +179,7 @@ LEXICON C_COMMON  ! common to almost all words of types 32-35 (supine stem ends 
 ! ---------------
 LEXICON TULEMA     ! only tulema, panema, surema
 
-                      :%. A_AKSE ;           ! surra, surrakse, surdud
+                      :%{dbl%} A_AKSE ;           ! surra, surrakse, surdud
                       :e SUPINE_V ;          ! surema
                       :%{W%} IMPERATIVE ;    ! surgu
                       :%{W%} NU ;            ! surnud
@@ -188,7 +188,7 @@ LEXICON TULEMA     ! only tulema, panema, surema
 
 LEXICON OLEMA    ! only olema 
 
-                      :ol%. A_AKSE ;          ! olla, ollakse, oldud
+                      :ol%{dbl%} A_AKSE ;          ! olla, ollakse, oldud
                       :ole SUPINE_V ;         ! olema
                       :ol%{W%} IMPERATIVE ;   ! olgu
                       :ol%{W%} NU ;           ! olnud
@@ -229,9 +229,9 @@ LEXICON OLEMA    ! only olema
 
 LEXICON MINEMA    ! only minema 
 
-                      :min%. A_AKSE ;            ! minna, minnakse, mindud
+                      :min%{dbl%} A_AKSE ;       ! minna, minnakse, mindud
                       :mine SUPINE_V ;           ! minema
-                      :min%{W%} IMPERATIVE ;   ! mingu
+                      :min%{W%} IMPERATIVE ;     ! mingu
                       :läi%{W%} NU ;             ! läinud
                       :läk%>s IND_PAST ;         ! läks, läksin etc
 

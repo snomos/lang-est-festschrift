@@ -12,7 +12,7 @@
 ! Other licensing options are available upon request, please contact
 ! giellatekno@hum.uit.no or feedback@divvun.no
 
-LEXICON Punctuation
+LEXICON Root
 
 ! Clause boundary symbols:
     %,+CLB:%,     PunctEnd ;
@@ -49,12 +49,12 @@ LEXICON Punctuation
  %"+PUNCT:%"  PunctEnd ;
   '+PUNCT:'7  PunctEnd ; ! We use "'7" to avoid the CG symbol of ái'gi etc.
  %*+PUNCT:%*  PunctEnd ;
-  ++PUNCT:+   PunctEnd ;
+!  ++PUNCT:+   PunctEnd ;
   ±+PUNCT:±   PunctEnd ;
   `+PUNCT:`   PunctEnd ;
   ´+PUNCT:´   PunctEnd ;
   /+PUNCT:/   PunctEnd ; 
-+/-+PUNCT:+/- PunctEnd ;
+!+/-+PUNCT:+/- PunctEnd ;
  %~+PUNCT:%~  PunctEnd ;
 
 ! Paired punctuation marks

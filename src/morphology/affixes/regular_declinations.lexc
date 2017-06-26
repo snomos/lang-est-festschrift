@@ -219,7 +219,7 @@ LEXICON KABINET    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp)
               : SG_NOMINATIVE ;    ! kabinet
                                           ! sg nom has a single final stop instead of double, 
                                           ! so it has to be doubled to get the forms right
-              :%.%>%{pl.e%}%{sg.i%} 1C ;
+              :%{dbl%}%>%{pl.e%}%{sg.i%} 1C ;
               : LIK_DERIVATION ;          ! NB! not checked on real usage
               :i%{W%} LIK_DERIVATION ;         ! NB! not checked on real usage
 
@@ -231,12 +231,12 @@ LEXICON ELANIK    ! VVS 25; (productive) i.e. stable type (aktiivne muuttüüp)
               : SG_NOMINATIVE ;    ! elanik
                                           ! sg nom has a single final stop instead of double, 
                                           ! so it has to be doubled to get the forms right
-              :%.%{sg.u%} 1C_SG ;         ! elaniku etc
-              :%.e%{W%} N_PL_SUBPARA ;    ! NB! elanike etc
-   %+Use%/Rare:%.%{sg.u%}%>de N_PL_SUBPARA ;    ! elanikkude etc   
-              :%.%>%{pl.e%}%{sg.u%}%>%{s%}%{i%}%{d%} PL_PAR_VARIANT ;    ! elanikke; elanikkusid+Use/Rare
-              :%. US_DERIVATION ;            ! õnnelikkus
-              :%.e%{W%}» IM_DERIVATION ;    ! õnnelikem
+              :%{dbl%}%{sg.u%} 1C_SG ;         ! elaniku etc
+              :%{dbl%}e%{W%} N_PL_SUBPARA ;    ! NB! elanike etc
+   %+Use%/Rare:%{dbl%}%{sg.u%}%>de N_PL_SUBPARA ;    ! elanikkude etc   
+              :%{dbl%}%>%{pl.e%}%{sg.u%}%>%{s%}%{i%}%{d%} PL_PAR_VARIANT ;    ! elanikke; elanikkusid+Use/Rare
+              :%{dbl%} US_DERIVATION ;            ! õnnelikkus
+              :%{dbl%}e%{W%}» IM_DERIVATION ;    ! õnnelikem
               :u%{W%} LIK_DERIVATION ;
 
 LEXICON ARMEE    ! VVS 26 ; (productive) i.e. stable type (aktiivne muuttüüp)
@@ -255,6 +255,7 @@ LEXICON NE_S_COMMON ! VVS 9, 10, 11, 12 common forms for affix -ne, -line, -s, -
               :E1%>t SG_PARTITIVE ;         ! soolast, raudset, olulist
               :E1%>te N_PL_SUBPARA ;        
               :E1 US_DERIVATION ;
+              :E1 SHORT_NE_STEM ;           ! nais-, vaatamis-, astraal-
 
 LEXICON LINE_US_SPECIFIC   ! -line, -us ending words
               : LINE_US_NORM ;
@@ -466,43 +467,33 @@ LEXICON PL_PARTITIVE
 
 LEXICON NOMINATIVE
           +Nom: GI ;
-!        +Nom-#:%- Nouns ;   ! täna-homme koer-kass ... koerad-kassid ?
 
 LEXICON GENITIVE
           +Gen: GI ;
-!        +Gen-#:- Nouns ;    ! koera-kassi
 
 LEXICON PARTITIVE
           +Par: GI ;	
-!        +Par-#:- Nouns ;
 
 LEXICON ILLATIVE
           +Ill: GI ;	
-!        +Ill-#:- Nouns ;
 
 LEXICON INESSIVE
           +Ine: GI ;	
-!        +Ine-#:- Nouns ;
 
 LEXICON ELATIVE
           +Ela: GI ;	
-!        +Ela-#:- Nouns ;
 
 LEXICON ALLATIVE
           +All: GI ;	
-!        +All-#:- Nouns ;
 
 LEXICON ADESSIVE
           +Ade: GI ;	
-!        +Ade-#:- Nouns ;
 
 LEXICON ABLATIVE
           +Abl: GI ;	
-!        +Abl-#:- Nouns ;
 
 LEXICON TRANSLATIVE
           +Tra: GI ;	
-!        +Tra-#:- Nouns ;
 
 LEXICON TERMINATIVE
           +Trm: GI ;	
@@ -565,4 +556,7 @@ LEXICON TI_DERIVATION
 
 LEXICON KE_DERIVATION
                +Dim/ke:»ke PEENIKE ;         ! suureke, majake, õpetajannake, ...
+
+LEXICON SHORT_NE_STEM
+               +Der/minus:%>%- # ;                ! vaatamis-, astraal-
 

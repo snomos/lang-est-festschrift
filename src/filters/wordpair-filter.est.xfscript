@@ -1,6 +1,6 @@
 #
 
-define Hyphen [ "-" ] ;
+define Hyphen [ %- ] ;
 define Number ["+Sg" | "+Pl" ];
 define Case10 ["+Nom" | "+Gen" | "+Par" | "+Ill" | "+Ine" | "+Ela" | "+All" | "+Ade" | "+Abl" | "+Tra" ]; 
 define CaseNinaTaga ["+Trm" | "+Ess" | "+Abe" | "+Com"] ;

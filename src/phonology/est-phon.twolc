@@ -18,7 +18,7 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
            !! (But currently used also for words with stem gradation, e.g. ''tuba'' - ''tuppa'')
  %{id%}:0  !!≈ * __@CODE@__ Trigger / lexicon flag for pl part possible ending (esseesid/esseid)
  %{stemill%}:0 !!≈ * __@CODE@__ Trigger / lexicon flag for short sg ill, formed by stem change (jõgi-jõkke)
- %.:0      !!≈ * __@CODE@__ Trigger to double the previous letter. Sometimes a phonologically long long kk pp tt  
+ %{dbl%}:0 !!≈ * __@CODE@__ Trigger to double the previous letter. Sometimes a phonologically long long kk pp tt  
            !! at the end of a Sg Nom word is written k p t, 
            !! so it must be doubled  (kabinet - kabinetti). 
            !! Also, tulema, panema, surema, olema, minema have tulla, tulles etc...
@@ -29,6 +29,7 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
  %>     !!≈ * __@CODE@__ Inflectional suffix boundary
  »      !!≈ * __@CODE@__ Derivational suffix boundary
  #      !!≈ * __@CODE@__ Word boundary for both lexicalised and dynamic compounds
+ %-     !!≈ * __@CODE@__ Final hyphen for shortened stems
 
 !! !Apostrophy
 
@@ -878,6 +879,12 @@ M1:n  <=> _ Null* [:t | :d ] ;
 ! --------- -ne, -s ending words
 ! xxx rules are needed for allowing -ne only for sg nom
 
+"ne-stem shortening"
+n:0  <=> :Consonant _ Null+ %> %- ;        ! nais-, vaatamis-, astraal-
+
+! lexical: a s t r a a l n e E1 > -
+! surface: a s t r a a l 0 0  0 > -
+
 ! we want to express correspondence: ne -> s in the context of E1, I1 or A1
 "ne to s (1/2)"
 
@@ -915,6 +922,7 @@ E1:0  <=> :Vowel Null* :s Null* _ Null* s e ;          ! olulisse (haplology)
           :Vowel Null* :s Null* _ Null* t e ;        ! soolaste
           :Vowel Null* :s Null* _ Null* » l i k ;        ! vaatluslik
                        :s Null* _ Null* » u s ;        ! soolasus
+                                _ Null* %> %- ;        ! nais-, vaatamis-, astraal-
                         
 
 ! lexical: o l u l i n e E1 > s e 
@@ -1361,7 +1369,7 @@ Cx:Cy  <=> :voiceless Null* SuffixBorder _ ;
 
 "double k p t"
 
-%.:Cx  <=> :Cx _ AnyNoTrigger* WordEnd ;
+%{dbl%}:Cx  <=> :Cx _ AnyNoTrigger* WordEnd ;
       where Cx in (k p t) ;
 
 ! lexical: k a b i n e t . > {pl.e} {sg.i}
@@ -1374,7 +1382,7 @@ Cx:Cy  <=> :voiceless Null* SuffixBorder _ ;
 
 "double l m n r"
 
-%.:Cx <=> :Cx _ Null* [ :a | :e ] ;
+%{dbl%}:Cx <=> :Cx _ Null* [ :a | :e ] ;
       where Cx in (lmnr) ;
 
 ! native monosyllabic word cannot be kät, has to be kätt 

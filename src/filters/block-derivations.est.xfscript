@@ -9,43 +9,51 @@
 #
 define WB [ "#" ];
 
-define WW [ a | e | i | o | u | õ | ä | ö | ü ]; 
-define CC [ b | d | f | g | h | j | k | l | m | n | p | r | s | t | v ] ;
-define ZZ [[WW CC+ WW+ CC*] | [WW WW WW CC*]];   # at least 2 syllables (kind of...)
-#define V [ "+V" ];
-#define N [ "+N" ];
-define Prop [ "+Prop" ] ;
-#define A [ "+A" ];
-define Comp [ "+Comp" ] ;
-define Superl [ "+Superl"];
-define Num [ "+Num" ];
-define Card [ "+Card" ];
+define Vow [ a | e | i | o | u | õ | ä | ö | ü ]; 
+define Cons [ b | d | f | g | h | j | k | l | m | n | p | r | s | t | v ] ;
+define ZZ [[Vow Cons+ Vow+ Cons*] | [Vow Vow Vow Cons*]];   # at least 2 syllables (kind of...)
 
 # a BadDer1 is a string +Der/..., preceded by an unsuitable symbol or string, 
 # expressed here as a negation of the suitable one
 # (the two question marks ? ? "+Der/lik" stand for "@U.Cap.Opt@" "@C.Cap@" )
 
 define BadDer1 [
-    [[~[?+ "+N"] & ~[?+ Num Card] & ~[?+ "+N" Prop]] ? ? "+Der/lik"] |
-    [ ~[?+ "+N" Prop] ? ? "+Der/lane"] |
-    [[~[?+ "+N"] & ~[?+ Num Card] | [?+ "+N" Prop]] "+Der/line"] |
-    [[~[?+ "+A"] & ~[?+ "+A" Comp] & ~[?+ "+A" Superl]] "+Der/lt"] |
+    [[~[?+ "+N"] & ~[?+ "+Num" "+Card"] & ~[?+ "+N" "+Prop"]] ? ? "+Der/lik"] |
+    [ ~[?+ "+N" "+Prop"] ? ? "+Der/lane"] |
+    [[~[?+ "+N"] & ~[?+ "+Num" "+Card"] | [?+ "+N" "+Prop"]] "+Der/line"] |
+    [[~[?+ "+A"] & ~[?+ "+A" "+Comp"] & ~[?+ "+A" "+Superl"]] "+Der/lt"] |
     [~[?+ "+A"] "+Der/sti"] |
-    [[~[?+ "+A" Comp] ] "+Der/ini"] |
+    [[~[?+ "+A" "+Comp"] ] "+Der/ini"] |
     [~[?+ "+A"] "+Der/m"] |
     [~[?+ "+A"] "+Der/im"] |
     [ ~[?+ j a "+N"] "+Der/nna"] |
-    [[~[?+ "+N"] & ~[?+ Num Card]] "+Der/kond"] |
+    [[~[?+ "+N"] & ~[?+ "+Num" "+Card"]] "+Der/kond"] |
     [[   ~[?+ "+A"] & 
-         ~[?+ "+A" Comp] & 
-         ~[?+ "+A" Superl] & 
+         ~[?+ "+A" "+Comp"] & 
+         ~[?+ "+A" "+Superl"] & 
          ~[?* [[ ZZ {tama}] | [ ZZ {dama}] | {tsema} | {lema} ] "+V"]] 
          "+Der/us"] |
     [[~[?+ {uma} "+V"] ] "+Der/mus"] |           # devalveeruma - devalveerumus
     [[~[?+ {eerima} "+V"] ] "+Der/ng"] |           # devalveerima - devalveering
     [~[?* ? ? ? ? "+N"]  "+Der/ti"] |    # should we eliminate pee+N+Der/ti ?
-    [[~[?+ "+N"] & ~[?+ Num Card] & ~[?+ "+A"] & ~[?+ "+A" Comp] & ~[?+ "+A" Superl]] "+Dim/ke"]
+    [[~[?+ "+N"] & ~[?+ "+Num" "+Card"] & ~[?+ "+A"] & ~[?+ "+A" "+Comp"] & ~[?+ "+A" "+Superl"]] "+Dim/ke"] 
     ] ;
+
+# stem shortening "suffix"
+#define BadDer5 [~[?+ "+A"] "+Der/sti" ];
+#define BadDer5 [~[?+ "+Der/mine" "+N"] "+Der/minus" ];
+
+define BadDer5 [   
+    ~[?* [["+Der/mine" "+N"] |       # mis-
+          [Vow Cons* {mine} "+N"] |  # min 2 syll; mis-
+          ["+Der/line" "+A"] |       # lis-
+          [Vow Cons* {line} "+A"] |  # min 2 syll; lis-
+          ["+Der/lane" "+N"] |       # las-
+          [Vow Cons* {lane} "+N"] |  # min 2 syll; las-
+          [Vow Cons* [Vow [Vow | Cons]+ Cons {ne}] "+A"]  # min 2 syll; ...iil-, ...akt-
+         ]
+      ] "+Der/minus"
+   ] ;
 
 # re-applying a similar suffix is not allowed
 define BadDer2 [
@@ -56,7 +64,7 @@ define BadDer2 [
 
 # some suffix sequences are actually bad
 define BadDer3 [
-    [[ "+Der/nu" | "+Der/us" | "+Der/lane" ] N "+Der/ti"] 
+    [[ "+Der/nu" | "+Der/us" | "+Der/lane" ] "+N" "+Der/ti"] 
     ] ;
 
 # some words are not suitable for certain suffixes 
@@ -121,5 +129,5 @@ define BadDer4 [
     [{ll} "+N" "+Der/lik"]    # do not allow vasall+lik because the normal cons cluster phon rule would turn it into vasallik
     ] ;
 
-regex ~[ BadDer1 ?* ] .o. ~[ ?* BadDer2 ?* ] .o. ~[ ?* BadDer3 ?* ] .o. ~[ ?* BadDer4 ?* ] ;
+regex ~[ BadDer1 ?* ] & ~[ BadDer5 ?* ] & ~[ ?* BadDer2 ?* ] & ~[ ?* BadDer3 ?* ] & ~[ ?* BadDer4 ?* ] ;
 

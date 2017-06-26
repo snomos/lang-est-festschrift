@@ -36,7 +36,6 @@ GT_LEXC_SRCS_L1_L2=\
                          stems/numerals.lexc \
                          stems/pronouns.lexc \
                          stems/propernouns.lexc \
-                         stems/punctuation.lexc \
                          stems/verbs.lexc \
                          stems/noninflecting_verbs.lexc \
 			 stems/abbreviations.lexc \
@@ -98,7 +97,8 @@ GT_LOCAL_SRCS=\
                         pair_initial.tmp.lexc \
                         pair_final.tmp.lexc \
                         num_initial.tmp.lexc \
-                        num_final.tmp.lexc 
+                        num_final.tmp.lexc \
+                        punctuation.tmp.lexc 
 
 # Define local xfscripts here:
 GT_LOCAL_XFSCRIPT_SRCS=
@@ -132,6 +132,10 @@ num_final.tmp.lexc: num_final.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
 	cat $< >> $@ && \
 	cat $(EST_AFFIX_FILES:%=%.lexc) >> $@
 
+# punctuation is a separate issue, not an ordinary part of the lexicon
+punctuation.tmp.lexc: punctuation.lexc $(GT_LEXC_ROOT)
+	cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
+	cat $< >> $@ 
 
 ### END: Local processing: ###
 

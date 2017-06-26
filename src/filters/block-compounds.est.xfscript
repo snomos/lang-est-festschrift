@@ -8,78 +8,24 @@ define WB [ "#" ];  # word border
 #define C [ b | d | f | g | h | j | k | l | m | n | p | r | s | t | v ] ;
 #define ZZ [[W C+ W+ C*] | [W W W C*]];   # at least 2 syllables (kind of...)
 
-# word classes
-#define N [ "+N" ];
-#define A [ "+A" ];
-define Num [ "+Num" ];
-define Pron [ "+Pron" ] ;
-#define V [ "+V" ];
-define Adv [ "+Adv" ];
-define Interj [ "+Interj" ];
-define Coord [ "+CC" | "+CS" ];
-define Adp [ "+Adp" ];
-
-define Prop [ "+Prop" ] ;
-define Card [ "+Card" ];
-define Ord [ "+Ord" ];
-define Comp [ "+Comp" ] ;
-define Superl [ "+Superl"];
-
-define PUNCT ["+PUNCT"];
-define CLB ["+CLB"];
-
-# inflection
-define Sg ["+Sg"];
-define Pl ["+Pl"];
-define Nom ["+Nom"];
-define Gen ["+Gen"];
-define Par ["+Par"];
-define Inf ["+Inf"]; # -da, -ta
-define Sup ["+Sup"]; # -ma, -mata etc
-
+define Nmber ["+Sg" | "+Pl" ];
 
 # derivation
 # V -> 
-define dermine ["+Der/mine"];
-define derja ["+Der/ja"];
-define dernu ["+Der/nu"];
-define dermus ["+Der/mus"];
-define derng ["+Der/ng"];
-define derv ["+Der/v"];
-define dertav ["+Der/tav"];
-define dernud ["+Der/nud"];
-define dermata ["+Der/mata"];
-define dermatu ["+Der/matu"];
-define dertamatu ["+Der/tamatu"];
-define dertu ["+Der/tu"];
-define dertud ["+Der/tud"];
-define derus ["+Der/us"];
 
-define derlik ["+Der/lik"];
-define derline ["+Der/line"];
+define vderneedspar [  "+Der/v" | "+Der/tav" | "+Der/mata" | "+Der/matu" | 
+                     "+Der/nud" | "+Der/nu" | "+Der/tu" | "+Der/tud"] ;   # suftyyp 19, 20
+define vderneedsgen ["+Der/mine" | "+Der/ja" | "+Der/mus" | "+Der/ng" ] ; # suftyyp 18
 
-define derlt ["+Der/lt"];
-define dersti ["+Der/sti"];
-define derm ["+Der/m"];
-define derim ["+Der/im"];
-define dernna ["+Der/nna"];
-define derkond ["+Der/kond"];
-
-define derti ["+Der/ti"];
-define derlane ["+Der/lane"];
-
-define vderneedspar [derv | dertav | dermata | dermatu | dernud | dernu | dertu | dertud] ; # suftyyp 19, 20
-define vderneedsgen [dermine | derja | dermus | derng ] ; # suftyyp 18
-
-define deriv [dermine | derja | dernu | dermus | derng | derv | dertav | 
-              dernud | dermata | dermatu | dertamatu | dertu | dertud | 
-              derus | derlik | derline | derlt | dersti | derm | derim | 
-              dernna | derkond | derti | derlane];
+define AnyDer ["+Der/mine" | "+Der/ja" | "+Der/nu" | "+Der/mus" | "+Der/ng" | "+Der/v" | "+Der/tav" | 
+                "+Der/nud" | "+Der/mata" | "+Der/matu" | "+Der/tamatu" | "+Der/tu" | "+Der/tud" | 
+                 "+Der/us" | "+Der/lik" | "+Der/line" | "+Der/lt" | "+Der/sti" | "+Der/m" | "+Der/im" | 
+                "+Der/nna" | "+Der/kond" | "+Der/ti" | "+Der/lane" | "+Der/minus" ] ;
 
 # some wordclasses are never in compounds
-define BadEver [ Adp | PUNCT | CLB ] ;
-define BadFirst [ "+V" \[WB | deriv | Inf | Sup]* WB] ;
-define BadLast [WB \WB* [Pron | Interj | Coord]];
+define BadEver [ "+Adp" | "+PUNCT" | "+CLB" ] ;
+define BadFirst [ "+V" \[WB | AnyDer | "+Inf" | "+Sup"]* WB] ;
+define BadLast [WB \WB* ["+Pron" | "+Interj" | "+CC" | "+CS"]];
 define BadCmp $[BadEver | BadFirst | BadLast];
 
 # a verb cannot be the last part of a compound, unless it is a derivation;
@@ -87,13 +33,14 @@ define BadCmp $[BadEver | BadFirst | BadLast];
 # the good constellations are negated below
  
 define BadVerb [ $[ WB ?* "+V" ] & 
-               ~$[ "+N" [Sg | Pl] \[Nom | Par] \[deriv]* WB ?* "+V" vderneedsgen ] &   # lauauhmaja
-               ~$[ "+N" [Sg | Pl] \[Nom | Gen] \[deriv]* WB ?* "+V" vderneedspar ] &   # laudauhmav
-               ~$[ Num Card [Sg | Pl] Gen \[deriv]* WB ?* "+V" vderneedsgen ] &        # viiekirjutamine
-               ~$[ "+V" \[deriv]* [Inf | Sup] \[deriv]*  WB ?* "+V" [vderneedspar | dermine | derja]]
+               ~$[ "+N" Nmber \["+Nom" | "+Par"] \[AnyDer]* WB ?* "+V" vderneedsgen ] &   # lauauhmaja
+               ~$[ "+N" Nmber \["+Nom" | "+Gen"] \[AnyDer]* WB ?* "+V" vderneedspar ] &   # laudauhmav
+               ~$[ "+Num" "+Card" Nmber Gen \[AnyDer]* WB ?* "+V" vderneedsgen ] &        # viiekirjutamine
+               ~$[ "+V" \[AnyDer]* ["+Inf" | "+Sup"] \[AnyDer]*  WB ?* "+V" [vderneedspar | "+Der/mine" | "+Der/ja"]]
                 ];  # NB! not finished!
 
 regex ~[ BadCmp | BadVerb ] ;
+#regex ~[ BadCmp  ] ;
 
-#regex ~[ ?* BadCmp ?* ] ;
+
 

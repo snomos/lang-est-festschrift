@@ -530,6 +530,11 @@ Multichar_Symbols
 +Dim/ke !!= * {{@CODE@}}:  diminutive 
 !!€ põõsake: põõsas+N+Dim/ke+Sg+Nom
 
++Der/minus !!= * {{@CODE@}}:  shortening stem 
+!!€ vaatamis-: vaatamine+N+Der/minus
+!!€ astraal-: astraalne+A+Der/minus
+
+
 !! !Muud / Other tags
 
 ! +Der  !!≈ * @CODE@: Keelest sõltumatutes filtrites? / In language-independent filters ?
@@ -541,6 +546,7 @@ Multichar_Symbols
  %[%<%] !! * < (written with square brackets, see the root.lexc file)
 
 '7  !!≈ * @CODE@  7 is the real apostrophe ?? 
+! "😱"  !! {{@CODE@}} is used in some languages to prefix # in dynamic compounds
 
 +Use/Circ !!= * {{@CODE@}}: for arabic and roman numerals
 
@@ -569,6 +575,7 @@ Multichar_Symbols
  %>     ! Inflectional suffix boundary
  »      ! Derivational suffix boundary
  #      ! Word boundary for both lexicalised and dynamic compounds
+ %-     ! Final hyphen for shortened stems
 
  %{apo%}   ! Apostrofy is needed separating inflectional affix from foreign word lemma
  %{no.apo%}  ! trigger for deleting apostrofy (used for foreign word inflections) from sg nom
@@ -651,7 +658,7 @@ M1   ! m n  lumi lund
  I7 ! i 0
  S7 ! s 0
 
- %. ! double the previous letter (kabinet - kabinetti)
+ %{dbl%}     ! double the previous letter (kabinet - kabinetti)
  %{no.apo%}  ! no apostrofy; 
 
 ! usage tag; never on the surface side
@@ -697,5 +704,5 @@ NoninflectingVerbs ;      !!= * {{@CODE@}}
 Interjections ;           !!= * {{@CODE@}}
 GenitiveAttributes ;      !!= * {{@CODE@}}
 
-Punctuation ;             !!= * {{@CODE@}}
+! Punctuation ;             !!= * {{@CODE@}}
 
