@@ -558,5 +558,6 @@ LEXICON KE_DERIVATION
                +Dim/ke:»ke PEENIKE ;         ! suureke, majake, õpetajannake, ...
 
 LEXICON SHORT_NE_STEM
-               +Der/minus:%>%- # ;                ! vaatamis-, astraal-
+               +Der/minus:»%- # ;                ! vaatamis-, astraal-
+               +Der/minus:»# # ;                ! vaatamis#koht, astraal#tunne
 

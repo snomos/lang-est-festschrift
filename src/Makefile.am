@@ -331,26 +331,28 @@ analyser-raw-gt-desc.ccc.xfst: analyser-raw-gt-desc.bbb.xfst $(EST_COMPOUND_PRE_
 		 quit\n" | $(XFST) $(VERBOSITY)
 
 # HFST:
-# include paired words and compound numerals and compounds in the raw generator
+# include paired words and compound numerals and compounds and punctuation in the raw generator
 generator-raw-gt-desc.hfst: generator-raw-gt-desc.aaa.hfst \
 					generator-wordpairs-raw.aaa.hfst \
 					generator-numerals-raw.aaa.hfst \
 					morphology/punctuation.tmp.hfst \
 					generator-raw-gt-desc.ccc.hfst
-	hfst-union -1 $< -2 generator-wordpairs-raw.aaa.hfst -o - | hfst-union -1 - -2 generator-numerals-raw.aaa.hfst -o - | hfst-union -1 - -2 morphology/punctuation.tmp.hfst -o - | hfst-union -1 - -2 generator-raw-gt-desc.ccc.hfst -o $@
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"$<\" .o. ~[?* \"#\" ] ; \nread regex @\"generator-wordpairs-raw.aaa.hfst\" ; \nread regex @\"generator-numerals-raw.aaa.hfst\" ; \nread regex @\"morphology/punctuation.tmp.hfst\" ; \nread regex @\"generator-raw-gt-desc.ccc.hfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
+
+#	hfst-union -1 $< -2 generator-wordpairs-raw.aaa.hfst -o - | hfst-union -1 - -2 generator-numerals-raw.aaa.hfst -o - | hfst-union -1 - -2 morphology/punctuation.tmp.hfst -o - | hfst-union -1 - -2 generator-raw-gt-desc.ccc.hfst -o $@
 
 # ... also the raw analyser
 analyser-raw-gt-%.hfst: generator-raw-gt-%.hfst
 		$(HFST_INVERT) $(VERBOSITY) $(HFST_FLAGS) < $< > $@
 
 # XEROX:
-# include paired words and compound numerals and compounds in the raw analyser
+# include paired words and compound numerals and compounds and punctuation in the raw analyser
 analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.aaa.xfst \
 					analyser-wordpairs-raw.aaa.xfst \
 					analyser-numerals-raw.aaa.xfst \
 					morphology/punctuation.tmp.xfst \
 					analyser-raw-gt-desc.ccc.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"analyser-wordpairs-raw.aaa.xfst\" ; \nread regex @\"analyser-numerals-raw.aaa.xfst\" ; \nread regex @\"morphology/punctuation.tmp.xfst\" ; \nread regex @\"analyser-raw-gt-desc.ccc.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
+	$(AM_V_XFST)$(PRINTF) "read regex @\"$<\" .o. ~[?* \"#\" ] ; \nread regex @\"analyser-wordpairs-raw.aaa.xfst\" ; \nread regex @\"analyser-numerals-raw.aaa.xfst\" ; \nread regex @\"morphology/punctuation.tmp.xfst\" ; \nread regex @\"analyser-raw-gt-desc.ccc.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
 #analyser-raw-gt-%.xfst: analyser-raw-gt-%.aaa.xfst \
 #					analyser-wordpairs-raw.aaa.xfst \

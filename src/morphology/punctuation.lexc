@@ -49,12 +49,12 @@ LEXICON Root
  %"+PUNCT:%"  PunctEnd ;
   '+PUNCT:'7  PunctEnd ; ! We use "'7" to avoid the CG symbol of ái'gi etc.
  %*+PUNCT:%*  PunctEnd ;
-!  ++PUNCT:+   PunctEnd ;
+  ++PUNCT:+   PunctEnd ;
   ±+PUNCT:±   PunctEnd ;
   `+PUNCT:`   PunctEnd ;
   ´+PUNCT:´   PunctEnd ;
   /+PUNCT:/   PunctEnd ; 
-!+/-+PUNCT:+/- PunctEnd ;
++/-+PUNCT:+/- PunctEnd ;
  %~+PUNCT:%~  PunctEnd ;
 
 ! Paired punctuation marks

@@ -2,13 +2,16 @@
 # * its component belongs to a wrong word class
 
 #
-define WB [ "#" ];  # word border
+define WB [ "#" | .#. ];  # word border
 
-#define W [ a | e | i | o | u | õ | ä | ö | ü ]; 
-#define C [ b | d | f | g | h | j | k | l | m | n | p | r | s | t | v ] ;
+define WW [ a | e | i | o | u | õ | ä | ö | ü ]; 
+define CC [ b | d | f | g | h | j | k | l | m | n | p | r | s | t | v ] ;
 #define ZZ [[W C+ W+ C*] | [W W W C*]];   # at least 2 syllables (kind of...)
 
 define Nmber ["+Sg" | "+Pl" ];
+
+define ShortAdj [CC* WW* CC* WW+ CC* "+A"] ; # short adjective (max 2 syllables)
+define ShortAdv [CC* WW* CC* WW+ CC* i* "+Adv"] ; # short adverb (max 2 syllables (+ i))
 
 # derivation
 # V -> 
@@ -22,8 +25,10 @@ define AnyDer ["+Der/mine" | "+Der/ja" | "+Der/nu" | "+Der/mus" | "+Der/ng" | "+
                  "+Der/us" | "+Der/lik" | "+Der/line" | "+Der/lt" | "+Der/sti" | "+Der/m" | "+Der/im" | 
                 "+Der/nna" | "+Der/kond" | "+Der/ti" | "+Der/lane" | "+Der/minus" ] ;
 
+define SomePron [ {ise} | {kes} | {mis} | {see} | {too} | {mina} | {sina} | {meie} | {teie} ];
+
 # some wordclasses are never in compounds
-define BadEver [ "+Adp" | "+PUNCT" | "+CLB" ] ;
+define BadEver [ "+Adp" ] ;
 define BadFirst [ "+V" \[WB | AnyDer | "+Inf" | "+Sup"]* WB] ;
 define BadLast [WB \WB* ["+Pron" | "+Interj" | "+CC" | "+CS"]];
 define BadCmp $[BadEver | BadFirst | BadLast];
@@ -32,14 +37,22 @@ define BadCmp $[BadEver | BadFirst | BadLast];
 # and a derivation requires the previous part in a certain form;
 # the good constellations are negated below
  
-define BadVerb [ $[ WB ?* "+V" ] & 
-               ~$[ "+N" Nmber \["+Nom" | "+Par"] \[AnyDer]* WB ?* "+V" vderneedsgen ] &   # lauauhmaja
-               ~$[ "+N" Nmber \["+Nom" | "+Gen"] \[AnyDer]* WB ?* "+V" vderneedspar ] &   # laudauhmav
-               ~$[ "+Num" "+Card" Nmber Gen \[AnyDer]* WB ?* "+V" vderneedsgen ] &        # viiekirjutamine
-               ~$[ "+V" \[AnyDer]* ["+Inf" | "+Sup"] \[AnyDer]*  WB ?* "+V" [vderneedspar | "+Der/mine" | "+Der/ja"]]
-                ];  # NB! not finished!
+define BadVerb [ 
+    $[ WB ?* "+V" ] & 
+   ~$[ "+N" "+Sg" "+Nom" \[AnyDer]* WB ?* "+V" [vderneedspar | vderneedsgen] ] &   # lauduhmaja
+   ~[ ShortAdj "+Sg" "+Nom" \[AnyDer]* WB ?* "+V" [vderneedspar | vderneedsgen] ?*] &   # rämeuhmaja
+   ~[ ShortAdv \[AnyDer]* WB ?* "+V" [vderneedspar | vderneedsgen] ?*] &   # huupiuhmaja
+   ~$[ "+N" Nmber \["+Nom" | "+Par"] \[AnyDer]* WB ?* "+V" vderneedsgen ] &   # lauauhmaja
+   ~$[ "+N" Nmber \["+Nom" | "+Gen"] \[AnyDer]* WB ?* "+V" vderneedspar ] &   # laudauhmav
+   ~$[ "+Num" "+Card" Nmber Gen \[AnyDer]* WB ?* "+V" vderneedsgen ] &        # viiekirjutamine
+   ~$[ "+V" \[AnyDer]* ["+Inf" | "+Sup"] \[AnyDer]*  WB ?* "+V" [vderneedspar | "+Der/mine" | "+Der/ja"]] & # lugedaunistav, lugemaõppimatu, ...
+   ~$[ {ne} "+A" "+Der/minus" WB ?* "+V" [vderneedspar | vderneedsgen] ] & # astraaluhmamine, astraaluhmav
+   ~$[ "+N" "+Der/minus" WB ?* "+V" vderneedsgen ] & # vaatamisuhmamine, firenzelasuhmaja
+   ~[ SomePron "+Pron" Nmber "+Gen" \[AnyDer]* WB ?* "+V" vderneedsgen ?*] &  # eneseuhmaja
+   ~[ SomePron "+Pron" Nmber "+Par" \[AnyDer]* WB ?* "+V" vderneedspar ?*]   # ennastuhmav
+                ];  # NB! not finished
 
-regex ~[ BadCmp | BadVerb ] ;
+regex  ~[ BadCmp | BadVerb ] ;
 #regex ~[ BadCmp  ] ;
 
 

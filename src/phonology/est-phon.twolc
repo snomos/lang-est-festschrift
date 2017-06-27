@@ -880,7 +880,8 @@ M1:n  <=> _ Null* [:t | :d ] ;
 ! xxx rules are needed for allowing -ne only for sg nom
 
 "ne-stem shortening"
-n:0  <=> :Consonant _ Null+ %> %- ;        ! nais-, vaatamis-, astraal-
+n:0  <=> :Consonant _ Null+ » %- ;        ! nais-, vaatamis-, astraal-
+         :Consonant _ Null+ » # ;            ! vaatamistunne, astraaltunne
 
 ! lexical: a s t r a a l n e E1 > -
 ! surface: a s t r a a l 0 0  0 > -
@@ -922,7 +923,8 @@ E1:0  <=> :Vowel Null* :s Null* _ Null* s e ;          ! olulisse (haplology)
           :Vowel Null* :s Null* _ Null* t e ;        ! soolaste
           :Vowel Null* :s Null* _ Null* » l i k ;        ! vaatluslik
                        :s Null* _ Null* » u s ;        ! soolasus
-                                _ Null* %> %- ;        ! nais-, vaatamis-, astraal-
+                                _ Null* » %- ;        ! nais-, vaatamis-, astraal-
+                                _ Null* » # ;        !  vaatamiskoht, astraaltunne
                         
 
 ! lexical: o l u l i n e E1 > s e 
