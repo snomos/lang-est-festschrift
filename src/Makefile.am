@@ -300,11 +300,13 @@ generator-raw-gt-desc.aaa.hfst: generator-raw-gt-desc.tmp.hfst $(EST_EXTRA_PRE_F
 
 # HFST:
 # compound words: redundant
+# the first part cannot be a form with a focus particle, so filter it out 
 generator-raw-gt-desc.bbb.hfst: generator-raw-gt-desc.aaa.hfst
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex [ [ ~[?* \"+Foc/gi\" ?*] .o. @\"generator-raw-gt-desc.aaa.hfst\"] \"#\" @\"generator-raw-gt-desc.aaa.hfst\" ] ; \nsave stack $@\nquit\n" | $(XFST_TOOL)
 
 # XFST:
 # compound words: redundant
+# the first part cannot be a form with a focus particle, so filter it out
 analyser-raw-gt-desc.bbb.xfst: analyser-raw-gt-desc.aaa.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex [ [ ~[?* \"+Foc/gi\" ?*] .o. @\"analyser-raw-gt-desc.aaa.xfst\"] \"#\" @\"analyser-raw-gt-desc.aaa.xfst\" ] ; \nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
@@ -331,6 +333,7 @@ analyser-raw-gt-desc.ccc.xfst: analyser-raw-gt-desc.bbb.xfst $(EST_COMPOUND_PRE_
 		 quit\n" | $(XFST) $(VERBOSITY)
 
 # HFST:
+# from simplex words, filter out shortened stems without the trailing hyphen (i.e ones ending with #)
 # include paired words and compound numerals and compounds and punctuation in the raw generator
 generator-raw-gt-desc.hfst: generator-raw-gt-desc.aaa.hfst \
 					generator-wordpairs-raw.aaa.hfst \
@@ -339,13 +342,12 @@ generator-raw-gt-desc.hfst: generator-raw-gt-desc.aaa.hfst \
 					generator-raw-gt-desc.ccc.hfst
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"$<\" .o. ~[?* \"#\" ] ; \nread regex @\"generator-wordpairs-raw.aaa.hfst\" ; \nread regex @\"generator-numerals-raw.aaa.hfst\" ; \nread regex @\"morphology/punctuation.tmp.hfst\" ; \nread regex @\"generator-raw-gt-desc.ccc.hfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
 
-#	hfst-union -1 $< -2 generator-wordpairs-raw.aaa.hfst -o - | hfst-union -1 - -2 generator-numerals-raw.aaa.hfst -o - | hfst-union -1 - -2 morphology/punctuation.tmp.hfst -o - | hfst-union -1 - -2 generator-raw-gt-desc.ccc.hfst -o $@
-
 # ... also the raw analyser
 analyser-raw-gt-%.hfst: generator-raw-gt-%.hfst
 		$(HFST_INVERT) $(VERBOSITY) $(HFST_FLAGS) < $< > $@
 
 # XEROX:
+# from simplex words, filter out shortened stems without the trailing hyphen (i.e ones ending with #)
 # include paired words and compound numerals and compounds and punctuation in the raw analyser
 analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.aaa.xfst \
 					analyser-wordpairs-raw.aaa.xfst \
@@ -354,13 +356,6 @@ analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.aaa.xfst \
 					analyser-raw-gt-desc.ccc.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex @\"$<\" .o. ~[?* \"#\" ] ; \nread regex @\"analyser-wordpairs-raw.aaa.xfst\" ; \nread regex @\"analyser-numerals-raw.aaa.xfst\" ; \nread regex @\"morphology/punctuation.tmp.xfst\" ; \nread regex @\"analyser-raw-gt-desc.ccc.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
-#analyser-raw-gt-%.xfst: analyser-raw-gt-%.aaa.xfst \
-#					analyser-wordpairs-raw.aaa.xfst \
-#					analyser-numerals-raw.aaa.xfst \
-#					analyser-raw-gt-%.ccc.xfst
-#	$(AM_V_XFST)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"analyser-wordpairs-raw.aaa.xfst\" ; \nunion net\nread regex @\"analyser-numerals-raw.aaa.xfst\" ; \nunion net\nread regex @\"analyser-raw-gt-$*.ccc.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
-
-#	$(AM_V_XFST)$(PRINTF) "read regex [@\"$<\" | @\"analyser-wordpairs-raw.aaa.xfst\" | @\"analyser-numerals-raw.aaa.xfst\" | @\"analyser-raw-gt-$*.ccc.xfst\"] ; \nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######

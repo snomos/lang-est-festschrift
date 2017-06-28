@@ -2,7 +2,7 @@
 # * its component belongs to a wrong word class
 
 #
-define WB [ "#" | .#. ];  # word border
+define WB [ "#" ];  # word border
 
 define WW [ a | e | i | o | u | õ | ä | ö | ü ]; 
 define CC [ b | d | f | g | h | j | k | l | m | n | p | r | s | t | v ] ;
@@ -27,6 +27,26 @@ define AnyDer ["+Der/mine" | "+Der/ja" | "+Der/nu" | "+Der/mus" | "+Der/ng" | "+
 
 define SomePron [ {ise} | {kes} | {mis} | {see} | {too} | {mina} | {sina} | {meie} | {teie} ];
 
+# nouns meaning an action
+define DeVerbal [ {elu} | {hüpe} | {hüüatus} | {hüüd} | {hüüe} | {jooks} | {kalle} | {kutse} | 
+                 {käik} | {külv} | {künd} | {lask} | {lend} | {lõige} | {löök} | {lüps} | 
+                 {matk} | {minek} | {olek} | {olija} | {panek} | {proov} | {põige} | {põrge} | 
+                 {pääs} | {püüd} | {püüe} | {ränd} | {rännak} | {ränne} | {seis} | {start} | 
+                 {sõit} | {tants} | {teke} | {trükk} | {tulek} | {tung} | {tõmme} | {tõrje} | 
+                {tõuge} | {tõus} | {vaade} | {vedu} | {vise} | {võtt} ] ;
+
+# not suitable for compounding
+define BadInterj [ {ena} | {pele} | {raip} | {vaat} | {paganamas} | {servus} | {kurat} ] ;
+
+define GoodAdj1 [ {kõlblik} | {kõlbulik} | {ohtlik} | {tundlik} | {suutlik} | {kõlbmatu} | {suutmatu} |
+                  {andekas} | {nõudlik} | {võimekas} | {osav} | {tihe} | {kindel} ] ;
+
+# indecl adjectives
+define GoodAdj2 [ {karva} | {kasvu} | {moodi} | {värvi} | {väärt} | {korras} ] ;
+
+# as a rule, short words make weird compounds...
+define GoodShort [ {aeg} | {elu} | {maa} | {töö} | {õde} ] ;
+
 # some wordclasses are never in compounds
 define BadEver [ "+Adp" ] ;
 define BadFirst [ "+V" \[WB | AnyDer | "+Inf" | "+Sup"]* WB] ;
@@ -41,19 +61,52 @@ define BadVerb [
     $[ WB ?* "+V" ] & 
    ~$[ "+N" "+Sg" "+Nom" \[AnyDer]* WB ?* "+V" [vderneedspar | vderneedsgen] ] &   # lauduhmaja
    ~[ ShortAdj "+Sg" "+Nom" \[AnyDer]* WB ?* "+V" [vderneedspar | vderneedsgen] ?*] &   # rämeuhmaja
-   ~[ ShortAdv \[AnyDer]* WB ?* "+V" [vderneedspar | vderneedsgen] ?*] &   # huupiuhmaja
-   ~$[ "+N" Nmber \["+Nom" | "+Par"] \[AnyDer]* WB ?* "+V" vderneedsgen ] &   # lauauhmaja
-   ~$[ "+N" Nmber \["+Nom" | "+Gen"] \[AnyDer]* WB ?* "+V" vderneedspar ] &   # laudauhmav
-   ~$[ "+Num" "+Card" Nmber Gen \[AnyDer]* WB ?* "+V" vderneedsgen ] &        # viiekirjutamine
+   ~[ ShortAdv \[AnyDer]* WB ?* "+V" [vderneedspar | vderneedsgen] ?*] &          # huupiuhmaja
+   ~$[ "+N" Nmber \["+Nom" | "+Par"] \[AnyDer]* WB ?* "+V" vderneedsgen ] &       # lauauhmaja
+   ~$[ "+N" Nmber \["+Nom" | "+Gen"] \[AnyDer]* WB ?* "+V" vderneedspar ] &       # laudauhmav
+   ~$[ "+Num" "+Card" Nmber [ "+Gen" | "+Par"] \[AnyDer]* WB ?* "+V" vderneedsgen ] &   # viiekirjutamine, viiskirjutamine
    ~$[ "+V" \[AnyDer]* ["+Inf" | "+Sup"] \[AnyDer]*  WB ?* "+V" [vderneedspar | "+Der/mine" | "+Der/ja"]] & # lugedaunistav, lugemaõppimatu, ...
-   ~$[ {ne} "+A" "+Der/minus" WB ?* "+V" [vderneedspar | vderneedsgen] ] & # astraaluhmamine, astraaluhmav
-   ~$[ "+N" "+Der/minus" WB ?* "+V" vderneedsgen ] & # vaatamisuhmamine, firenzelasuhmaja
-   ~[ SomePron "+Pron" Nmber "+Gen" \[AnyDer]* WB ?* "+V" vderneedsgen ?*] &  # eneseuhmaja
-   ~[ SomePron "+Pron" Nmber "+Par" \[AnyDer]* WB ?* "+V" vderneedspar ?*]   # ennastuhmav
+   ~$[ {ne} "+A" "+Der/minus" WB ?* "+V" [vderneedspar | vderneedsgen] ] &     # astraaluhmamine, astraaluhmav
+   ~$[ "+N" "+Der/minus" WB ?* "+V" vderneedsgen ] &                           # vaatamisuhmamine, firenzelasuhmaja
+   ~[ SomePron "+Pron" Nmber "+Gen" \[AnyDer]* WB ?* "+V" vderneedsgen ?*] &   # eneseuhmaja
+   ~[ SomePron "+Pron" Nmber "+Par" \[AnyDer]* WB ?* "+V" vderneedspar ?*]     # ennastuhmav
                 ];  # NB! not finished
+# TODO: de, re, taas + V
 
-regex  ~[ BadCmp | BadVerb ] ;
-#regex ~[ BadCmp  ] ;
+define BadNoun [
+    $[ WB \WB* "+N" ] & 
+   ~$["+N" "+Sg" "+Nom" \[AnyDer]*  WB \WB* "+N"] &               # laudriiul
+   ~[ ShortAdj "+Sg" "+Nom" \[AnyDer]* WB \WB* "+N" ?*] &            # rämeriiul
+   ~$["+N" Nmber "+Gen" \[AnyDer]*  WB \WB* "+N"] &               # lauariiul, laudaderiiul
+   ~$["+N" "+Sg" \[AnyDer]*  WB \WB* DeVerbal "+N"] &             # mäkketulek, mäesttulek, ...
+   ~$[ "+Num" "+Card" Nmber "+Gen" \[AnyDer]* WB \WB* "+N" ] &        # viieriiul
+   ~$[ "+Num" "+Card" "+Sg" "+Nom" \[AnyDer]* WB \WB* "+N" ] &        # viisriiul
+   ~$["+V" \[AnyDer]* "+Sup" \[AnyDer]*  WB \WB* DeVerbal "+N"] &    # lugematulek
+   ~$[ {ne} "+A" "+Der/minus" WB \WB* "+N" ] &                     # astraalriiul
+   ~$[ "+N" "+Der/minus" WB \WB* "+N" ] &                          # vaatamisriiul
+   ~[ SomePron "+Pron" Nmber "+Gen" \[AnyDer]* WB \WB* "+N" ?*]     # eneseriiul
+               ];
+
+define BadAdj [
+    $[ WB \WB* "+A" ] & 
+   ~$[\[AnyDer]* "+N" "+Sg" "+Nom" \[AnyDer]*  WB \WB* "+A"] &               # laudpunane
+   ~[ ShortAdj "+Sg" "+Nom" \[AnyDer]* WB \WB* "+A" ?*] &            # rämeastraalne
+   ~$["+N" Nmber "+Gen" \[AnyDer]*  WB \WB* \v "+A"] &               # lauapunane, laudadepunane
+   ~$["+N" "+Sg" \["+Nom" | "+Gen" | AnyDer]*  WB \WB* v "+A"] &             # mägejuhtiv, mäesttulev, ...
+   ~$[ "+Der/minus" WB \WB* "+A" ] &                          # vaatamispunane, astraalpunane
+   ~[ SomePron "+Pron" Nmber "+Gen" \[AnyDer]* WB \WB* "+A" ?*]     # enesepunane
+               ];
+
+define BadAdv [
+    $[ WB \[WB | AnyDer]* "+Adv" \[AnyDer]* ] 
+               ];
+
+define BadNum [
+    $[ WB \[WB | AnyDer]* "+Num" \[AnyDer]* ] 
+               ];
+
+regex  ~[ BadCmp | BadVerb | BadNoun | BadAdj | BadAdv | BadNum] ;
+
 
 
 
