@@ -72,13 +72,8 @@ cat tmp1 | ./lemma2twol.sed \
 | ./post_lex2lemma.sed \
 > tmp1twol
 
-# tegemata: 
+# tegemata 19.07.2017: 
 # $...$ vahel erandvormide arvessevõtmine 
-# kahest osast koosnevad sõnad, millel mõlemad osad käänduvad, nt seitsetuhat ?
-# 
-# sg tantum, nt iga ?
-# sõnaliikide teisendamine
-#  
 
 # esialgne info tagasi sisse
 # 
@@ -92,12 +87,7 @@ paste fs_lex tmp1twol \
 | sed 's/!\\K\\!&&!\\D\\!/!\\DK\\!/' \
 > fs_lex.gt1
 
-# NB! liitsõna sada tegemata !!
-
 # tsemnW on muuks vajalik info, mitte sõnaliik
-# GI võiks sobida jätkuleksikoniks ainult +Adv puhul, aga ka seal mitte igale sõnale...
-# oleks vaja vaadata muid sõnu, et otsustada ?
-# tosin~kond, soon~kond puhul ~ lihtsalt eemaldatakse
 
 # create the nearly final lexicons
 cat fs_lex.gt1 \

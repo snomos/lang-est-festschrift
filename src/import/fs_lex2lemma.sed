@@ -166,6 +166,8 @@ s/^\([^ ]*\) [^@]*@AASTA.*$/& \1:\1/
 /_pada .*%{stemill%}%{rare%}/s/%{rare%}//
 /^pesa .*%{stemill%}%{rare%}/s/%{rare%}//
 /_pesa .*%{stemill%}%{rare%}/s/%{rare%}//
+/^võsa .*%{stemill%}%{rare%}/s/%{rare%}//
+/_võsa .*%{stemill%}%{rare%}/s/%{rare%}//
 /^saba .*%{stemill%}%{rare%}/s/%{rare%}//
 /talu .*%{stemill%}%{rare%}/s/%{rare%}//
 /^tül\]i .*%{stemill%}%{rare%}/s/%{rare%}//
@@ -261,7 +263,8 @@ s/^\([^ ]*t\)ugi [^@]*21[^@]*@NIMI.*$/& \1ugi:\1uG1/
 
 /@.*:/!s/^\([^ ]*\]*\) \([^ ]*\) [^@]*\.19[^@]*@TAUD$/& \1:\1/
 
-/@TAUD/s/%>%{pl.e%}%{rare%}//
+/@TAUD/s/%>%{pl..%}%{rare%}//
+/@TAUD/s/%>%{pl..%}//
 /@KABINET/s/%>%{pl.e%}%{rare%}//
 /@FIAT/s/%>%{pl.e%}%{rare%}//
 /@ARGPÜKS/s/%>%{pl.e%}%{rare%}//
