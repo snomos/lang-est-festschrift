@@ -703,6 +703,7 @@ s/^\([^ ]*t\)ugi [^@]*21[^@]*@NIMI.*$/& \1ugi:\1uG1/
 /[ =_-]h<ange .*EIT/s/%{rare%}//
 /[ =_-]h<etke .*EIT/s/%{rare%}//
 /[ =_-]h<inge .*EIT/s/%{rare%}//
+/[ =_-]h<irve .*EIT/s/%{rare%}//
 /[ =_-]k<aske .*EIT/s/%{rare%}//
 /[ =_-]k<irge .*EIT/s/%{rare%}//
 /[ =_-]k<itse .*EIT/s/%{rare%}//
