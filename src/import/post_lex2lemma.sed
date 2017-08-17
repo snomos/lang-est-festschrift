@@ -29,4 +29,25 @@
 /[ _]t<oime .*@PINGE/s/$/%{stemill%}/
 /[ _]t<äkke .*@PINGE/s/$/%{stemill%}/
 /[ _]r<akke .*@PINGE/s/$/%{stemill%}%{rare%}/
+/[ _]<ehte .*@PINGE/s/$/%{stemill%}%{rare%}/
+/[ _]k<ütke .*@PINGE/s/$/%{stemill%}%{rare%}/
+/[ _]v<erme .*@PINGE/s/$/%{stemill%}%{rare%}/
+
+/[ _]k<iila /s/$/%{stemill%}/
+/[ _]p<õõsa /s/$/%{stemill%}%{rare%}/
+/[ _]r<oopa /s/$/%{stemill%}%{rare%}/
+/[ _]r<ukki /s/$/%{stemill%}%{rare%}/
+/[ _]r<äästa /s/$/%{stemill%}%{rare%}/
+/[ _]r<ööpa /s/$/%{stemill%}%{rare%}/
+/[ _]t<aeva /s/$/%{stemill%}%{rare%}/
+/[ _]t<eiba /s/$/%{stemill%}%{rare%}/
+/[ _]v<arda /s/$/%{stemill%}%{rare%}/
+
+/b<uldog /s/$/%{stemill%}%{rare%}/
+/[ _]h<amba /s/$/%{stemill%}%{rare%}/
+/[ _]kr<emli /s/$/%{stemill%}%{rare%}/
+/[ _]p<ärli /s/$/%{stemill%}%{rare%}/
+/[ _]k<ütke /s/$/%{stemill%}%{rare%}/
+/p<õrgu /s/$/%{stemill%}/
+/t<asku /s/$/%{stemill%}/
 
