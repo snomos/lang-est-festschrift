@@ -156,6 +156,9 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
  M1:m !!≈ * __@CODE@__ lumi
  M1:n !!≈ * __@CODE@__ lun d
 
+ N1:n !!≈ * __@CODE@__ lään e, kolman da
+ N1:0 !!≈ * __@CODE@__ lää s,  kolma s
+
  K3:k !!≈ * __@CODE@__ vennakse
  K3:0 !!≈ * __@CODE@__ venna s
 
@@ -479,8 +482,8 @@ S1:0  <=> _ AnyNoTrigger* WeakGrade ;       ! paas - pae; this is the only word 
 ! surface: p a 0  0 0   0       e    0
 ! lexical: v a r r S1 {stemill} {S} > d e > {s} {s} {e}
 ! surface: v a r 0  0      0     0  0 d e 0  0   0   0
-! lexical: k o l m a n S1 d a
-! surface: k o l m a n  0 d a
+! lexical: k o l m a N1 S1 d a
+! surface: k o l m a  n  0 d a
 
 "Lexically determined weak grade for kpt:gbd; sg nom for ader, lubi"
 
@@ -741,7 +744,7 @@ J1:i  <=> :Consonant _ Null* WordEnd ;
 ! lexical: a J1 D1 > {pl.u} {sg.a} {W}
 ! surface: a i   0 0    0      a    0
 
-! only for 2 words - aed, aetud ...
+! only for 1 word - aed
 "j appears as e"
 
 J1:e  <=> :Vowel _ Null* :Consonant ;
@@ -809,10 +812,10 @@ K3:k  <=> _ s E1:e ;
 !------
 "laas-laane"
 
-n:0  <=> \[:Consonant] _ S1:s ;   ! laas-laane, tuhandes-tuhendenda etc
+N1:0  <=> \[:Consonant] _ S1:s ;   ! laas-laane, tuhandes-tuhendenda etc
 
-! lexical: l a a n S1 
-! surface: l a a 0 s
+! lexical: l a a N1 S1 
+! surface: l a a 0  s
 !------
 ! Only pea, hea 
 "Pea, hea vs häid, päid, pähe 1"
@@ -1161,20 +1164,17 @@ Vx:Vy  <=>  :Consonant Null* %> _ Null+ %{s%}:0 ;     ! puud-puudi, maja - maju
 
 ! maja-maju/majasid, osa-osi/osasid, nuga-nuge/nugasid
 ! if vowel plural is possible, then it has to be indicated in stem lexicon
-! concerns only words ending with -a  
+! concerns only words ending with -a, and huvi, kivi, kruvi 
 
-"a deletion before plural vowel"
+"vowel deletion before plural vowel"
 
-a:0  <=> :Consonant ( J1: ) _ %> PlSV:stemV Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
+Vx:0  <=> :Consonant ( J1:0 ) _ %> PlSV:Vy Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
+     where Vx in (a a a i)
+           Vy in (i u e e)
+     matched;
 
 ! lexical: m a j a > {pl.u} {stemill} > {s} {i} {d}
 ! surface: m a j 0 0    u       0     0  0   0   0
-
-! this is an ad hoc rule...
-! only huvi, kivi, kruvi
-"i deletion before plural vowel"
-
-i:0  <=> :Consonant _ %> :e Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 
 ! --------------
 ! 2. singular illative: -sse vs stem grade strengthening
@@ -1317,11 +1317,14 @@ i:0  <=> :Consonant _ %> :e Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 ! Treffner, Gottlieb, Seattle
 ! 1) if a vowel is deleted, the resulting consonant cluster may have to be modified
 ! (note: no consonant deletion before particle -gi/ki)
+! 2) in this treatment, some consonants have been written as double in the lexicon 
+! because they are pronounced long;
+! this violates Estonian orthography, and this rule sets them right again
 
 "consonant de-doubling in consonant clusters (e.g. after vowel deletion)"
 
-Cx:0 <=> :Cx _ Null+ [[Consonant Any* Border] - [Gi Border]];
-         :Cx _ Null* SuffixBorder Null* [[:Consonant Any* Border] - [Gi Border]];
+Cx:0 <=> :Cx _ Null+ [[:Consonant Any* Border] - [Gi Border]];
+         :Cx _ [WS:stop | S1:s] ;
       where Cx in (Consonant) ;
 
 ! lexical: s p i k k E2 r > i
@@ -1330,20 +1333,6 @@ Cx:0 <=> :Cx _ Null+ [[Consonant Any* Border] - [Gi Border]];
 ! surface: k õ r 0  0     0        0   0 t e
 ! lexical: k ü n n D1 > T7 u d
 ! surface: k ü n 0  0 >  t u d 
-
-! 2) in this treatment, some consonants have been written as double in the lexicon 
-! because they are pronounced long;
-! this violates Estonian orthography, and these rules set them right again
-! need several rules for lmnr because e.g. n may get deleted in another context, e.g. lääs-lääne
-
-"repair lmnr lmnr stop"
-
-Cx:0 <=> :Cx _ WS:stop ;
-      where Cx in (lmnr) ;
-
-"repair rrs"
-
-r:0 <=> :r _ S1:s ; ! kõrs
 
 ! lexical: k a n n D1 E2 l e
 ! surface: k a n 0  d  0 l e 
