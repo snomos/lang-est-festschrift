@@ -119,11 +119,12 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
 
  E4:e !!≈ * __@CODE@__ aeg, soe 
  E4:j !!≈ * __@CODE@__ aja, sooja
+ E4:0 !!≈ * __@CODE@__ aia
 
- J1:i !!≈ * __@CODE@__ ahi, rohi
+ J1:i !!≈ * __@CODE@__ ahi, rohi, aia
  J1:j !!≈ * __@CODE@__ ahju
  J1:0 !!≈ * __@CODE@__      rohu
- J1:e !!≈ * __@CODE@__ aed
+! J1:e !!≈ * __@CODE@__ aed
 
 !! 4 words have h-illative: ''sohu'', ''suhu'', ''öhe'', ''pähe''
 
@@ -508,13 +509,15 @@ Cx:Cy  <=>  _ AnyNoTrigger* WeakGrade ;
 
 "short illative strong stem generation: consonant doubling"
 
-0:Cy  <=>  \[ :Vowel] :Vowel Cx:Cy _ NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ; ! majja
+0:Cy  <=>  \[ :Vowel] :Vowel Null* Cx:Cy _ NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ; ! majja
      where Cx in ( l m M1 n r v j h s g b d k p t G1 B1 B2 D1 ) 
            Cy in ( l m  m n r v j h s k p t k p t  k  p  p  t )
      matched ;
 
 ! lexical: t u B1 0 a > {pl.e} {stemill} {S} > {s} {s} {e}
 ! surface: t u  p p a 0    0       0      0  0  0   0   0 
+! s õ J1 D1 0 a
+! s õ  0  t t a
 
 "short illative strong stem generation: stop to stronger stop"
 
@@ -717,8 +720,7 @@ Vx:Vx /<= :Vx _ H3:h  :stemV ;            !  sohu, suhu, öhe, pähe
 ! --- j is not in the lexical side
 "e pronounced as j between vowels "
 
-!E4:j  <=> [:Vowel - :i] Null* _ Null* [:Vowel - :i] ;
-E4:j  <=> :Vowel Null* _ Null* :Vowel ;
+E4:j  <=>  :Vowel Null* _ Null* [:Vowel - :i] ;
 
 ! lexical: a E4 G1 
 ! surface: a  e  g
@@ -729,52 +731,38 @@ E4:j  <=> :Vowel Null* _ Null* :Vowel ;
 ! lexical: s o o E4 a 
 ! surface: s o o j  a 
 
+! for aed - aia
+"i supresses e"
+
+E4:0  <=>  _ J1:i ;
+
+! lexical: a E4 J1 D1 > {pl.u} {sg.a} {W}
+! surface: a  0  i  0 >    0      a    0
+
 ! --- j is in the lexical side, but surfaces only in certain contexts
 
-! 1. after a consonant, j may be i only in word final position
-! 2. immediately after a vowel, j may be i only if the following stop has been deleted and a vowel follows
-! (this is ad hoc for aed - aia ... )
+! 1. j may be i only in word final position
+! 2. ... plus in a very specific context (aed - aia ... )
 "j appears as i"
 
-J1:i  <=> :Consonant _ Null* WordEnd ;
-          :Vowel _ :0 Null* :Vowel ;
+J1:i  <=>      _ Null* WordEnd ;
+          E4:0 _ Null+ :Vowel ;
 
 ! lexical: a h J1 > {pl.e} {rare}
 ! surface: a h  i  0    0      0
-! lexical: a J1 D1 > {pl.u} {sg.a} {W}
-! surface: a i   0 0    0      a    0
-
-! only for 1 word - aed
-"j appears as e"
-
-J1:e  <=> :Vowel _ Null* :Consonant ;
-
-! lexical: a J1 D1 
-! surface: a e   d 
-
-! ahju, härja, saja
-
-"j surfaces only if some (stem)vowel follows"
-
-J1:j  => :Consonant _ Null* :Vowel ;
-         :Vowel (D1:0) _ :Vowel ;
-
-! lexical: a h J1 > {pl.e} {rare} {sg.u} {W}
-! surface: a h j  0   0       0      u    0
-! lexical: h ä r J1 G1 > {pl.i} {sg.a} {W}
-! surface: h ä r j  0  0    0      a    0
-! lexical: s a D1 J1 a > {pl.u} {W}
-! surface: s a 0  j  a 0    0    0
+! lexical: a E4 J1 D1 > {pl.u} {sg.a} {W}
+! surface: a  0  i  0 >    0      a    0
 
 "j does not surface between consonants 1/2"
     
-J1:j /<=           h _ T1:  ;
-             [l | r] _ :stop ;
+J1:j /<=    h _ T1: ;
+              _ :stop ;
+         E4:e _ ;
 
 "j does not surface between consonants 2/2"
 
-J1:0  =>           h _ T1:  ;
-             [l | r] _ :stop ;
+J1:0  =>   h _ T1: ;
+             _ :stop ;
 
 ! lexical: r o h J1 T1 > {pl.e} {rare}
 ! surface: r o h  0  t 0    e      0
@@ -783,22 +771,12 @@ J1:0  =>           h _ T1:  ;
 ! lexical: h ä r J1 G1 > {pl.i} {sg.a} 
 ! surface: h ä r 0  g  0    0      a   
 
-! only koda, pada, rada, sadu, sõda, sada, sadama
-! use D1 as a trigger 
-! (D1 is non-zero only in strong grade) 
-
-"koda etc: j does not surface in strong grade 1/2"
-
-J1:j /<=  [D1:d | D1:t] (:t) _ Null* :Vowel ;
-
-"koda etc: j does not surface in strong grade 2/2"
-
-J1:0  =>  [D1:d | D1:t] (:t) _ Null* :Vowel ;
-
-! lexical: s a D1 J1 a 
-! surface: s a d  0  a 
-! lexical: s õ D1 0 J1 a > {pl.u} {stemill} {S} > {s} {s} {e}
-! surface: s õ t  t 0  a 0    0       0      0  0  0   0   0
+! lexical: h ä r J1 G1 > {pl.i} {sg.a} {W}
+! surface: h ä r j  0  0    0      a    0
+! lexical: a h J1 > {pl.e} {rare} {sg.u} {W}
+! surface: a h j  0   0       0      u    0
+! lexical: s a J1 D1 a > {pl.u} {W}
+! surface: s a j  0  a 0    0    0
 
 ! --- 
 ! juus-juuksed, kälis-käliksed, nõos-nõoksed, omas-omaksed, vennas-vennaksed, ões-õeksed 

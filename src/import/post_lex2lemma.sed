@@ -51,3 +51,7 @@
 /p<õrgu /s/$/%{stemill%}/
 /t<asku /s/$/%{stemill%}/
 
+/aed /s/aJ1D1/aE4J1D1/
+
+s/D1J1/J1D1/
+
