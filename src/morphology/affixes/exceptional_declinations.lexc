@@ -176,6 +176,18 @@ LEXICON KUMBKI    ! only kumbki; kumb like PIIM +gi; nonstandard parallel forms 
 !---------------
 ! exceptional inflectional types, i.e. covering very few words each
 !---------------
+LEXICON AED       ! only aed; if its orthography was aed - ajja - aeda, it would be in type PIIM
+                  ! but aed - aia - aeda makes it too ugly to model with twol rules
+
+                  :ed SG_NOMINATIVE ;    ! aed
+                  :ia%{W%} N_SG_SUBPARA ;    ! aia etc 
+                  :eda SG_PARTITIVE ;    ! aeda
+        %+Use%/Hyp:ia%{W%}%>sse SG_ILLATIVE ;    ! aiasse 
+                  :eda SG_ILLATIVE ;    ! aeda
+                  :eda%>de N_PL_SUBPARA ;    ! aedade etc 
+                  :edu PL_PARTITIVE ;    ! aedu
+       %+Use%/Rare:eda%>sid PL_PARTITIVE ;    ! aedasid
+
 LEXICON ARGPÜKS    ! some compound words ending with püks (argpüks, vesipüks etc)
                   ! and declined not exactly like püksid (e.g. karupüksid, sukkpüksid) 
                   ! almost like TAUD, but has some less used pl forms
