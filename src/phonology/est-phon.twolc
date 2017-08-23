@@ -704,15 +704,11 @@ e:e /<= [:Consonant | WS:0] [l | r] _ WeakGrade SuffixBorder :Consonant ;
 
 ! -------- rules that operate on a small set of different words
 
-"Long vowel shortens before h 1/2"
+"Long vowel shortens before h"
 
-Vx:0 => :Vx _ H3:h  :stemV ;            !  sohu, suhu, öhe, pähe
+Vx:0 <=> :Vx _ H3:h  :stemV ;            !  sohu, suhu, öhe, pähe
       where Vx in ( Vowel ) ;  
 
-"Long vowel shortens before h 2/2"
-
-Vx:Vx /<= :Vx _ H3:h  :stemV ;            !  sohu, suhu, öhe, pähe
-      where Vx in ( Vowel ) ;  
 
 ! ------ rules for j
 ! ------ they affect a handful of words
