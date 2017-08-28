@@ -98,7 +98,9 @@ GT_LOCAL_SRCS=\
                         pair_final.tmp.lexc \
                         num_initial.tmp.lexc \
                         num_final.tmp.lexc \
-                        punctuation.tmp.lexc 
+                        punctuation.tmp.lexc \
+                        noncomp.tmp.lexc \
+                        nonfcomp.tmp.lexc 
 
 # Define local xfscripts here:
 GT_LOCAL_XFSCRIPT_SRCS=
@@ -128,6 +130,16 @@ pair_final.tmp.lexc: pair_final.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
 	cat $(EST_AFFIX_FILES:%=%.lexc) >> $@
 
 num_final.tmp.lexc: num_final.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
+	cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
+	cat $< >> $@ && \
+	cat $(EST_AFFIX_FILES:%=%.lexc) >> $@
+
+noncomp.tmp.lexc: noncomp.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
+	cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
+	cat $< >> $@ && \
+	cat $(EST_AFFIX_FILES:%=%.lexc) >> $@
+
+nonfcomp.tmp.lexc: nonfcomp.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
 	cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
 	cat $< >> $@ && \
 	cat $(EST_AFFIX_FILES:%=%.lexc) >> $@

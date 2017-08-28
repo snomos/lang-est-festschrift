@@ -141,6 +141,7 @@ LEXICON KÕIK
            +Pl+Nom: #;    ! kõik
     +Pl%+Use%/Rare:i%>de STANDARD_GEN_ET_AL ;    ! kõikide etc
                +Pl:i%{W%} STANDARD_GEN_ET_AL ;    ! kõigi etc
+                  :i PL_PARTITIVE ;              ! kõiki
 
 LEXICON MÕNI    ! only mõni; similar to MERI
 

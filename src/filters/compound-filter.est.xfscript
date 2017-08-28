@@ -1,9 +1,11 @@
 # remove concatenated forms that are not valid words
-# 1. longer than 5 components
 
-define WB [ "#" ] ;
-define toolong [ ?* WB [\WB]* WB [\WB]* WB [\WB]* WB [\WB]* WB ?* ] ;
+define WB [ "#" ] ;   # word border
+define SB [ "»" ] ;   # suffix border
+
+define toolong [ ?* WB [\WB]* WB [\WB]* WB [\WB]* WB [\WB]* WB ?* ] ;     # longer than 5 components
+define tooderived [?* SB \[SB | WB]* SB \[SB | WB]* SB \[WB]* WB ?* ] ;   # non-final component has more than 2 derivational suffixes 
 
 #regex [~toolong].i ;
-regex [~toolong] ;
+regex [~toolong] & [~tooderived];
 
