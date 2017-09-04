@@ -314,6 +314,7 @@ stemV = a e i u ;
 HighVowel = i ü u ;
 MidVowel = e ö õ o ;
 LowVowel = ä a ;
+NonHighVowel = MidVowel LowVowel ;
 
 LowerBackVowel = o a ;
 
@@ -474,7 +475,7 @@ Cx:Cy  <=> _ AnyNoTrigger* WeakGrade ;
 
 "Lexically determined weak grade for s:0"
 
-S1:0  <=> _ AnyNoTrigger* WeakGrade ;       ! paas - pae; this is the only word here...
+S1:0  <=> _ AnyNoTrigger* WeakGrade ;       ! paas - pae; 
           _ Null* [ :t | :d ] ;             ! vars - vart, varde
 
 ! lexical: p a a S1 > {pl.e} {sg.i} {WL}
@@ -625,15 +626,15 @@ Vx:0 /<=  :Vx _ Null+ [:stemV - :i];            ! riiu, luua; puid
 
 "Long non-high vowel shortens before a stem vowel"
 
-Vx:Vx /<= :Vx _ Null+ :stemV ;            ! sae, soid, soe
-      where Vx in ( MidVowel LowVowel ) ;  
+Vx:Vx /<= :Vx _ Null+ :stemV ;            ! sae, soid
+      where Vx in ( NonHighVowel ) ;  
+
+!      where Vx in ( MidVowel LowVowel ) ;  
 
 ! lexical: s a a G1 > {pl.e} {sg.i} {W}
 ! surface: s a 0  0 0    0      e    0 
 ! lexical: h u u G1 a {W} > n u d      
 ! surface: h u u  0 a  0  0 n u d     NB! no shortening !
-! lexical: s o o E4 
-! surface: s o 0 e
 
 ! lexical: p u u             {id} > {idsid} i d
 ! surface: p u 0               0  0    0    i d
