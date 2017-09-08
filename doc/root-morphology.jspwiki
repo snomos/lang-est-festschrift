@@ -531,11 +531,22 @@ N --> N, A --> A
 
 !Muud / Other tags
 
+!Symbols that need to be escaped on the lower side (towards twolc):
+
+* »
+* «
+* > (written with square brackets, see the root.lexc file)
+* < (written with square brackets, see the root.lexc file)
+
+ * '7  7 is the real apostrophe ?? 
+
  * {{+Use/Circ }}: for arabic and roman numerals
 
  * {{+ABBR }}: Lühend / Abbreviation
  * {{+CLB }}: Osalause piir (punkt, koma) / Clause border (full stop, comma..)
  * {{+PUNCT }}: Kirjavahemärk / Punctuation
+ * {{+LEFT }}: Kirjavahemärgi asetus / Punctuation orientation
+ * {{+RIGHT }}: Kirjavahemärgi asetus / Punctuation orientation
 
 !!Flag diacritics
 Use the following flag diacritics to control downcasing of derived proper

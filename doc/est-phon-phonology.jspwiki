@@ -17,7 +17,7 @@ e.g. ''Riia'' - ''Riiga'', ''Rannu'' - ''Randu''.
 at the end of a Sg Nom word is written k p t, 
 so it must be doubled  (kabinet - kabinetti). 
 Also, tulema, panema, surema, olema, minema have tulla, tulles etc...
- * __%{no.apo%}:0__ trigger for deleting apostrofy (normally used for foreign word inflections) from Sg Nom
+ * __%{no.apo%}:0__ trigger for deleting apostrophe (normally used for foreign word inflections) from Sg Nom
 
 !Special surface side symbols, used in rule contexts
 
@@ -29,7 +29,7 @@ Also, tulema, panema, surema, olema, minema have tulla, tulles etc...
 
 Apostrofy is used for separating inflectional affix from a foreign word lemma
 
- * __%{apo%}:0__ ... but Sg Nom is without apostrofy
+ * __%{apo%}:0__ ... but Sg Nom is without apostrophe
 
 !Morphophonemes
 
