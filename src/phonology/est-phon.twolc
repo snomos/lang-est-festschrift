@@ -359,8 +359,8 @@ Rules
 ! -----
 ! general 
 "strong and weak gradation triggers cannot co-exist"
-%{S%}:0  /<= _ :* WeakGrade ;
-             WeakGrade :* _ ;
+%{S%}:0  /<= _ Any* WeakGrade ;
+             WeakGrade Any* _ ;
 
 ! ----- consonant gradation
 
@@ -796,7 +796,7 @@ Y3:e  <=> [:ä | :ö] Null* H3:h _ ;
 Y3:u  <=> [:o | :u] Null* H3:h _ ;
 
 "h-illative"
-H3:h  <=> _ :* StrongGrade ;
+H3:h  <=> _ Any* StrongGrade ;
 
 !------
 "Verb vowel ö o to õ"
