@@ -109,6 +109,15 @@ GT_LOCAL_XFSCRIPT_SRCS=
 GT_DISTRO_SRCS=
 
 ### BEGIN: Local processing: ###
+
+### List additional targets in the following variable, for build targets not
+### covered by other means. This comes ***in addition to*** what you can do by
+### just targeting lexicon.*: lexicon.tmp.*, and is useful if you want to build
+### separate fst's that need further treatment in the src/ dir. See the language
+### gle/ for an example of how this is used.
+
+GIELLA_LOCAL_TARGETS=
+
 EST_AFFIX_FILES=affixes/regular_declinations affixes/exceptional_declinations affixes/verbs affixes/gi
 
 # make the parts inflect 
