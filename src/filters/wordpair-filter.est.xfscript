@@ -32,7 +32,7 @@ define GenNinaTaga ["+Gen" \Case* CaseNinaTaga] ;
 define PairedCase [ \Case* [SameCase10 | GenNinaTaga] \Case* ];
 
 # between words may be (including a flag diacritic and a usage tag as '?'):
-define NumCas [Number Case ? (\Hyphen)] ;
+define NumCas [Number Case (\Hyphen)] ;
 define Middle [NumCas Hyphen] ;
 
 define Pairs [ [{ajalehed} Middle {ajakirjad}]
@@ -72,8 +72,8 @@ define Pairs [ [{ajalehed} Middle {ajakirjad}]
 
 define WordPairs [?* Pairs ?*] ;
 
-define CleanUp [[..] <- Case || Number _ ? (?) (Hyphen) \[Number | Case]* Number Case ,, 
-                [..] <- Number || _ Case ? (?) (Hyphen) \[Number | Case]* Number Case ] ;
+define CleanUp [[..] <- Case || Number _ (?) (Hyphen) \[Number | Case]* Number Case ,, 
+                [..] <- Number || _ Case (?) (Hyphen) \[Number | Case]* Number Case ] ;
 
 regex [ CleanUp .o. [WordPairs & SameNumber & ~BadSingular & ~BadPlural & PairedCase] ] ;
 

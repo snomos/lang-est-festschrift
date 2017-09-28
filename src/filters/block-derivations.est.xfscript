@@ -18,25 +18,27 @@ define ZZ [[Vow Cons+ Vow+ Cons*] | [Vow Vow Vow Cons*]];   # at least 2 syllabl
 # (the two question marks ? ? "+Der/lik" stand for "@U.Cap.Opt@" "@C.Cap@" )
 
 define BadDer1 [
-    [[~[?+ "+N"] & ~[?+ "+Num" "+Card"] & ~[?+ "+N" "+Prop"]] ? ? "+Der/lik"] |
-    [ ~[?+ "+N" "+Prop"] ? ? "+Der/lane"] |
-    [[~[?+ "+N"] & ~[?+ "+Num" "+Card"] | [?+ "+N" "+Prop"]] "+Der/line"] |
-    [[~[?+ "+A"] & ~[?+ "+A" "+Comp"] & ~[?+ "+A" "+Superl"]] "+Der/lt"] |
-    [~[?+ "+A"] "+Der/sti"] |
-    [[~[?+ "+A" "+Comp"] ] "+Der/ini"] |
-    [~[?+ "+A"] "+Der/m"] |
-    [~[?+ "+A"] "+Der/im"] |
-    [ ~[?+ j a "+N"] "+Der/nna"] |
-    [[~[?+ "+N"] & ~[?+ "+Num" "+Card"]] "+Der/kond"] |
-    [[   ~[?+ "+A"] & 
-         ~[?+ "+A" "+Comp"] & 
-         ~[?+ "+A" "+Superl"] & 
-         ~[?* [[ ZZ {tama}] | [ ZZ {dama}] | {tsema} | {lema} ] "+V"]] 
+    [[~[\WB+ "+N"] & ~[\WB+ "+Num" "+Card"] & ~[\WB+ "+N" "+Prop"]] "+Der/lik"] |
+#    [[~[\WB+ "+N"] & ~[\WB+ "+Num" "+Card"] & ~[\WB+ "+N" "+Prop"]] ? ? "+Der/lik"] |
+    [ ~[\WB+ "+N" "+Prop"] "+Der/lane"] |
+#    [ ~[\WB+ "+N" "+Prop"] ? ? "+Der/lane"] |
+    [[~[\WB+ "+N"] & ~[\WB+ "+Num" "+Card"] | [\WB+ "+N" "+Prop"]] "+Der/line"] |
+    [[~[\WB+ "+A"] & ~[\WB+ "+A" "+Comp"] & ~[\WB+ "+A" "+Superl"]] "+Der/lt"] |
+    [~[\WB+ "+A"] "+Der/sti"] |
+    [[~[\WB+ "+A" "+Comp"] ] "+Der/ini"] |
+    [~[\WB+ "+A"] "+Der/m"] |
+    [~[\WB+ "+A"] "+Der/im"] |
+    [ ~[\WB+ j a "+N"] "+Der/nna"] |
+    [[~[\WB+ "+N"] & ~[\WB+ "+Num" "+Card"]] "+Der/kond"] |
+    [[   ~[\WB+ "+A"] & 
+         ~[\WB+ "+A" "+Comp"] & 
+         ~[\WB+ "+A" "+Superl"] & 
+         ~[\WB* [[ ZZ {tama}] | [ ZZ {dama}] | {tsema} | {lema} ] "+V"]] 
          "+Der/us"] |
-    [[~[?+ {uma} "+V"] ] "+Der/mus"] |           # devalveeruma - devalveerumus
-    [[~[?+ {eerima} "+V"] ] "+Der/ng"] |           # devalveerima - devalveering
-    [~[?* ? ? ? ? "+N"]  "+Der/ti"] |    # should we eliminate pee+N+Der/ti ?
-    [[~[?+ "+N"] & ~[?+ "+Num" "+Card"] & ~[?+ "+A"] & ~[?+ "+A" "+Comp"] & ~[?+ "+A" "+Superl"]] "+Dim/ke"] 
+    [[~[\WB+ {uma} "+V"] ] "+Der/mus"] |           # devalveeruma - devalveerumus
+    [[~[\WB+ {eerima} "+V"] ] "+Der/ng"] |           # devalveerima - devalveering
+    [~[\WB* ? ? ? ? "+N"]  "+Der/ti"] |    # should we eliminate pee+N+Der/ti ?
+    [[~[\WB+ "+N"] & ~[\WB+ "+Num" "+Card"] & ~[\WB+ "+A"] & ~[\WB+ "+A" "+Comp"] & ~[\WB+ "+A" "+Superl"]] "+Dim/ke"] 
     ] ;
 
 # stem shortening "suffix"
@@ -44,7 +46,7 @@ define BadDer1 [
 #define BadDer5 [~[?+ "+Der/mine" "+N"] "+Der/minus" ];
 
 define BadDer5 [   
-    ~[?* [["+Der/mine" "+N"] |       # mis-
+    ~[\WB* [["+Der/mine" "+N"] |       # mis-
           [Vow Cons* {mine} "+N"] |  # min 2 syll; mis-
           ["+Der/line" "+A"] |       # lis-
           [Vow Cons* {line} "+A"] |  # min 2 syll; lis-

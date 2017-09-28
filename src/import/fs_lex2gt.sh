@@ -114,6 +114,9 @@ cat fs_lex.gt1 \
 | grep -v '^[^@]* !\\[^\\]*\\!$' \
 | grep '@.*:' \
 \
+| sed '/W[ABCDEFGHIJKLMNOPQRSTUVWXYZ]*\\/s/\(@[^ ]* \)/\1WDEVERBAL/g' \
+| sed '/m[ABCDEFGHIJKLMNOPQRSTUVWXYZ]*\\/s/\(@[^ ]* \)/\1mnocompound/g' \
+| sed '/n[ABCDEFGHIJKLMNOPQRSTUVWXYZ]*\\/s/\(@[^ ]* \)/\1nnolastpart/g' \
 | sed 's/[tsemnW]\\/\\/g' \
 | sed 's/[tsemnW]\([ABCDEFGHIJKLMNOPQRSTUVWXYZ]\)\\/\1\\/g' \
 | sed 's/[tsemnW]\\/\\/g' \
@@ -148,96 +151,10 @@ cat fs_lex.gt1 \
 
 # NB! perse, põrsas praegu osaliselt valesti 
 
-# words that do not participate in compounding at all
-cat fs_lex.gt1 \
-| grep '\(\\[^\\]*m[^\\]*\\\)\|\(=\)' \
-| grep -v '^[^@]* !\\[^\\]*\\!$' \
-| grep '@.*:' \
-\
-| sed 's/[tsemnW]\\/\\/g' \
-| sed 's/[tsemnW]\([ABCDEFGHIJKLMNOPQRSTUVWXYZ]\)\\/\1\\/g' \
-| sed 's/[tsemnW]\\/\\/g' \
-| sed 's/^\([^!]*!\\\)\([ABCDEFGHIJKLMNOPQRSTUVWXYZ]\)\([ABCDEFGHIJKLMNOPQRSTUVWXYZ]\)\(\\.*\)$/\1\2\4""\1\3\4/' \
-| sed 's/$/""/' \
-\
-| sed '/ÕIGEVORM/s/ \([^ ]*\)\[DÕIGEVORM [^ :]*:/ \1d:/g' \
-| sed '/ÕIGEVORM *$/s/ \([^:]*\):\([^ ]*\) \([^ ]*\)\[DÕIGEVORM *$/ \1d:\2/g' \
-\
-| ./sliik2gt.sed \
-| sed 's/| \([^!"]* !\\\)\(+[^\\]*\)\(\\[^@]*@\)\([^ ]*\) \([^:]*\):\([^"]*\)""/| \1\2\3 \5\2:\6 \4 ;""/g' \
-| sed 's/""$//' \
-| ./diacritics2.sed \
-\
-| sed 's/\(p.õl,\)v%>%{pl.i%} EIT /\1 PÕLV /' \
-| sed 's/\(t.al,\)v%>%{pl.i%}%{rare%} EIT /\1 TALV /' \
-| sed 's/\(p.urJ1\) EIT /\1 PURI /' \
-| sed 's/\(v.äi\) PÄIKE /\1 VÄIKE /' \
-\
-| sed '/_.*#.* SADA /s/$/EEMALDADA/' \
-| sed '/_.*#.* TUHAT /s/$/EEMALDADA/' \
-| sed '/üksainus+/s/$/EEMALDADA/' \
-| sed '/üksainuke+/s/$/EEMALDADA/' \
-| sed '/viimnepäev+N:/s/$/EEMALDADA/' \
-| sed '/veerand.*EEMALDADA/s/EEMALDADA//' \
-| sed '/aasta.*EEMALDADA/s/EEMALDADA//' \
-| sed '/EEMALDADA/s/^.*$//' \
-\
-| sed 's/#&#p´ersse//' \
-| sed 's/#&#p´õrssa//' \
-> noncomp_fs_gt.pre-inflecting
-
-# words that do not participate in compounding as finalparts
-cat fs_lex.gt1 \
-| grep '\\[^\\]*n[^\\]*\\' \
-| grep -v '^[^@]* !\\[^\\]*\\!$' \
-| grep '@.*:' \
-\
-| sed 's/[tsemnW]\\/\\/g' \
-| sed 's/[tsemnW]\([ABCDEFGHIJKLMNOPQRSTUVWXYZ]\)\\/\1\\/g' \
-| sed 's/[tsemnW]\\/\\/g' \
-| sed 's/^\([^!]*!\\\)\([ABCDEFGHIJKLMNOPQRSTUVWXYZ]\)\([ABCDEFGHIJKLMNOPQRSTUVWXYZ]\)\(\\.*\)$/\1\2\4""\1\3\4/' \
-| sed 's/$/""/' \
-\
-| sed '/ÕIGEVORM/s/ \([^ ]*\)\[DÕIGEVORM [^ :]*:/ \1d:/g' \
-| sed '/ÕIGEVORM *$/s/ \([^:]*\):\([^ ]*\) \([^ ]*\)\[DÕIGEVORM *$/ \1d:\2/g' \
-\
-| ./sliik2gt.sed \
-| sed 's/| \([^!"]* !\\\)\(+[^\\]*\)\(\\[^@]*@\)\([^ ]*\) \([^:]*\):\([^"]*\)""/| \1\2\3 \5\2:\6 \4 ;""/g' \
-| sed 's/""$//' \
-| ./diacritics2.sed \
-\
-| sed 's/\(p.õl,\)v%>%{pl.i%} EIT /\1 PÕLV /' \
-| sed 's/\(t.al,\)v%>%{pl.i%}%{rare%} EIT /\1 TALV /' \
-| sed 's/\(p.urJ1\) EIT /\1 PURI /' \
-| sed 's/\(v.äi\) PÄIKE /\1 VÄIKE /' \
-\
-| sed '/_.*#.* SADA /s/$/EEMALDADA/' \
-| sed '/_.*#.* TUHAT /s/$/EEMALDADA/' \
-| sed '/üksainus+/s/$/EEMALDADA/' \
-| sed '/üksainuke+/s/$/EEMALDADA/' \
-| sed '/viimnepäev+N:/s/$/EEMALDADA/' \
-| sed '/veerand.*EEMALDADA/s/EEMALDADA//' \
-| sed '/aasta.*EEMALDADA/s/EEMALDADA//' \
-| sed '/EEMALDADA/s/^.*$//' \
-\
-| sed 's/#&#p´ersse//' \
-| sed 's/#&#p´õrssa//' \
-> nonfcomp_fs_gt.pre-inflecting
-
 cat fs_gt.pre-inflecting \
 | sed 's/| \([^@]*\)@ /| /g' \
 | sort -k 2 \
 > fs_gt.inflecting
-
-cat noncomp_fs_gt.pre-inflecting \
-| sed 's/| \([^@]*\)@ /| /g' \
-| sort -k 2 \
-> noncomp_fs_gt.inflecting
-
-cat nonfcomp_fs_gt.pre-inflecting \
-| sed 's/| \([^@]*\)@ /| /g' \
-| sort -k 2 \
-> nonfcomp_fs_gt.inflecting
 
 cat fs_lex.gt1 \
 | grep -v '^[^@]* !\\[^\\]*\\!$' \

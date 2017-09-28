@@ -13,6 +13,9 @@
 # Don't be mislead by the notation: Autoconf also uses @STRING@ notation!
 define Flag       "@U.Cap.Opt@"      ;
 define CmpHyph    "@U.CmpHyph.TRUE@" ;
+# The following flag diacritics are used for regulating (proper noun) compounding
+define CmpFlags   ["@D.Part@" | "@P.Part.Bad@" | "@P.Part.One@" 
+                   | "@P.Part.Two@" | "@P.Part.Three@" | "@P.POS.NProp@" ] ;
 @WANT_HYPERMINIMISATION_TRUE@@IF_HFST@define HypMinFlag "@P.LEXNAME.Root@" ;
 
 read regex [ 
@@ -49,9 +52,9 @@ Z -> z,
 Š -> š,
 Ŧ -> ŧ,
 Ž -> ž
-@WANT_HYPERMINIMISATION_TRUE@ || .#. HYPMINFLAG FLAG ( HYPHFLAG ) _ ,
-@WANT_HYPERMINIMISATION_FALSE@|| .#. FLAG ( HYPHFLAG ) _ ,
-                  FLAG ( HYPHFLAG ) ?* %- _
+@WANT_HYPERMINIMISATION_TRUE@ || .#. CMPFLAG* HYPMINFLAG CMPFLAG* FLAG ( HYPHFLAG ) _ ,
+@WANT_HYPERMINIMISATION_FALSE@|| .#. CMPFLAG* FLAG ( HYPHFLAG ) _ ,
+                  CMPFLAG* FLAG ( HYPHFLAG ) ?* %- _
 
 # ---- ends here: ------
 
@@ -85,4 +88,5 @@ Z -> z,
 
 substitute defined Flag       for FLAG
 substitute defined CmpHyph    for HYPHFLAG
+substitute defined CmpFlags   for CMPFLAG
 @WANT_HYPERMINIMISATION_TRUE@@IF_HFST@substitute defined HypMinFlag for HYPMINFLAG

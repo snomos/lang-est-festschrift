@@ -1,5 +1,5 @@
 # remove:
-#  Sg forms of plurale tantum words
+#  Sg forms of plurale tantum words; but do not remove Sg Gen 
 
 define pln    [[ {aganad} "+N" ] | 
                [ {algonkinid} "+N" ] | 
@@ -240,20 +240,7 @@ define plpn   [[ {Aleuudid} "+N" "+Prop" ] |
                [ {Seišellid} "+N" "+Prop" ] | 
                [ {Türreenid} "+N" "+Prop" ] ] ;
 
-define SG [ "+Sg" ] ;
-
-# make sure only word-final components are considered
-define WB [ "#" | .#. ] ;
-
-# derivations are attached to the stem, and it is ok to have SG after a derivation tag 
-# only derivations that attach to nouns are listed here
-# (TODO: derivations to proper nouns)
-
-define DER [ [? ? "+Der/lik"] | "+Der/line" | [? ? "+Der/lane"] | "+Der/nna" | "+Der/ti" ] ;
-define plnonder1 [ pln ~[ DER ?+] ] ;    # plwords that have no +Der attached
-define plnonder2 [ ? plpn ~[ DER ?+] ] ;    # plwords that have no +Der attached
- 
-define pllexical [ [plnonder1 | plnonder2] [\WB]* SG [\WB]+ ] ; # pl words with sg
+define pllexical $[ [pln | plpn] "+Sg" \["+Gen"] ] ;
 
 regex ~[pllexical] ;
 

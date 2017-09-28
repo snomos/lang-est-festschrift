@@ -224,9 +224,9 @@ LEXICON KAKS    ! only üks, kaks
 
 LEXICON KANNEL    ! only kannel, tütar, kärbes, lemmel; = PIPAR, but stem vowel -e instead of -a
 
-              :%{W%} 2C_LEMMA3 ;          ! kannel, kannelt, kannelde
-              :e 2C_STRONG ;
-%+Use%/NotNorm:e%>te N_PL_SUBPARA ;       ! kandlete, tütrete etc 
+                  :%{W%} 2C_LEMMA3 ;          ! kannel, kannelt, kannelde
+                  :e 2C_STRONG ;
+    %+Use%/NotNorm:e%>te N_PL_SUBPARA ;       ! kandlete, tütrete etc 
 
 LEXICON KEEL    !  VVS 13 unstable (closed) type; 27 words
 
@@ -354,7 +354,7 @@ LEXICON MESI     ! VVS 15 unstable type (passiivne muuttüüp) 8 words
 
                   :i SG_NOMINATIVE ;    ! mesi
                   :e%{W%} N_SG_SUBPARA ;    ! mee etc 
-                  :%>t SG_PARTITIVE ;    ! mett
+                  :%>tt SG_PARTITIVE ;    ! mett
                   :%{S%}%>tte SG_ILL_VARIANT ;  ! vette, kätte
                   :e%{W%} SG_ILL_VARIANT ;    ! meesse
                   :%{W%}%>te N_PL_SUBPARA ;    ! mete etc 

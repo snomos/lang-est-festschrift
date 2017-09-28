@@ -193,7 +193,10 @@ LEXICON OLEMA    ! only olema
                       :ol%{W%} IMPERATIVE ;   ! olgu
                       :ol%{W%} NU ;           ! olnud
                       :ol%>I7 IND_PAST ;      ! oli, olin, ...
+             +Pers+Prs:ole%{W%}%> CONDITIONAL ;
+   @R.Part.One@@P.Part.Bad@ OLEMA2 ;
 
+LEXICON OLEMA2
    +Pers+Prs+Imprt+Sg2:ole%> GI ;
      +Pers+Prs+Ind+Neg:ole%> GI ;
          +Pers+Prs+Ind:ole SG1 ;
@@ -202,7 +205,6 @@ LEXICON OLEMA    ! only olema
          +Pers+Prs+Ind:ole PL1 ;
          +Pers+Prs+Ind:ole PL2 ;
  +Pers+Prs+Ind+Pl3+Aff:on GI ;
-             +Pers+Prs:ole%{W%}%> CONDITIONAL ;
 
 ! + negative forms...
      +Pers+Prs+Ind+Neg:pole%> GI ;        ! NB! it has the same categories as ole ...
@@ -234,11 +236,13 @@ LEXICON MINEMA    ! only minema
                       :min%{W%} IMPERATIVE ;     ! mingu
                       :läi%{W%} NU ;             ! läinud
                       :läk%>s IND_PAST ;         ! läks, läksin etc
-
-   +Pers+Prs+Imprt+Sg2:mine%{W%}%> GI ;          ! mine
              +Pers+Prs:lähe%{W%} IND_PRS ;       ! lähen, läheb, ...
-+Pers+Prs+Ind+Pl1+Aff%+Use%/Rare:läh%{W%}%>me GI ;  ! lähme more colloquial...
              +Pers+Prs:lähe%{W%}%> CONDITIONAL ;  ! läheks, ...
+   @R.Part.One@@P.Part.Bad@ MINEMA2 ;
+
+LEXICON MINEMA2
+   +Pers+Prs+Imprt+Sg2:mine%{W%}%> GI ;          ! mine
++Pers+Prs+Ind+Pl1+Aff%+Use%/Rare:läh%{W%}%>me GI ;  ! lähme more colloquial...
 
 ! ---------------
 ! 17 exceptional words of types 37, 38, all ending in VV
@@ -329,14 +333,25 @@ LEXICON TEGEMA     ! only tegema, nägema
                       :g%>I7 IND_PAST ;      ! tegi
                       :e%{W%} IND_COND_PRS ; ! teeb
 
-LEXICON IND_COND_PRS    ! indicative, conditional present + imp sg2
+! a verb cannot participate in compounding;
+! it has to be turned into a declinable word first
+! flag diacritics are set on paths that are NOT changing the verb word class
+! the flag diacritic @R.Part.One@ requires the stem to be the first in this word;
+! and then @P.Part.Bad@ ensures that no further parts are possible
 
-   +Pers+Prs+Imprt+Sg2:%> GI ;
+LEXICON IND_COND_PRS    ! indicative, conditional present + imp sg2
+ @R.Part.One@@P.Part.Bad@ IMPRT2_COMP ;
              +Pers+Prs:%> IND_PRS ;
              +Pers+Prs:%> CONDITIONAL ;
                       : NG_DERIVATION ;
 
+LEXICON IMPRT2_COMP    ! 
+   +Pers+Prs+Imprt+Sg2:%> GI ;
+
 LEXICON IND_PRS     ! indicative present 
+ @R.Part.One@@P.Part.Bad@ IND_PRS_COMP ;
+
+LEXICON IND_PRS_COMP     ! indicative present 
               +Ind+Neg: GI ;
                   +Ind: SG1 ;
                   +Ind: SG2 ;
@@ -346,29 +361,34 @@ LEXICON IND_PRS     ! indicative present
                   +Ind: PL3VAD ;
             
 LEXICON IND_PAST    ! indicative past
+ @R.Part.One@@P.Part.Bad@ IND_PAST_COMP ;
          +Pers+Prt+Ind:i MARKED_PERSON ;
+
+LEXICON IND_PAST_COMP    ! indicative past
          +Pers+Prt+Ind: SG3 ;
 
 LEXICON NU    !  NU-affixes
-
+ @R.Part.One@@P.Part.Bad@ NU_COMP ;
              +Pers+Prt:%>nu CONDITIONAL ; ! conditional past
+                      : NU_DERIVATION ;
+
+LEXICON NU_COMP    !  NU-affixes
       !+Pers+Prt+Imprt:%>nud GI ;         ! omitted for now because it would create homonymy
      +Pers+Prt+Ind+Neg:%>nud GI ;
          +Pers+Prt+Prc:%>nud GI ;
         +Pers+Prt+Quot:%>nuvat GI ;
-                      : NU_DERIVATION ;
 
 LEXICON IMPERATIVE    ! imperative
+ @R.Part.One@@P.Part.Bad@ IMPERATIVE_COMP ;
 
+LEXICON IMPERATIVE_COMP    ! imperative
        +Pers+Prs+Imprt:%>G7u GI ;         ! elagu
    +Pers+Prs+Imprt+Pl1:%>G7em GI ;        ! elagem
    +Pers+Prs+Imprt+Pl2:%>G7e GI ;         ! elage
 
 LEXICON SUPINE_V
-
+ @R.Part.One@@P.Part.Bad@ SUPINE_V_COMP ;
              +Pers+Sup:%>ma SUPINE ;
-         +Pers+Prs+Prc:%>v GI ;
-        +Pers+Prs+Quot:%>vat GI ;
                       : MINE_DERIVATION ;    ! elamine
                       : JA_DERIVATION ;      ! elaja, õpetaja, õpetajanna, õpetajake, õpetajalik, ...
                       : V_DERIVATION ;       ! õpetav, õpetavalt, õpetavus, õpetavam, ...
@@ -376,8 +396,14 @@ LEXICON SUPINE_V
                       : MATA_DERIVATION ;     ! segamata
                       : MUS_DERIVATION ;     ! küllastumus, promoveerumus etc
 
-LEXICON SUPINE
+LEXICON SUPINE_V_COMP
+         +Pers+Prs+Prc:%>v GI ;
+        +Pers+Prs+Quot:%>vat GI ;
 
+LEXICON SUPINE
+ @R.Part.One@ SUPINE_COMP ;     ! Note that these forms can be 1st part of a compound
+
+LEXICON SUPINE_COMP
                       : ILLATIVE ;          ! elama
                       :%>s INESSIVE ;       ! elamas
                       :%>st ELATIVE ;
@@ -385,12 +411,14 @@ LEXICON SUPINE
                       :%>ta ABESSIVE ;
 
 LEXICON IMPERS    ! impersonal forms for most paradigms
-
-                      :%>T7 IMPERS_DUD ;
-                      :%>T7 IMPERS_AKSE ;
+ @R.Part.One@@P.Part.Bad@ IMPERS_COMP ;
                       :»T7 TAV_DERIVATION ;       ! elatav, elatavalt, elatavam, elatavaim, ... 
                       :»T7 TAMATU_DERIVATION ;       ! elatav, elatavalt, elatavam, elatavaim, ... 
                       :»T7 TU_DERIVATION ;       ! elatu, elatult, elatum, elatuim 
+
+LEXICON IMPERS_COMP    ! impersonal forms for most paradigms
+                      :%>T7 IMPERS_DUD ;
+                      :%>T7 IMPERS_AKSE ;
 
 LEXICON IMPERS_DUD    ! impersonal forms -[td]ud
 
@@ -410,7 +438,9 @@ LEXICON IMPERS_AKSE    ! impersonal form -[td0]akse
    +Impers+Prs+Ind+Aff:akse GI ;
 
 LEXICON INFINITIVE    ! infinitive, gerund (des-form)
+ @R.Part.One@ INFINITIVE_COMP ;     ! Note that these forms can be 1st part of a compound
 
+LEXICON INFINITIVE_COMP
                       :%>D7 A_INFINITIVE ;
 
 LEXICON A_INFINITIVE   ! common part of an infinitive, gerund (des-form);
@@ -420,11 +450,16 @@ LEXICON A_INFINITIVE   ! common part of an infinitive, gerund (des-form);
                   +Ger:es GI ;
 
 LEXICON CONDITIONAL    ! conditional present and past  
-
-                 +Cond:ks GI ;
+ @R.Part.One@@P.Part.Bad@ CONDITIONAL_COMP ;
                  +Cond:ksi MARKED_PERSON ;
 
+LEXICON CONDITIONAL_COMP
+                 +Cond:ks GI ;
+
 LEXICON MARKED_PERSON     ! sg3 ~ underspecified is missing from here 
+ @R.Part.One@@P.Part.Bad@ MARKED_PERSON_COMP ;
+
+LEXICON MARKED_PERSON_COMP     ! sg3 ~ underspecified is missing from here 
                       : SG1 ;
                       : SG2 ;
                       : PL1 ;
@@ -458,42 +493,84 @@ LEXICON PL3VAD
 ! paradigmatic derivation, i.e. very regular
 
 LEXICON NU_DERIVATION
+  @R.Part.One@@P.POS.N@  NU_DERIVATION_SUF ;   ! no previous part; no restrictions   
+  @R.Case.Par@@P.POS.N@  NU_DERIVATION_SUF ;
 
+LEXICON NU_DERIVATION_SUF
              +Der/nu+N:»nu AASTA ;             ! derivation: elanu etc
              +Der/nud+A:»nu TUNTUD ;             ! derivation: elanud etc
              +Der/nud+A:»nud # ;             ! derivation: noninflecting A: elanud 
 
 LEXICON TU_DERIVATION  !    NB! the morpheme border + d/t is assigned before this lexicon
+  @R.Part.One@@P.POS.N@  TU_DERIVATION_SUF ;   ! no previous part; no restrictions   
+  @R.Case.Par@@P.POS.N@  TU_DERIVATION_SUF ;
 
+LEXICON TU_DERIVATION_SUF  !    NB! the morpheme border + d/t is assigned before this lexicon
              +Der/tu+A:u AASTA ;              ! derivation: elatu etc
              +Der/tud+A:ud # ;             ! derivation: noninflecting A: elatud 
 
 LEXICON MATA_DERIVATION
+  @R.Part.One@@P.POS.N@  MATA_DERIVATION_SUF ;   ! no previous part; no restrictions   
+  @R.Case.Par@@P.POS.N@  MATA_DERIVATION_SUF ;
+
+LEXICON MATA_DERIVATION_SUF
            +Der/mata+A:»mata GI ;            ! elamata 
 
 LEXICON MATU_DERIVATION
+  @R.Part.One@@P.POS.N@  MATU_DERIVATION_SUF ;   ! no previous part; no restrictions   
+  @R.Case.Par@@P.POS.N@  MATU_DERIVATION_SUF ;
+
+LEXICON MATU_DERIVATION_SUF
            +Der/matu+A:»matu AASTA ;             ! segamatu etc
 
 LEXICON TAMATU_DERIVATION  !    NB! the morpheme border + d/t is assigned before this lexicon
+  @R.Part.One@@P.POS.N@  TAMATU_DERIVATION_SUF ;   ! no previous part; no restrictions   
+  @R.Case.Par@@P.POS.N@  TAMATU_DERIVATION_SUF ;
+
+LEXICON TAMATU_DERIVATION_SUF  !    NB! the morpheme border + d/t is assigned before this lexicon
            +Der/tamatu+A:amatu AASTA ;             ! segatamatu etc
 
 LEXICON V_DERIVATION
+  @R.Part.One@@P.POS.N@  V_DERIVATION_SUF ;   ! no previous part; no restrictions   
+  @R.Case.Par@@P.POS.N@  V_DERIVATION_SUF ;
+
+LEXICON V_DERIVATION_SUF
               +Der/v+A:»v MAGUS ;              ! elav, elava etc
 
 LEXICON TAV_DERIVATION   !    NB! the morpheme border + d/t is assigned before this lexicon
+  @R.Part.One@@P.POS.N@  TAV_DERIVATION_SUF ;   ! no previous part; no restrictions   
+  @R.Case.Par@@P.POS.N@  TAV_DERIVATION_SUF ;
+
+LEXICON TAV_DERIVATION_SUF   !    NB! the morpheme border + d/t is assigned before this lexicon
             +Der/tav+A:av MAGUS ;              ! elatav, elatava etc
 
 LEXICON MINE_DERIVATION
+  @R.Part.One@@P.POS.N@  MINE_DERIVATION_SUF ;   ! no previous part; no restrictions   
+  @R.Case.Gen@@P.POS.N@  MINE_DERIVATION_SUF ;
+
+LEXICON MINE_DERIVATION_SUF
            +Der/mine+N:»mine OLULINE ;         ! elamine
 
 LEXICON JA_DERIVATION
+  @R.Part.One@@P.POS.N@  JA_DERIVATION_SUF ;   ! no previous part; no restrictions   
+  @R.Case.Gen@@P.POS.N@  JA_DERIVATION_SUF ;
+
+LEXICON JA_DERIVATION_SUF
              +Der/ja+N:»ja AASTA ;             ! elaja, elajat etc
              +Der/ja+N:»jas KOND_DERIVATION ; ! õpetajaskond, õpetajaskondlik, etc
 
 LEXICON MUS_DERIVATION
+  @R.Part.One@@P.POS.N@  MUS_DERIVATION_SUF ;   ! no previous part; no restrictions   
+  @R.Case.Gen@@P.POS.N@  MUS_DERIVATION_SUF ;
+
+LEXICON MUS_DERIVATION_SUF
              +Der/mus+N:»mus OLULINE ;         ! promoveerumus, elamus, ...
 
 LEXICON NG_DERIVATION
+  @R.Part.One@@P.POS.N@  NG_DERIVATION_SUF ;   ! no previous part; no restrictions   
+  @R.Case.Gen@@P.POS.N@  NG_DERIVATION_SUF ;
+
+LEXICON NG_DERIVATION_SUF
              +Der/ng+N:»ng VIRSIK ;         ! annoteering 
 
 

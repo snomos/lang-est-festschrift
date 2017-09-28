@@ -8,11 +8,7 @@ define words [
         [ {üksteise} "+Pron" ] |
         [ {teineteise} "+Pron" ] |
         [ {lühida} "+A" ] ] ;
-define SGNOM [ "+Sg" "+Nom" ] ;
 
-# make sure only word-final components are considered
-define WB [ "#" ] ;
+define bad $[ words "+Sg" "+Nom" ] ;
 
-define lexicalw [ words SGNOM [\WB]* ] ;
-
-regex ~[lexicalw] ;
+regex ~[bad] ;

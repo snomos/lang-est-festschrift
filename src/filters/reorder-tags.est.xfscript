@@ -1,7 +1,3 @@
-# wordpairs with inflecting parts (emb-kumb, kihin-kahin) get usage-related tags initially for both words;
-# but only one tag should be left in the end.
-# this script is a near-copy from reorder-tags.est
-#
 # move (usage-related) tags to the right end, and 
 # if there are more than one, keep the most informative one
 # moving algorithm from Karttunen, Beesley "2-level rule compiler" 4.3 (via Mans Hulden via Francis Tyers) 
@@ -21,7 +17,7 @@ define MoveN [  [..] -> NTag || NTag \WB* _ WB .o. NTag -> 0 || _ \WB* NTag WB ]
 define MoveC [  [..] -> CTag || CTag \WB* _ WB .o. CTag -> 0 || _ \WB* CTag WB ];
 define MoveE [  [..] -> ETag || ETag \WB* _ WB .o. ETag -> 0 || _ \WB* ETag WB ];
 
-# move usage-related tag of the first word to the right end of the second word
+# move usage-related tag to the right end of the word
 define MoveFirstTag [MoveR .o. MoveH .o. MoveN .o. MoveC ] ;
 # ... and the Emph tag to the end...
 define MoveTag [MoveFirstTag .o. MoveE] ;
@@ -39,4 +35,8 @@ define RemNTag NTag -> 0 || _ [CTag] ; #
 define RemTag [RemRTag .o. RemHTag .o. RemNTag] ; 
 
 regex  [MoveTag .o. RemTag].i ;
+
+# this script is also applicable to wordpairs with inflecting parts (emb-kumb, kihin-kahin) that 
+# get usage-related tags initially for both words;
+# but only one tag should be left in the end.
 

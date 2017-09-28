@@ -353,7 +353,7 @@ LEXICON DE_PL    ! PL subpara of TAUD, KAVA, PERE
 
 LEXICON N_SG_SUBPARA    ! sg gen + sg cases depending on it + pl nom; excl sg ill
 
-           +Pl:%>d NOMINATIVE ;
+       +Pl+Nom:%>d PL_NOM_GI ;
               : SG_GEN_ET_AL ;
 
 LEXICON N_PL_SUBPARA    ! pl gen + pl cases depending on it 
@@ -464,68 +464,102 @@ LEXICON PL_PARTITIVE
            +Pl: PARTITIVE ;
 
 ! --------- the 14 individual cases ------------
+!! flag diacritics can be used for remembering the case 
 
 LEXICON NOMINATIVE
-          +Nom: GI ;
+          +Nom: NOM_GI ;
 
 LEXICON GENITIVE
-          +Gen: GI ;
+          +Gen: GEN_GI ;
 
 LEXICON PARTITIVE
-          +Par: GI ;	
+          +Par: PAR_GI ;	
 
 LEXICON ILLATIVE
-          +Ill: GI ;	
+          +Ill: SEM_GI ;	
 
 LEXICON INESSIVE
-          +Ine: GI ;	
+          +Ine: SEM_GI ;	
 
 LEXICON ELATIVE
-          +Ela: GI ;	
+          +Ela: SEM_GI ;	
 
 LEXICON ALLATIVE
-          +All: GI ;	
+          +All: SEM_GI ;	
 
 LEXICON ADESSIVE
-          +Ade: GI ;	
+          +Ade: SEM_GI ;	
 
 LEXICON ABLATIVE
-          +Abl: GI ;	
+          +Abl: SEM_GI ;	
 
 LEXICON TRANSLATIVE
-          +Tra: GI ;	
+          +Tra: SEM_GI ;	
 
 LEXICON TERMINATIVE
-          +Trm: GI ;	
+          +Trm: SEM_GI ;	
 
 LEXICON ESSIVE
-          +Ess: GI ;	
+          +Ess: SEM_GI ;	
 
 LEXICON ABESSIVE
-          +Abe: GI ;	
+          +Abe: SEM_GI ;	
 
 LEXICON COMITATIVE
-          +Com: GI ;	
+          +Com: SEM_GI ;	
+
+!! flag diacritics are used for remembering the case for compounding; 
+!! not all the cases must be distinguished
+
+LEXICON NOM_GI
+  @P.Case.Nom@ GI ;
+
+LEXICON GEN_GI
+  @P.Case.Gen@ GI ;
+
+LEXICON PAR_GI
+  @P.Case.Par@ GI ;
+
+LEXICON SEM_GI     ! semantic (aka oblique) case
+  @P.Case.Sem@ GI ;
+
+LEXICON PL_NOM_GI       ! in compounding, +Pl is relevant for +Nom only
+  @P.Case.PlNom@ GI ;
 
 ! paradigmatic derivation, i.e. very regular
 
 LEXICON M_DERIVATION
+  @P.Der.A@ M_DERIVATION_SUF ;
+
+LEXICON M_DERIVATION_SUF
           +Der/m+A+Comp:»m MAGUS ;           ! suurem, elanum,  etc
 
 LEXICON IM_DERIVATION
-       +Der/im+A+Superl:m MAGUS ;         ! suurim, elanuim, õnnelikem etc; NB! notice that » is missing!
+   @P.Der.A@ IM_DERIVATION_SUF ;
+
+LEXICON IM_DERIVATION_SUF
+      +Der/im+A+Superl:m MAGUS ;         ! suurim, elanuim, õnnelikem etc; NB! notice that » is missing!
 !       +Der/im+A+Superl:m LT_DERIVATION ; ! suurimalt, elanuimalt, õnnelikemalt
 
 LEXICON NNA_DERIVATION
+  @P.Der.N@ NNA_DERIVATION_SUF ;
+
+LEXICON NNA_DERIVATION_SUF
             +Der/nna+N:»nna PERE ;             ! õpetajanna
 
 LEXICON LANE_DERIVATION
+  @P.Der.N@ LANE_DERIVATION_SUF ;
+
+LEXICON LANE_DERIVATION_SUF
 @U.Cap.Opt@@C.Cap@ LANE_DERIVATION_CAP ;         ! proper name must be downcased 
 
 LEXICON LANE_DERIVATION_CAP
             +Der/lane+N:»lane OLULINE ;          ! helveetslane etc
 
 LEXICON LIK_DERIVATION
+  @P.Der.A@ LIK_DERIVATION_SUF ;
+
+LEXICON LIK_DERIVATION_SUF
 @U.Cap.Opt@@C.Cap@ LIK_DERIVATION_CAP ;         ! proper name must be downcased
 
 LEXICON LIK_DERIVATION_CAP
@@ -533,31 +567,58 @@ LEXICON LIK_DERIVATION_CAP
             +Der/lik+A:»l´ikk US_DERIVATION ;  ! elajalikkus etc
 
 LEXICON LINE_DERIVATION
+  @P.Der.A@ LINE_DERIVATION_SUF ;
+
+LEXICON LINE_DERIVATION_SUF
             +Der/line+A:»line OLULINE ;          ! põõsaline etc
 
 LEXICON KOND_DERIVATION
+  @P.Der.N@ KOND_DERIVATION_SUF ;
+
+LEXICON KOND_DERIVATION_SUF
            +Der/kond+N:»k´onnD1%>%{pl.i%} PIIM ;  ! elajaskond etc
            +Der/kond+N:»konni TI_DERIVATION ;     ! elanikkonniti
 
 LEXICON US_DERIVATION
+  @P.Der.N@ US_DERIVATION_SUF ;
+
+LEXICON US_DERIVATION_SUF
              +Der/us+N:»us OLULINE ;         ! elajalikkus, elavus, ...
 
 LEXICON LT_DERIVATION
+  @P.Der.Adv@ LT_DERIVATION_SUF ;
+
+LEXICON LT_DERIVATION_SUF
             +Der/lt+Adv:»lt GI ;         ! derivation: suurelt, elanult, ...
 
 LEXICON STI_DERIVATION
+  @P.Der.Adv@ STI_DERIVATION_SUF ;
+
+LEXICON STI_DERIVATION_SUF
           +Der/sti+Adv:»sti GI ;        ! valusasti, kuuldavasti
 
 LEXICON INI_DERIVATION
+  @P.Der.Adv@ INI_DERIVATION_SUF ;
+
+LEXICON INI_DERIVATION_SUF
           +Der/ini+Adv:»ini GI ;        ! valusamini
 
 LEXICON TI_DERIVATION
+  @P.Der.Adv@ TI_DERIVATION_SUF ;
+
+LEXICON TI_DERIVATION_SUF
            +Der/ti+Adv:»ti GI ;        ! maakonniti
 
 LEXICON KE_DERIVATION
+  @P.Der.N@ KE_DERIVATION_SUF ;    ! P.Der.N is not correct always
+
+LEXICON KE_DERIVATION_SUF
                +Dim/ke:»ke PEENIKE ;         ! suureke, majake, õpetajannake, ...
 
 LEXICON SHORT_NE_STEM
+    @P.Case.Short@ SHORT_NE_STEM_SUF ;
+
+LEXICON SHORT_NE_STEM_SUF
                +Der/minus:»%- # ;                ! vaatamis-, astraal-
                +Der/minus:»# # ;                ! vaatamis#koht, astraal#tunne
 

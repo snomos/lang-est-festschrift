@@ -67,10 +67,8 @@ EST_EXTRA_PRE_FILTERS=filters/remove-sg-forms.est filters/remove-pl-forms.est fi
 EST_EXTRA_POST_FILTERS=filters/modify-derivations.est 
 EST_WORDPAIR_FILTERS=filters/reorder-tags.est filters/wordpair-filter.est
 EST_NUMERAL_FILTERS=filters/reorder-tags.est filters/numeral-filter.est
-EST_COMPOUND_PRE_FILTERS=filters/block-compounds.est
-EST_COMPOUND_POST_FILTERS=filters/compound-filter.est
-#EST_COMPOUND_PRE_FILTERS=
-#EST_COMPOUND_POST_FILTERS=
+#EST_COMPOUND_PRE_FILTERS=filters/block-compounds.est
+#EST_COMPOUND_POST_FILTERS=filters/compound-filter.est
 
 # paired words are words whose both parts inflect, e.g. emb-kumb, kihin-kahin
 # paired words: initial part
@@ -155,46 +153,6 @@ num_final.tmp1.xfst: morphology/num_final.tmp.xfst \
 		"read-source morphology/num_final.tmp.xfst\nread-rules phonology/$(GTLANG)-phon.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
 		| $(LEXC) $(VERBOSITY)
 
-# noncompounding words (they do not participate in compounds) 
-# HFST:
-noncomp.tmp1.hfst: morphology/noncomp.tmp.hfst \
-					 phonology/$(GTLANG)-phon.compose.hfst
-	$(AM_V_INTRSCT)\
-		  $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $<\
-		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
-			$(MORE_VERBOSITY) $(HFST_FLAGS) \
-			-2 phonology/$(GTLANG)-phon.compose.hfst \
-		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
-		-o $@ 
-
-# XEROX
-noncomp.tmp1.xfst: morphology/noncomp.tmp.xfst \
-			 phonology/$(GTLANG)-phon.compose.xfst
-	$(AM_V_LEXC)$(PRINTF) \
-		"read-source morphology/noncomp.tmp.xfst\nread-rules phonology/$(GTLANG)-phon.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
-		| $(LEXC) $(VERBOSITY)
-
-# non-final-compounding words (they are not suitable as last part in compounds) 
-# HFST:
-nonfcomp.tmp1.hfst: morphology/nonfcomp.tmp.hfst \
-					 phonology/$(GTLANG)-phon.compose.hfst
-	$(AM_V_INTRSCT)\
-		  $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $<\
-		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
-			$(MORE_VERBOSITY) $(HFST_FLAGS) \
-			-2 phonology/$(GTLANG)-phon.compose.hfst \
-		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
-		-o $@ 
-
-# XEROX
-nonfcomp.tmp1.xfst: morphology/nonfcomp.tmp.xfst \
-			 phonology/$(GTLANG)-phon.compose.xfst
-	$(AM_V_LEXC)$(PRINTF) \
-		"read-source morphology/nonfcomp.tmp.xfst\nread-rules phonology/$(GTLANG)-phon.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
-		| $(LEXC) $(VERBOSITY)
-
 # FOMA
 # not implemented...
 
@@ -265,36 +223,6 @@ num_final.tmp.%: num_final.tmp1.% \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
-noncomp.tmp.%: noncomp.tmp1.% \
-					filters/reorder-tags.$(GTLANG).% \
-					filters/reorder-semantic-tags.%       \
-					filters/reorder-subpos-tags.%         \
-					filters/remove-mwe-tags.%
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-			 	@\"filters/reorder-tags.$(GTLANG).$*\"\
-			.o. @\"filters/reorder-subpos-tags.$*\"   \
-			.o. @\"filters/reorder-semantic-tags.$*\" \
-			.o. @\"filters/remove-mwe-tags.$*\"       \
-			.o. @\"$<\" \
-			;\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST_TOOL)
-
-nonfcomp.tmp.%: nonfcomp.tmp1.% \
-					filters/reorder-tags.$(GTLANG).% \
-					filters/reorder-semantic-tags.%       \
-					filters/reorder-subpos-tags.%         \
-					filters/remove-mwe-tags.%
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-			 	@\"filters/reorder-tags.$(GTLANG).$*\"\
-			.o. @\"filters/reorder-subpos-tags.$*\"   \
-			.o. @\"filters/reorder-semantic-tags.$*\" \
-			.o. @\"filters/remove-mwe-tags.$*\"       \
-			.o. @\"$<\" \
-			;\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST_TOOL)
-
 # HFST: generator 
 # Xerox & FOMA: analyser
 # put parts together
@@ -311,26 +239,29 @@ redundant_numerals.%: num_final.tmp.% num_initial.tmp.%
 # HFST:
 generator-wordpairs-raw.aaa.hfst: redundant_wordpairs.hfst \
 					$(EST_WORDPAIR_FILTERS:%=%.hfst)
-	$(AM_V_RGX2FST)$(PRINTF) "\
+	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex                         \
 			$(EST_WORDPAIR_FILTERS:%=@\"%.hfst\" .o.)    \
 			@\"$<\"                                       \
-			;" \
-		| $(HFST_REGEXP2FST) $(VERBOSITY) $(HFST_FLAGS) -S --xerox-composition=ON \
-		> $@
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
 
 generator-numerals-raw.aaa.hfst: redundant_numerals.hfst \
 					$(EST_NUMERAL_FILTERS:%=%.hfst)
-	$(AM_V_RGX2FST)$(PRINTF) "\
+	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex                         \
 			$(EST_NUMERAL_FILTERS:%=@\"%.hfst\" .o.)    \
 			@\"$<\"                                       \
-			;" \
-		| $(HFST_REGEXP2FST) $(VERBOSITY) $(HFST_FLAGS) -S --xerox-composition=ON \
-		> $@
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
 
 # XEROX:
 analyser-wordpairs-raw.aaa.xfst: redundant_wordpairs.xfst \
 					$(EST_WORDPAIR_FILTERS:%=%.xfst)
-	$(AM_V_XFST)$(PRINTF) "read regex                         \
+	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex                         \
 			$(EST_WORDPAIR_FILTERS:%=@\"%.xfst\" .o.)    \
 			@\"$<\"                                       \
 			;\n\
@@ -339,7 +270,8 @@ analyser-wordpairs-raw.aaa.xfst: redundant_wordpairs.xfst \
 
 analyser-numerals-raw.aaa.xfst: redundant_numerals.xfst \
 					$(EST_NUMERAL_FILTERS:%=%.xfst)
-	$(AM_V_XFST)$(PRINTF) "read regex                         \
+	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex                         \
 			$(EST_NUMERAL_FILTERS:%=@\"%.xfst\" .o.)    \
 			@\"$<\"                                       \
 			;\n\
@@ -349,32 +281,14 @@ analyser-numerals-raw.aaa.xfst: redundant_numerals.xfst \
 # We need to add processing of language-specific tags in the analyser:
 # XEROX:
 analyser-raw-gt-desc.aaa.xfst: analyser-raw-gt-desc.tmp.xfst $(EST_EXTRA_PRE_FILTERS:%=%.xfst) $(EST_EXTRA_POST_FILTERS:%=%.xfst)
-	$(AM_V_XFST)$(PRINTF) "read regex                         \
+	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex                         \
 			$(EST_EXTRA_PRE_FILTERS:%=@\"%.xfst\" .o.)    \
 			@\"$<\"                                       \
 			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.xfst\")   \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST) $(VERBOSITY)
-
-analyser-noncomp-raw.aaa.xfst: noncomp.tmp.xfst $(EST_EXTRA_PRE_FILTERS:%=%.xfst) $(EST_EXTRA_POST_FILTERS:%=%.xfst)
-	$(AM_V_XFST)$(PRINTF) "read regex                         \
-			$(EST_EXTRA_PRE_FILTERS:%=@\"%.xfst\" .o.)    \
-			@\"$<\"                                       \
-			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.xfst\")   \
-			;\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
-
-analyser-nonfcomp-raw.aaa.xfst: nonfcomp.tmp.xfst $(EST_EXTRA_PRE_FILTERS:%=%.xfst) $(EST_EXTRA_POST_FILTERS:%=%.xfst)
-	$(AM_V_XFST)$(PRINTF) "read regex                         \
-			$(EST_EXTRA_PRE_FILTERS:%=@\"%.xfst\" .o.)    \
-			@\"$<\"                                       \
-			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.xfst\")   \
-			;\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
-
 
 # We need to add processing of language-specific tags in the generator:
 # HFST:
@@ -384,61 +298,38 @@ generator-raw-gt-desc.aaa.hfst: generator-raw-gt-desc.tmp.hfst $(EST_EXTRA_PRE_F
 			@\"$<\"                                       \
 			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.hfst\")   \
 			;" \
-		| $(HFST_REGEXP2FST) $(VERBOSITY) $(HFST_FLAGS) -S --xerox-composition=ON \
-		> $@
-
-generator-noncomp-raw.aaa.hfst: noncomp.tmp.hfst $(EST_EXTRA_PRE_FILTERS:%=%.hfst) $(EST_EXTRA_POST_FILTERS:%=%.hfst)
-	$(AM_V_RGX2FST)$(PRINTF) "\
-			$(EST_EXTRA_PRE_FILTERS:%=@\"%.hfst\" .o.)    \
-			@\"$<\"                                       \
-			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.hfst\")   \
-			;" \
-		| $(HFST_REGEXP2FST) $(VERBOSITY) $(HFST_FLAGS) -S --xerox-composition=ON \
-		> $@
-
-generator-nonfcomp-raw.aaa.hfst: noncomp.tmp.hfst $(EST_EXTRA_PRE_FILTERS:%=%.hfst) $(EST_EXTRA_POST_FILTERS:%=%.hfst)
-	$(AM_V_RGX2FST)$(PRINTF) "\
-			$(EST_EXTRA_PRE_FILTERS:%=@\"%.hfst\" .o.)    \
-			@\"$<\"                                       \
-			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.hfst\")   \
-			;" \
-		| $(HFST_REGEXP2FST) $(VERBOSITY) $(HFST_FLAGS) -S --xerox-composition=ON \
+		| $(HFST_REGEXP2FST) $(VERBOSITY) $(HFST_FLAGS) -S --xerox-composition=ON -X flag-is-epsilon \
 		> $@
 
 # HFST:
 # compound words: redundant,
 # although some words that cannot participate in compounding get excluded;
 # the first part cannot be a form with a focus particle, so filter it out 
-generator-raw-gt-desc.bbb.hfst: generator-raw-gt-desc.aaa.hfst generator-noncomp-raw.aaa.hfst generator-nonfcomp-raw.aaa.hfst
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex [ [ ~[?* \"+Foc/gi\" ?*] .o. [@\"generator-raw-gt-desc.aaa.hfst\" - @\"generator-noncomp-raw.aaa.hfst\"] ](\"-\") \"#\" [ [@\"generator-raw-gt-desc.aaa.hfst\" - @\"generator-noncomp-raw.aaa.hfst\"] - @\"generator-nonfcomp-raw.aaa.hfst\" ] ]; \nsave stack $@\nquit\n" | $(XFST_TOOL)
+generator-raw-gt-desc.bbb.hfst: generator-raw-gt-desc.aaa.hfst 
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex [ ~[?* \"+Foc/gi\" ?*] .o. @\"generator-raw-gt-desc.aaa.hfst\" (\"-\") \"#\"]* @\"generator-raw-gt-desc.aaa.hfst\" ; \nsave stack $@\nquit\n" | $(XFST_TOOL)
 
 # XFST:
 # compound words: redundant,
 # although some words that cannot participate in compounding get excluded;
 # the first part cannot be a form with a focus particle, so filter it out
-analyser-raw-gt-desc.bbb.xfst: analyser-raw-gt-desc.aaa.xfst analyser-noncomp-raw.aaa.xfst analyser-nonfcomp-raw.aaa.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex [ [ ~[?* \"+Foc/gi\" ?*] .o. [@\"analyser-raw-gt-desc.aaa.xfst\" - @\"analyser-noncomp-raw.aaa.xfst\"]] (\"-\") \"#\" [ [@\"analyser-raw-gt-desc.aaa.xfst\" - @\"analyser-noncomp-raw.aaa.xfst\"] - @\"analyser-nonfcomp-raw.aaa.xfst\"] ]; \nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
-
-# paha	$(AM_V_XFST)$(PRINTF) "read regex [ [ ~[?* \"+Foc/gi\" ?*] .o. [@\"analyser-raw-gt-desc.aaa.xfst\" - @\"analyser-noncomp-raw.aaa.xfst\"]] (\"-\") \"#\" ([ ~[?* \"+Foc/gi\" ?*] .o. [ [@\"analyser-raw-gt-desc.aaa.xfst\" - @\"analyser-noncomp-raw.aaa.xfst\"] - @\"analyser-nonfcomp-raw.aaa.xfst\"]] (\"-\") \"#\" ) [ [@\"analyser-raw-gt-desc.aaa.xfst\" - @\"analyser-noncomp-raw.aaa.xfst\"] - @\"analyser-nonfcomp-raw.aaa.xfst\"] ]; \nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
+analyser-raw-gt-desc.bbb.xfst: analyser-raw-gt-desc.aaa.xfst 
+	$(AM_V_XFST)$(PRINTF) "read regex [ ~[?* \"+Foc/gi\" ?*] .o. @\"analyser-raw-gt-desc.aaa.xfst\" (\"-\") \"#\" ]* @\"analyser-raw-gt-desc.aaa.xfst\" ; \nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
 # HFST:
 # compound words: filtered
 generator-raw-gt-desc.ccc.hfst: generator-raw-gt-desc.bbb.hfst $(EST_COMPOUND_PRE_FILTERS:%=%.hfst) $(EST_COMPOUND_POST_FILTERS:%=%.hfst)
 	$(AM_V_RGX2FST)$(PRINTF) "\
-			$(EST_COMPOUND_PRE_FILTERS:%=@\"%.hfst\" .o.)    \
 			@\"$<\"                                       \
-			$(EST_COMPOUND_POST_FILTERS:%=.o. @\"%.hfst\")   \
 			;" \
-		| $(HFST_REGEXP2FST) $(VERBOSITY) $(HFST_FLAGS) -S --xerox-composition=ON \
+		| $(HFST_REGEXP2FST) $(VERBOSITY) $(HFST_FLAGS) -S --xerox-composition=ON -X flag-is-epsilon \
 		> $@
 
 # XFST:
 # compound words: filtered
 analyser-raw-gt-desc.ccc.xfst: analyser-raw-gt-desc.bbb.xfst $(EST_COMPOUND_PRE_FILTERS:%=%.xfst) $(EST_COMPOUND_POST_FILTERS:%=%.xfst)
-	$(AM_V_XFST)$(PRINTF) "read regex                         \
-			$(EST_COMPOUND_PRE_FILTERS:%=@\"%.xfst\" .o.)    \
+	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex                         \
 			@\"$<\"                                       \
-			$(EST_COMPOUND_POST_FILTERS:%=.o. @\"%.xfst\")   \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST) $(VERBOSITY)
@@ -451,7 +342,7 @@ generator-raw-gt-desc.hfst: generator-raw-gt-desc.aaa.hfst \
 					generator-numerals-raw.aaa.hfst \
 					morphology/punctuation.tmp.hfst \
 					generator-raw-gt-desc.ccc.hfst
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"$<\" .o. ~[?* \"#\" ] ; \nread regex @\"generator-wordpairs-raw.aaa.hfst\" ; \nread regex @\"generator-numerals-raw.aaa.hfst\" ; \nread regex @\"morphology/punctuation.tmp.hfst\" ; \nread regex @\"generator-raw-gt-desc.ccc.hfst\" .o. ~[?* \"#\" ] ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"$<\" .o. ~[?* \"#\" ] ; \nread regex @\"generator-numerals-raw.aaa.hfst\" | @\"generator-wordpairs-raw.aaa.hfst\" ; \nread regex @\"morphology/punctuation.tmp.hfst\" ; \nread regex @\"generator-raw-gt-desc.ccc.hfst\" .o. ~[?* \"#\" ] ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
 
 # ... also the raw analyser
 analyser-raw-gt-%.hfst: generator-raw-gt-%.hfst
@@ -465,8 +356,7 @@ analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.aaa.xfst \
 					analyser-numerals-raw.aaa.xfst \
 					morphology/punctuation.tmp.xfst \
 					analyser-raw-gt-desc.ccc.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex @\"$<\" .o. ~[?* \"#\" ] ; \nread regex @\"analyser-wordpairs-raw.aaa.xfst\" ; \nread regex @\"analyser-numerals-raw.aaa.xfst\" ; \nread regex @\"morphology/punctuation.tmp.xfst\" ; \nread regex @\"analyser-raw-gt-desc.ccc.xfst\" .o. ~[?* \"#\" ] ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
-
+	$(AM_V_XFST)$(PRINTF) "read regex @\"$<\" .o. ~[?* \"#\" ] ; \nread regex @\"analyser-numerals-raw.aaa.xfst\" | @\"analyser-wordpairs-raw.aaa.xfst\" ; \nread regex @\"morphology/punctuation.tmp.xfst\" ; \nread regex @\"analyser-raw-gt-desc.ccc.xfst\" .o. ~[?* \"#\" ] ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######

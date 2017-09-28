@@ -22,7 +22,7 @@ define PairedCase [ ["+Sg" "+Nom" \[Number | Case]* "+Sg" "+Nom"] |
 define GoodCase [ \[Number | Case]* PairedCase \[Number | Case]* ];
 
 # between words may be (including a flag diacritic and a usage tag as '?'):
-define Middle [Number Case ? (?)] ;
+define Middle [Number Case (?)] ;
 
 define Unit [{kaks} | {kolm} | {neli} | {viis} | {kuus} | {seitse} | {kaheksa} | {üheksa}];
 define Circa [{paar} | {mitu} | {mõni}];
@@ -46,8 +46,8 @@ define WordPairs [?* Pairs ?*] ;
 define BadPlWord [Circa | {pool} | {poolteist}] ;
 define BadPlural $[ BadPlWord Number Case \[Number | Case]* "+Pl" ] ;
 
-define CleanUp [[..] <- Case || Number _ ? (?) \[Number | Case]* Number Case ,, 
-                [..] <- Number || _ Case ? (?) \[Number | Case]* Number Case ] ;
+define CleanUp [[..] <- Case || Number _ (?) \[Number | Case]* Number Case ,, 
+                [..] <- Number || _ Case (?) \[Number | Case]* Number Case ] ;
 
 #regex [ CleanUp .o. [WordPairs & PairedNumber & ~BadPlural & PairedCase] ] ;
 regex [ CleanUp .o. [WordPairs & ~BadPlural & GoodCase] ] ;

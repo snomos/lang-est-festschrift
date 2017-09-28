@@ -573,6 +573,73 @@ Multichar_Symbols
  @U.Cap.Opt@        !!≈ | @CODE@ | Allowing downcasing of derived names: deatnulasj.
  @C.Cap@
 
+!! These are used for limiting the number of components in a compound word
+!! (the compound transducer is cyclic, but in reality there is a limit to the length of words)
+ @D.Part@        !!≈ | @CODE@ | No part of a compound should have been encountered yet
+ @P.Part.One@        !!≈ | @CODE@ | Indicate that this could be the first part of a compound
+ @R.Part.One@        !!≈ | @CODE@ | Require that the first part has been encountered 
+ @P.Part.Two@        !!≈ | @CODE@ | Indicate that this could be the second part of a compound
+ @R.Part.Two@        !!≈ | @CODE@ | Require that the second part has been encountered
+ @P.Part.Three@        !!≈ | @CODE@ | Indicate that this could be the third part of a compound
+ @P.Part.Bad@        !!≈ | @CODE@ | Indicate that this cannot be a part of a compound
+
+!! POS is used for filtering derivations and compounds
+ @R.POS.A@
+ @P.POS.A@
+ @R.POS.AComp@
+ @P.POS.AComp@
+ @R.POS.ASuperl@
+ @P.POS.ASuperl@
+ @R.POS.N@
+ @P.POS.N@
+ @R.POS.NProp@
+ @P.POS.NProp@
+ @R.POS.NumCard@
+ @P.POS.NumCard@
+ @R.POS.NumOrd@
+ @P.POS.NumOrd@
+ @R.POS.V@
+ @P.POS.V@
+ @R.POS.Interj@
+ @P.POS.Interj@
+ @R.POS.Adv@
+ @P.POS.Adv@
+ @R.POS.Pron@
+ @P.POS.Pron@
+
+!! Number is used for filtering derivations and compounds ?? is it ??
+ @R.Number.Sg@
+ @P.Number.Sg@
+ @R.Number.Pl@
+ @P.Number.Pl@
+
+!! Case is used for filtering derivations and compounds
+ @R.Case.Nom@
+ @P.Case.Nom@
+ @R.Case.Gen@
+ @P.Case.Gen@
+ @R.Case.Par@
+ @P.Case.Par@
+ @R.Case.Sem@  ! semantic (aka oblique) case
+ @P.Case.Sem@
+ @D.Case.PlNom@  ! in compounding, +Pl is relevant for +Nom only
+ @P.Case.PlNom@
+ @R.Case.Short@  ! no case because stem is shortened (astraal-, nais-)
+ @P.Case.Short@
+ @D.Case@
+ @C.Case@  ! initialise case flag
+
+!! Remember there has been some derivation from A or N; for filtering compounds
+ @P.Der.N@
+ @P.Der.A@
+ @P.Der.Adv@
+ @D.Der@
+ @C.Der@
+
+!! Remember the stem type; for filtering compounds
+ @P.Stem.Short@   ! e.g. max 2 syllables
+ @R.Stem.Short@
+ @C.Stem@
 
 ! Morphophonology
 
@@ -689,29 +756,154 @@ M1   ! m n  lumi lund
 
  %{stemill%} ! lexicon flag for short sg ill, formed by stem change (jõgi-jõkke)
 
-
+ 
 
 !! !!Lexicons  
 
 LEXICON Root !!= * {{@CODE@}} is the starting point of everything
 
-Adjectives ;              !!= * {{@CODE@}}
-NoninflectingAdjectives ; !!= * {{@CODE@}}
-ComparativeAdjectives ;   !!= * {{@CODE@}}
-SuperlativeAdjectives ;   !!= * {{@CODE@}}  
-Adverbs ;                 !!= * {{@CODE@}}
-Adpositions ;             !!= * {{@CODE@}}
-Conjunctions ;            !!= * {{@CODE@}}
-Nouns ;                   !!= * {{@CODE@}}
-! ProperNouns ;             !!= * {{@CODE@}}
-@U.Cap.Obl@ ProperNouns ; !!= * {{@CODE@}}  ! always uppercase
-@U.Cap.Opt@ ProperNouns ; !!= * {{@CODE@}}  ! downcased for derivations
-Numerals ;                !!= * {{@CODE@}}
-Pronouns ;                !!= * {{@CODE@}}
-Verbs ;                   !!= * {{@CODE@}}
-NoninflectingVerbs ;      !!= * {{@CODE@}}
-Interjections ;           !!= * {{@CODE@}}
-GenitiveAttributes ;      !!= * {{@CODE@}}
+!! This is actually a loop, formed after applying Kleene star 
+!! concatenation on the transducer with itself.
+!! It is controlled by setting up flags on the path:
+!! 1. flag the first 3 loops (thus forbidding any more loops)
+!! 2. flag the POS and inflection, to use in the following loop
+
+@D.Part@@P.Part.Bad@ Single ;      !! strictly simplex word; cannot be a part of a compound
+@D.Part@@P.Part.One@ First ;       !! a simplex word, or the first part of a compound
+
+! D.Der may be too restrictive here
+@R.Part.One@@P.Part.Two@@D.Case.PlNom@@D.Der@ Latter ;   ! second loop; latter part
+@R.Part.Two@@P.Part.Three@@D.Case.PlNom@@D.Der@ Latter ;   ! third loop; latter part
+
+
+LEXICON Single     !! strictly simplex words; cannot be a part of a compound
+
+  Adpositions ;             !!= * {{@CODE@}}
+  Conjunctions ;            !!= * {{@CODE@}}
+  NoninflectingVerbs ;      !!= * {{@CODE@}}
+
+LEXICON First     !!= * {{@CODE@}} a simplex word or the first part of a compound 
+
+  @P.POS.A@ Adjectives ;              !!= * {{@CODE@}}
+  @P.POS.A@ NoninflectingAdjectives ; !!= * {{@CODE@}}
+  @P.POS.AComp@ ComparativeAdjectives ;   !!= * {{@CODE@}}
+  @P.POS.ASuperl@ SuperlativeAdjectives ;   !!= * {{@CODE@}}  
+  @P.POS.Adv@ Adverbs ;                 !!= * {{@CODE@}}
+  @P.POS.N@ Nouns ;                   !!= * {{@CODE@}}
+  @P.POS.NProp@@U.Cap.Obl@ ProperNouns ; !!= * {{@CODE@}}  ! always uppercase
+  @P.POS.NProp@@U.Cap.Opt@ ProperNouns ; !!= * {{@CODE@}}  ! downcased for derivations
+  @P.POS.NumCard@ CardinalNumerals ;                !!= * {{@CODE@}}
+  @P.POS.NumOrd@ OrdinalNumerals ;                !!= * {{@CODE@}}
+  @P.POS.Pron@ Pronouns ;                !!= * {{@CODE@}}
+  @P.POS.V@ Verbs ;                   !!= * {{@CODE@}}
+  @P.POS.Interj@ Interjections ;           !!= * {{@CODE@}}
+  @P.POS.N@@P.Case.Gen@ GenitiveAttributes ;      !!= * {{@CODE@}}
+
+! the nature of the previous word is reflected by flag diacritics that were set back then
+! so we use them to select possible continuation paths
+
+LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
+
+! x + adjective
+  @R.Case.Short@ LatterAdjective ;  ! vaatamispunane, astraalpunane
+
+  @R.POS.N@@R.Case.Nom@ LatterAdjective ; ! laudpunane
+  @R.POS.N@@R.Case.Gen@ LatterAdjective_ne ; ! lauapunane, laudadepunane
+  @R.POS.N@@R.Case.Gen@ ShortLatterAdjective ; ! lauaaldis, laudadealdis
+  @R.POS.N@@R.Case.Gen@ PlainLatterAdjective ; ! lauaahastuslik
+  @R.POS.N@@R.Case.Par@ LatterAdjective_v ; ! mägejuhtiv
+  @R.POS.N@@R.Case.Sem@ LatterAdjective_v ; ! mäestjuhtiv
+
+  @R.POS.NumCard@@R.Case.Gen@ LatterAdjective_ne ; ! viiemeetrine
+
+  @R.POS.A@@R.Case.Nom@@R.Stem.Short@ LatterAdjective ;  ! rämepunane
+
+  @R.POS.Pron@@R.Case.Gen@ LatterAdjective ; ! enesepunane
+
+! x + noun
+  @R.Case.Short@ LatterNoun ;
+
+  @R.POS.N@@R.Case.Nom@ LatterNoun ;
+  @R.POS.N@@R.Case.Gen@ LatterNoun ;
+  @R.POS.NumCard@@R.Case.Nom@ LatterNoun ;
+  @R.POS.NumCard@@R.Case.Gen@ LatterNoun ;
+
+! NB only short adjectives are good here !!!
+  @R.POS.A@@R.Case.Nom@@R.Stem.Short@ LatterNoun ;
+
+! NB only some pronouns !
+  @R.POS.Pron@@R.Case.Gen@ LatterNoun ;
+
+! x + deverbal noun (in addition to x + noun)
+ 
+  @R.POS.N@@R.Case.Sem@ LatterDeverbal ;  ! mägedesttulek
+  @R.POS.V@@R.Case.Sem@ LatterDeverbal ;  ! -ma, -mas etc lugematulek
+  @R.POS.Adv@ LatterDeverbal ;            ! huupitulek
+
+! x + verb derivation
+! verb derivations expect previous word to be either in Gen or Par
+
+  @R.POS.N@@R.Case.Gen@ LatterVerb ;  
+  @R.POS.N@@R.Case.Par@ LatterVerb ;
+
+  @R.POS.N@@R.Case.Nom@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
+  @R.POS.N@@R.Case.Sem@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
+
+! NB only short adjectives are good here !!!
+  @R.POS.A@@R.Case.Nom@@R.Stem.Short@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
+
+  @R.POS.A@@R.Case.Short@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
+
+  @R.POS.AComp@@R.Case.Nom@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
+  @R.POS.ASuperl@@R.Case.Nom@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
+
+! NB only short and good adverbs here !!!
+  @R.POS.Adv@@D.Case@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
+
+  @R.POS.NumCard@@R.Case.Nom@@P.Case.Gen@ LatterVerb ;  ! map orig. case flag for derivation needs
+  @R.POS.NumCard@@R.Case.Gen@ LatterVerb  ;
+! NB only some pronouns !
+  @R.POS.Pron@@R.Case.Gen@ LatterVerb ;  
+  @R.POS.Pron@@R.Case.Par@ LatterVerb ;
+
+  @R.POS.V@@D.Case@@P.Case.Par@ LatterVerb ;      ! infinitive, gerund
+  @R.POS.V@@R.Case.Sem@ AnyLatterVerb ;          ! -ma, -mas etc
+
+
+LEXICON LatterAdjective
+
+  @P.POS.A@@C.Der@@C.Case@@C.Stem@ Adjectives ;              !!= * {{@CODE@}}
+
+LEXICON LatterAdjective_ne
+
+  @P.POS.A@@C.Der@@C.Case@@C.Stem@ Adjectives_ne ;              !!= * {{@CODE@}}
+
+LEXICON LatterAdjective_v
+
+  @P.POS.A@@C.Der@@C.Case@@C.Stem@ Adjectives_v ;              !!= * {{@CODE@}}
+
+LEXICON ShortLatterAdjective
+
+  @P.POS.A@@C.Der@@C.Case@@C.Stem@ ShortAdjectives ;              !!= * {{@CODE@}}
+
+LEXICON PlainLatterAdjective
+
+  @P.POS.A@@C.Der@@C.Case@@C.Stem@ PlainAdjectives ;              !!= * {{@CODE@}}
+
+LEXICON LatterNoun
+  @P.POS.N@@C.Der@@C.Case@ Nouns ;    
+
+LEXICON LatterDeverbal
+  @P.POS.N@@C.Der@@C.Case@ DeverbalNouns ;    
+
+LEXICON AnyLatterVerb     ! any verb derivation is allowed; set the case accordingly
+              
+  @P.Case.Gen@ LatterVerb ;                   !!= * {{@CODE@}}
+  @P.Case.Par@ LatterVerb ;
+
+LEXICON LatterVerb
+              
+  @P.POS.V@@C.Der@ Verbs ;                   !!= * {{@CODE@}}
 
 ! Punctuation ;             !!= * {{@CODE@}}
 

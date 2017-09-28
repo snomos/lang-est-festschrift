@@ -33,7 +33,8 @@ GT_LEXC_SRCS_L1_L2=\
                          stems/genitive_attributes.lexc \
                          stems/interjections.lexc \
                          stems/nouns.lexc \
-                         stems/numerals.lexc \
+                         stems/cardinalnumerals.lexc \
+                         stems/ordinalnumerals.lexc \
                          stems/pronouns.lexc \
                          stems/propernouns.lexc \
                          stems/verbs.lexc \
@@ -109,44 +110,36 @@ GT_LOCAL_XFSCRIPT_SRCS=
 GT_DISTRO_SRCS=
 
 ### BEGIN: Local processing: ###
-
-### List additional targets in the following variable, for build targets not
-### covered by other means. This comes ***in addition to*** what you can do by
-### just targeting lexicon.*: lexicon.tmp.*, and is useful if you want to build
-### separate fst's that need further treatment in the src/ dir. See the language
-### gle/ for an example of how this is used.
-
-GIELLA_LOCAL_TARGETS=
-
 EST_AFFIX_FILES=affixes/regular_declinations affixes/exceptional_declinations affixes/verbs affixes/gi
 
 # make the parts inflect 
 # by re-using root.lexc and affixes, and omitting all the stem lexicons
+# ... and remove the flag diacritics
  
 pair_initial.tmp.lexc: pair_initial.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
 	cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
 	cat $< >> $@ && \
-	cat $(EST_AFFIX_FILES:%=%.lexc) >> $@
+	cat $(EST_AFFIX_FILES:%=%.lexc) | sed 's/@.\.[^@]*@//g' >> $@
 
 num_initial.tmp.lexc: num_initial.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
 	cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
 	cat $< >> $@ && \
-	cat $(EST_AFFIX_FILES:%=%.lexc) >> $@
+	cat $(EST_AFFIX_FILES:%=%.lexc) | sed 's/@.\.[^@]*@//g' >> $@
 
 pair_final.tmp.lexc: pair_final.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
 	cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
 	cat $< >> $@ && \
-	cat $(EST_AFFIX_FILES:%=%.lexc) >> $@
+	cat $(EST_AFFIX_FILES:%=%.lexc) | sed 's/@.\.[^@]*@//g' >> $@
 
 num_final.tmp.lexc: num_final.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
 	cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
 	cat $< >> $@ && \
-	cat $(EST_AFFIX_FILES:%=%.lexc) >> $@
+	cat $(EST_AFFIX_FILES:%=%.lexc) | sed 's/@.\.[^@]*@//g' >> $@
 
 noncomp.tmp.lexc: noncomp.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
 	cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
 	cat $< >> $@ && \
-	cat $(EST_AFFIX_FILES:%=%.lexc) >> $@
+	cat $(EST_AFFIX_FILES:%=%.lexc) | sed 's/@.\.[^@]*@//g' >> $@
 
 nonfcomp.tmp.lexc: nonfcomp.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
 	cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \

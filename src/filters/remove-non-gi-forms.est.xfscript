@@ -21,7 +21,7 @@ define WB [ "#" ] ;
 # giwords are wordforms that should end with gi/ki, 
 # so if they do not have either +Foc/gi or +Use/NotNorm, their surface form is wrong...
 
-define wronggiw [ giw \PRON* PRON \[GI | NOTNORM | WB]* ] ;
+define wronggiw [ \[WB]* giw PRON \[GI | NOTNORM | WB]* ] ;
 
 # nongiwords are wordforms that should not end with gi/ki, 
 # so if they have +Foc/gi, their surface form ends with gi and is wrong ...

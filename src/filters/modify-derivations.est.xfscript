@@ -8,7 +8,8 @@
 define WB [ "#" ] ;
 define MB [ "»" ] ;  # morpheme border
 define LINE [    MB [{line} | {lis}] ];
-define LANE [? ? MB [{lane} | {las}] ] ;
+#define LANE [? ? MB [{lane} | {las}] ] ;
+define LANE [ MB [{lane} | {las}] ] ;
 
 define EstW [ a | e | i | o | u | õ | ä | ö | ü ] ; 
 define WW [ EstW | y ];
@@ -31,7 +32,8 @@ define shorten2 [  IA -> 0 || Pre2 _ LANE ] ;
 # filter out karl+lik; the only lik-derivation is then karli+lik
 # (because they both are generated at first...)
 
-define LIK [? ? MB {lik} \WB*] ;
+#define LIK [? ? MB {lik} \WB*] ;
+define LIK [ MB {lik} \WB*] ;
 
 define CVl [Syll l] ;      # 1C word stem ending in l
 define CVLIK [\WB* (Syll Syll) CVl LIK \WB*] ;

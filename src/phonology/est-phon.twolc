@@ -276,6 +276,9 @@ e:0 !!≈ * __@CODE@__ soolas0+e
 ! t:d ... if we say that plural affix +te appears as +de for tütar-type words,
 ! then the cont. lexicons will be simpler 
 
+! flag diacritics are used for passing info for compounding;
+! they must be made invisible for phonology
+! %@R%.Part%.One%@ %@P%.POS%.N%@
 ;
 
 Diacritics
@@ -333,6 +336,8 @@ WS = G1 B1 D1 K1 P1 T1 G3 D3 S1 ;
 ! lexical side of consonants that participate in gradation
 ! LexGrad = G1 B1 D1 K1 P1 T1 S1 B2 K2 P2 T2 g b d k p t f s š ;
 
+! Flags = %@R%.Part%.One%@ %@P%.POS%.N%@ ;
+
 Definitions
 
 WordBorder = [ .#. | # ];  ! word border
@@ -359,8 +364,8 @@ Rules
 ! -----
 ! general 
 "strong and weak gradation triggers cannot co-exist"
-%{S%}:0  /<= _ Any* WeakGrade ;
-             WeakGrade Any* _ ;
+%{S%}:0  /<= _ :* WeakGrade ;
+             WeakGrade :* _ ;
 
 ! ----- consonant gradation
 
@@ -796,7 +801,7 @@ Y3:e  <=> [:ä | :ö] Null* H3:h _ ;
 Y3:u  <=> [:o | :u] Null* H3:h _ ;
 
 "h-illative"
-H3:h  <=> _ Any* StrongGrade ;
+H3:h  <=> _ :* StrongGrade ;
 
 !------
 "Verb vowel ö o to õ"
@@ -1286,6 +1291,7 @@ Vx:0  <=> :Consonant ( J1:0 ) _ %> PlSV:Vy Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 
 Cx:0 <=> :Cx _ Null+ [[:Consonant Any* Border] - [Gi Border]];
          :Cx _ [WS:stop | S1:s] ;
+         :Cx _ Null* SuffixBorder :Consonant;  ! just testing
       where Cx in (Consonant) ;
 
 ! lexical: s p i k k E2 r > i
@@ -1336,15 +1342,6 @@ Cx:Cy  <=> :voiceless Null* SuffixBorder _ ;
 
 %{dbl%}:Cx <=> :Cx _ Null* [ :a | :e ] ;
       where Cx in (lmnr) ;
-
-! native monosyllabic word cannot be kät, has to be kätt 
-! for 8 words like käsi, mesi
-"+t doubles at the end of a short-syllable word"
-
-0:t <=> Border (Consonant) Vowel Null* %> t _ WordEnd ;
-
-! lexical: k ä S1 > t 0
-! surface: k ä  0 > t t
 
 ! pronounced mässlema, but written mäslema...
 ! foreign names Kessler etc have ssl cluster, so cannot use a general rule ssl -> sl

@@ -1,5 +1,10 @@
 LEXICON Pronouns
 
+ @P.Part.Bad@ PlainPronouns ;
+ CompoundingPronouns ;
+
+LEXICON PlainPronouns
+
 muist+Pron:m´uist #;
 esimene+Pron:esimene OLULINE ;
 iga+Pron:iga RUBLA ;
@@ -28,7 +33,6 @@ mitmes+Pron:m´itmeN1S1 HALE ;
 mitmesugune+Pron:m´itme#sugune SOOLANE ;
 mitmetaoline+Pron:m´itme#t´aoline SUULINE ;
 mitu+Pron:m´ittU2 HAARE ;
-muu+Pron:m´uu%>%{id%} PUU ;
 mõlema+Pron:mõlem MAGUS ;
 mõnesugune+Pron:mõne#sugune SOOLANE ;
 mõningane+Pron:mõningane OLULINE ;
@@ -46,6 +50,7 @@ niisamasugune+Pron:n´ii#sama#sugune SOOLANE ;
 niisugune+Pron:n´ii#sugune SOOLANE ;
 nisukene+Pron:nisukene OLULINE ;
 nisuke+Pron:nisuke PEENIKE ;
+muu+Pron:m´uu%>%{id%} PUU ;
 oma+Pron:oma%>%{pl.i%} KAVA ;
 omasugune+Pron:oma#sugune SOOLANE ;
 omataoline+Pron:oma#t´aoline SUULINE ;
@@ -78,23 +83,26 @@ temasugune+Pron:tema#sugune SOOLANE ;
 temataoline+Pron:tema#t´aoline SUULINE ;
 üks+Pron:´ü KAKS ;
 üksteise+Pron:´üks#teine OLULINE ;
+tema+Pron:t TEMA ;
+nemad+Pron:n NEMAD ;
+iseenese+Pron:ise# ISE ;
+omaenese+Pron:oma# OMAENESE ;
+kumbki+Pron:kummB1%>%{pl.i%}%{rare%} KUMBKI ;
+miski+Pron:mi MISKI ;
+keegi+Pron:ke KEEGI ;
+eimiski+Pron:ei#mi MISKI ;
+eikeegi+Pron:ei#ke KEEGI ;
+
+LEXICON CompoundingPronouns
+
 mis+Pron:mi KES ;
 kes+Pron:ke KES ;
 see+Pron: SEE ;
 too+Pron: TOO ;
 mina+Pron:m MASA ;
 sina+Pron:s MASA ;
-tema+Pron:t TEMA ;
 meie+Pron:me METE ;
 teie+Pron:te METE ;
-nemad+Pron:n NEMAD ;
 ise+Pron: ISE ;
-iseenese+Pron:ise# ISE ;
-omaenese+Pron:oma# OMAENESE ;
 kõik+Pron:kõik KÕIK ;
-kumbki+Pron:kummB1%>%{pl.i%}%{rare%} KUMBKI ;
-miski+Pron:mi MISKI ;
-keegi+Pron:ke KEEGI ;
-eimiski+Pron:ei#mi MISKI ;
-eikeegi+Pron:ei#ke KEEGI ;
 
