@@ -315,27 +315,42 @@ generator-raw-gt-desc.comp.hfst: generator-raw-gt-desc.simple.hfst
 analyser-raw-gt-desc.comp.xfst: analyser-raw-gt-desc.simple.xfst 
 	$(AM_V_XFST)$(PRINTF) "read regex [ [ ~[?* \"+Foc/gi\" ?*] .o. @\"analyser-raw-gt-desc.simple.xfst\" .o. [ \"-\" -> 0 || _ .#. ] ] (\"-\") \"#\" ]* @\"analyser-raw-gt-desc.simple.xfst\" ; \nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
+# the vocabulary, i.e. words that might be combined with - / or otherwise
+# include paired words and compound numerals and compounds in the raw generator
 # HFST:
-# include paired words and compound numerals and compounds and punctuation in the raw generator
-generator-raw-gt-desc.hfst: generator-raw-gt-desc.simple.hfst \
+generator-raw-gt-desc.vocabulary.hfst: generator-raw-gt-desc.simple.hfst \
 					generator-wordpairs-raw.simple.hfst \
 					generator-numerals-raw.simple.hfst \
-					morphology/punctuation.tmp.hfst \
 					generator-raw-gt-desc.comp.hfst
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"generator-numerals-raw.simple.hfst\" | @\"generator-wordpairs-raw.simple.hfst\" ; \nread regex @\"morphology/punctuation.tmp.hfst\" ; \nread regex @\"generator-raw-gt-desc.comp.hfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"generator-numerals-raw.simple.hfst\" | @\"generator-wordpairs-raw.simple.hfst\" ; \nread regex @\"generator-raw-gt-desc.comp.hfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
+
+# XEROX:
+analyser-raw-gt-desc.vocabulary.xfst: analyser-raw-gt-desc.simple.xfst \
+					analyser-wordpairs-raw.simple.xfst \
+					analyser-numerals-raw.simple.xfst \
+					analyser-raw-gt-desc.comp.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"analyser-numerals-raw.simple.xfst\" | @\"analyser-wordpairs-raw.simple.xfst\" ; \nread regex @\"analyser-raw-gt-desc.comp.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
+
+# allow concatenating with - and / and
+# include punctuation in the raw generator
+# HFST:
+generator-raw-gt-desc.hfst: generator-raw-gt-desc.vocabulary.hfst \
+					filters/initialise-flags.est.hfst \
+					morphology/punctuation.tmp.hfst
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex [ [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ] [\"-\" | \"/\"] \"#\" @\"filters/initialise-flags.est.hfst\"]* @\"$<\" ; \nread regex @\"morphology/punctuation.tmp.hfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
+
+#	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"generator-numerals-raw.simple.hfst\" | @\"generator-wordpairs-raw.simple.hfst\" ; \nread regex @\"morphology/punctuation.tmp.hfst\" ; \nread regex @\"generator-raw-gt-desc.comp.hfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
 
 # ... also the raw analyser
 analyser-raw-gt-%.hfst: generator-raw-gt-%.hfst
 		$(HFST_INVERT) $(VERBOSITY) $(HFST_FLAGS) < $< > $@
 
 # XEROX:
-# include paired words and compound numerals and compounds and punctuation in the raw analyser
-analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.simple.xfst \
-					analyser-wordpairs-raw.simple.xfst \
-					analyser-numerals-raw.simple.xfst \
-					morphology/punctuation.tmp.xfst \
-					analyser-raw-gt-desc.comp.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"analyser-numerals-raw.simple.xfst\" | @\"analyser-wordpairs-raw.simple.xfst\" ; \nread regex @\"morphology/punctuation.tmp.xfst\" ; \nread regex @\"analyser-raw-gt-desc.comp.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
+analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.vocabulary.xfst \
+					morphology/punctuation.tmp.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex [ @\"$<\" [\"-\" | \"/\"] ]* @\"$<\" ; \nread regex @\"morphology/punctuation.tmp.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
+
+#	$(AM_V_XFST)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"analyser-numerals-raw.simple.xfst\" | @\"analyser-wordpairs-raw.simple.xfst\" ; \nread regex @\"morphology/punctuation.tmp.xfst\" ; \nread regex @\"analyser-raw-gt-desc.comp.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######

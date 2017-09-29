@@ -100,9 +100,7 @@ GT_LOCAL_SRCS=\
                         pair_final.tmp.lexc \
                         num_initial.tmp.lexc \
                         num_final.tmp.lexc \
-                        punctuation.tmp.lexc \
-                        noncomp.tmp.lexc \
-                        nonfcomp.tmp.lexc 
+                        punctuation.tmp.lexc
 
 # Define local xfscripts here:
 GT_LOCAL_XFSCRIPT_SRCS=
@@ -136,16 +134,6 @@ num_final.tmp.lexc: num_final.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
 	cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
 	cat $< >> $@ && \
 	cat $(EST_AFFIX_FILES:%=%.lexc) | sed 's/@.\.[^@]*@//g' >> $@
-
-noncomp.tmp.lexc: noncomp.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
-	cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
-	cat $< >> $@ && \
-	cat $(EST_AFFIX_FILES:%=%.lexc) | sed 's/@.\.[^@]*@//g' >> $@
-
-nonfcomp.tmp.lexc: nonfcomp.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
-	cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
-	cat $< >> $@ && \
-	cat $(EST_AFFIX_FILES:%=%.lexc) >> $@
 
 # punctuation is a separate issue, not an ordinary part of the lexicon
 punctuation.tmp.lexc: punctuation.lexc $(GT_LEXC_ROOT)

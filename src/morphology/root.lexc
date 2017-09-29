@@ -584,6 +584,7 @@ Multichar_Symbols
  @R.Part.Two@        !!≈ | @CODE@ | Require that the second part has been encountered
  @P.Part.Three@        !!≈ | @CODE@ | Indicate that this could be the third part of a compound
  @P.Part.Bad@        !!≈ | @CODE@ | Indicate that this cannot be a part of a compound
+ @C.Part@
 
 !! POS is used for filtering derivations and compounds
  @R.POS.A@
@@ -610,6 +611,7 @@ Multichar_Symbols
  @P.POS.Pron@
  @R.POS.Pref@
  @P.POS.Pref@
+ @C.POS@
 
 !! Case is used for filtering derivations and compounds
  @R.Case.Nom@
