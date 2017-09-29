@@ -347,8 +347,9 @@ analyser-raw-gt-%.hfst: generator-raw-gt-%.hfst
 
 # XEROX:
 analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.vocabulary.xfst \
+					filters/initialise-flags.est.xfst \
 					morphology/punctuation.tmp.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex [ @\"$<\" [\"-\" | \"/\"] ]* @\"$<\" ; \nread regex @\"morphology/punctuation.tmp.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
+	$(AM_V_XFST)$(PRINTF) "read regex [ [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ] [\"-\" | \"/\"] \"#\" @\"filters/initialise-flags.est.xfst\"]* @\"$<\" ; \nread regex @\"morphology/punctuation.tmp.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
 #	$(AM_V_XFST)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"analyser-numerals-raw.simple.xfst\" | @\"analyser-wordpairs-raw.simple.xfst\" ; \nread regex @\"morphology/punctuation.tmp.xfst\" ; \nread regex @\"analyser-raw-gt-desc.comp.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
