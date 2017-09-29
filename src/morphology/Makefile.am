@@ -39,6 +39,7 @@ GT_LEXC_SRCS_L1_L2=\
                          stems/propernouns.lexc \
                          stems/verbs.lexc \
                          stems/noninflecting_verbs.lexc \
+                         stems/prefixes.lexc \
 			 stems/abbreviations.lexc \
 			 stems/acronyms.lexc \
 			 affixes/regular_declinations.lexc \

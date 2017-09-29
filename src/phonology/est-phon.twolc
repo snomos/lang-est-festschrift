@@ -887,7 +887,7 @@ E1:0  <=> :Vowel Null* :s Null* _ Null* s e ;          ! olulisse (haplology)
           :Vowel Null* :s Null* _ Null* » l i k ;        ! vaatluslik
                        :s Null* _ Null* » u s ;        ! soolasus
                                 _ Null* » %- ;        ! nais-, vaatamis-, astraal-
-                                _ Null* » # ;        !  vaatamiskoht, astraaltunne
+!                                _ Null* » # ;        !  vaatamiskoht, astraaltunne
                         
 
 ! lexical: o l u l i n e E1 > s e 

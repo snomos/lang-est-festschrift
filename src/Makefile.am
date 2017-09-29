@@ -237,7 +237,7 @@ redundant_numerals.%: num_final.tmp.% num_initial.tmp.%
 
 # We need to add processing of language-specific tags in the generator for paired words:
 # HFST:
-generator-wordpairs-raw.aaa.hfst: redundant_wordpairs.hfst \
+generator-wordpairs-raw.simple.hfst: redundant_wordpairs.hfst \
 					$(EST_WORDPAIR_FILTERS:%=%.hfst)
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
 			read regex                         \
@@ -247,7 +247,7 @@ generator-wordpairs-raw.aaa.hfst: redundant_wordpairs.hfst \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
-generator-numerals-raw.aaa.hfst: redundant_numerals.hfst \
+generator-numerals-raw.simple.hfst: redundant_numerals.hfst \
 					$(EST_NUMERAL_FILTERS:%=%.hfst)
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
 			read regex                         \
@@ -258,7 +258,7 @@ generator-numerals-raw.aaa.hfst: redundant_numerals.hfst \
 		 quit\n" | $(XFST_TOOL)
 
 # XEROX:
-analyser-wordpairs-raw.aaa.xfst: redundant_wordpairs.xfst \
+analyser-wordpairs-raw.simple.xfst: redundant_wordpairs.xfst \
 					$(EST_WORDPAIR_FILTERS:%=%.xfst)
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
 			read regex                         \
@@ -268,7 +268,7 @@ analyser-wordpairs-raw.aaa.xfst: redundant_wordpairs.xfst \
 		 save stack $@\n\
 		 quit\n" | $(XFST) $(VERBOSITY)
 
-analyser-numerals-raw.aaa.xfst: redundant_numerals.xfst \
+analyser-numerals-raw.simple.xfst: redundant_numerals.xfst \
 					$(EST_NUMERAL_FILTERS:%=%.xfst)
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
 			read regex                         \
@@ -280,7 +280,7 @@ analyser-numerals-raw.aaa.xfst: redundant_numerals.xfst \
 
 # We need to add processing of language-specific tags in the analyser:
 # XEROX:
-analyser-raw-gt-desc.aaa.xfst: analyser-raw-gt-desc.tmp.xfst $(EST_EXTRA_PRE_FILTERS:%=%.xfst) $(EST_EXTRA_POST_FILTERS:%=%.xfst)
+analyser-raw-gt-desc.simple.xfst: analyser-raw-gt-desc.tmp.xfst $(EST_EXTRA_PRE_FILTERS:%=%.xfst) $(EST_EXTRA_POST_FILTERS:%=%.xfst)
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
 			read regex                         \
 			$(EST_EXTRA_PRE_FILTERS:%=@\"%.xfst\" .o.)    \
@@ -292,7 +292,7 @@ analyser-raw-gt-desc.aaa.xfst: analyser-raw-gt-desc.tmp.xfst $(EST_EXTRA_PRE_FIL
 
 # We need to add processing of language-specific tags in the generator:
 # HFST:
-generator-raw-gt-desc.aaa.hfst: generator-raw-gt-desc.tmp.hfst $(EST_EXTRA_PRE_FILTERS:%=%.hfst) $(EST_EXTRA_POST_FILTERS:%=%.hfst)
+generator-raw-gt-desc.simple.hfst: generator-raw-gt-desc.tmp.hfst $(EST_EXTRA_PRE_FILTERS:%=%.hfst) $(EST_EXTRA_POST_FILTERS:%=%.hfst)
 	$(AM_V_RGX2FST)$(PRINTF) "\
 			$(EST_EXTRA_PRE_FILTERS:%=@\"%.hfst\" .o.)    \
 			@\"$<\"                                       \
@@ -302,61 +302,40 @@ generator-raw-gt-desc.aaa.hfst: generator-raw-gt-desc.tmp.hfst $(EST_EXTRA_PRE_F
 		> $@
 
 # HFST:
-# compound words: redundant,
-# although some words that cannot participate in compounding get excluded;
-# the first part cannot be a form with a focus particle, so filter it out 
-generator-raw-gt-desc.bbb.hfst: generator-raw-gt-desc.aaa.hfst 
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex [ ~[?* \"+Foc/gi\" ?*] .o. @\"generator-raw-gt-desc.aaa.hfst\" (\"-\") \"#\"]* @\"generator-raw-gt-desc.aaa.hfst\" ; \nsave stack $@\nquit\n" | $(XFST_TOOL)
-
-# XFST:
-# compound words: redundant,
-# although some words that cannot participate in compounding get excluded;
+# compound words: 
 # the first part cannot be a form with a focus particle, so filter it out
-analyser-raw-gt-desc.bbb.xfst: analyser-raw-gt-desc.aaa.xfst 
-	$(AM_V_XFST)$(PRINTF) "read regex [ ~[?* \"+Foc/gi\" ?*] .o. @\"analyser-raw-gt-desc.aaa.xfst\" (\"-\") \"#\" ]* @\"analyser-raw-gt-desc.aaa.xfst\" ; \nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
-
-# HFST:
-# compound words: filtered
-generator-raw-gt-desc.ccc.hfst: generator-raw-gt-desc.bbb.hfst $(EST_COMPOUND_PRE_FILTERS:%=%.hfst) $(EST_COMPOUND_POST_FILTERS:%=%.hfst)
-	$(AM_V_RGX2FST)$(PRINTF) "\
-			@\"$<\"                                       \
-			;" \
-		| $(HFST_REGEXP2FST) $(VERBOSITY) $(HFST_FLAGS) -S --xerox-composition=ON -X flag-is-epsilon \
-		> $@
+# the first part cannot end with a hyphen, so filter it out
+generator-raw-gt-desc.comp.hfst: generator-raw-gt-desc.simple.hfst 
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex [ [ ~[?* \"+Foc/gi\" ?*] .o. @\"generator-raw-gt-desc.simple.hfst\" .o. [ \"-\" -> 0 || _ .#. ] ] (\"-\") \"#\"]* @\"generator-raw-gt-desc.simple.hfst\" ; \nsave stack $@\nquit\n" | $(XFST_TOOL)
 
 # XFST:
-# compound words: filtered
-analyser-raw-gt-desc.ccc.xfst: analyser-raw-gt-desc.bbb.xfst $(EST_COMPOUND_PRE_FILTERS:%=%.xfst) $(EST_COMPOUND_POST_FILTERS:%=%.xfst)
-	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
-			read regex                         \
-			@\"$<\"                                       \
-			;\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
+# compound words: 
+# the first part cannot be a form with a focus particle, so filter it out
+# the first part cannot end with a hyphen, so filter it out
+analyser-raw-gt-desc.comp.xfst: analyser-raw-gt-desc.simple.xfst 
+	$(AM_V_XFST)$(PRINTF) "read regex [ [ ~[?* \"+Foc/gi\" ?*] .o. @\"analyser-raw-gt-desc.simple.xfst\" .o. [ \"-\" -> 0 || _ .#. ] ] (\"-\") \"#\" ]* @\"analyser-raw-gt-desc.simple.xfst\" ; \nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
 # HFST:
-# filter out shortened stems without the trailing hyphen (i.e ones ending with #)
 # include paired words and compound numerals and compounds and punctuation in the raw generator
-generator-raw-gt-desc.hfst: generator-raw-gt-desc.aaa.hfst \
-					generator-wordpairs-raw.aaa.hfst \
-					generator-numerals-raw.aaa.hfst \
+generator-raw-gt-desc.hfst: generator-raw-gt-desc.simple.hfst \
+					generator-wordpairs-raw.simple.hfst \
+					generator-numerals-raw.simple.hfst \
 					morphology/punctuation.tmp.hfst \
-					generator-raw-gt-desc.ccc.hfst
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"$<\" .o. ~[?* \"#\" ] ; \nread regex @\"generator-numerals-raw.aaa.hfst\" | @\"generator-wordpairs-raw.aaa.hfst\" ; \nread regex @\"morphology/punctuation.tmp.hfst\" ; \nread regex @\"generator-raw-gt-desc.ccc.hfst\" .o. ~[?* \"#\" ] ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
+					generator-raw-gt-desc.comp.hfst
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"generator-numerals-raw.simple.hfst\" | @\"generator-wordpairs-raw.simple.hfst\" ; \nread regex @\"morphology/punctuation.tmp.hfst\" ; \nread regex @\"generator-raw-gt-desc.comp.hfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
 
 # ... also the raw analyser
 analyser-raw-gt-%.hfst: generator-raw-gt-%.hfst
 		$(HFST_INVERT) $(VERBOSITY) $(HFST_FLAGS) < $< > $@
 
 # XEROX:
-# filter out shortened stems without the trailing hyphen (i.e ones ending with #)
 # include paired words and compound numerals and compounds and punctuation in the raw analyser
-analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.aaa.xfst \
-					analyser-wordpairs-raw.aaa.xfst \
-					analyser-numerals-raw.aaa.xfst \
+analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.simple.xfst \
+					analyser-wordpairs-raw.simple.xfst \
+					analyser-numerals-raw.simple.xfst \
 					morphology/punctuation.tmp.xfst \
-					analyser-raw-gt-desc.ccc.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex @\"$<\" .o. ~[?* \"#\" ] ; \nread regex @\"analyser-numerals-raw.aaa.xfst\" | @\"analyser-wordpairs-raw.aaa.xfst\" ; \nread regex @\"morphology/punctuation.tmp.xfst\" ; \nread regex @\"analyser-raw-gt-desc.ccc.xfst\" .o. ~[?* \"#\" ] ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
+					analyser-raw-gt-desc.comp.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"analyser-numerals-raw.simple.xfst\" | @\"analyser-wordpairs-raw.simple.xfst\" ; \nread regex @\"morphology/punctuation.tmp.xfst\" ; \nread regex @\"analyser-raw-gt-desc.comp.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######

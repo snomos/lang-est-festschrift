@@ -18,6 +18,7 @@ Multichar_Symbols
 +CC !!= * {{@CODE@}}: rinnastav sidesõna		/ co-ordinating conjunction
 +CS !!= * {{@CODE@}}: alistav sidesõna		/ subordinating conjunction		
 +Adp !!= * {{@CODE@}}: kaassõna	/ adposition, i.e. pre/postposition	
++Pref !!= * {{@CODE@}}: prefiks         / prefix				
 
 !! Genitiivatribuut pole eraldi kategooria / No special tag for genitive attribute : ''angoora+N+Sg+Gen''	
 
@@ -47,6 +48,7 @@ Multichar_Symbols
 !!€ ja: ja+CC # and
 !!€ et: et+CS # that
 !!€ kaudu: kaudu+Adp # via 
+!!€ eba-: eba+Pref # un-, non- 
 
 !! !Sõnamuutus / Inflection
 
@@ -606,12 +608,8 @@ Multichar_Symbols
  @P.POS.Adv@
  @R.POS.Pron@
  @P.POS.Pron@
-
-!! Number is used for filtering derivations and compounds ?? is it ??
- @R.Number.Sg@
- @P.Number.Sg@
- @R.Number.Pl@
- @P.Number.Pl@
+ @R.POS.Pref@
+ @P.POS.Pref@
 
 !! Case is used for filtering derivations and compounds
  @R.Case.Nom@
@@ -798,6 +796,7 @@ LEXICON First     !!= * {{@CODE@}} a simplex word or the first part of a compoun
   @P.POS.V@ Verbs ;                   !!= * {{@CODE@}}
   @P.POS.Interj@ Interjections ;           !!= * {{@CODE@}}
   @P.POS.N@@P.Case.Gen@ GenitiveAttributes ;      !!= * {{@CODE@}}
+  @P.POS.Pref@ Prefixes ;                !!= * {{@CODE@}}
 
 ! the nature of the previous word is reflected by flag diacritics that were set back then
 ! so we use them to select possible continuation paths
@@ -805,6 +804,7 @@ LEXICON First     !!= * {{@CODE@}} a simplex word or the first part of a compoun
 LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
 ! x + adjective
+  @R.POS.Pref@ LatterAdjective ;  ! ebapunane, ökokorralik
   @R.Case.Short@ LatterAdjective ;  ! vaatamispunane, astraalpunane
 
   @R.POS.N@@R.Case.Nom@ LatterAdjective ; ! laudpunane
@@ -821,6 +821,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.Pron@@R.Case.Gen@ LatterAdjective ; ! enesepunane
 
 ! x + noun
+  @R.POS.Pref@ LatterNoun ;  ! ebalaud
   @R.Case.Short@ LatterNoun ;
 
   @R.POS.N@@R.Case.Nom@ LatterNoun ;
@@ -842,6 +843,8 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
 ! x + verb derivation
 ! verb derivations expect previous word to be either in Gen or Par
+
+  @R.POS.Pref@ AnyLatterVerb ;  ! ebalugemine
 
   @R.POS.N@@R.Case.Gen@ LatterVerb ;  
   @R.POS.N@@R.Case.Par@ LatterVerb ;
