@@ -13,7 +13,7 @@ e.g. ''Riia'' - ''Riiga'', ''Rannu'' - ''Randu''.
 (But currently used also for words with stem gradation, e.g. ''tuba'' - ''tuppa'')
  * __%{id%}:0__ Trigger / lexicon flag for pl part possible ending (esseesid/esseid)
  * __%{stemill%}:0__ Trigger / lexicon flag for short sg ill, formed by stem change (jõgi-jõkke)
- * __%.:0__ Trigger to double the previous letter. Sometimes a phonologically long long kk pp tt  
+ * __%{dbl%}:0__ Trigger to double the previous letter. Sometimes a phonologically long long kk pp tt  
 at the end of a Sg Nom word is written k p t, 
 so it must be doubled  (kabinet - kabinetti). 
 Also, tulema, panema, surema, olema, minema have tulla, tulles etc...
@@ -24,6 +24,7 @@ Also, tulema, panema, surema, olema, minema have tulla, tulles etc...
  * __%>__ Inflectional suffix boundary
  * __»__ Derivational suffix boundary
  * __#__ Word boundary for both lexicalised and dynamic compounds
+ * __%-__ Final hyphen for shortened stems
 
 !Apostrophy
 
@@ -117,7 +118,6 @@ j surfacing and changing
  * __J1:i__ ahi, rohi
  * __J1:j__ ahju
  * __J1:0__      rohu
- * __J1:e__ aed
 
 4 words have h-illative: ''sohu'', ''suhu'', ''öhe'', ''pähe''
 
@@ -149,6 +149,9 @@ A handful of words...
 
  * __M1:m__ lumi
  * __M1:n__ lun d
+
+ * __N1:n__ lään e, kolman da
+ * __N1:0__ lää s,  kolma s
 
  * __K3:k__ vennakse
  * __K3:0__ venna s
@@ -239,10 +242,7 @@ Usage tag. It may relate to an individual word in the lexicon,
 or to a set of inflectional forms of some inflectional type, i.e. its sub-paradigm. It never surfaces.
 It is used to pair the surface form with the usage tag of the lexical representation.
 
- * __%{hyp%}:0__ hypothetical form (norm, but never used); e.g. siilisid, puudi
  * __%{rare%}:0__ rare or less used form (norm) ; e.g. kingasid
- * __%{notnorm%}:0__ rare or less used form (not norm); e.g. piprate
- * __%{commonnotnorm%}:0__ more commonly used form (but not norm); e.g. peeneid (norm: peeni)
 
 If the sound change is productive and/or very regularly determined by context
 (e.g. by morpheme border), we do not use special symbols to denote the changing phonemes 
@@ -299,21 +299,11 @@ high vowel lowering in certain contexts
 
 
 
-
 * __kraapi%{W%}>n __
 * __kraabi0>n __
 
 * __*kraapi%{W%}>n __ (is not standard language)
 * __*kraapi0>n __ (is not standard language)
-
-
-
-
-
-
-
-
-
 
 
 
@@ -496,11 +486,6 @@ high vowel lowering in certain contexts
 
 
 1.1. plural partitive: -sid vs stem vowel change
-
-
-
-
-
 
 
 
