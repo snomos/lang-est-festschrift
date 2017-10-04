@@ -16,6 +16,7 @@
  * {{+CC }}: rinnastav sidesõna		/ co-ordinating conjunction
  * {{+CS }}: alistav sidesõna		/ subordinating conjunction		
  * {{+Adp }}: kaassõna	/ adposition, i.e. pre/postposition	
+ * {{+Pref }}: prefiks         / prefix				
 
 Genitiivatribuut pole eraldi kategooria / No special tag for genitive attribute : ''angoora+N+Sg+Gen''	
 
@@ -46,6 +47,7 @@ __hfstol: examples:__
 * __ja: __ {{ja+CC }} (Eng. # and)
 * __et: __ {{et+CS }} (Eng. # that)
 * __kaudu: __ {{kaudu+Adp }} (Eng. # via)
+* __eba-: __ {{eba+Pref }} (Eng. # un-, non-)
 
 !Sõnamuutus / Inflection
 
@@ -429,6 +431,14 @@ Analytical forms (''olen elanud'', ''olin elanud'', ''oleksin elanud'', ''ei oln
 
 !Tuletus / Derivation
 
+!Eesliited on harvad, aga ikkagi ... / Prefixes are seldom used, but still...
+
+ * {{+Pref }}
+* __taasriigistama: __ {{taas+Pref#riigistama+V+Pers+Sup+Ill }}
+* __reinvesteerima: __ {{re+Pref#investeerima+V+Pers+Sup+Ill }}
+
+!Järelliited / Suffixes
+
 V --> N
 
  * {{+Der/mine }}
@@ -529,6 +539,11 @@ N --> N, A --> A
  * {{+Dim/ke }}:  diminutive 
 * __põõsake: __ {{põõsas+N+Dim/ke+Sg+Nom }}
 
+ * {{+Der/minus }}:  shortening stem 
+* __vaatamis-: __ {{vaatamine+N+Der/minus }}
+* __astraal-: __ {{astraalne+A+Der/minus }}
+
+
 !Muud / Other tags
 
 !Symbols that need to be escaped on the lower side (towards twolc):
@@ -556,6 +571,23 @@ given the proper use of these flags.
  | @U.Cap.Obl@ | Allowing downcasing of derived names: deatnulasj.
  | @U.Cap.Opt@ | Allowing downcasing of derived names: deatnulasj.
 
+These are used for limiting the number of components in a compound word
+(the compound transducer is cyclic, but in reality there is a limit to the length of words)
+ | @D.Part@ | No part of a compound should have been encountered yet
+ | @P.Part.One@ | Indicate that this could be the first part of a compound
+ | @R.Part.One@ | Require that the first part has been encountered 
+ | @P.Part.Two@ | Indicate that this could be the second part of a compound
+ | @R.Part.Two@ | Require that the second part has been encountered
+ | @P.Part.Three@ | Indicate that this could be the third part of a compound
+ | @P.Part.Bad@ | Indicate that this cannot be a part of a compound
+
+POS is used for filtering derivations and compounds
+
+Case is used for filtering derivations and compounds
+
+Remember there has been some derivation from A or N; for filtering compounds
+
+Remember the stem type; for filtering compounds
 
 
 
@@ -597,22 +629,87 @@ given the proper use of these flags.
 
  * {{LEXICON Root }} is the starting point of everything
 
- * {{Adjectives ;              }}
- * {{NoninflectingAdjectives ; }}
- * {{ComparativeAdjectives ;   }}
- * {{SuperlativeAdjectives ;   }}  
- * {{Adverbs ;                 }}
- * {{Adpositions ;             }}
- * {{Conjunctions ;            }}
- * {{Nouns ;                   }}
- * {{@U.Cap.Obl@ ProperNouns ; }}  ! always uppercase
- * {{@U.Cap.Opt@ ProperNouns ; }}  ! downcased for derivations
- * {{Numerals ;                }}
- * {{Pronouns ;                }}
- * {{Verbs ;                   }}
- * {{NoninflectingVerbs ;      }}
- * {{Interjections ;           }}
- * {{GenitiveAttributes ;      }}
+This is actually a loop, formed after applying Kleene star 
+concatenation on the transducer with itself.
+It is controlled by setting up flags on the path:
+1. flag the first 3 loops (thus forbidding any more loops)
+2. flag the POS and inflection, to use in the following loop
 
- * {{Punctuation ;             }}
+strictly simplex word; cannot be a part of a compound
+a simplex word, or the first part of a compound
+
+
+
+strictly simplex words; cannot be a part of a compound
+
+ * {{  Adpositions ;             }}
+ * {{  Conjunctions ;            }}
+ * {{  NoninflectingVerbs ;      }}
+
+ * {{LEXICON First     }} a simplex word or the first part of a compound 
+
+ * {{  @P.POS.A@ Adjectives ;              }}
+ * {{  @P.POS.A@ NoninflectingAdjectives ; }}
+ * {{  @P.POS.AComp@ ComparativeAdjectives ;   }}
+ * {{  @P.POS.ASuperl@ SuperlativeAdjectives ;   }}  
+ * {{  @P.POS.Adv@ Adverbs ;                 }}
+ * {{  @P.POS.N@ Nouns ;                   }}
+ * {{  @P.POS.NProp@@U.Cap.Obl@ ProperNouns ; }}  ! always uppercase
+ * {{  @P.POS.NProp@@U.Cap.Opt@ ProperNouns ; }}  ! downcased for derivations
+ * {{  @P.POS.NumCard@ CardinalNumerals ;                }}
+ * {{  @P.POS.NumOrd@ OrdinalNumerals ;                }}
+ * {{  @P.POS.Pron@ Pronouns ;                }}
+ * {{  @P.POS.V@ Verbs ;                   }}
+ * {{  @P.POS.Interj@ Interjections ;           }}
+ * {{  @P.POS.N@@P.Case.Gen@ GenitiveAttributes ;      }}
+ * {{  @P.POS.Pref@ Prefixes ;                }}
+
+
+ * {{LEXICON Latter }} the latter part of a compound
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ * {{  @P.POS.A@@C.Der@@C.Case@@C.Stem@ Adjectives ;              }}
+
+
+ * {{  @P.POS.A@@C.Der@@C.Case@@C.Stem@ Adjectives_ne ;              }}
+
+
+ * {{  @P.POS.A@@C.Der@@C.Case@@C.Stem@ Adjectives_v ;              }}
+
+
+ * {{  @P.POS.A@@C.Der@@C.Case@@C.Stem@ ShortAdjectives ;              }}
+
+
+ * {{  @P.POS.A@@C.Der@@C.Case@@C.Stem@ PlainAdjectives ;              }}
+
+
+
+
+ * {{  @P.Case.Gen@ LatterVerb ;                   }}
+
+
+ * {{  @P.POS.V@@C.Der@ Verbs ;                   }}
+
 

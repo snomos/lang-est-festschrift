@@ -29,7 +29,13 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
  %>     !!≈ * __@CODE@__ Inflectional suffix boundary
  »      !!≈ * __@CODE@__ Derivational suffix boundary
  #      !!≈ * __@CODE@__ Word boundary for both lexicalised and dynamic compounds
- %-     !!≈ * __@CODE@__ Final hyphen for shortened stems
+
+!! Final hyphen for shortened stems:
+!  (The next line's documentation is formatted this way to avoid triggering a
+!  Forrest limitation - the hyphen is a special symbol in the jspwiki format.
+!! {{{
+ %-     !!≈ @CODE@
+!! }}}
 
 !! !Apostrophy
 
