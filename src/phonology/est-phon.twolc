@@ -29,14 +29,12 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
  %>     !!≈ * __@CODE@__ Inflectional suffix boundary
  »      !!≈ * __@CODE@__ Derivational suffix boundary
  #      !!≈ * __@CODE@__ Word boundary for both lexicalised and dynamic compounds
-
 !! Final hyphen for shortened stems:
 !  (The next line's documentation is formatted this way to avoid triggering a
 !  Forrest limitation - the hyphen is a special symbol in the jspwiki format.
 !! {{{
  %-     !!≈ @CODE@
 !! }}}
-
 !! !Apostrophy
 
  %{apo%}:'   !! Apostrofy is used for separating inflectional affix from a foreign word lemma
@@ -57,10 +55,10 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
  G1:k !!≈ * __@CODE@__ In short illative (lagi lae lakke)
  B1:b !!≈ * __@CODE@__ In strong grade
  B1:0 !!≈ * __@CODE@__ In weak grade
- B1:p !!≈ * __@CODE@__ In short illative (saba sappa)
+ B1:p !!≈ * __@CODE@__ In short illative (tuba toa tuppa)
  D1:d !!≈ * __@CODE@__ In strong grade
  D1:0 !!≈ * __@CODE@__ In weak grade
- D1:t !!≈ * __@CODE@__ In short illative (ida itta)
+ D1:t !!≈ * __@CODE@__ In short illative (ladu lao lattu)
  
 !! Orthographic convention: after voiceless (e.g. s or h, or k p t), gbd is written as kpt
 !! e.g. õhk-õhu, vask-vase
@@ -86,13 +84,19 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
  T2:t !!≈ * __@CODE@__ In strong grade
  T2:d !!≈ * __@CODE@__ In weak grade
 
- G3:g !!≈ * __@CODE@__ In strong grade, Riiga
- G3:0 !!≈ * __@CODE@__ In weak grade,  Riia
- D3:d !!≈ * __@CODE@__ In strong grade, Randu
- D3:0 !!≈ * __@CODE@__ In weak grade,  Rannu
+!! Short stops in stem illatives for words that do not have grade alternation.
+!! They surface (or appear as extra long) in strong grade, expressed by stem illative only. 
 
- G4:g !!≈ * __@CODE@__ ad hoc solution for some proper nouns like Rõngu, 
-      !! where strong grade is also Rõngu (not Rõnku)
+ G3:0 !!≈ * __@CODE@__ 
+ G3:g !!≈ * __@CODE@__ Riia Riiga
+ D3:0 !!≈ * __@CODE@__ 
+ D3:d !!≈ * __@CODE@__ Rannu Randu
+ G4:g !!≈ * __@CODE@__ 
+ G4:k !!≈ * __@CODE@__ Türgi Türki
+ D4:d !!≈ * __@CODE@__ 
+ D4:t !!≈ * __@CODE@__ Leedu Leetu
+ B4:b !!≈ * __@CODE@__ 
+ B4:p !!≈ * __@CODE@__ Abja Apja
 
  S1:s !!≈ * __@CODE@__ In strong grade, S1 is s
  S1:0 !!≈ * __@CODE@__ In weak grade, S1 is 0; before stop, S1 is 0
@@ -342,8 +346,6 @@ WS = G1 B1 D1 K1 P1 T1 G3 D3 S1 ;
 ! lexical side of consonants that participate in gradation
 ! LexGrad = G1 B1 D1 K1 P1 T1 S1 B2 K2 P2 T2 g b d k p t f s š ;
 
-! Flags = %@R%.Part%.One%@ %@P%.POS%.N%@ ;
-
 Definitions
 
 WordBorder = [ .#. | # ];  ! word border
@@ -456,7 +458,7 @@ Cx:Cy  <=> _ AnyNoTrigger* WeakGrade ;
            Cy in (  0  0 )
      matched ;
 
-! lexical: l a G1 {stemill} e {WL}
+! lexical: l a G1 {stemill} e {W}
 ! surface: l a  0     0     e  0
 ! lexical: p u s K1 > G7 u
 ! surface: p u s  0 >  k u
@@ -489,7 +491,7 @@ Cx:Cy  <=> _ AnyNoTrigger* WeakGrade ;
 S1:0  <=> _ AnyNoTrigger* WeakGrade ;       ! paas - pae; 
           _ Null* [ :t | :d ] ;             ! vars - vart, varde
 
-! lexical: p a a S1 > {pl.e} {sg.i} {WL}
+! lexical: p a a S1 > {pl.e} {sg.i} {W}
 ! surface: p a 0  0 0   0       e    0
 ! lexical: v a r r S1 {stemill} {S} > d e > {s} {s} {e}
 ! surface: v a r 0  0      0     0  0 d e 0  0   0   0
@@ -505,7 +507,7 @@ Cx:Cy  <=>  _ AnyNoTrigger* WeakGrade ;
             Cy in (  g  b  d )
       matched ;
 
-! lexical: e r K2 A2 s {WL}
+! lexical: e r K2 A2 s {W}
 ! surface: e r  g  a s  0
 ! lexical: e r K2 A2 s > a
 ! surface: e r  k  0 s 0 a
@@ -519,7 +521,7 @@ Cx:Cy  <=>  _ AnyNoTrigger* WeakGrade ;
 
 "short illative strong stem generation: consonant doubling"
 
-0:Cy  <=>  \[ :Vowel] :Vowel Null* Cx:Cy _ NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ; ! majja
+0:Cy  <=>  \[ :Vowel] :Vowel NullNoTrigger* Cx:Cy _ NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ; ! majja
      where Cx in ( l m M1 n r v j h s g b d k p t G1 B1 B2 D1 ) 
            Cy in ( l m  m n r v j h s k p t k p t  k  p  p  t )
      matched ;
@@ -529,17 +531,29 @@ Cx:Cy  <=>  _ AnyNoTrigger* WeakGrade ;
 ! s õ J1 D1 0 a
 ! s õ  0  t t a
 
-"short illative strong stem generation: stop to stronger stop"
+"short illative strong stem generation: g b d to k p t"
 
-Cx:Cy <=> :sonor Null* _ ( :Cy | j ) NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ;
-     where Cx in ( g b d G1 B1 B2 D1 G3 D3 ) 
-           Cy in ( k p t  k  p  p  t  g  d )
+Cx:Cy <=> \[ :Vowel] :Vowel NullNoTrigger* _ :Cy NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ;
+     where Cx in ( g b d ) 
+           Cy in ( k p t )
+     matched ;
+
+! s a b 0 a > {pl.u} {rare} {stemill} {S} > {s} {s} {e}
+! s a p p a >    0     0         0     0  0  0   0   0
+
+! the context is too specific; this is just to avoid twol warning messages about conficting contexts
+! (the StrongGrade trigger alone should be sufficient as context)
+"short illative strong stem generation: lexically determined stop"
+
+Cx:Cy <=>  _ (:Cy | j) NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ;
+     where Cx in ( G1 B1 B2 D1 G3 D3 G4 B4 D4) 
+           Cy in (  k  p  p  t  g  d  k  p  t)
      matched ;
 
 ! lexical: l a G1 0 {stemill} e  {S} > {s} {s} {e}
 ! surface: l a  k k     0     e   0  0  0   0   0
-! lexical: A b j a {stemill} {S} > {s} {s} {e}
-! surface: A p j a     0      0  0  0   0   0
+! lexical: A B4 j a {stemill} {S} > {s} {s} {e}
+! surface: A  p j a     0      0  0  0   0   0
 ! lexical: R a n n D3 u {stemill} {S} > {s} {s} {e}
 ! surface: R a n 0  d u     0      0  0  0   0   0
 
@@ -699,12 +713,12 @@ e:0 <=> :e [l | r] _ WeakGrade SuffixBorder :Consonant ;
 
 "el-le 2/3"
 
-0:e <=> [:Consonant | WS:0] _ [l | r] e:0 WeakGrade SuffixBorder :Consonant ;
+0:e  =>  [:Consonant | WS:0] _ [l | r] e:0 WeakGrade SuffixBorder :Consonant ;
 
 ! in weak grade, -le- is impossible (has to be -el-)
 "el-le 3/3"
 
-e:e /<= [:Consonant | WS:0] [l | r] _ WeakGrade SuffixBorder :Consonant ;
+e:e /<=  [:Consonant | WS:0] [l | r] _ WeakGrade SuffixBorder :Consonant ;
 
 ! lexical: s i p 0 l e {W} > d a
 ! surface: s i p e l 0  0  0 d a
@@ -831,8 +845,8 @@ Vx:Vy  <=>  Vx: _  Null+ [:a | :e] ;
            Vy in ( ü  u )
      matched ;
 
-! lexical: l O6 O6 {WL} > T7 a k s e 
-! surface: l u   u   0  0  0 a k s e 
+! lexical: l O6 O6 {W} > T7 a k s e 
+! surface: l u   u  0  0  0 a k s e 
 !------
 
 ! a general rule, but has to be encoded with M1 to allow for komtuur, EMT etc
@@ -1032,7 +1046,7 @@ S7:0 <=> [:Consonant | Border] Null* :Vowel :Consonant Null* %> I7: _ WordEnd ; 
 ! lexical: k ´ ü T1 t > I7 S7 i n
 ! surface: k ´ ü  t 0 0  0  s i n   NB! S7:s
 
-! us-suffix and ini-suffix attache to a consonant, so a preceding vowel is deleted
+! us-suffix and ini-suffix attach to a consonant, so a preceding vowel is deleted
 ! in reality, only a u e are the preceding vowels
 
 "delete vowel before -us or -ini"
@@ -1104,8 +1118,32 @@ Vx:0 <=> :Consonant Null* _ SuffixBorder u s ;
 ! lexical: p u u {id} > {s} i d 
 ! surface: p u 0  0   0  0  i d 
 ! lexical: s a b . a > {pl.u} {rare} {stemill} {S} > {s} {s} {e} 
-! surface: s a p p a >    0      0       0      0  0  0   0   0 
+! surface: s a p p a >    0      0       0      0  >  0   0   0 
 
+! the contexts in this rule are fragile, because a word may contain some special characters
+! somewhere in the stem...
+"non-third grade word cannot be stem illative"
+
+%{s%}:0  /<= WordBorder :Vowel :Consonant      Null* :Vowel SuffixBorder* Null* SuffixBorder _ %{s%}:0 %{e%}:0 ;
+             :Consonant :Vowel :Consonant      Null* :Vowel SuffixBorder* Null* SuffixBorder _ %{s%}:0 %{e%}:0 ;
+
+! p e r e {stemill} {S} > {s} {s} {e}
+! p e r e     0      0  >  0   0   0   FAIL
+! m a j a > {pl.u} {stemill} {S} > {s} {s} {e}
+! m a j a >    0       0      0  >  0   0   0   FAIL
+
+! this is only for pea, soo, suu, öö
+! ... and for Riia - Riiga, Rannu - Randu etc
+"in stem illative, the lexical morphophoneme cannot be in its weak form"
+
+%{s%}:0  /<= [H3:0 | D3:0 | G3:0 | G4:g | B4:b | D4:d] Any* _ %{s%}:0 %{e%}:0 ;
+             
+! s o o H3 Y3 > {id} {stemill} {S} > {s} {s} {e}
+! s o o  0  0 >   0     0       0  >  0   0   0  FAIL
+! R i i G3 a {stemill} {S} > {s} {s} {e}
+! R i i  0 a    0       0  >  0   0   0  FAIL
+! A b j a {stemill} {S} > {s} {s} {e} 
+! A b j a     0      0  >  0   0   0   FAIL 
 
 "No sg stem vowel if no Pl Par with -sid (choose pl stem vowel instead)"
 
@@ -1297,7 +1335,7 @@ Vx:0  <=> :Consonant ( J1:0 ) _ %> PlSV:Vy Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 
 Cx:0 <=> :Cx _ Null+ [[:Consonant Any* Border] - [Gi Border]];
          :Cx _ [WS:stop | S1:s] ;
-         :Cx _ Null* SuffixBorder :Consonant;  ! just testing
+         :Cx _ Null* SuffixBorder :Consonant;  
       where Cx in (Consonant) ;
 
 ! lexical: s p i k k E2 r > i
@@ -1357,7 +1395,7 @@ Cx:Cy  <=> :voiceless Null* SuffixBorder _ ;
 
 "mäslema"
 
-0:s <=> Vowel s _ 0:e l e:0 WeakGrade ;
+0:s <=> Consonant Vowel s _ 0:e l e:0 WeakGrade ;
 
 ! lexical: m ä s 0 0 l e {W} > d a
 ! surface: m ä s s e l 0  0  0 d a     

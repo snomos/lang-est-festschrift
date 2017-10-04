@@ -140,8 +140,11 @@ LEXICON PEENIKE    ! VVS 12 (productive): affix -ke; almost = OLULINE, except sg
 LEXICON PERE    ! VVS 16 (productive)
 
               : SG_NOMINATIVE ;
-              : 2V ;
-              :%>t SG_PARTITIVE ;    ! peret
+              : N_SG_SUBPARA ;          ! pere, baika etc
+              :%>t SG_PARTITIVE ;        ! peret, baikat
+              :%{S%} SG_ILL_VARIANT ;     ! perre
+              : SG_ILL_VARIANT ;         ! peresse, baikasse 
+              : DE_PL ;
               : LIK_DERIVATION ;
 
 LEXICON KAVA    ! VVS 17, 18 (productive) + (unproductive)
@@ -149,8 +152,11 @@ LEXICON KAVA    ! VVS 17, 18 (productive) + (unproductive)
                 ! VVS 18 (unproductive): words with quality gradation
 
               : SG_NOMINATIVE ;
-              : 2V ;
-              : SG_PARTITIVE ;       ! kava
+              :%{W%} N_SG_SUBPARA ;     ! kava, sõja etc
+              : SG_PARTITIVE ;           ! kava
+              :%{S%} SG_ILL_VARIANT ;     ! kavva
+              :%{W%} SG_ILL_VARIANT ;    ! kavasse 
+              : DE_PL ;
               : LIK_DERIVATION ;
 
 LEXICON MUUSEUM    ! VVS 2 & 19 (productive)
@@ -324,13 +330,13 @@ LEXICON 2C_STRONGPL   ! forms that would sometimes be in strong grade in strengt
               : 2C_STRONG;                ! aseme, haarme etc
               :%>te N_PL_SUBPARA ;        ! asemete, haarmete
 
-LEXICON 2V    ! stress on penultimate syllable, word ends with vowel 
-              ! & stressed syllable NOT extra heavy (kava, sõda, pere)
-
-              :%{WL%} N_SG_SUBPARA ;    ! kava, sõja etc
-                                        ! PARTITIVE is +0 or +t
-              : 2V_ILLATIVE ;
-              : DE_PL ;
+! LEXICON 2V    ! stress on penultimate syllable, word ends with vowel 
+!              ! & stressed syllable NOT extra heavy (kava, sõda, pere)
+!
+!              :%{WL%} N_SG_SUBPARA ;    ! kava, sõja etc
+!                                        ! PARTITIVE is +0 or +t
+!              : 2V_ILLATIVE ;
+!              : DE_PL ;
 
 LEXICON 1C_SG    ! SG subpara of 1C
 
@@ -419,9 +425,9 @@ LEXICON 1C_ILLATIVE       ! sse-illative is very rare;
               : SG_ILLATIVE ;              ! kotti
     %+Use%/Hyp:%{W%}%>sse SG_ILLATIVE ;    ! kotisse
 
-LEXICON 2V_ILLATIVE       ! sse-illative is the default; few words have the short form also
-              :%{S%} SG_ILL_VARIANT ;     ! kavva
-              :%{WL%} SG_ILL_VARIANT ;    ! kavasse 
+! LEXICON 2V_ILLATIVE       ! sse-illative is the default; few words have the short form also
+!              :%{S%} SG_ILL_VARIANT ;     ! kavva
+!              :%{WL%} SG_ILL_VARIANT ;    ! kavasse 
 
 ! the preferred form for Pl Par and Sg Ill is indicated in the stem lexicon
 ! (not in the continuation lexicon)

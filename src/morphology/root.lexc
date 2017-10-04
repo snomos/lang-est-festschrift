@@ -657,18 +657,19 @@ Multichar_Symbols
 
 ! short stops
  G1 ! 0 g k   lagi lae lakke
- B1 ! 0 b p   saba sappa
- D1 ! 0 d t   idu eo; ida itta
+ B1 ! 0 b p   tuba toa tuppa
+ D1 ! 0 d t   rida rea itta
 
  B2 ! b v p  tõbi tõve tõppe
 
  G3 ! 0 g  Riia Riiga
  D3 ! 0 d  Rannu Randu
- 
- G4 ! g Rõngu, Sommerlingi
+ G4 ! g k  Türgi Türki
+ D4 ! d t  Leedu Leetu
+ B4 ! b p  Abja Apja
 
- H3
- Y3
+ H3 ! h 0  soo sohu
+ Y3 ! vowel vowel  soo sohu
 
  K2 ! k g
  P2 ! p b
@@ -692,7 +693,6 @@ E6   ! hea pea
 Ö6   ! üü öö õ  sööma - süüa - sõi
 O6   ! uu oo õ  tooma - tuua - tõi
 
-E3   ! e i   aed aia
 E4   ! e j   aeg aja 
 
 K3   ! k 0  vennas vennakse

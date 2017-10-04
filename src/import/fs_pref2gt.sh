@@ -39,3 +39,41 @@ cat pref.pok \
 
 | sed 's/^6000.*@/@/' | sed '/@/s/,.*$/_/' \
 
+------
+eriti liituvad 
+alg all alla anti eba eel ees eht+adj eks emas enam enama+adj enese+adj enim+adj era eri esi ette+adj? euro
+finants haju hulgi hüper isas ise? jae jooksev? järel kesk kõrval käsitsi? külalis laus lõhke meelis mega mitte
+muidu multi mõne+adj nais
+
+
+verbile liituvad
+alles edasi eraldi halvasti juurde järele kaotsi? kaua kaugele kergelt kergesti kindlaks kinni klaariks? kõrgelt kõvaks kõrvuti+adj? külili laiali ligi läbi lähedal
+
+deverbid
+kaeve kandlus
+
+puuduolevad vormid
+asjus, asjust pealikele jalge paigust päevil
+
+folk+N (on +A)
+multikas+N (on +A)
+võlu on ÕLU
+!!!! liblest !!!! ei tunne ära!!!!
+pulm pole ainsuses...
+kapitalist ei tuletu kapitalismi alusel
+
+laiatarbe, linnalähi
+
+võiks olla lubatud 1. tüvena -ne -> sus, näit funktsionaalsus
+ 
+ 
+miks ei tunne halvamaineline ? hariduskapitalistide heleda+adj imedissidentlik järsuveereline kahvatumust kannatadasaamise karedalehelise karmikäeline kindlakujuline laialehine jne
+miks ei tunne kirikukorralduslik kultuurikorralduslik, ehkki tunneb kultuurikorraldus ja korralduslik; sama lugu mõtteklubilik
+
+miks ei tunne külaliskokk kümnendajärguline nooremlipnik
+
+kas on õige kahekümnepäine ? ja muud pikemad arvsõnad + adj?
+
+
+
+

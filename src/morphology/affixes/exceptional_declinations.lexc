@@ -347,8 +347,12 @@ LEXICON MEES    ! only mees
 LEXICON MERI    ! VVS 20 unstable type (passiivne muuttüüp) 8 words (lumi, tuli, uni, veri...)
 
                   :i SG_NOMINATIVE ;
-                  :e 2V ;       ! mere etc
-                  :%>d SG_PARTITIVE ;    ! merd
+                  :%>d SG_PARTITIVE ;        ! merd
+                  :e N_SG_SUBPARA ;          ! meres etc
+                  :e%{S%} SG_ILL_VARIANT ;     ! merre
+                  :e SG_ILL_VARIANT ;         ! meresse 
+                  :e DE_PL ;
+                  :e LIK_DERIVATION ;
 
 LEXICON MESI     ! VVS 15 unstable type (passiivne muuttüüp) 8 words
 
@@ -382,8 +386,13 @@ LEXICON NIIN    ! only niin; almost like KEEL, but some forms are more regular
 LEXICON NIMI    ! VVS 20, 21 unstable type (passiivne muuttüüp) 17 words; suvi, lagi
 
                   :i SG_NOMINATIVE ;
-                  :e 2V ;       ! nime, lae etc
                   :e SG_PARTITIVE ;    ! suve, lage
+                  :e%{W%} N_SG_SUBPARA ;     ! nime, lae etc
+                  :e SG_PARTITIVE ;           ! nime
+                  :e%{S%} SG_ILL_VARIANT ;     ! lakke
+                  :e%{W%} SG_ILL_VARIANT ;    ! laesse 
+                  :e DE_PL ;
+!                 :e LIK_DERIVATION ;
 
 LEXICON PARAS    ! only paras; like LOHAKAS
 
@@ -427,7 +436,8 @@ LEXICON PUU    ! 11 words (kuu, maa, etc) that have possible vowel plural forms
                ! then the word may have vowel plural forms
 
                   : 1V ;
-                  : 2V_ILLATIVE ;              ! öösse, öhe
+                  :{S%} SG_ILL_VARIANT ;       ! öhe
+                  : SG_ILL_VARIANT ;           ! öösse 
        %+Use%/Rare:%>i N_VOWEL_PL_SUBPARA ;    ! puil etc
 
 LEXICON PÕLV    ! only põlv; similar to talv and rohi

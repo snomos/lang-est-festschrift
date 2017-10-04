@@ -13,17 +13,20 @@
 # and if a word belonged to several POS, keep them in the same line
 
 # määra muuttüübid
+# define the inflectional types
 cat fs_lex | ./fs_lex2tyyp.sed \
 | sed '/Al\]pid/s/@TAUD/@FIAT/' \
 > ajutmp
 
 # määra lemmad
 # mitmuselised algvormid
+# define lemmas and plurale tantum
 cat ajutmp | ./fs_lex2algvorm.sed \
 | sed '/n<eed.MA/s/HOIDMA@SAATMA/HOIDMA/' \
 > algtmp
 
 # käändsõnade omad
+# declinables
 cat algtmp | ./fs_lex2lemma.sed \
 | sed '/ÕIGEVORM$/s/ \([^: ]*\):\([^ ]*\) \([^ ]*ÕIGEVORM\)/ \3 \1:\2/' \
 | sed '/ÕIGEVORM.*[^i]id:/s/id$//' \
@@ -34,6 +37,7 @@ cat algtmp | ./fs_lex2lemma.sed \
 > decltmp1
 
 # pöördsõnade omad
+# verbs
 cat decltmp1 | ./fs_lex2verblemma.sed \
 | sed '/n<eed.MA/s/n<eedma:n<eeD1 n<eedma:n<eeD1/n<eedma:n<eeD1/' \
 | sed '/SIPLEMA/s/E2\([lr]\)$/\1e/' \
@@ -57,7 +61,10 @@ cat decltmp1 | ./fs_lex2verblemma.sed \
 
 # kirjuta mõnedesse lemmadesse sisse leksikaalse tasandi märgid
 # ja paranda erandsõnade vead
+# add characters for lexical forms
+# and correct some errors of exceptions
 cat tmp1 | ./lemma2twol.sed \
+| sed 's/gG1/gg/g' \
 | sed '/HAARE/s/tT1/tt/' \
 | sed 's/ \*\*\([^$:]*:\)/ \1/' \
 | sed 's/:\*\*\([^$:]*\)$/:\1/' \
@@ -65,8 +72,6 @@ cat tmp1 | ./lemma2twol.sed \
 | sed '/PIPAR/s/\(.\)\([kpt]\)\([aeiu][lmnr]:.*<\)\1\2\([AEIU]2\)/\1\2\3\1\2\2\4/' \
 | sed 's/HABE/HAARE/' \
 | sed 's/I5/i/g' \
-| sed 's/:Rõngu/:RõnG4u/' \
-| sed 's/:Sommerlingi/:SommerlinG4i/' \
 | sed '/käsi:/s/käS1/&%{stemill%}/' \
 | sed '/vesi:/s/veS1/&%{stemill%}/' \
 | ./post_lex2lemma.sed \
