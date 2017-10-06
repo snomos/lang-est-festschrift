@@ -280,11 +280,14 @@ analyser-numerals-raw.simple.xfst: redundant_numerals.xfst \
 
 # We need to add processing of language-specific tags in the analyser:
 # XEROX:
-analyser-raw-gt-desc.simple.xfst: analyser-raw-gt-desc.tmp.xfst $(EST_EXTRA_PRE_FILTERS:%=%.xfst) $(EST_EXTRA_POST_FILTERS:%=%.xfst)
+analyser-raw-gt-desc.simple.xfst: analyser-raw-gt-desc.tmp.xfst \
+				analyser-numerals-raw.simple.xfst \
+				$(EST_EXTRA_PRE_FILTERS:%=%.xfst) \
+				$(EST_EXTRA_POST_FILTERS:%=%.xfst)
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
 			read regex                         \
 			$(EST_EXTRA_PRE_FILTERS:%=@\"%.xfst\" .o.)    \
-			@\"$<\"                                       \
+			[ @\"$<\" | @\"analyser-numerals-raw.simple.xfst\" ]  \
 			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.xfst\")   \
 			;\n\
 		 save stack $@\n\
@@ -292,10 +295,13 @@ analyser-raw-gt-desc.simple.xfst: analyser-raw-gt-desc.tmp.xfst $(EST_EXTRA_PRE_
 
 # We need to add processing of language-specific tags in the generator:
 # HFST:
-generator-raw-gt-desc.simple.hfst: generator-raw-gt-desc.tmp.hfst $(EST_EXTRA_PRE_FILTERS:%=%.hfst) $(EST_EXTRA_POST_FILTERS:%=%.hfst)
+generator-raw-gt-desc.simple.hfst: generator-raw-gt-desc.tmp.hfst \
+				generator-numerals-raw.simple.hfst \
+				$(EST_EXTRA_PRE_FILTERS:%=%.hfst) \
+				$(EST_EXTRA_POST_FILTERS:%=%.hfst)
 	$(AM_V_RGX2FST)$(PRINTF) "\
 			$(EST_EXTRA_PRE_FILTERS:%=@\"%.hfst\" .o.)    \
-			@\"$<\"                                       \
+			[ @\"$<\" | @\"generator-numerals-raw.simple.hfst\" ] \
 			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.hfst\")   \
 			;" \
 		| $(HFST_REGEXP2FST) $(VERBOSITY) $(HFST_FLAGS) -S --xerox-composition=ON -X flag-is-epsilon \
@@ -320,16 +326,14 @@ analyser-raw-gt-desc.comp.xfst: analyser-raw-gt-desc.simple.xfst
 # HFST:
 generator-raw-gt-desc.vocabulary.hfst: generator-raw-gt-desc.simple.hfst \
 					generator-wordpairs-raw.simple.hfst \
-					generator-numerals-raw.simple.hfst \
 					generator-raw-gt-desc.comp.hfst
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"generator-numerals-raw.simple.hfst\" | @\"generator-wordpairs-raw.simple.hfst\" ; \nread regex @\"generator-raw-gt-desc.comp.hfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"generator-wordpairs-raw.simple.hfst\" ; \nread regex @\"generator-raw-gt-desc.comp.hfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
 
 # XEROX:
 analyser-raw-gt-desc.vocabulary.xfst: analyser-raw-gt-desc.simple.xfst \
 					analyser-wordpairs-raw.simple.xfst \
-					analyser-numerals-raw.simple.xfst \
 					analyser-raw-gt-desc.comp.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"analyser-numerals-raw.simple.xfst\" | @\"analyser-wordpairs-raw.simple.xfst\" ; \nread regex @\"analyser-raw-gt-desc.comp.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
+	$(AM_V_XFST)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"analyser-wordpairs-raw.simple.xfst\" ; \nread regex @\"analyser-raw-gt-desc.comp.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
 # allow concatenating with - and / and
 # include punctuation in the raw generator

@@ -58,7 +58,7 @@ asjus, asjust pealikele jalge paigust päevil
 folk+N (on +A)
 multikas+N (on +A)
 võlu on ÕLU
-!!!! liblest !!!! ei tunne ära!!!!
+korras: !!!! liblest !!!! ei tunne ära!!!!
 pulm pole ainsuses...
 kapitalist ei tuletu kapitalismi alusel
 

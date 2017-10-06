@@ -11,8 +11,11 @@ define LINE [    MB [{line} | {lis}] ];
 #define LANE [? ? MB [{lane} | {las}] ] ;
 define LANE [ MB [{lane} | {las}] ] ;
 
-define EstW [ a | e | i | o | u | õ | ä | ö | ü ] ; 
-define WW [ EstW | y ];
+# vowel may be upper case, so that if a wowel-initial word starts with a capital letter, 
+# the first syllable will get counted; 
+# (the initial consonant is optional when counting syllables)
+define EstW [ a | e | i | o | u | õ | ä | ö | ü | A | E | I | O | U | Õ | Ä | Ö | Ü] ; 
+define WW [ EstW | y | Y];
 define EstC [ b | d | f | g | h | j | k | l | m | n | p | r | s | t | v ] ;
 define CC [ EstC | c | q | w | x] ;
 

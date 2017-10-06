@@ -599,6 +599,8 @@ Multichar_Symbols
  @P.POS.NProp@
  @R.POS.NumCard@
  @P.POS.NumCard@
+ @R.POS.NumCardCompound@   !!≈ | @CODE@ | compound numeral (viis+sada - five hundred)
+ @P.POS.NumCardCompound@
  @R.POS.NumOrd@
  @P.POS.NumOrd@
  @R.POS.V@
@@ -817,6 +819,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.N@@R.Case.Sem@ LatterAdjective_v ; ! mäestjuhtiv
 
   @R.POS.NumCard@@R.Case.Gen@ LatterAdjective_ne ; ! viiemeetrine
+  @R.POS.NumCardCompound@@R.Case.Gen@ LatterAdjective_ne ; ! kahekümnemeetrine
 
   @R.POS.A@@R.Case.Nom@@R.Stem.Short@ LatterAdjective ;  ! rämepunane
 

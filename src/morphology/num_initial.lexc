@@ -1,7 +1,12 @@
 ! Initial word (e.g. viis) of compound numerals (e.g. viissada)
+! The flag diacritics must harmonise with those of LEXICON CardinalNumerals
 ! NB! Notice that there is no POS tag (+Num, +N etc)
 
 LEXICON Root
+
+@D.Part@@P.Part.One@@P.POS.NumCardCompound@ CompoundNumerals ;
+ 
+LEXICON CompoundNumerals
 
 üks:´ü KAKS ;
 kaks:k´a KAKS ;

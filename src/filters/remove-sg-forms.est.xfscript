@@ -117,7 +117,6 @@ define pln    [[ {aganad} "+N" ] |
                [ {presentpüksid} "+N" ] | 
                [ {presidendivalimised} "+N" ] | 
                [ {prillid} "+N" ] | 
-               [ {pulmad} "+N" ] | 
                [ {punetised} "+N" ] | 
                [ {puurmed} "+N" ] | 
                [ {põlvpüksid} "+N" ] | 

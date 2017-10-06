@@ -25417,7 +25417,7 @@ tes:0096|t?ukast<ik t?ukast<ikku t?ukastiku!\S\.25^E^+11!
 tes:0096|h?oonest<ik h?oonest<ikku h?oonestiku!\S\.25^E^+11!
 tes:0096|k<eerd_käigust<ik k<eerd_käigust<ikku k<eerd_käigustiku!\S\.25^E^+11!
 tes:0096|k?ompv<ekk k?ompv<ekki kompv?eki!\S\.22^E^+7!
-tes:0096|f<olk f<olki folgi!\A\.22^E^!
+tes:0096|f<olk f<olki folgi!\AS\.22^E^!
 tes:0096|j<õnk j<õnka jõnga!\A\.22^U^!
 tes:0096|tun]nis_m<ärk tun]nis_m<ärki tun]nis_märgi!\S\.22^E^!
 tes:0096|limusk limuski!\S\.2+9!%i>e[I%
@@ -29218,7 +29218,7 @@ lisa:0094|market marketi!\S\.2+9!%i>e[I%
 lisa:0094|memuar<ist memuar<isti memuar?isti!\S\.22^E^+7!
 lisa:0094|mob<iil mob<iili mobiili!\S\.22^E^+7!
 lisa:0094|mudel<ist mudel<isti mudel?isti!\S\.22^E^+7!
-lisa:0094|mul]tikas mul]tika!\A\.2+9!
+lisa:0094|mul]tikas mul]tika!\AS\.2+9!
 lisa:0094|n<arkar n<arkari!\S\.2+9!%i>e[I%
 lisa:0094|n?arrat<iiv n?arrat<iivi n?arratiivi!\S\.22^E^+7!
 lisa:0094|nobel<ist nobel<isti nobel?isti!\S\.22^E^+7!
