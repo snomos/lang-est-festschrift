@@ -312,14 +312,14 @@ generator-raw-gt-desc.simple.hfst: generator-raw-gt-desc.tmp.hfst \
 # the first part cannot be a form with a focus particle, so filter it out
 # the first part cannot end with a hyphen, so filter it out
 generator-raw-gt-desc.comp.hfst: generator-raw-gt-desc.simple.hfst 
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex [ [ ~[?* \"+Foc/gi\" ?*] .o. @\"generator-raw-gt-desc.simple.hfst\" .o. [ \"-\" -> 0 || _ .#. ] ] (\"-\") \"#\"]* @\"generator-raw-gt-desc.simple.hfst\" ; \nsave stack $@\nquit\n" | $(XFST_TOOL)
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex [ [ ~[?* \"+Foc/gi\" ?*] .o. @\"generator-raw-gt-desc.simple.hfst\" .o. [ \"-\" -> 0 || _ .#. ] ] \"#\"]* @\"generator-raw-gt-desc.simple.hfst\" ; \nsave stack $@\nquit\n" | $(XFST_TOOL)
 
 # XFST:
 # compound words: 
 # the first part cannot be a form with a focus particle, so filter it out
 # the first part cannot end with a hyphen, so filter it out
 analyser-raw-gt-desc.comp.xfst: analyser-raw-gt-desc.simple.xfst 
-	$(AM_V_XFST)$(PRINTF) "read regex [ [ ~[?* \"+Foc/gi\" ?*] .o. @\"analyser-raw-gt-desc.simple.xfst\" .o. [ \"-\" -> 0 || _ .#. ] ] (\"-\") \"#\" ]* @\"analyser-raw-gt-desc.simple.xfst\" ; \nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
+	$(AM_V_XFST)$(PRINTF) "read regex [ [ ~[?* \"+Foc/gi\" ?*] .o. @\"analyser-raw-gt-desc.simple.xfst\" .o. [ \"-\" -> 0 || _ .#. ] ] \"#\" ]* @\"analyser-raw-gt-desc.simple.xfst\" ; \nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
 # the vocabulary, i.e. words that might be combined with - / or otherwise
 # include paired words and compound numerals and compounds in the raw generator
