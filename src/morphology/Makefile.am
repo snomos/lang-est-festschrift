@@ -19,7 +19,7 @@
 HFST_LEXC_LOCAL_FLAGS=
 
 # Set this to name of lexc file containing Multichar_Symbols and LEXICON Root
-GT_LEXC_ROOT=root.lexc
+GT_LEXC_ROOT=$(srcdir)/root.lexc
 
 # Set this to the names of all regular lexc source files:
 GT_LEXC_SRCS_L1_L2=\
@@ -96,11 +96,11 @@ GT_LEXC_L2_SRCS=\
 
 # Define any additional lexc sources here (compiled on their own):
 GT_LOCAL_SRCS=\
-                        pair_initial.tmp.lexc \
-                        pair_final.tmp.lexc \
-                        num_initial.tmp.lexc \
-                        num_final.tmp.lexc \
-                        punctuation.tmp.lexc
+				pair_initial.tmp.lexc \
+				pair_final.tmp.lexc \
+				num_initial.tmp.lexc \
+				num_final.tmp.lexc \
+				punctuation.tmp.lexc
 
 # Define local xfscripts here:
 GT_LOCAL_XFSCRIPT_SRCS=
@@ -109,36 +109,39 @@ GT_LOCAL_XFSCRIPT_SRCS=
 GT_DISTRO_SRCS=
 
 ### BEGIN: Local processing: ###
-EST_AFFIX_FILES=affixes/regular_declinations affixes/exceptional_declinations affixes/verbs affixes/gi
+EST_AFFIX_FILES=$(srcdir)/affixes/regular_declinations \
+				$(srcdir)/affixes/exceptional_declinations \
+				$(srcdir)/affixes/verbs \
+				$(srcdir)/affixes/gi
 
 # make the parts inflect 
 # by re-using root.lexc and affixes, and omitting all the stem lexicons
 # ... and remove the flag diacritics
  
 pair_initial.tmp.lexc: pair_initial.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
-	cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
-	cat $< >> $@ && \
-	cat $(EST_AFFIX_FILES:%=%.lexc) | sed 's/@.\.[^@]*@//g' >> $@
+	$(AM_V_GEN)cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
+			   cat $< >> $@ && \
+			   cat $(EST_AFFIX_FILES:%=%.lexc) | sed 's/@.\.[^@]*@//g' >> $@
 
 num_initial.tmp.lexc: num_initial.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
-	cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
-	cat $< >> $@ && \
-	cat $(EST_AFFIX_FILES:%=%.lexc) | sed 's/@.\.[^@]*@//g' >> $@
+	$(AM_V_GEN)cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
+			   cat $< >> $@ && \
+			   cat $(EST_AFFIX_FILES:%=%.lexc) | sed 's/@.\.[^@]*@//g' >> $@
 
 pair_final.tmp.lexc: pair_final.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
-	cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
-	cat $< >> $@ && \
-	cat $(EST_AFFIX_FILES:%=%.lexc) | sed 's/@.\.[^@]*@//g' >> $@
+	$(AM_V_GEN)cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
+			   cat $< >> $@ && \
+			   cat $(EST_AFFIX_FILES:%=%.lexc) | sed 's/@.\.[^@]*@//g' >> $@
 
 num_final.tmp.lexc: num_final.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
-	cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
-	cat $< >> $@ && \
-	cat $(EST_AFFIX_FILES:%=%.lexc) >> $@
+	$(AM_V_GEN)cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
+			   cat $< >> $@ && \
+			   cat $(EST_AFFIX_FILES:%=%.lexc) >> $@
 
 # punctuation is a separate issue, not an ordinary part of the lexicon
 punctuation.tmp.lexc: punctuation.lexc $(GT_LEXC_ROOT)
-	cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
-	cat $< >> $@ 
+	$(AM_V_GEN)cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
+			   cat $< >> $@ 
 
 ### END: Local processing: ###
 
@@ -147,6 +150,7 @@ punctuation.tmp.lexc: punctuation.lexc $(GT_LEXC_ROOT)
 # easily get updates from the template dir through svn merge.
 clean-local:
 	-rm -f *.all.* *fst *.foma *.script generated_files/*.lexc lexicon.*
+	-rm -f *.tmp.*
 
 include $(top_srcdir)/am-shared/src-morphology-dir-include.am
 
