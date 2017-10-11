@@ -64,7 +64,7 @@ endif # CAN_FOMA
 #### Add language-specific build rules here: ####
 
 EST_EXTRA_PRE_FILTERS=filters/remove-sg-forms.est filters/remove-pl-forms.est filters/remove-sg-nom-forms.est filters/remove-non-gi-forms.est filters/block-derivations.est # filters/remove-usage-tags.est
-EST_EXTRA_POST_FILTERS=filters/modify-derivations.est 
+EST_EXTRA_POST_FILTERS=filters/modify-derivations.est # filters/downcase-derived_proper-strings.est
 EST_WORDPAIR_FILTERS=filters/reorder-tags.est filters/wordpair-filter.est
 EST_NUMERAL_FILTERS=filters/reorder-tags.est filters/numeral-filter.est
 #EST_COMPOUND_PRE_FILTERS=filters/block-compounds.est
@@ -225,8 +225,6 @@ num_final.tmp.%: num_final.tmp1.% \
 
 # HFST: generator 
 # Xerox & FOMA: analyser
-# put parts together
-# .......		regex [{#-}:{-}] ; \n\
 #
 
 redundant_wordpairs.%: pair_final.tmp.% pair_initial.tmp.%
@@ -290,6 +288,11 @@ analyser-raw-gt-desc.simple.xfst: analyser-raw-gt-desc.tmp.xfst \
 			[ @\"$<\" | @\"analyser-numerals-raw.simple.xfst\" ]  \
 			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.xfst\")   \
 			;\n\
+			define fst \n\
+			set flag-is-epsilon OFF\n\
+			read regex fst \
+			.o. @\"filters/downcase-derived_proper-strings.est.xfst\"       \
+			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST) $(VERBOSITY)
 
@@ -299,13 +302,20 @@ generator-raw-gt-desc.simple.hfst: generator-raw-gt-desc.tmp.hfst \
 				generator-numerals-raw.simple.hfst \
 				$(EST_EXTRA_PRE_FILTERS:%=%.hfst) \
 				$(EST_EXTRA_POST_FILTERS:%=%.hfst)
-	$(AM_V_RGX2FST)$(PRINTF) "\
+	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex                         \
 			$(EST_EXTRA_PRE_FILTERS:%=@\"%.hfst\" .o.)    \
 			[ @\"$<\" | @\"generator-numerals-raw.simple.hfst\" ] \
 			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.hfst\")   \
-			;" \
-		| $(HFST_REGEXP2FST) $(VERBOSITY) $(HFST_FLAGS) -S --xerox-composition=ON -X flag-is-epsilon \
-		> $@
+			;\n\
+			define fst \n\
+			set flag-is-epsilon OFF\n\
+			read regex fst \
+			.o. @\"filters/downcase-derived_proper-strings.est.hfst\"       \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
 
 # HFST:
 # compound words: 
@@ -322,7 +332,7 @@ analyser-raw-gt-desc.comp.xfst: analyser-raw-gt-desc.simple.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex [ [ ~[?* \"+Foc/gi\" ?*] .o. @\"analyser-raw-gt-desc.simple.xfst\" .o. [ \"-\" -> 0 || _ .#. ] ] \"#\" ]* @\"analyser-raw-gt-desc.simple.xfst\" ; \nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
 # the vocabulary, i.e. words that might be combined with - / or otherwise
-# include paired words and compound numerals and compounds in the raw generator
+# include paired words and compounds in the raw generator
 # HFST:
 generator-raw-gt-desc.vocabulary.hfst: generator-raw-gt-desc.simple.hfst \
 					generator-wordpairs-raw.simple.hfst \
@@ -343,8 +353,6 @@ generator-raw-gt-desc.hfst: generator-raw-gt-desc.vocabulary.hfst \
 					morphology/punctuation.tmp.hfst
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex [ [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ] [\"-\" | \"/\"] \"#\" @\"filters/initialise-flags.est.hfst\"]* @\"$<\" ; \nread regex @\"morphology/punctuation.tmp.hfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
 
-#	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"generator-numerals-raw.simple.hfst\" | @\"generator-wordpairs-raw.simple.hfst\" ; \nread regex @\"morphology/punctuation.tmp.hfst\" ; \nread regex @\"generator-raw-gt-desc.comp.hfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
-
 # ... also the raw analyser
 analyser-raw-gt-%.hfst: generator-raw-gt-%.hfst
 		$(HFST_INVERT) $(VERBOSITY) $(HFST_FLAGS) < $< > $@
@@ -354,8 +362,6 @@ analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.vocabulary.xfst \
 					filters/initialise-flags.est.xfst \
 					morphology/punctuation.tmp.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex [ [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ] [\"-\" | \"/\"] \"#\" @\"filters/initialise-flags.est.xfst\"]* @\"$<\" ; \nread regex @\"morphology/punctuation.tmp.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
-
-#	$(AM_V_XFST)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"analyser-numerals-raw.simple.xfst\" | @\"analyser-wordpairs-raw.simple.xfst\" ; \nread regex @\"morphology/punctuation.tmp.xfst\" ; \nread regex @\"analyser-raw-gt-desc.comp.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######
