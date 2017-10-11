@@ -768,25 +768,25 @@ Tests:
     idee+N+Sg+Trm: ideeni
     jalg+N+Pl+Abe: jalgadeta
     jalg+N+Pl+Abl: jalgadelt
-    jalg+N+Pl+Abl+Use/Rare: jalgelt
+    jalg+N+Pl+Abl+Use/Rare: [jalgelt, jalult]
     jalg+N+Pl+Ade: jalgadel
-    jalg+N+Pl+Ade+Use/Rare: jalgel
+    jalg+N+Pl+Ade+Use/Rare: [jalgel, jalul]
     jalg+N+Pl+All: jalgadele
-    jalg+N+Pl+All+Use/Rare: jalgele
+    jalg+N+Pl+All+Use/Rare: [jalgele, jalule]
     jalg+N+Pl+Com: jalgadega
     jalg+N+Pl+Ela: jalgadest
-    jalg+N+Pl+Ela+Use/Rare: jalgest
+    jalg+N+Pl+Ela+Use/Rare: [jalgest, jalust]
     jalg+N+Pl+Ess: jalgadena
     jalg+N+Pl+Gen: jalgade
     jalg+N+Pl+Ill: jalgadesse
-    jalg+N+Pl+Ill+Use/Rare: jalgesse
+    jalg+N+Pl+Ill+Use/Rare: [jalgesse, jalusse]
     jalg+N+Pl+Ine: jalgades
-    jalg+N+Pl+Ine+Use/Rare: jalges
+    jalg+N+Pl+Ine+Use/Rare: [jalges, jalus]
     jalg+N+Pl+Nom: jalad
     jalg+N+Pl+Par: jalgu
     jalg+N+Pl+Par+Use/Rare: jalgasid
     jalg+N+Pl+Tra: jalgadeks
-    jalg+N+Pl+Tra+Use/Rare: jalgeks
+    jalg+N+Pl+Tra+Use/Rare: [jalgeks, jaluks]
     jalg+N+Pl+Trm: jalgadeni
     jalg+N+Sg+Abe: jalata
     jalg+N+Sg+Abl: jalalt

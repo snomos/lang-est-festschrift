@@ -55,11 +55,6 @@ kaeve kandlus
 puuduolevad vormid
 asjus, asjust pealikele jalge paigust päevil
 
-folk+N (on +A)
-multikas+N (on +A)
-võlu on ÕLU
-korras: !!!! liblest !!!! ei tunne ära!!!!
-pulm pole ainsuses...
 kapitalist ei tuletu kapitalismi alusel
 
 laiatarbe, linnalähi
@@ -72,7 +67,7 @@ miks ei tunne kirikukorralduslik kultuurikorralduslik, ehkki tunneb kultuurikorr
 
 miks ei tunne külaliskokk kümnendajärguline nooremlipnik
 
-kas on õige kahekümnepäine ? ja muud pikemad arvsõnad + adj?
+kas on õige pikemad arvsõnad + adj?
 
 
 

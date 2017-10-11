@@ -754,8 +754,11 @@ s/^\([^ ]*t\)ugi [^@]*21[^@]*@NIMI.*$/& \1ugi:\1uG1/
 /[ =_-]koju .*@KAVA/s/@KAVA/@KODU/
 /@KODU/s/%{stemill%}//
 /@KODU/s/koJ1D1u/ko/
-/r<ind .*@PIIM/s/@PIIM/@RIND/
-/s<ilm .*@PIIM/s/@PIIM/@RIND/
+/[ =_-]<as]ja .*@PIIM/s/@PIIM/@ASI/
+/[ =_-]p<aika .*@PIIM/s/@PIIM/@ASI/
+/p<äev .*@PIIM/s/@PIIM/@PÄEV/
+/[ =_-]r<inda .*@PIIM/s/@PIIM/@RIND/
+/[ =_-]s<ilma .*@PIIM/s/@PIIM/@SILM/
 /j<alg .*@PIIM/s/@PIIM/@JALG/
 /p<õlv .*@EIT/s/@EIT/@PÕLV/
 /t<alv .*@EIT/s/@EIT/@TALV/
@@ -764,6 +767,15 @@ s/^\([^ ]*t\)ugi [^@]*21[^@]*@NIMI.*$/& \1ugi:\1uG1/
 /tervis .*@SOOLANE/s/@SOOLANE/@KATKINE/
 
 s/^\([^ ]*\) .*@ELANIK/& \1:\1/
+
+/[ =_-]<ümbr<ik .*@ELANIK/s/@ELANIK/@ÜMBRIK/
+/^<ümbr<ik .*@ELANIK/s/@ELANIK/@ÜMBRIK/
+/ümbrik .*@VIRSIK/s/^.*$//
+
+/[ =_-]pealik .*@VIRSIK/s/@VIRSIK/@ÜMBRIK/
+/^pealik .*@VIRSIK/s/@VIRSIK/@ÜMBRIK/
+/[ =_-]<ämbl<ikku .*@ELANIK/s/@ELANIK/@ÄMBLIK/
+
 /p<*ea .*ADT\$: [^\-].*ARMEE/s/^\([^ ]*p<*\)ea\( .*@\)ARMEE/\1ea\2PUU \1ea:\1E6A6H3Y3%>%{id%}%{stemill%}/
 /@.*:/!s/^\([^ ]*p<*\)ea\( .*@\)ARMEE/& \1ea:\1E6A6%>%{id%}/
 /h<*ea .*PL\.P.*ARMEE/s/^\([^ ]*\)ea\( .*@\)ARMEE/\1ea\2PUU \1ea:\1E6A6%>%{id%}/
