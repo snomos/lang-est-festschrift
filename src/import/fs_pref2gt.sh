@@ -52,9 +52,6 @@ alles edasi eraldi halvasti juurde järele kaotsi? kaua kaugele kergelt kergesti
 deverbid
 kaeve kandlus
 
-puuduolevad vormid
-asjus, asjust pealikele jalge paigust päevil
-
 kapitalist ei tuletu kapitalismi alusel
 
 laiatarbe, linnalähi

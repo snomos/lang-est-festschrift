@@ -774,7 +774,7 @@ s/^\([^ ]*\) .*@ELANIK/& \1:\1/
 
 /[ =_-]pealik .*@VIRSIK/s/@VIRSIK/@ÜMBRIK/
 /^pealik .*@VIRSIK/s/@VIRSIK/@ÜMBRIK/
-/[ =_-]<ämbl<ikku .*@ELANIK/s/@ELANIK/@ÄMBLIK/
+/[ =_-][^aeiouõäöü ]*<[aeiouõäöü]*[^aeiouõäöü ]*<ikku .*@ELANIK/s/@ELANIK/@ÄMBLIK/
 
 /p<*ea .*ADT\$: [^\-].*ARMEE/s/^\([^ ]*p<*\)ea\( .*@\)ARMEE/\1ea\2PUU \1ea:\1E6A6H3Y3%>%{id%}%{stemill%}/
 /@.*:/!s/^\([^ ]*p<*\)ea\( .*@\)ARMEE/& \1ea:\1E6A6%>%{id%}/
