@@ -582,13 +582,13 @@ These are used for limiting the number of components in a compound word
  | @P.Part.Bad@ | Indicate that this cannot be a part of a compound
 
 POS is used for filtering derivations and compounds
+ | @R.POS.NumCardCompound@ | compound numeral (viis+sada - five hundred)
 
 Case is used for filtering derivations and compounds
 
 Remember there has been some derivation from A or N; for filtering compounds
 
 Remember the stem type; for filtering compounds
-
 
 
 

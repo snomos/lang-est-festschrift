@@ -24,12 +24,10 @@ Also, tulema, panema, surema, olema, minema have tulla, tulles etc...
  * __%>__ Inflectional suffix boundary
  * __»__ Derivational suffix boundary
  * __#__ Word boundary for both lexicalised and dynamic compounds
-
 Final hyphen for shortened stems:
 {{{
  %-
 }}}
-
 !Apostrophy
 
 Apostrofy is used for separating inflectional affix from a foreign word lemma
@@ -50,10 +48,10 @@ Short stops
  * __G1:k__ In short illative (lagi lae lakke)
  * __B1:b__ In strong grade
  * __B1:0__ In weak grade
- * __B1:p__ In short illative (saba sappa)
+ * __B1:p__ In short illative (tuba toa tuppa)
  * __D1:d__ In strong grade
  * __D1:0__ In weak grade
- * __D1:t__ In short illative (ida itta)
+ * __D1:t__ In short illative (ladu lao lattu)
 
 Orthographic convention: after voiceless (e.g. s or h, or k p t), gbd is written as kpt
 e.g. õhk-õhu, vask-vase
@@ -79,13 +77,19 @@ T1 also in: jätma, katma, kütma, matma, võtma, mõtlema, ütlema
  * __T2:t__ In strong grade
  * __T2:d__ In weak grade
 
- * __G3:g__ In strong grade, Riiga
- * __G3:0__ In weak grade,  Riia
- * __D3:d__ In strong grade, Randu
- * __D3:0__ In weak grade,  Rannu
+Short stops in stem illatives for words that do not have grade alternation.
+They surface (or appear as extra long) in strong grade, expressed by stem illative only. 
 
- * __G4:g__ ad hoc solution for some proper nouns like Rõngu, 
-where strong grade is also Rõngu (not Rõnku)
+ * __G3:0__ 
+ * __G3:g__ Riia Riiga
+ * __D3:0__ 
+ * __D3:d__ Rannu Randu
+ * __G4:g__ 
+ * __G4:k__ Türgi Türki
+ * __D4:d__ 
+ * __D4:t__ Leedu Leetu
+ * __B4:b__ 
+ * __B4:p__ Abja Apja
 
  * __S1:s__ In strong grade, S1 is s
  * __S1:0__ In weak grade, S1 is 0; before stop, S1 is 0
@@ -303,12 +307,14 @@ high vowel lowering in certain contexts
 
 
 
-
 * __kraapi%{W%}>n __
 * __kraabi0>n __
 
 * __*kraapi%{W%}>n __ (is not standard language)
 * __*kraapi0>n __ (is not standard language)
+
+
+
 
 
 
@@ -491,6 +497,11 @@ high vowel lowering in certain contexts
 
 
 1.1. plural partitive: -sid vs stem vowel change
+
+
+
+
+
 
 
 
