@@ -386,7 +386,7 @@ LEXICON NIIN    ! only niin; almost like KEEL, but some forms are more regular
                   :e%{W%}%>sse SG_ILLATIVE ;    ! niinesse 
                   :%{W%}%>te N_PL_SUBPARA ;    ! niinte etc 
     !   +N+Use/Hyp:%>i N_VOWEL_PL_SUBPARA ;    ! impossible for rarer words
-                  :e%>sid PL_PARTITIVE ;    ! NB! niinesid (not niini)
+                  :e%>sid PL_PARTITIVE ;    ! NB! niinesid (not niini, as the ÕS norm states)
 
 LEXICON NIMI    ! VVS 20, 21 unstable type (passiivne muuttüüp) 17 words; suvi, lagi
 
@@ -400,23 +400,23 @@ LEXICON NIMI    ! VVS 20, 21 unstable type (passiivne muuttüüp) 17 words; suvi
 !                 :e LIK_DERIVATION ;
 
 LEXICON PARAS    ! only paras; like LOHAKAS
-
+ 
                   :s SG_NOMINATIVE ;    ! paras
                   :ja 2C ;    ! paraja etc
                   :ja US_DERIVATION ;
 
-LEXICON PEEN    ! only peen, tüün; almost like KEEL, but some forms are more regular
+LEXICON PEEN    ! only peen; almost like KEEL, but some forms are more regular
 
-                  : SG_NOMINATIVE ;    ! peen
-                  :%>e N_SG_SUBPARA ;    ! peene etc 
-                  :%>t SG_PARTITIVE ;    ! peent
-      +Use/NotNorm:e%>t SG_PARTITIVE ;    ! peenet
-         +Use/Rare:%>de SG_ILLATIVE ;    ! peende
+                  : SG_NOMINATIVE ;       ! peen
+                  :%>e N_SG_SUBPARA ;     ! peene etc 
+                  :%>t SG_PARTITIVE ;     ! peent
+         +Use/Rare:e%>t SG_PARTITIVE ;    ! peenet
+         +Use/Rare:%>de SG_ILLATIVE ;     ! peende
                   :e%{W%}%>sse SG_ILLATIVE ;    ! peenesse 
                   :%{W%}%>te N_PL_SUBPARA ;    ! peente etc 
-      +Use/NotNorm:e%>te N_PL_SUBPARA ;    ! peenete etc 
-+Use/CommonNotNorm:e%>id PL_PARTITIVE ;    ! NB! peeneid 
-                  :i PL_PARTITIVE ;    ! peeni
+         +Use/Rare:e%>te N_PL_SUBPARA ;     ! peenete etc 
+                  :e%>id PL_PARTITIVE ;     ! peeneid 
+         +Use/Rare:i PL_PARTITIVE ;         ! peeni
           +Use/Hyp:%{W%}%>i N_VOWEL_PL_SUBPARA ;    ! peenil etc
                   : US_DERIVATION ;
 

@@ -1192,73 +1192,73 @@ Tests:
       paras+A+Sg+Trm+Foc/gi: parajanigi
       paras+A+Sg+Trm: parajani
       peen+A+Pl+Abe+Foc/gi: peentetagi
-      peen+A+Pl+Abe+Foc/gi+Use/NotNorm: peenetetagi
+      peen+A+Pl+Abe+Foc/gi+Use/Rare: peenetetagi
       peen+A+Pl+Abe: peenteta
-      peen+A+Pl+Abe+Use/NotNorm: peeneteta
+      peen+A+Pl+Abe+Use/Rare: peeneteta
       peen+A+Pl+Abl+Foc/gi: peenteltki
       peen+A+Pl+Abl+Foc/gi+Use/Hyp: peeniltki
-      peen+A+Pl+Abl+Foc/gi+Use/NotNorm: peeneteltki
+      peen+A+Pl+Abl+Foc/gi+Use/Rare: peeneteltki
       peen+A+Pl+Abl: peentelt
       peen+A+Pl+Abl+Use/Hyp: peenilt
-      peen+A+Pl+Abl+Use/NotNorm: peenetelt
+      peen+A+Pl+Abl+Use/Rare: peenetelt
       peen+A+Pl+Ade+Foc/gi: peentelgi
       peen+A+Pl+Ade+Foc/gi+Use/Hyp: peenilgi
-      peen+A+Pl+Ade+Foc/gi+Use/NotNorm: peenetelgi
+      peen+A+Pl+Ade+Foc/gi+Use/Rare: peenetelgi
       peen+A+Pl+Ade: peentel
       peen+A+Pl+Ade+Use/Hyp: peenil
-      peen+A+Pl+Ade+Use/NotNorm: peenetel
+      peen+A+Pl+Ade+Use/Rare: peenetel
       peen+A+Pl+All+Foc/gi: peentelegi
       peen+A+Pl+All+Foc/gi+Use/Hyp: peenilegi
-      peen+A+Pl+All+Foc/gi+Use/NotNorm: peenetelegi
+      peen+A+Pl+All+Foc/gi+Use/Rare: peenetelegi
       peen+A+Pl+All: peentele
       peen+A+Pl+All+Use/Hyp: peenile
-      peen+A+Pl+All+Use/NotNorm: peenetele
+      peen+A+Pl+All+Use/Rare: peenetele
       peen+A+Pl+Com+Foc/gi: peentegagi
-      peen+A+Pl+Com+Foc/gi+Use/NotNorm: peenetegagi
+      peen+A+Pl+Com+Foc/gi+Use/Rare: peenetegagi
       peen+A+Pl+Com: peentega
-      peen+A+Pl+Com+Use/NotNorm: peenetega
+      peen+A+Pl+Com+Use/Rare: peenetega
       peen+A+Pl+Ela+Foc/gi: peentestki
       peen+A+Pl+Ela+Foc/gi+Use/Hyp: peenistki
-      peen+A+Pl+Ela+Foc/gi+Use/NotNorm: peenetestki
+      peen+A+Pl+Ela+Foc/gi+Use/Rare: peenetestki
       peen+A+Pl+Ela: peentest
       peen+A+Pl+Ela+Use/Hyp: peenist
-      peen+A+Pl+Ela+Use/NotNorm: peenetest
+      peen+A+Pl+Ela+Use/Rare: peenetest
       peen+A+Pl+Ess+Foc/gi: peentenagi
-      peen+A+Pl+Ess+Foc/gi+Use/NotNorm: peenetenagi
+      peen+A+Pl+Ess+Foc/gi+Use/Rare: peenetenagi
       peen+A+Pl+Ess: peentena
-      peen+A+Pl+Ess+Use/NotNorm: peenetena
+      peen+A+Pl+Ess+Use/Rare: peenetena
       peen+A+Pl+Gen+Foc/gi: peentegi
-      peen+A+Pl+Gen+Foc/gi+Use/NotNorm: peenetegi
+      peen+A+Pl+Gen+Foc/gi+Use/Rare: peenetegi
       peen+A+Pl+Gen: peente
-      peen+A+Pl+Gen+Use/NotNorm: peenete
+      peen+A+Pl+Gen+Use/Rare: peenete
       peen+A+Pl+Ill+Foc/gi: peentessegi
       peen+A+Pl+Ill+Foc/gi+Use/Hyp: peenissegi
-      peen+A+Pl+Ill+Foc/gi+Use/NotNorm: peenetessegi
+      peen+A+Pl+Ill+Foc/gi+Use/Rare: peenetessegi
       peen+A+Pl+Ill: peentesse
       peen+A+Pl+Ill+Use/Hyp: peenisse
-      peen+A+Pl+Ill+Use/NotNorm: peenetesse
+      peen+A+Pl+Ill+Use/Rare: peenetesse
       peen+A+Pl+Ine+Foc/gi: peenteski
       peen+A+Pl+Ine+Foc/gi+Use/Hyp: peeniski
-      peen+A+Pl+Ine+Foc/gi+Use/NotNorm: peeneteski
+      peen+A+Pl+Ine+Foc/gi+Use/Rare: peeneteski
       peen+A+Pl+Ine: peentes
       peen+A+Pl+Ine+Use/Hyp: peenis
-      peen+A+Pl+Ine+Use/NotNorm: peenetes
+      peen+A+Pl+Ine+Use/Rare: peenetes
       peen+A+Pl+Nom+Foc/gi: peenedki
       peen+A+Pl+Nom: peened
-      peen+A+Pl+Par+Foc/gi: peenigi
-      peen+A+Pl+Par+Foc/gi+Use/CommonNotNorm: peeneidki
-      peen+A+Pl+Par: peeni
-      peen+A+Pl+Par+Use/CommonNotNorm: peeneid
+      peen+A+Pl+Par+Foc/gi+Use/Rare: peenigi
+      peen+A+Pl+Par+Foc/gi: peeneidki
+      peen+A+Pl+Par+Use/Rare: peeni
+      peen+A+Pl+Par: peeneid
       peen+A+Pl+Tra+Foc/gi: peentekski
       peen+A+Pl+Tra+Foc/gi+Use/Hyp: peenikski
-      peen+A+Pl+Tra+Foc/gi+Use/NotNorm: peenetekski
+      peen+A+Pl+Tra+Foc/gi+Use/Rare: peenetekski
       peen+A+Pl+Tra: peenteks
       peen+A+Pl+Tra+Use/Hyp: peeniks
-      peen+A+Pl+Tra+Use/NotNorm: peeneteks
+      peen+A+Pl+Tra+Use/Rare: peeneteks
       peen+A+Pl+Trm+Foc/gi: peentenigi
-      peen+A+Pl+Trm+Foc/gi+Use/NotNorm: peenetenigi
+      peen+A+Pl+Trm+Foc/gi+Use/Rare: peenetenigi
       peen+A+Pl+Trm: peenteni
-      peen+A+Pl+Trm+Use/NotNorm: peeneteni
+      peen+A+Pl+Trm+Use/Rare: peeneteni
       peen+A+Sg+Abe+Foc/gi: peenetagi
       peen+A+Sg+Abe: peeneta
       peen+A+Sg+Abl+Foc/gi: peeneltki
@@ -1284,9 +1284,9 @@ Tests:
       peen+A+Sg+Nom+Foc/gi: peengi
       peen+A+Sg+Nom: peen
       peen+A+Sg+Par+Foc/gi: peentki
-      peen+A+Sg+Par+Foc/gi+Use/NotNorm: peenetki
+      peen+A+Sg+Par+Foc/gi+Use/Rare: peenetki
       peen+A+Sg+Par: peent
-      peen+A+Sg+Par+Use/NotNorm: peenet
+      peen+A+Sg+Par+Use/Rare: peenet
       peen+A+Sg+Tra+Foc/gi: peenekski
       peen+A+Sg+Tra: peeneks
       peen+A+Sg+Trm+Foc/gi: peenenigi

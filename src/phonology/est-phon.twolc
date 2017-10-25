@@ -286,9 +286,6 @@ e:0 !!≈ * __@CODE@__ soolas0+e
 ! t:d ... if we say that plural affix +te appears as +de for tütar-type words,
 ! then the cont. lexicons will be simpler 
 
-! flag diacritics are used for passing info for compounding;
-! they must be made invisible for phonology
-! %@R%.Part%.One%@ %@P%.POS%.N%@
 ;
 
 Diacritics
@@ -773,18 +770,18 @@ J1:0  =>   h _ T1: ;
              _ :stop ;
 
 ! lexical: r o h J1 T1 > {pl.e} {rare}
-! surface: r o h  0  t 0    e      0
+! surface: r o h  0  t >    e      0
 ! lexical: r o h J1 T1 > {pl.e} {rare} {sg.u} {W}
-! surface: r o h  0  0 0    0      0     u     0
+! surface: r o h  0  0 >    0      0     u     0
 ! lexical: h ä r J1 G1 > {pl.i} {sg.a} 
-! surface: h ä r 0  g  0    0      a   
+! surface: h ä r 0  g  >    0      a   
 
 ! lexical: h ä r J1 G1 > {pl.i} {sg.a} {W}
-! surface: h ä r j  0  0    0      a    0
+! surface: h ä r j  0  >    0      a    0
 ! lexical: a h J1 > {pl.e} {rare} {sg.u} {W}
-! surface: a h j  0   0       0      u    0
+! surface: a h j  >   0       0      u    0
 ! lexical: s a J1 D1 a > {pl.u} {W}
-! surface: s a j  0  a 0    0    0
+! surface: s a j  0  a >    0    0
 
 ! --- 
 ! juus-juuksed, kälis-käliksed, nõos-nõoksed, omas-omaksed, vennas-vennaksed, ões-õeksed 
