@@ -643,6 +643,12 @@ Multichar_Symbols
  @R.Stem.Short@
  @C.Stem@
 
+!! A special condition that is used for filtering derivations and compounds
+ @P.NeedAdj.On@
+ @R.NeedAdj@
+ @D.NeedAdj@
+ @C.NeedAdj@
+
 ! Morphophonology
 
  %{W%} ! The weak grade trigger never appears on the surface side.
@@ -766,9 +772,10 @@ LEXICON Root !!= * {{@CODE@}} is the starting point of everything
 
 !! This is actually a loop, formed after applying Kleene star 
 !! concatenation on the transducer with itself.
-!! It is controlled by setting up flags on the path:
+!! When looping, it remembers which paths it has taken in every loop. 
+!! For remembering it sets up flags on the path:
 !! 1. flag the first 3 loops (thus forbidding any more loops)
-!! 2. flag the POS and inflection, to use in the following loop
+!! 2. in every loop, flag the POS and inflection, to be used in the following loop
 
 @D.Part@@P.Part.Bad@ Single ;      !! strictly simplex word; cannot be a part of a compound
 @D.Part@@P.Part.One@ First ;       !! a simplex word, or the first part of a compound
@@ -820,8 +827,11 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
   @R.POS.NumCard@@R.Case.Gen@ LatterAdjective_ne ; ! viiemeetrine
   @R.POS.NumCardCompound@@R.Case.Gen@ LatterAdjective_ne ; ! kahekümnemeetrine
+  @R.POS.NumOrd@@R.Case.Gen@ LatterAdjective_ne ; ! viiendajärguline
 
   @R.POS.A@@R.Case.Nom@@R.Stem.Short@ LatterAdjective ;  ! rämepunane
+  @R.POS.A@@R.Case.Gen@ LatterAdjective_ne ;  ! suureruuduline
+  @R.POS.A@@R.Case.Gen@@P.NeedAdj.On@ LatterNoun ;  ! halvamaitseline (latter noun is derived into adj) 
 
   @R.POS.Pron@@R.Case.Gen@ LatterAdjective ; ! enesepunane
 

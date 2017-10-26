@@ -397,7 +397,7 @@ LEXICON NIMI    ! VVS 20, 21 unstable type (passiivne muuttüüp) 17 words; suvi
                   :e%{S%} SG_ILL_VARIANT ;     ! lakke
                   :e%{W%} SG_ILL_VARIANT ;    ! laesse 
                   :e DE_PL ;
-!                 :e LIK_DERIVATION ;
+!                 :e%{W%} LIK_DERIVATION ;
 
 LEXICON PARAS    ! only paras; like LOHAKAS
  

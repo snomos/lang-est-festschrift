@@ -50,6 +50,7 @@ define BadDer5 [
           [Vow Cons* {mine} "+N"] |  # min 2 syll; mis-
           ["+Der/line" "+A"] |       # lis-
           [Vow Cons* {line} "+A"] |  # min 2 syll; lis-
+          [Vow Cons* {line} "+N"] |  # min 2 syll; lis-
           ["+Der/lane" "+N"] |       # las-
           [Vow Cons* {lane} "+N"] |  # min 2 syll; las-
           [Vow Cons* [Vow [Vow | Cons]+ Cons {ne}] "+A"]  # min 2 syll; ...iil-, ...akt-
