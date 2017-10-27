@@ -781,8 +781,8 @@ LEXICON Root !!= * {{@CODE@}} is the starting point of everything
 @D.Part@@P.Part.One@ First ;       !! a simplex word, or the first part of a compound
 
 ! D.Der may be too restrictive here
-@R.Part.One@@P.Part.Two@@D.Case.PlNom@@D.Der@ Latter ;   ! second loop; latter part
-@R.Part.Two@@P.Part.Three@@D.Case.PlNom@@D.Der@ Latter ;   ! third loop; latter part
+@R.Part.One@@P.Part.Two@@C.Cap@@D.Case.PlNom@@D.Der@ Latter ;   ! second loop; latter part
+@R.Part.Two@@P.Part.Three@@C.Cap@@D.Case.PlNom@@D.Der@ Latter ;   ! third loop; latter part
 
 
 LEXICON Single     !! strictly simplex words; cannot be a part of a compound

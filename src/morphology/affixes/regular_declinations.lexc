@@ -611,9 +611,8 @@ LEXICON LANE_DERIVATION_CAP
             +Der/lane+N:»lane OLULINE ;          ! helveetslane etc
 
 LEXICON LIK_DERIVATION
-  @P.Der.A@@D.NeedAdj@ LIK_DERIVATION_SUF ;            ! the compounding algorithm does not need a noun to be derived into adj
-  @P.Der.A@@R.NeedAdj@@C.NeedAdj@ LIK_DERIVATION_SUF ; ! the compounding algorithm needs a noun to be derived into adj,
-                                                       ! and this suffix satisfies its expectation; end of story
+  @P.Der.A@@C.NeedAdj@ LIK_DERIVATION_SUF ; ! the compounding algorithm needs a noun to be derived into adj,
+                                            ! and this suffix satisfies its expectation
 
 LEXICON LIK_DERIVATION_SUF
 @U.Cap.Opt@@C.Cap@ LIK_DERIVATION_CAP ;         ! proper name must be downcased
@@ -623,9 +622,8 @@ LEXICON LIK_DERIVATION_CAP
             +Der/lik+A:»l´ikk US_DERIVATION ;  ! elajalikkus etc
 
 LEXICON LINE_DERIVATION
-  @P.Der.A@@D.NeedAdj@ LINE_DERIVATION_SUF ;            ! the compounding algorithm does not need a noun to be derived into adj
-  @P.Der.A@@R.NeedAdj@@C.NeedAdj@ LINE_DERIVATION_SUF ; ! the compounding algorithm needs a noun to be derived into adj,
-                                                        ! and this suffix satisfies its expectation; end of story
+  @P.Der.A@@C.NeedAdj@ LINE_DERIVATION_SUF ; ! the compounding algorithm needs a noun to be derived into adj,
+                                             ! and this suffix satisfies its expectation; end of story
 LEXICON LINE_DERIVATION_SUF
             +Der/line+A:»line OLULINE ;          ! põõsaline etc
 

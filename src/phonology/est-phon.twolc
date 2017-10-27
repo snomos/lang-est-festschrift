@@ -449,7 +449,7 @@ B2:v  <=> _ AnyNoTrigger* WeakGrade ;
 "Lexically determined weak grade for gk:0"
 
 Cx:Cy  <=> _ AnyNoTrigger* WeakGrade ;
-           _ Null* %> :k ;                ! assimilation on affix border
+           _ Null* %> [[:k Any* Border] -[Gi Border]];  ! assimilation on affix border (except before focus particle gi/ki)
            _ Null* SuffixBorder :t ;                ! assimilation on affix border
      where Cx in ( G1 K1 ) 
            Cy in (  0  0 )
@@ -1330,9 +1330,8 @@ Vx:0  <=> :Consonant ( J1:0 ) _ %> PlSV:Vy Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 
 "consonant de-doubling in consonant clusters (e.g. after vowel deletion)"
 
-Cx:0 <=> :Cx _ Null+ [[:Consonant Any* Border] - [Gi Border]];
+Cx:0 <=> :Cx _ [Null | SuffixBorder]+ [[:Consonant Any* Border] - [Gi Border]];
          :Cx _ [WS:stop | S1:s] ;
-         :Cx _ Null* SuffixBorder :Consonant;  
       where Cx in (Consonant) ;
 
 ! lexical: s p i k k E2 r > i
@@ -1362,7 +1361,7 @@ Cx:Cy  <=> :voiceless Null* SuffixBorder _ ;
        matched;
 
 ! lexical: s e i s > g i
-! surface: s e i s 0 k i
+! surface: s e i s > k i
 
 ! Orthographical convention for recent loans (kabinet) and -ik suffix
 

@@ -15,14 +15,11 @@ define ZZ [[Vow Cons+ Vow+ Cons*] | [Vow Vow Vow Cons*]];   # at least 2 syllabl
 
 # a BadDer1 is a string +Der/..., preceded by an unsuitable symbol or string, 
 # expressed here as a negation of the suitable one
-# (the two question marks ? ? "+Der/lik" stand for "@U.Cap.Opt@" "@C.Cap@" )
 
 define BadDer1 [
     [[~[\WB+ "+N"] & ~[\WB+ "+Num" "+Card"] & ~[\WB+ "+N" "+Prop"]] "+Der/lik"] |
-#    [[~[\WB+ "+N"] & ~[\WB+ "+Num" "+Card"] & ~[\WB+ "+N" "+Prop"]] ? ? "+Der/lik"] |
     [ ~[\WB+ "+N" "+Prop"] "+Der/lane"] |
-#    [ ~[\WB+ "+N" "+Prop"] ? ? "+Der/lane"] |
-    [[~[\WB+ "+N"] & ~[\WB+ "+Num" "+Card"] | [\WB+ "+N" "+Prop"]] "+Der/line"] |
+    [[~[\WB+ "+N"] & ~[\WB+ "+Num" "+Card"]] "+Der/line"] |
     [[~[\WB+ "+A"] & ~[\WB+ "+A" "+Comp"] & ~[\WB+ "+A" "+Superl"]] "+Der/lt"] |
     [~[\WB+ "+A"] "+Der/sti"] |
     [[~[\WB+ "+A" "+Comp"] ] "+Der/ini"] |
