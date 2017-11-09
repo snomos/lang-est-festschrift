@@ -2,7 +2,7 @@
 # it is necessary if the input contains different words, separated not by whitespace, but by e.g. - or /
 # but we still want to analyse them as separate words, not as parts of a compound
 
-regex "@C.Cap@" "@C.Part@" "@C.POS@" "@C.Case@" "@C.Der@" "@C.Stem@" ;
+regex "@C.Cap@" "@C.Part@" "@C.POS@" "@C.Case@" "@C.NomStem@" "@C.Der@" "@C.NeedAdj@" ;
 
 
 

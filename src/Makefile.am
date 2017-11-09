@@ -281,7 +281,8 @@ analyser-numerals-raw.simple.xfst: redundant_numerals.xfst \
 analyser-raw-gt-desc.simple.xfst: analyser-raw-gt-desc.tmp.xfst \
 				analyser-numerals-raw.simple.xfst \
 				$(EST_EXTRA_PRE_FILTERS:%=%.xfst) \
-				$(EST_EXTRA_POST_FILTERS:%=%.xfst)
+				$(EST_EXTRA_POST_FILTERS:%=%.xfst) \
+				filters/downcase-derived_proper-strings.est.xfst
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
 			read regex                         \
 			$(EST_EXTRA_PRE_FILTERS:%=@\"%.xfst\" .o.)    \
@@ -301,7 +302,8 @@ analyser-raw-gt-desc.simple.xfst: analyser-raw-gt-desc.tmp.xfst \
 generator-raw-gt-desc.simple.hfst: generator-raw-gt-desc.tmp.hfst \
 				generator-numerals-raw.simple.hfst \
 				$(EST_EXTRA_PRE_FILTERS:%=%.hfst) \
-				$(EST_EXTRA_POST_FILTERS:%=%.hfst)
+				$(EST_EXTRA_POST_FILTERS:%=%.hfst) \
+				filters/downcase-derived_proper-strings.est.hfst
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
 			read regex                         \
 			$(EST_EXTRA_PRE_FILTERS:%=@\"%.hfst\" .o.)    \
@@ -321,29 +323,29 @@ generator-raw-gt-desc.simple.hfst: generator-raw-gt-desc.tmp.hfst \
 # compound words: 
 # the first part cannot be a form with a focus particle, so filter it out
 # the first part may end with a hyphen (ajaloolis-)
-generator-raw-gt-desc.comp.hfst: generator-raw-gt-desc.simple.hfst 
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex [ [ ~[?* \"+Foc/gi\" ?*] .o. @\"generator-raw-gt-desc.simple.hfst\" .o. [ \"-\" (->) 0 || _ .#. ] ] \"#\"]* @\"generator-raw-gt-desc.simple.hfst\" \"@D.NeedAdj@\" ; \nsave stack $@\nquit\n" | $(XFST_TOOL)
+generator-raw-gt-desc.comp.hfst: generator-raw-gt-desc.simple.hfst \
+				filters/evaluate-flags.est.hfst
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex [[[ ~[?* \"+Foc/gi\" ?*] .o. @\"generator-raw-gt-desc.simple.hfst\" .o. [ \"-\" (->) 0 || _ .#. ] ] \"#\"]* @\"generator-raw-gt-desc.simple.hfst\" ] @\"filters/evaluate-flags.est.hfst\" ;\nsave stack $@\nquit\n" | $(XFST_TOOL)
 
 # XFST:
 # compound words: 
 # the first part cannot be a form with a focus particle, so filter it out
 # the first part may end with a hyphen (ajaloolis-)
-analyser-raw-gt-desc.comp.xfst: analyser-raw-gt-desc.simple.xfst 
-	$(AM_V_XFST)$(PRINTF) "read regex [ [ ~[?* \"+Foc/gi\" ?*] .o. @\"analyser-raw-gt-desc.simple.xfst\" .o. [ \"-\" (->) 0 || _ .#. ] ] \"#\" ]* @\"analyser-raw-gt-desc.simple.xfst\" \"@D.NeedAdj@\" ; \nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
+analyser-raw-gt-desc.comp.xfst: analyser-raw-gt-desc.simple.xfst \
+				filters/evaluate-flags.est.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex [[[ ~[?* \"+Foc/gi\" ?*] .o. @\"analyser-raw-gt-desc.simple.xfst\" .o. [ \"-\" (->) 0 || _ .#. ]] \"#\" ]* @\"analyser-raw-gt-desc.simple.xfst\" ] @\"filters/evaluate-flags.est.xfst\" ;\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
 # the vocabulary, i.e. words that might be combined with - / or otherwise
 # include paired words and compounds in the raw generator
 # HFST:
-generator-raw-gt-desc.vocabulary.hfst: generator-raw-gt-desc.simple.hfst \
-					generator-wordpairs-raw.simple.hfst \
-					generator-raw-gt-desc.comp.hfst
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"$<\" \"@D.NeedAdj@\" ; \nread regex @\"generator-wordpairs-raw.simple.hfst\" ; \nread regex @\"generator-raw-gt-desc.comp.hfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
+generator-raw-gt-desc.vocabulary.hfst: generator-raw-gt-desc.comp.hfst \
+					generator-wordpairs-raw.simple.hfst 
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"generator-wordpairs-raw.simple.hfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
 
 # XEROX:
-analyser-raw-gt-desc.vocabulary.xfst: analyser-raw-gt-desc.simple.xfst \
-					analyser-wordpairs-raw.simple.xfst \
-					analyser-raw-gt-desc.comp.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex @\"$<\" \"@D.NeedAdj@\" ; \nread regex @\"analyser-wordpairs-raw.simple.xfst\" ; \nread regex @\"analyser-raw-gt-desc.comp.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
+analyser-raw-gt-desc.vocabulary.xfst: analyser-raw-gt-desc.comp.xfst \
+					analyser-wordpairs-raw.simple.xfst 					
+	$(AM_V_XFST)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"analyser-wordpairs-raw.simple.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
 # allow concatenating with - and / and
 # include punctuation in the raw generator

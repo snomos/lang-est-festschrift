@@ -9,3 +9,13 @@ define tooderived [?* SB \[SB | WB]* SB \[SB | WB]* SB \[WB]* WB ?* ] ;   # non-
 #regex [~toolong].i ;
 regex [~toolong] & [~tooderived];
 
+
+define EE $[ "@P.Part.One@" \WB* {esi} "+N" "+Sg" "+Gen" \WB* WB \WB* "@P.Part.Two@" ] ; 
+
+regex [~EE .o. vocabulary]
+
+see teeb mis vaja:
+----
+define EA $[{esi} "+N" "+Sg" "+Gen"];
+regex [EA .o. fst] ;
+-----

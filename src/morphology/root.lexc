@@ -638,16 +638,22 @@ Multichar_Symbols
  @D.Der@
  @C.Der@
 
-!! Remember the stem type; for filtering compounds
- @P.Stem.Short@   ! e.g. max 2 syllables
- @R.Stem.Short@
- @C.Stem@
+!! Remember the stem type; for filtering compounds (not used at the moment)
+! @P.Stem.Short@   ! e.g. max 2 syllables
+! @R.Stem.Short@
+! @C.Stem@
 
 !! A special condition that is used for filtering derivations and compounds
  @P.NeedAdj.On@
  @R.NeedAdj@
  @D.NeedAdj@
  @C.NeedAdj@
+
+!! Sg Nom is allowed as first part of a compound only for some words
+ @P.NomStem.First@
+ @R.NomStem.First@
+ @D.NomStem.First@
+ @C.NomStem@
 
 ! Morphophonology
 
@@ -818,9 +824,9 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.Pref@ LatterAdjective ;  ! ebapunane, ökokorralik
   @R.Case.Short@ LatterAdjective ;  ! vaatamispunane, astraalpunane
 
-  @R.POS.N@@R.Case.Nom@ LatterAdjective ; ! laudpunane
+  @R.POS.N@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ; ! laudpunane
+  @R.POS.N@@R.Case.Nom@@D.NomStem.First@ LatterAdjective_ne ; ! aerjalgne
   @R.POS.N@@R.Case.Gen@ LatterAdjective_ne ; ! lauapunane, laudadepunane
-  @R.POS.N@@R.Case.Gen@ ShortLatterAdjective ; ! lauaaldis, laudadealdis
   @R.POS.N@@R.Case.Gen@ PlainLatterAdjective ; ! lauaahastuslik
   @R.POS.N@@R.Case.Par@ LatterAdjective_v ; ! mägejuhtiv
   @R.POS.N@@R.Case.Sem@ LatterAdjective_v ; ! mäestjuhtiv
@@ -829,7 +835,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.NumCardCompound@@R.Case.Gen@ LatterAdjective_ne ; ! kahekümnemeetrine
   @R.POS.NumOrd@@R.Case.Gen@ LatterAdjective_ne ; ! viiendajärguline
 
-  @R.POS.A@@R.Case.Nom@@R.Stem.Short@ LatterAdjective ;  ! rämepunane
+  @R.POS.A@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ;  ! rämepunane
   @R.POS.A@@R.Case.Gen@ LatterAdjective_ne ;  ! suureruuduline
   @R.POS.A@@R.Case.Gen@@P.NeedAdj.On@ LatterNoun ;  ! halvamaitseline (latter noun is derived into adj) 
 
@@ -839,13 +845,13 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.Pref@ LatterNoun ;  ! ebalaud
   @R.Case.Short@ LatterNoun ;
 
-  @R.POS.N@@R.Case.Nom@ LatterNoun ;
+  @R.POS.N@@R.Case.Nom@@R.NomStem.First@ LatterNoun ;
   @R.POS.N@@R.Case.Gen@ LatterNoun ;
   @R.POS.NumCard@@R.Case.Nom@ LatterNoun ;
   @R.POS.NumCard@@R.Case.Gen@ LatterNoun ;
 
 ! NB only short adjectives are good here !!!
-  @R.POS.A@@R.Case.Nom@@R.Stem.Short@ LatterNoun ;
+  @R.POS.A@@R.Case.Nom@@R.NomStem.First@ LatterNoun ;
 
 ! NB only some pronouns !
   @R.POS.Pron@@R.Case.Gen@ LatterNoun ;
@@ -864,11 +870,11 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.N@@R.Case.Gen@ LatterVerb ;  
   @R.POS.N@@R.Case.Par@ LatterVerb ;
 
-  @R.POS.N@@R.Case.Nom@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
+  @R.POS.N@@R.Case.Nom@@R.NomStem.First@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
   @R.POS.N@@R.Case.Sem@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
 
 ! NB only short adjectives are good here !!!
-  @R.POS.A@@R.Case.Nom@@R.Stem.Short@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
+  @R.POS.A@@R.Case.Nom@@R.NomStem.First@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
 
   @R.POS.A@@R.Case.Short@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
 
@@ -890,36 +896,32 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
 LEXICON LatterAdjective
 
-  @P.POS.A@@C.Der@@C.Case@@C.Stem@ Adjectives ;              !!= * {{@CODE@}}
+  @P.POS.A@@C.Der@@C.Case@@C.NomStem@ Adjectives ;              !!= * {{@CODE@}}
 
 LEXICON LatterAdjective_ne
 
-  @P.POS.A@@C.Der@@C.Case@@C.Stem@ Adjectives_ne ;              !!= * {{@CODE@}}
+  @P.POS.A@@C.Der@@C.Case@@C.NomStem@ Adjectives_ne ;              !!= * {{@CODE@}}
 
 LEXICON LatterAdjective_v
 
-  @P.POS.A@@C.Der@@C.Case@@C.Stem@ Adjectives_v ;              !!= * {{@CODE@}}
-
-LEXICON ShortLatterAdjective
-
-  @P.POS.A@@C.Der@@C.Case@@C.Stem@ ShortAdjectives ;              !!= * {{@CODE@}}
+  @P.POS.A@@C.Der@@C.Case@@C.NomStem@ Adjectives_v ;              !!= * {{@CODE@}}
 
 LEXICON PlainLatterAdjective
 
-  @P.POS.A@@C.Der@@C.Case@@C.Stem@ PlainAdjectives ;              !!= * {{@CODE@}}
+  @P.POS.A@@C.Der@@C.Case@@C.NomStem@ PlainAdjectives ;              !!= * {{@CODE@}}
 
 LEXICON LatterNoun
-  @P.POS.N@@C.Der@@C.Case@ Nouns ;    
+  @P.POS.N@@C.Der@@C.Case@@C.NomStem@ Nouns ;    
 
 LEXICON LatterDeverbal
-  @P.POS.N@@C.Der@@C.Case@ DeverbalNouns ;    
+  @P.POS.N@@C.Der@@C.Case@@C.NomStem@ DeverbalNouns ;    
 
 LEXICON AnyLatterVerb     ! any verb derivation is allowed; set the case accordingly
               
   @P.Case.Gen@ LatterVerb ;                   !!= * {{@CODE@}}
   @P.Case.Par@ LatterVerb ;
 
-LEXICON LatterVerb
+LEXICON LatterVerb       ! a verb derivation
               
   @P.POS.V@@C.Der@ Verbs ;                   !!= * {{@CODE@}}
 

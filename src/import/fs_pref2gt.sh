@@ -20,6 +20,12 @@ cat pref.pok \
 | ./diacritics.sed \
 >>  prefixes.lexc
 
+echo 'ainu+Pref:ainu- #;' >> prefixes.lexc
+echo 'esi+Pref:esi- #;' >> prefixes.lexc
+echo 'ees+Pref:ees- #;' >> prefixes.lexc
+echo 'eel+Pref:eel- #;' >> prefixes.lexc
+echo 'ime+Pref:ime- #;' >> prefixes.lexc
+
 cp prefixes.lexc ../morphology/stems
 
 exit

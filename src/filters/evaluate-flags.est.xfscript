@@ -1,0 +1,14 @@
+# decide if the traversed path is actually a valid word,
+# by looking at the values of flag diacritics (that were set while traversing the path)
+
+# the commented out part is part of trials during development
+# the main motivation is to filter out unlikely compounds that consist of short words
+#define Req "@D.NeedAdj@" ;
+#define Three "@D.Part.Three@" ;
+# example: filter out all 3-part compounds that are not in semantic case or sg nom
+#regex ["@R.Part.Three@" Req ["@R.Case.Sem@" | "@R.Case.Nom@"]] | ["@R.Part.Two@" Req] | "@R.Part.One@" | "@R.Part.Bad@";
+# example: allow only 3-part compounds, nothing else
+#regex ["@R.Part.Three@" Req ] ;
+
+regex "@D.NeedAdj@" ;
+
