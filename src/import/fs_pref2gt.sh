@@ -55,6 +55,9 @@ muidu multi mõne+adj nais
 verbile liituvad
 alles edasi eraldi halvasti juurde järele kaotsi? kaua kaugele kergelt kergesti kindlaks kinni klaariks? kõrgelt kõvaks kõrvuti+adj? külili laiali ligi läbi lähedal
 
+lisasin adv faili, nii et nüüd on veel:
+ kinni(?) läbi(?) lähedal
+
 deverbid
 kaeve kandlus
 
@@ -65,10 +68,9 @@ laiatarbe, linnalähi
 võiks olla lubatud 1. tüvena -ne -> sus, näit funktsionaalsus
  
  
-miks ei tunne halvamaineline ? hariduskapitalistide heleda+adj imedissidentlik järsuveereline kahvatumust kannatadasaamise karedalehelise karmikäeline kindlakujuline laialehine jne
-miks ei tunne kirikukorralduslik kultuurikorralduslik, ehkki tunneb kultuurikorraldus ja korralduslik; sama lugu mõtteklubilik
+miks ei tunne  hariduskapitalistide heleda+adj kahvatumust kannatadasaamise jne
 
-miks ei tunne külaliskokk kümnendajärguline nooremlipnik
+miks ei tunne kümnendajärguline nooremlipnik
 
 kas on õige pikemad arvsõnad + adj?
 

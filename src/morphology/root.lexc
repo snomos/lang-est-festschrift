@@ -786,7 +786,8 @@ LEXICON Root !!= * {{@CODE@}} is the starting point of everything
 @D.Part@@P.Part.Bad@ Single ;      !! strictly simplex word; cannot be a part of a compound
 @D.Part@@P.Part.One@ First ;       !! a simplex word, or the first part of a compound
 
-! D.Der may be too restrictive here
+! D.Der means that the previous word should not be a derived one;
+! it may be too restrictive here...
 @R.Part.One@@P.Part.Two@@C.Cap@@D.Case.PlNom@@D.Der@ Latter ;   ! second loop; latter part
 @R.Part.Two@@P.Part.Three@@C.Cap@@D.Case.PlNom@@D.Der@ Latter ;   ! third loop; latter part
 
@@ -816,7 +817,8 @@ LEXICON First     !!= * {{@CODE@}} a simplex word or the first part of a compoun
   @P.POS.Pref@ Prefixes ;                !!= * {{@CODE@}}
 
 ! the nature of the previous word is reflected by flag diacritics that were set back then
-! so we use them to select possible continuation paths
+! (possibly when passing through a continuation lexicon);
+! use the diacritics to select possible continuation paths
 
 LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
@@ -843,18 +845,18 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
 ! x + noun
   @R.POS.Pref@ LatterNoun ;  ! ebalaud
-  @R.Case.Short@ LatterNoun ;
+  @R.Case.Short@ LatterNoun ;   ! astraallaud
 
   @R.POS.N@@R.Case.Nom@@R.NomStem.First@ LatterNoun ;
-  @R.POS.N@@R.Case.Gen@ LatterNoun ;
-  @R.POS.NumCard@@R.Case.Nom@ LatterNoun ;
-  @R.POS.NumCard@@R.Case.Gen@ LatterNoun ;
+  @R.POS.N@@R.Case.Gen@ LatterNoun ;             ! lauariiul
+  @R.POS.NumCard@@R.Case.Nom@ LatterNoun ;       ! neliriiul
+  @R.POS.NumCard@@R.Case.Gen@ LatterNoun ;       ! neljariiul
 
 ! NB only short adjectives are good here !!!
-  @R.POS.A@@R.Case.Nom@@R.NomStem.First@ LatterNoun ;
+  @R.POS.A@@R.Case.Nom@@R.NomStem.First@ LatterNoun ;   ! lapikriiul
 
 ! NB only some pronouns !
-  @R.POS.Pron@@R.Case.Gen@ LatterNoun ;
+  @R.POS.Pron@@R.Case.Gen@ LatterNoun ;        ! meieriiul kelleriiul (?)
 
 ! x + deverbal noun (in addition to x + noun)
  
@@ -867,8 +869,8 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
   @R.POS.Pref@ AnyLatterVerb ;  ! ebalugemine
 
-  @R.POS.N@@R.Case.Gen@ LatterVerb ;  
-  @R.POS.N@@R.Case.Par@ LatterVerb ;
+  @R.POS.N@@R.Case.Gen@ LatterVerb ;   ! lauajooksja
+  @R.POS.N@@R.Case.Par@ LatterVerb ;   ! laudajooksnud
 
   @R.POS.N@@R.Case.Nom@@R.NomStem.First@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
   @R.POS.N@@R.Case.Sem@ AnyLatterVerb ;  ! map orig. case flag for derivation needs

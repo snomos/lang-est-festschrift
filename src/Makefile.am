@@ -353,7 +353,7 @@ analyser-raw-gt-desc.vocabulary.xfst: analyser-raw-gt-desc.comp.xfst \
 generator-raw-gt-desc.hfst: generator-raw-gt-desc.vocabulary.hfst \
 					filters/initialise-flags.est.hfst \
 					morphology/punctuation.tmp.hfst
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex [ [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ] [\"-\" | \"/\"] \"#\" @\"filters/initialise-flags.est.hfst\"]* @\"$<\" ; \nread regex @\"morphology/punctuation.tmp.hfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex [ [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ] [\"-\" | \"/\"] \"#\" @\"filters/initialise-flags.est.hfst\"]* @\"$<\" (\"-\") ; \nread regex @\"morphology/punctuation.tmp.hfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
 
 # ... also the raw analyser
 analyser-raw-gt-%.hfst: generator-raw-gt-%.hfst
@@ -363,7 +363,7 @@ analyser-raw-gt-%.hfst: generator-raw-gt-%.hfst
 analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.vocabulary.xfst \
 					filters/initialise-flags.est.xfst \
 					morphology/punctuation.tmp.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex [ [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ] [\"-\" | \"/\"] \"#\" @\"filters/initialise-flags.est.xfst\"]* @\"$<\" ; \nread regex @\"morphology/punctuation.tmp.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
+	$(AM_V_XFST)$(PRINTF) "read regex [ [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ] [\"-\" | \"/\"] \"#\" @\"filters/initialise-flags.est.xfst\"]* @\"$<\" (\"-\") ; \nread regex @\"morphology/punctuation.tmp.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######

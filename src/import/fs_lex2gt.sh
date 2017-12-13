@@ -75,8 +75,17 @@ cat tmp1 | ./lemma2twol.sed \
 | sed '/käsi:/s/käS1/&%{stemill%}/' \
 | sed '/vesi:/s/veS1/&%{stemill%}/' \
 | ./post_lex2lemma.sed \
+| sed '/mõne /s/mõnD3/mõn/' \
 > tmp1twol
 
+# | sed 's/mmB1/mB1/g' \
+#| sed 's/llD1/lD1/g' \
+#| sed 's/nnD1/nD1/g' \
+#| sed 's/rrD1/rD1/g' \
+#| sed 's/nnD3/nD3/g' \
+#| sed 's/rrS1/rS1/g' \
+#| sed '/mõne /s/mõnD3/mõn/' \
+#
  
 # create a file that contains everything from Filosoft lexicon 
 # and most of what will be in final Giellatekno lexicon

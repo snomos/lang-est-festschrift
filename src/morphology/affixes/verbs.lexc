@@ -491,6 +491,9 @@ LEXICON PL3VAD
               +Pl3+Aff:vad GI ;
 
 ! paradigmatic derivation, i.e. very regular
+! @R.Part.One@ means that this is not a latter part of a compound 
+! @R.Case.Par@ and @R.Case.Gen@ mean that this is a latter part of a compound 
+! and the previous word must be either in Par or Gen for this derivation to be allowable
 
 LEXICON NU_DERIVATION
   @R.Part.One@@P.POS.N@  NU_DERIVATION_SUF ;   ! no previous part; no restrictions   

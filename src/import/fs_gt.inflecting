@@ -32687,7 +32687,7 @@ lisa:0094| mõnesugune+Pron:mõne#sugune SOOLANE ;
 lisa:0602| mõnetine+A:mõnetine OLULINE ;
 vvs:0093| mõningane+Pron:mõningane OLULINE ;
 vvs:0093| mõningas+Pron:mõninga LOHAKAS ;
-vvs:0093| mõni+Pron:mõnD3 MÕNI ;
+vvs:0093| mõni+Pron:mõn MÕNI ;
 lisa:0094| Mõniste+N+Prop:Mõniste AASTA ;
 vvsv:0093| mõnitama+V:mõnita ELAMA ;
 tes:0902| mõnitamine+N:mõnitamine OLULINE ;
