@@ -454,6 +454,7 @@ s/^\([^ ]*t\)ugi [^@]*21[^@]*@NIMI.*$/& \1ugi:\1uG1/
 /[ =_-]v<aipa .*PIIM/s/%{rare%}//
 /[ =_-]r<iista .*PIIM/s/%{rare%}//
 /[ =_-]v<arna .*PIIM/s/%{rare%}//
+/[ =_-]v<arssa .*PIIM/s/%{rare%}//
 /[ =_-]v<atsa .*PIIM/s/%{rare%}//
 /[ =_-]v<enda .*PIIM/s/%{rare%}//
 /[ =_-]v<il]ja .*PIIM/s/%{rare%}//

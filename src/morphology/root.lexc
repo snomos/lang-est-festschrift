@@ -597,6 +597,8 @@ Multichar_Symbols
  @P.POS.N@
  @R.POS.NProp@
  @P.POS.NProp@
+ @R.POS.GA@
+ @P.POS.GA@
  @R.POS.NumCard@
  @P.POS.NumCard@
  @R.POS.NumCardCompound@   !!≈ | @CODE@ | compound numeral (viis+sada - five hundred)
@@ -629,6 +631,7 @@ Multichar_Symbols
  @R.Case.Short@  ! no case because stem is shortened (astraal-, nais-)
  @P.Case.Short@
  @D.Case@
+ @D.Case.Nom@
  @C.Case@  ! initialise case flag
 
 !! Remember there has been some derivation from A or N; for filtering compounds
@@ -813,7 +816,7 @@ LEXICON First     !!= * {{@CODE@}} a simplex word or the first part of a compoun
   @P.POS.Pron@ Pronouns ;                !!= * {{@CODE@}}
   @P.POS.V@ Verbs ;                   !!= * {{@CODE@}}
   @P.POS.Interj@ Interjections ;           !!= * {{@CODE@}}
-  @P.POS.N@@P.Case.Gen@ GenitiveAttributes ;      !!= * {{@CODE@}}
+  @P.POS.GA@@P.Case.Gen@ GenitiveAttributes ;      !!= * {{@CODE@}}
   @P.POS.Pref@ Prefixes ;                !!= * {{@CODE@}}
 
 ! the nature of the previous word is reflected by flag diacritics that were set back then
@@ -832,6 +835,9 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.N@@R.Case.Gen@ PlainLatterAdjective ; ! lauaahastuslik
   @R.POS.N@@R.Case.Par@ LatterAdjective_v ; ! mägejuhtiv
   @R.POS.N@@R.Case.Sem@ LatterAdjective_v ; ! mäestjuhtiv
+
+  @R.POS.GA@ LatterAdjective_ne ; ! himaalajajalgne
+  @R.POS.GA@@P.NeedAdj.On@ LatterNoun ;  ! himaalajamaitseline (latter noun is derived into adj) 
 
   @R.POS.NumCard@@R.Case.Gen@ LatterAdjective_ne ; ! viiemeetrine
   @R.POS.NumCardCompound@@R.Case.Gen@ LatterAdjective_ne ; ! kahekümnemeetrine
@@ -863,6 +869,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.N@@R.Case.Sem@ LatterDeverbal ;  ! mägedesttulek
   @R.POS.V@@R.Case.Sem@ LatterDeverbal ;  ! -ma, -mas etc lugematulek
   @R.POS.Adv@ LatterDeverbal ;            ! huupitulek
+  @R.POS.GA@ LatterDeverbal ;             ! himaalajatulek
 
 ! x + verb derivation
 ! verb derivations expect previous word to be either in Gen or Par
@@ -874,6 +881,8 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
   @R.POS.N@@R.Case.Nom@@R.NomStem.First@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
   @R.POS.N@@R.Case.Sem@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
+
+  @R.POS.GA@@P.Case.Gen@ LatterVerb ;   ! eestivihkaja
 
 ! NB only short adjectives are good here !!!
   @R.POS.A@@R.Case.Nom@@R.NomStem.First@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
@@ -898,25 +907,25 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
 LEXICON LatterAdjective
 
-  @P.POS.A@@C.Der@@C.Case@@C.NomStem@ Adjectives ;              !!= * {{@CODE@}}
+  @P.POS.A@@C.Der@@C.NomStem@ Adjectives ;              !!= * {{@CODE@}}
 
 LEXICON LatterAdjective_ne
 
-  @P.POS.A@@C.Der@@C.Case@@C.NomStem@ Adjectives_ne ;              !!= * {{@CODE@}}
+  @P.POS.A@@C.Der@@C.NomStem@ Adjectives_ne ;              !!= * {{@CODE@}}
 
 LEXICON LatterAdjective_v
 
-  @P.POS.A@@C.Der@@C.Case@@C.NomStem@ Adjectives_v ;              !!= * {{@CODE@}}
+  @P.POS.A@@C.Der@@C.NomStem@ Adjectives_v ;              !!= * {{@CODE@}}
 
 LEXICON PlainLatterAdjective
 
-  @P.POS.A@@C.Der@@C.Case@@C.NomStem@ PlainAdjectives ;              !!= * {{@CODE@}}
+  @P.POS.A@@C.Der@@C.NomStem@ PlainAdjectives ;              !!= * {{@CODE@}}
 
 LEXICON LatterNoun
-  @P.POS.N@@C.Der@@C.Case@@C.NomStem@ Nouns ;    
+  @P.POS.N@@C.Der@@C.NomStem@ Nouns ;    
 
 LEXICON LatterDeverbal
-  @P.POS.N@@C.Der@@C.Case@@C.NomStem@ DeverbalNouns ;    
+  @P.POS.N@@C.Der@@C.NomStem@ DeverbalNouns ;    
 
 LEXICON AnyLatterVerb     ! any verb derivation is allowed; set the case accordingly
               

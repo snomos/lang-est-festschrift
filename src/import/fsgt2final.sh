@@ -186,6 +186,7 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | sed '/^vesi+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 | sed '/;.*mnocompound/s/^\([^:]*+N\):\([^;]*;\)\(.*\)mnocompound/@R.Part.One@@P.Part.Bad@\1:@R.Part.One@@P.Part.Bad@\2\3/' \
 | sed '/;.*nnolastpart/s/^\([^:]*+N\):\([^;]*;\)\(.*\)nnolastpart/@R.Part.One@\1:@R.Part.One@\2\3/' \
+| sed 's/@R.Part.One@@R.Part.One@/@R.Part.One@/g' \
 \
 | sed '/-/s/@P.NomStem.First@//g' \
 | sed '/@akt+N/s/@P.NomStem.First@//g' \
@@ -246,7 +247,21 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | sed '/@vald+N/s/@P.NomStem.First@//g' \
 | sed '/@varr+N/s/@P.NomStem.First@//g' \
 | sed '/@žanr+N/s/@P.NomStem.First@//g' \
+| sed '/@soend+N/s/@P.NomStem.First@//g' \
+\
+| sed '/^iga+/s/^\([^:]*\):\(.*\)$/@D.Case.Nom@\1:@D.Case.Nom@\2/' \
+| sed '/^au+/s/^\([^:]*\):\(.*\)$/@D.Case.Nom@\1:@D.Case.Nom@\2/' \
+| sed '/@lust+/s/^\([^:]*\):\(.*\)$/@D.Case.Nom@\1:@D.Case.Nom@\2/' \
+\
+| sed -f bad_after_nom3.sed \
 >> nouns.lexc
+
+# grep 'Nom#...+' korpustest-8-alakriips.hjk.hfst.14dets | sed 's/^.*Nom#\(...\)+.*$/\1/' | sort | uniq -c | sed 's/ \([^ ][^ ][^ ]\)$/ sed \/^\1+\/s\/^\\([^:]*\\):\\(.*\\)$\/@D.Case.Nom@\\1:@D.Case.Nom@\\2\//' | sed 's/^.* \/^/\/^/' 
+# grep -v '\^töö+' | grep -v '\^ala+'
+#> ~/svn-giellatekno/main/experiment-langs/est/src/import/bad_after_nom3.sed
+# ... and filter by hand
+
+
 
 #echo '\nLEXICON PlainNouns_fiveplus\n' >> nouns.lexc
 #cat fs_gt.inflecting.tmp1 | grep '+N:' \

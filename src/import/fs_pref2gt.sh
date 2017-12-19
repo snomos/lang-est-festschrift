@@ -18,39 +18,49 @@ cat pref.pok \
 | grep '+?' \
 | sed 's/^\([^\t]*\)\t.*@\(.*\)$/\1+Pref:\2- #;/' \
 | ./diacritics.sed \
->>  pref.lexc
+>  pref.lexc
 
 echo 'ainu+Pref:ainu- #;' >> pref.lexc
 echo 'esi+Pref:esi- #;' >> pref.lexc
-echo 'ees+Pref:ees- #;' >> pref.lexc
-echo 'eel+Pref:eel- #;' >> pref.lexc
+echo 'ees+Pref:´ees- #;' >> pref.lexc
+echo 'eel+Pref:´eel- #;' >> pref.lexc
 echo 'ime+Pref:ime- #;' >> pref.lexc
 
-echo 'alg+Pref:alg- #;' >> pref.lexc
-echo 'all+Pref:all- #;' >> pref.lexc
-echo 'alla+Pref:alla- #;' >> pref.lexc
-echo 'anti+Pref:anti- #;' >> pref.lexc
-echo 'eht+Pref:eht- #;' >> pref.lexc
-echo 'eks+Pref:eks- #;' >> pref.lexc
+echo 'alg+Pref:´alg- #;' >> pref.lexc
+echo 'all+Pref:´all- #;' >> pref.lexc
+echo 'alla+Pref:´alla- #;' >> pref.lexc
+echo 'alpi+Pref:al,pi- #;' >> pref.lexc
+echo 'anti+Pref:an,ti- #;' >> pref.lexc
+echo 'eht+Pref:´eht- #;' >> pref.lexc
+echo 'eks+Pref:´eks- #;' >> pref.lexc
 echo 'emas+Pref:emas- #;' >> pref.lexc
 echo 'era+Pref:era- #;' >> pref.lexc
 echo 'eri+Pref:eri- #;' >> pref.lexc
 echo 'euro+Pref:euro- #;' >> pref.lexc
-echo 'finants+Pref:finants- #;' >> pref.lexc
+echo 'finants+Pref:fin`an,ts- #;' >> pref.lexc
 echo 'haju+Pref:haju- #;' >> pref.lexc
-echo 'hulgi+Pref:hulgi- #;' >> pref.lexc
-echo 'jae+Pref:jae- #;' >> pref.lexc
+echo 'hulgi+Pref:hul,gi- #;' >> pref.lexc
+echo 'jae+Pref:j´ae- #;' >> pref.lexc
 echo 'isas+Pref:isas- #;' >> pref.lexc
-echo 'kesk+Pref:kesk- #;' >> pref.lexc
+echo 'kesk+Pref:k´esk- #;' >> pref.lexc
+echo 'kvaasi+Pref:kvaasi- #;' >> pref.lexc
 echo 'külalis+Pref:külalis- #;' >> pref.lexc
-echo 'laus+Pref:laus- #;' >> pref.lexc
-echo 'lõhke+Pref:lõhke- #;' >> pref.lexc
+echo 'laus+Pref:l´aus- #;' >> pref.lexc
+echo 'lõhke+Pref:l´õhke- #;' >> pref.lexc
 echo 'meelis+Pref:meelis- #;' >> pref.lexc
 echo 'mega+Pref:mega- #;' >> pref.lexc
-echo 'mitte+Pref:mitte- #;' >> pref.lexc
+echo 'mitte+Pref:m´itte- #;' >> pref.lexc
 echo 'muidu+Pref:muidu- #;' >> pref.lexc
-echo 'multi+Pref:multi- #;' >> pref.lexc
-echo 'nais+Pref:nais- #;' >> pref.lexc
+echo 'multi+Pref:mul,ti- #;' >> pref.lexc
+echo 'nais+Pref:n´ais- #;' >> pref.lexc
+echo 'süva+Pref:süva- #;' >> pref.lexc
+echo 'lühimaa+Pref:lühi#m´aa- #;' >> pref.lexc
+echo 'pikamaa+Pref:pika#m´aa- #;' >> pref.lexc
+echo 'laiatarbe+Pref:laia#t´arbe- #;' >> pref.lexc
+echo 'linnalähi+Pref:linna#lähi- #;' >> pref.lexc
+echo 'nõuka+Pref:nõuka- #;' >> pref.lexc
+echo 'väli+Pref:väli- #;' >> pref.lexc
+echo 'põhi+Pref:põhi- #;' >> pref.lexc
 
 cat pref.lexc | sort -u >> prefixes.lexc
 
@@ -89,11 +99,9 @@ lisasin adv faili, nii et nüüd on veel lisamata:
  lähedal
 
 deverbid
-kaeve kandlus
+kandlus
 
 kapitalist ei tuletu kapitalismi alusel
-
-laiatarbe, linnalähi
 
 võiks olla lubatud 1. tüvena -ne -> sus, näit funktsionaalsus
  
