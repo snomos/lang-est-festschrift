@@ -106,7 +106,7 @@ kapitalist ei tuletu kapitalismi alusel
 võiks olla lubatud 1. tüvena -ne -> sus, näit funktsionaalsus
  
  
-miks ei tunne  hariduskapitalistide heleda+adj kahvatumust kannatadasaamise jne
+miks ei tunne  hariduskapitalistide heleda+adj kahvatumust jne
 
 miks ei tunne kümnendajärguline nooremlipnik
 

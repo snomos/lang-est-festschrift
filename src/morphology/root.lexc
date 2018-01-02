@@ -901,7 +901,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.Pron@@R.Case.Gen@ LatterVerb ;  
   @R.POS.Pron@@R.Case.Par@ LatterVerb ;
 
-  @R.POS.V@@D.Case@@P.Case.Par@ LatterVerb ;      ! infinitive, gerund
+  @R.POS.V@@D.Case@ AnyLatterVerb ;              ! infinitive
   @R.POS.V@@R.Case.Sem@ AnyLatterVerb ;          ! -ma, -mas etc
 
 

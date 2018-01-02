@@ -438,15 +438,18 @@ LEXICON IMPERS_AKSE    ! impersonal form -[td0]akse
    +Impers+Prs+Ind+Aff:akse GI ;
 
 LEXICON INFINITIVE    ! infinitive, gerund (des-form)
- @R.Part.One@ INFINITIVE_COMP ;     ! Note that these forms can be 1st part of a compound
 
-LEXICON INFINITIVE_COMP
                       :%>D7 A_INFINITIVE ;
 
 LEXICON A_INFINITIVE   ! common part of an infinitive, gerund (des-form);
                        ! also alone in a subparadigm of a few old words
 
+ @R.Part.One@             INF_COMP ;     ! This can be 1st part of a compound
+ @R.Part.One@@P.Part.Bad@ GER_COMP ;
+
+LEXICON INF_COMP
                   +Inf:a GI ;
+LEXICON GER_COMP
                   +Ger:es GI ;
 
 LEXICON CONDITIONAL    ! conditional present and past  
