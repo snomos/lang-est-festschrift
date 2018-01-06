@@ -144,29 +144,26 @@ LIST Rom = Rom ; #!! Romertall
 #!! !Tags for morphosyntactic properties
 
 LIST Nom = Nom ; #!! Nom
-LIST Acc = Acc ; #!! Acc
 LIST Gen = Gen ; #!! Gen
 LIST Ill = Ill ; #!! Ill
-LIST Loc = Loc ; #!! Loc
+LIST Ine = Ine ;
+LIST Ela = Ela ;
+LIST All = All ;
+LIST Ade = Ade ; 
+LIST Abl = Abl ; 
+LIST Tra = Tra ; 
+LIST Trm = Trm ; 
+LIST Abe = Abe ; 
 LIST Com = Com ; #!! Com
 LIST Ess = Ess ; #!! Ess
 LIST Par = Par ; #!! Ess
+
 LIST Sg = Sg ;   #!! Sg
 LIST Du = Du ;   #!! Du
 LIST Pl = Pl ;   #!! Pl
 LIST Cmp/SplitR = Cmp/SplitR ;	   #!! Cmp/SplitR
 LIST Cmp/SgNom = Cmp/SgNom ; #!! Cmp/SgNom Cmp/SgGen
 LIST Cmp/SgGen = Cmp/SgGen ; #!! Cmp/SgGen
-LIST PxSg1 = PxSg1 ;	   #!! PxSg1
-LIST PxSg2 = PxSg2 ;	   #!! PxSg2
-LIST PxSg3 = PxSg3 ;	   #!! PxSg3
-LIST PxDu1 = PxDu1 ;	   #!! PxDu1
-LIST PxDu2 = PxDu2 ;	   #!! PxDu2
-LIST PxDu3 = PxDu3 ;	   #!! PxDu3
-LIST PxPl1 = PxPl1 ;	   #!! PxPl1
-LIST PxPl2 = PxPl2 ;	   #!! PxPl2
-LIST PxPl3 = PxPl3 ;	   #!! PxPl3
-LIST Px = PxSg1 PxSg2 PxSg3 PxDu1 PxDu2 PxDu3 PxPl1 PxPl2 PxPl3 ; #!! Px
 
 LIST Comp = Comp ;		   #!! Comp
 LIST Superl = Superl ;	   #!! Superl
@@ -181,26 +178,22 @@ LIST Ind = Ind ;			   #!! Ind
 LIST Pot = Pot ;			   #!! Pot
 LIST Cond = Cond ;			   #!! Cond
 LIST Imprt = Imprt ;		   #!! Imprt
-LIST ImprtII = ImprtII ;	   #!! ImprtII
+
 LIST Sg1 = Sg1 (p1 sg) ;			   #!! Sg1
 LIST Sg2 = Sg2 (p2 sg) ;			   #!! Sg2
 LIST Sg3 = Sg3 (p3 sg) ;			   #!! Sg3
-LIST Du1 = Du1 (p1 du) ;			   #!! Du1
-LIST Du2 = Du2 (p2 du) ;			   #!! Du2
-LIST Du3 = Du3 (p3 du) ;			   #!! Du3
 LIST Pl1 = Pl1 (p1 pl) ;			   #!! Pl1
 LIST Pl2 = Pl2 (p2 pl);			   #!! Pl2
 LIST Pl3 = Pl3 (p3 pl);			   #!! Pl3
+
 LIST Inf = Inf ;			   #!! Inf
 LIST ConNeg = ConNeg ;		   #!! ConNeg
 LIST Neg = Neg ;			   #!! Neg
 LIST PrfPrc = PrfPrc ;		   #!! PrfPrc
-LIST VGen = VGen ;			   #!! VGen
 LIST PrsPrc = PrsPrc ;		   #!! PrsPrc
 LIST Ger = Ger ;			   #!! Ger
 LIST Sup = Sup ;			   #!! Sup
-LIST Actio = Actio ;		   #!! Actio
-LIST VAbess = VAbess ;		   #!! VAbess
+
 
 
 

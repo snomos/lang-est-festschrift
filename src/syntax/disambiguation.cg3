@@ -46,26 +46,21 @@ LIST EOS = (<<<) (</s>); # vislcg and CG-2 together.
 LIST N = N ;
 LIST Sg = Sg ;
 LIST Pl = Pl ;
-LIST Nom = Nom ;
-LIST Acc = Acc ;
-LIST Gen = Gen ;
+
+LIST Nom = Nom ; #!! Nom
+LIST Gen = Gen ; #!! Gen
+LIST Ill = Ill ; #!! Ill
 LIST Ine = Ine ;
 LIST Ela = Ela ;
-LIST Ill = Ill ;
-LIST Com = Com ;
-LIST Ess = Ess ;
-
-LIST PxSg1 = PxSg1 ;
-LIST PxSg2 = PxSg2 ;
-LIST PxSg3 = PxSg3 ;
-
-LIST PxDu1 = PxDu1 ;
-LIST PxDu2 = PxDu2 ;
-LIST PxDu3 = PxDu3 ;
-
-LIST PxPl1 = PxPl1 ;
-LIST PxPl2 = PxPl2 ;
-LIST PxPl3 = PxPl3 ;
+LIST All = All ;
+LIST Ade = Ade ; 
+LIST Abl = Abl ; 
+LIST Tra = Tra ; 
+LIST Trm = Trm ; 
+LIST Abe = Abe ; 
+LIST Com = Com ; #!! Com
+LIST Ess = Ess ; #!! Ess
+LIST Par = Par ; #!! Ess
 
 LIST V = V ;
 LIST Prs = Prs ;
@@ -74,10 +69,6 @@ LIST Prt = Prt ;
 LIST Sg1 = Sg1 ;
 LIST Sg2 = Sg2 ;
 LIST Sg3 = Sg3 ;
-
-LIST Du1 = Du1 ;
-LIST Du2 = Du2 ;
-LIST Du3 = Du3 ;
 
 LIST Pl1 = Pl1 ;
 LIST Pl2 = Pl2 ;
@@ -90,7 +81,6 @@ LIST Foc/gan = Foc/gan ;
 
 LIST PrfPrc = PrfPrc ;
 LIST PrsPrc = PrsPrc ;
-LIST VGen = VGen ;
 LIST Ger = Ger ;
 
 LIST Ind = Ind ;
