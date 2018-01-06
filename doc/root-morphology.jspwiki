@@ -588,7 +588,11 @@ Case is used for filtering derivations and compounds
 
 Remember there has been some derivation from A or N; for filtering compounds
 
-Remember the stem type; for filtering compounds
+Remember the stem type; for filtering compounds (not used at the moment)
+
+A special condition that is used for filtering derivations and compounds
+
+Sg Nom is allowed as first part of a compound only for some words
 
 
 
@@ -631,9 +635,10 @@ Remember the stem type; for filtering compounds
 
 This is actually a loop, formed after applying Kleene star 
 concatenation on the transducer with itself.
-It is controlled by setting up flags on the path:
+When looping, it remembers which paths it has taken in every loop. 
+For remembering it sets up flags on the path:
 1. flag the first 3 loops (thus forbidding any more loops)
-2. flag the POS and inflection, to use in the following loop
+2. in every loop, flag the POS and inflection, to be used in the following loop
 
 strictly simplex word; cannot be a part of a compound
 a simplex word, or the first part of a compound
@@ -661,7 +666,7 @@ strictly simplex words; cannot be a part of a compound
  * {{  @P.POS.Pron@ Pronouns ;                }}
  * {{  @P.POS.V@ Verbs ;                   }}
  * {{  @P.POS.Interj@ Interjections ;           }}
- * {{  @P.POS.N@@P.Case.Gen@ GenitiveAttributes ;      }}
+ * {{  @P.POS.GA@@P.Case.Gen@ GenitiveAttributes ;      }}
  * {{  @P.POS.Pref@ Prefixes ;                }}
 
 
@@ -690,19 +695,18 @@ strictly simplex words; cannot be a part of a compound
 
 
 
- * {{  @P.POS.A@@C.Der@@C.Case@@C.Stem@ Adjectives ;              }}
 
 
- * {{  @P.POS.A@@C.Der@@C.Case@@C.Stem@ Adjectives_ne ;              }}
+ * {{  @P.POS.A@@C.Der@@C.NomStem@ Adjectives ;              }}
 
 
- * {{  @P.POS.A@@C.Der@@C.Case@@C.Stem@ Adjectives_v ;              }}
+ * {{  @P.POS.A@@C.Der@@C.NomStem@ Adjectives_ne ;              }}
 
 
- * {{  @P.POS.A@@C.Der@@C.Case@@C.Stem@ ShortAdjectives ;              }}
+ * {{  @P.POS.A@@C.Der@@C.NomStem@ Adjectives_v ;              }}
 
 
- * {{  @P.POS.A@@C.Der@@C.Case@@C.Stem@ PlainAdjectives ;              }}
+ * {{  @P.POS.A@@C.Der@@C.NomStem@ PlainAdjectives ;              }}
 
 
 
