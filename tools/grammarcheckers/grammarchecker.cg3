@@ -351,14 +351,14 @@ SET NOT-COMMA = WORD - COMMA ;  #!! NOT-COMMA
 #!! !Case sets
 # ---------
 
-LIST ADVLCASE = Ill Loc Com Ess ; #!! ADLVCASE
+LIST ADVLCASE =  Ill  Ine  Ela  All  Ade  Abl  Tra  Trm  Abe  Com  Ess ; #!! ADLVCASE
 
-LIST CASE-AGREEMENT = Nom Acc Gen (Pl Ill) Loc Com Ess ; #!! CASE-AGREEMENT
-LIST CASE = Nom Acc Gen Ill Loc Com Ess ; #!! CASE
+LIST CASE-AGREEMENT =  Nom  Gen  Ill  Ine  Ela  All  Ade  Abl  Abe  Par  ; #!! CASE-AGREEMENT
+LIST CASE =  Nom  Gen  Ill  Ine  Ela  All  Ade  Abl  Tra  Trm  Abe  Com  Ess  Par  ; #!! CASE
 
 SET NOT-NOM = CASE - Nom ; #!! NOT-NOM
 SET NOT-GEN = CASE - Gen ; #!! NOT-GEN
-SET NOT-ACC = CASE - Acc ; #!! NOT-ACC
+
 
 #!! !Verb sets
 # ---------
@@ -373,7 +373,7 @@ SET NOT-V = WORD - V ; #!! NOT-V
 
 SET REAL-NEG = Neg - Sup ; #!! REAL-NEG
 
-SET MOOD-V = Ind OR Pot OR Imprt OR ImprtII OR Cond OR (Neg Sup) ; #!! MOOD-V
+SET MOOD-V = Ind OR Pot OR Imprt OR Cond OR (Neg Sup) ; #!! MOOD-V
 
 SET NOT-PRFPRC = WORD - PrfPrc ; #!! NOT-PRFPRC
 
@@ -479,7 +479,6 @@ SET NOT-ADV            = NOT-ADV-DE OR CLB ;
 SET NOT-ADV-N          = NOT-ADV - N;
 SET NOT-ADV-PCLE       = NOT-ADV - Pcle ;
 SET NOT-ADV-INDEF      = NOT-ADV - Indef ;
-SET NOT-ADV-PCLE-ILL-LOC-COM = WORD - Adv - Pcle - Ill - Loc - Com;
 SET NOT-A-ADV-PCLE = WORD - Pcle - A - Adv ; #
 
 
@@ -511,7 +510,6 @@ SET NP-HEAD-PL     = PL-PRON OR (N Pl) OR (A Pl) - Cmp/SplitR  ;
 SET NP-HEAD-SG-NOM = SG-PRON + Nom OR (N Sg Nom) OR (A Sg Nom) - Cmp/SplitR ;
 SET NP-HEAD-PL-NOM = PL-PRON + Nom OR (N Pl Nom) OR (N Coll Nom) OR (A Pl Nom) - Cmp/SplitR ;
 SET NP-HEAD-NOM    = NP-HEAD-SG-NOM OR NP-HEAD-PL-NOM ;
-SET NP-HEAD-ACC    = (Pron Acc) OR (N Acc) OR (A Acc) - Cmp/SplitR - (Dem Attr);
 SET NP-HEAD-GEN    = (Pron Gen) OR (N Gen) OR (A Gen) - Cmp/SplitR - (Dem Attr)   ;
 
 #!! !The PRE-NP-HEAD family of sets
@@ -527,7 +525,7 @@ SET PRE-NP-HEAD = (Prop Attr) OR (Prop @>N) OR (A Attr) OR (ABBR Attr)
          (PrfPrc @>N) OR PrsPrc OR (A Ord) ;
          # The strict version of items that can only be premodifiers, not parts of the predicate
 
-SET PRE-A-N     = (Pron Pers Gen) OR (Pron Pers Acc) OR (Pron Indef) OR Num OR (A Ord) OR (Pron Dem) OR (Pron Refl Gen) OR (Pron Refl Acc) ;
+SET PRE-A-N     = (Pron Pers Gen) OR (Pron Indef) OR Num OR (A Ord) OR (Pron Dem) OR (Pron Refl Gen) ;
 
 SET NOT-PRE-A-N = WORD - PRE-A-N ;
 
@@ -540,8 +538,8 @@ SET NOT-NPMOD     = WORD - PRE-NP-HEAD OR ABBR OR @CVP ;
 # This is the previous NPNH (npnh) set.
 # NOT-NPMOD  = "NOT-PRE-NP-HEAD"
 
-SET NOT-NPMOD-ACC     = NOT-NPMOD - Acc OR ABBR ;
-SET NOT-NPMOD-ACC-ADV     = NOT-NPMOD - Acc - Adv OR ABBR ;
+SET NOT-NPMOD-ACC     = NOT-NPMOD OR ABBR ;
+SET NOT-NPMOD-ACC-ADV     = NOT-NPMOD - Adv OR ABBR ;
 
 SET NOT-NPMODADV    = WORD - PRE-NP-HEAD - Adv ;
 SET NOT-NPMODADV-INDEF   = WORD - PRE-NP-HEAD - Adv - Indef ;
@@ -577,7 +575,7 @@ SET BOC = S-BOUNDARY OR BOS ;
 SET BOC-PUNCT = BOC - ("-") - ("–") ;
 SET EOC = S-BOUNDARY OR EOS ;
 
-SET NP-BOUNDARY = BOS OR EOS OR REAL-CLB OR Inf OR VGen OR Sup OR PPRON-NOT-GEN OR Recipr OR Po OR Pr OR Pcle OR Interj OR CS OR CP OR @CVP ;
+SET NP-BOUNDARY = BOS OR EOS OR REAL-CLB OR Inf OR Sup OR PPRON-NOT-GEN OR Recipr OR Po OR Pr OR Pcle OR Interj OR CS OR CP OR @CVP ;
 
 SET SV-BOUNDARY = S-BOUNDARY OR Inf OR Sup OR FMAINV ;
 
