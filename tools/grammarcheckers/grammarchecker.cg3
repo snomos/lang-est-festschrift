@@ -585,6 +585,15 @@ SET CCCOMMA = CC OR COMMA ;
 
 
 
+
+
+# ===================================== #
+#!! !!! Grammarchecker rules begin here 
+# ===================================== #
+
+
+
+
 #!! !Grammarchecker sets
 
 LIST &err-agr = &err-agr ;
@@ -597,7 +606,13 @@ LIST &err-conneg-not-3rdsg = &err-conneg-not-3rdsg ;
 
 MAPPING-PREFIX = & ;
 
+
+#!! !!Grammarchecker rules
+
 SECTION
+
+
+#!! !Speller rules
 
 # Speller suggestions rule – add &SUGGESTWF to any spelling suggestion
 # that we actually want to suggest to the user.
@@ -605,6 +620,10 @@ SECTION
 ADD:spell-it-all (&typo &SUGGESTWF) (<spelled>) ;
 # But perhaps you want to only suggest spellings of words that are not inside "quotes":
 ADD:spell-conservatively (&typo &SUGGESTWF) (<spelled>) IF (NEGATE -1 QMARK LINK 2 QMARK);
+
+
+#!! !Agreement rules
+
 
 # A simple grammar checker rule without suggestions: Ensure preceding nominal agrees with the verb
 ADD:err-agr (&err-agr) TARGET V IF (-1C Sg + Nom) (0 V) (NOT 0 Sg3);
@@ -614,8 +633,14 @@ ADD:err-agr (&err-agr) TARGET V IF (-1C Pron + Pl1 + Nom) (0 V) (NOT 0 Pl1);
 ADD:err-agr (&err-agr) TARGET V IF (-1C Pron + Pl2 + Nom) (0 V) (NOT 0 Pl2);
 
 
-ADD:err-conneg-not-3rdsg (&err-conneg-not-3rdsg) TARGET (V Prs Sg3) IF (0 Ind OR Cond)(-1 (V Neg) LINK NOT 0 Sup);	
 
+#!! !Negation verb rules
+
+ADD:err-conneg-not-3rdsg (&err-conneg-not-3rdsg) TARGET (V Prs Sg3) IF (0 Ind OR Cond)(-1 ("ei") LINK NOT 0 Sup);	
+
+
+
+#!! !Postposition rules
 
 # And one with a suggestion where we simply change the tag Sg into Attr:
 ADD:attr-not-pred (&attr-not-pred) TARGET (A Sg) IF (NOT 0 Attr OR Gen) (1 CC LINK *1 COMMON-N) ;
@@ -624,6 +649,9 @@ COPY:attr-not-pred (Attr &SUGGEST) EXCEPT (Sg) TARGET (&attr-not-pred) ;
 # suggestion form from that reading. The copy should contain the error
 # tag too – &-prefixed error tags are ignored when generating, but
 # used to create human-readable messages.
+
+
+#!! !Punctuation rules
 
 # Simple punctuation rules showing how to change the lemma in the suggestions:
 ADD:use-guillemets (&guillemets) TARGET (""");
