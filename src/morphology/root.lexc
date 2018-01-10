@@ -635,10 +635,16 @@ Multichar_Symbols
  @C.Case@  ! initialise case flag
 
 !! Remember there has been some derivation from A or N; for filtering compounds
+ @P.Der.us@
  @P.Der.N@
  @P.Der.A@
  @P.Der.Adv@
+ @D.Der.us@
+ @D.Der.N@
+ @D.Der.A@
+ @D.Der.Adv@
  @D.Der@
+ @R.Der.us@
  @C.Der@
 
 !! Remember the stem type; for filtering compounds (not used at the moment)
@@ -791,8 +797,8 @@ LEXICON Root !!= * {{@CODE@}} is the starting point of everything
 
 ! D.Der means that the previous word should not be a derived one;
 ! it may be too restrictive here...
-@R.Part.One@@P.Part.Two@@C.Cap@@D.Case.PlNom@@D.Der@ Latter ;   ! second loop; latter part
-@R.Part.Two@@P.Part.Three@@C.Cap@@D.Case.PlNom@@D.Der@ Latter ;   ! third loop; latter part
+@R.Part.One@@P.Part.Two@@C.Cap@@D.Case.PlNom@@D.Der.N@@D.Der.A@@D.Der.Adv@ Latter ;   ! second loop; latter part
+@R.Part.Two@@P.Part.Three@@C.Cap@@D.Case.PlNom@@D.Der.N@@D.Der.A@@D.Der.Adv@ Latter ;   ! third loop; latter part
 
 
 LEXICON Single     !! strictly simplex words; cannot be a part of a compound
@@ -837,7 +843,6 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.N@@R.Case.Sem@ LatterAdjective_v ; ! mäestjuhtiv
 
   @R.POS.GA@ LatterAdjective_ne ; ! himaalajajalgne
-  @R.POS.GA@@P.NeedAdj.On@ LatterNoun ;  ! himaalajamaitseline (latter noun is derived into adj) 
 
   @R.POS.NumCard@@R.Case.Gen@ LatterAdjective_ne ; ! viiemeetrine
   @R.POS.NumCardCompound@@R.Case.Gen@ LatterAdjective_ne ; ! kahekümnemeetrine
@@ -845,7 +850,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
   @R.POS.A@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ;  ! rämepunane
   @R.POS.A@@R.Case.Gen@ LatterAdjective_ne ;  ! suureruuduline
-  @R.POS.A@@R.Case.Gen@@P.NeedAdj.On@ LatterNoun ;  ! halvamaitseline (latter noun is derived into adj) 
+  @R.POS.A@@R.Case.Nom@@R.Der.us@ LatterAdjective_ne ;  ! funktsionaalsusjalgne
 
   @R.POS.Pron@@R.Case.Gen@ LatterAdjective ; ! enesepunane
 
@@ -912,6 +917,7 @@ LEXICON LatterAdjective
 LEXICON LatterAdjective_ne
 
   @P.POS.A@@C.Der@@C.NomStem@ Adjectives_ne ;              !!= * {{@CODE@}}
+  @P.NeedAdj.On@ LatterNoun ;                    !! järguline	järk+N+Der/line+A+Sg+Nom
 
 LEXICON LatterAdjective_v
 

@@ -106,11 +106,14 @@ kapitalist ei tuletu kapitalismi alusel
 võiks olla lubatud 1. tüvena -ne -> sus, näit funktsionaalsus
  
  
-miks ei tunne  hariduskapitalistide heleda+adj kahvatumust jne
+miks ei tunne: 
+ hariduskapitalistide 
+heleda+adj OK 9.12.2018 
+kahvatumust OK 9.12.2018
 
-miks ei tunne kümnendajärguline nooremlipnik
+nooremlipnik - lisasin fs_lex-sse 9.12.2018
 
-kas on õige pikemad arvsõnad + adj?
+kas on õige pikemad arvsõnad + adj? OK 9.12.2018
 
 
 

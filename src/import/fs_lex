@@ -37805,9 +37805,9 @@ lisa:1001|kindlustus_lits<ents kindlustus_lits<entsi kindlustus_lits?entsi!\S\.2
 lisa:1001|aja_l<ooline aja_l<oolise aja_l<oolis[T!\A\.12^I^+7!&&(!\A\.10+7!)
 lisa:1001|m<ets_l<oom m<ets_l<ooma m<ets_looma!\S\.22^I^!
 lisa:1001|t<ee_l<õik t<ee_l<õiku t<ee_lõigu!\S\.22^E^!
-lisa:1001|<aasta_l<õpp <aasta_l<õppu <aasta_lõpu!\SB\.22^E^!
-lisa:1001|kool]i_l<õpp kool]i_l<õppu kool]i_lõpu!\SB\.22^E^!
-lisa:1001|nädala_l<õpp nädala_l<õppu nädala_lõpu!\SB\.22^E^!
+lisa:1001|<aasta_l<õpp <aasta_l<õppu <aasta_lõpu!\S\.22^E^!
+lisa:1001|kool]i_l<õpp kool]i_l<õppu kool]i_lõpu!\SB.22^E^!
+lisa:1001|nädala_l<õpp nädala_l<õppu nädala_lõpu!\S\.22^E^!
 lisa:1001|elu_lugu elu_l<oo elu_l<ukku!\S\.18!
 lisa:1001|elevan]di_l<uu!\S\.26+9!%uu>u[I%
 lisa:1001|sääre_l<uu!\S\.26+9!%uu>u[I%
@@ -70969,4 +70969,5 @@ lisa:1217|r<aud_<ürt r<aud_<ürti r<aud_ürdi!\S\.22^E^!
 lisa:1217|sügis_<iil sügis_<iili sügis_iili!\S\.22^E^!
 lisa:1217|imu!\S\.17!
 lisa:1217|k<ilp_t<äi!\S\.26!
+lisa:1218|noorem_l<ipn<ik noorem_l<ipn<ikku noorem_l<ipniku!\S\.25^E^+11!
 

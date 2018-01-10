@@ -635,7 +635,7 @@ LEXICON KOND_DERIVATION_SUF
            +Der/kond+N:»konni TI_DERIVATION ;     ! elanikkonniti
 
 LEXICON US_DERIVATION
-  @P.Der.N@ US_DERIVATION_SUF ;
+  @P.Der.us@ US_DERIVATION_SUF ;
 
 LEXICON US_DERIVATION_SUF
              +Der/us+N:»us OLULINE ;         ! elajalikkus, elavus, ...
