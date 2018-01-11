@@ -129,5 +129,24 @@ define BadDer4 [
     [{ll} "+N" "+Der/lik"]    # do not allow vasall+lik because the normal cons cluster phon rule would turn it into vasallik
     ] ;
 
-regex ~[ BadDer1 ?* ] & ~[ BadDer5 ?* ] & ~[ ?* BadDer2 ?* ] & ~[ ?* BadDer3 ?* ] & ~[ ?* BadDer4 ?* ] ;
+# some words with certain suffixes make bad components in compounds  
+# in other words, BadDer6 adds more exceptions to BadDer1
+
+define BadDer6 [
+    [{ahi} "+N" "+Der/lik"] | # k_ahju+lik
+    [{imu} "+N" "+Der/lik"] | # imu+lik
+    [{hoog} "+N" "+Der/lik"] | # _hoo+lik
+    [{kee} "+N" "+Der/lik"] | # keelik
+    [{voog} "+N" "+Der/lik"] | # voo+lik
+    [{suss} "+N" "+Der/lik"] | # _sus+lik
+    [{tuss} "+N" "+Der/lik"] | # _tus+lik
+    [{uss} "+N" "+Der/lik"] | # _us+lik
+    [{ema} "+N" "+Der/line"] | # te_ema+line
+    [{kubu} "+N" "+Der/line"] | # koolist
+    [{ott} "+N" "+Der/line"] | # psühho_oti+line
+    [{udu} "+N" "+Der/line"]   # ru_udu+line
+    ] ;
+
+
+regex ~[ BadDer1 ?* ] & ~[ BadDer5 ?* ] & ~[ ?* BadDer2 ?* ] & ~[ ?* BadDer3 ?* ] & ~[ ?* BadDer4 ?* ] & ~[ BadDer6 ?* ];
 

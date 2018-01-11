@@ -54,6 +54,8 @@ cat adjectives.tmp1 \
 >> adjectives.tmp2
 cat adjectives.tmp2 \
 | sed '/;.*nnolastpart/s/^\([^:]*+A\):\([^;]*;\)\(.*\)nnolastpart/@R.Part.One@\1:@R.Part.One@\2\3/' \
+| sed '/@kasutu+/s/@P.NomStem.First@//g' \
+| sed '/@antu+/s/@P.NomStem.First@//g' \
 | sort -u >> adjectives.lexc
 
 echo '\nLEXICON NoninflectingAdjectives\n' > noninflecting_adjectives.lexc

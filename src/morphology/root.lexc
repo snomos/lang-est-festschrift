@@ -866,6 +866,8 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 ! NB only short adjectives are good here !!!
   @R.POS.A@@R.Case.Nom@@R.NomStem.First@ LatterNoun ;   ! lapikriiul
 
+  @R.POS.A@@R.Case.Nom@@D.NomStem.First@@R.Der.us@ LatterNoun ;  ! funktsionaalsusriiul
+
 ! NB only some pronouns !
   @R.POS.Pron@@R.Case.Gen@ LatterNoun ;        ! meieriiul kelleriiul (?)
 
@@ -891,6 +893,8 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
 ! NB only short adjectives are good here !!!
   @R.POS.A@@R.Case.Nom@@R.NomStem.First@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
+
+  @R.POS.A@@R.Case.Nom@@D.NomStem.First@@R.Der.us@@P.Case.Gen@ LatterVerb ;  ! funktsionaalsusprogrammeerimine
 
   @R.POS.A@@R.Case.Short@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
 
