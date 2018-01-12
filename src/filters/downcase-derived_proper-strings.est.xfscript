@@ -15,13 +15,14 @@ define Flag       "@U.Cap.Opt@"      ;
 define CmpHyph    "@U.CmpHyph.TRUE@" ;
 
 # The following flag diacritics are used for regulating (proper noun) compounding
-define CmpFlags   ["@D.Part@" | "@P.Part.Bad@" | "@P.Part.One@" 
-                   | "@P.Part.Two@" | "@P.Part.Three@" | "@P.POS.NProp@" ] ;
+#define CmpFlags   ["@D.Part@" | "@P.Part.Bad@" | "@P.Part.One@" 
+#                   | "@P.Part.Two@" | "@P.Part.Three@" | "@P.POS.NProp@" ] ;
 
 # The following flag diacritics are copied from initialise-flags.est.xfscript
 # They are inserted before a word if the word is after a - or /
 # in order to clear the influence of previously set flags
-define InitialiseFlags ["@C.Cap@" | "@C.Part@" | "@C.POS@" | "@C.Case@" | "@C.Der@" | "@C.Stem@" ] ;
+define InitialiseFlags ["@C.Cap@" | "@C.Part@" | "@C.POS@" | "@C.Case@" 
+                      | "@C.NomStem@" | "@C.Der@" | "@C.NeedAdj@" | "@C.Bad@" ] ;
 
 #@IF_HFST@define HypMinFlag "@P.LEXNAME.Root@" ;
 

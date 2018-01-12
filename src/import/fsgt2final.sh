@@ -187,7 +187,9 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | sed '/^käsi+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 | sed '/^tõsi+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 | sed '/^vesi+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
-| sed '/;.*mnocompound/s/^\([^:]*+N\):\([^;]*;\)\(.*\)mnocompound/@R.Part.One@@P.Part.Bad@\1:@R.Part.One@@P.Part.Bad@\2\3/' \
+\
+| sed '/;.*mnocompound/s/^\([^:]*+N\):\([^;]*;\)\(.*\)mnocompound/@R.Part.One@@P.Part.Bad@\1:@R.Part.One@@P.Part.Bad@\2\3/' | sed '/^vana+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Bad.Nonfinal@\1:@P.Bad.Nonfinal@\2\3/' \
+\
 | sed '/;.*nnolastpart/s/^\([^:]*+N\):\([^;]*;\)\(.*\)nnolastpart/@R.Part.One@\1:@R.Part.One@\2\3/' \
 | sed 's/@R.Part.One@@R.Part.One@/@R.Part.One@/g' \
 \

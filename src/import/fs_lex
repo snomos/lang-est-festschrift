@@ -22176,7 +22176,6 @@ vvs:0093|t<oht t<ohtu tohu!\S\.22^E^!
 vvs:0093|t<ohter t<ohtri!\S\.2+9!%i>e[I%
 vvs:0093|tohterdus tohterduse!\S\.11^I^+7!
 vvs:0093|tohuvabohu (tohuvab<ohhu)!\S\.17!
-vvs:0093|t<oi!\S\.26!
 vvs:0093|toibutus toibutuse!\S\.11^I^+7!
 vvs:0093|toide t<oite!\S\.6+9!
 vvs:0093|toidus toiduse!\S\.9+9!
@@ -70969,5 +70968,9 @@ lisa:1217|r<aud_<ürt r<aud_<ürti r<aud_ürdi!\S\.22^E^!
 lisa:1217|sügis_<iil sügis_<iili sügis_iili!\S\.22^E^!
 lisa:1217|imu!\S\.17!
 lisa:1217|k<ilp_t<äi!\S\.26!
-lisa:1218|noorem_l<ipn<ik noorem_l<ipn<ikku noorem_l<ipniku!\S\.25^E^+11!
+lisa:0118|noorem_l<ipn<ik noorem_l<ipn<ikku noorem_l<ipniku!\S\.25^E^+11!
+lisa:0118|vana_t<oi!\S\.26!
+lisa:0118|vana_<ät]t vana_<ät]ti vana_ät]i!\S\.22^E^!
+lisa:0118|vana_r<eo!\S\.26!
+lisa:0118|reumat<oid_artr<iit reumat<oid_artr<iiti reumat<oid_artr?iidi!\S\.22^E^+7!
 

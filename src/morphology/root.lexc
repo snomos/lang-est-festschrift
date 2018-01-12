@@ -582,9 +582,14 @@ Multichar_Symbols
  @R.Part.One@        !!≈ | @CODE@ | Require that the first part has been encountered 
  @P.Part.Two@        !!≈ | @CODE@ | Indicate that this could be the second part of a compound
  @R.Part.Two@        !!≈ | @CODE@ | Require that the second part has been encountered
- @P.Part.Three@        !!≈ | @CODE@ | Indicate that this could be the third part of a compound
+ @P.Part.Three@      !!≈ | @CODE@ | Indicate that this could be the third part of a compound
  @P.Part.Bad@        !!≈ | @CODE@ | Indicate that this cannot be a part of a compound
  @C.Part@
+
+!! A special flag for limiting compounding
+ @P.Bad.Nonfinal@       !!≈ | @CODE@ | Indicate that this can only be the last part of a compound
+ @D.Bad.Nonfinal@       !!≈ | @CODE@ | Disallow a non-final part of a compound
+ @C.Bad@
 
 !! POS is used for filtering derivations and compounds
  @R.POS.A@
@@ -795,11 +800,14 @@ LEXICON Root !!= * {{@CODE@}} is the starting point of everything
 @D.Part@@P.Part.Bad@ Single ;      !! strictly simplex word; cannot be a part of a compound
 @D.Part@@P.Part.One@ First ;       !! a simplex word, or the first part of a compound
 
+@R.Part.One@@P.Part.Two@ Nonfirst ;   ! second loop; 
+@R.Part.Two@@P.Part.Three@ Nonfirst ;   ! third loop; 
+
+LEXICON Nonfirst
+
 ! D.Der means that the previous word should not be a derived one;
 ! it may be too restrictive here...
-@R.Part.One@@P.Part.Two@@C.Cap@@D.Case.PlNom@@D.Der.N@@D.Der.A@@D.Der.Adv@ Latter ;   ! second loop; latter part
-@R.Part.Two@@P.Part.Three@@C.Cap@@D.Case.PlNom@@D.Der.N@@D.Der.A@@D.Der.Adv@ Latter ;   ! third loop; latter part
-
+  @D.Bad.Nonfinal@@C.Cap@@D.Case.PlNom@@D.Der.N@@D.Der.A@@D.Der.Adv@ Latter ;   ! a latter part
 
 LEXICON Single     !! strictly simplex words; cannot be a part of a compound
 
