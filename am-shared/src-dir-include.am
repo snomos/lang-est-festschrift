@@ -319,6 +319,7 @@ analyser-gt-desc.tmp.%: analyser-raw-gt-desc.%                \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-orig_lang-tags.%           \
 					orthography/inituppercase.compose.%       \
+					orthography/allcaps.compose.%       \
 					orthography/spellrelax.compose.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/remove-area-tags.$*\"                \
@@ -337,7 +338,8 @@ analyser-gt-desc.tmp.%: analyser-raw-gt-desc.%                \
 			define fst \n\
 			set flag-is-epsilon ON\n\
 			read regex fst \
-			.o. @\"orthography/inituppercase.compose.$*\"       \
+			.o. [@\"orthography/inituppercase.compose.$*\"       \
+			| @\"orthography/allcaps.compose.$*\" ]      \
 			.o. @\"orthography/spellrelax.compose.$*\"          \
 			;\n\
 		 save stack $@\n\
@@ -480,7 +482,8 @@ analyser-gt-norm.tmp.%: analyser-raw-gt-desc.%                \
 					filters/remove-orthography-tags.%         \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-orig_lang-tags.%           \
-					orthography/inituppercase.compose.%
+					orthography/inituppercase.compose.%       \
+					orthography/allcaps.compose.%     
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/remove-area-tags.$*\"                \
 			.o. @\"filters/remove-dialect-tags.$*\"             \
@@ -500,7 +503,8 @@ analyser-gt-norm.tmp.%: analyser-raw-gt-desc.%                \
 			define fst \n\
 			set flag-is-epsilon ON\n\
 			read regex fst \
-			.o. @\"orthography/inituppercase.compose.$*\"       \
+			.o. [@\"orthography/inituppercase.compose.$*\"       \
+			| @\"orthography/allcaps.compose.$*\" ]      \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)

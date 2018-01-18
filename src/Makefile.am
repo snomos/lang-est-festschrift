@@ -44,14 +44,20 @@ GT_GENERATORS=
 
 #### Xerox transducers:
 if CAN_XFST
-GT_ANALYSERS+=
-GT_GENERATORS+=
+GT_ANALYSERS+=analyser-gt-desc.xfst \
+			  analyser-gt-norm.xfst \
+			  analyser-disamb-gt-desc.xfst
+GT_GENERATORS+=generator-gt-desc.xfst \
+			   generator-gt-norm.xfst
 endif # CAN_XFST
 
 #### HFST transducers
 if CAN_HFST
-GT_ANALYSERS+=
-GT_GENERATORS+=
+GT_ANALYSERS+=analyser-gt-desc.hfst \
+			  analyser-gt-norm.hfst \
+			  analyser-disamb-gt-desc.hfst
+GT_GENERATORS+=generator-gt-desc.hfst \
+			   generator-gt-norm.hfst
 endif # CAN_HFST
 
 #### FOMA transducers
@@ -325,7 +331,18 @@ generator-raw-gt-desc.simple.hfst: generator-raw-gt-desc.tmp.hfst \
 # the first part may end with a hyphen (ajaloolis-)
 generator-raw-gt-desc.comp.hfst: generator-raw-gt-desc.simple.hfst \
 				filters/evaluate-flags.est.hfst
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex [[[ ~[?* \"+Foc/gi\" ?*] .o. @\"generator-raw-gt-desc.simple.hfst\" .o. [ \"-\" (->) 0 || _ .#. ] ] \"#\"]* @\"generator-raw-gt-desc.simple.hfst\" ] @\"filters/evaluate-flags.est.hfst\" ;\nsave stack $@\nquit\n" | $(XFST_TOOL)
+	$(AM_V_XFST)$(PRINTF) "read regex \
+			[                                                                    \
+			  [                                                                  \
+			    [                                                                \
+			      ~[?* \"+Foc/gi\" ?*] .o. @\"$<\" .o. [ \"-\" (->) 0 || _ .#. ] \
+			    ] \"#\"                                                          \
+			  ]*                                                                 \
+			 @\"$<\"                                                             \
+			] @\"filters/evaluate-flags.est.hfst\"                               \
+			;\n\
+		save stack $@\n\
+		quit\n" | $(XFST_TOOL)
 
 # XFST:
 # compound words: 
@@ -333,37 +350,118 @@ generator-raw-gt-desc.comp.hfst: generator-raw-gt-desc.simple.hfst \
 # the first part may end with a hyphen (ajaloolis-)
 analyser-raw-gt-desc.comp.xfst: analyser-raw-gt-desc.simple.xfst \
 				filters/evaluate-flags.est.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex [[[ ~[?* \"+Foc/gi\" ?*] .o. @\"analyser-raw-gt-desc.simple.xfst\" .o. [ \"-\" (->) 0 || _ .#. ]] \"#\" ]* @\"analyser-raw-gt-desc.simple.xfst\" ] @\"filters/evaluate-flags.est.xfst\" ;\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
+	$(AM_V_XFST)$(PRINTF) "read regex \
+			[                                                                    \
+			  [                                                                  \
+			    [                                                                \
+			      ~[?* \"+Foc/gi\" ?*] .o. @\"$<\" .o. [ \"-\" (->) 0 || _ .#. ] \
+			    ] \"#\"                                                          \
+			  ]*                                                                 \
+			 @\"$<\"                                                             \
+			] @\"filters/evaluate-flags.est.xfst\"                               \
+			;\n\
+		save stack $@\n\
+		quit\n" | $(XFST) $(VERBOSITY)
 
 # the vocabulary, i.e. words that might be combined with - / or otherwise
 # include paired words and compounds in the raw generator
 # HFST:
 generator-raw-gt-desc.vocabulary.hfst: generator-raw-gt-desc.comp.hfst \
 					generator-wordpairs-raw.simple.hfst 
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"generator-wordpairs-raw.simple.hfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
+	$(AM_V_XFST)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"generator-wordpairs-raw.simple.hfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
 
 # XEROX:
 analyser-raw-gt-desc.vocabulary.xfst: analyser-raw-gt-desc.comp.xfst \
 					analyser-wordpairs-raw.simple.xfst 					
 	$(AM_V_XFST)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"analyser-wordpairs-raw.simple.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
 
-# allow concatenating with - and / and
-# include punctuation in the raw generator
+# make the raw ones
 # HFST:
-generator-raw-gt-desc.hfst: generator-raw-gt-desc.vocabulary.hfst \
-					filters/initialise-flags.est.hfst \
-					morphology/punctuation.tmp.hfst
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex [ [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ] [\"-\" | \"/\"] \"#\" @\"filters/initialise-flags.est.hfst\"]* @\"$<\" (\"-\") ; \nread regex @\"morphology/punctuation.tmp.hfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
+generator-raw-gt-desc.hfst: generator-raw-gt-desc.vocabulary.hfst 
+		cp $< $@
 
 # ... also the raw analyser
 analyser-raw-gt-%.hfst: generator-raw-gt-%.hfst
 		$(HFST_INVERT) $(VERBOSITY) $(HFST_FLAGS) < $< > $@
 
 # XEROX:
-analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.vocabulary.xfst \
+analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.vocabulary.xfst 
+		cp $< $@
+
+
+# final transducers that allow concatenating by - and / and
+# include punctuation 
+# the generator and analyser differ in uppercasing, hence the need to build them separately
+
+# HFST:
+# note the invert net for analyser
+analyser-gt-%.hfst: analyser-gt-%.tmp.hfst \
+					filters/initialise-flags.est.hfst \
+					morphology/punctuation.tmp.hfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+			[                                                               \
+			 [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ]                        \
+			 [ \"-\" | \"/\"] @\"filters/initialise-flags.est.hfst\"  \
+			]*                                                              \
+			@\"$<\" (\"-\")                                                 \
+			;\n\
+		read regex @\"morphology/punctuation.tmp.hfst\"                         \
+			;\n\
+		union net\n\
+		invert net\n\
+		save stack $@\n\
+		quit\n" | $(XFST_TOOL)
+
+generator-gt-%.hfst: generator-gt-%.tmp.hfst \
+					filters/initialise-flags.est.hfst \
+					morphology/punctuation.tmp.hfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+			[                                                               \
+			 [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ]                        \
+			 [ \"-\" | \"/\"] @\"filters/initialise-flags.est.hfst\"  \
+			]*                                                              \
+			@\"$<\" (\"-\")                                                 \
+			;\n\
+		read regex @\"morphology/punctuation.tmp.hfst\"                         \
+			;\n\
+		union net\n\
+		save stack $@\n\
+		quit\n" | $(XFST_TOOL)
+
+# XEROX:
+# note the invert net for generator
+analyser-gt-%.xfst: analyser-gt-%.tmp.xfst \
 					filters/initialise-flags.est.xfst \
 					morphology/punctuation.tmp.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex [ [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ] [\"-\" | \"/\"] \"#\" @\"filters/initialise-flags.est.xfst\"]* @\"$<\" (\"-\") ; \nread regex @\"morphology/punctuation.tmp.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
+	$(AM_V_XFST)$(PRINTF) "read regex \
+			[                                                               \
+			 [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ]                        \
+			 [ \"-\" | \"/\"] @\"filters/initialise-flags.est.xfst\"  \
+			]*                                                              \
+			@\"$<\" (\"-\")                                                 \
+			;\n\
+		read regex @\"morphology/punctuation.tmp.xfst\"                         \
+			;\n\
+		union net\n\
+		save stack $@\n\
+		quit\n" | $(XFST) $(VERBOSITY)
+
+generator-gt-%.xfst: generator-gt-%.tmp.xfst \
+					filters/initialise-flags.est.xfst \
+					morphology/punctuation.tmp.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+			[                                                               \
+			 [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ]                        \
+			 [ \"-\" | \"/\"] @\"filters/initialise-flags.est.xfst\"  \
+			]*                                                              \
+			@\"$<\" (\"-\")                                                 \
+			;\n\
+		read regex @\"morphology/punctuation.tmp.xfst\"                         \
+			;\n\
+		union net\n\
+		invert net\n\
+		save stack $@\n\
+		quit\n" | $(XFST) $(VERBOSITY)
 
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######
