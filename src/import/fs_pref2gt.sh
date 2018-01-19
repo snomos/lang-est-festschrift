@@ -35,7 +35,7 @@ echo 'eht+Pref:´eht- #;' >> pref.lexc
 echo 'eks+Pref:´eks- #;' >> pref.lexc
 echo 'emas+Pref:emas- #;' >> pref.lexc
 echo 'era+Pref:era- #;' >> pref.lexc
-echo 'eri+Pref:eri- #;' >> pref.lexc
+#echo 'eri+Pref:eri- #;' >> pref.lexc
 echo 'euro+Pref:euro- #;' >> pref.lexc
 echo 'finants+Pref:fin`an,ts- #;' >> pref.lexc
 echo 'haju+Pref:haju- #;' >> pref.lexc
@@ -48,7 +48,7 @@ echo 'külalis+Pref:külalis- #;' >> pref.lexc
 echo 'laus+Pref:l´aus- #;' >> pref.lexc
 echo 'lõhke+Pref:l´õhke- #;' >> pref.lexc
 echo 'meelis+Pref:meelis- #;' >> pref.lexc
-echo 'mega+Pref:mega- #;' >> pref.lexc
+#echo 'mega+Pref:mega- #;' >> pref.lexc
 echo 'mitte+Pref:m´itte- #;' >> pref.lexc
 echo 'muidu+Pref:muidu- #;' >> pref.lexc
 echo 'multi+Pref:mul,ti- #;' >> pref.lexc
@@ -61,6 +61,8 @@ echo 'linnalähi+Pref:linna#lähi- #;' >> pref.lexc
 echo 'nõuka+Pref:nõuka- #;' >> pref.lexc
 echo 'väli+Pref:väli- #;' >> pref.lexc
 echo 'põhi+Pref:põhi- #;' >> pref.lexc
+echo 'pöörd+Pref:pöörd- #;' >> pref.lexc
+echo 'sega+Pref:sega- #;' >> pref.lexc
 
 cat pref.lexc | sort -u >> prefixes.lexc
 

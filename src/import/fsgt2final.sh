@@ -47,11 +47,20 @@ echo '\nLEXICON PlainAdjectives\n' >> adjectives.lexc
 cat adjectives.tmp1 \
 | grep '#' \
 > adjectives.tmp2
+
+# in compounding, pruunjas and hallikas expect adjective to follow
 cat adjectives.tmp1 \
-| grep -v '#' | grep -v 'ne+' | grep -v 'v+' \
+| grep -v '#' | grep '[jk]as+' \
+| sed 's/^\([^:]*+A\):\([^;]*;\)\(.*\)$/@P.Der.kas@@P.NomStem.First@\1:@P.Der.kas@@P.NomStem.First@\2\3/' \
+| sed '/[ph]aljas+/s/@P.Der.kas@//g' \
+>> adjectives.tmp2
+
+cat adjectives.tmp1 \
+| grep -v '#' | grep -v 'ne+' | grep -v 'v+' | grep -v '[jk]as+' \
 | sed '/^[^aeiouõäöü]*[aeiouõäöü]*[^aeiouõäöü]*[aeiouõäöü][aeiouõäöü]*[^aeiouõäöü]*+A/s/^\([^:]*+A\):\([^;]*;\)\(.*\)$/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 | sed '/^[^aeiouõäöü]*[aeiouõäöü]*[^aeiouõäöü]*[aeiouõäöü]tu+A/s/^\([^:]*+A\):\([^;]*;\)\(.*\)$/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 >> adjectives.tmp2
+
 cat adjectives.tmp2 \
 | sed '/;.*nnolastpart/s/^\([^:]*+A\):\([^;]*;\)\(.*\)nnolastpart/@R.Part.One@\1:@R.Part.One@\2\3/' \
 | sed '/@kasutu+/s/@P.NomStem.First@//g' \
@@ -59,13 +68,55 @@ cat adjectives.tmp2 \
 | sort -u >> adjectives.lexc
 
 echo '\nLEXICON NoninflectingAdjectives\n' > noninflecting_adjectives.lexc
-cat fs_gt.noninfl.tmp1 | grep '+A:' >> noninflecting_adjectives.lexc
+cat fs_gt.noninfl.tmp1 | grep '+A:' > noninflecting_adjectives.tmp1
+
+# mark good words for compounding 
+# by falsely giving them the tag of a shortened form (like vaatamis-),
+# although these are uninflected words...
+cat noninflecting_adjectives.tmp1 \
+| sed '/^ekstra+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
+| sed '/^eri+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
+| sed '/^ise+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
+| sed '/^mega+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
+| sed '/^päris+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
+| sed '/^täis+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
+> noninflecting_adjectives.tmp2
+
+cat noninflecting_adjectives.tmp2 >> noninflecting_adjectives.lexc
 
 echo 'LEXICON ComparativeAdjectives\n' > comparative_adjectives.lexc
-cat fs_gt.inflecting.tmp1 | grep '+A+Comp' >> comparative_adjectives.lexc
+cat fs_gt.inflecting.tmp1 | grep '+A+Comp' > comparative_adjectives.tmp1
+
+# mark good words for compounding in Sg Nom
+cat comparative_adjectives.tmp1 \
+| sed '/^alam+/s/^\([^:]*+A+Comp\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+| sed '/^enam+/s/^\([^:]*+A+Comp\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+| sed '/^kauem+/s/^\([^:]*+A+Comp\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+| sed '/^lähem+/s/^\([^:]*+A+Comp\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+| sed '/^lühem+/s/^\([^:]*+A+Comp\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+| sed '/^noorem+/s/^\([^:]*+A+Comp\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+| sed '/^parem+/s/^\([^:]*+A+Comp\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+| sed '/^suurem+/s/^\([^:]*+A+Comp\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+| sed '/^vanem+/s/^\([^:]*+A+Comp\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+| sed '/^vähem+/s/^\([^:]*+A+Comp\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+| sed '/^ülem+/s/^\([^:]*+A+Comp\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+> comparative_adjectives.tmp2
+
+cat comparative_adjectives.tmp2 >> comparative_adjectives.lexc
 
 echo 'LEXICON SuperlativeAdjectives\n' > superlative_adjectives.lexc
-cat fs_gt.inflecting.tmp1 | grep '+A+Superl' >> superlative_adjectives.lexc
+cat fs_gt.inflecting.tmp1 | grep '+A+Superl' > superlative_adjectives.tmp1
+
+# mark good words for compounding in Sg Nom
+cat superlative_adjectives.tmp1 \
+| sed '/^enim+/s/^\([^:]*+A+Superl\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+| sed '/^vähim+/s/^\([^:]*+A+Superl\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+| sed '/^ülim+/s/^\([^:]*+A+Superl\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+> superlative_adjectives.tmp2
+
+cat superlative_adjectives.tmp2 >> superlative_adjectives.lexc
+
+
 
 # find short adverbs:
 # grep '^[^aeiouõäöü]*[aeiouõäöü]*[^aeiouõäöü][^aeiouõäöü][aeiouõäöü][aeiouõäöü]*[^aeiouõäöü]*[^aeiouõäöü]i*+[^#=]*$'
@@ -78,7 +129,7 @@ cat fs_gt.noninfl.tmp1 | grep '+Adv' \
 
 # lisaks (3)
 cat fs_gt.noninfl.tmp1 | grep '+Adv' \
-| grep '\(^alles+\)\|\(^edasi+\)\|\(^eraldi+\)\|\(^halvasti+\)\|\(^juurde+\)\|\(^järele+\)\|\(^kaotsi+\)\|\(^kaugele+\)\|\(^kaugelt+\)\|\(^kergelt+\)\|\(^kergesti+\)\|\(^kindlaks+\)\|\(^klaariks+\)\|\(^käsitsi+\)\|\(^kõrgelt+\)\|\(^kõrval+\)\|\(^kõrvalt+\)\|\(^kõvaks+\)\|\(^kõrvuti+\)\|\(^külili+\)\|\(^laiali+\)' \
+| grep '\(^alasti+\)\|\(^alles+\)\|\(^edasi+\)\|\(^eemale+\)\|\(^eemalt+\)\|\(^eraldi+\)\|\(^halvasti+\)\|\(^juurde+\)\|\(^järele+\)\|\(^kaotsi+\)\|\(^kaugele+\)\|\(^kaugelt+\)\|\(^kergelt+\)\|\(^kergesti+\)\|\(^kindlaks+\)\|\(^klaariks+\)\|\(^käsitsi+\)\|\(^kõrgelt+\)\|\(^kõrval+\)\|\(^kõrvalt+\)\|\(^kõvaks+\)\|\(^kõrvuti+\)\|\(^külili+\)\|\(^laiali+\)\|\(^raskesti+\)\|\(^tagasi+\)\|\(^äsja+\)' \
 >> tmpadv.1
 
 # NB! see loend olgu sama, mis lisaks (2)
@@ -94,7 +145,7 @@ cat fs_gt.noninfl.tmp1 | grep '+Adv' \
 #>> adverbs.tmp2
 
 # NB! see loend olgu sama, mis lisaks (3)
-cat tmpadv.2 | grep -v '\(^alles+\)\|\(^edasi+\)\|\(^eraldi+\)\|\(^halvasti+\)\|\(^juurde+\)\|\(^järele+\)\|\(^kaotsi+\)\|\(^kaugele+\)\|\(^kaugelt+\)\|\(^kergelt+\)\|\(^kergesti+\)\|\(^kindlaks+\)\|\(^klaariks+\)\|\(^käsitsi+\)\|\(^kõrgelt+\)\|\(^kõrval+\)\|\(^kõrvalt+\)\|\(^kõvaks+\)\|\(^kõrvuti+\)\|\(^külili+\)\|\(^laiali+\)' \
+cat tmpadv.2 | grep -v '\(^alasti+\)\|\(^alles+\)\|\(^edasi+\)\|\(^eemale+\)\|\(^eemalt+\)\|\(^eraldi+\)\|\(^halvasti+\)\|\(^juurde+\)\|\(^järele+\)\|\(^kaotsi+\)\|\(^kaugele+\)\|\(^kaugelt+\)\|\(^kergelt+\)\|\(^kergesti+\)\|\(^kindlaks+\)\|\(^klaariks+\)\|\(^käsitsi+\)\|\(^kõrgelt+\)\|\(^kõrval+\)\|\(^kõrvalt+\)\|\(^kõvaks+\)\|\(^kõrvuti+\)\|\(^külili+\)\|\(^laiali+\)' \
 > tmpadv.3
 
 #>> adverbs.lexc
@@ -116,14 +167,19 @@ cat fs_gt.noninfl.tmp1 | grep '+C[CS]' >> conjunctions.lexc
 # add compounding-related flag diacritics to individual words
 
 # kirjuta iga kirje taha see inf, mis fs_lex-sist tuleb
+# ja eering-lõpulised
 # ... ja palju PINGE tüüpi sõnu polegi deverbaalideks märgitud...
 # (ja siin all olevad lisandused pole kõik, mis võimalik...)
 cat fs_gt.inflecting.tmp1 | grep '+N:' \
 | sed 's/^\(WDEVERBAL\)\(.*\)$/\2\1/' \
 | sed 's/^\(mnocompound\)\(.*\)$/\2\1/' \
 | sed 's/^\(nnolastpart\)\(.*\)$/\2\1/' \
+| sed '/eering+/s/$/WDEVERBAL/' \
+| sed '/^veering+/s/WDEVERBAL//' \
+| sed '/^ehitis+/s/$/WDEVERBAL/' \
 | sed '/^haare+/s/$/WDEVERBAL/' \
 | sed '/^heide+/s/$/WDEVERBAL/' \
+| sed '/^hindlus+/s/$/WDEVERBAL/' \
 | sed '/^hoie+/s/$/WDEVERBAL/' \
 | sed '/^huige+/s/$/WDEVERBAL/' \
 | sed '/^hõige+/s/$/WDEVERBAL/' \
@@ -136,11 +192,16 @@ cat fs_gt.inflecting.tmp1 | grep '+N:' \
 | sed '/^karje+/s/$/WDEVERBAL/' \
 | sed '/^kilge+/s/$/WDEVERBAL/' \
 | sed '/^korje+/s/$/WDEVERBAL/' \
+| sed '/^liide+/s/$/WDEVERBAL/' \
 | sed '/^loome+/s/$/WDEVERBAL/' \
 | sed '/^luure+/s/$/WDEVERBAL/' \
+| sed '/^lõikus+/s/$/WDEVERBAL/' \
 | sed '/^lüke+/s/$/WDEVERBAL/' \
+| sed '/^maks+.*KOON/s/$/WDEVERBAL/' \
+| sed '/^makse+/s/$/WDEVERBAL/' \
 | sed '/^muie+/s/$/WDEVERBAL/' \
 | sed '/^möire+/s/$/WDEVERBAL/' \
+| sed '/^ost+.*KOON/s/$/WDEVERBAL/' \
 | sed '/^pilge+/s/$/WDEVERBAL/' \
 | sed '/^piste+/s/$/WDEVERBAL/' \
 | sed '/^pooge+/s/$/WDEVERBAL/' \
@@ -158,7 +219,9 @@ cat fs_gt.inflecting.tmp1 | grep '+N:' \
 | LC_COLLATE=C sort > fs_gt.inflecting.tmp1.srt
 
 # ja lisa siia märge nende lühikeste nimisõnade kohta, mis ei osale liitsõnades
-LC_COLLATE=C join -t+ -a 1 -a 2 -o 1.1 2.1 2.2 head_esiosad fs_gt.inflecting.tmp1.srt | grep -v '++' | sed '/^[^+].*+N/s/$/heaesi/' | sed 's/^[^+]*+//' > fs_gt.inflecting.tmp1.tagged
+LC_COLLATE=C join -t+ -a 1 -a 2 -o 1.1 2.1 2.2 head_esiosad fs_gt.inflecting.tmp1.srt | grep -v '++' | sed '/^[^+].*+N/s/$/heaesi/' \
+| sed '/^[k]*ost+/s/heaesi//' \
+| sed 's/^[^+]*+//' > fs_gt.inflecting.tmp1.tagged
 #----
 
 echo 'LEXICON Nouns\n\n DeverbalNouns ;\n PlainNouns ;\n' > nouns.lexc
@@ -189,6 +252,13 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | sed '/^vesi+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 \
 | sed '/;.*mnocompound/s/^\([^:]*+N\):\([^;]*;\)\(.*\)mnocompound/@R.Part.One@@P.Part.Bad@\1:@R.Part.One@@P.Part.Bad@\2\3/' | sed '/^vana+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Bad.Nonfinal@\1:@P.Bad.Nonfinal@\2\3/' \
+| sed '/^alam+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Bad.Nonfinal@\1:@P.Bad.Nonfinal@\2\3/' \
+| sed '/@alam+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Bad.Nonfinal@\1:@P.Bad.Nonfinal@\2\3/' \
+| sed '/^ülem+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Bad.Nonfinal@\1:@P.Bad.Nonfinal@\2\3/' \
+| sed '/@ülem+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Bad.Nonfinal@\1:@P.Bad.Nonfinal@\2\3/' \
+| sed '/^pee+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Bad.Nonfinal@\1:@P.Bad.Nonfinal@\2\3/' \
+| sed '/^aar+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Bad.Nonfinal@\1:@P.Bad.Nonfinal@\2\3/' \
+| sed '/^boi+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Bad.Nonfinal@\1:@P.Bad.Nonfinal@\2\3/' \
 \
 | sed '/;.*nnolastpart/s/^\([^:]*+N\):\([^;]*;\)\(.*\)nnolastpart/@R.Part.One@\1:@R.Part.One@\2\3/' \
 | sed 's/@R.Part.One@@R.Part.One@/@R.Part.One@/g' \

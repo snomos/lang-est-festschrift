@@ -640,16 +640,18 @@ Multichar_Symbols
  @C.Case@  ! initialise case flag
 
 !! Remember there has been some derivation from A or N; for filtering compounds
+ @P.Der.kas@    ! here not really derivation, but adjective type
+ @D.Der.kas@
+ @R.Der.us@
  @P.Der.us@
- @P.Der.N@
- @P.Der.A@
- @P.Der.Adv@
  @D.Der.us@
+ @P.Der.N@
  @D.Der.N@
+ @P.Der.A@
  @D.Der.A@
+ @P.Der.Adv@
  @D.Der.Adv@
  @D.Der@
- @R.Der.us@
  @C.Der@
 
 !! Remember the stem type; for filtering compounds (not used at the moment)
@@ -843,7 +845,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.Pref@ LatterAdjective ;  ! ebapunane, ökokorralik
   @R.Case.Short@ LatterAdjective ;  ! vaatamispunane, astraalpunane
 
-  @R.POS.N@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ; ! laudpunane
+  @R.POS.N@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ; ! laudõiekas
   @R.POS.N@@R.Case.Nom@@D.NomStem.First@ LatterAdjective_ne ; ! aerjalgne
   @R.POS.N@@R.Case.Gen@ LatterAdjective_ne ; ! lauapunane, laudadepunane
   @R.POS.N@@R.Case.Gen@ PlainLatterAdjective ; ! lauaahastuslik
@@ -860,11 +862,17 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.A@@R.Case.Gen@ LatterAdjective_ne ;  ! suureruuduline
   @R.POS.A@@R.Case.Nom@@R.Der.us@ LatterAdjective_ne ;  ! funktsionaalsusjalgne
 
+  @R.POS.AComp@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ;  ! enampunane
+  @R.POS.AComp@@R.Case.Gen@ LatterAdjective_ne ;  ! enamaruuduline
+
+  @R.POS.ASuperl@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ;  ! enimpunane
+  @R.POS.ASuperl@@R.Case.Gen@ LatterAdjective_ne ;  ! enimaruuduline
+
   @R.POS.Pron@@R.Case.Gen@ LatterAdjective ; ! enesepunane
 
 ! x + noun
   @R.POS.Pref@ LatterNoun ;  ! ebalaud
-  @R.Case.Short@ LatterNoun ;   ! astraallaud
+  @R.Case.Short@ LatterNoun ;   ! astraallaud, ekstrariiul
 
   @R.POS.N@@R.Case.Nom@@R.NomStem.First@ LatterNoun ;
   @R.POS.N@@R.Case.Gen@ LatterNoun ;             ! lauariiul
@@ -872,7 +880,9 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.NumCard@@R.Case.Gen@ LatterNoun ;       ! neljariiul
 
 ! NB only short adjectives are good here !!!
-  @R.POS.A@@R.Case.Nom@@R.NomStem.First@ LatterNoun ;   ! lapikriiul
+  @R.POS.A@@R.Case.Nom@@R.NomStem.First@@D.Der.kas@ LatterNoun ;   ! lapikriiul, NOT pruunjasriiul (?)
+  @R.POS.AComp@@R.Case.Nom@@R.NomStem.First@ LatterNoun ;   ! enamriiul
+  @R.POS.ASuperl@@R.Case.Nom@@R.NomStem.First@ LatterNoun ;   ! enimriiul
 
   @R.POS.A@@R.Case.Nom@@D.NomStem.First@@R.Der.us@ LatterNoun ;  ! funktsionaalsusriiul
 
@@ -900,14 +910,13 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.GA@@P.Case.Gen@ LatterVerb ;   ! eestivihkaja
 
 ! NB only short adjectives are good here !!!
-  @R.POS.A@@R.Case.Nom@@R.NomStem.First@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
+  @R.POS.A@@R.Case.Nom@@R.NomStem.First@@D.Der.kas@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
+  @R.POS.AComp@@R.Case.Nom@@R.NomStem.First@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
+  @R.POS.ASuperl@@R.Case.Nom@@R.NomStem.First@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
 
   @R.POS.A@@R.Case.Nom@@D.NomStem.First@@R.Der.us@@P.Case.Gen@ LatterVerb ;  ! funktsionaalsusprogrammeerimine
 
   @R.POS.A@@R.Case.Short@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
-
-  @R.POS.AComp@@R.Case.Nom@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
-  @R.POS.ASuperl@@R.Case.Nom@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
 
 ! NB only short and good adverbs here !!!
   @R.POS.Adv@@D.Case@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
