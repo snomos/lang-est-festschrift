@@ -893,6 +893,9 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
  
   @R.POS.N@@R.Case.Sem@ LatterDeverbal ;  ! mägedesttulek
   @R.POS.V@@R.Case.Sem@ LatterDeverbal ;  ! -ma, -mas etc lugematulek
+  @R.POS.A@@R.Case.Sem@ LatterDeverbal ;  ! ilmsekstulek
+  @R.POS.AComp@@R.Case.Sem@ LatterDeverbal ;  ! ilmsemakstulek
+  @R.POS.ASuperl@@R.Case.Sem@ LatterDeverbal ;  ! suurimakstulek
   @R.POS.Adv@ LatterDeverbal ;            ! huupitulek
   @R.POS.GA@ LatterDeverbal ;             ! himaalajatulek
 
@@ -906,6 +909,9 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
   @R.POS.N@@R.Case.Nom@@R.NomStem.First@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
   @R.POS.N@@R.Case.Sem@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
+  @R.POS.A@@R.Case.Sem@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
+  @R.POS.AComp@@R.Case.Sem@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
+  @R.POS.ASuperl@@R.Case.Sem@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
 
   @R.POS.GA@@P.Case.Gen@ LatterVerb ;   ! eestivihkaja
 

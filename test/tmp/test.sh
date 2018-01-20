@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat korpustest-8-alakriips | sed 's/    .*$//' | hfst-lookup analyser-gt-desc.hfstol > korpustest-8-alakriips.hjk.hfst
+cat korpustest-8-alakriips | sed 's/    .*$//' | hfst-lookup ../../src/analyser-gt-desc.hfstol > korpustest-8-alakriips.hjk.hfst
 
 cat korpustest-8-alakriips.hjk.hfst | grep '?' | sed 's/\t.*$//' > eitunne.hfst
 

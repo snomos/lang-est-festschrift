@@ -1,6 +1,7 @@
 # Xerox xfst script file to optionally uppercase all lexical entries.
 # Extend the alphabet as needed by your language.
 
+define WB [ "#" | .#. ] ;
 define uppercase [
     A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|X|Y|Z|
     Á|À|Ã|Ä|Å|Æ|É|È|Ê|Ë|Í|Ì|Î|Ï|Ð|Ñ|Ó|Ò|Ô|Õ|Ö|Ø|Ú|Ù|Û|Ü|Ý|Þ|Š|Ž
@@ -16,6 +17,6 @@ t (->) T, u (->) U, v (->) V, w (->) W, x (->) X, y (->) Y, z (->) Z,
 ö (->) Ö, ø (->) Ø, ù (->) Ù, ú (->) Ú, û (->) Û, ü (->) Ü, ý (->) Ý, 
 þ (->) Þ, š (->) Š, ž (->) Ž
 \/
-.#. uppercase* _ uppercase* .#. ;
+WB uppercase* _ uppercase* WB ;
 
 push allcaps
