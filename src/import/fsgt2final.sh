@@ -67,13 +67,24 @@ cat adjectives.tmp2 \
 | sed '/@antu+/s/@P.NomStem.First@//g' \
 | sort -u >> adjectives.lexc
 
-echo '\nLEXICON NoninflectingAdjectives\n' > noninflecting_adjectives.lexc
+echo '\nLEXICON NoninflectingAdjectives\n\n CompoundingNoninflectingAdjectives ;\n PlainNoninflectingAdjectives ;\n\nLEXICON CompoundingNoninflectingAdjectives\n' \
+> noninflecting_adjectives.lexc
 cat fs_gt.noninfl.tmp1 | grep '+A:' > noninflecting_adjectives.tmp1
+
+# NB! grep list1
+cat noninflecting_adjectives.tmp1 \
+| grep '\(^karva+\)\|\(^võitu+\)\|\(^värvi+\)' \
+>> noninflecting_adjectives.lexc
+
+echo '\nLEXICON PlainNoninflectingAdjectives\n' >> noninflecting_adjectives.lexc
 
 # mark good words for compounding 
 # by falsely giving them the tag of a shortened form (like vaatamis-),
 # although these are uninflected words...
+# NB! grep -v list1
 cat noninflecting_adjectives.tmp1 \
+| grep -v '\(^karva+\)\|\(^võitu+\)\|\(^värvi+\)' \
+\
 | sed '/^ekstra+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
 | sed '/^eri+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
 | sed '/^ise+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
@@ -380,7 +391,10 @@ cat fs_gt.noninfl.tmp1 | grep '+N+Sg+Gen' >> genitive_attributes.lexc
 echo 'LEXICON Verbs\n\ntaas+Pref#:taas# SimpleVerbs ;\ntaas+Pref#:taas# EerVerbs ;\nde+Pref#:de# EerVerbs ;\nre+Pref#:re# EerVerbs ;\nSimpleVerbs ;\nEerVerbs ;\n' > verbs.lexc
 echo '\nLEXICON SimpleVerbs\n' >> verbs.lexc
 cat fs_gt.inflecting.tmp1 | grep '+V:' | grep -v '...eer[iu]ma+' \
-| sed 's/nnolastpart//' >> verbs.lexc
+| sed 's/nnolastpart//' \
+| sed '/võidma+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@R.Part.One@@P.Part.Bad@\1:@R.Part.One@@P.Part.Bad@\2\3/' \
+>> verbs.lexc
+
 echo '\nLEXICON EerVerbs\n' >> verbs.lexc
 cat fs_gt.inflecting.tmp1 | grep '+V:' | grep '...eer[iu]ma+' \
 | sed 's/nnolastpart//' >> verbs.lexc

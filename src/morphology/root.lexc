@@ -860,6 +860,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
   @R.POS.A@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ;  ! rämepunane
   @R.POS.A@@R.Case.Gen@ LatterAdjective_ne ;  ! suureruuduline
+  @R.POS.A@@R.Case.Gen@ LatterNoninflectingAdjective ;  ! jämedavõitu
   @R.POS.A@@R.Case.Nom@@R.Der.us@ LatterAdjective_ne ;  ! funktsionaalsusjalgne
 
   @R.POS.AComp@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ;  ! enampunane
@@ -953,6 +954,10 @@ LEXICON LatterAdjective_v
 LEXICON PlainLatterAdjective
 
   @P.POS.A@@C.Der@@C.NomStem@ PlainAdjectives ;              !!= * {{@CODE@}}
+
+LEXICON LatterNoninflectingAdjective
+
+  @P.POS.A@@C.Der@@C.NomStem@ CompoundingNoninflectingAdjectives ;              !!= * {{@CODE@}}
 
 LEXICON LatterNoun
   @P.POS.N@@C.Der@@C.NomStem@ Nouns ;    
