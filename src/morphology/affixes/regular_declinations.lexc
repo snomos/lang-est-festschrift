@@ -496,6 +496,7 @@ LEXICON SG_ILL_VARIANT    ! for KEEL etc types
 LEXICON SG_NOMINATIVE
            +Sg:%{no.apo%} NOMINATIVE ;
               : LANE_DERIVATION ;
+              : IST_DERIVATION ;
 
 LEXICON SG_GENITIVE
            +Sg: GENITIVE ;
@@ -639,6 +640,12 @@ LEXICON US_DERIVATION
 
 LEXICON US_DERIVATION_SUF
              +Der/us+N:»us OLULINE ;         ! elajalikkus, elavus, ...
+
+LEXICON IST_DERIVATION
+  @P.Der.ist@ IST_DERIVATION_SUF ;
+
+LEXICON IST_DERIVATION_SUF
+             +Der/ist+N:»ist TAUD ;         ! kapitalist
 
 LEXICON LT_DERIVATION
   @P.Der.Adv@ LT_DERIVATION_SUF ;

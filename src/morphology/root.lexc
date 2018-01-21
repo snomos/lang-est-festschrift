@@ -520,6 +520,9 @@ Multichar_Symbols
 +Der/kond !!= * {{@CODE@}}
 !!€ vaatajaskond: vaatama+V+Der/ja+N+Der/kond+N+Sg+Nom
 
++Der/ist !!= * {{@CODE@}}
+!!€ kapitalist: kapitalism+N+Der/ist+N+Sg+Nom
+
 !! A --> N, V --> N
 
 +Der/us !!= * {{@CODE@}}
@@ -645,6 +648,7 @@ Multichar_Symbols
  @R.Der.us@
  @P.Der.us@
  @D.Der.us@
+ @P.Der.ist@
  @P.Der.N@
  @D.Der.N@
  @P.Der.A@

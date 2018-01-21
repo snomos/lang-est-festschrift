@@ -34,6 +34,7 @@ define BadDer1 [
          "+Der/us"] |
     [[~[\WB+ {uma} "+V"] ] "+Der/mus"] |           # devalveeruma - devalveerumus
     [[~[\WB+ {eerima} "+V"] ] "+Der/ng"] |           # devalveerima - devalveering
+    [[~[\WB+ {ism} "+N"] ] "+Der/ist"] |           # kapitalism - kapitalist
     [~[\WB* ? ? ? ? "+N"]  "+Der/ti"] |    # should we eliminate pee+N+Der/ti ?
     [[~[\WB+ "+N"] & ~[\WB+ "+Num" "+Card"] & ~[\WB+ "+A"] & ~[\WB+ "+A" "+Comp"] & ~[\WB+ "+A" "+Superl"]] "+Dim/ke"] 
     ] ;
