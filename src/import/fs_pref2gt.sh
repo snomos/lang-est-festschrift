@@ -63,6 +63,8 @@ echo 'väli+Pref:väli- #;' >> pref.lexc
 echo 'põhi+Pref:põhi- #;' >> pref.lexc
 echo 'pöörd+Pref:pöörd- #;' >> pref.lexc
 echo 'sega+Pref:sega- #;' >> pref.lexc
+echo 'puhke+Pref:p´uhke- #;' >> pref.lexc
+echo 'vääris+Pref:vääris- #;' >> pref.lexc
 
 cat pref.lexc | sort -u >> prefixes.lexc
 
@@ -102,20 +104,9 @@ lisasin adv faili, nii et nüüd on veel lisamata:
 
 deverbid
 kandlus
-
-kapitalist ei tuletu kapitalismi alusel
-
-võiks olla lubatud 1. tüvena -ne -> sus, näit funktsionaalsus
  
  
-miks ei tunne: 
- hariduskapitalistide 
-heleda+adj OK 9.12.2018 
-kahvatumust OK 9.12.2018
 
-nooremlipnik - lisasin fs_lex-sse 9.12.2018
-
-kas on õige pikemad arvsõnad + adj? OK 9.12.2018
 
 
 

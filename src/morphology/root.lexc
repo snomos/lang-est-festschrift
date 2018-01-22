@@ -648,7 +648,7 @@ Multichar_Symbols
  @R.Der.us@
  @P.Der.us@
  @D.Der.us@
- @P.Der.ist@
+ @P.Der.ist@    ! Der/ist does not really affect the compounding
  @P.Der.N@
  @D.Der.N@
  @P.Der.A@
@@ -658,10 +658,14 @@ Multichar_Symbols
  @D.Der@
  @C.Der@
 
-!! Remember the stem type; for filtering compounds (not used at the moment)
-! @P.Stem.Short@   ! e.g. max 2 syllables
-! @R.Stem.Short@
-! @C.Stem@
+!! Remember the stem type; for filtering compounds 
+ @P.Stem.ise@   ! enese + anything
+ @R.Stem.ise@
+ @P.Stem.vähe@   ! vähe, puht + adjective
+ @R.Stem.vähe@
+ @P.Stem.topelt@   ! Adv topelt et al;  Adv + anything
+ @R.Stem.topelt@
+ @C.Stem@
 
 !! A special condition that is used for filtering derivations and compounds
  @P.NeedAdj.On@
@@ -873,7 +877,11 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.ASuperl@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ;  ! enimpunane
   @R.POS.ASuperl@@R.Case.Gen@ LatterAdjective_ne ;  ! enimaruuduline
 
-  @R.POS.Pron@@R.Case.Gen@ LatterAdjective ; ! enesepunane
+! NB only some pronouns !
+  @R.POS.Pron@@R.Case.Gen@ LatterAdjective_ne ; ! enesepunane, meiepõõsaline
+
+  @R.POS.Adv@@R.Stem.topelt@ LatterAdjective ;        ! topelthallikas etc 
+  @R.POS.Adv@@R.Stem.vähe@ LatterAdjective ;        ! vähehallikas etc 
 
 ! x + noun
   @R.POS.Pref@ LatterNoun ;  ! ebalaud
@@ -891,8 +899,10 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
   @R.POS.A@@R.Case.Nom@@D.NomStem.First@@R.Der.us@ LatterNoun ;  ! funktsionaalsusriiul
 
-! NB only some pronouns !
-  @R.POS.Pron@@R.Case.Gen@ LatterNoun ;        ! meieriiul kelleriiul (?)
+! NB only enese, enda !
+  @R.POS.Pron@@R.Case.Gen@@R.Stem.ise@ LatterNoun ;        ! eneseabi, enesekriitika etc 
+
+  @R.POS.Adv@@R.Stem.topelt@ LatterNoun ;        ! topeltriiul etc 
 
 ! x + deverbal noun (in addition to x + noun)
  
@@ -937,6 +947,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 ! NB only some pronouns !
   @R.POS.Pron@@R.Case.Gen@ LatterVerb ;  
   @R.POS.Pron@@R.Case.Par@ LatterVerb ;
+  @R.POS.Pron@@R.Case.Sem@ AnyLatterVerb ;
 
   @R.POS.V@@D.Case@ AnyLatterVerb ;              ! infinitive
   @R.POS.V@@R.Case.Sem@ AnyLatterVerb ;          ! -ma, -mas etc

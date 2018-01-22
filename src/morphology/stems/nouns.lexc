@@ -2745,7 +2745,7 @@ degradeerimine+N:degrad´eerimine OLULINE ;
 degusteerimine+N:degust´eerimine OLULINE ;
 @P.NomStem.First@dehkaan+N:@P.NomStem.First@dehk´aan TAUD ;
 @P.NomStem.First@dehüdratatsioon+N:@P.NomStem.First@dehüdratatsi´oon TAUD ;
-deism+N:de´ism TAUD ;
+@R.Part.One@@P.Part.Bad@deism+N:@R.Part.One@@P.Part.Bad@de´ism TAUD ;
 @P.NomStem.First@dekaad+N:@P.NomStem.First@dek´aad TAUD ;
 @P.NomStem.First@dekaan+N:@P.NomStem.First@dek´aan TAUD ;
 @P.NomStem.First@dekaar+N:@P.NomStem.First@dek´aar TAUD ;

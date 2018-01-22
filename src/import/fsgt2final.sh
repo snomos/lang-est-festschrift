@@ -89,8 +89,10 @@ cat noninflecting_adjectives.tmp1 \
 | sed '/^eri+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
 | sed '/^ise+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
 | sed '/^mega+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
+| sed '/^paaris+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
 | sed '/^päris+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
 | sed '/^täis+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
+| sed '/^väärt+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
 > noninflecting_adjectives.tmp2
 
 cat noninflecting_adjectives.tmp2 >> noninflecting_adjectives.lexc
@@ -134,35 +136,53 @@ cat superlative_adjectives.tmp2 >> superlative_adjectives.lexc
 
 # lisaks (1), lisaks (2)
 cat fs_gt.noninfl.tmp1 | grep '+Adv' \
+| grep '\(^järel+\)\|\(^kõrval+\)\|\(^otse+\)\|\(^piki+\)\|\(^püsti+\)\|\(^ratsa+\)\|\(^taga+\)\|\(^topelt+\)\|\(^vastas+\)\|\(^vastu+\)\|\(^üle+\)' \
+> tmpadv.0
+
+cat fs_gt.noninfl.tmp1 | grep '+Adv' \
+| grep -v '\(^järel+\)\|\(^kõrval+\)\|\(^otse+\)\|\(^piki+\)\|\(^püsti+\)\|\(^ratsa+\)\|\(^taga+\)\|\(^topelt+\)\|\(^vastas+\)\|\(^vastu+\)\|\(^üle+\)' \
+> tmpadv.alg
+
+cat tmpadv.alg \
 | grep '\(^all+\)\|\(^alt+\)\|\(^eel+\)\|\(^ees+\)\|\(^ise+\)\|\(^jae+\)\|\(^oma+\)\|\(^pea+\)\|\(^ula+\)\|\(^õue+\)\|\(^ära+\)\|\(^üle+\)\|\(^....+\)\|\(^umbes+\)\|\(^....[^s]+[^#-]*$\)\|\(^...ks+[^#-]*$\)' \
 | grep -v '\(^miks+\)\|\(^näos+\)\|\(^egas+\)\|\(^kuis+\)\|\(^siis+\)\|\(^teps+\)\|\(^aina+\)\|\(^aiva+\)\|\(^eele+\)\|\(^eelt+\)\|\(^ikka+\)\|\(^istu+\)\|\(^jalu+\)\|\(^jaol+\)\|\(^jokk+\)\|\(^juba+\)\|\(^just+\)\|\(^jõle+\)\|\(^jönt+\)\|\(^kohe+\)\|\(^kole+\)\|\(^kord+\)\|\(^kuhu+\)\|\(^kuna+\)\|\(^küll+\)\|\(^loga+\)\|\(^loha+\)\|\(^losa+\)\|\(^mant+\)\|\(^manu+\)\|\(^nagu+\)\|\(^nõka+\)\|\(^nõus+\)\|\(^nüüd+\)\|\(^olgu+\)\|\(^puha+\)\|\(^põsi+\)\|\(^päta+\)\|\(^seep+\)\|\(^seni+\)\|\(^siva+\)\|\(^sugu+\)\|\(^tuna+\)\|\(^täna+\)\|\(^töhe+\)\|\(^vaid+\)\|\(^vaja+\)\|\(^veel+\)\|\(^vist+\)\|\(^väga+\)\|\(^õige+\)\|\(^õkva+\)\|\(^ähmi+\)\|\(^äkki+\)\|\(^ängi+\)\|\(^äsja+\)\|\(^+ühti\)\|\(^üsna+\)' \
 > tmpadv.1
 
 # lisaks (3)
-cat fs_gt.noninfl.tmp1 | grep '+Adv' \
-| grep '\(^alasti+\)\|\(^alles+\)\|\(^edasi+\)\|\(^eemale+\)\|\(^eemalt+\)\|\(^eraldi+\)\|\(^halvasti+\)\|\(^juurde+\)\|\(^järele+\)\|\(^kaotsi+\)\|\(^kaugele+\)\|\(^kaugelt+\)\|\(^kergelt+\)\|\(^kergesti+\)\|\(^kindlaks+\)\|\(^klaariks+\)\|\(^käsitsi+\)\|\(^kõrgelt+\)\|\(^kõrval+\)\|\(^kõrvalt+\)\|\(^kõvaks+\)\|\(^kõrvuti+\)\|\(^külili+\)\|\(^laiali+\)\|\(^raskesti+\)\|\(^tagasi+\)\|\(^äsja+\)' \
+cat tmpadv.alg \
+| grep '\(^alasti+\)\|\(^alles+\)\|\(^edasi+\)\|\(^eemale+\)\|\(^eemalt+\)\|\(^eraldi+\)\|\(^halvasti+\)\|\(^juurde+\)\|\(^järele+\)\|\(^kaotsi+\)\|\(^kaugele+\)\|\(^kaugelt+\)\|\(^kergelt+\)\|\(^kergesti+\)\|\(^kindlaks+\)\|\(^klaariks+\)\|\(^käsitsi+\)\|\(^kõrgelt+\)\|\(^kõrval+\)\|\(^kõrvalt+\)\|\(^kõvaks+\)\|\(^kõrvuti+\)\|\(^külili+\)\|\(^laiali+\)\|\(^raskesti+\)\|\(^seni+\)\|\(^sisse+\)\|\(^tagant+\)\|\(^tagasi+\)\|\(^viimati+\)\|\(^võistu+\)\|\(^vääriti+\)\|\(^äsja+\)' \
 >> tmpadv.1
 
 # NB! see loend olgu sama, mis lisaks (2)
-cat fs_gt.noninfl.tmp1 | grep '+Adv' \
+cat tmpadv.alg \
 | grep '\(^miks+\)\|\(^näos+\)\|\(^egas+\)\|\(^kuis+\)\|\(^siis+\)\|\(^teps+\)\|\(^aina+\)\|\(^aiva+\)\|\(^eele+\)\|\(^eelt+\)\|\(^ikka+\)\|\(^istu+\)\|\(^jalu+\)\|\(^jaol+\)\|\(^jokk+\)\|\(^juba+\)\|\(^just+\)\|\(^jõle+\)\|\(^jönt+\)\|\(^kohe+\)\|\(^kole+\)\|\(^kord+\)\|\(^kuhu+\)\|\(^kuna+\)\|\(^küll+\)\|\(^loga+\)\|\(^loha+\)\|\(^losa+\)\|\(^mant+\)\|\(^manu+\)\|\(^nagu+\)\|\(^nõka+\)\|\(^nõus+\)\|\(^nüüd+\)\|\(^olgu+\)\|\(^puha+\)\|\(^põsi+\)\|\(^päta+\)\|\(^seep+\)\|\(^seni+\)\|\(^siva+\)\|\(^sugu+\)\|\(^tuna+\)\|\(^täna+\)\|\(^töhe+\)\|\(^vaid+\)\|\(^vaja+\)\|\(^veel+\)\|\(^vist+\)\|\(^väga+\)\|\(^õige+\)\|\(^õkva+\)\|\(^ähmi+\)\|\(^äkki+\)\|\(^ängi+\)\|\(^äsja+\)\|\(^+ühti\)\|\(^üsna+\)' \
 > tmpadv.2
 
 #> adverbs.tmp2
 # NB! see loend olgu sama, mis lisaks (1)
-cat fs_gt.noninfl.tmp1 | grep '+Adv' \
+cat tmpadv.alg \
 | grep -v '\(^all+\)\|\(^alt+\)\|\(^eel+\)\|\(^ees+\)\|\(^ise+\)\|\(^jae+\)\|\(^oma+\)\|\(^pea+\)\|\(^ula+\)\|\(^õue+\)\|\(^ära+\)\|\(^üle+\)\|\(^....+\)\|\(^umbes+\)\|\(^....[^s]+[^#-]*$\)\|\(^...ks+[^#-]*$\)' \
 >> tmpadv.2
 #>> adverbs.tmp2
 
 # NB! see loend olgu sama, mis lisaks (3)
-cat tmpadv.2 | grep -v '\(^alasti+\)\|\(^alles+\)\|\(^edasi+\)\|\(^eemale+\)\|\(^eemalt+\)\|\(^eraldi+\)\|\(^halvasti+\)\|\(^juurde+\)\|\(^järele+\)\|\(^kaotsi+\)\|\(^kaugele+\)\|\(^kaugelt+\)\|\(^kergelt+\)\|\(^kergesti+\)\|\(^kindlaks+\)\|\(^klaariks+\)\|\(^käsitsi+\)\|\(^kõrgelt+\)\|\(^kõrval+\)\|\(^kõrvalt+\)\|\(^kõvaks+\)\|\(^kõrvuti+\)\|\(^külili+\)\|\(^laiali+\)' \
+cat tmpadv.2 | grep -v '\(^alasti+\)\|\(^alles+\)\|\(^edasi+\)\|\(^eemale+\)\|\(^eemalt+\)\|\(^eraldi+\)\|\(^halvasti+\)\|\(^juurde+\)\|\(^järele+\)\|\(^kaotsi+\)\|\(^kaugele+\)\|\(^kaugelt+\)\|\(^kergelt+\)\|\(^kergesti+\)\|\(^kindlaks+\)\|\(^klaariks+\)\|\(^käsitsi+\)\|\(^kõrgelt+\)\|\(^kõrval+\)\|\(^kõrvalt+\)\|\(^kõvaks+\)\|\(^kõrvuti+\)\|\(^külili+\)\|\(^laiali+\)\|\(^raskesti+\)\|\(^seni+\)\|\(^sisse+\)\|\(^tagant+\)\|\(^tagasi+\)\|\(^viimati+\)\|\(^võistu+\)\|\(^vääriti+\)\|\(^äsja+\)' \
 > tmpadv.3
 
 #>> adverbs.lexc
 
-echo 'LEXICON Adverbs\n\n CompoundingAdverbs ;\n @P.Part.Bad@ PlainAdverbs ;\n\nLEXICON CompoundingAdverbs\n' > adverbs.lexc
-cat tmpadv.1 | sort -u >> adverbs.lexc
+echo 'LEXICON Adverbs\n\n CompoundingAdverbs ;\n @P.Part.Bad@ PlainAdverbs ;\n\n' > adverbs.lexc
+echo 'LEXICON CompoundingAdverbs\n\n @P.Stem.topelt@ NounCompoundingAdverbs ;\n VerbCompoundingAdverbs ;\n\n' >> adverbs.lexc
+
+echo 'LEXICON NounCompoundingAdverbs\n' >> adverbs.lexc
+cat tmpadv.0 >> adverbs.lexc
+
+echo '\nLEXICON VerbCompoundingAdverbs\n' >> adverbs.lexc
+cat tmpadv.1 \
+| sed '/^vähe+/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.vähe@\1:@P.Stem.vähe@\2\3/' \
+| sed '/^puht+/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.vähe@\1:@P.Stem.vähe@\2\3/' \
+| sort -u \
+>> adverbs.lexc
 
 echo '\nLEXICON PlainAdverbs\n' >> adverbs.lexc
 
@@ -227,6 +247,7 @@ cat fs_gt.inflecting.tmp1 | grep '+N:' \
 | sed '/^võnge+/s/$/WDEVERBAL/' \
 | sed '/^võte+/s/$/WDEVERBAL/' \
 | sed '/^esi+/s/$/mnocompound/' \
+| sed '/^deism+/s/$/mnocompound/' \
 | LC_COLLATE=C sort > fs_gt.inflecting.tmp1.srt
 
 # ja lisa siia märge nende lühikeste nimisõnade kohta, mis ei osale liitsõnades
@@ -375,8 +396,23 @@ cat fs_gt.inflecting.tmp1 | grep '+Num+Ord' >> ordinalnumerals.lexc
 
 echo 'LEXICON Pronouns\n\n @P.Part.Bad@ PlainPronouns ;\n CompoundingPronouns ;\n\nLEXICON PlainPronouns\n' > pronouns.lexc
 cat fs_gt.noninfl.tmp1 | grep '+Pron' >> pronouns.lexc
-cat fs_gt.inflecting.tmp1 | grep '+Pron' | sed 's/nnolastpart//' >> pronouns.lexc
-cat pronouns_exceptions.handmade >> pronouns.lexc
+
+# exclude list(1) words
+cat fs_gt.inflecting.tmp1 | grep '+Pron' \
+| sed 's/nnolastpart//' \
+| grep -v '\(^iga+\)\|\(^mitu+\)\|\(^mõlema+\)\|\(^mõni+\)\|\(^sama+\)\|\(^palju+\)' \
+>> pronouns.lexc
+
+# insert LEXICON CompoundingPronouns
+cat pronouns_exceptions.handmade \
+| sed '/ise+/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.ise@\1:@P.Stem.ise@\2\3/' \
+>> pronouns.lexc
+
+# include list(1) words
+cat fs_gt.inflecting.tmp1 | grep '+Pron' \
+| sed 's/nnolastpart//' \
+| grep '\(^iga+\)\|\(^mitu+\)\|\(^mõlema+\)\|\(^mõni+\)\|\(^sama+\)\|\(^palju+\)' \
+>> pronouns.lexc
 
 echo 'LEXICON NoninflectingVerbs\n' > noninflecting_verbs.lexc
 cat fs_gt.noninfl.tmp1 | grep '+V:' >> noninflecting_verbs.lexc

@@ -1,5 +1,3 @@
-tema+Pron:t TEMA ;
-nemad+Pron:n NEMAD ;
 iseenese+Pron:ise# ISE ;
 omaenese+Pron:oma# OMAENESE ;
 kumbki+Pron:kummB1%>%{pl.i%}%{rare%} KUMBKI ;
@@ -18,6 +16,8 @@ mina+Pron:m MASA ;
 sina+Pron:s MASA ;
 meie+Pron:me METE ;
 teie+Pron:te METE ;
+tema+Pron:t TEMA ;
+nemad+Pron:n NEMAD ;
 ise+Pron: ISE ;
 kõik+Pron:kõik KÕIK ;
 
