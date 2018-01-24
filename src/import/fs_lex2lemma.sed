@@ -798,5 +798,6 @@ s/^\([^ ]*\) .*@ELANIK/& \1:\1/
 
 /\\H.*ADT.*@AASTA/s/$/%{stemill%}/
 
-
+/r<uum .*@TAUD/s/TAUD/RUUM/
+/t<iib .*@TAUD/s/TAUD/ASI/
 

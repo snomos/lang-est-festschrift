@@ -444,8 +444,9 @@ LEXICON NINATAGA
 
 	
 LEXICON N_VOWEL_PL_SUBPARA    ! pl cases depending on vowel plural gen  
-                              ! excl. ni-na-ta-ga 
+                              ! excl. ni-na-ta-ga ?
            +Pl: LOCATIVES ;
+           +Pl: NINATAGA ;    ! incl. ni-na-ta-ga
 
 LEXICON LOCATIVES            
 

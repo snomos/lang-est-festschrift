@@ -488,9 +488,9 @@ Tests:
       joobnud+A+Sg+Trm+Foc/gi: joobnunigi
       joobnud+A+Sg+Trm: joobnuni
       kallis+A+Pl+Abe+Foc/gi: kallitetagi
-      kallis+A+Pl+Abe+Foc/gi+Use/Rare: kallistetagi
+      kallis+A+Pl+Abe+Foc/gi+Use/Rare: [kalleitagi, kallistetagi]
       kallis+A+Pl+Abe: kalliteta
-      kallis+A+Pl+Abe+Use/Rare: kallisteta
+      kallis+A+Pl+Abe+Use/Rare: [kalleita, kallisteta]
       kallis+A+Pl+Abl+Foc/gi: kalliteltki
       kallis+A+Pl+Abl+Foc/gi+Use/Rare: [kalleiltki, kallisteltki]
       kallis+A+Pl+Abl: kallitelt
@@ -504,17 +504,17 @@ Tests:
       kallis+A+Pl+All: kallitele
       kallis+A+Pl+All+Use/Rare: [kalleile, kallistele]
       kallis+A+Pl+Com+Foc/gi: kallitegagi
-      kallis+A+Pl+Com+Foc/gi+Use/Rare: kallistegagi
+      kallis+A+Pl+Com+Foc/gi+Use/Rare: [kalleigagi, kallistegagi]
       kallis+A+Pl+Com: kallitega
-      kallis+A+Pl+Com+Use/Rare: kallistega
+      kallis+A+Pl+Com+Use/Rare: [kalleiga, kallistega]
       kallis+A+Pl+Ela+Foc/gi: kallitestki
       kallis+A+Pl+Ela+Foc/gi+Use/Rare: [kalleistki, kallistestki]
       kallis+A+Pl+Ela: kallitest
       kallis+A+Pl+Ela+Use/Rare: [kalleist, kallistest]
       kallis+A+Pl+Ess+Foc/gi: kallitenagi
-      kallis+A+Pl+Ess+Foc/gi+Use/Rare: kallistenagi
+      kallis+A+Pl+Ess+Foc/gi+Use/Rare: [kalleinagi, kallistenagi]
       kallis+A+Pl+Ess: kallitena
-      kallis+A+Pl+Ess+Use/Rare: kallistena
+      kallis+A+Pl+Ess+Use/Rare: [kalleina, kallistena]
       kallis+A+Pl+Gen+Foc/gi: kallitegi
       kallis+A+Pl+Gen+Foc/gi+Use/Rare: kallistegi
       kallis+A+Pl+Gen: kallite
@@ -536,9 +536,9 @@ Tests:
       kallis+A+Pl+Tra: kalliteks
       kallis+A+Pl+Tra+Use/Rare: [kalleiks, kallisteks]
       kallis+A+Pl+Trm+Foc/gi: kallitenigi
-      kallis+A+Pl+Trm+Foc/gi+Use/Rare: kallistenigi
+      kallis+A+Pl+Trm+Foc/gi+Use/Rare: [kalleinigi, kallistenigi]
       kallis+A+Pl+Trm: kalliteni
-      kallis+A+Pl+Trm+Use/Rare: kallisteni
+      kallis+A+Pl+Trm+Use/Rare: [kalleini, kallisteni]
       kallis+A+Sg+Abe+Foc/gi: kallitagi
       kallis+A+Sg+Abe: kallita
       kallis+A+Sg+Abl+Foc/gi: kalliltki
@@ -642,9 +642,9 @@ Tests:
       katkine+A+Sg+Trm+Foc/gi: katkisenigi
       katkine+A+Sg+Trm: katkiseni
       kaunis+A+Pl+Abe+Foc/gi: kaunitetagi
-      kaunis+A+Pl+Abe+Foc/gi+Use/Rare: kaunistetagi
+      kaunis+A+Pl+Abe+Foc/gi+Use/Rare: [kauneitagi, kaunistetagi]
       kaunis+A+Pl+Abe: kauniteta
-      kaunis+A+Pl+Abe+Use/Rare: kaunisteta
+      kaunis+A+Pl+Abe+Use/Rare: [kauneita, kaunisteta]
       kaunis+A+Pl+Abl+Foc/gi: kauniteltki
       kaunis+A+Pl+Abl+Foc/gi+Use/Rare: [kauneiltki, kaunisteltki]
       kaunis+A+Pl+Abl: kaunitelt
@@ -658,17 +658,17 @@ Tests:
       kaunis+A+Pl+All: kaunitele
       kaunis+A+Pl+All+Use/Rare: [kauneile, kaunistele]
       kaunis+A+Pl+Com+Foc/gi: kaunitegagi
-      kaunis+A+Pl+Com+Foc/gi+Use/Rare: kaunistegagi
+      kaunis+A+Pl+Com+Foc/gi+Use/Rare: [kauneigagi, kaunistegagi]
       kaunis+A+Pl+Com: kaunitega
-      kaunis+A+Pl+Com+Use/Rare: kaunistega
+      kaunis+A+Pl+Com+Use/Rare: [kauneiga, kaunistega]
       kaunis+A+Pl+Ela+Foc/gi: kaunitestki
       kaunis+A+Pl+Ela+Foc/gi+Use/Rare: [kauneistki, kaunistestki]
       kaunis+A+Pl+Ela: kaunitest
       kaunis+A+Pl+Ela+Use/Rare: [kauneist, kaunistest]
       kaunis+A+Pl+Ess+Foc/gi: kaunitenagi
-      kaunis+A+Pl+Ess+Foc/gi+Use/Rare: kaunistenagi
+      kaunis+A+Pl+Ess+Foc/gi+Use/Rare: [kauneinagi, kaunistenagi]
       kaunis+A+Pl+Ess: kaunitena
-      kaunis+A+Pl+Ess+Use/Rare: kaunistena
+      kaunis+A+Pl+Ess+Use/Rare: [kauneina, kaunistena]
       kaunis+A+Pl+Gen+Foc/gi: kaunitegi
       kaunis+A+Pl+Gen+Foc/gi+Use/Rare: kaunistegi
       kaunis+A+Pl+Gen: kaunite
@@ -690,9 +690,9 @@ Tests:
       kaunis+A+Pl+Tra: kauniteks
       kaunis+A+Pl+Tra+Use/Rare: [kauneiks, kaunisteks]
       kaunis+A+Pl+Trm+Foc/gi: kaunitenigi
-      kaunis+A+Pl+Trm+Foc/gi+Use/Rare: kaunistenigi
+      kaunis+A+Pl+Trm+Foc/gi+Use/Rare: [kauneinigi, kaunistenigi]
       kaunis+A+Pl+Trm: kauniteni
-      kaunis+A+Pl+Trm+Use/Rare: kaunisteni
+      kaunis+A+Pl+Trm+Use/Rare: [kauneini, kaunisteni]
       kaunis+A+Sg+Abe+Foc/gi: kaunitagi
       kaunis+A+Sg+Abe: kaunita
       kaunis+A+Sg+Abl+Foc/gi: kauniltki
@@ -1919,9 +1919,9 @@ Tests:
       viskoosne+A+Sg+Tra: viskoosseks
       viskoosne+A+Sg+Trm+Foc/gi: viskoossenigi
       viskoosne+A+Sg+Trm: viskoosseni
-      väike+A+Pl+Abe+Foc/gi+Use/Rare: väiksetetagi
+      väike+A+Pl+Abe+Foc/gi+Use/Rare: [väikeseitagi, väikseitagi, väiksetetagi]
       väike+A+Pl+Abe+Foc/gi: väikestetagi
-      väike+A+Pl+Abe+Use/Rare: väikseteta
+      väike+A+Pl+Abe+Use/Rare: [väikeseita, väikseita, väikseteta]
       väike+A+Pl+Abe: väikesteta
       väike+A+Pl+Abl+Foc/gi+Use/Rare: [väikeseiltki, väikesiltki, väikseiltki, väikseteltki]
       väike+A+Pl+Abl+Foc/gi: väikesteltki
@@ -1935,17 +1935,17 @@ Tests:
       väike+A+Pl+All+Foc/gi: väikestelegi
       väike+A+Pl+All+Use/Rare: [väikeseile, väikesile, väikseile, väiksetele]
       väike+A+Pl+All: väikestele
-      väike+A+Pl+Com+Foc/gi+Use/Rare: väiksetegagi
+      väike+A+Pl+Com+Foc/gi+Use/Rare: [väikeseigagi, väikseigagi, väiksetegagi]
       väike+A+Pl+Com+Foc/gi: väikestegagi
-      väike+A+Pl+Com+Use/Rare: väiksetega
+      väike+A+Pl+Com+Use/Rare: [väikeseiga, väikseiga, väiksetega]
       väike+A+Pl+Com: väikestega
       väike+A+Pl+Ela+Foc/gi+Use/Rare: [väikeseistki, väikesistki, väikseistki, väiksetestki]
       väike+A+Pl+Ela+Foc/gi: väikestestki
       väike+A+Pl+Ela+Use/Rare: [väikeseist, väikesist, väikseist, väiksetest]
       väike+A+Pl+Ela: väikestest
-      väike+A+Pl+Ess+Foc/gi+Use/Rare: väiksetenagi
+      väike+A+Pl+Ess+Foc/gi+Use/Rare: [väikeseinagi, väikseinagi, väiksetenagi]
       väike+A+Pl+Ess+Foc/gi: väikestenagi
-      väike+A+Pl+Ess+Use/Rare: väiksetena
+      väike+A+Pl+Ess+Use/Rare: [väikeseina, väikseina, väiksetena]
       väike+A+Pl+Ess: väikestena
       väike+A+Pl+Gen+Foc/gi+Use/Rare: väiksetegi
       väike+A+Pl+Gen+Foc/gi: väikestegi
@@ -1971,9 +1971,9 @@ Tests:
       väike+A+Pl+Tra+Foc/gi: väikestekski
       väike+A+Pl+Tra+Use/Rare: [väikeseiks, väikesiks, väikseiks, väikseteks]
       väike+A+Pl+Tra: väikesteks
-      väike+A+Pl+Trm+Foc/gi+Use/Rare: väiksetenigi
+      väike+A+Pl+Trm+Foc/gi+Use/Rare: [väikeseinigi, väikseinigi, väiksetenigi]
       väike+A+Pl+Trm+Foc/gi: väikestenigi
-      väike+A+Pl+Trm+Use/Rare: väikseteni
+      väike+A+Pl+Trm+Use/Rare: [väikeseini, väikseini, väikseteni]
       väike+A+Pl+Trm: väikesteni
       väike+A+Sg+Abe+Foc/gi+Use/Rare: väiksetagi
       väike+A+Sg+Abe+Foc/gi: väikesetagi

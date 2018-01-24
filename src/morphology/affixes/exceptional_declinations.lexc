@@ -479,6 +479,11 @@ LEXICON RUBLA    ! about 20 words
                   : PERE ;
          +Use/Rare: SG_PARTITIVE ;    ! (viis) rubla
 
+LEXICON RUUM    ! only ruum
+
+                  : TAUD ;
+         +Use/Rare:%{W%}%>e N_VOWEL_PL_SUBPARA ;    ! ruumes etc
+
 LEXICON SADA    ! only sada
 
                   : KAVA ;
@@ -587,7 +592,7 @@ LEXICON XÄIKE    ! VVS 10 common part of väike(ne), päike(ne), äike(ne)
          +Use/Rare:ke%>sse SG_ILLATIVE ;    ! xäikesse (haplology)
          +Use/Rare:kse%>te N_PL_SUBPARA ;       
          +Use/Rare:kes%>i PL_PARTITIVE ;      ! xäikesi
-         +Use/Rare:kes%>i N_VOWEL_PL_SUBPARA ;    ! xäikesil etc
+      +Use/Rare+Pl:kes%>i LOCATIVES ;    ! xäikesil etc
          +Use/Rare:kese%>i N_VOWEL_PL_SUBPARA ;    ! xäikeseil etc
          +Use/Rare:kse%>i N_VOWEL_PL_SUBPARA ;    ! xäikseil etc
 

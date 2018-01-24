@@ -382,6 +382,7 @@ Rules
 "Weak grade for productive kpt:gbd" 
 
 Cx:Cy  <=> :Vowel :sonor _ Null*           :stemV %{W%}: ;  ! kaup-kauba, kurtma-kurdetud
+           :Vowel :sonor _ Null* %{W%}: Null* :stemV     ;  ! paik - paigus
                   :sonor _ [l | r | j | v] :stemV %{W%}: ;  ! kõblata
            :Vowel :sonor _ 0:e [l | r]        e:0 %{W%}: ;  ! võidelda
      where Cx in ( p t k ) 
@@ -870,7 +871,7 @@ n:0  <=> :Consonant _ Null+ » %- ;        ! nais-, vaatamis-, astraal-
 "ne to s (1/2)"
 
 n:s  =>       _ e: E1:  ;
-              _ e: Null* I1: ;
+              _ e: Null* (») I1: ;
               _ e: A1:  ;
 
 "ne to s (2/2)"
@@ -881,7 +882,7 @@ e:0  /<= n:n _ E1: ;
 "e disappearing (ne - s) 1/2"
 
 e:0 <=>       n: _ E1: ;                    ! kodune - kodust, koduse
-              n: _ Null* I1: ;               ! katkine - katkisil
+              n: _ Null* (») I1: ;          ! katkine - katkisil;  alalisim
               n: _ A1: ;                    ! pingne - pingsa
 
 ! we postulate that there is a special stem vowel e that is added both for -ne and -s words
@@ -931,10 +932,11 @@ E1:0  <=> :Vowel Null* :s Null* _ Null* s e ;          ! olulisse (haplology)
 !!$ viskoosneE1>t
 !!$ viskooss00>t
 
-! i is a vowel that starts Pl Par or vowel plural affixes; use I1 as a trigger
+! i is a vowel that starts Pl Par or vowel plural affixes; or -im derivation Der/im 
+! use I1 as a trigger
 "I1 triggers -ne to be -s"
 
-I1:i   => n:s e:0 Null* _ ;   ! -ne word
+I1:i   => n:s e:0 Null* (») _ ;   ! -ne word
           s Null* _ ;       ! -s word
 
 ! lexical: k a t k i n e > I1

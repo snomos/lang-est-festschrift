@@ -141,7 +141,7 @@ Tests:
     mulle+N+Sg+Tra: muldeks
     mulle+N+Sg+Trm: muldeni
     muuseum+N+Pl+Abe: muuseumideta
-    muuseum+N+Pl+Abe+Use/Rare: muuseumiteta
+    muuseum+N+Pl+Abe+Use/Rare: [muuseumeita, muuseumiteta]
     muuseum+N+Pl+Abl: muuseumidelt
     muuseum+N+Pl+Abl+Use/Rare: [muuseumeilt, muuseumitelt]
     muuseum+N+Pl+Ade: muuseumidel
@@ -149,11 +149,11 @@ Tests:
     muuseum+N+Pl+All: muuseumidele
     muuseum+N+Pl+All+Use/Rare: [muuseumeile, muuseumitele]
     muuseum+N+Pl+Com: muuseumidega
-    muuseum+N+Pl+Com+Use/Rare: muuseumitega
+    muuseum+N+Pl+Com+Use/Rare: [muuseumeiga, muuseumitega]
     muuseum+N+Pl+Ela: muuseumidest
     muuseum+N+Pl+Ela+Use/Rare: [muuseumeist, muuseumitest]
     muuseum+N+Pl+Ess: muuseumidena
-    muuseum+N+Pl+Ess+Use/Rare: muuseumitena
+    muuseum+N+Pl+Ess+Use/Rare: [muuseumeina, muuseumitena]
     muuseum+N+Pl+Gen: muuseumide
     muuseum+N+Pl+Gen+Use/Rare: muuseumite
     muuseum+N+Pl+Ill: muuseumidesse
@@ -166,7 +166,7 @@ Tests:
     muuseum+N+Pl+Tra: muuseumideks
     muuseum+N+Pl+Tra+Use/Rare: [muuseumeiks, muuseumiteks]
     muuseum+N+Pl+Trm: muuseumideni
-    muuseum+N+Pl+Trm+Use/Rare: muuseumiteni
+    muuseum+N+Pl+Trm+Use/Rare: [muuseumeini, muuseumiteni]
     muuseum+N+Sg+Abe: muuseumita
     muuseum+N+Sg+Abl: muuseumilt
     muuseum+N+Sg+Ade: muuseumil
@@ -813,7 +813,7 @@ Tests:
     põlv+N+Sg+Tra: põlveks
     põlv+N+Sg+Trm: põlveni
     päike+N+Pl+Abe: päikesteta
-    päike+N+Pl+Abe+Use/Rare: päikseteta
+    päike+N+Pl+Abe+Use/Rare: [päikeseita, päikseita, päikseteta]
     päike+N+Pl+Abl: päikestelt
     päike+N+Pl+Abl+Use/Rare: [päikeseilt, päikesilt, päikseilt, päiksetelt]
     päike+N+Pl+Ade: päikestel
@@ -821,11 +821,11 @@ Tests:
     päike+N+Pl+All: päikestele
     päike+N+Pl+All+Use/Rare: [päikeseile, päikesile, päikseile, päiksetele]
     päike+N+Pl+Com: päikestega
-    päike+N+Pl+Com+Use/Rare: päiksetega
+    päike+N+Pl+Com+Use/Rare: [päikeseiga, päikseiga, päiksetega]
     päike+N+Pl+Ela: päikestest
     päike+N+Pl+Ela+Use/Rare: [päikeseist, päikesist, päikseist, päiksetest]
     päike+N+Pl+Ess: päikestena
-    päike+N+Pl+Ess+Use/Rare: päiksetena
+    päike+N+Pl+Ess+Use/Rare: [päikeseina, päikseina, päiksetena]
     päike+N+Pl+Gen: päikeste
     päike+N+Pl+Gen+Use/Rare: päiksete
     päike+N+Pl+Ill: päikestesse
@@ -839,7 +839,7 @@ Tests:
     päike+N+Pl+Tra: päikesteks
     päike+N+Pl+Tra+Use/Rare: [päikeseiks, päikesiks, päikseiks, päikseteks]
     päike+N+Pl+Trm: päikesteni
-    päike+N+Pl+Trm+Use/Rare: päikseteni
+    päike+N+Pl+Trm+Use/Rare: [päikeseini, päikseini, päikseteni]
     päike+N+Sg+Abe: päikeseta
     päike+N+Sg+Abe+Use/Rare: päikseta
     päike+N+Sg+Abl: päikeselt
@@ -2418,7 +2418,7 @@ Tests:
     õukond+N+Sg+Par: õukonda
     õukond+N+Sg+Tra: õukonnaks
     õukond+N+Sg+Trm: õukonnani
-    äike+N+Pl+Abe+Use/Rare: äikseteta
+    äike+N+Pl+Abe+Use/Rare: [äikeseita, äikseita, äikseteta]
     äike+N+Pl+Abe: äikesteta
     äike+N+Pl+Abl+Use/Rare: [äikeseilt, äikesilt, äikseilt, äiksetelt]
     äike+N+Pl+Abl: äikestelt
@@ -2426,11 +2426,11 @@ Tests:
     äike+N+Pl+Ade: äikestel
     äike+N+Pl+All+Use/Rare: [äikeseile, äikesile, äikseile, äiksetele]
     äike+N+Pl+All: äikestele
-    äike+N+Pl+Com+Use/Rare: äiksetega
+    äike+N+Pl+Com+Use/Rare: [äikeseiga, äikseiga, äiksetega]
     äike+N+Pl+Com: äikestega
     äike+N+Pl+Ela+Use/Rare: [äikeseist, äikesist, äikseist, äiksetest]
     äike+N+Pl+Ela: äikestest
-    äike+N+Pl+Ess+Use/Rare: äiksetena
+    äike+N+Pl+Ess+Use/Rare: [äikeseina, äikseina, äiksetena]
     äike+N+Pl+Ess: äikestena
     äike+N+Pl+Gen+Use/Rare: äiksete
     äike+N+Pl+Gen: äikeste
@@ -2444,7 +2444,7 @@ Tests:
     äike+N+Pl+Par: äikeseid
     äike+N+Pl+Tra+Use/Rare: [äikeseiks, äikesiks, äikseiks, äikseteks]
     äike+N+Pl+Tra: äikesteks
-    äike+N+Pl+Trm+Use/Rare: äikseteni
+    äike+N+Pl+Trm+Use/Rare: [äikeseini, äikseini, äikseteni]
     äike+N+Pl+Trm: äikesteni
     äike+N+Sg+Abe+Use/Rare: äikseta
     äike+N+Sg+Abe: äikeseta
