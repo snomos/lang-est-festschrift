@@ -818,6 +818,7 @@ LEXICON Nonfirst
 ! D.Der means that the previous word should not be a derived one;
 ! it may be too restrictive here...
   @D.Bad.Nonfinal@@C.Cap@@D.Case.PlNom@@D.Der.N@@D.Der.A@@D.Der.Adv@ Latter ;   ! a latter part
+!  @D.Bad.Nonfinal@@C.Cap@@D.Case.PlNom@ Latter ;   ! a latter part
 
 LEXICON Single     !! strictly simplex words; cannot be a part of a compound
 
@@ -885,6 +886,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
 ! x + noun
   @R.POS.Pref@ LatterNoun ;  ! ebalaud
+  @R.POS.Pref@ LatterProperNoun ;  ! ehttartulik
   @R.Case.Short@ LatterNoun ;   ! astraallaud, ekstrariiul
 
   @R.POS.N@@R.Case.Nom@@R.NomStem.First@ LatterNoun ;
@@ -976,6 +978,9 @@ LEXICON LatterNoninflectingAdjective
 
 LEXICON LatterNoun
   @P.POS.N@@C.Der@@C.NomStem@ Nouns ;    
+
+LEXICON LatterProperNoun
+  @P.POS.NProp@@C.Der@@C.NomStem@@P.NeedAdj.On@@U.Cap.Opt@  ProperNouns ;    ! derived into an adjective
 
 LEXICON LatterDeverbal
   @P.POS.N@@C.Der@@C.NomStem@ DeverbalNouns ;    
