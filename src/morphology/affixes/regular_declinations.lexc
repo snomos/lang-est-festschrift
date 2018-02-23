@@ -585,13 +585,13 @@ LEXICON PL_NOM_GI       ! in compounding, +Pl is relevant for +Nom only
 ! paradigmatic derivation, i.e. very regular
 
 LEXICON M_DERIVATION
-  @P.Der.A@ M_DERIVATION_SUF ;
+  @P.Der.m@ M_DERIVATION_SUF ;
 
 LEXICON M_DERIVATION_SUF
           +Der/m+A+Comp:»m MAGUS ;           ! suurem, elanum,  etc
 
 LEXICON IM_DERIVATION
-   @P.Der.A@ IM_DERIVATION_SUF ;
+   @P.Der.im@ IM_DERIVATION_SUF ;
 
 LEXICON IM_DERIVATION_SUF
       +Der/im+A+Superl:m MAGUS ;         ! suurim, elanuim, õnnelikem etc; NB! notice that » is missing!

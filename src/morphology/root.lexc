@@ -583,6 +583,7 @@ Multichar_Symbols
  @D.Part@        !!≈ | @CODE@ | No part of a compound should have been encountered yet
  @P.Part.One@        !!≈ | @CODE@ | Indicate that this could be the first part of a compound
  @R.Part.One@        !!≈ | @CODE@ | Require that the first part has been encountered 
+ @D.Part.One@        !!≈ | @CODE@ | Require that the first part has NOT been encountered 
  @P.Part.Two@        !!≈ | @CODE@ | Indicate that this could be the second part of a compound
  @R.Part.Two@        !!≈ | @CODE@ | Require that the second part has been encountered
  @P.Part.Three@      !!≈ | @CODE@ | Indicate that this could be the third part of a compound
@@ -599,8 +600,8 @@ Multichar_Symbols
  @P.POS.A@
  @R.POS.AComp@
  @P.POS.AComp@
- @R.POS.ASuperl@
- @P.POS.ASuperl@
+! @R.POS.ASuperl@ ! Superl = Comp in compounding
+! @P.POS.ASuperl@ ! Superl = Comp in compounding
  @R.POS.N@
  @P.POS.N@
  @R.POS.NProp@
@@ -649,6 +650,8 @@ Multichar_Symbols
  @P.Der.us@
  @D.Der.us@
  @P.Der.ist@    ! Der/ist does not really affect the compounding
+ @P.Der.m@      ! Der/m (A+Comp) does not really affect the compounding
+ @P.Der.im@     ! Der/im (A+Superl) does not really affect the compounding
  @P.Der.N@
  @D.Der.N@
  @P.Der.A@
@@ -831,7 +834,7 @@ LEXICON First     !!= * {{@CODE@}} a simplex word or the first part of a compoun
   @P.POS.A@ Adjectives ;              !!= * {{@CODE@}}
   @P.POS.A@ NoninflectingAdjectives ; !!= * {{@CODE@}}
   @P.POS.AComp@ ComparativeAdjectives ;   !!= * {{@CODE@}}
-  @P.POS.ASuperl@ SuperlativeAdjectives ;   !!= * {{@CODE@}}  
+  @P.POS.AComp@ SuperlativeAdjectives ;   !!= * {{@CODE@}}  ! Superl = Comp in compounding
   @P.POS.Adv@ Adverbs ;                 !!= * {{@CODE@}}
   @P.POS.N@ Nouns ;                   !!= * {{@CODE@}}
   @P.POS.NProp@@U.Cap.Obl@ ProperNouns ; !!= * {{@CODE@}}  ! always uppercase
@@ -872,11 +875,8 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.A@@R.Case.Gen@ LatterNoninflectingAdjective ;  ! jämedavõitu
   @R.POS.A@@R.Case.Nom@@R.Der.us@ LatterAdjective_ne ;  ! funktsionaalsusjalgne
 
-  @R.POS.AComp@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ;  ! enampunane
-  @R.POS.AComp@@R.Case.Gen@ LatterAdjective_ne ;  ! enamaruuduline
-
-  @R.POS.ASuperl@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ;  ! enimpunane
-  @R.POS.ASuperl@@R.Case.Gen@ LatterAdjective_ne ;  ! enimaruuduline
+  @R.POS.AComp@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ;  ! enampunane, enimpunane
+  @R.POS.AComp@@R.Case.Gen@ LatterAdjective_ne ;  ! enamaruuduline, enimaruuduline
 
 ! NB only some pronouns !
   @R.POS.Pron@@R.Case.Gen@ LatterAdjective_ne ; ! enesepunane, meiepõõsaline
@@ -896,8 +896,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
 ! NB only short adjectives are good here !!!
   @R.POS.A@@R.Case.Nom@@R.NomStem.First@@D.Der.kas@ LatterNoun ;   ! lapikriiul, NOT pruunjasriiul (?)
-  @R.POS.AComp@@R.Case.Nom@@R.NomStem.First@ LatterNoun ;   ! enamriiul
-  @R.POS.ASuperl@@R.Case.Nom@@R.NomStem.First@ LatterNoun ;   ! enimriiul
+  @R.POS.AComp@@R.Case.Nom@@R.NomStem.First@ LatterNoun ;   ! enamriiul, enimriiul
 
   @R.POS.A@@R.Case.Nom@@D.NomStem.First@@R.Der.us@ LatterNoun ;  ! funktsionaalsusriiul
 
@@ -912,7 +911,6 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.V@@R.Case.Sem@ LatterDeverbal ;  ! -ma, -mas etc lugematulek
   @R.POS.A@@R.Case.Sem@ LatterDeverbal ;  ! ilmsekstulek
   @R.POS.AComp@@R.Case.Sem@ LatterDeverbal ;  ! ilmsemakstulek
-  @R.POS.ASuperl@@R.Case.Sem@ LatterDeverbal ;  ! suurimakstulek
   @R.POS.Adv@ LatterDeverbal ;            ! huupitulek
   @R.POS.GA@ LatterDeverbal ;             ! himaalajatulek
 
@@ -928,14 +926,12 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.N@@R.Case.Sem@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
   @R.POS.A@@R.Case.Sem@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
   @R.POS.AComp@@R.Case.Sem@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
-  @R.POS.ASuperl@@R.Case.Sem@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
 
   @R.POS.GA@@P.Case.Gen@ LatterVerb ;   ! eestivihkaja
 
 ! NB only short adjectives are good here !!!
   @R.POS.A@@R.Case.Nom@@R.NomStem.First@@D.Der.kas@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
   @R.POS.AComp@@R.Case.Nom@@R.NomStem.First@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
-  @R.POS.ASuperl@@R.Case.Nom@@R.NomStem.First@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
 
   @R.POS.A@@R.Case.Nom@@D.NomStem.First@@R.Der.us@@P.Case.Gen@ LatterVerb ;  ! funktsionaalsusprogrammeerimine
 

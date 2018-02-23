@@ -125,7 +125,7 @@ define BadDer4 [
     [{vana} "+A" "+Der/m"] |
     [{vara} "+A" "+Der/m"] |
     [{õrn} "+A" "+Der/m"] |
-    [{ke} "+A" "+Der/im"] | 
+    [Vow {ke} "+A" "+Der/im"] |   # rohke+im is OK, peenike+im not OK
     [{hea} "+A" "+Der/im"] |
     [{ll} "+N" "+Der/lik"]    # do not allow vasall+lik because the normal cons cluster phon rule would turn it into vasallik
     ] ;
