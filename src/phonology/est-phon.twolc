@@ -390,21 +390,21 @@ Cx:Cy  <=> :Vowel :sonor _ Null*           :stemV %{W%}: ;  ! kaup-kauba, kurtma
      matched ;
 
 ! lexical: k a u p > {pl.u} {sg.a} {W}
-! surface: k a u b 0    0      a    0
+! surface: k a u b >    0      a    0
 ! lexical: k r a a p i {W} > n
-! surface: k r a a b i  0  0 n
+! surface: k r a a b i  0  > n
 ! lexical: k a t k u {W} > n
-! surface: k a t k u  0  0 n
+! surface: k a t k u  0  0> n
 ! lexical: k õ p l a {W} > t a
-! surface: k õ b l a  0  0 t a
+! surface: k õ b l a  0  > t a
 ! lexical: v õ i t 0 l {W} > d a
-! surface: v õ i d e l  0  0 d a
+! surface: v õ i d e l  0  > d a
 ! lexical: s i p 0 l e {W} > d a
-! surface: s i p e l 0  0  0 d a  ! no visible change
+! surface: s i p e l 0  0  > d a  ! no visible change
 ! lexical: l õ t v e {W}
 ! surface: l õ d v e  0        ! Sg Nom
 ! lexical: k u r t A7 0 {W} > T7 u d
-! surface: k u r d  0 e  0  0  t u d
+! surface: k u r d  0 e  0  >  t u d
 
 
 !!€ kraapi%{W%}>n
@@ -420,11 +420,11 @@ Cx:0 <=>  Cx _ Null* :stemV (lmnr) %{W%}:  ;  ! sepa, lepin, aken, tütar, ...
      where Cx in ( p t k š f) ;
 
 ! lexical: k e p p > {pl.e} {sg.i} {W}
-! surface: k e p 0 0    0      i    0 
+! surface: k e p 0 >    0      i    0 
 ! lexical: s e p p > {pl.i} {sg.a} {W}
-! surface: s e p 0 0    0      a    0 
+! surface: s e p 0 >    0      a    0 
 ! lexical: l e p p i {W} > n
-! surface: l e p 0 i  0  0 n 
+! surface: l e p 0 i  0  > n 
 ! lexical: t ü t t A2 r {W}
 ! surface: t ü t 0 a  r 0 
 
@@ -436,9 +436,9 @@ Cx:0 <=>  Cx _ Null* :stemV (lmnr) %{W%}:  ;  ! sepa, lepin, aken, tütar, ...
 s:0 <=> :Vowel :sonor :s _ Null* :stemV %{W%}: ;
 
 ! lexical: k a u s s > {pl.e} {sg.i} {W}
-! surface: k a u s 0 0    0      i    0
+! surface: k a u s 0 >    0      i    0
 ! lexical: m a r s s i {W} > n
-! surface: m a r s 0 i  0  0 n
+! surface: m a r s 0 i  0  > n
 
 "Lexically determined weak grade for b:v"
 
@@ -473,9 +473,9 @@ Cx:Cy  <=> _ AnyNoTrigger* WeakGrade ;
      matched ;
 
 ! lexical: l a u D1 > {pl.u} {sg.a} {W}
-! surface: l a u  0 0    0      a    0
+! surface: l a u  0 >    0      a    0
 ! lexical: a n D1 > T7 u d
-! surface: a n  0 0  t u d
+! surface: a n  0 >  t u d
 
 "Lexically determined weak grade for bp:0"
 
@@ -490,9 +490,9 @@ S1:0  <=> _ AnyNoTrigger* WeakGrade ;       ! paas - pae;
           _ Null* [ :t | :d ] ;             ! vars - vart, varde
 
 ! lexical: p a a S1 > {pl.e} {sg.i} {W}
-! surface: p a 0  0 0   0       e    0
+! surface: p a 0  0 >   0       e    0
 ! lexical: v a r r S1 {stemill} {S} > d e > {s} {s} {e}
-! surface: v a r 0  0      0     0  0 d e 0  0   0   0
+! surface: v a r 0  0      0     0  > d e >  0   0   0
 ! lexical: k o l m a N1 S1 d a
 ! surface: k o l m a  n  0 d a
 
@@ -508,9 +508,9 @@ Cx:Cy  <=>  _ AnyNoTrigger* WeakGrade ;
 ! lexical: e r K2 A2 s {W}
 ! surface: e r  g  a s  0
 ! lexical: e r K2 A2 s > a
-! surface: e r  k  0 s 0 a
+! surface: e r  k  0 s > a
 ! lexical: a T2 E2 r > {pl.u} {rare}
-! surface: a  d  e r 0    0     0
+! surface: a  d  e r >    0     0
 ! lexical: l u P2 J1
 ! surface: l u  b  i 
 
@@ -525,7 +525,7 @@ Cx:Cy  <=>  _ AnyNoTrigger* WeakGrade ;
      matched ;
 
 ! lexical: t u B1 0 a > {pl.e} {stemill} {S} > {s} {s} {e}
-! surface: t u  p p a 0    0       0      0  0  0   0   0 
+! surface: t u  p p a 0    0       0      0  >  0   0   0 
 ! s õ J1 D1 0 a
 ! s õ  0  t t a
 
@@ -549,11 +549,11 @@ Cx:Cy <=>  _ (:Cy | j) NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ;
      matched ;
 
 ! lexical: l a G1 0 {stemill} e  {S} > {s} {s} {e}
-! surface: l a  k k     0     e   0  0  0   0   0
+! surface: l a  k k     0     e   0  >  0   0   0
 ! lexical: A B4 j a {stemill} {S} > {s} {s} {e}
-! surface: A  p j a     0      0  0  0   0   0
+! surface: A  p j a     0      0  >  0   0   0
 ! lexical: R a n n D3 u {stemill} {S} > {s} {s} {e}
-! surface: R a n 0  d u     0      0  0  0   0   0
+! surface: R a n 0  d u     0      0  >  0   0   0
 
 !--------- vowels
 
@@ -565,19 +565,19 @@ Vx:Vy  <=>    _ Null* [:Consonant - :stop] Null* :stemV  ;
      matched ;
 
 ! lexical: p e e n A2 r > a
-! surface: p e e n  0 r 0 a 
+! surface: p e e n  0 r > a 
 ! lexical: t ä h t I2 s > a
-! surface: t ä h t  0 s 0 a 
+! surface: t ä h t  0 s > a 
 ! lexical: s u h k U2 r > u
-! surface: s u h k  0 r 0 u 
+! surface: s u h k  0 r > u 
 ! lexical: k o o r E2 m > a
-! surface: k o o r 0  m 0 a 
+! surface: k o o r 0  m > a 
 ! lexical: s e a d E2 m > e    ??
-! surface: s e a d 0  m 0 e 
+! surface: s e a d 0  m > e 
 ! lexical: a T2 E2 r > a
-! surface: a  d  0 r 0 a 
+! surface: a  d  0 r > a 
 ! lexical: s p i k k E2 r > i
-! surface: s p i k 0  0 r 0 i 
+! surface: s p i k 0  0 r > i 
 
 ! some older verbs lose the stem final vowel in strong grade forms
 "verb stem final vowel in weak grade (excl. impersonal)"
@@ -588,7 +588,7 @@ Vx:Vy  <=> _ WeakGrade %> \[T7:] ;
      matched ;
 
 ! lexical: s e i s A7 {W} > b
-! surface: s e i s  a  0  0 b 
+! surface: s e i s  a  0  > b 
 
 ! vowel lowering; 
 ! it is triggered by g b d t s disappearing or morpheme border between i and i
@@ -598,11 +598,11 @@ Vx:Vy  <=> _ WeakGrade %> \[T7:] ;
 i:e  <=>  [ :Consonant | %{apo%}:' ] (%>) _ Null* %> :i ;
       
 ! lexical: v o o d i > i d
-! surface: v o o d e 0 i d
+! surface: v o o d e > i d
 ! lexical: r u k K1 i > i d
-! surface: r u k  k e 0 i d
+! surface: r u k  k e > i d
 ! lexical: S c h e d u l e {apo} i > i d
-! surface: S c h e d u l e   '   e 0 i d
+! surface: S c h e d u l e   '   e > i d
 
 "single short high vowel lowers if it obtains a neighboring vowel after stop or s disappears"
 
@@ -618,11 +618,11 @@ Vx:Vy  <=>  [Border | Consonant] :Vowel (LowerBackVowel:0) WS:0 Null* _  ;
 ! surface: s ö  0 e  0
 
 ! lexical: s a a G1 {W} > {sg.i}
-! surface: s a 0  0  0  0    e
+! surface: s a 0  0  0  >    e
 ! lexical: v o o G1 > {pl.e} {sg.u} {W} 
-! surface: v o 0  0 0    0      o    0
+! surface: v o 0  0 >    0      o    0
 ! lexical: l i u G1 > {pl.e} {sg.u} {W}    
-! surface: l i 0  0 0    0      u    0    NB! no lowering!
+! surface: l i 0  0 >    0      u    0    NB! no lowering!
 
 ! here long vowel shortening is formally equivalent to one vowel deletion
 ! hence the need to use 2 rules instead of one <=> rule:
@@ -655,17 +655,17 @@ Vx:Vx /<= :Vx _ Null+ :stemV ;            ! sae, soid
 !      where Vx in ( MidVowel LowVowel ) ;  
 
 ! lexical: s a a G1 > {pl.e} {sg.i} {W}
-! surface: s a 0  0 0    0      e    0 
+! surface: s a 0  0 >    0      e    0 
 ! lexical: h u u G1 a {W} > n u d      
-! surface: h u u  0 a  0  0 n u d     NB! no shortening !
+! surface: h u u  0 a  0  > n u d     NB! no shortening !
 
 ! lexical: p u u             {id} > {idsid} i d
 ! surface: p u 0               0  0    0    i d
 
 ! lexical: t õ u G1 > {pl.e} {sg.u} {W}
-! surface: t õ 0  0 0    0      u    0
+! surface: t õ 0  0 >    0      u    0
 ! lexical: n ä u G1 u {W} > b 
-! surface: n ä 0  0 u  0  0 b
+! surface: n ä 0  0 u  0  > b
 
 !-----
 ! add a vowel to make the wordform pronouncable
@@ -675,7 +675,7 @@ Vx:Vx /<= :Vx _ Null+ :stemV ;            ! sae, soid
 0:e <=> :Consonant Null* SuffixBorder _ v WordEnd ;
 
 ! lexical: n ´ a e r > 0 v
-! surface: n ´ a e r 0 e v
+! surface: n ´ a e r > e v
 
 ! impersonal voice for söötma, nutma, lõpma: söödetud, nutetud, lõpetud
 "from t+t to te+t"
@@ -683,7 +683,7 @@ Vx:Vx /<= :Vx _ Null+ :stemV ;            ! sae, soid
 0:e <=> [t: | T1: | p:] Null* _ WeakGrade SuffixBorder T7:t ;
 
 ! lexical: n ´ u t t A7 0 {W} > T7 u d
-! surface: n ´ u t 0  0 e  0  0  t u d
+! surface: n ´ u t 0  0 e  0  >  t u d
 
 ! i is added to make s-ending preteritum form pronouncable,
 ! or i is actually the only morpheme indicating preteritum
@@ -694,9 +694,9 @@ I7:i <=> :Consonant Null* %> _ S7: WordEnd ;
          _ WordEnd ;
 
 ! lexical: n ´ a e r > I7 S7
-! surface: n ´ a e r 0  i  s
+! surface: n ´ a e r >  i  s
 ! lexical: s a a > I7
-! surface: s a 0 0  i
+! surface: s a 0 >  i
 
 ! --------- verb stem changes -------
 ! not really gradation
@@ -711,7 +711,7 @@ e:0 <=> :e [l | r] _ WeakGrade SuffixBorder :Consonant ;
 
 "el-le 2/3"
 
-0:e  =>  [:Consonant | WS:0] _ [l | r] e:0 WeakGrade SuffixBorder :Consonant ;
+0:e <=>  [:Consonant | WS:0] _ [l | r] e:0 WeakGrade SuffixBorder :Consonant ;
 
 ! in weak grade, -le- is impossible (has to be -el-)
 "el-le 3/3"
@@ -719,10 +719,10 @@ e:0 <=> :e [l | r] _ WeakGrade SuffixBorder :Consonant ;
 e:e /<=  [:Consonant | WS:0] [l | r] _ WeakGrade SuffixBorder :Consonant ;
 
 ! lexical: s i p 0 l e {W} > d a
-! surface: s i p e l 0  0  0 d a
+! surface: s i p e l 0  0  > d a
 ! hüüdlema-hüüelda
 ! lexical: h ´ ü ü D1 0 l e {W} > d a
-! surface: h ´ ü ü 0  e l 0  0  0 d a
+! surface: h ´ ü ü 0  e l 0  0  > d a
 
 ! -------- rules that operate on a small set of different words
 
@@ -791,7 +791,7 @@ J1:0  =>   h _ T1: ;
 K3:k  <=> _ s E1:e ;
 
 ! lexical: v e n n a K3 s E1 > d 
-! surface: v e n n a k  s  e 0 d
+! surface: v e n n a k  s  e > d
 
 !------
 "laas-laane"
@@ -833,7 +833,7 @@ Vx:0  <=> _ Vx:õ Null+ :i ;
      where Vx in ( Ö6 O6 ) ; 
 
 ! lexical: l O6 O6 > i 
-! surface: l  0  õ 0 i 
+! surface: l  0  õ > i 
 
 "Verb vowel o ö to u ü"
 
@@ -844,7 +844,7 @@ Vx:Vy  <=>  Vx: _  Null+ [:a | :e] ;
      matched ;
 
 ! lexical: l O6 O6 {W} > T7 a k s e 
-! surface: l u   u  0  0  0 a k s e 
+! surface: l u   u  0  >  0 a k s e 
 !------
 
 ! a general rule, but has to be encoded with M1 to allow for komtuur, EMT etc
@@ -853,7 +853,7 @@ Vx:Vy  <=>  Vx: _  Null+ [:a | :e] ;
 M1:n  <=> _ Null* [:t | :d ] ;
 
 ! lexical: l e e M1 {stemill} {rare} > t
-! surface: l e e  n      0        0   0 t 
+! surface: l e e  n      0        0  > t 
 
 ! ---------- morphology
    
@@ -911,15 +911,15 @@ E1:0  <=> :Vowel Null* :s Null* _ Null* s e ;          ! olulisse (haplology)
 ! lexical: o l u l i n e E1 > s e 
 ! surface: o l u l i s 0  0 > s e
 ! lexical: s o o l a n e E1 > t
-! surface: s o o l a s 0  0 0 t
+! surface: s o o l a s 0  0 > t
 ! lexical: g l o o b u s E1 > t 
-! surface: g l o o b u s  0 0 t
+! surface: g l o o b u s  0 > t
 ! lexical: g l o o b u s E1 > t e
-! surface: g l o o b u s  0 0 t e
+! surface: g l o o b u s  0 > t e
 ! lexical: g l o o b u s E1 > t a
-! surface: g l o o b u s  e 0 t a
+! surface: g l o o b u s  e > t a
 ! lexical: r a u d n e E1 > t    ! NB! no e deletion
-! surface: r a u d s 0  e 0 t
+! surface: r a u d s 0  e > t
 
 ! lexical: v i s k o o s n e E1 » u s  
 ! surface: v i s k o o s s 0  0 » u s
@@ -940,9 +940,9 @@ I1:i   => n:s e:0 Null* (») _ ;   ! -ne word
           s Null* _ ;       ! -s word
 
 ! lexical: k a t k i n e > I1
-! surface: k a t k i s 0 0  i
+! surface: k a t k i s 0 >  i
 ! lexical: g l o o b u s > I1
-! surface: g l o o b u s 0  i
+! surface: g l o o b u s >  i
 
 ! ---------
 ! affix allomorphs
@@ -954,12 +954,12 @@ I1:i   => n:s e:0 Null* (») _ ;   ! -ne word
  t:d <=> [A2:a | E2:e] lmnr WeakGrade %> _ e ; 
 
 ! lexical: s ´ õ s t A2 r {W} > t e
-! surface: s 0 õ s t  a r  0  0 d e
+! surface: s 0 õ s t  a r  0  > d e
 
 ! similar to imperative mood affixes
 ! default: D7:d
 ! lexical: s i p 0 l e {W} > D7 a
-! surface: s i p e l 0  0  0  d a
+! surface: s i p e l 0  0  >  d a
 
 ! default for infinitive and gerund affixes is D7:d
 
@@ -971,18 +971,18 @@ D7:t  <=> :Vowel Null* WeakGrade SuffixBorder _ ;
 ! lexical: h ü p p a {W} > D7 a
 ! surface: h ü p 0 a {W} >  t a
 ! lexical: s e i s > D7 a 
-! surface: s e i s 0  t a
+! surface: s e i s >  t a
 
 "infinitive and gerund affixes may assimilate to 0"
 
 D7:0  <=>  [:p | :t | :d] Null* SuffixBorder _ ; ! tappa, kasta, nutta, anda, niita, nõuda, ... 
 
 ! lexical: k ü T1 t > D7 a 
-! surface: k ü  t t 0  0 a
+! surface: k ü  t t >  0 a
 ! lexical: k e e T2 > D7 a 
-! surface: k e e  t 0  0 a
+! surface: k e e  t >  0 a
 ! lexical: k ü n n D1 > D7 a
-! surface: k ü n 0  d 0  0 a
+! surface: k ü n 0  d >  0 a
 
 ! d cannot follow a voiceless consonant; 
 ! this is a general rule that is repeated here for the D7:d case
@@ -1000,22 +1000,22 @@ T7:d  <=> [l | n | r] e:0 WeakGrade SuffixBorder _ ;
           [l | n | r] [A7:0 | E7:0] SuffixBorder _ ;
 
 ! lexical: s i p 0 l e {W} > T7 u d
-! surface: s i p e l 0  0  0  d u d
+! surface: s i p e l 0  0  >  d u d
 ! lexical: n a e r A7 > T7 u d
-! surface: n a e r  0 0  d u d
+! surface: n a e r  0 >  d u d
 
 ! default: T7:t
 !
 ! lexical: e l a > T7 a k s e
-! surface: e l a 0  t a k s e
+! surface: e l a >  t a k s e
 ! lexical: l e p p i {W} > T7 a k s e
-! surface: l e p 0 i  0  0  t a k s e
+! surface: l e p 0 i  0  >  t a k s e
 ! lexical: s e i s > T7 a k s e
-! surface: s e i s 0  t a k s e
+! surface: s e i s >  t a k s e
 ! lexical: a n n D1 > T7 a k s e
-! surface: a n 0  0 0  t a k s e
+! surface: a n 0  0 >  t a k s e
 ! lexical: j o o K1 s {W} > T7 a k s e
-! surface: j o o  0 s  0  0  t a k s e
+! surface: j o o  0 s  0  >  t a k s e
 
 "imperative mood affix may begin in k"
 
@@ -1027,7 +1027,7 @@ G7:k  <=> \[:Vowel] a Null* WeakGrade %> _ ;
 ! lexical: l õ u G1 a {W} > G7 u
 ! surface: l õ u  0 a {W} >  k u
 ! lexical: s e i s > G7 u 
-! surface: s e i s 0  k u
+! surface: s e i s >  k u
 
 "from -is to -i"
 
@@ -1035,15 +1035,15 @@ S7:0 <=> [:Consonant | Border] Null* :Vowel :Consonant Null* %> I7: _ WordEnd ; 
          :s Null* _ ;    ! to eliminate jookssid, seissid
 
 ! lexical: p e s > I7 S7
-! surface: p e s 0  i  0
+! surface: p e s >  i  0
 ! lexical: l a s K1 {W} > I7 S7 i n
-! surface: l a s  0  0  0  0  0 i n
+! surface: l a s  0  0  >  0  0 i n
 ! lexical: l a s K1 {W} > I7 S7      
-! surface: l a s  0  0  0  i  0       
+! surface: l a s  0  0  >  i  0       
 ! lexical: s e i s > I7 S7
-! surface: s e i s 0  i  s          NB! S7:s
+! surface: s e i s >  i  s          NB! S7:s
 ! lexical: k ´ ü T1 t > I7 S7 i n
-! surface: k ´ ü  t 0 0  0  s i n   NB! S7:s
+! surface: k ´ ü  t 0 >  0  s i n   NB! S7:s
 
 ! us-suffix and ini-suffix attach to a consonant, so a preceding vowel is deleted
 ! in reality, only a u e are the preceding vowels
@@ -1113,9 +1113,9 @@ Vx:0 <=> :Consonant Null* _ SuffixBorder u s ;
                                   %{s%}:0 _ %{e%}:0; ! the middle s is sometimes zero, of course  
 
 ! lexical: s a b a > {pl.u} {rare} {stemill} > {s} {i} {d} 
-! surface: s a b 0 >    u      0       0     0  0   0   0 
+! surface: s a b 0 >    u      0       0     >  0   0   0 
 ! lexical: p u u {id} > {s} i d 
-! surface: p u 0  0   0  0  i d 
+! surface: p u 0  0   > 0  i d 
 ! lexical: s a b . a > {pl.u} {rare} {stemill} {S} > {s} {s} {e} 
 ! surface: s a p p a >    0      0       0      0  >  0   0   0 
 
@@ -1158,15 +1158,15 @@ Vx:Vy  <=>  :Consonant Null* %> _ Null+ %{s%}:0 ;     ! puud-puudi, maja - maju
      matched ;
 
 ! lexical: k i n g > {pl.i}       {sg.a} > {s} {i} {d}
-! surface: k i n g 0    i            0   0  0   0   0  
+! surface: k i n g >    i            0   >  0   0   0  
 ! lexical: p u u d > {pl.i} {hyp} {sg.a} > {s} {i} {d} {rare}
-! surface: p u u d 0    i     0      0   0  0   0   0     0 
+! surface: p u u d >    i     0      0   >  0   0   0     0 
 ! lexical: k a u p > {pl.u}       {sg.a} > {s} {i} {d}  
-! surface: k a u p 0    u            0   0  0   0   0
+! surface: k a u p >    u            0   >  0   0   0
 ! lexical: m a j a > {pl.u}        {stemill} > {s} {i} {d} 
-! surface: m a j 0 0    u             0     0   0   0   0    
+! surface: m a j 0 >    u             0      >  0   0   0    
 ! lexical: s a b a > {pl.u} {rare} {stemill} > {s} {i} {d} {rare}
-! surface: s a b 0 0    u     0        0     0  0   0   0     0 
+! surface: s a b 0 >    u     0        0     >  0   0   0     0 
 
 
 ! ------------
@@ -1183,7 +1183,7 @@ Vx:0  <=> :Consonant ( J1:0 ) _ %> PlSV:Vy Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
      matched;
 
 ! lexical: m a j a > {pl.u} {stemill} > {s} {i} {d}
-! surface: m a j 0 0    u       0     0  0   0   0
+! surface: m a j 0 >    u       0     >  0   0   0
 
 ! --------------
 ! 2. singular illative: -sse vs stem grade strengthening
@@ -1254,20 +1254,20 @@ Vx:0  <=> :Consonant ( J1:0 ) _ %> PlSV:Vy Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 %{s%}:0    /<= PlSV:stemV %{rare%}: Any* _ %{i%}:0 %{d%}:0 \%{rare%}: ; 
 
 ! lexical: p u u d > {pl.i} {hyp} {sg.a} > {s} {i} {d} {rare}
-! surface: p u u d 0    i     0      0   0  0   0   0      0     
+! surface: p u u d >    i     0      0   >  0   0   0      0     
 ! lexical: p u u d > {pl.i} {hyp} {sg.a} > {s} {i} {d} WordEnd
-! surface: p u u d 0    i     0      0   0  0   0   0           FAIL
+! surface: p u u d >    i     0      0   >  0   0   0           FAIL
 ! lexical: k a u p > {pl.u}       {sg.a} > {s} {i} {d} {rare}
-! surface: k a u p 0    u            0   0  0   0   0      0    FAIL
+! surface: k a u p >    u            0   >  0   0   0      0    FAIL
 ! lexical: t ü n g                {sg.a} > {s} {i} {d}
-! surface: t ü n g                   a   0  s   i   d           
+! surface: t ü n g                   a   >  s   i   d           
 
 ! lexical: p u u d > {pl.i} {hyp} {sg.a} > {s} {i} {d} {rare}
-! surface: p u u d 0    0     0      a   0  s   i   d     0    FAIL
+! surface: p u u d >    0     0      a   >  s   i   d     0    FAIL
 ! lexical: k a u p > {pl.u}       {sg.a} > {s} {i} {d} WordEnd
-! surface: k a u p 0    0            a   0  s   i   d          FAIL
+! surface: k a u p >    0            a   >  s   i   d          FAIL
 ! lexical: t ü n g                {sg.a} > {s} {i} {d} {rare}
-! surface: t ü n g                   a   0  s   i   d     0    FAIL
+! surface: t ü n g                   a   >  s   i   d     0    FAIL
 
 "-id plural partitive cannot be common if the lexicon tag says it is rare"
 %{s%}:0  /<=  %{id%}: %{rare%}: Any* _ i d \%{rare%}:  ;
@@ -1276,19 +1276,19 @@ Vx:0  <=> :Consonant ( J1:0 ) _ %> PlSV:Vy Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 %{s%}:s  /<= %{id%}: \%{rare%}: Any* _ i d \%{rare%}:  ;
 
 ! lexical: p u u     {id}        > {s} i d {rare}
-! surface: p u u      0          0  s  i d   0
+! surface: p u u      0          >  s  i d   0
 ! lexical: g n u u               > {s} i d WordEnd
-! surface: g n u u               0  s  i d 
+! surface: g n u u               >  s  i d 
 ! lexical: g n u u               > {s} i d {rare}
-! surface: g n u u               0  s  i d    0      FAIL 
+! surface: g n u u               >  s  i d    0      FAIL 
 ! lexical: e s s e e {id} {rare} > {s} i d {rare}
-! surface: e s s e 0  0      0   0  0  i d   0 
+! surface: e s s e 0  0      0   >  0  i d   0 
 ! lexical: e s s e e {id} {rare} > {s} i d {rare}
-! surface: e s s e 0  0      0   0  s  i d    0      FAIL
+! surface: e s s e 0  0      0   >  s  i d    0      FAIL
 ! lexical: e s s e e {id} {rare} > {s} i d WordEnd    
-! surface: e s s e 0  0      0   0  0  i d        FAIL
+! surface: e s s e 0  0      0   >  0  i d        FAIL
 ! lexical: e s s e e {id} {rare} > {s} i d WordEnd
-! surface: e s s e 0  0      0   0  s  i d      
+! surface: e s s e 0  0      0   >  s  i d      
 ! --------------
 
 "long illative cannot be common if the word has a common short illative already"
@@ -1299,25 +1299,25 @@ Vx:0  <=> :Consonant ( J1:0 ) _ %> PlSV:Vy Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 
 ! majja is common, majasse is rare
 ! lexical: m a j 0 a > {pl.u} {stemill} {S} > {s} {s} {e}
-! surface: m a j j a 0    0       0      0  0  0   0   0
+! surface: m a j j a >    0       0      0  >  0   0   0
 ! lexical: m a j   a > {pl.u} {stemill} {W} > {s} {s} {e} {rare}
-! surface: m a j   a 0    0       0      0  0  s   s   s    0
+! surface: m a j   a >    0       0      0  >  s   s   s    0
 
 ! nimesse is common, nimme is rare
 ! lexical: n i m 0 {stemill} {rare} e {S} > {s} {s} {e} {rare} 
-! surface: n i m m     0        0   e  0  0  0   0   0    0
+! surface: n i m m     0        0   e  0  >  0   0   0    0
 ! lexical: n i m   {stemill} {rare} e {W} > {s} {s} {e}
-! surface: n i m       0        0   e  0  0  s   s   e  
+! surface: n i m       0        0   e  0  >  s   s   e  
 
 ! tuppa is common, toasse is rare
 ! lexical: t u B1 0 a > {pl.e} {stemill} {S} > {s} {s} {e}
-! surface: t u  p p a 0    0       0      0  0  0   0   0 
+! surface: t u  p p a >    0       0      0  >  0   0   0 
 ! lexical: t u B1   a > {pl.e} {stemill} {W} > {s} {s} {e} {rare}
-! surface: t o  0   a 0    0       0      0  0  s   s   e     0
+! surface: t o  0   a >    0       0      0  >  s   s   e     0
 
 ! loppa is impossible, lobasse is common
 ! lexical: l o b a                       {W} > {s} {s} {e}
-! surface: l o b a                        0  0  s   s   e
+! surface: l o b a                        0  >  s   s   e
 
 ! --------- orthography
 
@@ -1337,9 +1337,9 @@ Cx:0 <=> :Cx _ [Null | SuffixBorder]+ [[:Consonant Any* Border] - [Gi Border]];
       where Cx in (Consonant) ;
 
 ! lexical: s p i k k E2 r > i
-! surface: s p i k 0  0 r 0 i 
+! surface: s p i k 0  0 r > i 
 ! lexical: k õ r r S1 {stemill} {rare} > t e
-! surface: k õ r 0  0     0        0   0 t e
+! surface: k õ r 0  0     0        0   > t e
 ! lexical: k ü n n D1 > T7 u d
 ! surface: k ü n 0  0 >  t u d 
 
@@ -1348,9 +1348,9 @@ Cx:0 <=> :Cx _ [Null | SuffixBorder]+ [[:Consonant Any* Border] - [Gi Border]];
 ! lexical: k õ r r S1 
 ! surface: k õ r 0  s 
 ! lexical: k u l l D1 > {pl.i} {hyp}
-! surface: k u l 0  d 0    0     0
+! surface: k u l 0  d >    0     0
 ! lexical: s ´ u n , n D1 i > m a
-! surface: s 0 u n 0 0  d i 0 m a
+! surface: s 0 u n 0 0  d i > m a
 
 ! g b d is written as k p t after voiceless consonants
 ! this rule is restricted to affixes, because foreign words have conventions
@@ -1373,7 +1373,7 @@ Cx:Cy  <=> :voiceless Null* SuffixBorder _ ;
       where Cx in (k p t) ;
 
 ! lexical: k a b i n e t . > {pl.e} {sg.i}
-! surface: k a b i n e t t 0    0      i
+! surface: k a b i n e t t >    0      i
 
 ! -----
 ! olema, tulema, minema, panema, surema --> 
@@ -1396,7 +1396,7 @@ Cx:Cy  <=> :voiceless Null* SuffixBorder _ ;
 0:s <=> Consonant Vowel s _ 0:e l e:0 WeakGrade ;
 
 ! lexical: m ä s 0 0 l e {W} > d a
-! surface: m ä s s e l 0  0  0 d a     
+! surface: m ä s s e l 0  0  > d a     
 
 ! If a foreign word is pronounced not according to Estonian writing conventions (Braille - brai)
 ! then its inflectional ending is separated with an apostrophe (superscript 9) ’ 
