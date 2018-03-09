@@ -2511,3 +2511,6 @@ Tests:
     öö+N+Sg+Par: ööd
     öö+N+Sg+Tra: ööks
     öö+N+Sg+Trm: ööni
+    duett+N+Sg+Nom: duett
+    duett+N+Sg+Gen: dueti
+    duett+N+Sg+Par: duetti

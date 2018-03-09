@@ -272,8 +272,9 @@ echo '\nLEXICON PlainNouns\n\n' >> nouns.lexc
 cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | grep -v 'WDEVERBAL' \
 | sed '/;.*heaesi/s/^\([^:]*+N\):\([^;]*;\)\(.*\)heaesi/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
-| sed '/^[^@].....*+[^#]* TAUD/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+| sed '/^[^@]....*+[^#]* TAUD/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 | sed '/ism+.*TAUD/s/@P.NomStem.First@//g' \
+| sed '/@...[žš]+.*TAUD/s/@P.NomStem.First@//g' \
 | sed '/^[^@]...*us+.* OLULINE/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 | sed '/^[^@]...*us+.* SUULINE/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 | sed '/^[^@]....*+[^#]* REDEL/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
@@ -281,7 +282,14 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | sed '/^[^@]....*+[^#]* ÄMBLIK/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 | sed '/^käsi+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 | sed '/^tõsi+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+| sed '/^mesi+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 | sed '/^vesi+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+| sed '/^säär+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+| sed '/^huul+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+\
+| sed -f nomstem_first_koon.sed \
+| sed -f nomstem_first_piim.sed \
+| sed -f nomstem_first_eit.sed \
 \
 | sed '/;.*mnocompound/s/^\([^:]*+N\):\([^;]*;\)\(.*\)mnocompound/@R.Part.One@@P.Part.Bad@\1:@R.Part.One@@P.Part.Bad@\2\3/' | sed '/^vana+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Bad.Nonfinal@\1:@P.Bad.Nonfinal@\2\3/' \
 | sed '/^alam+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Bad.Nonfinal@\1:@P.Bad.Nonfinal@\2\3/' \
@@ -296,65 +304,8 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | sed 's/@R.Part.One@@R.Part.One@/@R.Part.One@/g' \
 \
 | sed '/-/s/@P.NomStem.First@//g' \
-| sed '/@akt+N/s/@P.NomStem.First@//g' \
-| sed '/@and+N/s/@P.NomStem.First@//g' \
-| sed '/@aut+N/s/@P.NomStem.First@//g' \
-| sed '/@ebe+N/s/@P.NomStem.First@//g' \
-| sed '/@käi+N/s/@P.NomStem.First@//g' \
-| sed '/@net+N/s/@P.NomStem.First@//g' \
-| sed '/@ost+N/s/@P.NomStem.First@//g' \
-| sed '/@sai+N/s/@P.NomStem.First@//g' \
-| sed '/@urb+N/s/@P.NomStem.First@//g' \
-| sed '/@äss+N/s/@P.NomStem.First@//g' \
-| sed '/@äär+N/s/@P.NomStem.First@//g' \
-| sed '/@õpe+N/s/@P.NomStem.First@//g' \
-| sed '/@õpp+N/s/@P.NomStem.First@//g' \
-| sed '/@aare+N/s/@P.NomStem.First@//g' \
-| sed '/@agar+N/s/@P.NomStem.First@//g' \
-| sed '/@alef+N/s/@P.NomStem.First@//g' \
-| sed '/@anne+N/s/@P.NomStem.First@//g' \
-| sed '/@aser+N/s/@P.NomStem.First@//g' \
-| sed '/@enne+N/s/@P.NomStem.First@//g' \
-| sed '/@isur+N/s/@P.NomStem.First@//g' \
-| sed '/@jaan+N/s/@P.NomStem.First@//g' \
-| sed '/@kalm+N/s/@P.NomStem.First@//g' \
-| sed '/@karm+N/s/@P.NomStem.First@//g' \
-| sed '/@kate+N/s/@P.NomStem.First@//g' \
-| sed '/@kibe+N/s/@P.NomStem.First@//g' \
-| sed '/@kirs+N/s/@P.NomStem.First@//g' \
-| sed '/@koos+N/s/@P.NomStem.First@//g' \
-| sed '/@kost+N/s/@P.NomStem.First@//g' \
-| sed '/@kuri+N/s/@P.NomStem.First@//g' \
-| sed '/@kuts+N/s/@P.NomStem.First@//g' \
-| sed '/@kõik+N/s/@P.NomStem.First@//g' \
-| sed '/@külm+N/s/@P.NomStem.First@//g' \
-| sed '/@lase+N/s/@P.NomStem.First@//g' \
-| sed '/@libe+N/s/@P.NomStem.First@//g' \
-| sed '/@lits+N/s/@P.NomStem.First@//g' \
-| sed '/@lään+N/s/@P.NomStem.First@//g' \
-| sed '/@mart+N/s/@P.NomStem.First@//g' \
-| sed '/@meil+N/s/@P.NomStem.First@//g' \
-| sed '/@mõte+N/s/@P.NomStem.First@//g' \
-| sed '/@olem+N/s/@P.NomStem.First@//g' \
-| sed '/@paks+N/s/@P.NomStem.First@//g' \
-| sed '/@pask+N/s/@P.NomStem.First@//g' \
-| sed '/@peet+N/s/@P.NomStem.First@//g' \
-| sed '/@pide+N/s/@P.NomStem.First@//g' \
-| sed '/@pime+N/s/@P.NomStem.First@//g' \
-| sed '/@rake+N/s/@P.NomStem.First@//g' \
-| sed '/@saad+N/s/@P.NomStem.First@//g' \
-| sed '/@sade+N/s/@P.NomStem.First@//g' \
-| sed '/@sarn+N/s/@P.NomStem.First@//g' \
-| sed '/@siss+N/s/@P.NomStem.First@//g' \
-| sed '/@summ+N/s/@P.NomStem.First@//g' \
-| sed '/@süüd+N/s/@P.NomStem.First@//g' \
-| sed '/@taar+N/s/@P.NomStem.First@//g' \
-| sed '/@tead+N/s/@P.NomStem.First@//g' \
-| sed '/@ujum+N/s/@P.NomStem.First@//g' \
-| sed '/@vald+N/s/@P.NomStem.First@//g' \
-| sed '/@varr+N/s/@P.NomStem.First@//g' \
-| sed '/@žanr+N/s/@P.NomStem.First@//g' \
-| sed '/@soend+N/s/@P.NomStem.First@//g' \
+\
+| sed -f no_nomstem_first.sed \
 \
 | sed '/^iga+/s/^\([^:]*\):\(.*\)$/@D.Case.Nom@\1:@D.Case.Nom@\2/' \
 | sed '/^au+/s/^\([^:]*\):\(.*\)$/@D.Case.Nom@\1:@D.Case.Nom@\2/' \

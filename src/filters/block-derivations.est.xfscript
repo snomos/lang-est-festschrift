@@ -36,7 +36,7 @@ define BadDer1 [
     [[~[\WB+ {eerima} "+V"] ] "+Der/ng"] |           # devalveerima - devalveering
     [[~[\WB+ {ism} "+N"] ] "+Der/ist"] |           # kapitalism - kapitalist
     [~[\WB* ? ? ? ? "+N"]  "+Der/ti"] |    # should we eliminate pee+N+Der/ti ?
-    [[~[\WB+ "+N"] & ~[\WB+ "+Num" "+Card"] & ~[\WB+ "+A"] & ~[\WB+ "+A" "+Comp"] & ~[\WB+ "+A" "+Superl"]] "+Dim/ke"] 
+    [[~[\WB+ "+N" ("+Prop")] & ~[\WB+ "+Num" "+Card"] & ~[\WB+ "+A"] & ~[\WB+ "+A" "+Comp"] & ~[\WB+ "+A" "+Superl"]] "+Dim/ke"] 
     ] ;
 
 # stem shortening "suffix"

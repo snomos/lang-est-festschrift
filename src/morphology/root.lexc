@@ -640,7 +640,7 @@ Multichar_Symbols
  @R.Case.Short@  ! no case because stem is shortened (astraal-, nais-)
  @P.Case.Short@
  @D.Case@
- @D.Case.Nom@
+ @D.Case.Nom@   ! a word does not allow the previous word to be SgNom
  @C.Case@  ! initialise case flag
 
 !! Remember there has been some derivation from A or N; for filtering compounds
@@ -883,6 +883,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
   @R.POS.Adv@@R.Stem.topelt@ LatterAdjective ;        ! topelthallikas etc 
   @R.POS.Adv@@R.Stem.vähe@ LatterAdjective ;        ! vähehallikas etc 
+  @R.POS.Adv@@D.Stem.topelt@@D.Stem.vähe@ LatterAdjective_v ;        ! harvanähtavaid etc ... NOT WORKING ...
 
 ! x + noun
   @R.POS.Pref@ LatterNoun ;  ! ebalaud
@@ -890,6 +891,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.Case.Short@ LatterNoun ;   ! astraallaud, ekstrariiul
 
   @R.POS.N@@R.Case.Nom@@R.NomStem.First@ LatterNoun ;
+!  @R.POS.N@@R.Case.Nom@@D.NomStem.First@@R.Part.Two@@P.Part.Bad@ LatterNoun ; ! only 2-part compounds: huulhein, helmeskate
   @R.POS.N@@R.Case.Gen@ LatterNoun ;             ! lauariiul
   @R.POS.NumCard@@R.Case.Nom@ LatterNoun ;       ! neliriiul
   @R.POS.NumCard@@R.Case.Gen@ LatterNoun ;       ! neljariiul
