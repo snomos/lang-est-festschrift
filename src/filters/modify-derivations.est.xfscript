@@ -6,7 +6,7 @@
 # Ibeeria + lane = ibeerlane
 # kapitalism + ist -> kapitalist
 
-define WB [ "#" ] ;
+define WB [ "#" | .#. ] ;
 define MB [ "»" ] ;  # morpheme border
 define LINE [    MB [{line} | {lis}] ];
 #define LANE [? ? MB [{lane} | {las}] ] ;
@@ -36,14 +36,14 @@ define shorten1 [ IKA -> i || Pre1 _ LINE ] ;
 define shorten2 [  IA -> 0 || Pre2 _ LANE ] ;
 define shorten3 [  ISM -> 0 ||  _ IST ] ;
 
-# filter out karl+lik; the only lik-derivation is then karli+lik
+# filter out karl+lik; the only lik-derivation is then karli+lik ???
 # (because they both are generated at first...)
 
 #define LIK [? ? MB {lik} \WB*] ;
 define LIK [ MB {lik} \WB*] ;
 
-define CVl [Syll l] ;      # 1C word stem ending in l
-define CVLIK [\WB* (Syll Syll) CVl LIK \WB*] ;
+define CVl [LS l] ;      # 1C word stem ending in l
+define CVLIK [ \WB* CVl LIK \WB*] ;   # falsely filters out also Tirool+lik and Iisrael+lik
 
 regex [shorten1 .o. shorten2 .o. shorten3 .o. ~CVLIK] ;
 

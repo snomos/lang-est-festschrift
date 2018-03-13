@@ -62,6 +62,7 @@ LEXICON MASA    ! ma & sa
                +Sg:inu%>na ESSIVE ;	  ! minuna
                +Sg:inu%>ta ABESSIVE ;	  ! minuta
           +Sg+Emph:inu%>ga COMITATIVE ;    ! minuga
+                  :ina LIK_DERIVATION ;    ! minulik, sinulik
 
 LEXICON METE    ! me & te 
 
@@ -76,6 +77,7 @@ LEXICON METE    ! me & te
                +Pl:ie%>na ESSIVE ;	  ! meiena
                +Pl:ie%>ta ABESSIVE ;	  ! meieta
                +Pl:ie%>ga COMITATIVE ;    ! meiega
+                  :ie LIK_DERIVATION ;    ! meielik, teielik
 
 LEXICON TEMA    ! ta 
 
@@ -96,12 +98,14 @@ LEXICON TEMA    ! ta
                +Sg:al%>le ALLATIVE ;	! talle
                +Sg:a%>l ADESSIVE ;	
                +Sg:a%>lt ABLATIVE ;	
+                  :ema LIK_DERIVATION ;    ! temalik
 
 LEXICON NEMAD    ! nemad 
 
           +Pl+Emph:ema%>d NOMINATIVE ;    ! nemad
                +Pl:a%>d NOMINATIVE ;    ! nad
                   :e NENO ;
+                  :en%>de LIK_DERIVATION ;    ! nendelik
 
 LEXICON NENO    ! nemad, need & nood common cont. lexicon
 
@@ -124,6 +128,7 @@ LEXICON ISE    ! ise, iseenese NB! the usage info is possibly wrong...
          +Use/Rare:en%>d SG_PARTITIVE ;                               
                +Pl:enes%>te STANDARD_GEN_ET_AL ;
       +Pl+Use/Rare:end%>i STANDARD_GEN_ET_AL ;
+                  :enese LIK_DERIVATION ;    ! (ise)eneselik
 
 LEXICON OMAENESE    ! omaenese ; few forms; they could be regarded as parallel forms of 'ise'
 
@@ -188,6 +193,7 @@ LEXICON AED       ! only aed; if its orthography was aed - ajja - aeda, it would
                   :eda%>de N_PL_SUBPARA ;    ! aedade etc 
                   :edu PL_PARTITIVE ;    ! aedu
          +Use/Rare:eda%>sid PL_PARTITIVE ;    ! aedasid
+                  :ia%{W%} LIK_DERIVATION ;    ! aialik
 
 LEXICON ARGPÜKS    ! some compound words ending with püks (argpüks, vesipüks etc)
                   ! and declined not exactly like püksid (e.g. karupüksid, sukkpüksid) 
@@ -232,6 +238,7 @@ LEXICON KANNEL    ! only kannel, tütar, kärbes, lemmel; = PIPAR, but stem vowe
                   :%{W%} 2C_LEMMA3 ;          ! kannel, kannelt, kannelde
                   :e 2C_STRONG ;
       +Use/NotNorm:e%>te N_PL_SUBPARA ;       ! kandlete, tütrete etc 
+                  :e LIK_DERIVATION ;
 
 LEXICON KEEL    !  VVS 13 unstable (closed) type; 27 words
 
@@ -252,6 +259,7 @@ LEXICON KODU    ! only kodu; stem illative is koju, rare ablative is kodunt
          +Use/Rare:du%>sse SG_ILLATIVE ;    !  
       +Sg+Use/Rare:dunt ABLATIVE ;    ! 
                   :du DE_PL ; 
+                  :du LIK_DERIVATION ;
 
 LEXICON KOHUS    ! only kohus-kohtu; like HOOLAS
 

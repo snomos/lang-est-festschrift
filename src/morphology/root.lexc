@@ -666,8 +666,10 @@ Multichar_Symbols
  @R.Stem.ise@
  @P.Stem.vähe@   ! vähe, puht + adjective
  @R.Stem.vähe@
+ @D.Stem.vähe@
  @P.Stem.topelt@   ! Adv topelt et al;  Adv + anything
  @R.Stem.topelt@
+ @D.Stem.topelt@
  @C.Stem@
 
 !! A special condition that is used for filtering derivations and compounds
