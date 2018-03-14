@@ -58,6 +58,7 @@ LEXICON HAKKAMA    ! VVS 29 (hakkama), 30 (riidlema)
                       : SUPINE_V ;            ! hakkama, riidlema
                       :%>I7S7 IND_PAST ;      ! hakkas, riidles
                       : IND_COND_PRS ;        ! hakkan, riidlen
+                      : US_DERIVATION ;       ! only riidlema-type; others get blocked by block-derivations script
 
 LEXICON HAKKAMA_WEAK    ! weak grade sub-paradigm
 
@@ -179,7 +180,8 @@ LEXICON C_COMMON  ! common to almost all words of types 32-35 (supine stem ends 
 ! ---------------
 LEXICON TULEMA     ! only tulema, panema, surema
 
-                      :%{dbl%} A_AKSE ;           ! surra, surrakse, surdud
+                      :%{dbl%}%> A_INFINITIVE ;       ! surra
+                      :%{dbl%} IMPERS_A ;        ! surrakse, surdud
                       :e SUPINE_V ;          ! surema
                       :%{W%} IMPERATIVE ;    ! surgu
                       :%{W%} NU ;            ! surnud
@@ -188,7 +190,8 @@ LEXICON TULEMA     ! only tulema, panema, surema
 
 LEXICON OLEMA    ! only olema 
 
-                      :ol%{dbl%} A_AKSE ;          ! olla, ollakse, oldud
+                      :ol%{dbl%}%> A_INFINITIVE ;       ! olla
+                      :ol%{dbl%} IMPERS_A ;       ! ollakse, oldud
                       :ole SUPINE_V ;         ! olema
                       :ol%{W%} IMPERATIVE ;   ! olgu
                       :ol%{W%} NU ;           ! olnud
@@ -231,7 +234,8 @@ LEXICON OLEMA2
 
 LEXICON MINEMA    ! only minema 
 
-                      :min%{dbl%} A_AKSE ;       ! minna, minnakse, mindud
+                      :min%{dbl%}%> A_INFINITIVE ;       ! minna
+                      :min%{dbl%} IMPERS_A ;     ! minnakse, mindud
                       :mine SUPINE_V ;           ! minema
                       :min%{W%} IMPERATIVE ;     ! mingu
                       :läi%{W%} NU ;             ! läinud
@@ -250,25 +254,29 @@ LEXICON MINEMA2
 LEXICON KEEMA   ! VVS 37   laama, keema, leema, naima, võima, näima
 
                       : VV_COMMON ;
-                      : DA_DAKSE ;          ! keeda, keedakse, keedud
+                      : INFINITIVE ;        ! keeda
+                      : IMPERS_DA ;          ! keedakse, keedud
                       :%>I7S7 IND_PAST ;    ! kees
 
 LEXICON SAAMA !!= @CODE@ is a lexicon for saama-type words. ! VVS 37   saama, jääma
 
                       : VV_COMMON ;
-                      : DA_DAKSE ;          ! saada, saadakse, saadud
+                      : INFINITIVE ;        ! saada
+                      : IMPERS_DA ;          ! saadakse, saadud
                       :%>I7 IND_PAST ;      ! sai
 
 LEXICON VIIMA     ! VVS 38   viima, käima, pooma, müüma
 
                       : VV_COMMON ;
-                      : A_AKSE ;             ! viia, viiakse, viidud
+                      :%> A_INFINITIVE ;     ! viia
+                      : IMPERS_A ;           ! viiakse, viidud
                       :%>I7S7 IND_PAST ;     ! viis
 
 LEXICON TOOMA     ! VVS 38   jooma, looma, tooma, lööma, sööma
 
                       : VV_COMMON ;
-                      : A_AKSE ;             ! juua, juuakse, joodud
+                      :%> A_INFINITIVE ;     ! surra, süüa
+                      : IMPERS_A ;           ! juuakse, joodud
                       :%>I7 IND_PAST ;       ! jõi
  
 LEXICON VV_COMMON  ! common to all 17 words of types 37, 38 (supine stem ends with VV)
@@ -278,19 +286,26 @@ LEXICON VV_COMMON  ! common to all 17 words of types 37, 38 (supine stem ends wi
                       :%{W%} NU ;             ! keenud, saanud etc
                       :%{W%} IND_COND_PRS ;   ! keeb, saab etc
 
-LEXICON A_AKSE     ! if infinitive affix is -a, then ...
+LEXICON IMPERS_A     ! if infinitive affix is -a, then ...
+ @R.Part.One@@P.Part.Bad@ IMPERS_A_COMP ;
+                      :»d TAV_DERIVATION ;       ! söödav, söödavalt, ... 
+                      :»d TAMATU_DERIVATION ;    ! söödamatu 
+                      :»d TU_DERIVATION ;        ! söödu, söödult, sööduim, ... 
 
+LEXICON IMPERS_A_COMP    ! impersonal forms 
                       :%>d IMPERS_DUD ;        ! surdud, söödud
                       :%{W%}%> IMPERS_AKSE ;   ! surrakse, süüakse
         %+Use%/NotNorm:%>d IMPERS_AKSE ;       ! surdakse, söödakse
-                      :%> A_INFINITIVE ;       ! surra, süüa
 
-LEXICON DA_DAKSE     ! if infinitive affix is -da, then ...
+LEXICON IMPERS_DA     ! if infinitive affix is -da, then ...
+ @R.Part.One@@P.Part.Bad@ IMPERS_DA_COMP ;
+                      :»d TAV_DERIVATION ;       ! keedav, keedavalt, ... 
+                      :»d TAMATU_DERIVATION ;    ! keedamatu 
+                      :»d TU_DERIVATION ;        ! keedu, keedult, keeduim, ... 
 
+LEXICON IMPERS_DA_COMP    ! impersonal forms 
                       :%>d IMPERS_DUD ;     ! keedud
                       :%>d IMPERS_AKSE ;    ! keedakse
-                      : INFINITIVE ;        ! keeda
-
 
 ! ---------------
 
@@ -326,7 +341,8 @@ LEXICON PIDAMA     ! only pidama-pidi
 
 LEXICON TEGEMA     ! only tegema, nägema
 
-                      :h A_AKSE ;            ! teha, tehakse, tehtud
+                      :h%> A_INFINITIVE ;    ! teha
+                      :h IMPERS_A ;          ! tehakse, tehtud
                       :ge SUPINE_V ;         ! tegema
                       :h IMPERATIVE ;        ! tehku
                       :i NU ;                ! teinud

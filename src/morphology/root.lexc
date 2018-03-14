@@ -855,6 +855,9 @@ LEXICON First     !!= * {{@CODE@}} a simplex word or the first part of a compoun
 
 LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
+! x + prefix
+  @R.POS.Pref@@R.Part.Two@ Prefixes ;     ! agrobiotoode;
+
 ! x + adjective
   @R.POS.Pref@ LatterAdjective ;  ! ebapunane, ökokorralik
   @R.Case.Short@ LatterAdjective ;  ! vaatamispunane, astraalpunane

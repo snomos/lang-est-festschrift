@@ -30,7 +30,10 @@ define BadDer1 [
     [[   ~[\WB+ "+A"] & 
          ~[\WB+ "+A" "+Comp"] & 
          ~[\WB+ "+A" "+Superl"] & 
-         ~[\WB* [[ ZZ {tama}] | [ ZZ {dama}] | {tsema} | {lema} ] "+V"]] 
+         ~[\WB* [[ ZZ {tama}] | 
+                 [ ZZ {dama}] | 
+                   [ {tsema}] | 
+                [ ? ? ? {lema}] ] "+V"]] 
          "+Der/us"] |
     [[~[\WB+ {uma} "+V"] ] "+Der/mus"] |           # devalveeruma - devalveerumus
     [[~[\WB+ {eerima} "+V"] ] "+Der/ng"] |           # devalveerima - devalveering

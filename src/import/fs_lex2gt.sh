@@ -65,6 +65,7 @@ cat decltmp1 | ./fs_lex2verblemma.sed \
 # and correct some errors of exceptions
 cat tmp1 | ./lemma2twol.sed \
 | sed 's/gG1/gg/g' \
+| sed 's/h<auG1/h<aug/' \
 | sed '/HAARE/s/tT1/tt/' \
 | sed 's/ \*\*\([^$:]*:\)/ \1/' \
 | sed 's/:\*\*\([^$:]*\)$/:\1/' \
@@ -162,6 +163,8 @@ cat fs_lex.gt1 \
 \
 | sed 's/#&#p´ersse//' \
 | sed 's/#&#p´õrssa//' \
+| sed '/perse+/s/erse PINGE/ers PERSE/' \
+| sed '/põrsas+/s/õrsa KOTKAS/õrs PÕRSAS/' \
 > fs_gt.pre-inflecting
 
 # NB! perse, põrsas praegu osaliselt valesti 

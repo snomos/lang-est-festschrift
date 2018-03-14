@@ -429,6 +429,11 @@ LEXICON PEEN    ! only peen; almost like KEEL, but some forms are more regular
                   : US_DERIVATION ;
 
 
+LEXICON PERSE    ! only perse
+
+                  :e%{stemill%} PINGE ;
+         +Use/Rare:se%{stemill%} 2C_STRONG ;
+
 LEXICON POISS    ! only poiss, püks; like KAEL; almost = TAUD, except pl gen + 
 
                   : SG_NOMINATIVE ;
@@ -459,6 +464,11 @@ LEXICON PÕLV    ! only põlv; similar to talv and rohi
          +Use/Rare:i SG_NOMINATIVE ;               ! põli
       +Use/Rare+Pl:v%>i LOCATIVES ;    ! põlvil etc
       +Pl+Use/Rare:v%>i%>ni TERMINATIVE ;       ! põlvini
+
+LEXICON PÕRSAS   ! only põrsas
+
+                  :a KOTKAS ;               ! põrsas, põrsa etc
+         +Use/Rare:sa 2C_STRONG ;           ! põrssa etc
 
 LEXICON PÄEV    ! only päev
 

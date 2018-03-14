@@ -19,6 +19,23 @@ echo 'LEXICON Adjectives\n\n Adjectives_v ;\n Adjectives_ne ;\n PlainAdjectives 
 cat fs_gt.inflecting.tmp1 | grep '+A:' \
 | sed 's/WDEVERBAL//' | sed 's/mnocompound//' \
 | sed 's/^\(nnolastpart\)\(.*\)$/\2\1/' \
+| sed 's/kilo#/kilo?/' \
+| sed 's/milli#/milli?/' \
+| sed 's/mega#/mega?/' \
+| sed 's/\(giga\)#/\1?/' \
+| sed 's/\(senti\)#/\1?/' \
+| sed 's/\(mikro\)#/\1?/' \
+| sed 's/\(detsi\)#/\1?/' \
+| sed 's/\(atmo\)#/\1?/' \
+| sed 's/#\(m.eetrine\)/?\1/' \
+| sed 's/#\(päevane\)/?\1/' \
+| sed '/#.*?päevane/s/?/#/' \
+| sed 's/\(iga\)?\(päevane\)/\1#\2/' \
+| sed 's/\(kahe\)?\(päevane\)/\1#\2/' \
+| sed 's/\(mõne\)?\(päevane\)/\1#\2/' \
+| sed 's/\(paari\)?\(päevane\)/\1#\2/' \
+| sed 's/\(täna\)?\(päevane\)/\1#\2/' \
+| sed 's/\(ühe\)?\(päevane\)/\1#\2/' \
 > adjectives.tmp1
 
 # short adjectives are special in that they may compound in sg nom
@@ -30,6 +47,7 @@ cat adjectives.tmp1 \
 | grep -v '#' | grep 'v+' \
 | sed '/^[^aeiouõäöü]*[aeiouõäöü]*[^aeiouõäöü]*[aeiouõäöü][aeiouõäöü]*[^aeiouõäöü]*+A/s/^\([^:]*+A\):\([^;]*;\)\(.*\)$/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 | sed '/;.*nnolastpart/s/^\([^:]*+A\):\([^;]*;\)\(.*\)nnolastpart/@R.Part.One@\1:@R.Part.One@\2\3/' \
+| sed 's/?/#/g' \
 >> adjectives.lexc
 
 # adjectives ending in ne
@@ -38,6 +56,7 @@ echo '\nLEXICON Adjectives_ne\n' >> adjectives.lexc
 cat adjectives.tmp1 \
 | grep -v '#' | grep 'ne+' \
 | sed '/;.*nnolastpart/s/^\([^:]*+A\):\([^;]*;\)\(.*\)nnolastpart/@R.Part.One@\1:@R.Part.One@\2\3/' \
+| sed 's/?/#/g' \
 >> adjectives.lexc
 
 # other adjectives
@@ -65,6 +84,7 @@ cat adjectives.tmp2 \
 | sed '/;.*nnolastpart/s/^\([^:]*+A\):\([^;]*;\)\(.*\)nnolastpart/@R.Part.One@\1:@R.Part.One@\2\3/' \
 | sed '/@kasutu+/s/@P.NomStem.First@//g' \
 | sed '/@antu+/s/@P.NomStem.First@//g' \
+| sed 's/?/#/g' \
 | sort -u >> adjectives.lexc
 
 echo '\nLEXICON NoninflectingAdjectives\n\n CompoundingNoninflectingAdjectives ;\n PlainNoninflectingAdjectives ;\n\nLEXICON CompoundingNoninflectingAdjectives\n' \
@@ -205,8 +225,33 @@ cat fs_gt.inflecting.tmp1 | grep '+N:' \
 | sed 's/^\(WDEVERBAL\)\(.*\)$/\2\1/' \
 | sed 's/^\(mnocompound\)\(.*\)$/\2\1/' \
 | sed 's/^\(nnolastpart\)\(.*\)$/\2\1/' \
-| sed '/eering+/s/$/WDEVERBAL/' \
+| sed '/WDEVERBAL/!s/ing+N[^#]*VIRSIK.*$/&WDEVERBAL/' \
 | sed '/^veering+/s/WDEVERBAL//' \
+| sed '/brauning+/s/WDEVERBAL//' \
+| sed '/curling+N/s/WDEVERBAL//' \
+| sed '/doping+N/s/WDEVERBAL//' \
+| sed '/dumping+N/s/WDEVERBAL//' \
+| sed '/elling+N/s/WDEVERBAL//' \
+| sed '/etsing+N/s/WDEVERBAL//' \
+| sed '/faktooring+N/s/WDEVERBAL//' \
+| sed '/holding+N/s/WDEVERBAL//' \
+| sed '/kamming+N/s/WDEVERBAL//' \
+| sed '/kämping+N/s/WDEVERBAL//' \
+| sed '/lasing+N/s/WDEVERBAL//' \
+| sed '/miiting+N/s/WDEVERBAL//' \
+| sed '/puding+N/s/WDEVERBAL//' \
+| sed '/pööning+N/s/WDEVERBAL//' \
+| sed '/reeling+N/s/WDEVERBAL//' \
+| sed '/reiting+N/s/WDEVERBAL//' \
+| sed '/seltsing+N/s/WDEVERBAL//' \
+| sed '/smoking+N/s/WDEVERBAL//' \
+| sed '/sobing+N/s/WDEVERBAL//' \
+| sed '/soling+N/s/WDEVERBAL//' \
+| sed '/spinning+N/s/WDEVERBAL//' \
+| sed '/tafting+N/s/WDEVERBAL//' \
+| sed '/telling+N/s/WDEVERBAL//' \
+| sed '/täring+N/s/WDEVERBAL//' \
+| sed '/valing+N/s/WDEVERBAL//' \
 | sed '/^ehitis+/s/$/WDEVERBAL/' \
 | sed '/^haare+/s/$/WDEVERBAL/' \
 | sed '/^heide+/s/$/WDEVERBAL/' \
@@ -248,6 +293,11 @@ cat fs_gt.inflecting.tmp1 | grep '+N:' \
 | sed '/^võte+/s/$/WDEVERBAL/' \
 | sed '/^esi+/s/$/mnocompound/' \
 | sed '/^deism+/s/$/mnocompound/' \
+| sed '/^müük+/s/$/WDEVERBAL/' \
+| sed '/^tulija+/s/$/WDEVERBAL/' \
+| sed '/^panija+/s/$/WDEVERBAL/' \
+| sed '/^tegija+/s/$/WDEVERBAL/' \
+| sed '/^nägija+/s/$/WDEVERBAL/' \
 | LC_COLLATE=C sort > fs_gt.inflecting.tmp1.srt
 
 # ja lisa siia märge nende lühikeste nimisõnade kohta, mis ei osale liitsõnades
