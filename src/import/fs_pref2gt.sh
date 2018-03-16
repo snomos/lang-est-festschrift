@@ -10,6 +10,7 @@ cat pref.pok \
 | sed 's/\]//g' \
 | sed 's/?//g' \
 | paste - pref.pok \
+| grep -v 'Z' \
 | tr '\t' '\n' \
 | hfst-lookup ../analyser-gt-desc.hfstol \
 | sed '/^6000/s/,.*$/_/' \

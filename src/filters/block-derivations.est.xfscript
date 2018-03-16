@@ -6,8 +6,7 @@
 # * the derivations' sequence is not right
 # etc...
 
-#
-define WB [ "#" ];
+# notice that we are NOT concerned about compounds here
 
 define Vow [ a | e | i | o | u | õ | ä | ö | ü ]; 
 define Cons [ b | d | f | g | h | j | k | l | m | n | p | r | s | t | v ] ;
@@ -17,29 +16,23 @@ define ZZ [[Vow Cons+ Vow+ Cons*] | [Vow Vow Vow Cons*]];   # at least 2 syllabl
 # expressed here as a negation of the suitable one
 
 define BadDer1 [
-    [[~[\WB+ "+N"] & ~[\WB+ "+Num" "+Card"] & ~[\WB+ "+N" "+Prop"]] "+Der/lik"] |
-    [ ~[\WB+ "+N" "+Prop"] "+Der/lane"] |
-    [[~[\WB+ "+N"] & ~[\WB+ "+Num" "+Card"]] "+Der/line"] |
-    [[~[\WB+ "+A"] & ~[\WB+ "+A" "+Comp"] & ~[\WB+ "+A" "+Superl"]] "+Der/lt"] |
-    [~[\WB+ "+A"] "+Der/sti"] |
-    [[~[\WB+ "+A" "+Comp"] ] "+Der/ini"] |
-    [~[\WB+ "+A"] "+Der/m"] |
-    [~[\WB+ "+A"] "+Der/im"] |
-    [ ~[\WB+ j a "+N"] "+Der/nna"] |
-    [[~[\WB+ "+N"] & ~[\WB+ "+Num" "+Card"]] "+Der/kond"] |
-    [[   ~[\WB+ "+A"] & 
-         ~[\WB+ "+A" "+Comp"] & 
-         ~[\WB+ "+A" "+Superl"] & 
-         ~[\WB* [[ ZZ {tama}] | 
-                 [ ZZ {dama}] | 
-                   [ {tsema}] | 
-                [ ? ? ? {lema}] ] "+V"]] 
-         "+Der/us"] |
-    [[~[\WB+ {uma} "+V"] ] "+Der/mus"] |           # devalveeruma - devalveerumus
-    [[~[\WB+ {eerima} "+V"] ] "+Der/ng"] |           # devalveerima - devalveering
-    [[~[\WB+ {ism} "+N"] ] "+Der/ist"] |           # kapitalism - kapitalist
-    [~[\WB* ? ? ? ? "+N"]  "+Der/ti"] |    # should we eliminate pee+N+Der/ti ?
-    [[~[\WB+ "+N" ("+Prop")] & ~[\WB+ "+Num" "+Card"] & ~[\WB+ "+A"] & ~[\WB+ "+A" "+Comp"] & ~[\WB+ "+A" "+Superl"]] "+Dim/ke"] 
+    [~[?* [["+N"] | ["+Num" "+Card"] | ["+N" "+Prop"]]] "+Der/lik"] |
+    [~[?* "+N" "+Prop"] "+Der/lane"] |
+    [~[?* [["+N"] | ["+Num" "+Card"]]] "+Der/line"] |
+    [~[?* [["+A"] | ["+A" "+Comp"] | ["+A" "+Superl"]]] "+Der/lt"] |
+    [~[?* "+A"] "+Der/sti"] |
+    [~[?* "+A" "+Comp"] "+Der/ini"] |
+    [~[?* "+A"] "+Der/m"] |
+    [~[?* "+A"] "+Der/im"] |
+    [~[?* j a "+N"] "+Der/nna"] |
+    [~[?* [["+N"] | ["+Num" "+Card"]]] "+Der/kond"] |
+    [~[?* [["+A"] | ["+A" "+Comp"] | ["+A" "+Superl"] | 
+          [ ZZ {tama} "+V"] | [ ZZ {dama} "+V"] | [ {tsema} "+V"] | [ ? ? ? {lema} "+V"]]] "+Der/us"] |
+    [~[?* {uma} "+V"] "+Der/mus"] |             # devalveeruma - devalveerumus
+    [~[?* {eerima} "+V"] "+Der/ng"] |           # devalveerima - devalveering
+    [~[?* {ism} "+N"] "+Der/ist"] |             # kapitalism - kapitalist
+    [~[?* ? ? ? ? "+N"]  "+Der/ti"] |           # should we eliminate pee+N+Der/ti ?
+    [~[?* [["+N" ("+Prop")] | ["+Num" "+Card"] | ["+A"] | ["+A" "+Comp"] | ["+A" "+Superl"]]] "+Dim/ke"] 
     ] ;
 
 # stem shortening "suffix"
@@ -47,7 +40,7 @@ define BadDer1 [
 #define BadDer5 [~[?+ "+Der/mine" "+N"] "+Der/minus" ];
 
 define BadDer5 [   
-    ~[\WB* [["+Der/mine" "+N"] |       # mis-
+    ~[?* [["+Der/mine" "+N"] |       # mis-
           [Vow Cons* {mine} "+N"] |  # min 2 syll; mis-
           ["+Der/line" "+A"] |       # lis-
           [Vow Cons* {line} "+A"] |  # min 2 syll; lis-
@@ -61,9 +54,9 @@ define BadDer5 [
 
 # re-applying a similar suffix is not allowed
 define BadDer2 [
-    [["+Der/lik" | "+Der/line"] \WB* ["+Der/lik" | "+Der/line"]] |
-    [  ["+Der/m" | "+Der/im"]   \WB*   ["+Der/m" | "+Der/im"]  ] |
-    [ ["+Der/us" | "+Der/mus"]  \WB*  ["+Der/us" | "+Der/mus"] ] 
+    [["+Der/lik" | "+Der/line"] ?* ["+Der/lik" | "+Der/line"]] |
+    [  ["+Der/m" | "+Der/im"]   ?*   ["+Der/m" | "+Der/im"]  ] |
+    [ ["+Der/us" | "+Der/mus"]  ?*  ["+Der/us" | "+Der/mus"] ] 
     ] ;
 
 # some suffix sequences are actually bad
@@ -130,8 +123,7 @@ define BadDer4 [
     [{õrn} "+A" "+Der/m"] |
     [Vow {ke} "+A" "+Der/im"] |   # rohke+im is OK, peenike+im not OK
     [{hea} "+A" "+Der/im"] |
-    [{asi} "+N" "+Der/lik"] |  # asilik is bad; asjalik is in the lexicon already
-    [{ll} "+N" "+Der/lik"]    # do not allow vasall+lik because the normal cons cluster phon rule would turn it into vasallik
+    [{asi} "+N" "+Der/lik"]   # asilik is bad; asjalik is in the lexicon already
     ] ;
 
 # some words with certain suffixes make bad components in compounds  

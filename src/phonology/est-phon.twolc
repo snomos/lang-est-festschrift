@@ -1352,6 +1352,11 @@ Cx:0 <=> :Cx _ [Null | SuffixBorder]+ [[:Consonant Any* Border] - [Gi Border]];
 ! lexical: s ´ u n , n D1 i > m a
 ! surface: s 0 u n 0 0  d i > m a
 
+! this prohibits vasallik, which is good, but vasalllik is prohibited by the rule above anyway...
+"no deletion in ll+lik"
+
+l:0 /<= :l _ Null* » l ;
+
 ! g b d is written as k p t after voiceless consonants
 ! this rule is restricted to affixes, because foreign words have conventions
 ! that do not follow this rule (lesginka)

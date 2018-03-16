@@ -811,6 +811,9 @@ LEXICON Root !!= * {{@CODE@}} is the starting point of everything
 !! For remembering it sets up flags on the path:
 !! 1. flag the first 3 loops (thus forbidding any more loops)
 !! 2. in every loop, flag the POS and inflection, to be used in the following loop
+!!
+!! Different paths may result in the same output string, 
+!! e.g. mootoriõlilik = (mootori+õli)+lik and (mootori)+(õli+lik)
 
 @D.Part@@P.Part.Bad@ Single ;      !! strictly simplex word; cannot be a part of a compound
 @D.Part@@P.Part.One@ First ;       !! a simplex word, or the first part of a compound
@@ -856,7 +859,9 @@ LEXICON First     !!= * {{@CODE@}} a simplex word or the first part of a compoun
 LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
 ! x + prefix
-  @R.POS.Pref@@R.Part.Two@ Prefixes ;     ! agrobiotoode;
+  @R.POS.Pref@@R.Part.Two@ Prefixes ;     ! agrobio- agrobiotoode;
+  @R.POS.N@@R.Case.Gen@@R.Part.Two@ Prefixes ;     ! jalabio- jalabiotoode;
+  @R.Case.Short@@R.Part.Two@ Prefixes ;     ! vaatamisbio- astraalbiotoode;
 
 ! x + adjective
   @R.POS.Pref@ LatterAdjective ;  ! ebapunane, ökokorralik
@@ -965,7 +970,7 @@ LEXICON LatterAdjective
 LEXICON LatterAdjective_ne
 
   @P.POS.A@@C.Der@@C.NomStem@ Adjectives_ne ;              !!= * {{@CODE@}}
-  @P.NeedAdj.On@ LatterNoun ;                    !! järguline	järk+N+Der/line+A+Sg+Nom
+  @P.NeedAdj.On@ LatterNoun ;                    !! järguline	järk+N+Der/line+A  redellik redel+N+Der/lik+A
 
 LEXICON LatterAdjective_v
 
