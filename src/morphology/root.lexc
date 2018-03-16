@@ -644,9 +644,10 @@ Multichar_Symbols
  @C.Case@  ! initialise case flag
 
 !! Remember there has been some derivation from A or N; for filtering compounds
+!! derivation from V is called paradigmatic and does not result in Der; just a new POS... 
  @P.Der.kas@    ! here not really derivation, but adjective type
  @D.Der.kas@
- @R.Der.us@
+ @R.Der.us@     ! Der.us means that POS of the derivation base is irrelevant
  @P.Der.us@
  @D.Der.us@
  @P.Der.ist@    ! Der/ist does not really affect the compounding
@@ -883,7 +884,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.A@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ;  ! rämepunane
   @R.POS.A@@R.Case.Gen@ LatterAdjective_ne ;  ! suureruuduline
   @R.POS.A@@R.Case.Gen@ LatterNoninflectingAdjective ;  ! jämedavõitu
-  @R.POS.A@@R.Case.Nom@@R.Der.us@ LatterAdjective_ne ;  ! funktsionaalsusjalgne
+  @R.Der.us@@R.Case.Nom@ LatterAdjective_ne ;  ! funktsionaalsusjalgne
 
   @R.POS.AComp@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ;  ! enampunane, enimpunane
   @R.POS.AComp@@R.Case.Gen@ LatterAdjective_ne ;  ! enamaruuduline, enimaruuduline
@@ -910,7 +911,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.A@@R.Case.Nom@@R.NomStem.First@@D.Der.kas@ LatterNoun ;   ! lapikriiul, NOT pruunjasriiul (?)
   @R.POS.AComp@@R.Case.Nom@@R.NomStem.First@ LatterNoun ;   ! enamriiul, enimriiul
 
-  @R.POS.A@@R.Case.Nom@@D.NomStem.First@@R.Der.us@ LatterNoun ;  ! funktsionaalsusriiul
+  @R.Der.us@@R.Case.Nom@@D.NomStem.First@ LatterNoun ;  ! funktsionaalsusriiul
 
 ! NB only enese, enda !
   @R.POS.Pron@@R.Case.Gen@@R.Stem.ise@ LatterNoun ;        ! eneseabi, enesekriitika etc 
@@ -945,7 +946,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.A@@R.Case.Nom@@R.NomStem.First@@D.Der.kas@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
   @R.POS.AComp@@R.Case.Nom@@R.NomStem.First@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
 
-  @R.POS.A@@R.Case.Nom@@D.NomStem.First@@R.Der.us@@P.Case.Gen@ LatterVerb ;  ! funktsionaalsusprogrammeerimine
+  @R.Der.us@@R.Case.Nom@@D.NomStem.First@@P.Case.Gen@ LatterVerb ;  ! funktsionaalsusjõramine, kindlustusjõramine
 
   @R.POS.A@@R.Case.Short@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
 
