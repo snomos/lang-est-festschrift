@@ -37,7 +37,7 @@ define ISM  [i s m] ;
 define shorten1 [ IKA -> i || Pre1 _ LINE ] ;
 define shorten2 [  IA -> 0 || Pre2 _ LANE ] ;
 define shorten3 [ ISM -> 0 || _ IST ] ;
-define konniti  [   a -> i || _ TI ];
+define konniti  [   a -> i || k o n n (">") _ TI ];  # not sure if > is actually present here...
 
 # filter out karl+lik; the only lik-derivation is then karli+lik ???
 # (because they both are generated at first...)

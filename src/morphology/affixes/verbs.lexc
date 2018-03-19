@@ -525,7 +525,7 @@ LEXICON NU_DERIVATION_SUF
 
 LEXICON TU_DERIVATION  !    NB! the morpheme border + d/t is assigned before this lexicon
   @R.Part.One@@P.POS.N@  TU_DERIVATION_SUF ;   ! no previous part; no restrictions   
-  @R.Case.Par@@P.POS.N@  TU_DERIVATION_SUF ;
+  @R.Case.Gen@@P.POS.N@  TU_DERIVATION_SUF ;
 
 LEXICON TU_DERIVATION_SUF  !    NB! the morpheme border + d/t is assigned before this lexicon
              +Der/tu+A:u AASTA ;              ! derivation: elatu etc
@@ -540,7 +540,7 @@ LEXICON MATA_DERIVATION_SUF
 
 LEXICON MATU_DERIVATION
   @R.Part.One@@P.POS.N@  MATU_DERIVATION_SUF ;   ! no previous part; no restrictions   
-  @R.Case.Par@@P.POS.N@  MATU_DERIVATION_SUF ;
+  @R.Case.Gen@@P.POS.N@  MATU_DERIVATION_SUF ;
 
 LEXICON MATU_DERIVATION_SUF
            +Der/matu+A:»matu AASTA ;             ! segamatu etc
