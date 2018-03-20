@@ -253,10 +253,12 @@ cat fs_gt.inflecting.tmp1 | grep '+N:' \
 | sed '/täring+N/s/WDEVERBAL//' \
 | sed '/valing+N/s/WDEVERBAL//' \
 | sed '/^ehitis+/s/$/WDEVERBAL/' \
+| sed '/^anne+/s/$/WDEVERBAL/' \
 | sed '/^haare+/s/$/WDEVERBAL/' \
 | sed '/^heide+/s/$/WDEVERBAL/' \
 | sed '/^hindlus+/s/$/WDEVERBAL/' \
 | sed '/^hoie+/s/$/WDEVERBAL/' \
+| sed '/^hoole+/s/$/WDEVERBAL/' \
 | sed '/^huige+/s/$/WDEVERBAL/' \
 | sed '/^hõige+/s/$/WDEVERBAL/' \
 | sed '/^hõise+/s/$/WDEVERBAL/' \
@@ -293,7 +295,11 @@ cat fs_gt.inflecting.tmp1 | grep '+N:' \
 | sed '/^võte+/s/$/WDEVERBAL/' \
 | sed '/^esi+/s/$/mnocompound/' \
 | sed '/^deism+/s/$/mnocompound/' \
+| sed '/^marss+/s/$/WDEVERBAL/' \
 | sed '/^müük+/s/$/WDEVERBAL/' \
+| sed '/^sööst+/s/$/WDEVERBAL/' \
+| sed '/^vool+/s/$/WDEVERBAL/' \
+| sed '/^õpe+/s/$/WDEVERBAL/' \
 | sed '/^tulija+/s/$/WDEVERBAL/' \
 | sed '/^panija+/s/$/WDEVERBAL/' \
 | sed '/^tegija+/s/$/WDEVERBAL/' \
@@ -303,6 +309,8 @@ cat fs_gt.inflecting.tmp1 | grep '+N:' \
 # ja lisa siia märge nende lühikeste nimisõnade kohta, mis ei osale liitsõnades
 LC_COLLATE=C join -t+ -a 1 -a 2 -o 1.1 2.1 2.2 head_esiosad fs_gt.inflecting.tmp1.srt | grep -v '++' | sed '/^[^+].*+N/s/$/heaesi/' \
 | sed '/^[k]*ost+/s/heaesi//' \
+| sed '/^õpe+/s/heaesi//' \
+| sed '/^anne+/s/heaesi//' \
 | sed 's/^[^+]*+//' > fs_gt.inflecting.tmp1.tagged
 #----
 
@@ -526,7 +534,7 @@ cat fs_gt.noninfl.tmp1 | grep '+Interj' >> interjections.lexc
 echo 'LEXICON GenitiveAttributes\n' > genitive_attributes.lexc
 cat fs_gt.noninfl.tmp1 | grep '+N+Sg+Gen' >> genitive_attributes.lexc
 
-echo 'LEXICON Verbs\n\ntaas+Pref#:taas# SimpleVerbs ;\ntaas+Pref#:taas# EerVerbs ;\nde+Pref#:de# EerVerbs ;\nre+Pref#:re# EerVerbs ;\nSimpleVerbs ;\nEerVerbs ;\n' > verbs.lexc
+echo 'LEXICON Verbs\n\neel+Pref#:eel# SimpleVerbs ;\neel+Pref#:eel# EerVerbs ;\neelis+Pref#:eelis# SimpleVerbs ;\neelis+Pref#:eelis# EerVerbs ;\nkaug+Pref#:kaug# SimpleVerbs ;\nkaug+Pref#:kaug# EerVerbs ;\nkiir+Pref#:kiir# SimpleVerbs ;\nkiir+Pref#:kiir# EerVerbs ;\nsund+Pref#:sund# SimpleVerbs ;\nsund+Pref#:sund# EerVerbs ;\ntaas+Pref#:taas# SimpleVerbs ;\ntaas+Pref#:taas# EerVerbs ;\nvaeg+Pref#:vaeg# SimpleVerbs ;\nvaeg+Pref#:vaeg# EerVerbs ;\nühis+Pref#:ühis# SimpleVerbs ;\nühis+Pref#:ühis# EerVerbs ;\nde+Pref#:de# EerVerbs ;\nre+Pref#:re# EerVerbs ;\nSimpleVerbs ;\nEerVerbs ;\n' > verbs.lexc
 echo '\nLEXICON SimpleVerbs\n' >> verbs.lexc
 cat fs_gt.inflecting.tmp1 | grep '+V:' | grep -v '...eer[iu]ma+' \
 | sed 's/nnolastpart//' \

@@ -94,7 +94,7 @@ LEXICON KISKUMA     ! only kiskuma
 
 LEXICON USKUMA      ! only uskuma 
 
-           %+Use%/Rare: IMPERS ;          ! ustud etc
+ @R.Part.One@@P.Part.Bad@%+Use%/Rare:@R.Part.One@@P.Part.Bad@ IMPERS_COMP ;  ! ustud etc; no derivation
                       :u LEPPIMA ;        ! uskuma, usutud etc
 
 ! ---------------
@@ -555,6 +555,7 @@ LEXICON TAMATU_DERIVATION_SUF  !    NB! the morpheme border + d/t is assigned be
 LEXICON V_DERIVATION
   @R.Part.One@@P.POS.N@  V_DERIVATION_SUF ;   ! no previous part; no restrictions   
   @R.Case.Par@@P.POS.N@  V_DERIVATION_SUF ;
+  @R.Case.Gen@@R.Stem.ise@@P.POS.N@  V_DERIVATION_SUF ;  ! enesetervendav
 
 LEXICON V_DERIVATION_SUF
               +Der/v+A:»v MAGUS ;              ! elav, elava etc

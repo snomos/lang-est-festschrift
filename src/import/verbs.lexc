@@ -1,7 +1,21 @@
 LEXICON Verbs
 
+eel+Pref#:eel# SimpleVerbs ;
+eel+Pref#:eel# EerVerbs ;
+eelis+Pref#:eelis# SimpleVerbs ;
+eelis+Pref#:eelis# EerVerbs ;
+kaug+Pref#:kaug# SimpleVerbs ;
+kaug+Pref#:kaug# EerVerbs ;
+kiir+Pref#:kiir# SimpleVerbs ;
+kiir+Pref#:kiir# EerVerbs ;
+sund+Pref#:sund# SimpleVerbs ;
+sund+Pref#:sund# EerVerbs ;
 taas+Pref#:taas# SimpleVerbs ;
 taas+Pref#:taas# EerVerbs ;
+vaeg+Pref#:vaeg# SimpleVerbs ;
+vaeg+Pref#:vaeg# EerVerbs ;
+ühis+Pref#:ühis# SimpleVerbs ;
+ühis+Pref#:ühis# EerVerbs ;
 de+Pref#:de# EerVerbs ;
 re+Pref#:re# EerVerbs ;
 SimpleVerbs ;

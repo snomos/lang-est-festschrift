@@ -201,7 +201,7 @@ LEXICON ARGPÜKS    ! some compound words ending with püks (argpüks, vesipüks
                   : TAUD ;
          +Use/Rare:%{W%}%>te N_PL_SUBPARA ;    ! argpükste etc
 
-LEXICON ASI    ! only asi, paik
+LEXICON ASI    ! only asi, paik, tiib, kõrv
 
                   : PIIM ;
       +Use/Rare+Pl:%{W%}%>u LOCATIVES ;    ! asjus, paigus etc

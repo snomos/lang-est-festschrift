@@ -665,6 +665,7 @@ Multichar_Symbols
 !! Remember the stem type; for filtering compounds 
  @P.Stem.ise@   ! enese + anything
  @R.Stem.ise@
+ @D.Stem.ise@
  @P.Stem.vähe@   ! vähe, puht + adjective
  @R.Stem.vähe@
  @D.Stem.vähe@
@@ -890,7 +891,8 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.AComp@@R.Case.Gen@ LatterAdjective_ne ;  ! enamaruuduline, enimaruuduline
 
 ! NB only some pronouns !
-  @R.POS.Pron@@R.Case.Gen@ LatterAdjective_ne ; ! enesepunane, meiepõõsaline
+  @R.POS.Pron@@D.Stem.ise@@R.Case.Gen@ LatterAdjective_ne ; ! minupunane, meiepõõsaline
+  @R.POS.Pron@@R.Stem.ise@@R.Case.Gen@ LatterAdjective ; ! enesepunane, eneseuhke
 
   @R.POS.Adv@@R.Stem.topelt@ LatterAdjective ;        ! topelthallikas etc 
   @R.POS.Adv@@R.Stem.vähe@ LatterAdjective ;        ! vähehallikas etc 
@@ -926,6 +928,9 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.AComp@@R.Case.Sem@ LatterDeverbal ;  ! ilmsemakstulek
   @R.POS.Adv@ LatterDeverbal ;            ! huupitulek
   @R.POS.GA@ LatterDeverbal ;             ! himaalajatulek
+
+! x + numeral
+  @R.POS.Pref@ LatterNumeral ;  ! esiviisteist
 
 ! x + verb derivation
 ! verb derivations expect previous word to be either in Gen or Par
@@ -993,6 +998,9 @@ LEXICON LatterProperNoun
 
 LEXICON LatterDeverbal
   @P.POS.N@@C.Der@@C.NomStem@ DeverbalNouns ;    
+
+LEXICON LatterNumeral
+  @P.POS.NumCard@@C.Der@@C.NomStem@ CardinalNumerals ;    
 
 LEXICON AnyLatterVerb     ! any verb derivation is allowed; set the case accordingly
               
