@@ -675,10 +675,14 @@ Multichar_Symbols
  @C.Stem@
 
 !! A special condition that is used for filtering derivations and compounds
- @P.NeedAdj.On@
+ @P.NeedAdj.On@         ! +A or +N+Der/A
  @R.NeedAdj@
  @D.NeedAdj@
  @C.NeedAdj@
+ @P.NeedPartThree.On@   ! Pref + Adv needs + x
+ @R.NeedPartThree@
+ @D.NeedPartThree@
+ @C.NeedPartThree@
 
 !! Sg Nom is allowed as first part of a compound only for some words
  @P.NomStem.First@
@@ -820,8 +824,8 @@ LEXICON Root !!= * {{@CODE@}} is the starting point of everything
 @D.Part@@P.Part.Bad@ Single ;      !! strictly simplex word; cannot be a part of a compound
 @D.Part@@P.Part.One@ First ;       !! a simplex word, or the first part of a compound
 
-@R.Part.One@@P.Part.Two@ Nonfirst ;   ! second loop; 
-@R.Part.Two@@P.Part.Three@ Nonfirst ;   ! third loop; 
+@R.Part.One@@P.Part.Two@ Nonfirst ;                      ! second loop; 
+@R.Part.Two@@P.Part.Three@@C.NeedPartThree@ Nonfirst ;   ! third loop; 
 
 LEXICON Nonfirst
 
@@ -896,7 +900,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
   @R.POS.Adv@@R.Stem.topelt@ LatterAdjective ;        ! topelthallikas etc 
   @R.POS.Adv@@R.Stem.vähe@ LatterAdjective ;        ! vähehallikas etc 
-  @R.POS.Adv@@D.Stem.topelt@@D.Stem.vähe@ LatterAdjective_v ;        ! harvanähtavaid etc ... NOT WORKING ...
+  @R.POS.Adv@@D.Stem.topelt@@D.Stem.vähe@ LatterAdjective_v ;        ! harvanähtavaid etc 
 
 ! x + noun
   @R.POS.Pref@ LatterNoun ;  ! ebalaud
@@ -930,7 +934,11 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.GA@ LatterDeverbal ;             ! himaalajatulek
 
 ! x + numeral
-  @R.POS.Pref@ LatterNumeral ;  ! esiviisteist
+  @R.POS.Pref@@P.POS.NumCard@ CardinalNumerals ;  ! esiviisteist
+
+! x + adverb
+!  @R.POS.Pref@@P.POS.Adv@@P.Stem.topelt@@P.NeedPartThree.On@ NounCompoundingAdverbs ;  ! eraratsa + baas
+  @R.POS.Pref@@P.POS.Adv@@P.NeedPartThree.On@ CompoundingAdverbs ;  ! era+ratsa+baas, ehitus+järel+valvama+Der/ja 
 
 ! x + verb derivation
 ! verb derivations expect previous word to be either in Gen or Par

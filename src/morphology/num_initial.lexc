@@ -5,6 +5,8 @@
 LEXICON Root
 
 @D.Part@@P.Part.One@@P.POS.NumCardCompound@ CompoundNumerals ;
+@R.Part.One@@R.POS.Pref@@P.Part.Two@@P.POS.NumCardCompound@ CompoundNumerals ;
+@R.Part.Two@@R.POS.Pref@@P.Part.Three@@P.POS.NumCardCompound@ CompoundNumerals ;
  
 LEXICON CompoundNumerals
 
