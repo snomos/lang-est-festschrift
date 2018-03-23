@@ -77,7 +77,6 @@ temasugune+Pron:tema#sugune SOOLANE ;
 temataoline+Pron:tema#t´aoline SUULINE ;
 üks+Pron:´ü KAKS ;
 üksteise+Pron:´üks#teine OLULINE ;
-iseenese+Pron:ise# ISE ;
 omaenese+Pron:oma# OMAENESE ;
 kumbki+Pron:kummB1%>%{pl.i%}%{rare%} KUMBKI ;
 miski+Pron:mi MISKI ;
@@ -98,6 +97,7 @@ teie+Pron:te METE ;
 tema+Pron:t TEMA ;
 nemad+Pron:n NEMAD ;
 @P.Stem.ise@ise+Pron:@P.Stem.ise@ ISE ;
+@P.Stem.ise@iseenese+Pron:@P.Stem.ise@ise# ISE ;
 kõik+Pron:kõik KÕIK ;
 
 iga+Pron:iga RUBLA ;

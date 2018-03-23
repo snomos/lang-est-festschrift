@@ -903,7 +903,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.Adv@@D.Stem.topelt@@D.Stem.vähe@ LatterAdjective_v ;        ! harvanähtavaid etc 
 
 ! x + noun
-  @R.POS.Pref@ LatterNoun ;  ! ebalaud
+  @R.POS.Pref@@P.Part.One@ LatterNoun ;  ! ebalaud; allow pref + 3-part-compounds
   @R.POS.Pref@ LatterProperNoun ;  ! ehttartulik
   @R.Case.Short@ LatterNoun ;   ! astraallaud, ekstrariiul
 
@@ -950,6 +950,9 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
   @R.POS.N@@R.Case.Nom@@R.NomStem.First@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
   @R.POS.N@@R.Case.Sem@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
+  @R.POS.N@@R.Case.Short@ AnyLatterVerb ;  ! investeerimisnõustamine
+
+  @R.POS.A@@R.Case.Short@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
   @R.POS.A@@R.Case.Sem@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
   @R.POS.AComp@@R.Case.Sem@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
 
@@ -961,7 +964,6 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
   @R.Der.us@@R.Case.Nom@@D.NomStem.First@@P.Case.Gen@ LatterVerb ;  ! funktsionaalsusjõramine, kindlustusjõramine
 
-  @R.POS.A@@R.Case.Short@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
 
 ! NB only short and good adverbs here !!!
   @R.POS.Adv@@D.Case@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
