@@ -1172,18 +1172,21 @@ Vx:Vy  <=>  :Consonant Null* %> _ Null+ %{s%}:0 ;     ! puud-puudi, maja - maju
 ! ------------
 
 ! maja-maju/majasid, osa-osi/osasid, nuga-nuge/nugasid
-! if vowel plural is possible, then it has to be indicated in stem lexicon
+! if vowel plural partitive is possible, then it has to be indicated in stem lexicon
 ! concerns only words ending with -a, and huvi, kivi, kruvi 
 
 "vowel deletion before plural vowel"
 
 Vx:0  <=> :Consonant ( J1:0 ) _ %> PlSV:Vy Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
+          :Consonant ( J1:0 ) _ %> PlSV:0 Null* Vy ;                          ! osil
      where Vx in (a a a i)
            Vy in (i u e e)
      matched;
 
 ! lexical: m a j a > {pl.u} {stemill} > {s} {i} {d}
 ! surface: m a j 0 >    u       0     >  0   0   0
+! lexical: o s a > {pl.i} {stemill} {W} > i > l
+! surface: o s 0 >    0       0      0  > i > l 
 
 ! --------------
 ! 2. singular illative: -sse vs stem grade strengthening

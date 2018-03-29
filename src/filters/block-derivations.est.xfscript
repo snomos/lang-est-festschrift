@@ -17,7 +17,7 @@ define ZZ [[Vow Cons+ Vow+ Cons*] | [Vow Vow Vow Cons*]];   # at least 2 syllabl
 
 define BadDer1 [
     [~[?* [["+N"] | ["+Num" "+Card"] | ["+N" "+Prop"]]] "+Der/lik"] |
-    [~[?* "+N" "+Prop"] "+Der/lane"] |
+    [~[?* [["+N" "+Prop"] | [{kond} "+N"]]] "+Der/lane"] |
     [~[?* [["+N"] | ["+Num" "+Card"]]] "+Der/line"] |
     [~[?* [["+A"] | ["+A" "+Comp"] | ["+A" "+Superl"]]] "+Der/lt"] |
     [~[?* "+A"] "+Der/sti"] |
@@ -61,7 +61,7 @@ define BadDer2 [
 
 # some suffix sequences are actually bad
 define BadDer3 [
-    [[ "+Der/nu" | "+Der/us" | "+Der/lane" ] "+N" "+Der/ti"] 
+    [[ "+Der/nu" | "+Der/us" | "+Der/lane" ] "+N" "+Der/ti"]  
     ] ;
 
 # some words are not suitable for certain suffixes 
@@ -131,17 +131,24 @@ define BadDer4 [
 
 define BadDer6 [
     [{ahi} "+N" "+Der/lik"] | # k_ahju+lik
-    [{imu} "+N" "+Der/lik"] | # imu+lik
+    [{ema} "+N" "+Der/line"] | # te_ema+line
+    [{esi} "+N" "+Der/line"] | # ee+line => eelised
+    [{erg} "+N" "+Der/line"] | # _ergiline
     [{hoog} "+N" "+Der/lik"] | # _hoo+lik
+    [{imu} "+N" "+Der/lik"] | # _imu+lik
+    [{ist} "+N" "+Der/lik"] | # _ist+lik
     [{kee} "+N" "+Der/lik"] | # keelik
-    [{voog} "+N" "+Der/lik"] | # voo+lik
+    [{kubu} "+N" "+Der/line"] | # koolist
+    [{logi} "+N" "+Der/line"] | # mis-spelling of loogiline
+    [{lood} "+N" "+Der/line"] | # homonym of lugu+line = looline
+    [{loog} "+N" "+Der/line"] | # homonym of lugu+line = looline
+    [{mett} "+N" "+Der/lik"] | # a_met+lik
+    [{ott} "+N" "+Der/line"] | # psühho_oti+line
     [{suss} "+N" "+Der/lik"] | # _sus+lik
     [{tuss} "+N" "+Der/lik"] | # _tus+lik
+    [{udu} "+N" "+Der/line"] |  # ru_udu+line
     [{uss} "+N" "+Der/lik"] | # _us+lik
-    [{ema} "+N" "+Der/line"] | # te_ema+line
-    [{kubu} "+N" "+Der/line"] | # koolist
-    [{ott} "+N" "+Der/line"] | # psühho_oti+line
-    [{udu} "+N" "+Der/line"]   # ru_udu+line
+    [{voog} "+N" "+Der/lik"]  # voo+lik
     ] ;
 
 

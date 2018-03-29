@@ -871,6 +871,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
 ! x + adjective
   @R.POS.Pref@ LatterAdjective ;  ! ebapunane, ökokorralik
+  @R.POS.Pref@ LatterAdjectiveComp ;  ! inimtühjem
   @R.Case.Short@ LatterAdjective ;  ! vaatamispunane, astraalpunane
 
   @R.POS.N@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ; ! laudõiekas
@@ -882,13 +883,15 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
   @R.POS.GA@ LatterAdjective_ne ; ! himaalajajalgne
 
+  @R.POS.NumCard@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ; ! poolraske
   @R.POS.NumCard@@R.Case.Gen@ LatterAdjective_ne ; ! viiemeetrine
   @R.POS.NumCardCompound@@R.Case.Gen@ LatterAdjective_ne ; ! kahekümnemeetrine
   @R.POS.NumOrd@@R.Case.Gen@ LatterAdjective_ne ; ! viiendajärguline
 
   @R.POS.A@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ;  ! rämepunane
   @R.POS.A@@R.Case.Gen@ LatterAdjective_ne ;  ! suureruuduline
-  @R.POS.A@@R.Case.Gen@ LatterNoninflectingAdjective ;  ! jämedavõitu
+!  @R.POS.A@@R.Case.Gen@ LatterNoninflectingAdjective ;  ! jämedavõitu
+!  @R.POS.AComp@@R.Case.Gen@ LatterNoninflectingAdjective ;  ! jämedamavõitu
   @R.Der.us@@R.Case.Nom@ LatterAdjective_ne ;  ! funktsionaalsusjalgne
 
   @R.POS.AComp@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ;  ! enampunane, enimpunane
@@ -938,7 +941,9 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
 ! x + adverb
 !  @R.POS.Pref@@P.POS.Adv@@P.Stem.topelt@@P.NeedPartThree.On@ NounCompoundingAdverbs ;  ! eraratsa + baas
-  @R.POS.Pref@@P.POS.Adv@@P.NeedPartThree.On@ CompoundingAdverbs ;  ! era+ratsa+baas, ehitus+järel+valvama+Der/ja 
+  @R.POS.Pref@@P.POS.Adv@@P.NeedPartThree.On@ CompoundingAdverbs ;  ! era+ratsa+baas, era+järel+valvama+Der/ja 
+  @R.POS.N@@R.Case.Nom@@R.NomStem.First@@P.POS.Adv@@P.NeedPartThree.On@ CompoundingAdverbs ;  ! ehitus+järel+valvama+Der/ja 
+  @R.POS.N@@R.Case.Gen@@P.POS.Adv@@P.NeedPartThree.On@ CompoundingAdverbs ;  ! ehitus+järel+valvama+Der/ja 
 
 ! x + verb derivation
 ! verb derivations expect previous word to be either in Gen or Par
@@ -978,6 +983,25 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.V@@D.Case@ AnyLatterVerb ;              ! infinitive
   @R.POS.V@@R.Case.Sem@ AnyLatterVerb ;          ! -ma, -mas etc
 
+! x + final component
+! final components are words that attach to more words than their POS would suggest
+
+  @R.POS.NumCard@@R.Case.Nom@ AdjAfterNumeralNom ;          ! kolmkeelne
+  @R.POS.NumCard@@R.Case.Gen@@P.POS.Adv@ AdvAfterNumeral ;  ! seitsmekaupa
+
+  @R.POS.N@@R.Case.Nom@@P.POS.Adv@@C.Der@@C.NomStem@ AdvAfterNounNom ;  ! riiulhaaval
+  @R.POS.N@@R.Case.Gen@@P.POS.Adv@@C.Der@@C.NomStem@ AdvAfterNounGen ;  ! riiulihaaval
+  @R.POS.N@@R.Case.Par@@P.POS.Adv@@C.Der@@C.NomStem@ AdvAfterNounPar ;  ! riiulitpidi
+
+  @R.POS.GA@@P.POS.A@ AdjAfterGenAttrib ;                     ! himaalajapoolne
+  @R.POS.GA@@P.POS.N@ NounFinalComp ;                         ! himaalajamees
+
+  @R.POS.A@@R.Case.Gen@@P.POS.A@@C.Der@@C.NomStem@ AdjAfterAdjGen ;      ! hapukavõitu
+  @R.POS.AComp@@R.Case.Gen@@P.POS.A@@C.Der@@C.NomStem@ AdjAfterAdjGen ;  ! hapukamavõitu
+  @R.POS.A@@R.Case.Gen@@P.POS.N@@C.Der@@C.NomStem@ NounFinalComp ;       ! hapukavahend
+
+  @R.POS.N@@R.Case.Short@@P.POS.A@@C.Der@@C.NomStem@ VäärtFinal ;    ! kiitmisväärt
+! --------------------------------
 
 LEXICON LatterAdjective
 
@@ -996,9 +1020,14 @@ LEXICON PlainLatterAdjective
 
   @P.POS.A@@C.Der@@C.NomStem@ PlainAdjectives ;              !!= * {{@CODE@}}
 
-LEXICON LatterNoninflectingAdjective
+!LEXICON LatterNoninflectingAdjective
 
-  @P.POS.A@@C.Der@@C.NomStem@ CompoundingNoninflectingAdjectives ;              !!= * {{@CODE@}}
+!  @P.POS.A@@C.Der@@C.NomStem@ CompoundingNoninflectingAdjectives ;              !!= * {{@CODE@}}
+
+LEXICON LatterAdjectiveComp
+
+  @P.POS.AComp@@C.Der@@C.NomStem@ ComparativeAdjectives ;              !!= * {{@CODE@}}
+  @P.POS.AComp@@C.Der@@C.NomStem@ SuperlativeAdjectives ;              !!= * {{@CODE@}}
 
 LEXICON LatterNoun
   @P.POS.N@@C.Der@@C.NomStem@ Nouns ;    
@@ -1008,9 +1037,6 @@ LEXICON LatterProperNoun
 
 LEXICON LatterDeverbal
   @P.POS.N@@C.Der@@C.NomStem@ DeverbalNouns ;    
-
-LEXICON LatterNumeral
-  @P.POS.NumCard@@C.Der@@C.NomStem@ CardinalNumerals ;    
 
 LEXICON AnyLatterVerb     ! any verb derivation is allowed; set the case accordingly
               

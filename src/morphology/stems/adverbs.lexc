@@ -13,6 +13,7 @@ LEXICON CompoundingAdverbs
 LEXICON NounCompoundingAdverbs
 
 järel+Adv:järel GI ;
+koos+Adv:k´oos GI ;
 kõrval+Adv:kõrval GI ;
 otse+Adv:otse GI ;
 püsti+Adv:p´üs,ti GI ;
@@ -204,7 +205,6 @@ kolmeti+Adv:kolmeti GI ;
 konukil+Adv:konukil GI ;
 konukile+Adv:konukile GI ;
 kooku+Adv:k´ooku GI ;
-koos+Adv:k´oos GI ;
 koost+Adv:k´oost GI ;
 korpa+Adv:k´orpa GI ;
 kotti+Adv:k´ot,ti GI ;
@@ -216,6 +216,7 @@ kummargil+Adv:kummargil GI ;
 kummargile+Adv:kummargile GI ;
 kummi+Adv:k´ummi GI ;
 kummuli+Adv:kummuli GI ;
+kunagi+Adv:kunagi # ;
 kupla+Adv:k´upla GI ;
 kurdu+Adv:k´urdu GI ;
 kusagil+Adv:kusagil GI ;
@@ -2650,7 +2651,6 @@ kummati+Adv:kummati GI ;
 kummatigi+Adv:kummatigi # ;
 kummis+Adv:k´ummis GI ;
 kuna+Adv:kuna #;
-kunagi+Adv:kunagi # ;
 kunas+Adv:kunas GI ;
 kuniks+Adv:kuniks GI ;
 kuninglikult+Adv:k`uninglikult GI ;

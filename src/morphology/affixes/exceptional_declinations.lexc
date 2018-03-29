@@ -201,7 +201,7 @@ LEXICON ARGPÜKS    ! some compound words ending with püks (argpüks, vesipüks
                   : TAUD ;
          +Use/Rare:%{W%}%>te N_PL_SUBPARA ;    ! argpükste etc
 
-LEXICON ASI    ! only asi, paik, tiib, kõrv
+LEXICON ASI    ! only asi, paik, tiib, kõrv, mari
 
                   : PIIM ;
       +Use/Rare+Pl:%{W%}%>u LOCATIVES ;    ! asjus, paigus etc
@@ -407,6 +407,11 @@ LEXICON NIMI    ! VVS 20, 21 unstable type (passiivne muuttüüp) 17 words; suvi
                   :e DE_PL ;
 !                 :e%{W%} LIK_DERIVATION ;
 
+LEXICON OSA    ! only osa
+
+                  : KAVA ;
+         +Use/Rare:%{W%}%>i N_VOWEL_PL_SUBPARA ;    ! osil etc
+
 LEXICON PARAS    ! only paras; like LOHAKAS
  
                   :s SG_NOMINATIVE ;    ! paras
@@ -470,7 +475,7 @@ LEXICON PÕRSAS   ! only põrsas
                   :a KOTKAS ;               ! põrsas, põrsa etc
          +Use/Rare:sa 2C_STRONG ;           ! põrssa etc
 
-LEXICON PÄEV    ! only päev
+LEXICON PÄEV    ! only päev, -kond
 
                   : PIIM ;
          +Use/Rare:%{W%}%>i N_VOWEL_PL_SUBPARA ;    ! päevil etc
@@ -497,7 +502,7 @@ LEXICON RUBLA    ! about 20 words
                   : PERE ;
          +Use/Rare: SG_PARTITIVE ;    ! (viis) rubla
 
-LEXICON RUUM    ! only ruum
+LEXICON RUUM    ! only ruum, piir
 
                   : TAUD ;
       +Use/Rare+Pl:%{W%}%>e LOCATIVES ;    ! ruumes etc

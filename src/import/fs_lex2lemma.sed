@@ -758,6 +758,9 @@ s/^\([^ ]*t\)ugi [^@]*21[^@]*@NIMI.*$/& \1ugi:\1uG1/
 /[ =_-]<as]ja .*@PIIM/s/@PIIM/@ASI/
 /[ =_-]p<aika .*@PIIM/s/@PIIM/@ASI/
 /p<äev .*@PIIM/s/@PIIM/@PÄEV/
+/k<ond .*@PIIM/s/@PIIM/@PÄEV/
+/^osa .*@KAVA/s/@KAVA/@OSA/
+/[ =_-]osa .*@KAVA/s/@KAVA/@OSA/
 /[ =_-]r<inda .*@PIIM/s/@PIIM/@RIND/
 /[ =_-]s<ilma .*@PIIM/s/@PIIM/@SILM/
 /j<alg .*@PIIM/s/@PIIM/@JALG/
@@ -799,6 +802,9 @@ s/^\([^ ]*\) .*@ELANIK/& \1:\1/
 /\\H.*ADT.*@AASTA/s/$/%{stemill%}/
 
 /r<uum .*@TAUD/s/TAUD/RUUM/
+/^p<iir .*@TAUD/s/TAUD/RUUM/
+/[ =_-]p<iir .*@TAUD/s/TAUD/RUUM/
 /t<iib .*@PIIM/s/PIIM/ASI/
 /k<õrv .*@PIIM/s/PIIM/ASI/
+/mari .*@PIIM/s/PIIM/ASI/
 

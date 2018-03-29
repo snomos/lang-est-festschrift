@@ -1,17 +1,6 @@
 
 LEXICON NoninflectingAdjectives
 
- CompoundingNoninflectingAdjectives ;
- PlainNoninflectingAdjectives ;
-
-LEXICON CompoundingNoninflectingAdjectives
-
-karva+A:k´arva GI ;
-võitu+A:v´õitu GI ;
-värvi+A:v´ärvi GI ;
-
-LEXICON PlainNoninflectingAdjectives
-
 aadamaülikonnas+A:´aadama#`ülikonnas GI ;
 aadeteta+A:aadeteta GI ;
 abielus+A:abi#elus GI ;
@@ -160,6 +149,7 @@ kammitsas+A:kammitsas GI ;
 kampas+A:k´ampas GI ;
 kantis+A:k´an,tis GI ;
 karpas+A:k´arpas GI ;
+karva+A:k´arva GI ;
 karvadeta+A:k´arvadeta GI ;
 karvasjalg+A:karvas#j´alg GI ;
 kasimata+A:kasimata GI ;
@@ -753,6 +743,7 @@ voltis+A:v´ol,tis GI ;
 vormis+A:vormis GI ;
 vurhvis+A:v´urhvis GI ;
 võimeteta+A:võimeteta GI ;
+võitu+A:v´õitu GI ;
 võltsimata+A:võl,tsimata GI ;
 vähemtuntud+A:vähem#t´untud GI ;
 väiksevõitu+A:v´äikse#v´õitu GI ;
@@ -760,6 +751,7 @@ väljaarenemata+A:v´äl,ja#arenemata GI ;
 väljasirutatud+A:v´äl,ja#sirutatud GI ;
 väljasurnud+A:v´äl,ja#s´urnud GI ;
 väljavaadetega+A:v´äl,ja#vaadetega GI ;
+värvi+A:v´ärvi GI ;
 värvimata+A:v´ärvimata GI ;
 väärarenditega+A:v´äär#arenditega GI ;
 @P.Case.Short@väärt+A:@P.Case.Short@v´äärt GI ;

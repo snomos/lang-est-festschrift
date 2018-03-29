@@ -87,24 +87,14 @@ cat adjectives.tmp2 \
 | sed 's/?/#/g' \
 | sort -u >> adjectives.lexc
 
-echo '\nLEXICON NoninflectingAdjectives\n\n CompoundingNoninflectingAdjectives ;\n PlainNoninflectingAdjectives ;\n\nLEXICON CompoundingNoninflectingAdjectives\n' \
+echo '\nLEXICON NoninflectingAdjectives\n' \
 > noninflecting_adjectives.lexc
 cat fs_gt.noninfl.tmp1 | grep '+A:' > noninflecting_adjectives.tmp1
-
-# NB! grep list1
-cat noninflecting_adjectives.tmp1 \
-| grep '\(^karva+\)\|\(^võitu+\)\|\(^värvi+\)' \
->> noninflecting_adjectives.lexc
-
-echo '\nLEXICON PlainNoninflectingAdjectives\n' >> noninflecting_adjectives.lexc
 
 # mark good words for compounding 
 # by falsely giving them the tag of a shortened form (like vaatamis-),
 # although these are uninflected words...
-# NB! grep -v list1
 cat noninflecting_adjectives.tmp1 \
-| grep -v '\(^karva+\)\|\(^võitu+\)\|\(^värvi+\)' \
-\
 | sed '/^ekstra+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
 | sed '/^eri+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
 | sed '/^ise+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
@@ -156,15 +146,15 @@ cat superlative_adjectives.tmp2 >> superlative_adjectives.lexc
 
 # lisaks (1), lisaks (2)
 cat fs_gt.noninfl.tmp1 | grep '+Adv' \
-| grep '\(^järel+\)\|\(^kõrval+\)\|\(^otse+\)\|\(^piki+\)\|\(^püsti+\)\|\(^ratsa+\)\|\(^taga+\)\|\(^topelt+\)\|\(^vastas+\)\|\(^vastu+\)\|\(^üle+\)' \
+| grep '\(^järel+\)\|\(^koos+\)\|\(^kõrval+\)\|\(^otse+\)\|\(^piki+\)\|\(^püsti+\)\|\(^ratsa+\)\|\(^taga+\)\|\(^topelt+\)\|\(^vastas+\)\|\(^vastu+\)\|\(^üle+\)' \
 > tmpadv.0
 
 cat fs_gt.noninfl.tmp1 | grep '+Adv' \
-| grep -v '\(^järel+\)\|\(^kõrval+\)\|\(^otse+\)\|\(^piki+\)\|\(^püsti+\)\|\(^ratsa+\)\|\(^taga+\)\|\(^topelt+\)\|\(^vastas+\)\|\(^vastu+\)\|\(^üle+\)' \
+| grep -v '\(^järel+\)\|\(^koos+\)\|\(^kõrval+\)\|\(^otse+\)\|\(^piki+\)\|\(^püsti+\)\|\(^ratsa+\)\|\(^taga+\)\|\(^topelt+\)\|\(^vastas+\)\|\(^vastu+\)\|\(^üle+\)' \
 > tmpadv.alg
 
 cat tmpadv.alg \
-| grep '\(^all+\)\|\(^alt+\)\|\(^eel+\)\|\(^ees+\)\|\(^ise+\)\|\(^jae+\)\|\(^oma+\)\|\(^pea+\)\|\(^ula+\)\|\(^õue+\)\|\(^ära+\)\|\(^üle+\)\|\(^....+\)\|\(^umbes+\)\|\(^....[^s]+[^#-]*$\)\|\(^...ks+[^#-]*$\)\|\(^...*li+[^#-]*$\)\|\(^...*il+[^#-]*$\)\|\(^...*ile+[^#-]*$\)\|\(^hiljuti+\)\|\(^kaheti+\)\|\(^kolmeti+\)\|\(^mitmeti+\)\|\(^teisiti+\)\|\(^tükati+\)\|\(^võõriti+\)' \
+| grep '\(^all+\)\|\(^alt+\)\|\(^eel+\)\|\(^ees+\)\|\(^ise+\)\|\(^jae+\)\|\(^oma+\)\|\(^pea+\)\|\(^ula+\)\|\(^õue+\)\|\(^ära+\)\|\(^üle+\)\|\(^....+\)\|\(^umbes+\)\|\(^....[^s]+[^#-]*$\)\|\(^...ks+[^#-]*$\)\|\(^...*li+[^#-]*$\)\|\(^...*il+[^#-]*$\)\|\(^...*ile+[^#-]*$\)\|\(^hiljuti+\)\|\(^kaheti+\)\|\(^kolmeti+\)\|\(^kunagi+\)\|\(^mitmeti+\)\|\(^teisiti+\)\|\(^tükati+\)\|\(^võõriti+\)' \
 | grep -v '\(^miks+\)\|\(^näos+\)\|\(^egas+\)\|\(^kuis+\)\|\(^siis+\)\|\(^teps+\)\|\(^aina+\)\|\(^aiva+\)\|\(^eele+\)\|\(^eelt+\)\|\(^ikka+\)\|\(^istu+\)\|\(^jalu+\)\|\(^jaol+\)\|\(^jokk+\)\|\(^juba+\)\|\(^just+\)\|\(^jõle+\)\|\(^jönt+\)\|\(^kohe+\)\|\(^kole+\)\|\(^kord+\)\|\(^kuhu+\)\|\(^kuna+\)\|\(^küll+\)\|\(^loga+\)\|\(^loha+\)\|\(^losa+\)\|\(^mant+\)\|\(^manu+\)\|\(^nagu+\)\|\(^nõka+\)\|\(^nõus+\)\|\(^nüüd+\)\|\(^olgu+\)\|\(^puha+\)\|\(^põsi+\)\|\(^päta+\)\|\(^seep+\)\|\(^seni+\)\|\(^siva+\)\|\(^sugu+\)\|\(^tuna+\)\|\(^täna+\)\|\(^töhe+\)\|\(^vaid+\)\|\(^vaja+\)\|\(^veel+\)\|\(^vist+\)\|\(^väga+\)\|\(^õige+\)\|\(^õkva+\)\|\(^ähmi+\)\|\(^äkki+\)\|\(^ängi+\)\|\(^äsja+\)\|\(^+ühti\)\|\(^üsna+\)\|\(^abiga+\)\|\(^eduga+\)\|\(^hulga+\)\|\(^jõuga+\)\|\(^liiga+\)\|\(^lõõga+\)\|\(^punga+\)\|\(^seega+\)\|\(^tõega+\)' \
 > tmpadv.1
 
@@ -181,7 +171,7 @@ cat tmpadv.alg \
 #> adverbs.tmp2
 # NB! see loend olgu sama, mis lisaks (1)
 cat tmpadv.alg \
-| grep -v '\(^all+\)\|\(^alt+\)\|\(^eel+\)\|\(^ees+\)\|\(^ise+\)\|\(^jae+\)\|\(^oma+\)\|\(^pea+\)\|\(^ula+\)\|\(^õue+\)\|\(^ära+\)\|\(^üle+\)\|\(^....+\)\|\(^umbes+\)\|\(^....[^s]+[^#-]*$\)\|\(^...ks+[^#-]*$\)\|\(^...*li+[^#-]*$\)\|\(^...*il+[^#-]*$\)\|\(^...*ile+[^#-]*$\)\|\(^hiljuti+\)\|\(^kaheti+\)\|\(^kolmeti+\)\|\(^mitmeti+\)\|\(^teisiti+\)\|\(^tükati+\)\|\(^võõriti+\)' \
+| grep -v '\(^all+\)\|\(^alt+\)\|\(^eel+\)\|\(^ees+\)\|\(^ise+\)\|\(^jae+\)\|\(^oma+\)\|\(^pea+\)\|\(^ula+\)\|\(^õue+\)\|\(^ära+\)\|\(^üle+\)\|\(^....+\)\|\(^umbes+\)\|\(^....[^s]+[^#-]*$\)\|\(^...ks+[^#-]*$\)\|\(^...*li+[^#-]*$\)\|\(^...*il+[^#-]*$\)\|\(^...*ile+[^#-]*$\)\|\(^hiljuti+\)\|\(^kaheti+\)\|\(^kolmeti+\)\|\(^kunagi+\)\|\(^mitmeti+\)\|\(^teisiti+\)\|\(^tükati+\)\|\(^võõriti+\)' \
 >> tmpadv.2
 #>> adverbs.tmp2
 
@@ -445,7 +435,11 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | sed '/^siksak+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 | sed '/^kogumik+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 | sed '/^killustik+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+| sed '/^kapsas+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+| sed '/^nälg+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+| sed '/^kameeleon+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 \
+| sed '/^....*[kpt]s+.*KOON/s/^\([^:]*+N\):\([^#;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 | sed -f nomstem_first_koon.sed \
 | sed -f nomstem_first_piim.sed \
 | sed -f nomstem_first_eit.sed \
@@ -499,6 +493,7 @@ cat fs_gt.inflecting.tmp1 | grep '+N+Prop' | sed 's/nnolastpart//' >> propernoun
 echo 'LEXICON CardinalNumerals\n' > cardinalnumerals.lexc
 cat fs_gt.inflecting.tmp1 | grep '+Num+Card' \
 | grep -v '#p.aar ' \
+| sed '/^pool+/s/^\([^:]*+Num+Card\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 >> cardinalnumerals.lexc
 echo 'poolteist+Num+Card:p´ool POOLTEIST ;' >> cardinalnumerals.lexc
 
@@ -546,6 +541,9 @@ cat fs_gt.inflecting.tmp1 | grep '+V:' | grep -v '...eer[iu]ma+' \
 echo '\nLEXICON EerVerbs\n' >> verbs.lexc
 cat fs_gt.inflecting.tmp1 | grep '+V:' | grep '...eer[iu]ma+' \
 | sed 's/nnolastpart//' >> verbs.lexc
+
+# create final_components.lexc
+./fs_suf2gt.sh
 
 # NB! this relies on the dir structure being the same as in Giellatekno
 cp *.lexc ../morphology/stems
