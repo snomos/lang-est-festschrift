@@ -27,7 +27,8 @@ define BadDer1 [
     [~[?* j a "+N"] "+Der/nna"] |
     [~[?* [["+N"] | ["+Num" "+Card"]]] "+Der/kond"] |
     [~[?* [["+A"] | ["+A" "+Comp"] | ["+A" "+Superl"] | 
-          [ ZZ {tama} "+V"] | [ ZZ {dama} "+V"] | [ {hooldama} "+V"] | [ {tsema} "+V"] | [ ? ? ? {lema} "+V"]]] "+Der/us"] |
+          [ ZZ {tama} "+V"] | [ ZZ {dama} "+V"] | 
+          [ {hooldama} "+V"] | [ {soendama} "+V"] | [ {tsema} "+V"] | [ ? ? ? {lema} "+V"]]] "+Der/us"] |
     [~[?* [{uma} | {tellima}] "+V"] "+Der/mus"] |             # devalveeruma - devalveerumus
     [~[?* {eerima} "+V"] "+Der/ng"] |           # devalveerima - devalveering
     [~[?* {ism} "+N"] "+Der/ist"] |             # kapitalism - kapitalist

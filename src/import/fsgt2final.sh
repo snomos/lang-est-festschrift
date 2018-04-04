@@ -294,6 +294,7 @@ cat fs_gt.inflecting.tmp1 | grep '+N:' \
 | sed '/^panija+/s/$/WDEVERBAL/' \
 | sed '/^tegija+/s/$/WDEVERBAL/' \
 | sed '/^nägija+/s/$/WDEVERBAL/' \
+| sed '/^kandlus+/s/$/WDEVERBAL/' \
 | LC_COLLATE=C sort > fs_gt.inflecting.tmp1.srt
 
 # ja lisa siia märge nende lühikeste nimisõnade kohta, mis ei osale liitsõnades
@@ -347,6 +348,7 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | sed 's/:polü#/:polü?/' \
 | sed 's/:an,ti#/:an,ti?/' \
 | sed 's/:tele#/:tele?/' \
+| sed '/^alg+.*KOON/s/nnolastpartheaesi/mnocompound/' \
 | sed '/;.*heaesi/s/^\([^:]*+N\):\([^;]*;\)\(.*\)heaesi/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 | sed '/^[^@]....*+[^#]* TAUD/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 | sed '/^[^@].*+[^#]*#sk.oop TAUD/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
@@ -444,7 +446,8 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | sed -f nomstem_first_piim.sed \
 | sed -f nomstem_first_eit.sed \
 \
-| sed '/;.*mnocompound/s/^\([^:]*+N\):\([^;]*;\)\(.*\)mnocompound/@R.Part.One@@P.Part.Bad@\1:@R.Part.One@@P.Part.Bad@\2\3/' | sed '/^vana+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Bad.Nonfinal@\1:@P.Bad.Nonfinal@\2\3/' \
+| sed '/;.*mnocompound/s/^\([^:]*+N\):\([^;]*;\)\(.*\)mnocompound/@R.Part.One@@P.Part.Bad@\1:@R.Part.One@@P.Part.Bad@\2\3/' \
+| sed '/^vana+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Bad.Nonfinal@\1:@P.Bad.Nonfinal@\2\3/' \
 | sed '/^alam+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Bad.Nonfinal@\1:@P.Bad.Nonfinal@\2\3/' \
 | sed '/@alam+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Bad.Nonfinal@\1:@P.Bad.Nonfinal@\2\3/' \
 | sed '/^ülem+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Bad.Nonfinal@\1:@P.Bad.Nonfinal@\2\3/' \
@@ -528,8 +531,20 @@ cat ara.handmade >> noninflecting_verbs.lexc
 echo 'LEXICON Interjections\n' > interjections.lexc
 cat fs_gt.noninfl.tmp1 | grep '+Interj' >> interjections.lexc
 
+# some words cannot be a latter part of a compound
 echo 'LEXICON GenitiveAttributes\n' > genitive_attributes.lexc
-cat fs_gt.noninfl.tmp1 | grep '+N+Sg+Gen' >> genitive_attributes.lexc
+cat fs_gt.noninfl.tmp1 \
+| grep '+N+Sg+Gen' \
+| sed '/^doni+/s/^\([^:]*\):\(.*\)$/@R.Part.One@\1:@R.Part.One@\2/' \
+| sed '/^komi+/s/^\([^:]*\):\(.*\)$/@R.Part.One@\1:@R.Part.One@\2/' \
+| sed '/^moka+/s/^\([^:]*\):\(.*\)$/@R.Part.One@\1:@R.Part.One@\2/' \
+| sed '/^pisa+/s/^\([^:]*\):\(.*\)$/@R.Part.One@\1:@R.Part.One@\2/' \
+| sed '/^saku+/s/^\([^:]*\):\(.*\)$/@R.Part.One@\1:@R.Part.One@\2/' \
+| sed '/^semi+/s/^\([^:]*\):\(.*\)$/@R.Part.One@\1:@R.Part.One@\2/' \
+| sed '/^süva+/s/^\([^:]*\):\(.*\)$/@R.Part.One@\1:@R.Part.One@\2/' \
+| sed '/^tori+/s/^\([^:]*\):\(.*\)$/@R.Part.One@\1:@R.Part.One@\2/' \
+| sed '/^võsu+/s/^\([^:]*\):\(.*\)$/@R.Part.One@\1:@R.Part.One@\2/' \
+>> genitive_attributes.lexc
 
 echo 'LEXICON Verbs\n\neel+Pref#:eel# SimpleVerbs ;\neel+Pref#:eel# EerVerbs ;\neelis+Pref#:eelis# SimpleVerbs ;\neelis+Pref#:eelis# EerVerbs ;\nkaug+Pref#:kaug# SimpleVerbs ;\nkaug+Pref#:kaug# EerVerbs ;\nkiir+Pref#:kiir# SimpleVerbs ;\nkiir+Pref#:kiir# EerVerbs ;\nsund+Pref#:sund# SimpleVerbs ;\nsund+Pref#:sund# EerVerbs ;\ntaas+Pref#:taas# SimpleVerbs ;\ntaas+Pref#:taas# EerVerbs ;\nvaeg+Pref#:vaeg# SimpleVerbs ;\nvaeg+Pref#:vaeg# EerVerbs ;\nühis+Pref#:ühis# SimpleVerbs ;\nühis+Pref#:ühis# EerVerbs ;\nde+Pref#:de# EerVerbs ;\nre+Pref#:re# EerVerbs ;\nSimpleVerbs ;\nEerVerbs ;\n' > verbs.lexc
 echo '\nLEXICON SimpleVerbs\n' >> verbs.lexc

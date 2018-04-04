@@ -906,13 +906,16 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.Adv@@D.Stem.topelt@@D.Stem.vähe@ LatterAdjective_v ;        ! harvanähtavaid etc 
 
 ! x + noun
-  @R.POS.Pref@@P.Part.One@ LatterNoun ;  ! ebalaud; allow pref + 3-part-compounds
-  @R.POS.Pref@ LatterProperNoun ;  ! ehttartulik
-  @R.Case.Short@ LatterNoun ;   ! astraallaud, ekstrariiul
+  @R.POS.Pref@@P.Part.One@ LatterNoun ;    ! ebalaud; allow pref + 3-part-compounds
+  @R.POS.Pref@ LatterProperNoun ;          ! ehttartulik
+  @R.POS.Pref@ LatterGenitiveAttribute ;   ! ürgkreeka
+  @R.Case.Short@ LatterNoun ;              ! astraallaud, ekstrariiul
+  @R.Case.Short@ LatterGenitiveAttribute ;   ! astraalkreeka
 
   @R.POS.N@@R.Case.Nom@@R.NomStem.First@ LatterNoun ;
 !  @R.POS.N@@R.Case.Nom@@D.NomStem.First@@R.Part.Two@@P.Part.Bad@ LatterNoun ; ! only 2-part compounds: huulhein, helmeskate
   @R.POS.N@@R.Case.Gen@ LatterNoun ;             ! lauariiul
+  @R.POS.N@@R.Case.Gen@ LatterGenitiveAttribute ;             ! lauakreeka
   @R.POS.NumCard@@R.Case.Nom@ LatterNoun ;       ! neliriiul
   @R.POS.NumCard@@R.Case.Gen@ LatterNoun ;       ! neljariiul
 
@@ -940,10 +943,9 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.Pref@@P.POS.NumCard@ CardinalNumerals ;  ! esiviisteist
 
 ! x + adverb
-!  @R.POS.Pref@@P.POS.Adv@@P.Stem.topelt@@P.NeedPartThree.On@ NounCompoundingAdverbs ;  ! eraratsa + baas
   @R.POS.Pref@@P.POS.Adv@@P.NeedPartThree.On@ CompoundingAdverbs ;  ! era+ratsa+baas, era+järel+valvama+Der/ja 
-  @R.POS.N@@R.Case.Nom@@R.NomStem.First@@P.POS.Adv@@P.NeedPartThree.On@ CompoundingAdverbs ;  ! ehitus+järel+valvama+Der/ja 
-  @R.POS.N@@R.Case.Gen@@P.POS.Adv@@P.NeedPartThree.On@ CompoundingAdverbs ;  ! ehitus+järel+valvama+Der/ja 
+  @R.POS.N@@R.Case.Nom@@R.NomStem.First@@P.POS.Adv@@C.Case@@P.NeedPartThree.On@ CompoundingAdverbs ;  ! ehitus+järel+valvama+Der/ja 
+  @R.POS.N@@R.Case.Gen@@P.POS.Adv@@C.Case@@P.NeedPartThree.On@ CompoundingAdverbs ;  ! ehitus+järel+valvama+Der/ja 
 
 ! x + verb derivation
 ! verb derivations expect previous word to be either in Gen or Par
@@ -1037,6 +1039,9 @@ LEXICON LatterProperNoun
 
 LEXICON LatterDeverbal
   @P.POS.N@@C.Der@@C.NomStem@ DeverbalNouns ;    
+
+LEXICON LatterGenitiveAttribute
+  @P.POS.GA@@P.Case.Gen@ GenitiveAttributes ;   ! -kreeka
 
 LEXICON AnyLatterVerb     ! any verb derivation is allowed; set the case accordingly
               
