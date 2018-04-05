@@ -33,6 +33,7 @@ define BadDer1 [
     [~[?* {eerima} "+V"] "+Der/ng"] |           # devalveerima - devalveering
     [~[?* {ism} "+N"] "+Der/ist"] |             # kapitalism - kapitalist
     [~[?* ? ? ? ? "+N"]  "+Der/ti"] |           # should we eliminate pee+N+Der/ti ?
+    [~[?* "+Num" "+Card"] "+Der/kas"] |
     [~[?* [["+N" ("+Prop")] | ["+Num" "+Card"] | ["+A"] | ["+A" "+Comp"] | ["+A" "+Superl"]]] "+Dim/ke"] 
     ] ;
 

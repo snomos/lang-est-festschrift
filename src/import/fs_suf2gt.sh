@@ -125,6 +125,7 @@ echo 'karva+A:k´arva GI ;' >> final_components.lexc
 echo 'võitu+A:v´õitu GI ;' >> final_components.lexc
 echo 'värvi+A:v´ärvi GI ;' >> final_components.lexc
 echo 'moodi+A:m´ood,i GI ;' >> final_components.lexc
+echo 'kasvu+A:k´asvu GI ;' >> final_components.lexc
 
 echo '\nLEXICON VäärtFinal\n' >> final_components.lexc
 echo 'väärt+A:v´äärt GI ;' >> final_components.lexc

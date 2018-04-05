@@ -22,7 +22,7 @@ define CmpHyph    "@U.CmpHyph.TRUE@" ;
 # They are inserted before a word if the word is after a - or /
 # in order to clear the influence of previously set flags
 define InitialiseFlags ["@C.Cap@" | "@C.Part@" | "@C.POS@" | "@C.Case@" 
-                      | "@C.NomStem@" | "@C.Der@" | "@C.NeedAdj@" | "@C.Bad@" ] ;
+                      | "@C.NomStem@" | "@C.Der@" | "@C.NeedAdj@" | "@C.NeedNoun@" | "@C.Bad@" ] ;
 
 #@IF_HFST@define HypMinFlag "@P.LEXNAME.Root@" ;
 

@@ -28067,7 +28067,7 @@ lisa:0094|koka_põõsas koka_p<õõsa!\S\.7+9!
 lisa:0094|kol]gis_p<uu!\S\.26+9!%uu>u[I%
 lisa:0094|kol]mis_ruse kol]mis_r<uskme!\S\.5+9!
 lisa:0094|koltus_h<aigus koltus_h<aiguse!\S\.11^I^+7!&&!\S\.9+7!
-lisa:0094|k<om_n<oor k<om_noore k<om_noor[TE!\AS\.13^I^+7! **$ADT$: k<om_n<oor[DE
+lisa:0094|k<om_n<oor k<om_noore k<om_noor[TE!\S\.13^I^+7! **$ADT$: k<om_n<oor[DE
 lisa:0094|kond?ens_p<iim kond?ens_p<iima kond?ens_piima!\S\.22^U^!
 lisa:0094|k<oo_tangens k<oo_tangensi!\S\.2+9!%i>e[I%
 lisa:0094|korde_ball<et]t korde_ball<et]ti korde_ball?et]i!\S\.22^E^+7!
@@ -36028,7 +36028,7 @@ lisa:0094|k<ol]b_m<ootor k<ol]b_m<ootori!\S\.2+9!%i>e[I%
 lisa:0094|el<ektri_m<ootor el<ektri_m<ootori!\S\.2+9!%i>e[I%
 lisa:0094|otto_m<ootor otto_m<ootori!\S\.2+9!%i>e[I%
 lisa:0094|stirling_m<ootor stirling_m<ootori!\S\.2+9!%i>e[I%
-lisa:0094|s<isse_pritse s<isse_pr<itsme!\S\.5+9!
+lisa:0094|s<isse_pritse s<isse_pr<itse!\S\.6+9!
 lisa:0094|s<isse_astumine s<isse_astumise s<isse_astumis[T!\S\.12^I^+7!
 lisa:0094|s<isse_lase s<isse_l<aske!\S\.6+9!
 lisa:0094|v<äl]ja_lase v<äl]ja_l<aske!\S\.6+9!
@@ -37841,7 +37841,7 @@ lisa:1001|pil]li_muusika!\S\.1+9!
 lisa:1001|pal]li_m<äng pal]li_m<ängu pal]li_mängu!\S\.22^E^!
 lisa:1001|pil]li_m<äng pil]li_m<ängu pil]li_mängu!\S\.22^E^!
 lisa:1001|pil]li_m<ängija!\S\.1+9!
-lisa:1001|kool]i_n<oor kool]i_noore kool]i_noor[TE!\SB\.13^I^+7! **$ADT$: kool]i_n<oor[DE
+lisa:1001|kool]i_n<oor kool]i_noore kool]i_noor[TE!\S\.13^I^+7! **$ADT$: kool]i_n<oor[DE
 lisa:1001|jala_n<õu!\S\.17!
 lisa:1001|üle_olek üle_oleku!\S\.2+9!
 lisa:1001|h<ea_olu (h<ea_<ollu)!\S\.17!
@@ -70974,4 +70974,9 @@ lisa:0118|vana_<ät]t vana_<ät]ti vana_ät]i!\S\.22^E^!
 lisa:0118|vana_r<eo!\S\.26!
 lisa:0118|reumat<oid_artr<iit reumat<oid_artr<iiti reumat<oid_artr?iidi!\S\.22^E^+7!
 lisam:0118|v<õitu!\A\!
+lisam:0418|esil!\D\!
+lisa:0418|l<aik l<aiki laigi!\S\.22^E^!
+lisa:0418|pritse pr<itse!\S\.6+9!
+lisa:0418|avatar avatari!\S\.19^E^+7!
+lisa:0418|ladek<ond ladek<onda ladekonna!\S\.22^I^+7!
 

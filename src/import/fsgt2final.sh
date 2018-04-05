@@ -93,6 +93,7 @@ cat fs_gt.noninfl.tmp1 | grep '+A:' > noninflecting_adjectives.tmp1
 
 # mark good words for compounding 
 # by falsely giving them the tag of a shortened form (like vaatamis-),
+# or correctly giving them the tag of inessive case (like punnis, upakil),
 # although these are uninflected words...
 cat noninflecting_adjectives.tmp1 \
 | sed '/^ekstra+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
@@ -103,6 +104,8 @@ cat noninflecting_adjectives.tmp1 \
 | sed '/^päris+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
 | sed '/^täis+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
 | sed '/^väärt+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Short@\1:@P.Case.Short@\2\3/' \
+| sed '/^[^aeiouõäöü]*[aeiouõäöü][aeiouõäöü]*[^aeiouõäöü][^aeiouõäöü]*[aeiu]s+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Ine@\1:@P.Case.Ine@\2\3/' \
+| sed '/il+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Ine@\1:@P.Case.Ine@\2\3/' \
 > noninflecting_adjectives.tmp2
 
 cat noninflecting_adjectives.tmp2 >> noninflecting_adjectives.lexc
@@ -154,7 +157,7 @@ cat fs_gt.noninfl.tmp1 | grep '+Adv' \
 > tmpadv.alg
 
 cat tmpadv.alg \
-| grep '\(^all+\)\|\(^alt+\)\|\(^eel+\)\|\(^ees+\)\|\(^ise+\)\|\(^jae+\)\|\(^oma+\)\|\(^pea+\)\|\(^ula+\)\|\(^õue+\)\|\(^ära+\)\|\(^üle+\)\|\(^....+\)\|\(^umbes+\)\|\(^....[^s]+[^#-]*$\)\|\(^...ks+[^#-]*$\)\|\(^...*li+[^#-]*$\)\|\(^...*il+[^#-]*$\)\|\(^...*ile+[^#-]*$\)\|\(^hiljuti+\)\|\(^kaheti+\)\|\(^kolmeti+\)\|\(^kunagi+\)\|\(^mitmeti+\)\|\(^teisiti+\)\|\(^tükati+\)\|\(^võõriti+\)' \
+| grep '\(^all+\)\|\(^alt+\)\|\(^eel+\)\|\(^ees+\)\|\(^ise+\)\|\(^jae+\)\|\(^oma+\)\|\(^pea+\)\|\(^ula+\)\|\(^õue+\)\|\(^ära+\)\|\(^üle+\)\|\(^....+\)\|\(^umbes+\)\|\(^....[^s]+[^#-]*$\)\|\(^...ks+[^#-]*$\)\|\(^...*li+[^#-]*$\)\|\(^...*il+[^#-]*$\)\|\(^...*ile+[^#-]*$\)\|\(^[^aeiouõäöü]*[aeiouõäöü][aeiouõäöü]*[^aeiouõäöü][^aeiouõäöü]*si+\)\|\(^hiljuti+\)\|\(^kaheti+\)\|\(^kolmeti+\)\|\(^kunagi+\)\|\(^mitmeti+\)\|\(^teisiti+\)\|\(^tükati+\)\|\(^võõriti+\)' \
 | grep -v '\(^miks+\)\|\(^näos+\)\|\(^egas+\)\|\(^kuis+\)\|\(^siis+\)\|\(^teps+\)\|\(^aina+\)\|\(^aiva+\)\|\(^eele+\)\|\(^eelt+\)\|\(^ikka+\)\|\(^istu+\)\|\(^jalu+\)\|\(^jaol+\)\|\(^jokk+\)\|\(^juba+\)\|\(^just+\)\|\(^jõle+\)\|\(^jönt+\)\|\(^kohe+\)\|\(^kole+\)\|\(^kord+\)\|\(^kuhu+\)\|\(^kuna+\)\|\(^küll+\)\|\(^loga+\)\|\(^loha+\)\|\(^losa+\)\|\(^mant+\)\|\(^manu+\)\|\(^nagu+\)\|\(^nõka+\)\|\(^nõus+\)\|\(^nüüd+\)\|\(^olgu+\)\|\(^puha+\)\|\(^põsi+\)\|\(^päta+\)\|\(^seep+\)\|\(^seni+\)\|\(^siva+\)\|\(^sugu+\)\|\(^tuna+\)\|\(^täna+\)\|\(^töhe+\)\|\(^vaid+\)\|\(^vaja+\)\|\(^veel+\)\|\(^vist+\)\|\(^väga+\)\|\(^õige+\)\|\(^õkva+\)\|\(^ähmi+\)\|\(^äkki+\)\|\(^ängi+\)\|\(^äsja+\)\|\(^+ühti\)\|\(^üsna+\)\|\(^abiga+\)\|\(^eduga+\)\|\(^hulga+\)\|\(^jõuga+\)\|\(^liiga+\)\|\(^lõõga+\)\|\(^punga+\)\|\(^seega+\)\|\(^tõega+\)' \
 > tmpadv.1
 
@@ -171,7 +174,7 @@ cat tmpadv.alg \
 #> adverbs.tmp2
 # NB! see loend olgu sama, mis lisaks (1)
 cat tmpadv.alg \
-| grep -v '\(^all+\)\|\(^alt+\)\|\(^eel+\)\|\(^ees+\)\|\(^ise+\)\|\(^jae+\)\|\(^oma+\)\|\(^pea+\)\|\(^ula+\)\|\(^õue+\)\|\(^ära+\)\|\(^üle+\)\|\(^....+\)\|\(^umbes+\)\|\(^....[^s]+[^#-]*$\)\|\(^...ks+[^#-]*$\)\|\(^...*li+[^#-]*$\)\|\(^...*il+[^#-]*$\)\|\(^...*ile+[^#-]*$\)\|\(^hiljuti+\)\|\(^kaheti+\)\|\(^kolmeti+\)\|\(^kunagi+\)\|\(^mitmeti+\)\|\(^teisiti+\)\|\(^tükati+\)\|\(^võõriti+\)' \
+| grep -v '\(^all+\)\|\(^alt+\)\|\(^eel+\)\|\(^ees+\)\|\(^ise+\)\|\(^jae+\)\|\(^oma+\)\|\(^pea+\)\|\(^ula+\)\|\(^õue+\)\|\(^ära+\)\|\(^üle+\)\|\(^....+\)\|\(^umbes+\)\|\(^....[^s]+[^#-]*$\)\|\(^...ks+[^#-]*$\)\|\(^...*li+[^#-]*$\)\|\(^...*il+[^#-]*$\)\|\(^...*ile+[^#-]*$\)\|\(^[^aeiouõäöü]*[aeiouõäöü][aeiouõäöü]*[^aeiouõäöü][^aeiouõäöü]*si+\)\|\(^hiljuti+\)\|\(^kaheti+\)\|\(^kolmeti+\)\|\(^kunagi+\)\|\(^mitmeti+\)\|\(^teisiti+\)\|\(^tükati+\)\|\(^võõriti+\)' \
 >> tmpadv.2
 #>> adverbs.tmp2
 
@@ -295,6 +298,8 @@ cat fs_gt.inflecting.tmp1 | grep '+N:' \
 | sed '/^tegija+/s/$/WDEVERBAL/' \
 | sed '/^nägija+/s/$/WDEVERBAL/' \
 | sed '/^kandlus+/s/$/WDEVERBAL/' \
+| sed '/^leplus+/s/$/WDEVERBAL/' \
+| sed '/^mäng+/s/$/WDEVERBAL/' \
 | LC_COLLATE=C sort > fs_gt.inflecting.tmp1.srt
 
 # ja lisa siia märge nende lühikeste nimisõnade kohta, mis ei osale liitsõnades
@@ -395,7 +400,6 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | sed '/^värnits+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 | sed '/^ädal+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 \
-| sed '/^pritse+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 | sed '/^pude+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 | sed '/^pune+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
 | sed '/^sade+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \

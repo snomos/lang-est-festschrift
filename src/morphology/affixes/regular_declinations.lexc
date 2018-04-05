@@ -22,12 +22,14 @@ LEXICON REDEL    ! VVS 2 (productive) for consonant-ending, stress on penultimat
               :i 2C ;    ! redeli etc
               : US_DERIVATION ;
               : LIK_DERIVATION ;
+     +Use/Rare:i LIK_DERIVATION ;
 
 LEXICON VIRSIK    ! VVS 2 (productive) for -ik, -ing; stress on penultimate syllable words
 
               : SG_NOMINATIVE ;    ! virsik
               :u 2C ;    ! virsiku etc
               : LIK_DERIVATION ;
+     +Use/Rare:u LIK_DERIVATION ;
 
 LEXICON LOHAKAS    ! VVS 2 (productive) -kas, -jas etc ending words (incl derivations)
 
@@ -509,6 +511,7 @@ LEXICON SG_GENITIVE
               : INI_DERIVATION ;
               : TI_DERIVATION ;
               : NNA_DERIVATION ;
+              : KAS_DERIVATION ;
 
 LEXICON SG_PARTITIVE
            +Sg: PARTITIVE ;
@@ -604,7 +607,7 @@ LEXICON NNA_DERIVATION_SUF
             +Der/nna+N:»nna PERE ;             ! õpetajanna
 
 LEXICON LANE_DERIVATION
-  @P.Der.N@ LANE_DERIVATION_SUF ;
+  @P.Der.N@@C.NeedNoun@ LANE_DERIVATION_SUF ;
 
 LEXICON LANE_DERIVATION_SUF
 @U.Cap.Opt@@C.Cap@ LANE_DERIVATION_CAP ;         ! proper name must be downcased 
@@ -637,7 +640,7 @@ LEXICON KOND_DERIVATION_SUF
            +Der/kond+N:»konni TI_DERIVATION ;     ! elanikkonniti
 
 LEXICON US_DERIVATION
-  @P.Der.us@ US_DERIVATION_SUF ;
+  @P.Der.us@@C.NeedNoun@ US_DERIVATION_SUF ;
 
 LEXICON US_DERIVATION_SUF
              +Der/us+N:»us OLULINE ;         ! elajalikkus, elavus, ...
@@ -682,6 +685,11 @@ LEXICON SHORT_NE_STEM
     @P.Case.Short@ SHORT_NE_STEM_SUF ;
 
 LEXICON SHORT_NE_STEM_SUF
-               +Der/minus:»%- # ;                ! vaatamis-, astraal-
-!               +Der/minus:»# # ;                ! vaatamis#koht, astraal#tunne
+            +Der/minus:»%- # ;                ! vaatamis-, astraal-
+
+LEXICON KAS_DERIVATION
+  @P.Der.kas@@C.NeedNoun@ KAS_DERIVATION_SUF ;    
+
+LEXICON KAS_DERIVATION_SUF
+            +Der/kas+N:»ka LOHAKAS ;         ! kolmekas
 

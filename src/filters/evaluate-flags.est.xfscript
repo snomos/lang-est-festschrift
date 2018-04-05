@@ -12,5 +12,5 @@
 
 # at the end of a compound word, we should'n be waiting for an adj, or for part three
 
-regex "@D.NeedAdj@" "@D.NeedPartThree@";
+regex "@D.NeedAdj@" "@D.NeedNoun@" "@D.NeedPartThree@";
 
