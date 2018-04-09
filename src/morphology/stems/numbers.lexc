@@ -1,27 +1,48 @@
 
 
 LEXICON CardinalNumbersSingle       ! may only exist as a single token
-  < Number > CardinalWithEnding ;
+  < Number > CardinalWithStandardEnding ;
+  < Number > CardinalWithOrdinalEnding ;
+  < Number > CardinalWithFractionEnding ;
   < PercentNum > CardinalNoEnd ;
-  < PercentNum > CardinalWithEnding ;
+  < PercentNum > CardinalWithStandardEnding ;
 
 LEXICON CardinalNumbersInComp       ! may be followed by a word (in compounds)
   < Number > CardinalNoEnd ;
 
 LEXICON CardinalNoEnd
-   +Num+Card: # ;
+             +Num+Card: # ;
 
-LEXICON CardinalWithEnding
+LEXICON CardinalWithStandardEnding
 
-  +Num+Card: STANDARD_SEM_CASES ;
-  +Num+Card:%- STANDARD_SEM_CASES ;
-  +Num+Card: LINE_DERIVATION ;
-  +Num+Card:%- LINE_DERIVATION ;
+             +Num+Card: STANDARD_SEM_CASES ;
+             +Num+Card:%- STANDARD_SEM_CASES ;
+             +Num+Card: LINE_DERIVATION ;
+             +Num+Card:%- LINE_DERIVATION ;
 
+LEXICON CardinalWithOrdinalEnding
+
+           +Num+Ord+Sg:nda STANDARD_GEN_ET_AL ;
+           +Num+Ord+Sg:%-nda STANDARD_GEN_ET_AL ;
+           +Num+Ord+Sg:ndat PARTITIVE ;
+           +Num+Ord+Sg:%-ndat PARTITIVE ;
+           +Num+Ord+Pl:ndad NOMINATIVE ;
+           +Num+Ord+Pl:%-ndad NOMINATIVE ;
+           +Num+Ord+Pl:ndate STANDARD_GEN_ET_AL ;
+           +Num+Ord+Pl:%-ndate STANDARD_GEN_ET_AL ;
+           +Num+Ord+Pl:ndaid PARTITIVE ;
+       +Num+Ord+Pl+Nom:%-ndaid PARTITIVE ;
+  +Num+Ord+Pl+Use/Rare:ndai STANDARD_GEN_ET_AL ;
+  +Num+Ord+Pl+Use/Rare:%-ndai STANDARD_GEN_ET_AL ;
+
+LEXICON CardinalWithFractionEnding
+
+             +Num+Card:ndik ELANIK ;
+             +Num+Card:%-ndik ELANIK ;
 
 LEXICON OrdinalNumbers
   < OrdinalNum > OrdinalNoEnd ;
 
 LEXICON OrdinalNoEnd
-   +Num+Ord: # ;
+              +Num+Ord: # ;
 
