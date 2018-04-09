@@ -565,7 +565,30 @@ cat fs_gt.inflecting.tmp1 | grep '+V:' | grep '...eer[iu]ma+' \
 ./fs_suf2gt.sh
 
 # NB! this relies on the dir structure being the same as in Giellatekno
-cp *.lexc ../morphology/stems
+#cp *.lexc ../morphology/stems
 
+#cat abbreviations.lexc | sed 's/[´`,]//g'  > ../morphology/stems/abbreviations.lexc
+#cat acronyms.lexc | sed 's/[´`,]//g'  > ../morphology/stems/acronyms.lexc
+cat adjectives.lexc | sed 's/,/ʲ/g'  > ../morphology/stems/adjectives.lexc
+cat adpositions.lexc | sed 's/,/ʲ/g'  > ../morphology/stems/adpositions.lexc
+cat adverbs.lexc | sed 's/,/ʲ/g'  > ../morphology/stems/adverbs.lexc
+cat cardinalnumerals.lexc | sed 's/,/ʲ/g'  > ../morphology/stems/cardinalnumerals.lexc
+cat comparative_adjectives.lexc | sed 's/,/ʲ/g'  > ../morphology/stems/comparative_adjectives.lexc
+cat conjunctions.lexc | sed 's/,/ʲ/g'  > ../morphology/stems/conjunctions.lexc
+cat final_components.lexc | sed 's/,/ʲ/g'  > ../morphology/stems/final_components.lexc
+cat genitive_attributes.lexc | sed 's/,/ʲ/g'  > ../morphology/stems/genitive_attributes.lexc
+cat interjections.lexc | sed 's/,/ʲ/g'  > ../morphology/stems/interjections.lexc
+cat noninflecting_adjectives.lexc | sed 's/,/ʲ/g' > ../morphology/stems/noninflecting_adjectives.lexc
+cat noninflecting_verbs.lexc | sed 's/,/ʲ/g'  > ../morphology/stems/noninflecting_verbs.lexc
+cat nouns.lexc | sed 's/,/ʲ/g'  > ../morphology/stems/nouns.lexc
+#cat numbers.lexc | sed 's/[´`,]//g'  > ../morphology/stems/numbers.lexc
+cat ordinalnumerals.lexc | sed 's/,/ʲ/g'  > ../morphology/stems/ordinalnumerals.lexc
+#cat particles.lexc | sed 's/[´`,]//g'  > ../morphology/stems/particles.lexc
+cat prefixes.lexc | sed 's/,/ʲ/g'  > ../morphology/stems/prefixes.lexc
+cat pronouns.lexc | sed 's/,/ʲ/g'  > ../morphology/stems/pronouns.lexc
+cat propernouns.lexc | sed 's/,/ʲ/g'  > ../morphology/stems/propernouns.lexc
+#cat quantifiers.lexc | sed 's/[´`,]//g'  > ../morphology/stems/quantifiers.lexc
+cat superlative_adjectives.lexc | sed 's/,/ʲ/g'  > ../morphology/stems/superlative_adjectives.lexc
+cat verbs.lexc | sed 's/,/ʲ/g'  > ../morphology/stems/verbs.lexc
 
 

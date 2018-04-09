@@ -619,6 +619,8 @@ Multichar_Symbols
  @P.POS.NumCardCompound@
  @R.POS.NumOrd@
  @P.POS.NumOrd@
+ @R.POS.Num@       ! number
+ @P.POS.Num@
  @R.POS.V@
  @P.POS.V@
  @R.POS.Interj@
@@ -795,7 +797,6 @@ M1   ! m n  lumi lund
  S7 ! s 0
 
  %{dbl%}     ! double the previous letter (kabinet - kabinetti)
- %{no.apo%}  ! no apostrofy; 
 
 ! usage tag; never on the surface side
 
@@ -816,14 +817,21 @@ M1   ! m n  lumi lund
 
  %{stemill%} ! lexicon flag for short sg ill, formed by stem change (jõgi-jõkke)
 
- 
+!! Legitimate strings that are not words: numbers, acronyms, ...
+
+Definitions
+
+Dig = %0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+Number = [[ Dig ]+ [ %. | %, ]]* [ Dig ]+ ;
+PercentNum = Number [ %% | [ %' (%') ] ];
+OrdinalNum  = Number %.;
 
 !! !!Lexicons  
 
 LEXICON Root !!= * {{@CODE@}} is the starting point of everything
 
 !! This is actually a loop, formed after applying Kleene star 
-!! concatenation on the transducer with itself.
+!! concatenation on the simple word transducer with itself.
 !! When looping, it remembers which paths it has taken in every loop. 
 !! For remembering it sets up flags on the path:
 !! 1. flag the first 3 loops (thus forbidding any more loops)
@@ -850,6 +858,8 @@ LEXICON Single     !! strictly simplex words; cannot be a part of a compound
   Adpositions ;             !!= * {{@CODE@}}
   Conjunctions ;            !!= * {{@CODE@}}
   NoninflectingVerbs ;      !!= * {{@CODE@}}
+  CardinalNumbersSingle ;      !!= * {{@CODE@}}
+  OrdinalNumbers ;          !!= * {{@CODE@}}
 
 LEXICON First     !!= * {{@CODE@}} a simplex word or the first part of a compound 
 
@@ -868,6 +878,7 @@ LEXICON First     !!= * {{@CODE@}} a simplex word or the first part of a compoun
   @P.POS.Interj@ Interjections ;           !!= * {{@CODE@}}
   @P.POS.GA@@P.Case.Gen@ GenitiveAttributes ;      !!= * {{@CODE@}}
   @P.POS.Pref@ Prefixes ;                !!= * {{@CODE@}}
+  @P.POS.Num@ CardinalNumbersInComp ;         !!= * {{@CODE@}}
 
 ! the nature of the previous word is reflected by flag diacritics that were set back then
 ! (possibly when passing through a continuation lexicon);
@@ -898,6 +909,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.NumCard@@R.Case.Gen@ LatterAdjective_ne ; ! viiemeetrine
   @R.POS.NumCardCompound@@R.Case.Gen@ LatterAdjective_ne ; ! kahekümnemeetrine
   @R.POS.NumOrd@@R.Case.Gen@ LatterAdjective_ne ; ! viiendajärguline
+  @R.POS.Num@ LatterAdjective_ne ; ! 5punane, 3järguline
 
   @R.POS.A@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ;  ! rämepunane
   @R.POS.A@@R.Case.Gen@ LatterAdjective_ne ;  ! suureruuduline

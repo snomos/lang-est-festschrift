@@ -41,6 +41,7 @@ GT_LEXC_SRCS_L1_L2=\
                          stems/noninflecting_verbs.lexc \
                          stems/prefixes.lexc \
                          stems/final_components.lexc \
+			 stems/numbers.lexc \
 			 stems/abbreviations.lexc \
 			 stems/acronyms.lexc \
 			 affixes/regular_declinations.lexc \
