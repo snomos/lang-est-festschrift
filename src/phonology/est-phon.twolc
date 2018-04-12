@@ -899,14 +899,12 @@ E1:e   => n:s e:0 _ ;  ! -ne word
 ! -ne, -s word e deletion 
 "do not add e for inflecting some forms of ne/s word "
 
-E1:0  <=> :Vowel Null* :s Null* _ Null* s e ;          ! olulisse (haplology)
-          :Vowel Null* :s Null* _ Null* t WordEnd ;   ! soolast
-          :Vowel Null* :s Null* _ Null* t e ;        ! soolaste
-          :Vowel Null* :s Null* _ Null* » l i k ;        ! vaatluslik
-                       :s Null* _ Null* » u s ;        ! soolasus
-                                _ Null* » %- ;        ! nais-, vaatamis-, astraal-
-!                                _ Null* » # ;        !  vaatamiskoht, astraaltunne
-                        
+E1:0  <=> :Vowel Null* (») :s Null* _ Null* s e ;          ! olulisse (haplology)
+          :Vowel Null* (») :s Null* _ Null* t WordEnd ;   ! soolast, 3-litist
+          :Vowel Null* (») :s Null* _ Null* t e ;        ! soolaste, 3-litiste
+          :Vowel Null* (») :s Null* _ Null* » l i k ;        ! vaatluslik
+                       (») :s Null* _ Null* » u s ;        ! soolasus
+                                    _ Null* » %- ;        ! nais-, vaatamis-, astraal-
 
 ! lexical: o l u l i n e E1 > s e 
 ! surface: o l u l i s 0  0 > s e

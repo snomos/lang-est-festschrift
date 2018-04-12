@@ -493,6 +493,8 @@ Multichar_Symbols
 !!€ onomastiline: onomastika+N+Der/line+A+Sg+Nom
 !!€ apooriline: apooria+N+Der/line+A+Sg+Nom
 
++Der/ne !!= * {{@CODE@}}
+
 !! A --> Adv
 
 +Der/lt !!= * {{@CODE@}}
@@ -684,11 +686,11 @@ Multichar_Symbols
  @C.Stem@
 
 !! A special condition that is used for filtering derivations and compounds
- @P.NeedAdj.On@         ! +A or +N+Der/A
+ @P.NeedAdj.On@         ! +A or +Der/A
  @R.NeedAdj@
  @D.NeedAdj@
  @C.NeedAdj@
- @P.NeedNoun.On@         ! +A or +N+Der/A
+ @P.NeedNoun.On@         ! +N or +Der/N
  @R.NeedNoun@
  @D.NeedNoun@
  @C.NeedNoun@
@@ -696,6 +698,10 @@ Multichar_Symbols
  @R.NeedPartThree@
  @D.NeedPartThree@
  @C.NeedPartThree@
+ @P.NeedDerNe.On@         ! +Der/ne 5-autone
+ @R.NeedDerNe@
+ @D.NeedDerNe@
+ @C.NeedDerNe@
 
 !! Sg Nom is allowed as first part of a compound only for some words
  @P.NomStem.First@
@@ -846,12 +852,14 @@ LEXICON Root !!= * {{@CODE@}} is the starting point of everything
 @R.Part.One@@P.Part.Two@ Nonfirst ;                      ! second loop; 
 @R.Part.Two@@P.Part.Three@@C.NeedPartThree@ Nonfirst ;   ! third loop; 
 
+! number starting a word is a special case...
+@D.Part@@P.Part.Two@@P.NeedPartThree.On@@P.POS.Num@ CardinalNumbersInComp ;   !!= * {{@CODE@}} 5-autone etc
+
 LEXICON Nonfirst
 
 ! D.Der means that the previous word should not be a derived one;
 ! it may be too restrictive here...
   @D.Bad.Nonfinal@@C.Cap@@D.Case.PlNom@@D.Der.N@@D.Der.A@@D.Der.Adv@ Latter ;   ! a latter part
-!  @D.Bad.Nonfinal@@C.Cap@@D.Case.PlNom@ Latter ;   ! a latter part
 
 LEXICON Single     !! strictly simplex words; cannot be a part of a compound
 
@@ -878,7 +886,6 @@ LEXICON First     !!= * {{@CODE@}} a simplex word or the first part of a compoun
   @P.POS.Interj@ Interjections ;           !!= * {{@CODE@}}
   @P.POS.GA@@P.Case.Gen@ GenitiveAttributes ;      !!= * {{@CODE@}}
   @P.POS.Pref@ Prefixes ;                !!= * {{@CODE@}}
-  @P.POS.Num@ CardinalNumbersInComp ;         !!= * {{@CODE@}}
 
 ! the nature of the previous word is reflected by flag diacritics that were set back then
 ! (possibly when passing through a continuation lexicon);
@@ -910,6 +917,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.NumCardCompound@@R.Case.Gen@ LatterAdjective_ne ; ! kahekümnemeetrine
   @R.POS.NumOrd@@R.Case.Gen@ LatterAdjective_ne ; ! viiendajärguline
   @R.POS.Num@ LatterAdjective_ne ; ! 5punane, 3järguline
+  @R.POS.Num@@P.NeedDerNe.On@ Nouns ;        ! 5-autone
 
   @R.POS.A@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ;  ! rämepunane
   @R.POS.A@@R.Case.Gen@ LatterAdjective_ne ;  ! suureruuduline
@@ -1036,7 +1044,7 @@ LEXICON LatterAdjective
 LEXICON LatterAdjective_ne
 
   @P.POS.A@@C.Der@@C.NomStem@ Adjectives_ne ;              !!= * {{@CODE@}}
-  @P.NeedAdj.On@ LatterNoun ;                    !! järguline	järk+N+Der/line+A  redellik redel+N+Der/lik+A
+  @P.NeedAdj.On@@D.NeedDerNe@ LatterNoun ;                 !! järguline	järk+N+Der/line+A  redellik redel+N+Der/lik+A     NOT -autone
 
 LEXICON LatterAdjective_v
 

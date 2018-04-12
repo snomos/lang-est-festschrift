@@ -19,6 +19,7 @@ define BadDer1 [
     [~[?* [["+N"] | ["+Num" "+Card"] | ["+N" "+Prop"]]] "+Der/lik"] |
     [~[?* [["+N" "+Prop"] | [{kond} "+N"]]] "+Der/lane"] |
     [~[?* [["+N"] | ["+Num" "+Card"]]] "+Der/line"] |
+    [~[?* "+N"] "+Der/ne"] |
     [~[?* [["+A"] | ["+A" "+Comp"] | ["+A" "+Superl"]]] "+Der/lt"] |
     [~[?* "+A"] "+Der/sti"] |
     [~[?* "+A" "+Comp"] "+Der/ini"] |

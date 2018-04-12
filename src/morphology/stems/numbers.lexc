@@ -4,17 +4,17 @@ LEXICON CardinalNumbersSingle       ! may only exist as a single token
   < Number > CardinalWithStandardEnding ;
   < Number > CardinalWithOrdinalEnding ;
   < Number > CardinalWithFractionEnding ;
-  < PercentNum > CardinalNoEnd ;
   < PercentNum > CardinalWithStandardEnding ;
 
-LEXICON CardinalNumbersInComp       ! may be followed by a word (in compounds)
+LEXICON CardinalNumbersInComp       ! must be followed by a word (in compounds)
   < Number > CardinalNoEnd ;
 
 LEXICON CardinalNoEnd
-             +Num+Card: # ;
+             +Num+Card:%- # ;
 
 LEXICON CardinalWithStandardEnding
 
+             +Num+Card: # ;
              +Num+Card: STANDARD_SEM_CASES ;
              +Num+Card:%- STANDARD_SEM_CASES ;
              +Num+Card: LINE_DERIVATION ;

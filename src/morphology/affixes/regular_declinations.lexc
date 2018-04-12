@@ -512,6 +512,7 @@ LEXICON SG_GENITIVE
               : TI_DERIVATION ;
               : NNA_DERIVATION ;
               : KAS_DERIVATION ;
+              : NE_DERIVATION ;
 
 LEXICON SG_PARTITIVE
            +Sg: PARTITIVE ;
@@ -692,4 +693,11 @@ LEXICON KAS_DERIVATION
 
 LEXICON KAS_DERIVATION_SUF
             +Der/kas+N:»ka LOHAKAS ;         ! kolmekas
+
+LEXICON NE_DERIVATION                        ! last part, currently only in compounds after POS.Num 
+  @P.Der.A@@R.NeedDerNe@@C.NeedDerNe@ NE_DERIVATION_SUF ;    
+
+LEXICON NE_DERIVATION_SUF
+            +Der/ne+A:»ne SOOLANE ;         ! 5-autone
+
 
