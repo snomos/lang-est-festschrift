@@ -58,11 +58,11 @@ cat suf_lexicon.tmp1 \
 > suf_lexicon.tmp2
 
 echo '\nLEXICON FinalComponents\n' > final_components.lexc
-echo '  @R.POS.NumCard@@R.Case.Nom@ AdjAfterNumeralNom ;' >> final_components.lexc
+echo '  @R.POS.IntNum@@R.Case.Nom@ AdjAfterNumeralNom ;' >> final_components.lexc
 #echo '  @R.POS.NumCard@@R.Case.Gen@ AfterNumeralGen ;' >> final_components.lexc
 #echo ' @R.POS.A@@R.Case.Gen@ AfterAdjectiveGen ;\n' >> final_components.lexc
 #echo ' @R.POS.AComp@@R.Case.Gen@ AfterCompAdjectiveGen ;\n' >> final_components.lexc
-echo '  @R.POS.NumCard@@R.Case.Gen@@P.POS.Adv@ AdvAfterNumeral ;' >> final_components.lexc
+echo '  @R.POS.IntNum@@R.Case.Gen@@P.POS.Adv@ AdvAfterNumeral ;' >> final_components.lexc
 echo '  @R.POS.N@@P.POS.N@@C.Der@@C.NomStem@ NounFinalComp ;  ! insufficient flag diacritics' >> final_components.lexc
 echo '  @R.POS.N@@R.Case.Nom@@P.POS.Adv@@C.Der@@C.NomStem@ AdvAfterNounNom ;' >> final_components.lexc
 echo '  @R.POS.N@@R.Case.Gen@@P.POS.Adv@@C.Der@@C.NomStem@ AdvAfterNounGen ;' >> final_components.lexc

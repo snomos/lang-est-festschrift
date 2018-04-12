@@ -1,8 +1,8 @@
 
 LEXICON FinalComponents
 
-  @R.POS.NumCard@@R.Case.Nom@ AdjAfterNumeralNom ;
-  @R.POS.NumCard@@R.Case.Gen@@P.POS.Adv@ AdvAfterNumeral ;
+  @R.POS.IntNum@@R.Case.Nom@ AdjAfterNumeralNom ;
+  @R.POS.IntNum@@R.Case.Gen@@P.POS.Adv@ AdvAfterNumeral ;
   @R.POS.N@@P.POS.N@@C.Der@@C.NomStem@ NounFinalComp ;  ! insufficient flag diacritics
   @R.POS.N@@R.Case.Nom@@P.POS.Adv@@C.Der@@C.NomStem@ AdvAfterNounNom ;
   @R.POS.N@@R.Case.Gen@@P.POS.Adv@@C.Der@@C.NomStem@ AdvAfterNounGen ;

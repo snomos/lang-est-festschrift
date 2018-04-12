@@ -497,12 +497,28 @@ echo 'lapselapselaps+N: LAPSELAPSELAPS ;' >> nouns.lexc
 echo 'LEXICON ProperNouns\n' > propernouns.lexc
 cat fs_gt.inflecting.tmp1 | grep '+N+Prop' | sed 's/nnolastpart//' >> propernouns.lexc
 
-echo 'LEXICON CardinalNumerals\n' > cardinalnumerals.lexc
 cat fs_gt.inflecting.tmp1 | grep '+Num+Card' \
 | grep -v '#p.aar ' \
 | sed '/^pool+/s/^\([^:]*+Num+Card\):\([^;]*;\)\(.*\)/@P.NomStem.First@\1:@P.NomStem.First@\2\3/' \
+> cardinalnumerals.tmp1
+echo 'poolteist+Num+Card:p´ool POOLTEIST ;' >> cardinalnumerals.tmp1
+
+echo 'LEXICON CardinalNumerals\n  IntegerNumerals ;\n  NonIntegerNumerals ;\n' > cardinalnumerals.lexc
+echo '\nLEXICON IntegerNumerals\n' >> cardinalnumerals.lexc
+
+# compoundable with Der/ne words
+cat cardinalnumerals.tmp1 \
+| grep -v 'ELANIK' | grep  -v ':.*[#-]' \
 >> cardinalnumerals.lexc
-echo 'poolteist+Num+Card:p´ool POOLTEIST ;' >> cardinalnumerals.lexc
+
+echo '\nLEXICON NonIntegerNumerals\n' >> cardinalnumerals.lexc
+cat cardinalnumerals.tmp1 \
+| grep 'ELANIK' \
+>> cardinalnumerals.lexc
+
+cat cardinalnumerals.tmp1 \
+| grep -v 'ELANIK' | grep  ':.*[#-]' \
+>> cardinalnumerals.lexc
 
 echo 'LEXICON OrdinalNumerals\n' > ordinalnumerals.lexc
 cat fs_gt.inflecting.tmp1 | grep '+Num+Ord' >> ordinalnumerals.lexc
