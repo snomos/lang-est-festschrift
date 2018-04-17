@@ -1,4 +1,5 @@
-# 
+# NB! there might be flag diacritics somewhere in between the tags ...
+# ... hence the use of ?*
 [
   [ "<use_rare>" -> "<use_ng>" ] .o.
   [ "<use_commonnotnorm>" -> "<use_ng>" ] .o.
@@ -6,12 +7,10 @@
   [ "<use_hyp>" -> "<use_ng>" ] .o.
   [ "<emph>" -> "<use_ng>" ] .o.
   [ %<aff%> -> [] ] .o.
-  [ "<a>" "<der_im>" -> [] ] .o.
-  [ "<a>" "<der_m>" -> [] ] .o.
-  [ "<v>" "<pers>"  ->	"<v>" "<actv>" ] .o.
-  [ "<v>" "<impers>"  ->	"<v>" "<pasv>" ] .o.
-  [ "<vblex>" "<pers>"  ->	"<vblex>" "<actv>" ] .o.
-  [ "<vblex>" "<impers>"  ->	"<vblex>" "<pasv>" ] .o.
+  [ "<a>" "<der_im>" -> [] ] .o.        # not sure this makes sense
+  [ "<a>" "<der_m>" -> [] ] .o.         # not sure this makes sense
+  [ "<pers>"   -> "<actv>" || "<v>" ?* _ ] .o.
+  [ "<impers>" -> "<pasv>" || "<v>" ?* _ ] .o.
   [ "<pron>" "<sg>" ->  "<pron>" "<pers>" "<sg1>" || {mina} _ ] .o.
   [ "<pron>" "<sg>" ->  "<pron>" "<pers>" "<sg2>" || {sina} _ ] .o.
   [ "<pron>" "<sg>" ->  "<pron>" "<pers>" "<sg3>" || {tema} _ ] .o.

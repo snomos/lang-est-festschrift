@@ -31,6 +31,7 @@ GIELLA_FILTER_LOCAL_XFSCRIPT_SRCS=reorder-tags.est.xfscript \
                                   remove-usage-tags.est.xfscript \
                                   modify-derivations.est.xfscript \
                                   block-derivations.est.xfscript \
+                                  block-compounds.est.xfscript \
                                   wordpair-filter.est.xfscript \
                                   numeral-filter.est.xfscript \
                                   initialise-flags.est.xfscript \
