@@ -52091,7 +52091,6 @@ tes:0902|ekstr<eemsus ekstr<eemsuse!\S\.11^I^+7!&&(!\S\.9+7!)
 tes:0902|ekstrem<ist ekstrem<isti ekstrem?isti!\S\.22^E^+7!
 tes:0902|ekstrem<istl<ik ekstrem<istl<ikku ekstrem<istliku!\A\.25^E^+11!
 tes:0902|el<ektriline el<ektrilise el<ektrilis[T!\A\.12^I^+7!
-tes:0902|elamine-olemine elamine-olemise elamine-olemis[T!\S\.12^I^+7!
 tes:0902|elataja!\S\.1+9!
 tes:0902|elatumine elatumise elatumis[T!\S\.12^I^+7!
 tes:0902|eleg<antsus eleg<antsuse!\S\.11^I^+7!&&(!\S\.9+7!)
@@ -70980,3 +70979,4 @@ lisa:0418|pritse pr<itse!\S\.6+9!
 lisa:0418|avatar avatari!\S\.19^E^+7!
 lisa:0418|ladek<ond ladek<onda ladekonna!\S\.22^I^+7!
 
+tes:1002|elamine-olemine, elamise-olemise, elamist-olemis[T, elamisesse-olemise[SSE, elamises-olemise[S, elamisest-olemise[ST, elamisele-olemise[LE, elamisel-olemise[L, elamiselt-olemise[LT, elamiseks-olemise[KS, elamise-olemise[NI, elamise-olemise[NA, elamise-olemise[TA, elamise-olemise[GA, elamisse-olemi[SSE, elamised-olemise[D, elamiste-olemis[TE, elamisi-olemis[I, elamistesse-olemis[TESSE, elamistes-olemis[TES, elamistest-olemis[TEST, elamistele-olemis[TELE, elamistel-olemis[TEL, elamistelt-olemis[TELT, elamisteks-olemis[TEKS, elamiste-olemis[TENI, elamiste-olemis[TENA, elamiste-olemis[TETA, elamiste-olemis[TEGA,!\S\.0!
