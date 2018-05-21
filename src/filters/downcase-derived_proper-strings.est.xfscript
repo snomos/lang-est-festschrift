@@ -14,16 +14,6 @@
 define Flag       "@U.Cap.Opt@"      ;
 define CmpHyph    "@U.CmpHyph.TRUE@" ;
 
-# The following flag diacritics are used for regulating (proper noun) compounding
-#define CmpFlags   ["@D.Part@" | "@P.Part.Bad@" | "@P.Part.One@" 
-#                   | "@P.Part.Two@" | "@P.Part.Three@" | "@P.POS.NProp@" ] ;
-
-# The following flag diacritics are copied from initialise-flags.est.xfscript
-# They are inserted before a word if the word is after a - or /
-# in order to clear the influence of previously set flags
-define InitialiseFlags ["@C.Cap@" | "@C.Part@" | "@C.POS@" | "@C.Case@" 
-                      | "@C.NomStem@" | "@C.Der@" | "@C.NeedAdj@" | "@C.NeedNoun@" | "@C.Bad@" ] ;
-
 #@IF_HFST@define HypMinFlag "@P.LEXNAME.Root@" ;
 
 define down [ 
@@ -64,11 +54,11 @@ Z -> z,
 Ä -> ä,
 Ö -> ö,
 Ü -> ü
-# || .#. CMPFLAG* HYPMINFLAG CMPFLAG* FLAG ( HYPHFLAG ) _ ,
-|| Flag ( HYPHFLAG ) _ 
+|| Flag _ , Flag ?* %- _ ] 
+.o. 
+[ %- (->) [] || Flag ?* _ ] ;
 
-#|| .#. [CmpFlags | InitialiseFlags]* Flag ( HYPHFLAG ) _ ,
-#                  CMPFLAG* Flag ( HYPHFLAG ) ?* %- _
+regex down ;
 
 # ---- ends here: ------
 
@@ -98,9 +88,6 @@ Z -> z,
 # underscore character 
 #%_  -> [] || .#. %@U%.Cap%.Opt%@ ?+ _ 
 
-] ;
-
-regex down ;
 
 #substitute defined Flag       for FLAG
 #substitute defined CmpHyph    for HYPHFLAG

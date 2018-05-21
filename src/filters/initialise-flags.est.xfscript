@@ -1,8 +1,10 @@
+# count the hyphens (max 2) and
 # clear the values of flag diacritics
 # it is necessary if the input contains different words, separated not by whitespace, but by e.g. - or /
 # but we still want to analyse them as separate words, not as parts of a compound
 
 define init [ "@C.Cap@" "@C.Part@" "@C.POS@" "@C.Case@" "@C.NomStem@" "@C.Der@" "@C.NeedAdj@" "@C.NeedNoun@" "@C.NeedDerNe@" "@C.NeedPartThree@" "@C.Bad@" "@C.Stem@" ] ;
 
-regex [init] ;
+regex ["@D.Word@" "@P.Word.One@" init] 
+    | [ "@R.Word.One@" "@P.Word.Two@" init] ;
 

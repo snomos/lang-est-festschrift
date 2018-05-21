@@ -585,6 +585,17 @@ Multichar_Symbols
  @U.Cap.Opt@        !!≈ | @CODE@ | Allowing downcasing of derived names: deatnulasj.
  @C.Cap@
 
+!! One may separate words with hyphens instead of whitespace, e.g.
+!! mees-kes-teadis-ussisõnu-aga-ei-osanud-rääkida-oma-ülemusega
+!! If this sequence is too long, the analysis will take forever.
+!! (the transducer is cyclic, but in reality there should be a limit to the length of input strings)
+!! We limit the number of hyphens in this sequence to 2
+ @D.Word@        !!≈ | @CODE@ | No word should have been encountered yet
+ @P.Word.One@        !!≈ | @CODE@ | Indicate that now we saw the first word
+ @R.Word.One@        !!≈ | @CODE@ | Require that the first word has been seen 
+ @P.Word.Two@        !!≈ | @CODE@ | Indicate that now we saw the second word
+ @R.Word.Two@        !!≈ | @CODE@ | Require that the second word has been encountered
+
 !! These are used for limiting the number of components in a compound word
 !! (the compound transducer is cyclic, but in reality there is a limit to the length of words)
  @D.Part@        !!≈ | @CODE@ | No part of a compound should have been encountered yet

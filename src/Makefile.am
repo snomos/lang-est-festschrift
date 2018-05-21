@@ -331,7 +331,8 @@ generator-raw-gt-desc.simple.hfst: generator-raw-gt-desc.tmp.hfst \
 # the first part may end with a hyphen (ajaloolis-)
 generator-raw-gt-desc.comp.hfst: generator-raw-gt-desc.simple.hfst \
 				filters/evaluate-flags.est.hfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
+	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex \
 			[                                                                    \
 			  [                                                                  \
 			    [                                                                \
@@ -350,7 +351,8 @@ generator-raw-gt-desc.comp.hfst: generator-raw-gt-desc.simple.hfst \
 # the first part may end with a hyphen (ajaloolis-)
 analyser-raw-gt-desc.comp.xfst: analyser-raw-gt-desc.simple.xfst \
 				filters/evaluate-flags.est.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
+	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex \
 			[                                                                    \
 			  [                                                                  \
 			    [                                                                \
@@ -398,12 +400,13 @@ analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.vocabulary.xfst
 analyser-gt-%.hfst: analyser-gt-%.tmp.hfst \
 					filters/initialise-flags.est.hfst \
 					morphology/punctuation.tmp.hfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
+	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex \
 			[                                                               \
 			 [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ]                        \
 			 [ \"-\" | \"/\"] @\"filters/initialise-flags.est.hfst\"  \
 			]*                                                              \
-			@\"$<\" (\"-\")                                                 \
+			@\"$<\" .o. [ [..] (->) \"-\" || \\[\"-\"] _ .#. ]              \
 			;\n\
 		read regex @\"morphology/punctuation.tmp.hfst\"                         \
 			;\n\
@@ -415,12 +418,13 @@ analyser-gt-%.hfst: analyser-gt-%.tmp.hfst \
 generator-gt-%.hfst: generator-gt-%.tmp.hfst \
 					filters/initialise-flags.est.hfst \
 					morphology/punctuation.tmp.hfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
+	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex \
 			[                                                               \
 			 [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ]                        \
 			 [ \"-\" | \"/\"] @\"filters/initialise-flags.est.hfst\"  \
 			]*                                                              \
-			@\"$<\" (\"-\")                                                 \
+			@\"$<\"                                                 \
 			;\n\
 		read regex @\"morphology/punctuation.tmp.hfst\"                         \
 			;\n\
@@ -433,12 +437,13 @@ generator-gt-%.hfst: generator-gt-%.tmp.hfst \
 analyser-gt-%.xfst: analyser-gt-%.tmp.xfst \
 					filters/initialise-flags.est.xfst \
 					morphology/punctuation.tmp.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
+	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex \
 			[                                                               \
 			 [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ]                        \
 			 [ \"-\" | \"/\"] @\"filters/initialise-flags.est.xfst\"  \
 			]*                                                              \
-			@\"$<\" (\"-\")                                                 \
+			@\"$<\" .o. [ [..] (->) \"-\" || \\[\"-\"] _ .#. ]                                                 \
 			;\n\
 		read regex @\"morphology/punctuation.tmp.xfst\"                         \
 			;\n\
@@ -449,12 +454,13 @@ analyser-gt-%.xfst: analyser-gt-%.tmp.xfst \
 generator-gt-%.xfst: generator-gt-%.tmp.xfst \
 					filters/initialise-flags.est.xfst \
 					morphology/punctuation.tmp.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
+	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex \
 			[                                                               \
 			 [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ]                        \
 			 [ \"-\" | \"/\"] @\"filters/initialise-flags.est.xfst\"  \
 			]*                                                              \
-			@\"$<\" (\"-\")                                                 \
+			@\"$<\"                                                 \
 			;\n\
 		read regex @\"morphology/punctuation.tmp.xfst\"                         \
 			;\n\
