@@ -82,14 +82,13 @@ Multichar_Symbols
 !!€ majasid: maja+N+Pl+Par+Use/Rare
 
 +Ill !!= * {{@CODE@}}: sisseütlev			/ illative	
-
-!! Lühike sisseütlev e suunduv pole eraldi kääne (''parti'', ''majja'') / Short illative or additive is not a separate case 
 !!€ parti: part+N+Sg+Ill
 !!€ majja: maja+N+Sg+Ill
 !!€ pardisse: part+N+Sg+Ill+Use/Hyp
 !!€ majasse: maja+N+Sg+Ill+Use/Rare
 !!€ partidesse: part+N+Pl+Ill
 !!€ majadesse: maja+N+Pl+Ill
+!! Lühike sisseütlev e suunduv pole eraldi kääne (''parti'', ''majja'') / Short illative or additive is not a separate case 
 
 +Ine !!= * {{@CODE@}}: seesütlev			/ inessive	
 !!€ pardis: part+N+Sg+Ine
@@ -571,6 +570,7 @@ Multichar_Symbols
 +Use/Circ !!= * {{@CODE@}}: for arabic and roman numerals
 
 +ABBR !!= * {{@CODE@}}: Lühend / Abbreviation
++ACR !!= * {{@CODE@}}: Suurtähtlühend / Acronym
 +CLB !!= * {{@CODE@}}: Osalause piir (punkt, koma) / Clause border (full stop, comma..)
 +PUNCT !!= * {{@CODE@}}: Kirjavahemärk / Punctuation
 +LEFT !!= * {{@CODE@}}: Kirjavahemärgi asetus / Punctuation orientation
@@ -845,6 +845,16 @@ Number = [[ Dig ]+ [ %. | %, ]]* [ Dig ]+ ;
 PercentNum = Number [ %% | [ %' (%') ] ];
 OrdinalNum  = Number %.;
 
+CapVow = A|E|I|O|U|Ü|Ö|Ä|Y ;
+CapConsv  = B|C|D|G|H|K|P|Q|Š|Ž|T|V|W ;  ! bee, tsee, ...
+CapConsc  = F|J|L|M|N|R|S|Z|X ;          ! eff, jott, ell, ...
+CapCons = CapConsv | CapConsc ;
+Cap = CapVow | CapCons ;
+CapCons2 = K|P|T|S|L|M|N|R ;
+
+!Cap = A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|Š|Z|Ž|T|U|V|W|Ü|Ö|Ä|X|Y ;
+
+
 !! !!Lexicons  
 
 LEXICON Root !!= * {{@CODE@}} is the starting point of everything
@@ -881,6 +891,7 @@ LEXICON Single     !! strictly simplex words; cannot be a part of a compound
   NoninflectingVerbs ;      !!= * {{@CODE@}}
   CardinalNumbersSingle ;      !!= * {{@CODE@}}
   OrdinalNumbers ;          !!= * {{@CODE@}}
+!  Acronyms ;          !!= * {{@CODE@}}
 
 LEXICON First     !!= * {{@CODE@}} a simplex word or the first part of a compound 
 

@@ -416,7 +416,7 @@ Cx:Cy  <=> :Vowel :sonor _ Null*           :stemV %{W%}: ;  ! kaup-kauba, kurtma
 
 "Weak grade for productive kk pp tt šš ff : k p t š f"
 
-Cx:0 <=>  _ Cx Null* :stemV (lmnr) %{W%}:  ;  ! sepa, lepin, aken, tütar, ...
+Cx:0 <=>  :sonor _ Cx Null* :stemV (lmnr) %{W%}:  ;  ! sepa, lepin, aken, tütar, ...
      where Cx in ( p t k š f) ;
 
 ! lexical: k e p p > {pl.e} {sg.i} {W}

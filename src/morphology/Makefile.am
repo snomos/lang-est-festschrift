@@ -43,12 +43,12 @@ GT_LEXC_SRCS_L1_L2=\
                          stems/final_components.lexc \
 			 stems/numbers.lexc \
 			 stems/abbreviations.lexc \
-			 stems/acronyms.lexc \
 			 affixes/regular_declinations.lexc \
 			 affixes/exceptional_declinations.lexc \
 			 affixes/verbs.lexc \
 			 affixes/gi.lexc
 
+#			 stems/acronyms.lexc 
 #			 stems/punctuation.lexc 
 
 # If you are building an error-detecting L2 analyser, specify the lexc files
@@ -102,6 +102,7 @@ GT_LOCAL_SRCS=\
 				pair_final.tmp.lexc \
 				num_initial.tmp.lexc \
 				num_final.tmp.lexc \
+				acronyms.tmp.lexc \
 				punctuation.tmp.lexc
 
 # Define local xfscripts here:
@@ -136,6 +137,13 @@ pair_final.tmp.lexc: pair_final.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
 			   cat $(EST_AFFIX_FILES:%=%.lexc) | sed 's/@.\.[^@]*@//g' >> $@
 
 num_final.tmp.lexc: num_final.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
+	$(AM_V_GEN)cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
+			   cat $< >> $@ && \
+			   cat $(EST_AFFIX_FILES:%=%.lexc) >> $@
+
+# acronyms is a separate issue, not an ordinary part of the lexicon
+# no twol rules apply there...
+acronyms.tmp.lexc: acronyms.lexc $(GT_LEXC_ROOT)
 	$(AM_V_GEN)cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
 			   cat $< >> $@ && \
 			   cat $(EST_AFFIX_FILES:%=%.lexc) >> $@

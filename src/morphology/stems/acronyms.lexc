@@ -1,36 +1,27 @@
 !! Acronyms
-!! Veps acronyms ...
 
-LEXICON Acronym
-< A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|S|Š|Z|Ž|T|U|V|W|X|Ü|Ö|Ä > acr2-lat  ;
-                                                                          acros ;
+LEXICON Acronyms
+  < [CapCons* CapVow+] & Cap^<6 > AcroArmee ;  ! TÜ, TTÜ, A, AI
+  < [[CapCons* | CapVow] CapConsv] & Cap^<6 & ~[{IŽ}] > AcroArmee ;  ! T, TT, NKVD, AK
+  IŽ AcroFiat ; 
+  < [[CapCons* | CapVow] CapConsc] & Cap^<6 > AcroFiat ;  ! L, XL, AL
+  < [CapCons* CapVow+ CapCons+] & Cap^<6 > AcroFiat ;  ! DAESH, 
+  < [CapCons* CapVow+ CapCons+ CapVow] & Cap^<6 & ~[{CHINA}] > AcroPere ;  ! NATO, EKI, EKRE, IATE
+  < [CapCons* CapVow CapCons+ CapVow S] & Cap^<6 > AcroSoolane ;  ! ISIS
 
-LEXICON acr2-lat
-< A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|S|Š|Z|Ž|T|U|V|W|X|Ü|Ö|Ä > acr3-lat  ;
-                                                            acrotag ;
+LEXICON AcroArmee 
+      +ACR: ARMEE ;
+      +ACR:%- ARMEE ;
 
-LEXICON acr3-lat
-< A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|S|Š|Z|Ž|T|U|V|W|X|Ü|Ö|Ä > acr4-lat  ;
-                                                            acrotag ;
+LEXICON AcroFiat 
+      +ACR: FIAT ;
+      +ACR:%- FIAT ;
 
-LEXICON acr4-lat
-< A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|S|Š|Z|Ž|T|U|V|W|X|Ü|Ö|Ä > acr5-lat  ;
-                                                            acrotag ;
+LEXICON AcroPere 
+      +ACR: PERE ;
+      +ACR:%- PERE ;
 
-LEXICON acr5-lat
-< A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|S|Š|Z|Ž|T|U|V|W|X|Ü|Ö|Ä > acrotag ;
-                                                            acrotag ;
-
-
-
-LEXICON acros
-cm³ acrotag ; !Latin letters
-°C  acrotag ;
-K   acrotag ; ! Kelvin, Latin letter K
-
-LEXICON acrotag
-+N+ACR: ACRONDELIMITER ;
-
-LEXICON ACRONDELIMITER
-#;
+LEXICON AcroSoolane 
+      +ACR: SOOLANE ;
+      +ACR:%- SOOLANE ;
 

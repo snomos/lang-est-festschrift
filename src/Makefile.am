@@ -94,7 +94,11 @@ pair_initial.tmp1.hfst: morphology/pair_initial.tmp.hfst \
 pair_initial.tmp1.xfst: morphology/pair_initial.tmp.xfst \
 			 phonology/$(GTLANG)-phon.compose.xfst
 	$(AM_V_LEXC)$(PRINTF) \
-		"read-source morphology/pair_initial.tmp.xfst\nread-rules phonology/$(GTLANG)-phon.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
+		"read-source morphology/pair_initial.tmp.xfst\n\
+		read-rules phonology/$(GTLANG)-phon.compose.xfst\n\
+		compose-result\n\
+		save-result $@\n\
+		quit\n" \
 		| $(LEXC) $(VERBOSITY)
 
 # compound numerals where both parts inflect, e.g. viis#sada, viie#saja
@@ -115,7 +119,10 @@ num_initial.tmp1.hfst: morphology/num_initial.tmp.hfst \
 num_initial.tmp1.xfst: morphology/num_initial.tmp.xfst \
 			 phonology/$(GTLANG)-phon.compose.xfst
 	$(AM_V_LEXC)$(PRINTF) \
-		"read-source morphology/num_initial.tmp.xfst\nread-rules phonology/$(GTLANG)-phon.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
+		"read-source morphology/num_initial.tmp.xfst\n\
+		read-rules phonology/$(GTLANG)-phon.compose.xfst\n\
+		compose-result\nsave-result $@\n\
+		quit\n" \
 		| $(LEXC) $(VERBOSITY)
 
 
@@ -136,7 +143,11 @@ pair_final.tmp1.hfst: morphology/pair_final.tmp.hfst \
 pair_final.tmp1.xfst: morphology/pair_final.tmp.xfst \
 			 phonology/$(GTLANG)-phon.compose.xfst
 	$(AM_V_LEXC)$(PRINTF) \
-		"read-source morphology/pair_final.tmp.xfst\nread-rules phonology/$(GTLANG)-phon.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
+		"read-source morphology/pair_final.tmp.xfst\n\
+		read-rules phonology/$(GTLANG)-phon.compose.xfst\n\
+		compose-result\n\
+		save-result $@\n\
+		quit\n" \
 		| $(LEXC) $(VERBOSITY)
 
 # compound numerals: final part
@@ -156,8 +167,16 @@ num_final.tmp1.hfst: morphology/num_final.tmp.hfst \
 num_final.tmp1.xfst: morphology/num_final.tmp.xfst \
 			 phonology/$(GTLANG)-phon.compose.xfst
 	$(AM_V_LEXC)$(PRINTF) \
-		"read-source morphology/num_final.tmp.xfst\nread-rules phonology/$(GTLANG)-phon.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
+		"read-source morphology/num_final.tmp.xfst\n\
+		read-rules phonology/$(GTLANG)-phon.compose.xfst\n\
+		compose-result\n\
+		save-result $@\n\
+		quit\n" \
 		| $(LEXC) $(VERBOSITY)
+
+# acronyms
+acronyms.tmp1.%: morphology/acronyms.tmp.%
+			   cp $< $@ 
 
 # FOMA
 # not implemented...
@@ -170,8 +189,9 @@ pair_initial.tmp.%: pair_initial.tmp1.% \
 					filters/reorder-semantic-tags.%       \
 					filters/reorder-subpos-tags.%         \
 					filters/remove-mwe-tags.%
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-			 	@\"filters/reorder-tags.$(GTLANG).$*\"\
+	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex \
+			 @\"filters/reorder-tags.$(GTLANG).$*\"\
 			.o. @\"filters/reorder-subpos-tags.$*\"   \
 			.o. @\"filters/reorder-semantic-tags.$*\" \
 			.o. @\"filters/remove-mwe-tags.$*\"       \
@@ -185,8 +205,9 @@ num_initial.tmp.%: num_initial.tmp1.% \
 					filters/reorder-semantic-tags.%       \
 					filters/reorder-subpos-tags.%         \
 					filters/remove-mwe-tags.%
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-			 	@\"filters/reorder-tags.$(GTLANG).$*\"\
+	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex \
+			 @\"filters/reorder-tags.$(GTLANG).$*\"\
 			.o. @\"filters/reorder-subpos-tags.$*\"   \
 			.o. @\"filters/reorder-semantic-tags.$*\" \
 			.o. @\"filters/remove-mwe-tags.$*\"       \
@@ -204,8 +225,9 @@ pair_final.tmp.%: pair_final.tmp1.% \
 					filters/reorder-semantic-tags.%       \
 					filters/reorder-subpos-tags.%         \
 					filters/remove-mwe-tags.%
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-			 	@\"filters/reorder-tags.$(GTLANG).$*\"\
+	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex \
+			 @\"filters/reorder-tags.$(GTLANG).$*\"\
 			.o. @\"filters/reorder-subpos-tags.$*\"   \
 			.o. @\"filters/reorder-semantic-tags.$*\" \
 			.o. @\"filters/remove-mwe-tags.$*\"       \
@@ -219,8 +241,25 @@ num_final.tmp.%: num_final.tmp1.% \
 					filters/reorder-semantic-tags.%       \
 					filters/reorder-subpos-tags.%         \
 					filters/remove-mwe-tags.%
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-			 	@\"filters/reorder-tags.$(GTLANG).$*\"\
+	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex \
+			 @\"filters/reorder-tags.$(GTLANG).$*\"\
+			.o. @\"filters/reorder-subpos-tags.$*\"   \
+			.o. @\"filters/reorder-semantic-tags.$*\" \
+			.o. @\"filters/remove-mwe-tags.$*\"       \
+			.o. @\"$<\" \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
+acronyms.tmp.%: acronyms.tmp1.% \
+					filters/reorder-tags.$(GTLANG).% \
+					filters/reorder-semantic-tags.%       \
+					filters/reorder-subpos-tags.%         \
+					filters/remove-mwe-tags.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex \
+			 @\"filters/reorder-tags.$(GTLANG).$*\"\
 			.o. @\"filters/reorder-subpos-tags.$*\"   \
 			.o. @\"filters/reorder-semantic-tags.$*\" \
 			.o. @\"filters/remove-mwe-tags.$*\"       \
@@ -234,10 +273,16 @@ num_final.tmp.%: num_final.tmp1.% \
 #
 
 redundant_wordpairs.%: pair_final.tmp.% pair_initial.tmp.%
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex [ [~[?* \"+Foc/gi\" ?*] .o. @\"pair_initial.tmp.$*\"] (\"-\") @\"pair_final.tmp.$*\"] .o. ~[?* » ?*] ; \nsave stack $@\nquit\n" | $(XFST_TOOL)
+	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex [ [~[?* \"+Foc/gi\" ?*] \
+			.o. @\"pair_initial.tmp.$*\"] (\"-\") @\"pair_final.tmp.$*\"] \
+			.o. ~[?* » ?*] ; \nsave stack $@\nquit\n" | $(XFST_TOOL)
 
 redundant_numerals.%: num_final.tmp.% num_initial.tmp.%
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex [ [~[?* \"+Foc/gi\" ?*] .o. @\"num_initial.tmp.$*\"] @\"num_final.tmp.$*\"] .o. ~[?* » ?*] ; \nsave stack $@\nquit\n" | $(XFST_TOOL)
+	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex [ [~[?* \"+Foc/gi\" ?*] \
+			.o. @\"num_initial.tmp.$*\"] @\"num_final.tmp.$*\"] \
+			.o. ~[?* » ?*] ; \nsave stack $@\nquit\n" | $(XFST_TOOL)
 
 # We need to add processing of language-specific tags in the generator for paired words:
 # HFST:
@@ -286,13 +331,14 @@ analyser-numerals-raw.simple.xfst: redundant_numerals.xfst \
 # XEROX:
 analyser-raw-gt-desc.simple.xfst: analyser-raw-gt-desc.tmp.xfst \
 				analyser-numerals-raw.simple.xfst \
+				acronyms.tmp.xfst \
 				$(EST_EXTRA_PRE_FILTERS:%=%.xfst) \
 				$(EST_EXTRA_POST_FILTERS:%=%.xfst) \
 				filters/downcase-derived_proper-strings.est.xfst
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
 			read regex                         \
 			$(EST_EXTRA_PRE_FILTERS:%=@\"%.xfst\" .o.)    \
-			[ @\"$<\" | @\"analyser-numerals-raw.simple.xfst\" ]  \
+			[ @\"$<\" | @\"analyser-numerals-raw.simple.xfst\" | @\"acronyms.tmp.xfst\"]  \
 			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.xfst\")   \
 			;\n\
 			define fst \n\
@@ -307,13 +353,14 @@ analyser-raw-gt-desc.simple.xfst: analyser-raw-gt-desc.tmp.xfst \
 # HFST:
 generator-raw-gt-desc.simple.hfst: generator-raw-gt-desc.tmp.hfst \
 				generator-numerals-raw.simple.hfst \
+				acronyms.tmp.hfst \
 				$(EST_EXTRA_PRE_FILTERS:%=%.hfst) \
 				$(EST_EXTRA_POST_FILTERS:%=%.hfst) \
 				filters/downcase-derived_proper-strings.est.hfst
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
 			read regex                         \
 			$(EST_EXTRA_PRE_FILTERS:%=@\"%.hfst\" .o.)    \
-			[ @\"$<\" | @\"generator-numerals-raw.simple.hfst\" ] \
+			[ @\"$<\" | @\"generator-numerals-raw.simple.hfst\" | @\"acronyms.tmp.hfst\"] \
 			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.hfst\")   \
 			;\n\
 			define fst \n\
@@ -370,12 +417,22 @@ analyser-raw-gt-desc.comp.xfst: analyser-raw-gt-desc.simple.xfst \
 # HFST:
 generator-raw-gt-desc.vocabulary.hfst: generator-raw-gt-desc.comp.hfst \
 					generator-wordpairs-raw.simple.hfst 
-	$(AM_V_XFST)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"generator-wordpairs-raw.simple.hfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST_TOOL)
+	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex @\"$<\" ; \n\
+			read regex @\"generator-wordpairs-raw.simple.hfst\" ; \n\
+			union net\n\
+			save stack $@\n\
+			quit\n" | $(XFST_TOOL)
 
 # XEROX:
 analyser-raw-gt-desc.vocabulary.xfst: analyser-raw-gt-desc.comp.xfst \
 					analyser-wordpairs-raw.simple.xfst 					
-	$(AM_V_XFST)$(PRINTF) "read regex @\"$<\" ; \nread regex @\"analyser-wordpairs-raw.simple.xfst\" ; \nunion net\nsave stack $@\nquit\n" | $(XFST) $(VERBOSITY)
+	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex @\"$<\" ; \n\
+			read regex @\"analyser-wordpairs-raw.simple.xfst\" ; \n\
+			union net\n\
+			save stack $@\n\
+			quit\n" | $(XFST) $(VERBOSITY)
 
 # make the raw ones
 # HFST:
