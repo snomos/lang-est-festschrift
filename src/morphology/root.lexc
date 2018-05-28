@@ -850,7 +850,14 @@ CapConsv  = B|C|D|G|H|K|P|Q|Š|Ž|T|V|W ;  ! bee, tsee, ...
 CapConsc  = F|J|L|M|N|R|S|Z|X ;          ! eff, jott, ell, ...
 CapCons = CapConsv | CapConsc ;
 Cap = CapVow | CapCons ;
-CapCons2 = K|P|T|S|L|M|N|R ;
+CapPairC = [{FF}|{HH}|{KK}|{LL}|{MM}|{NN}|{PP}|{RR}|{SS}|{ŠŠ}|{ZZ}|{TT}|
+           {HK}|{HP}|{HT}|{HV}|{VT}|{FT}|
+           {LP}|{LK}|{LT}|{LB}|{LG}|{LD}|
+           {RP}|{RK}|{RT}|{RB}|{RG}|{RD}|
+           {MP}|{NK}|{NT}|{MB}|{NG}|{ND}|
+           {SP}|{SK}|{ST}|{PS}|{KS}|{TS}|{BS}|{GS}|{DS}
+] ;  ! word end pronouncable pairsTS
+CapNonPairC = [[CapCons CapConsv] - CapPairC] ;
 
 !Cap = A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|Š|Z|Ž|T|U|V|W|Ü|Ö|Ä|X|Y ;
 

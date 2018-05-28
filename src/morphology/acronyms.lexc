@@ -1,0 +1,74 @@
+!! Acronyms
+
+LEXICON Root
+
+@D.Part@@P.Part.Bad@ Acronyms ;  ! acronyms do not participate in compounding 
+ 
+LEXICON Acronyms
+  < [CapCons* CapVow+] & Cap^<6 > AcroArmee ;  ! TÜ, TTÜ, A, AI
+  < [CapCons* CapConsv] & Cap^<6 > AcroArmee ;  ! T, TT, NKVD, 
+  < [CapVow+ [C|Q]] & Cap^<6 > AcroArmee ;  ! AK, AAC, not AAK
+  < [CapCons* CapVow+ CapNonPairC] & Cap^<6 > AcroArmee ;  ! ABC, 
+
+  < [[CapCons* | CapVow] CapConsc] & Cap^<6 > AcroFiat ;  ! L, XL, AL
+  < [CapVow+ CapCons+ CapCons CapConsc] & Cap^<6 > AcroFiat ;  ! AADRL
+  < [CapVow^>1 [CapCons - J]] & Cap^<6 > AcroFiat ;  ! AAK, 
+  < [CapCons* CapVow+ CapPairC] & Cap^<6 > AcroFiat ;  ! TASS, 
+  IŽ AcroFiat ; 
+
+  < [CapCons* CapVow+ CapCons+ CapVow] & Cap^<6 & ~[{CHINA}] > AcroPere ;  ! NATO, EKI, EKRE, IATE
+  < [CapCons* CapVow CapCons+ CapVow S] & Cap^<6 > AcroEtis ;  ! ETIS
+
+LEXICON AcroArmee 
+   +ACR+Sg: NOMINATIVE ;
+   +ACR+Sg: GENITIVE ;
+      +ACR: Acro1V ;
+      +ACR:%- Acro1V ;
+
+LEXICON Acro1V 
+          :d SG_PARTITIVE ;            ! KT-d
+       +Sg: STANDARD_SEM_CASES ;            ! KT etc
+       +Pl:d NOMINATIVE ;          ! KT-d
+          :de N_PL_SUBPARA ;        ! KT-de etc  
+          :sid PL_PARTITIVE ;     ! KT-sid
+
+LEXICON AcroFiat 
+   +ACR+Sg: NOMINATIVE ;
+      +ACR: Acro1C ;
+      +ACR:%- Acro1C ;
+
+LEXICON Acro1C 
+              :i N_SG_SUBPARA ;      ! KEKi etc
+              :i SG_PARTITIVE ;               ! KEKi
+              :i SG_ILLATIVE ;                ! KEKi
+      +Use/Hyp:isse SG_ILLATIVE ;     ! KEKisse
+              :ide N_PL_SUBPARA ;     ! KEKide etc
+     +Use/Rare:isid PL_PARTITIVE ;    ! KEKisid
+              :e PL_PARTITIVE ;            ! KEKe
+
+
+LEXICON AcroPere 
+   +ACR+Sg: NOMINATIVE ;
+   +ACR+Sg: GENITIVE ;
+      +ACR: Acro2V ;
+      +ACR:%- Acro2V ;
+
+LEXICON Acro2V 
+          :t SG_PARTITIVE ;            ! NATOt
+       +Sg: STANDARD_SEM_CASES ;            ! NATO etc
+       +Pl:d NOMINATIVE ;            ! NATOd
+          :de N_PL_SUBPARA ;        ! NATO-de etc  
+          :sid PL_PARTITIVE ;     ! NATO-sid
+
+LEXICON AcroEtis 
+   +ACR+Sg: NOMINATIVE ;
+      +ACR: AcroS ;
+      +ACR:%- AcroS ;
+
+LEXICON AcroS 
+          :e N_SG_SUBPARA ;      ! ETISe etc
+          :t SG_PARTITIVE ;               ! ETISt
+          :esse SG_ILLATIVE ;     ! ETISesse
+          :te N_PL_SUBPARA ;     ! ETISte etc
+          :eid PL_PARTITIVE ;            ! ETISeid
+
