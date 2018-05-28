@@ -6,18 +6,33 @@ LEXICON Root
  
 LEXICON Acronyms
   < [CapCons* CapVow+] & Cap^<6 > AcroArmee ;  ! TÜ, TTÜ, A, AI
+  < [CapVow+ CapCons+ CapVow^>1] & Cap^<6 > AcroArmee ;  ! ACAI, AEGEE, 
   < [CapCons* CapConsv] & Cap^<6 > AcroArmee ;  ! T, TT, NKVD, 
-  < [CapVow+ [C|Q]] & Cap^<6 > AcroArmee ;  ! AK, AAC, not AAK
+  < [CapVow   CapConsv] & Cap^<6 > AcroArmee ;  ! AQ, AB, 
+!  < [CapVow^>1 [C|Q]] & Cap^<6 > AcroArmee ;  ! AAQ, AAC, ? 
+  < [CapVow^>1 CapConsv] & Cap^<6 > AcroArmee ;  ! AAK (+ AcroFiat)
   < [CapCons* CapVow+ CapNonPairC] & Cap^<6 > AcroArmee ;  ! ABC, 
+  < [CapCons* CapVow+ CapPairC] & Cap^<6 > AcroArmee ;  ! ARK, ASK, (+ AcroFiat) 
+  < [CapVow+ CapCons^>1 CapConsv] & Cap^<6 > AcroArmee ;  ! AADRC, AADRV?
 
-  < [[CapCons* | CapVow] CapConsc] & Cap^<6 > AcroFiat ;  ! L, XL, AL
-  < [CapVow+ CapCons+ CapCons CapConsc] & Cap^<6 > AcroFiat ;  ! AADRL
-  < [CapVow^>1 [CapCons - J]] & Cap^<6 > AcroFiat ;  ! AAK, 
-  < [CapCons* CapVow+ CapPairC] & Cap^<6 > AcroFiat ;  ! TASS, 
-  IŽ AcroFiat ; 
+  < [CapCons* CapConsc] & Cap^<6 > AcroFiat ;  ! L, XL
+  < [CapVow   CapConsc] & Cap^<6 > AcroFiat ;  ! AL, IJ
+  < [CapVow^>1 [CapCons - [C|Q]]] & Cap^<6 > AcroFiat ;  ! AAK, (+ AcroArmee)
+  < [CapCons+ CapVow+ CapCons] & Cap^<6 > AcroFiat ;  ! MAL, QIJ, MAC
+  < [CapCons* CapVow+ CapPairC] & Cap^<6 > AcroFiat ;  ! TASS, AND, IRC?
+  < [CapCons* CapVow+ CapCons+ CapConsc] & Cap^<6 > AcroFiat ;  ! AADRL
+  IŽ AcroFiat ;  ! parallel 
+  ACE AcroFiat ; ! parallel
+  ASEAN AcroFiat ; !
 
-  < [CapCons* CapVow+ CapCons+ CapVow] & Cap^<6 & ~[{CHINA}] > AcroPere ;  ! NATO, EKI, EKRE, IATE
-  < [CapCons* CapVow CapCons+ CapVow S] & Cap^<6 > AcroEtis ;  ! ETIS
+  < [CapCons* CapVow+ [CapCons+ | Y] CapVow] & Cap^<6 & ~[{CHINA}] > AcroPere ;  ! NATO, EKI, EKRE, IATE
+
+  < [CapCons* CapVow+ [CapCons+ | Y] CapVow [CapCons - S]] & Cap^<6 > AcroRedel ;  ! UNIX, BAYER
+  < [CapCons* CapVow+ CapCons+ CapVow CapConsv S] & Cap^<6 > AcroRedel ;  ! UNIKS
+  < [CapCons* CapVow+ [CapCons - [L|R]] [L|R]] & Cap^<6 > AcroRedel ;  ! TISL
+  < [CapCons* CapVow+ CapPairC [L|R]] & Cap^<6 > AcroRedel ;  ! TIMBL
+
+  < [CapCons* CapVow+ CapCons+ CapVow S] & Cap^<6 > AcroEtis ;  ! ETIS
 
 LEXICON AcroArmee 
    +ACR+Sg: NOMINATIVE ;
@@ -59,6 +74,19 @@ LEXICON Acro2V
        +Pl:d NOMINATIVE ;            ! NATOd
           :de N_PL_SUBPARA ;        ! NATO-de etc  
           :sid PL_PARTITIVE ;     ! NATO-sid
+
+LEXICON AcroRedel 
+   +ACR+Sg: NOMINATIVE ;
+      +ACR: Acro2C ;
+      +ACR:%- Acro2C ;
+
+LEXICON Acro2C 
+              :i N_SG_SUBPARA ;      ! UNIXi etc
+              :it SG_PARTITIVE ;               ! UNIXit
+              :isse SG_ILLATIVE ;                ! UNIXisse
+              :ite N_PL_SUBPARA ;     ! UNIXite etc
+              :eid PL_PARTITIVE ;            ! UNIXeid
+
 
 LEXICON AcroEtis 
    +ACR+Sg: NOMINATIVE ;

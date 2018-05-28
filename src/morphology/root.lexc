@@ -845,19 +845,25 @@ Number = [[ Dig ]+ [ %. | %, ]]* [ Dig ]+ ;
 PercentNum = Number [ %% | [ %' (%') ] ];
 OrdinalNum  = Number %.;
 
-CapVow = A|E|I|O|U|Ü|Ö|Ä|Y ;
+CapVow = A|E|I|O|U|Õ|Ü|Ö|Ä|Y ;
 CapConsv  = B|C|D|G|H|K|P|Q|Š|Ž|T|V|W ;  ! bee, tsee, ...
 CapConsc  = F|J|L|M|N|R|S|Z|X ;          ! eff, jott, ell, ...
 CapCons = CapConsv | CapConsc ;
 Cap = CapVow | CapCons ;
-CapPairC = [{FF}|{HH}|{KK}|{LL}|{MM}|{NN}|{PP}|{RR}|{SS}|{ŠŠ}|{ZZ}|{TT}|
+! word end pronouncable pairs where last C is CapConsv
+! so the word belongs to FIAT type (instead of ARMEE)
+CapPairC = [{HH}|{KK}|{PP}|{ŠŠ}|{TT}|
            {HK}|{HP}|{HT}|{HV}|{VT}|{FT}|
            {LP}|{LK}|{LT}|{LB}|{LG}|{LD}|
            {RP}|{RK}|{RT}|{RB}|{RG}|{RD}|
            {MP}|{NK}|{NT}|{MB}|{NG}|{ND}|
-           {SP}|{SK}|{ST}|{PS}|{KS}|{TS}|{BS}|{GS}|{DS}
-] ;  ! word end pronouncable pairsTS
+           {SP}|{SK}|{ST}|
+           {LC}|{NC}|{RC}|{CK}|{SH}|{WK}|{TH}
+] ; 
 CapNonPairC = [[CapCons CapConsv] - CapPairC] ;
+
+!CapPairC = [{FF}|{HH}|{KK}|{LL}|{MM}|{NN}|{PP}|{RR}|{SS}|{ŠŠ}|{ZZ}|{TT}|
+!           {SP}|{SK}|{ST}|{PS}|{KS}|{TS}|{BS}|{GS}|{DS}
 
 !Cap = A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|Š|Z|Ž|T|U|V|W|Ü|Ö|Ä|X|Y ;
 
