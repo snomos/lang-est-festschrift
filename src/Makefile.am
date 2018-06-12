@@ -329,6 +329,7 @@ analyser-numerals-raw.simple.xfst: redundant_numerals.xfst \
 
 # We need to add processing of language-specific tags in the analyser:
 # XEROX:
+# NB! cleanup net
 analyser-raw-gt-desc.simple.xfst: analyser-raw-gt-desc.tmp.xfst \
 				analyser-numerals-raw.simple.xfst \
 				acronyms.tmp.xfst \
@@ -341,6 +342,7 @@ analyser-raw-gt-desc.simple.xfst: analyser-raw-gt-desc.tmp.xfst \
 			[ @\"$<\" | @\"analyser-numerals-raw.simple.xfst\" | @\"acronyms.tmp.xfst\"]  \
 			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.xfst\")   \
 			;\n\
+			cleanup net\n\
 			define fst \n\
 			set flag-is-epsilon OFF\n\
 			read regex fst \

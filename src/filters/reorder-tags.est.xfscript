@@ -8,17 +8,14 @@ define NTag [ "+Use/NotNorm" ] ;       # not norm, but sometimes used
 define CTag [ "+Use/CommonNotNorm" ] ; # not norm, and used more than norm
 define ETag [ "+Emph" ] ;              # emphasized form (mina, sina, tema, meie, teie, nemad) 
 
-define Hyphen [ "-" ] ;  # in future, this will be smth different? 
-define WB [ "#" | .#.] ;  # just to make sure that moving does not cross word boundary in compounds
-
-define MoveR [  [..] -> RTag || RTag \WB* _ WB .o. RTag -> 0 || _ \WB* RTag WB ];
-define MoveH [  [..] -> HTag || HTag \WB* _ WB .o. HTag -> 0 || _ \WB* HTag WB ];
-define MoveN [  [..] -> NTag || NTag \WB* _ WB .o. NTag -> 0 || _ \WB* NTag WB ];
-define MoveC [  [..] -> CTag || CTag \WB* _ WB .o. CTag -> 0 || _ \WB* CTag WB ];
-define MoveE [  [..] -> ETag || ETag \WB* _ WB .o. ETag -> 0 || _ \WB* ETag WB ];
+define MoveR [  [..] -> RTag || RTag ?* _ .#. .o. RTag -> 0 || _ ?* RTag .#. ];
+define MoveH [  [..] -> HTag || HTag ?* _ .#. .o. HTag -> 0 || _ ?* HTag .#. ];
+define MoveN [  [..] -> NTag || NTag ?* _ .#. .o. NTag -> 0 || _ ?* NTag .#. ];
+define MoveC [  [..] -> CTag || CTag ?* _ .#. .o. CTag -> 0 || _ ?* CTag .#. ];
+define MoveE [  [..] -> ETag || ETag ?* _ .#. .o. ETag -> 0 || _ ?* ETag .#. ];
 
 # move usage-related tag to the right end of the word
-define MoveFirstTag [MoveR .o. MoveH .o. MoveN .o. MoveC ] ;
+define MoveFirstTag [MoveR .o. MoveH .o. MoveN .o. MoveC] ;
 # ... and the Emph tag to the end...
 define MoveTag [MoveFirstTag .o. MoveE] ;
 

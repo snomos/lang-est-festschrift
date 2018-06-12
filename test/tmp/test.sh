@@ -6,7 +6,7 @@ cat korpustest-8-alakriips.hjk.hfst | grep '?' | sed 's/\t.*$//' > eitunne.hfst
 
 exit
 
-cat ~/svn-giellatekno/main/experiment-langs/est/test/tmp/korpustest-8-alakriips | sed 's/    .*$//' | ~/xfst/bin/lookup analyser-gt-desc.xfst -q -flags TT > ~/svn-giellatekno/main/experiment-langs/est/test/tmp/korpustest-8-alakriips.hjk.xfst
+cat ~/svn-giellatekno/main/experiment-langs/est/test/tmp/korpustest-8-alakriips | sed 's/    .*$//' | ~/xfst/bin/lookup ../../src/analyser-gt-desc.xfst -q -flags TT > ~/svn-giellatekno/main/experiment-langs/est/test/tmp/korpustest-8-alakriips.hjk.xfst
 
 cat ../test/tmp/korpustest-8-alakriips.hjk.xfst | grep '?' | sed 's/\t.*$//' > ../test/tmp/eitunne.xfst
 

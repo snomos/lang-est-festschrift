@@ -54,9 +54,9 @@ Z -> z,
 Ä -> ä,
 Ö -> ö,
 Ü -> ü
-|| Flag _ , Flag ?* %- _ ] 
+|| FLAG _ , FLAG ?* %- _ ] 
 .o. 
-[ %- (->) [] || Flag ?* _ ] ;
+[ %- (->) [] || FLAG ?* _ ] ;
 
 regex down ;
 
@@ -88,8 +88,8 @@ regex down ;
 # underscore character 
 #%_  -> [] || .#. %@U%.Cap%.Opt%@ ?+ _ 
 
+substitute defined Flag       for FLAG
 
-#substitute defined Flag       for FLAG
 #substitute defined CmpHyph    for HYPHFLAG
 #substitute defined CmpFlags   for CMPFLAG
 ##@IF_HFST@substitute defined HypMinFlag for HYPMINFLAG
