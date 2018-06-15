@@ -42,7 +42,7 @@ LEXICON AcroArmee
 
 LEXICON Acro1V 
           :d SG_PARTITIVE ;            ! KT-d
-       +Sg: STANDARD_SEM_CASES ;            ! KT etc
+       +Sg: ALL_SEM_CASES ;            ! KT etc
        +Pl:d NOMINATIVE ;          ! KT-d
           :de N_PL_SUBPARA ;        ! KT-de etc  
           :sid PL_PARTITIVE ;     ! KT-sid
@@ -70,7 +70,7 @@ LEXICON AcroPere
 
 LEXICON Acro2V 
           :t SG_PARTITIVE ;            ! NATOt
-       +Sg: STANDARD_SEM_CASES ;            ! NATO etc
+       +Sg: ALL_SEM_CASES ;            ! NATO etc
        +Pl:d NOMINATIVE ;            ! NATOd
           :de N_PL_SUBPARA ;        ! NATO-de etc  
           :sid PL_PARTITIVE ;     ! NATO-sid

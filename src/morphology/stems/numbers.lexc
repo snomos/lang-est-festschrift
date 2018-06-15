@@ -15,25 +15,15 @@ LEXICON CardinalNoEnd
 LEXICON CardinalWithStandardEnding
 
              +Num+Card: # ;
-             +Num+Card: STANDARD_SEM_CASES ;
-             +Num+Card:%- STANDARD_SEM_CASES ;
+             +Num+Card: ALL_SEM_CASES ;
+             +Num+Card:%- ALL_SEM_CASES ;
              +Num+Card: LINE_DERIVATION ;
              +Num+Card:%- LINE_DERIVATION ;
 
 LEXICON CardinalWithOrdinalEnding
 
-           +Num+Ord+Sg:nda STANDARD_GEN_ET_AL ;
-           +Num+Ord+Sg:%-nda STANDARD_GEN_ET_AL ;
-           +Num+Ord+Sg:ndat PARTITIVE ;
-           +Num+Ord+Sg:%-ndat PARTITIVE ;
-           +Num+Ord+Pl:ndad NOMINATIVE ;
-           +Num+Ord+Pl:%-ndad NOMINATIVE ;
-           +Num+Ord+Pl:ndate STANDARD_GEN_ET_AL ;
-           +Num+Ord+Pl:%-ndate STANDARD_GEN_ET_AL ;
-           +Num+Ord+Pl:ndaid PARTITIVE ;
-       +Num+Ord+Pl+Nom:%-ndaid PARTITIVE ;
-  +Num+Ord+Pl+Use/Rare:ndai STANDARD_GEN_ET_AL ;
-  +Num+Ord+Pl+Use/Rare:%-ndai STANDARD_GEN_ET_AL ;
+             +Num+Ord:nda 2C ;
+             +Num+Ord:%-nda 2C ;
 
 LEXICON CardinalWithFractionEnding
 

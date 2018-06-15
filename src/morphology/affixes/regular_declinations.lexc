@@ -62,36 +62,44 @@ LEXICON HOOLAS    ! VVS 3 (unproductive) i.e. unstable (closed) type; strengthen
               :%{W%} SG_NOMINATIVE ;        ! hoolas
               :a 2C ;                    ! hoolsa etc
      +Use/Rare:%{W%}%>t SG_PARTITIVE ;      ! hoolast
- +Use/NotNorm:%{W%}%>te N_PL_SUBPARA ;  ! hoolaste etc 
+ +Use/NotNorm:%{W%} TE_PL ;  ! hoolaste etc 
               :a US_DERIVATION ;
 
 LEXICON HAARE    ! VVS 4, VVS 5 (unproductive) i.e. unstable (closed) type
 
-              :%{W%} 2C_LEMMA2 ;         ! haare, haaret
-              :me 2C_STRONGPL ;          ! haarme, habeme etc, haarmeid, haarmeil etc
+              :%{W%} SG_NOMINATIVE ;              ! haare
+              :%{W%}%>t SG_PARTITIVE ;            ! haaret
+              :me 2C_STRONG ;          ! haarme, habeme etc, haarmeid, haarmeil etc
+              :me TE_PL ;        ! asemete, haarmete
               :me LIK_DERIVATION ;
 
 LEXICON PINGE    ! VVS 6 (productive) i.e. stable 
                  ! (open to verbal derivations, e.g. kiune from kiunuma)
                  ! + (unproductive) i.e. unstable (closed) type; 
 
-              :%{W%} 2C_LEMMA3 ;          ! pinge, pinget, pingete
+              :%{W%} SG_NOMINATIVE ;      ! pinge
+              :%{W%}%>t SG_PARTITIVE ;    ! pinget
+              :%{W%} TE_PL ;              ! pingete etc
               : 2C_STRONG ;               ! pinge etc, pingeid, pingeil etc
               : US_DERIVATION ;
               : LIK_DERIVATION ;
 
 LEXICON KOTKAS    !  VVS 7 (unproductive) i.e. unstable (closed) type; 
 
-              :s%{W%} 2C_LEMMA3 ;         ! kotkas, kotkast, kotkaste
+              :s%{W%} SG_NOMINATIVE ;      ! kotkas
+              :s%{W%}%>t SG_PARTITIVE ;    ! kotkast
+              :s%{W%} TE_PL ;              ! kotkaste
               : 2C_STRONG ;               ! kotka etc, kotkaid, kotkail etc
               : US_DERIVATION ;
               : LIK_DERIVATION ;
 
 LEXICON PIPAR    !  VVS 8 (unproductive) i.e. unstable (closed) type; = HOOLAS
 
-              :%{W%} 2C_LEMMA3 ;          ! pipar, pipart, piparde
+              :%{W%} SG_NOMINATIVE ;      ! pipar
+              :%{W%}%>t SG_PARTITIVE ;    ! pipart
+              :%{W%} TE_PL ;              ! piparde etc
               :a 2C_STRONG ;
- +Use/NotNorm:a%>te N_PL_SUBPARA ;       ! piprate etc 
+  +Use/NotNorm:a TE_PL ;       ! piprate etc 
               :a LIK_DERIVATION ;
 
 LEXICON SOOLANE    ! VVS 9 (productive) simplex words ending with -s (katus), VVS 10 affix -ne; 
@@ -147,6 +155,7 @@ LEXICON PERE    ! VVS 16 (productive)
               :%{S%} SG_ILL_VARIANT ;     ! perre
               : SG_ILL_VARIANT ;         ! peresse, baikasse 
               : DE_PL ;
+              :%>sid PL_PARTITIVE ;   
               : LIK_DERIVATION ;
 
 LEXICON KAVA    ! VVS 17, 18 (productive) + (unproductive)
@@ -159,6 +168,8 @@ LEXICON KAVA    ! VVS 17, 18 (productive) + (unproductive)
               :%{S%} SG_ILL_VARIANT ;     ! kavva
               :%{W%} SG_ILL_VARIANT ;    ! kavasse 
               : DE_PL ;
+              :%>%{s%}%{i%}%{d%} PL_PAR_VARIANT ;   ! kingi, kingasid+Use/Rare vs. puudi+Use/Rare,
+                                                    ! puudasid; kavu, kavasid; sõdu, sõdasid
               : LIK_DERIVATION ;
 
 LEXICON MUUSEUM    ! VVS 2 & 19 (productive)
@@ -171,13 +182,9 @@ LEXICON MUUSEUM    ! VVS 2 & 19 (productive)
               :i SG_PARTITIVE ;             ! muuseumi
      +Use/Rare:i SG_ILLATIVE ;              ! muuseumi  ! in TAUD, this is the default ill
               :i%{W%}%>sse SG_ILLATIVE ;    ! muuseumisse ! in TAUD, this is the rare ill
-              :i%>de N_PL_SUBPARA ;      ! muuseumide etc 
+              :i DE_PL ;                    ! muuseumide etc 
               :e PL_PARTITIVE ;             ! muuseume
-
-     +Use/Rare:i%>t SG_PARTITIVE ;          ! muuseumit
-     +Use/Rare:i%>te N_PL_SUBPARA ;      ! muuseumite etc 
-     +Use/Rare:e%>id PL_PARTITIVE ;         ! muuseumeid
-     +Use/Rare:e%>i N_VOWEL_PL_SUBPARA ; ! muuseumeil etc
+     +Use/Rare:i 2C_ADDED_TO_1C ;   ! REDEL
               : LIK_DERIVATION ;
 
 LEXICON PIIM    ! VVS 22; (unproductive) i.e. unstable type (passiivne muuttüüp) sepp, kaup, ...
@@ -210,16 +217,17 @@ LEXICON TAUD    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp) si
               :i%{W%} LIK_DERIVATION ;         ! NB! not checked on real usage
 
 LEXICON FIAT    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp) 
-                ! almost == TAUD, but final stop weak grade does not change 
+                ! almost == TAUD, but final stop does not change in weak grade (note {WL} instead of {W})
 
               : SG_NOMINATIVE ;
-              :i%{WL%} N_SG_SUBPARA ;      ! Fiati etc
-              :i SG_PARTITIVE ;               ! Fiati
-              :i SG_ILLATIVE ;                ! Fiati
-      +Use/Hyp:i%{WL%}%>sse SG_ILLATIVE ;     ! Fiatisse
-              :%>%{pl.e%}%{sg.i%} DE_PL ;  ! Fiatide, Fiate, Fiatisid+Use/Rare 
+              :%>%{pl.e%}%{sg.i%}%{WL%} N_SG_SUBPARA ;      ! Fiati etc; {pl.e} is here so it need not be in the stem lexicon
+              :%>%{pl.e%}%{sg.i%} SG_PARTITIVE ;               ! Fiati
+              :%>%{pl.e%}%{sg.i%} SG_ILLATIVE ;                ! Fiati
+      +Use/Hyp:%>%{pl.e%}%{sg.i%}%{WL%}%>sse SG_ILLATIVE ;     ! Fiatisse
+              :%>%{pl.e%}%{sg.i%} DE_PL ;                      ! Fiatide,  
+              :%>%{pl.e%}%{sg.i%}%>%{s%}%{i%}%{d%} PL_PAR_VARIANT ;   ! Fiate, Fiatisid+Use/Rare
               : LIK_DERIVATION ;          ! ?? lowercasing also ??
-              :i%{WL%} LIK_DERIVATION ;          ! ?? lowercasing also ??
+              :%>%{pl.e%}%{sg.i%}%{WL%} LIK_DERIVATION ;          ! ?? lowercasing also ??
 
 LEXICON KABINET    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp) 
                    ! almost == TAUD, but Sg Nom orthography with single final stop instead of 2
@@ -241,7 +249,7 @@ LEXICON ELANIK    ! VVS 25; (productive) i.e. stable type (aktiivne muuttüüp)
                                           ! so it has to be doubled to get the forms right
               :%{dbl%}%{sg.u%} 1C_SG ;         ! elaniku etc
               :%{dbl%}e%{W%} N_PL_SUBPARA ;    ! NB! elanike etc
-     +Use/Rare:%{dbl%}%{sg.u%}%>de N_PL_SUBPARA ;    ! elanikkude etc   
+     +Use/Rare:%{dbl%}%{sg.u%} DE_PL ;         ! elanikkude etc   
               :%{dbl%}%>%{pl.e%}%{sg.u%}%>%{s%}%{i%}%{d%} PL_PAR_VARIANT ;    ! elanikke; elanikkusid+Use/Rare
               :%{dbl%} US_DERIVATION ;            ! õnnelikkus
               :%{dbl%}e%{W%}» IM_DERIVATION ;    ! õnnelikem
@@ -252,53 +260,23 @@ LEXICON ÜMBRIK     ! VVS 2 & 25; (productive)
                    ! if prononunced as both syllables stressed, then like ELANIK 
                    ! if prononunced as only first syllable stressed, then like VIRSIK (Use/Rare)
 
-              : SG_NOMINATIVE ;    ! ümbrik
-     ! ELANIK
-                                          ! sg nom has a single final stop instead of double, 
-                                          ! so it has to be doubled to get the forms right
-              :%{dbl%}%{sg.u%} 1C_SG ;         ! ümbriku etc
-
-              :%{dbl%}e%{W%} N_PL_SUBPARA ;    ! NB! ümbrike etc
-     +Use/Rare:%{dbl%}%{sg.u%}%>de N_PL_SUBPARA ;    ! ümbrikkude etc   
-              :%{dbl%}%>%{pl.e%}%{sg.u%}%>%{s%}%{i%}%{d%} PL_PAR_VARIANT ;    ! ümbrikke; ümbrikkusid+Use/Rare???
-              :%{dbl%} US_DERIVATION ;            ! ümbrikkus
-              :%{dbl%}e%{W%}» IM_DERIVATION ;    ! ümbrikem
-              :u%{W%} LIK_DERIVATION ;           ! ümbrikulik
+              : ELANIK ;
      ! VIRSIK
-     +Use/Rare:u%>t SG_PARTITIVE ;            ! ümbrikut
-     +Use/Rare:u%>id PL_PARTITIVE ;            ! ümbrikuid
-     +Use/Rare:u%>i N_VOWEL_PL_SUBPARA ;    ! ümbrikuil etc
+     +Use/Rare:u 2C_ADDED_TO_1C ;   ! VIRSIK
      +Use/Rare:u»i IM_DERIVATION ;         ! ümbrikuim, ...
-     +Use/Rare:u%>te N_PL_SUBPARA ;        ! ümbrikute
 
 LEXICON ÄMBLIK     ! VVS 2 & 25; (productive) = ÜMBRIK, but the less used forms are incorrect according to lang. norm
                    ! forms may be based on 2 productive, i.e. stable types (aktiivne muuttüüp)
                    ! if prononunced as both syllables stressed, then like ELANIK 
-                   ! if prononunced as only first syllable stressed, then like VIRSIK (Use/Rare)
+                   ! if prononunced as only first syllable stressed, then like VIRSIK (Use/NotNorm)
 
-              : SG_NOMINATIVE ;    ! ämblik
-     ! ELANIK
-                                          ! sg nom has a single final stop instead of double, 
-                                          ! so it has to be doubled to get the forms right
-              :%{dbl%}%{sg.u%} 1C_SG ;         ! ämbliku etc
-
-              :%{dbl%}e%{W%} N_PL_SUBPARA ;    ! NB! ämblike etc
-     +Use/Rare:%{dbl%}%{sg.u%}%>de N_PL_SUBPARA ;    ! ämblikkude etc   
-              :%{dbl%}%>%{pl.e%}%{sg.u%}%>%{s%}%{i%}%{d%} PL_PAR_VARIANT ;    ! ämblikke; ämblikkusid+Use/Rare???
-              :%{dbl%} US_DERIVATION ;            ! ämblikkus
-              :%{dbl%}e%{W%}» IM_DERIVATION ;    ! ämblikem
-              :u%{W%} LIK_DERIVATION ;           ! ämblikulik
-     ! VIRSIK
-  +Use/NotNorm:u%>t SG_PARTITIVE ;            ! ämblikut
-  +Use/NotNorm:u%>id PL_PARTITIVE ;            ! ämblikuid
-  +Use/NotNorm:u%>i N_VOWEL_PL_SUBPARA ;    ! ämblikuil etc
+              : ELANIK ;
+  +Use/NotNorm:u 2C_ADDED_TO_1C ;   ! VIRSIK
   +Use/NotNorm:u»i IM_DERIVATION ;         ! ämblikuim, ...
-  +Use/NotNorm:u%>te N_PL_SUBPARA ;        ! ämblikute
 
 LEXICON ARMEE    ! VVS 26 ; (productive) i.e. stable type (aktiivne muuttüüp)
 
               : 1V ;
-              :%>sse SG_ILLATIVE ;    ! armeesse
               : LIK_DERIVATION ;
 
 ! ---------------
@@ -309,7 +287,7 @@ LEXICON NE_S_COMMON ! VVS 9, 10, 11, 12 common forms for affix -ne, -line, -s, -
 
               :E1 N_SG_SUBPARA ;                
               :E1%>t SG_PARTITIVE ;         ! soolast, raudset, olulist
-              :E1%>te N_PL_SUBPARA ;        
+              :E1 TE_PL ;        
               :E1 US_DERIVATION ;
               :E1 SHORT_NE_STEM ;           ! nais-, vaatamis-, astraal-
 
@@ -334,6 +312,8 @@ LEXICON 1C    ! consonant ending, stress NOT on penultimate syllable
 
                            ! NOMINATIVE is without stem vowel
               : 1C_SG ;    ! singular forms + pl nom
+              :%>%{s%}%{i%}%{d%} PL_PAR_VARIANT ;   ! kingi, kingasid+Use/Rare vs. puudi+Use/Rare,
+                                                    ! puudasid; kavu, kavasid; sõdu, sõdasid
               : DE_PL ;
 
 LEXICON 1V    ! vowel ending, stress on the last syllable
@@ -341,33 +321,20 @@ LEXICON 1V    ! vowel ending, stress on the last syllable
               : SG_NOMINATIVE ;    ! armee
               : N_SG_SUBPARA ;            ! armee etc
               :%>d SG_PARTITIVE ;            ! armeed
-              :%>de N_PL_SUBPARA ;        ! armeede etc  
+              :{S%} SG_ILL_VARIANT ;       ! öhe
+              : SG_ILL_VARIANT ;           ! öösse 
               :%>%{s%}id PL_PAR_VARIANT ; ! armeesid; armeid...
+              : DE_PL ;                   ! armeede etc  
 
 LEXICON 2C    ! stress on penultimate syllable & word ends with a consonant; 
               ! or stressed penult. syllable extra heavy (e.g. -aania)  
 
-                                          ! NOMINATIVE is without stem vowel
-              :%>t SG_PARTITIVE ;            ! redelit, virsikut
-              : 2C_STRONGPL ;             ! redeleid, redeleil etc
+                                          ! NOMINATIVE is without stem vowel; may be in weak grade
+              :%>t SG_PARTITIVE ;            ! redelit, virsikut; may be in weak grade 
+              : 2C_STRONG ;             ! redeleid, redeleil etc
+              : TE_PL ;                 ! redelite, asemete, haarmete; may be in weak grade
 
-! in addition to Sg NOMINATIVE + 2C,
-! a strengthening gradation paradigm may consist of either:
-! 2C_LEMMA2 + 2C_STRONGPL, or 
-! 2C_LEMMA3 + 2C_STRONG
-
-LEXICON 2C_LEMMA2    ! subparadigm where 2 stems = lemma  
-
-              : SG_NOMINATIVE ;              ! ase, haare
-              :%>t SG_PARTITIVE ;            ! aset, haaret
-
-LEXICON 2C_LEMMA3    ! subparadigm where 3 stems = lemma  
-
-              : SG_NOMINATIVE ;              ! pinge
-              :%>t SG_PARTITIVE ;            ! pinget
-              :%>te N_PL_SUBPARA ;        ! pingete etc
-
-LEXICON 2C_STRONG    ! forms that would usually be in strong grade in strengthening gradation
+LEXICON 2C_STRONG    ! if the word has (strengthening) gradation, then these forms are in non-weak grade 
 
               : N_SG_SUBPARA ;             ! redeli, kotka etc
               : SG_ILL_VARIANT ;           ! taskusse or tasku
@@ -375,32 +342,27 @@ LEXICON 2C_STRONG    ! forms that would usually be in strong grade in strengthen
      +Use/Rare:%>i N_VOWEL_PL_SUBPARA ;    ! kotkail etc
               :»i IM_DERIVATION ;         ! magusaim, rentaableim, ...
 
-LEXICON 2C_STRONGPL   ! forms that would sometimes be in strong grade in strengthening gradation
-
-              : 2C_STRONG;                ! aseme, haarme etc
-              :%>te N_PL_SUBPARA ;        ! asemete, haarmete
-
-! LEXICON 2V    ! stress on penultimate syllable, word ends with vowel 
-!              ! & stressed syllable NOT extra heavy (kava, sõda, pere)
-!
-!              :%{WL%} N_SG_SUBPARA ;    ! kava, sõja etc
-!                                        ! PARTITIVE is +0 or +t
-!              : 2V_ILLATIVE ;
-!              : DE_PL ;
-
 LEXICON 1C_SG    ! SG subpara of 1C
 
               :%{W%} N_SG_SUBPARA ;    ! koti etc
               : SG_PARTITIVE ;            ! kotti
-              : 1C_ILLATIVE ;          ! kotti, kotisse
+              : SG_ILLATIVE ;              ! kotti
+      +Use/Hyp:%{W%}%>sse SG_ILLATIVE ;    ! kotisse is very rare
 
-LEXICON DE_PL    ! PL subpara of TAUD, KAVA, PERE
+LEXICON DE_PL    ! PL subpara of 1C, 1V, KAVA, PERE, ...
 
               :%>de N_PL_SUBPARA ;     ! kottide etc
-                                       ! pl par stem vowel (u, i, 0) is often lexically determined 
-                                       ! and usage-wise tagged
-              :%>%{s%}%{i%}%{d%} PL_PAR_VARIANT ;   ! kingi, kingasid+Use/Rare vs. puudi+Use/Rare,
-                                                    ! puudasid; kavu, kavasid; sõdu, sõdasid
+
+LEXICON TE_PL    ! PL subpara of 2C, ...
+
+              :%>te N_PL_SUBPARA ;     ! redelite etc
+
+LEXICON 2C_ADDED_TO_1C  ! if a word inflects both like 1C and 2C, then it has these forms in addition to 1C
+
+              :%>t SG_PARTITIVE ;            ! muuseumit, ämblikut 
+              :%>id PL_PARTITIVE ;            ! muuseumeid, ämblikuid
+              : TE_PL ;                 ! muuseumite, ämblikute
+     +Use/Rare:%>i N_VOWEL_PL_SUBPARA ;    ! muuseumeil, ämblikuil
 
 ! ---------------
 ! rules of analogy
@@ -409,8 +371,9 @@ LEXICON DE_PL    ! PL subpara of TAUD, KAVA, PERE
 
 LEXICON N_SG_SUBPARA    ! sg gen + sg cases depending on it + pl nom; excl sg ill
 
+              : SG_GENITIVE ; 
+           +Sg: REGULAR_SEM_CASES ;
        +Pl+Nom:%>d PL_NOM_GI ;
-              : SG_GEN_ET_AL ;
 
 LEXICON N_PL_SUBPARA    ! pl gen + pl cases depending on it 
 
@@ -419,14 +382,9 @@ LEXICON N_PL_SUBPARA    ! pl gen + pl cases depending on it
 LEXICON STANDARD_GEN_ET_AL    ! genitive and cases depending on it (either sg or pl)
                               ! incl. sse-illative 
               : GENITIVE ; 
-              : STANDARD_SEM_CASES ;
+              : ALL_SEM_CASES ;
 
-LEXICON SG_GEN_ET_AL          ! sg genitive and sg cases depending on it (either sg or pl)
-                              ! NB! excl. sg illative 
-              : SG_GENITIVE ; 
-           +Sg: REGULAR_SEM_CASES ;
-
-LEXICON STANDARD_SEM_CASES    ! semantic cases, incl sse-illative
+LEXICON ALL_SEM_CASES       ! semantic cases, incl sse-illative
 
               :%>sse ILLATIVE ;
               : REGULAR_SEM_CASES ;
@@ -446,9 +404,8 @@ LEXICON NINATAGA
 
 	
 LEXICON N_VOWEL_PL_SUBPARA    ! pl cases depending on vowel plural gen  
-                              ! excl. ni-na-ta-ga ?
-           +Pl: LOCATIVES ;
-           +Pl: NINATAGA ;    ! incl. ni-na-ta-ga
+                              ! incl. ni-na-ta-ga ?
+           +Pl: ALL_SEM_CASES ;
 
 LEXICON LOCATIVES            
 
@@ -471,14 +428,6 @@ LEXICON REGULAR_LOCATIVES
 ! -----------
 ! individual cases
 ! -----------
-
-LEXICON 1C_ILLATIVE       ! sse-illative is very rare;
-              : SG_ILLATIVE ;              ! kotti
-      +Use/Hyp:%{W%}%>sse SG_ILLATIVE ;    ! kotisse
-
-! LEXICON 2V_ILLATIVE       ! sse-illative is the default; few words have the short form also
-!              :%{S%} SG_ILL_VARIANT ;     ! kavva
-!              :%{WL%} SG_ILL_VARIANT ;    ! kavasse 
 
 ! the preferred form for Pl Par and Sg Ill is indicated in the stem lexicon
 ! (not in the continuation lexicon)

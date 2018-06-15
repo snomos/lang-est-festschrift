@@ -411,6 +411,7 @@ analyser-raw-gt-desc.comp.xfst: analyser-raw-gt-desc.simple.xfst \
 			 @\"$<\"                                                             \
 			] @\"filters/evaluate-flags.est.xfst\"                               \
 			;\n\
+			cleanup net\n\
 		save stack $@\n\
 		quit\n" | $(XFST) $(VERBOSITY)
 
@@ -433,6 +434,7 @@ analyser-raw-gt-desc.vocabulary.xfst: analyser-raw-gt-desc.comp.xfst \
 			read regex @\"$<\" ; \n\
 			read regex @\"analyser-wordpairs-raw.simple.xfst\" ; \n\
 			union net\n\
+			cleanup net\n\
 			save stack $@\n\
 			quit\n" | $(XFST) $(VERBOSITY)
 
@@ -507,6 +509,7 @@ analyser-gt-%.xfst: analyser-gt-%.tmp.xfst \
 		read regex @\"morphology/punctuation.tmp.xfst\"                         \
 			;\n\
 		union net\n\
+			cleanup net\n\
 		save stack $@\n\
 		quit\n" | $(XFST) $(VERBOSITY)
 
@@ -525,6 +528,7 @@ generator-gt-%.xfst: generator-gt-%.tmp.xfst \
 			;\n\
 		union net\n\
 		invert net\n\
+			cleanup net\n\
 		save stack $@\n\
 		quit\n" | $(XFST) $(VERBOSITY)
 
