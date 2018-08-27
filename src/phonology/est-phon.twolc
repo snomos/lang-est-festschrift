@@ -55,9 +55,13 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
  G1:k !!≈ * __@CODE@__ In short illative (lagi lae lakke)
  B1:b !!≈ * __@CODE@__ In strong grade
  B1:0 !!≈ * __@CODE@__ In weak grade
+ B1:m !!≈ * __@CODE@__ In weak grade after m
  B1:p !!≈ * __@CODE@__ In short illative (tuba toa tuppa)
  D1:d !!≈ * __@CODE@__ In strong grade
  D1:0 !!≈ * __@CODE@__ In weak grade
+ D1:l !!≈ * __@CODE@__ In weak grade after l
+ D1:n !!≈ * __@CODE@__ In weak grade after n
+ D1:r !!≈ * __@CODE@__ In weak grade after r
  D1:t !!≈ * __@CODE@__ In short illative (ladu lao lattu)
  
 !! Orthographic convention: after voiceless (e.g. s or h, or k p t), gbd is written as kpt
@@ -361,6 +365,8 @@ GradeTrigger = [ WeakGrade | StrongGrade ] ;
 NullNoTrigger = [ Null - GradeTrigger ] ;
 AnyNoTrigger = [ Any - GradeTrigger ] ;
 
+ShortSyll = [WordBorder | :Consonant] :Vowel ;  ! short syllable
+
 ! NonGrad = \[ LexGrad: ] ;  ! smth non-grading 
 ! AnyNonGrad = [ NonGrad - [ Border | GradeTrigger ] ] ;  ! anything non-grading except word border, and not the trigger either 
 
@@ -440,86 +446,113 @@ s:0 <=> :Vowel :sonor :s _ Null* :stemV %{W%}: ;
 ! lexical: m a r s s i {W} > n
 ! surface: m a r s 0 i  0  > n
 
-"Lexically determined weak grade for b:v"
+"Lexically determined weak grade: prohibit the strong phones"
 
-B2:v  <=> _ AnyNoTrigger* WeakGrade ;
+Cx:Cy /<= _ AnyNoTrigger* WeakGrade ;         
+     where Cx in ( B2 G1 G1 K1 B1 B1 P1 D1 D1 T1 S1 K2 P2 T2) 
+           Cy in (  b  g  k  k  b  p  p  d  t  t  s  k  p  t)
+     matched ;
+
+"Lexically determined weak grade: allow the weak phones"
+
+Cx:Cy  => _ AnyNoTrigger* WeakGrade ;
+     where Cx in ( B2 G1 K1 B1 P1 D1 T1 S1 K2 P2 T2) 
+           Cy in (  v  0  0  0  0  0  0  0  g  b  d)
+     matched ;
 
 ! lexical: k ä i B2 e {W}
 ! surface: k ä i v  e  0
-
-"Lexically determined weak grade for gk:0"
-
-Cx:Cy  <=> _ AnyNoTrigger* WeakGrade ;
-           _ Null* %> [[:k Any* Border] -[Gi Border]];  ! assimilation on affix border (except before focus particle gi/ki)
-           _ Null* SuffixBorder :t ;                ! assimilation on affix border
-     where Cx in ( G1 K1 ) 
-           Cy in (  0  0 )
-     matched ;
-
 ! lexical: l a G1 {stemill} e {W}
 ! surface: l a  0     0     e  0
-! lexical: p u s K1 > G7 u
-! surface: p u s  0 >  k u
-! lexical: p u s K1 > T7 u d
-! surface: p u s  0 >  t u d
-
-"Lexically determined weak grade for dt:0"
-
-Cx:Cy  <=> _ AnyNoTrigger* WeakGrade ;
-           h J1: _ Null* WordEnd ;         ! rohi: word-final J1: makes sg nom "weak grade"
-           _ Null* SuffixBorder :t ;                ! assimilation on affix border
-     where Cx in ( D1 T1 ) 
-           Cy in (  0  0 )
-     matched ;
-
+! lexical: t u B2 a {W}
+! surface: t o  0 a  0
 ! lexical: l a u D1 > {pl.u} {sg.a} {W}
 ! surface: l a u  0 >    0      a    0
-! lexical: a n D1 > T7 u d
-! surface: a n  0 >  t u d
-
-"Lexically determined weak grade for bp:0"
-
-Cx:Cy  <=> _ AnyNoTrigger* WeakGrade ;
-     where Cx in (B1 P1 ) 
-           Cy in ( 0  0 )
-     matched ;
-
-"Lexically determined weak grade for s:0"
-
-S1:0  <=> _ AnyNoTrigger* WeakGrade ;       ! paas - pae; 
-          _ Null* [ :t | :d ] ;             ! vars - vart, varde
-
 ! lexical: p a a S1 > {pl.e} {sg.i} {W}
 ! surface: p a 0  0 >   0       e    0
+! lexical: e r K2 A2 s {W}
+! surface: e r  g  a s  0
+! lexical: e r K2 A2 s > a
+! surface: e r  k  0 s > a
+
+"Word-final J1: makes sg nom weak grade"
+
+Cx:Cy <=>  J1: _ Null* WordEnd ;         ! rohi ruhi rehi"
+           _ J1: Null* WordEnd ;         ! lubi lodi 
+     where Cx in (T1 P2 T2) 
+           Cy in ( 0  b  d)
+     matched ;
+
+! lexical: r o h J1 T1 > {pl.e} {rare} {sg.u} {W}
+! surface: r o h  0  0 >    0      0      u    0
+! lexical: l u P2 J1
+! surface: l u  b  i 
+
+"kpt:gbd; weak sg nom for ader etc"
+
+Cx:Cy <=>  _ E2:e [l | r] Null* WordEnd ;  ! ader sg nom is not WeakGrade; has e2:e
+      where Cx in ( K2 P2 T2 ) 
+            Cy in (  g  b  d )
+      matched ;
+
+! lexical: a T2 E2 r > {pl.u} {rare}
+! surface: a  d  e r >    0     0
+
+"b d and s assimilation after lmnr"
+
+Cx:Cy <=> ShortSyll Cy _ AnyNoTrigger* WeakGrade ;
+     where Cx in (B1 D1 D1 D1 S1) 
+           Cy in ( m  l  n  r  r)
+     matched ;
+
+! lexical: l a m B1 a s {W}
+! surface: l a m  m a s  0
+! lexical: k u l D1 {pl.u} {sg.a} {W}
+! surface: k u l  l    0      a    0
+! lexical: k a n D1 {pl.u} {sg.a} {W}
+! surface: k a n  n    0      a    0
+! lexical: k o r D1 {pl.u} {sg.a} {W}
+! surface: k o r  r    0      a    0
+! lexical: k õ r S1 e {W}
+! surface: k õ r  r e  0
+! lexical: k ä ä n D1 e {W}   !NB no assimilation !
+! surface: k ä ä n  0 e  0
+
+"s g d disappear in front of dt: only 0 allowed"
+
+Cx:0  =>  _ Null* (SuffixBorder) [ :t | :d ] ;             ! vars - vart, varde etc
+     where Cx in (K1 D1 S1 ) ;
+
+"s g d disappear in front of dt: no surface phone allowed"
+
+Cx:Cy /<=  _ Null* (SuffixBorder) [ :t | :d ] ;             ! vars - vart, varde etc
+     where Cx in (K1 D1 S1 ) 
+           Cy in ( k  d  s )
+     matched ;
+
+! lexical: a n D1 > T7 u d
+! surface: a n  0 >  t u d
+! lexical: p u s K1 > T7 u d
+! surface: p u s  0 >  t u d
 ! lexical: v a r r S1 {stemill} {S} > d e > {s} {s} {e}
 ! surface: v a r 0  0      0     0  > d e >  0   0   0
 ! lexical: k o l m a N1 S1 d a
 ! surface: k o l m a  n  0 d a
 
-"Lexically determined weak grade for kpt:gbd; sg nom for ader, lubi"
+"gk disappears in front of gu/ku"
 
-Cx:Cy  <=>  _ AnyNoTrigger* WeakGrade ;
-            _ J1:  Null* WordEnd ;          ! word-final ij: makes sg nom "weak grade" 
-            _ E2:e [l | r] Null* WordEnd ;  ! ader sg nom is not WeakGrade; has e2:e
-      where Cx in ( K2 P2 T2 ) 
-            Cy in (  g  b  d )
-      matched ;
+Cx:0 <=>  _ Null* %> [[:k Any* Border] -[Gi Border]];  ! assimilation on affix border (except before focus particle gi/ki)
+     where Cx in ( G1 K1 ) ;
 
-! lexical: e r K2 A2 s {W}
-! surface: e r  g  a s  0
-! lexical: e r K2 A2 s > a
-! surface: e r  k  0 s > a
-! lexical: a T2 E2 r > {pl.u} {rare}
-! surface: a  d  e r >    0     0
-! lexical: l u P2 J1
-! surface: l u  b  i 
+! lexical: p u s K1 > G7 u
+! surface: p u s  0 >  k u
 
 !------- short illative stem generation
 ! the rules are hard-wired to %{S%}: 
 
 "short illative strong stem generation: consonant doubling"
 
-0:Cy  <=>  \[ :Vowel] :Vowel NullNoTrigger* Cx:Cy _ NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ; ! majja
+0:Cy  <=>  ShortSyll NullNoTrigger* Cx:Cy _ NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ; ! majja
      where Cx in ( l m M1 n r v j h s g b d k p t G1 B1 B2 D1 ) 
            Cy in ( l m  m n r v j h s k p t k p t  k  p  p  t )
      matched ;
@@ -531,7 +564,7 @@ Cx:Cy  <=>  _ AnyNoTrigger* WeakGrade ;
 
 "short illative strong stem generation: g b d to k p t"
 
-Cx:Cy <=> \[ :Vowel] :Vowel NullNoTrigger* _ :Cy NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ;
+Cx:Cy <=> ShortSyll NullNoTrigger* _ :Cy NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ;
      where Cx in ( g b d ) 
            Cy in ( k p t )
      matched ;
@@ -606,7 +639,7 @@ i:e  <=>  [ :Consonant | %{apo%}:' ] Null* _ Null* %> :i ;
 
 "single short high vowel lowers if it obtains a neighboring vowel after stop or s disappears"
 
-Vx:Vy  <=>  [Border | Consonant] :Vowel (LowerBackVowel:0) WS:0 Null* _  ;
+Vx:Vy  <=>  ShortSyll (LowerBackVowel:0) WS:0 Null* _  ;
             [Border | Consonant] _ WS:0 :Vowel ;
        where Vx in ( i u ü %{sg.i%} %{sg.u%} )
              Vy in ( e o ö     e        o    )
@@ -1029,7 +1062,7 @@ G7:k  <=> \[:Vowel] a Null* WeakGrade %> _ ;
 
 "from -is to -i"
 
-S7:0 <=> [:Consonant | Border] Null* :Vowel :Consonant Null* %> I7: _ WordEnd ;  ! lasi
+S7:0 <=> ShortSyll :Consonant Null* %> I7: _ WordEnd ;  ! lasi
          :s Null* _ ;    ! to eliminate jookssid, seissid
 
 ! lexical: p e s > I7 S7
@@ -1121,8 +1154,7 @@ Vx:0 <=> :Consonant Null* _ SuffixBorder u s ;
 ! somewhere in the stem...
 "non-third grade word cannot be stem illative"
 
-%{s%}:0  /<= WordBorder :Vowel :Consonant      Null* :Vowel SuffixBorder* Null* SuffixBorder _ %{s%}:0 %{e%}:0 ;
-             :Consonant :Vowel :Consonant      Null* :Vowel SuffixBorder* Null* SuffixBorder _ %{s%}:0 %{e%}:0 ;
+%{s%}:0  /<= ShortSyll :Consonant Null* :Vowel SuffixBorder* Null* SuffixBorder _ %{s%}:0 %{e%}:0 ;
 
 ! p e r e {stemill} {S} > {s} {s} {e}
 ! p e r e     0      0  >  0   0   0   FAIL
@@ -1203,7 +1235,7 @@ Vx:0  <=> :Consonant ( J1:0 ) _ %> PlSV:Vy Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 "weak grade is incompatible with exceptional stem (aka short) illative"
 %{W%}:0       /<=  _ Any* %{s%}:0 %{s%}:0 %{e%}:0  ;    
 
-! use {WF} in PERE, to prevent pere+Ill:pere
+! use {WL} in PERE, to prevent pere+Ill:pere
 
 "less strict weak grade is incompatible with exceptional stem (aka short) illative"
 %{WL%}:0       /<=  _ Any* %{s%}:0 %{s%}:0 %{e%}:0  ;    
@@ -1334,7 +1366,7 @@ Vx:0  <=> :Consonant ( J1:0 ) _ %> PlSV:Vy Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 "consonant de-doubling in consonant clusters (e.g. after vowel deletion)"
 
 Cx:0 <=> :Cx _ [Null | SuffixBorder]+ [[:Consonant Any* Border] - [Gi Border]];
-         :Cx _ [WS:stop | S1:s] ;
+         :Cx _ [WS:stop] ;
       where Cx in (Consonant) ;
 
 ! lexical: s p i k k E2 r > i

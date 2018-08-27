@@ -214,7 +214,7 @@ LEXICON KAEL    ! VVS 23  17 words; almost = PIIM, except pl gen +
 
                   : SG_NOMINATIVE ;
                   :%{sg.a%} 1C_SG ;
-                  :%{W%} TE_PL ;    ! kaelte etc 
+                  : TE_PL ;    ! kaelte etc 
          +Use/Rare:%{sg.a%} DE_PL ;    ! kaelade etc 
                                ! pl par stem vowel (u, i, 0) is lexically determined 
                                ! and usage-wise tagged
@@ -401,7 +401,7 @@ LEXICON NIIN    ! only niin; almost like KEEL, but some forms are more regular
                   :e%{W%} N_SG_SUBPARA ;    ! niine etc 
                   :%>t SG_PARTITIVE ;    ! niint
                   :e%{W%}%>sse SG_ILLATIVE ;    ! niinesse 
-                  :%{W%} TE_PL ;    ! niinte etc 
+                  : TE_PL ;    ! niinte etc 
     !   +N+Use/Hyp:%>i N_VOWEL_PL_SUBPARA ;    ! impossible for rarer words
                   :e%>sid PL_PARTITIVE ;    ! NB! niinesid (not niini, as the ÕS norm states)
 
@@ -434,9 +434,9 @@ LEXICON PEEN    ! only peen; almost like KEEL, but some forms are more regular
                   :%>e N_SG_SUBPARA ;     ! peene etc 
                   :%>t SG_PARTITIVE ;     ! peent
          +Use/Rare:e%>t SG_PARTITIVE ;    ! peenet
-         +Use/Rare:%>de SG_ILLATIVE ;     ! peende
+         +Use/Rare:%{S%}%>de SG_ILLATIVE ;     ! peende
                   :e%{W%}%>sse SG_ILLATIVE ;    ! peenesse 
-                  :%{W%} TE_PL ;    ! peente etc 
+                  : TE_PL ;    ! peente etc 
          +Use/Rare:e TE_PL ;     ! peenete etc 
                   :e%>id PL_PARTITIVE ;     ! peeneid 
          +Use/Rare:i PL_PARTITIVE ;         ! peeni
@@ -604,7 +604,7 @@ LEXICON VARS    !  VVS 14 unstable (closed) type;
                   :%>t SG_PARTITIVE ;             ! vart
                   :%{S%}%>de SG_ILL_VARIANT ;  ! varde
                   :e%{W%} SG_ILL_VARIANT ;     ! varresse 
-                  :%{W%} TE_PL ;    ! varte etc 
+                  : TE_PL ;    ! varte etc 
                   :%>i PL_PARTITIVE ;    ! varsi
       !   +Use/Hyp:%>i N_VOWEL_PL_SUBPARA ;    ! varsil?; except for some expressions (uusil)
 
