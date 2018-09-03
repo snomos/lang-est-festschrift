@@ -362,13 +362,12 @@ WeakGrade = [%{W%}:0 | %{WL%}:0] ;
 StrongGrade = %{S%}:0 ;
 GradeTrigger = [ WeakGrade | StrongGrade ] ;
 
+NullNoWeakTrigger = [ Null - WeakGrade ] ;
+AnyNoWeakTrigger = [ Any - WeakGrade ] ;
 NullNoTrigger = [ Null - GradeTrigger ] ;
 AnyNoTrigger = [ Any - GradeTrigger ] ;
 
 ShortSyll = [WordBorder | :Consonant] :Vowel ;  ! short syllable
-
-! NonGrad = \[ LexGrad: ] ;  ! smth non-grading 
-! AnyNonGrad = [ NonGrad - [ Border | GradeTrigger ] ] ;  ! anything non-grading except word border, and not the trigger either 
 
 Rules 
  
@@ -477,8 +476,8 @@ Cx:Cy  => _ AnyNoTrigger* WeakGrade ;
 
 "Word-final J1: makes sg nom weak grade"
 
-Cx:Cy <=>  J1: _ Null* WordEnd ;         ! rohi ruhi rehi"
-           _ J1: Null* WordEnd ;         ! lubi lodi 
+Cx:Cy <=>  J1: _ NullNoTrigger* WordEnd ;         ! rohi ruhi rehi"
+           _ J1: NullNoTrigger* WordEnd ;         ! lubi lodi 
      where Cx in (T1 P2 T2) 
            Cy in ( 0  b  d)
      matched ;
@@ -490,7 +489,7 @@ Cx:Cy <=>  J1: _ Null* WordEnd ;         ! rohi ruhi rehi"
 
 "kpt:gbd; weak sg nom for ader etc"
 
-Cx:Cy <=>  _ E2:e [l | r] Null* WordEnd ;  ! ader sg nom is not WeakGrade; has e2:e
+Cx:Cy <=>  _ E2:e [l | r] NullNoTrigger* WordEnd ;  ! ader sg nom is not WeakGrade; has e2:e
       where Cx in ( K2 P2 T2 ) 
             Cy in (  g  b  d )
       matched ;
@@ -518,14 +517,16 @@ Cx:Cy <=> ShortSyll Cy _ AnyNoTrigger* WeakGrade ;
 ! lexical: k ä ä n D1 e {W}   !NB no assimilation !
 ! surface: k ä ä n  0 e  0
 
+! the context is too specific; this is just to avoid Xerox twol warning messages about conflicting => contexts
+! ( _ Null* [ :t | :d ]  should be sufficient as context)
 "s g d disappear in front of dt: only 0 allowed"
 
-Cx:0  =>  _ Null* (SuffixBorder) [ :t | :d ] ;             ! vars - vart, varde etc
+Cx:0  =>  _ NullNoWeakTrigger* [ :t | :d ] AnyNoWeakTrigger* WordEnd ;
      where Cx in (K1 D1 S1 ) ;
 
 "s g d disappear in front of dt: no surface phone allowed"
 
-Cx:Cy /<=  _ Null* (SuffixBorder) [ :t | :d ] ;             ! vars - vart, varde etc
+Cx:Cy /<=  _ NullNoWeakTrigger* [ :t | :d ] AnyNoWeakTrigger* WordEnd ;
      where Cx in (K1 D1 S1 ) 
            Cy in ( k  d  s )
      matched ;
@@ -534,15 +535,16 @@ Cx:Cy /<=  _ Null* (SuffixBorder) [ :t | :d ] ;             ! vars - vart, varde
 ! surface: a n  0 >  t u d
 ! lexical: p u s K1 > T7 u d
 ! surface: p u s  0 >  t u d
-! lexical: v a r r S1 {stemill} {S} > d e > {s} {s} {e}
-! surface: v a r 0  0      0     0  > d e >  0   0   0
+! lexical: v a r S1 {stemill} {S} > d e > {s} {s} {e}
+! surface: v a r  0      0     0  > d e >  0   0   0
 ! lexical: k o l m a N1 S1 d a
 ! surface: k o l m a  n  0 d a
 
-"gk disappears in front of gu/ku"
+! the context is too specific; this is just to avoid Xerox twol warning messages about conflicting => contexts
+! ( _ Null* G7:  should be sufficient as context)
+"g, k disappears in front of gu/ku"
 
-Cx:0 <=>  _ Null* %> [[:k Any* Border] -[Gi Border]];  ! assimilation on affix border (except before focus particle gi/ki)
-     where Cx in ( G1 K1 ) ;
+K1:0 <=> _ NullNoTrigger* G7: AnyNoTrigger* WordEnd;  ! only laskma mõskma puskma
 
 ! lexical: p u s K1 > G7 u
 ! surface: p u s  0 >  k u
@@ -572,7 +574,7 @@ Cx:Cy <=> ShortSyll NullNoTrigger* _ :Cy NullNoTrigger* :Vowel NullNoTrigger* St
 ! s a b 0 a > {pl.u} {rare} {stemill} {S} > {s} {s} {e}
 ! s a p p a >    0     0         0     0  0  0   0   0
 
-! the context is too specific; this is just to avoid twol warning messages about conficting contexts
+! the context is too specific; this is just to avoid twol warning messages about conflicting => contexts
 ! (the StrongGrade trigger alone should be sufficient as context)
 "short illative strong stem generation: lexically determined stop"
 
@@ -895,7 +897,7 @@ M1:n  <=> _ Null* [:t | :d ] ;
 
 "ne-stem shortening"
 n:0  <=> :Consonant _ Null+ » %- ;        ! nais-, vaatamis-, astraal-
-         :Consonant _ Null+ » # ;            ! vaatamistunne, astraaltunne
+         :Consonant _ Null+ » # ;            ! vaatamistunne, astraaltunne ??? related to compounding somehow ???
 
 ! lexical: a s t r a a l n e E1 > -
 ! surface: a s t r a a l 0 0  0 > -
