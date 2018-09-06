@@ -160,8 +160,7 @@ punctuation.tmp.lexc: punctuation.lexc $(GT_LEXC_ROOT)
 # easily get updates from the template dir through svn merge.
 clean-local:
 	-rm -f *.all.* *fst *.foma *.script generated_files/*.lexc lexicon.*
-	-rm -f *.tmp.*
-	-rm -f url.lexc url.tmp.lexc
+	-rm -f url.lexc *.tmp.*
 
 include $(top_srcdir)/am-shared/src-morphology-dir-include.am
 
