@@ -161,7 +161,7 @@ punctuation.tmp.lexc: punctuation.lexc $(GT_LEXC_ROOT)
 clean-local:
 	-rm -f *.all.* *fst *.foma *.script generated_files/*.lexc lexicon.*
 	-rm -f *.tmp.*
-	-rm -f url.lexc
+	-rm -f url.lexc url.tmp.lexc
 
 include $(top_srcdir)/am-shared/src-morphology-dir-include.am
 
