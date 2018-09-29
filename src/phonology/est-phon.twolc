@@ -24,6 +24,12 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
            !! Also, tulema, panema, surema, olema, minema have tulla, tulles etc...
  %{no.apo%}:0  !!≈ * __@CODE@__ trigger for deleting apostrophe (normally used for foreign word inflections) from Sg Nom
 
+!! Usage tag. It may relate to an individual word in the lexicon, 
+!! or to a set of inflectional forms of some inflectional type, i.e. its sub-paradigm. It never surfaces.
+!! It is used to pair the surface form with the usage tag of the lexical representation.
+
+ %{rare%}:0       !!≈ * __@CODE@__ rare or less used form (norm) ; e.g. kingasid
+
 !! !Special surface side symbols, used in rule contexts
 
  %>     !!≈ * __@CODE@__ Inflectional suffix boundary
@@ -35,9 +41,9 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
 !! {{{
  %-     !!≈ @CODE@
 !! }}}
-!! !Apostrophy
+!! !Apostrophe
 
- %{apo%}:'   !! Apostrofy is used for separating inflectional affix from a foreign word lemma
+ %{apo%}:'   !! Apostrophe is used for separating inflectional affix from a foreign word lemma
 
  %{apo%}:0   !!≈ * __@CODE@__ ... but Sg Nom is without apostrophe
 
@@ -258,12 +264,6 @@ S7:0 !!≈ * __@CODE@__ pani
  %{s%}:0 !!≈ * __@CODE@__            jõkke;    siile;   puid
  %{e%}:e !!≈ * __@CODE@__ e of -sse jõesse;  
  %{e%}:0 !!≈ * __@CODE@__            jõkke; 
-
-!! Usage tag. It may relate to an individual word in the lexicon, 
-!! or to a set of inflectional forms of some inflectional type, i.e. its sub-paradigm. It never surfaces.
-!! It is used to pair the surface form with the usage tag of the lexical representation.
-
- %{rare%}:0       !!≈ * __@CODE@__ rare or less used form (norm) ; e.g. kingasid
 
 !! If the sound change is productive and/or very regularly determined by context
 !! (e.g. by morpheme border), we do not use special symbols to denote the changing phonemes 

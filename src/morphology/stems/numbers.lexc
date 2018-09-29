@@ -15,8 +15,8 @@ LEXICON CardinalNoEnd
 LEXICON CardinalWithStandardEnding
 
              +Num+Card: # ;
-             +Num+Card: ALL_SEM_CASES ;
-             +Num+Card:%- ALL_SEM_CASES ;
+          +Num+Card+Sg: ALL_SEM_CASES ;
+          +Num+Card+Sg:%- ALL_SEM_CASES ;
              +Num+Card: LINE_DERIVATION ;
              +Num+Card:%- LINE_DERIVATION ;
 
@@ -27,8 +27,11 @@ LEXICON CardinalWithOrdinalEnding
 
 LEXICON CardinalWithFractionEnding
 
-             +Num+Card:ndik ELANIK ;
-             +Num+Card:%-ndik ELANIK ;
+             ndik NDIK ;
+             %-ndik NDIK ;
+
+LEXICON NDIK
+             +Num+Card: ELANIK ;
 
 LEXICON OrdinalNumbers
   < OrdinalNum > OrdinalNoEnd ;

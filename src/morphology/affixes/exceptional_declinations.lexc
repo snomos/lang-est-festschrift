@@ -502,7 +502,7 @@ LEXICON REHI    ! rehi, ruhi; similar to rohi
 LEXICON RIND    ! only rind
 
                   : PIIM ;
-  +Pl+Gen+Use/Rare:%>e GEN_GI;    ! rinde
+      +Pl+Use/Rare:%>e GENITIVE;    ! rinde
       +Use/Rare+Pl:%{W%}%>u LOCATIVES ;    ! rinnus etc
 
 LEXICON RUBLA    ! about 20 words 
@@ -530,7 +530,7 @@ LEXICON SEEME    ! only kümme, seeme, kööme; like HAARE
 LEXICON SILM    ! only silm
 
                   : PIIM ;
-      +Pl+Use/Rare:%>e GEN_GI;    ! silme
+      +Pl+Use/Rare:%>e GENITIVE;    ! silme
          +Use/Rare:%{W%}%>i N_VOWEL_PL_SUBPARA ;    ! silmis etc
 
 LEXICON SINANE    ! only (see)sinane; like SOOLANE, but additionally parallel forms sinatse-

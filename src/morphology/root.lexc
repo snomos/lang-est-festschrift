@@ -724,74 +724,96 @@ Multichar_Symbols
 
 ! Morphophonology
 
+! Triggers
+
  %{W%} ! The weak grade trigger never appears on the surface side.
  %{WL%} ! The weak grade for foreign words trigger never appears on the surface side.
  %{S%}  ! Strong stem trigger (for short illatives only) never appears on the surface side.
+ %{id%}   ! lexicon flag for pl part possible ending (esseesid/esseid)
+ %{stemill%} ! lexicon flag for short sg ill, formed by stem change (jõgi-jõkke)
+ %{dbl%}     ! double the previous letter (kabinet - kabinetti)
+ %{no.apo%}  ! trigger for deleting apostrofy (used for foreign word inflections) from sg nom
+
+! usage tag; never on the surface side
+
+ %{rare%}       ! rare or less used form (norm) ; e.g. kingasid
 
  %>     ! Inflectional suffix boundary
  »      ! Derivational suffix boundary
  #      ! Word boundary for both lexicalised and dynamic compounds
  %-     ! Final hyphen for shortened stems
 
- %{apo%}   ! Apostrofy is needed separating inflectional affix from foreign word lemma
- %{no.apo%}  ! trigger for deleting apostrofy (used for foreign word inflections) from sg nom
+ %{apo%}   ! Apostrophe is needed separating inflectional affix from foreign word lemma
+
+!Morphophonemes
 
 ! short stops
  G1 ! 0 g k   lagi lae lakke
  B1 ! 0 b p   tuba toa tuppa
- D1 ! 0 d t   rida rea itta
+ D1 ! 0 d t l n r  rida rea ritta talla kanna korra
 
- B2 ! b v p  tõbi tõve tõppe
-
- G3 ! 0 g  Riia Riiga
- D3 ! 0 d  Rannu Randu
- G4 ! g k  Türgi Türki
- D4 ! d t  Leedu Leetu
- B4 ! b p  Abja Apja
-
- H3 ! h 0  soo sohu
- Y3 ! vowel vowel  soo sohu
-
- K2 ! k g
- P2 ! p b
- T2 ! t d
- 
- S1 ! 0 s
- N1 ! 0 n
-  
 ! orthographic convention: after voiceless (e.g. s or h), gbd is written as kpt
 ! e.g. õhk-õhu, vask-vase
 
  K1 ! k 0
  P1 ! p 0 ?? EKK: never happens ??
  T1 ! t 0
+
+ B2 ! b v p  tõbi tõve tõppe
+
+ K2 ! k g
+ P2 ! p b
+ T2 ! t d
  
-I5  ! i e
-Ü5   ! ü ö
-U5   ! u o
+ G3 ! 0 g  Riia Riiga
+ D3 ! 0 d  Rannu Randu
+ G4 ! g k  Türgi Türki
+ D4 ! d t  Leedu Leetu
+ B4 ! b p  Abja Apja
+
+ S1 ! 0 s
+
+! Unstressed syllable vowels disappear...
+A2   ! a 0  valvas valvsa
+E2   ! e 0  laulev laulva
+I2   ! i 0  õilis õilsa
+U2   ! u 0  hirmus hirmsa
+
+! Stem vowels ... ad hoc ...
+E1    ! e 0  soolase, raudset  soolas t
+I1    ! i    katkisil
+A1    ! a    pingsa
+
+!  Few words...
+
+E4   ! e j   aeg aja 
+J1   ! i j ahi ahju
+
+ H3 ! h 0  soo sohu
+ Y3 ! vowel vowel  soo sohu
+
 A6   ! hea pea
 E6   ! hea pea
 Ö6   ! üü öö õ  sööma - süüa - sõi
 O6   ! uu oo õ  tooma - tuua - tõi
 
-E4   ! e j   aeg aja 
-
+M1   ! m n  lumi lund
+N1   ! 0 n lääs lääne, kolmas kolmanda
 K3   ! k 0  vennas vennakse
+  
+! Stem vowels for verbs of some inflectional types
 
-E1    ! e 0  soolase, raudset  soolas t
-I1    ! i    katkisil
-A1    ! a    pingsa
-
-A2   ! a 0  valvas valvsa
-E2   ! e 0  laulev laulva
-I2   ! i 0  õilis õilsa
-U2   ! u 0  hirmus hirmsa
 A7   ! a 0  naerab naerma
 E7   ! e 0  jookseb jooksma
 
-J1   ! i j ahi ahju
+! verb affixes have k-g and t-d-0 alternations
+ G7 ! g k
+ D7 ! d t 0
+ T7 ! d t 0
 
-M1   ! m n  lumi lund
+! To form past indicative forms and make them pronouncable
+ I7 ! i 0
+ S7 ! s 0
 
 ! Stem vowels for singular and plural
 ! For plural partitive, the form is generated either with sg vowel + sid or plural vowel + 0
@@ -807,34 +829,15 @@ M1   ! m n  lumi lund
  %{pl.i%}  ! i 0  Stem vowel tag in lexicon   kingi
  %{pl.e%}  ! e 0  Stem vowel tag in lexicon   tõuge
  %{pl.u%}  ! u 0  Stem vowel tag in lexicon   laudu
+
+! Inflectional affixes sid/id/vowel sse/0 having the same grammatical meaning
+! defined un-naturally letter by letter
+
+ %{i%}  ! i 0
+ %{d%}  ! d 0
  
-! verb affixes have k-g and t-d-0 alternations
- G7 ! g k
- D7 ! d t 0
- T7 ! d t 0
- I7 ! i 0
- S7 ! s 0
-
- %{dbl%}     ! double the previous letter (kabinet - kabinetti)
-
-! usage tag; never on the surface side
-
- %{hyp%}        ! hypothetical form (norm, but never used); e.g. siilisid, puudi
- %{rare%}       ! rare or less used form (norm) ; e.g. kingasid
- %{notnorm%}    ! rare or less used form (not norm); e.g. piprate
- %{commonnotnorm%}   ! more commonly used form (but not norm); e.g. peeneid (norm: peeni)
-
-! Inflectional affixes having the same grammatical meaning
-
- %{i%}
- %{d%}
- 
- %{id%}   ! lexicon flag for pl part possible ending (esseesid/esseid)
-
- %{s%}
- %{e%}
-
- %{stemill%} ! lexicon flag for short sg ill, formed by stem change (jõgi-jõkke)
+ %{s%}  ! s 0
+ %{e%}  ! s 0
 
 !! Legitimate strings that are not words: numbers, acronyms, ...
 
