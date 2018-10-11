@@ -360,12 +360,14 @@ SuffixBorder = [%> | »];           ! for assimilation in verb paradigmatic deri
 
 WeakGrade = [%{W%}:0 | %{WL%}:0] ;
 StrongGrade = %{S%}:0 ;
+
+! these trigger-aware contexts are used in a few rules; kind of ad hoc...
 GradeTrigger = [ WeakGrade | StrongGrade ] ;
 
-NullNoWeakTrigger = [ Null - WeakGrade ] ;
-AnyNoWeakTrigger = [ Any - WeakGrade ] ;
+NullNoWeakTrigger = [[ Null - WeakGrade ] | » ];   
+AnyNoWeakTrigger  = [[ Any  - WeakGrade ] | » ];   
 NullNoTrigger = [ Null - GradeTrigger ] ;
-AnyNoTrigger = [ Any - GradeTrigger ] ;
+AnyNoTrigger  = [ Any  - GradeTrigger ] ;
 
 ShortSyll = [WordBorder | :Consonant] :Vowel ;  ! short syllable
 
@@ -518,7 +520,7 @@ Cx:Cy <=> ShortSyll Cy _ AnyNoTrigger* WeakGrade ;
 ! surface: k ä ä n  0 e  0
 
 ! the context is too specific; this is just to avoid Xerox twol warning messages about conflicting => contexts
-! ( _ Null* [ :t | :d ]  should be sufficient as context)
+! ( _ Null* [ :t | :d ]  should be sufficient as context) 
 "s g d disappear in front of dt: only 0 allowed"
 
 Cx:0  =>  _ NullNoWeakTrigger* [ :t | :d ] AnyNoWeakTrigger* WordEnd ;
