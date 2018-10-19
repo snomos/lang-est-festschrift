@@ -646,6 +646,12 @@ Multichar_Symbols
  @P.POS.Pron@
  @R.POS.Pref@
  @P.POS.Pref@
+ @R.POS.ACR@
+ @P.POS.ACR@
+ @D.POS.ACR@
+ @R.POS.ACRMinus@   ! acronym ending with a hyphen; only allowed in a compound word
+ @P.POS.ACRMinus@
+ @D.POS.ACRMinus@
  @C.POS@
 
 !! Case is used for filtering derivations and compounds
@@ -741,7 +747,7 @@ Multichar_Symbols
  %>     ! Inflectional suffix boundary
  »      ! Derivational suffix boundary
  #      ! Word boundary for both lexicalised and dynamic compounds
- %-     ! Final hyphen for shortened stems
+ -      ! Final hyphen for shortened stems
 
  %{apo%}   ! Apostrophe is needed separating inflectional affix from foreign word lemma
 
@@ -907,7 +913,6 @@ LEXICON Single     !! strictly simplex words; cannot be a part of a compound
   NoninflectingVerbs ;      !!= * {{@CODE@}}
   CardinalNumbersSingle ;      !!= * {{@CODE@}}
   OrdinalNumbers ;          !!= * {{@CODE@}}
-!  Acronyms ;          !!= * {{@CODE@}}
 
 LEXICON First     !!= * {{@CODE@}} a simplex word or the first part of a compound 
 
@@ -927,6 +932,7 @@ LEXICON First     !!= * {{@CODE@}} a simplex word or the first part of a compoun
   @P.POS.Interj@ Interjections ;           !!= * {{@CODE@}}
   @P.POS.GA@@P.Case.Gen@ GenitiveAttributes ;      !!= * {{@CODE@}}
   @P.POS.Pref@ Prefixes ;                !!= * {{@CODE@}}
+  @P.POS.ACR@ Acronyms ;          !!= * {{@CODE@}}
 
 ! the nature of the previous word is reflected by flag diacritics that were set back then
 ! (possibly when passing through a continuation lexicon);
@@ -935,11 +941,13 @@ LEXICON First     !!= * {{@CODE@}} a simplex word or the first part of a compoun
 LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
 ! x + prefix
+  @R.POS.ACRMinus@ Prefixes ;      
   @R.POS.Pref@@R.Part.Two@ Prefixes ;     ! agrobio- agrobiotoode;
   @R.POS.N@@R.Case.Gen@@R.Part.Two@ Prefixes ;     ! jalabio- jalabiotoode;
   @R.Case.Short@@R.Part.Two@ Prefixes ;     ! vaatamisbio- astraalbiotoode;
 
 ! x + adjective
+  @R.POS.ACRMinus@ LatterAdjective ;      
   @R.POS.Pref@ LatterAdjective ;  ! ebapunane, ökokorralik
   @R.POS.Pref@ LatterAdjectiveComp ;  ! inimtühjem
   @R.Case.Short@ LatterAdjective ;  ! vaatamispunane, astraalpunane
@@ -978,6 +986,8 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.Adv@@D.Stem.topelt@@D.Stem.vähe@ LatterAdjective_v ;        ! harvanähtavaid etc 
 
 ! x + noun
+  @R.POS.ACRMinus@ LatterNoun ;      
+  @R.POS.ACRMinus@ LatterProperNoun ;      
   @R.POS.Pref@@P.Part.One@ LatterNoun ;    ! ebalaud; allow pref + 3-part-compounds
   @R.POS.Pref@ LatterProperNoun ;          ! ehttartulik
   @R.POS.Pref@ LatterGenitiveAttribute ;   ! ürgkreeka
@@ -1025,6 +1035,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 ! x + verb derivation
 ! verb derivations expect previous word to be either in Gen or Par
 
+  @R.POS.ACRMinus@ AnyLatterVerb ;      
   @R.POS.Pref@ AnyLatterVerb ;  ! ebalugemine
 
   @R.POS.N@@R.Case.Gen@ LatterVerb ;   ! lauajooksja

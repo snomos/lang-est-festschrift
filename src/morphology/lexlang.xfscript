@@ -5,7 +5,7 @@
 ! clear stack
 ! source morphology/lexlang.xfscript
 ! read regex  [@"analyser-raw-gt-desc.xfst"].u - Word ;
-
+! the result should be empty net, i.e. 1 state, 0 arcs
 
 define EstLetter [ 
              a | b | c | d | e | f | g | h |
@@ -52,7 +52,9 @@ define Flag [
   "@P.NeedNoun.On@" | "@R.NeedNoun@" | "@D.NeedNoun@" | "@C.NeedNoun@" | 
   "@P.NeedPartThree.On@" | "@R.NeedPartThree@" | "@D.NeedPartThree@" | "@C.NeedPartThree@" | 
   "@P.NeedDerNe.On@" | "@R.NeedDerNe@" | "@D.NeedDerNe@" | "@C.NeedDerNe@" | 
-  "@P.NomStem.First@" | "@R.NomStem.First@" | "@D.NomStem.First@" | "@C.NomStem@" 
+  "@P.NomStem.First@" | "@R.NomStem.First@" | "@D.NomStem.First@" | "@C.NomStem@" |
+  "@R.POS.ACR@" | "@P.POS.ACR@" | "@D.POS.ACR@" | "@R.POS.ACRMinus@" | "@P.POS.ACRMinus@" | "@D.POS.ACRMinus@"
+
             ] ;
 
 define Chr [Letter | Digit | Punct] ;

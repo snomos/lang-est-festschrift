@@ -42,13 +42,13 @@ GT_LEXC_SRCS_L1_L2=\
                          stems/prefixes.lexc \
                          stems/final_components.lexc \
 			 stems/numbers.lexc \
+			 stems/acronyms.lexc \
 			 stems/abbreviations.lexc \
 			 affixes/regular_declinations.lexc \
 			 affixes/exceptional_declinations.lexc \
 			 affixes/verbs.lexc \
 			 affixes/gi.lexc
 
-#			 stems/acronyms.lexc 
 
 # If you are building an error-detecting L2 analyser, specify the lexc files
 # that differ between the regular L1 and the L2 analysers below, in L1 and
@@ -67,7 +67,7 @@ GT_LEXC_L2_SRCS=\
 
 # Set this to the names of all generated lexc files, if any
 #GENERATED_LEXC_SRCS=generated_files/punctuation.lexc
-GENERATED_LEXC_SRCS=generated_files/punctuation.lexc
+GENERATED_LEXC_SRCS=
 
 # Set this to the names of all source xml files, if any
 GT_XML_SRCS=
@@ -78,8 +78,9 @@ GT_LOCAL_SRCS=\
 				pair_final.tmp.lexc \
 				num_initial.tmp.lexc \
 				num_final.tmp.lexc \
-				acronyms.tmp.lexc \
 				punctuation.tmp.lexc
+
+#				acronyms.tmp.lexc 
 
 # Define local xfscripts here:
 GT_LOCAL_XFSCRIPT_SRCS=

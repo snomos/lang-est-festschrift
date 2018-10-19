@@ -332,14 +332,13 @@ analyser-numerals-raw.simple.xfst: redundant_numerals.xfst \
 # NB! cleanup net
 analyser-raw-gt-desc.simple.xfst: analyser-raw-gt-desc.tmp.xfst \
 				analyser-numerals-raw.simple.xfst \
-				acronyms.tmp.xfst \
 				$(EST_EXTRA_PRE_FILTERS:%=%.xfst) \
 				$(EST_EXTRA_POST_FILTERS:%=%.xfst) \
 				filters/downcase-derived_proper-strings.est.xfst
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
 			read regex                         \
 			$(EST_EXTRA_PRE_FILTERS:%=@\"%.xfst\" .o.)    \
-			[ @\"$<\" | @\"analyser-numerals-raw.simple.xfst\" | @\"acronyms.tmp.xfst\"]  \
+			[ @\"$<\" | @\"analyser-numerals-raw.simple.xfst\" ]  \
 			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.xfst\")   \
 			;\n\
 			cleanup net\n\
@@ -355,14 +354,13 @@ analyser-raw-gt-desc.simple.xfst: analyser-raw-gt-desc.tmp.xfst \
 # HFST:
 generator-raw-gt-desc.simple.hfst: generator-raw-gt-desc.tmp.hfst \
 				generator-numerals-raw.simple.hfst \
-				acronyms.tmp.hfst \
 				$(EST_EXTRA_PRE_FILTERS:%=%.hfst) \
 				$(EST_EXTRA_POST_FILTERS:%=%.hfst) \
 				filters/downcase-derived_proper-strings.est.hfst
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
 			read regex                         \
 			$(EST_EXTRA_PRE_FILTERS:%=@\"%.hfst\" .o.)    \
-			[ @\"$<\" | @\"generator-numerals-raw.simple.hfst\" | @\"acronyms.tmp.hfst\"] \
+			[ @\"$<\" | @\"generator-numerals-raw.simple.hfst\" ] \
 			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.hfst\")   \
 			;\n\
 			define fst \n\
@@ -374,10 +372,11 @@ generator-raw-gt-desc.simple.hfst: generator-raw-gt-desc.tmp.hfst \
 		 quit\n" | $(XFST_TOOL)
 
 
-# HFST:
 # compound words: 
-# the first part cannot be a form with a focus particle, so filter it out
-# the first part may end with a hyphen (ajaloolis-)
+# 1. the first part cannot be a form with a focus particle, so filter it out
+# 2. the first part may end with a hyphen (ajalooline+A+Der/minus:ajaloolis»-), which may be omitted in compounds,
+#    or the first part may have a hyphen appended (for better readabilty of a compound)
+# HFST:
 generator-raw-gt-desc.comp.hfst: generator-raw-gt-desc.simple.hfst \
 				filters/evaluate-flags.est.hfst
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
@@ -385,19 +384,16 @@ generator-raw-gt-desc.comp.hfst: generator-raw-gt-desc.simple.hfst \
 			[                                                                    \
 			  [                                                                  \
 			    [                                                                \
-			      ~[?* \"+Foc/gi\" ?*] .o. @\"$<\" .o. [ \"-\" (->) 0 || _ .#. ] \
+			      ~[?* \"+Foc/gi\" ?*] .o. @\"$<\"  \
+			       .o. [[ \"-\" (->) 0 || » _ .#. ] | [ [..] (->) \"-\" || \\[\"-\"] _ .#. ]] \
 			    ] \"#\"                                                          \
-			  ]*                                                                 \
-			 @\"$<\"                                                             \
+			  ]* @\"$<\"                                                         \
 			] @\"filters/evaluate-flags.est.hfst\"                               \
 			;\n\
 		save stack $@\n\
 		quit\n" | $(XFST_TOOL)
 
 # XFST:
-# compound words: 
-# the first part cannot be a form with a focus particle, so filter it out
-# the first part may end with a hyphen (ajaloolis-)
 analyser-raw-gt-desc.comp.xfst: analyser-raw-gt-desc.simple.xfst \
 				filters/evaluate-flags.est.xfst
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
@@ -405,10 +401,10 @@ analyser-raw-gt-desc.comp.xfst: analyser-raw-gt-desc.simple.xfst \
 			[                                                                    \
 			  [                                                                  \
 			    [                                                                \
-			      ~[?* \"+Foc/gi\" ?*] .o. @\"$<\" .o. [ \"-\" (->) 0 || _ .#. ] \
+			      ~[?* \"+Foc/gi\" ?*] .o. @\"$<\"  \
+			       .o. [[ \"-\" (->) 0 || » _ .#. ] | [ [..] (->) \"-\" || \\[\"-\"] _ .#. ]] \
 			    ] \"#\"                                                          \
-			  ]*                                                                 \
-			 @\"$<\"                                                             \
+			  ]* @\"$<\"                                                         \
 			] @\"filters/evaluate-flags.est.xfst\"                               \
 			;\n\
 			cleanup net\n\
@@ -459,16 +455,9 @@ analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.vocabulary.xfst
 # HFST:
 # note the invert net for analyser
 analyser-gt-%.hfst: analyser-gt-%.tmp.hfst \
-					filters/initialise-flags.est.hfst \
 					morphology/punctuation.tmp.hfst
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
-			read regex \
-			[                                                               \
-			 [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ]                        \
-			 [ \"-\" | \"/\"] @\"filters/initialise-flags.est.hfst\"  \
-			]*                                                              \
-			@\"$<\" .o. [ [..] (->) \"-\" || \\[\"-\"] _ .#. ]              \
-			;\n\
+			read regex [@\"$<\" .o. [ [..] (->) \"-\" || \\[\"-\"] _ .#. ]];\n\
 		read regex @\"morphology/punctuation.tmp.hfst\"                         \
 			;\n\
 		union net\n\
@@ -477,16 +466,9 @@ analyser-gt-%.hfst: analyser-gt-%.tmp.hfst \
 		quit\n" | $(XFST_TOOL)
 
 generator-gt-%.hfst: generator-gt-%.tmp.hfst \
-					filters/initialise-flags.est.hfst \
 					morphology/punctuation.tmp.hfst
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
-			read regex \
-			[                                                               \
-			 [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ]                        \
-			 [ \"-\" | \"/\"] @\"filters/initialise-flags.est.hfst\"  \
-			]*                                                              \
-			@\"$<\"                                                 \
-			;\n\
+			read regex [@\"$<\"];\n\
 		read regex @\"morphology/punctuation.tmp.hfst\"                         \
 			;\n\
 		union net\n\
@@ -496,16 +478,9 @@ generator-gt-%.hfst: generator-gt-%.tmp.hfst \
 # XEROX:
 # note the invert net for generator
 analyser-gt-%.xfst: analyser-gt-%.tmp.xfst \
-					filters/initialise-flags.est.xfst \
 					morphology/punctuation.tmp.xfst
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
-			read regex \
-			[                                                               \
-			 [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ]                        \
-			 [ \"-\" | \"/\"] @\"filters/initialise-flags.est.xfst\"  \
-			]*                                                              \
-			@\"$<\" .o. [ [..] (->) \"-\" || \\[\"-\"] _ .#. ]                                                 \
-			;\n\
+			read regex [@\"$<\" .o. [ [..] (->) \"-\" || \\[\"-\"] _ .#.]];\n\
 		read regex @\"morphology/punctuation.tmp.xfst\"                         \
 			;\n\
 		union net\n\
@@ -514,16 +489,9 @@ analyser-gt-%.xfst: analyser-gt-%.tmp.xfst \
 		quit\n" | $(XFST) $(VERBOSITY)
 
 generator-gt-%.xfst: generator-gt-%.tmp.xfst \
-					filters/initialise-flags.est.xfst \
 					morphology/punctuation.tmp.xfst
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
-			read regex \
-			[                                                               \
-			 [ @\"$<\" .o. [ \"-\" -> 0 || _ .#. ] ]                        \
-			 [ \"-\" | \"/\"] @\"filters/initialise-flags.est.xfst\"  \
-			]*                                                              \
-			@\"$<\"                                                 \
-			;\n\
+			read regex [@\"$<\"];\n\
 		read regex @\"morphology/punctuation.tmp.xfst\"                         \
 			;\n\
 		union net\n\

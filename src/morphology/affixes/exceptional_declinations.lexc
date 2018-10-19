@@ -7,8 +7,8 @@
 
 LEXICON KES    ! kes, mis 
 
-           +Sg+Nom:s #;
-  +Sg+Ade+Use/Rare:%>l #;    ! kel, mil 
+           +Sg+Nom:s # ;
+  +Sg+Ade+Use/Rare:%>l # ;    ! kel, mil 
                   : KEMISETO ;
                   :lle DE_PL ;    ! kellede etc 
 
@@ -16,7 +16,7 @@ LEXICON SEE    ! see
 
                   :see SG_NOMINATIVE ;
          +Use/Rare:se%>sse SG_ILLATIVE ;    ! sesse
-  +Sg+Ine+Use/Rare:se%>s #;    ! ses
+  +Sg+Ine+Use/Rare:se%>s # ;    ! ses
       +Sg+Use/Rare:se%>st ELATIVE ;    ! sest
       +Sg+Use/Rare:se%>l ADESSIVE ;    ! sel
       +Sg+Use/Rare:se%>lt ABLATIVE ;    ! selt	
@@ -29,7 +29,7 @@ LEXICON TOO    ! too
 
                   :too SG_NOMINATIVE ;
       +Sg+Use/Rare:to%>sse ILLATIVE ;    ! tosse
-  +Sg+Ine+Use/Rare:to%>s #;    ! tos
+  +Sg+Ine+Use/Rare:to%>s # ;    ! tos
       +Sg+Use/Rare:to%>st ELATIVE ;    ! tost
       +Sg+Use/Rare:to%>l ADESSIVE ;    ! tol
                   :to KEMISETO ;
@@ -45,17 +45,17 @@ LEXICON KEMISETO    ! kes, mis, see, too common cont. lexicon
 LEXICON MASA    ! ma & sa 
 
              +Emph:ina SG_NOMINATIVE ;    ! mina, sina
-           +Sg+Nom:a #;    ! ma, sa
+           +Sg+Nom:a # ;    ! ma, sa
              +Emph:inu SG_GENITIVE ;    ! minu, sinu
-           +Sg+Gen:u #;    ! mu, su
+           +Sg+Gen:u # ;    ! mu, su
                   :in%>d SG_PARTITIVE ;    ! mind, sind
                   :u%>sse SG_ILLATIVE ;    ! musse
-           +Sg+Ine:u%>s #;    ! mus
+           +Sg+Ine:u%>s # ;    ! mus
                +Sg:u%>st ELATIVE ;
                +Sg:ul%>le ALLATIVE ;	! mulle
                +Sg:u%>l ADESSIVE ;	
                +Sg:u%>lt ABLATIVE ;	
-           +Sg+Com:u%>ga #;                  ! muga
+           +Sg+Com:u%>ga # ;                  ! muga
           +Sg+Emph:inu STANDARD_LOCATIVES ;    ! minul, sinul
                +Sg:inu%>ks TRANSLATIVE ;
                +Sg:inu%>ni TERMINATIVE ;	  ! minuni
@@ -67,9 +67,9 @@ LEXICON MASA    ! ma & sa
 LEXICON METE    ! me & te 
 
           +Pl+Emph:ie NOMINATIVE ;    ! meie, teie
-           +Pl+Nom: #;    ! me, te
+           +Pl+Nom: # ;    ! me, te
           +Pl+Emph:ie GENITIVE ;    ! meie, teie
-           +Pl+Gen: #;    ! me, te
+           +Pl+Gen: # ;    ! me, te
                   :i%>d PL_PARTITIVE ;    ! meid, teid
                +Pl:i STANDARD_LOCATIVES ;    ! meil, teil etc
                +Pl:ie%>ks TRANSLATIVE ;
@@ -82,9 +82,9 @@ LEXICON METE    ! me & te
 LEXICON TEMA    ! ta 
 
              +Emph:ema SG_NOMINATIVE ;    ! tema
-           +Sg+Nom:a #;    ! ta
+           +Sg+Nom:a # ;    ! ta
              +Emph:ema SG_GENITIVE ;    ! tema
-           +Sg+Gen:a #;    ! ta
+           +Sg+Gen:a # ;    ! ta
                   :e%>da SG_PARTITIVE ;    ! teda
           +Sg+Emph:ema STANDARD_LOCATIVES ;    ! temal etc
                +Sg:ema%>ks TRANSLATIVE ;
@@ -93,7 +93,7 @@ LEXICON TEMA    ! ta
                +Sg:ema%>ta ABESSIVE ;	  ! temata
                +Sg:ema%>ga COMITATIVE ;    ! temaga
                   :a%>sse SG_ILLATIVE ;    ! tasse
-           +Sg+Ine:a%>s #;                ! tas
+           +Sg+Ine:a%>s # ;                ! tas
                +Sg:a%>st ELATIVE ;
                +Sg:al%>le ALLATIVE ;	! talle
                +Sg:a%>l ADESSIVE ;	
@@ -139,10 +139,10 @@ LEXICON OMAENESE    ! omaenese ; few forms; they could be regarded as parallel f
 ! ----
 LEXICON KÕIK
 
-           +Sg+Nom: #;
+           +Sg+Nom: # ;
                +Sg:e%{W%} STANDARD_GEN_ET_AL ;    ! kõige etc
                   :e SG_PARTITIVE ;    ! kõike
-           +Pl+Nom: #;    ! kõik
+           +Pl+Nom: # ;    ! kõik
       +Pl+Use/Rare:i%>de STANDARD_GEN_ET_AL ;    ! kõikide etc
                +Pl:i%{W%} STANDARD_GEN_ET_AL ;    ! kõigi etc
                   :i PL_PARTITIVE ;              ! kõiki
@@ -326,21 +326,21 @@ LEXICON LAPS    ! only laps, uks; notice the weird (?) use of {W}
 
 LEXICON LAPSELAPS    ! only lapselaps; the N_PL_SUBPARA is different...
 
-                  :lapse#l´aP1s SG_NOMINATIVE ;    ! laps
-                  :lapse#l´aP1se N_SG_SUBPARA ;    ! lapse etc 
-                  :lapse#l´aP1s%{W%}%>t SG_PARTITIVE ;    ! last
-                  :lapse#l´aP1se%>sse SG_ILLATIVE ;    ! lapsesse 
-                  :laste#l´aP1s%{W%} TE_PL ;    ! laste etc 
-                  :lapse#l´aP1s%>i PL_PARTITIVE ;    ! lapsi
+                  :lapse%#l´aP1s SG_NOMINATIVE ;    ! laps
+                  :lapse%#l´aP1se N_SG_SUBPARA ;    ! lapse etc 
+                  :lapse%#l´aP1s%{W%}%>t SG_PARTITIVE ;    ! last
+                  :lapse%#l´aP1se%>sse SG_ILLATIVE ;    ! lapsesse 
+                  :laste%#l´aP1s%{W%} TE_PL ;    ! laste etc 
+                  :lapse%#l´aP1s%>i PL_PARTITIVE ;    ! lapsi
 
 LEXICON LAPSELAPSELAPS    ! only lapselapselaps; the N_PL_SUBPARA is different...
 
-                  :lapse#lapse#l´aP1s SG_NOMINATIVE ;    ! laps
-                  :lapse#lapse#l´aP1se N_SG_SUBPARA ;    ! lapse etc 
-                  :lapse#lapse#l´aP1s%{W%}%>t SG_PARTITIVE ;    ! last
-                  :lapse#lapse#l´aP1se%>sse SG_ILLATIVE ;    ! lapsesse 
-                  :laste#laste#l´aP1s%{W%} TE_PL ;    ! laste etc 
-                  :lapse#lapse#l´aP1s%>i PL_PARTITIVE ;    ! lapsi
+                  :lapse%#lapse%#l´aP1s SG_NOMINATIVE ;    ! laps
+                  :lapse%#lapse%#l´aP1se N_SG_SUBPARA ;    ! lapse etc 
+                  :lapse%#lapse%#l´aP1s%{W%}%>t SG_PARTITIVE ;    ! last
+                  :lapse%#lapse%#l´aP1se%>sse SG_ILLATIVE ;    ! lapsesse 
+                  :laste%#laste%#l´aP1s%{W%} TE_PL ;    ! laste etc 
+                  :lapse%#lapse%#l´aP1s%>i PL_PARTITIVE ;    ! lapsi
 
 LEXICON LÕUNA    ! only lõuna; almost like haare
 
@@ -564,22 +564,22 @@ LEXICON TEINE    ! only teine; almost = NAINE; much like OLULINE
 LEXICON TEIST    ! only -teist(kümmend); much like KÜMMEND
                   
                   : SG_NOMINATIVE ;            ! viisteist
-         +Use/Rare:#kümmend SG_NOMINATIVE ;    ! viisteistkümmend
+         +Use/Rare:%#kümmend SG_NOMINATIVE ;    ! viisteistkümmend
                   : SG_PARTITIVE ;             ! viitteist
-         +Use/Rare:#kümme%>t SG_PARTITIVE ;    ! viitteistkümmet
-         +Use/Rare:#kümmend SG_PARTITIVE ;     ! viitteistkümmend
+         +Use/Rare:%#kümme%>t SG_PARTITIVE ;    ! viitteistkümmet
+         +Use/Rare:%#kümmend SG_PARTITIVE ;     ! viitteistkümmend
          +Use/Rare: SG_GENITIVE ;              ! viieteist
-                  :#kümne 2C_STRONG ;          ! viieteistkümne etc
-                  :#kümne TE_PL ;              ! viieteistkümnete
+                  :%#kümne 2C_STRONG ;          ! viieteistkümne etc
+                  :%#kümne TE_PL ;              ! viieteistkümnete
 
 LEXICON POOLTEIST     ! only (pool)teist; much like TEINE ?
                   
-                  :#teist SG_NOMINATIVE ;
-                  :e#teise N_SG_SUBPARA ;      ! pooleteise etc          
-                  :t#teis%>t SG_PARTITIVE ;    ! pooltteist
-         +Use/Rare:#teis NE_S_COMMON ;         ! poolteise etc
-                  :e#teise%>sse SG_ILLATIVE ;  ! 
-         +Use/Rare:#teise%>sse SG_ILLATIVE ;   ! 
+                  :%#teist SG_NOMINATIVE ;
+                  :e%#teise N_SG_SUBPARA ;      ! pooleteise etc          
+                  :t%#teis%>t SG_PARTITIVE ;    ! pooltteist
+         +Use/Rare:%#teis NE_S_COMMON ;         ! poolteise etc
+                  :e%#teise%>sse SG_ILLATIVE ;  ! 
+         +Use/Rare:%#teise%>sse SG_ILLATIVE ;   ! 
 
 
 

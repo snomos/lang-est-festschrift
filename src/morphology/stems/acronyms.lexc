@@ -2,26 +2,105 @@
 
 LEXICON Acronyms
   < [CapCons* CapVow+] & Cap^<6 > AcroArmee ;  ! TÜ, TTÜ, A, AI
-  < [[CapCons* | CapVow] CapConsv] & Cap^<6 & ~[{IŽ}] > AcroArmee ;  ! T, TT, NKVD, AK
-  IŽ AcroFiat ; 
-  < [[CapCons* | CapVow] CapConsc] & Cap^<6 > AcroFiat ;  ! L, XL, AL
-  < [CapCons* CapVow+ CapCons+] & Cap^<6 > AcroFiat ;  ! DAESH, 
-  < [CapCons* CapVow+ CapCons+ CapVow] & Cap^<6 & ~[{CHINA}] > AcroPere ;  ! NATO, EKI, EKRE, IATE
-  < [CapCons* CapVow CapCons+ CapVow S] & Cap^<6 > AcroSoolane ;  ! ISIS
+  < [CapVow+ CapCons+ CapVow^>1] & Cap^<6 > AcroArmee ;  ! ACAI, AEGEE, 
+  < [CapCons* CapConsv] & Cap^<6 > AcroArmee ;  ! T, TT, NKVD, 
+  < [CapVow   CapConsv] & Cap^<6 > AcroArmee ;  ! AQ, AB, 
+!  < [CapVow^>1 [C|Q]] & Cap^<6 > AcroArmee ;  ! AAQ, AAC, ? 
+  < [CapVow^>1 CapConsv] & Cap^<6 > AcroArmee ;  ! AAK (+ AcroFiat)
+  < [CapCons* CapVow+ CapNonPairC] & Cap^<6 > AcroArmee ;  ! ABC, 
+  < [CapCons* CapVow+ CapPairC] & Cap^<6 > AcroArmee ;  ! ARK, ASK, (+ AcroFiat) 
+  < [CapVow+ CapCons^>1 CapConsv] & Cap^<6 > AcroArmee ;  ! AADRC, AADRV?
+
+  < [CapCons* CapConsc] & Cap^<6 > AcroFiat ;  ! L, XL
+  < [CapVow   CapConsc] & Cap^<6 > AcroFiat ;  ! AL, IJ
+  < [CapVow^>1 [CapCons - [C|Q]]] & Cap^<6 > AcroFiat ;  ! AAK, (+ AcroArmee)
+  < [CapCons+ CapVow+ CapCons] & Cap^<6 > AcroFiat ;  ! MAL, QIJ, MAC
+  < [CapCons* CapVow+ CapPairC] & Cap^<6 > AcroFiat ;  ! TASS, AND, IRC?
+  < [CapCons* CapVow+ CapCons+ CapConsc] & Cap^<6 > AcroFiat ;  ! AADRL
+  IŽ AcroFiat ;  ! parallel 
+  ACE AcroFiat ; ! parallel
+  ASEAN AcroFiat ; !
+
+  < [CapCons* CapVow+ [CapCons+ | Y] CapVow] & Cap^<6 & ~[{CHINA}] > AcroPere ;  ! NATO, EKI, EKRE, IATE
+
+  < [CapCons* CapVow+ [CapCons+ | Y] CapVow [CapCons - S]] & Cap^<6 > AcroRedel ;  ! UNIX, BAYER
+  < [CapCons* CapVow+ CapCons+ CapVow CapConsv S] & Cap^<6 > AcroRedel ;  ! UNIKS
+  < [CapCons* CapVow+ [CapCons - [L|R]] [L|R]] & Cap^<6 > AcroRedel ;  ! TISL
+  < [CapCons* CapVow+ CapPairC [L|R]] & Cap^<6 > AcroRedel ;  ! TIMBL
+
+  < [CapCons* CapVow+ CapCons+ CapVow S] & Cap^<6 > AcroEtis ;  ! ETIS
 
 LEXICON AcroArmee 
-      +ACR: ARMEE ;
-      +ACR:%- ARMEE ;
+   +ACR+Sg: NOMINATIVE ;
+   +ACR+Sg: GENITIVE ;
+      +ACR: Acro1V ;
+      +ACR:- Acro1V ;
+ @P.POS.ACRMinus@ WithHyphen ;
+
+LEXICON Acro1V 
+          :d SG_PARTITIVE ;            ! KT-d
+       +Sg: ALL_SEM_CASES ;            ! KT etc
+       +Pl:d NOMINATIVE ;          ! KT-d
+          :de N_PL_SUBPARA ;        ! KT-de etc  
+          :sid PL_PARTITIVE ;     ! KT-sid
 
 LEXICON AcroFiat 
-      +ACR: FIAT ;
-      +ACR:%- FIAT ;
+   +ACR+Sg: NOMINATIVE ;
+      +ACR: Acro1C ;
+      +ACR:- Acro1C ;
+ @P.POS.ACRMinus@ WithHyphen ;
+
+LEXICON Acro1C 
+              :i N_SG_SUBPARA ;      ! KEKi etc
+              :i SG_PARTITIVE ;               ! KEKi
+              :i SG_ILLATIVE ;                ! KEKi
+      +Use/Hyp:isse SG_ILLATIVE ;     ! KEKisse
+              :ide N_PL_SUBPARA ;     ! KEKide etc
+     +Use/Rare:isid PL_PARTITIVE ;    ! KEKisid
+              :e PL_PARTITIVE ;            ! KEKe
+
 
 LEXICON AcroPere 
-      +ACR: PERE ;
-      +ACR:%- PERE ;
+   +ACR+Sg: NOMINATIVE ;
+   +ACR+Sg: GENITIVE ;
+      +ACR: Acro2V ;
+      +ACR:- Acro2V ;
+ @P.POS.ACRMinus@ WithHyphen ;
 
-LEXICON AcroSoolane 
-      +ACR: SOOLANE ;
-      +ACR:%- SOOLANE ;
+LEXICON Acro2V 
+          :t SG_PARTITIVE ;            ! NATOt
+       +Sg: ALL_SEM_CASES ;            ! NATO etc
+       +Pl:d NOMINATIVE ;            ! NATOd
+          :de N_PL_SUBPARA ;        ! NATO-de etc  
+          :sid PL_PARTITIVE ;     ! NATO-sid
+
+LEXICON AcroRedel 
+   +ACR+Sg: NOMINATIVE ;
+      +ACR: Acro2C ;
+      +ACR:- Acro2C ;
+ @P.POS.ACRMinus@ WithHyphen ;
+
+LEXICON Acro2C 
+              :i N_SG_SUBPARA ;      ! UNIXi etc
+              :it SG_PARTITIVE ;               ! UNIXit
+              :isse SG_ILLATIVE ;                ! UNIXisse
+              :ite N_PL_SUBPARA ;     ! UNIXite etc
+              :eid PL_PARTITIVE ;            ! UNIXeid
+
+
+LEXICON AcroEtis 
+   +ACR+Sg: NOMINATIVE ;
+      +ACR: AcroS ;
+      +ACR:- AcroS ;
+ @P.POS.ACRMinus@ WithHyphen ;
+
+LEXICON AcroS 
+          :e N_SG_SUBPARA ;      ! ETISe etc
+          :t SG_PARTITIVE ;               ! ETISt
+          :esse SG_ILLATIVE ;     ! ETISesse
+          :te N_PL_SUBPARA ;     ! ETISte etc
+          :eid PL_PARTITIVE ;            ! ETISeid
+
+LEXICON WithHyphen        ! ends with a hyphen,
+      +ACR:- # ;          ! thus possible only in compounds
 

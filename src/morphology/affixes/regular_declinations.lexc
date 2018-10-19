@@ -635,7 +635,7 @@ LEXICON SHORT_NE_STEM
     @P.Case.Short@ SHORT_NE_STEM_SUF ;
 
 LEXICON SHORT_NE_STEM_SUF
-            +Der/minus:»%- # ;                ! vaatamis-, astraal-
+            +Der/minus:»- # ;                ! vaatamis-, astraal-
 
 LEXICON KAS_DERIVATION
   @P.Der.kas@@C.NeedNoun@ KAS_DERIVATION_SUF ;    

@@ -10,7 +10,8 @@
 # example: allow only 3-part compounds, nothing else
 #regex ["@R.Part.Three@" Req ] ;
 
-# at the end of a compound word, we should'n be waiting for an adj, noun, Der/ne, or for part three
+# at the end of a (compound) word, we should'n be waiting for an adj, noun, Der/ne, or for part three
+# and the last word shouldn't be an acronym that ends with minus and thus suits only in compounds
 
-regex "@D.NeedAdj@" "@D.NeedNoun@" "@D.NeedDerNe@" "@D.NeedPartThree@";
+regex "@D.NeedAdj@" "@D.NeedNoun@" "@D.NeedDerNe@" "@D.NeedPartThree@" "@D.POS.ACRMinus@" ;
 

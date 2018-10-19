@@ -67,7 +67,7 @@ echo 'sega+Pref:sega- #;' >> pref.lexc
 echo 'puhke+Pref:p´uhke- #;' >> pref.lexc
 echo 'vääris+Pref:vääris- #;' >> pref.lexc
 
-cat pref.lexc | sort -u >> prefixes.lexc
+cat pref.lexc | sort -u | sed 's/\- #/»&/' >> prefixes.lexc
 
 cp prefixes.lexc ../morphology/stems
 
