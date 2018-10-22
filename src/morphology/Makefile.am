@@ -43,7 +43,6 @@ GT_LEXC_SRCS_L1_L2=\
                          stems/final_components.lexc \
 			 stems/numbers.lexc \
 			 stems/acronyms.lexc \
-			 stems/abbreviations.lexc \
 			 affixes/regular_declinations.lexc \
 			 affixes/exceptional_declinations.lexc \
 			 affixes/verbs.lexc \
@@ -66,8 +65,8 @@ GT_LEXC_L2_SRCS=\
 			$(L2)
 
 # Set this to the names of all generated lexc files, if any
-#GENERATED_LEXC_SRCS=generated_files/punctuation.lexc
-GENERATED_LEXC_SRCS=
+GENERATED_LEXC_SRCS=generated_files/punctuation.lexc
+#GENERATED_LEXC_SRCS=
 
 # Set this to the names of all source xml files, if any
 GT_XML_SRCS=
@@ -77,9 +76,8 @@ GT_LOCAL_SRCS=\
 				pair_initial.tmp.lexc \
 				pair_final.tmp.lexc \
 				num_initial.tmp.lexc \
-				num_final.tmp.lexc \
-				punctuation.tmp.lexc
-
+				num_final.tmp.lexc 
+#				punctuation.tmp.lexc
 #				acronyms.tmp.lexc 
 
 # Define local xfscripts here:
@@ -117,18 +115,6 @@ num_final.tmp.lexc: num_final.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
 	$(AM_V_GEN)cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
 			   cat $< >> $@ && \
 			   cat $(EST_AFFIX_FILES:%=%.lexc) >> $@
-
-# acronyms is a separate issue, not an ordinary part of the lexicon
-# no twol rules apply there...
-acronyms.tmp.lexc: acronyms.lexc $(GT_LEXC_ROOT)
-	$(AM_V_GEN)cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
-			   cat $< >> $@ && \
-			   cat $(EST_AFFIX_FILES:%=%.lexc) >> $@
-
-# punctuation is a separate issue, not an ordinary part of the lexicon
-punctuation.tmp.lexc: punctuation.lexc $(GT_LEXC_ROOT)
-	$(AM_V_GEN)cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
-			   cat $< >> $@ 
 
 ### END: Local processing: ###
 

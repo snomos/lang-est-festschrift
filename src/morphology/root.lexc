@@ -913,6 +913,7 @@ LEXICON Single     !! strictly simplex words; cannot be a part of a compound
   NoninflectingVerbs ;      !!= * {{@CODE@}}
   CardinalNumbersSingle ;      !!= * {{@CODE@}}
   OrdinalNumbers ;          !!= * {{@CODE@}}
+  Punctuation ;          !!= * {{@CODE@}}
 
 LEXICON First     !!= * {{@CODE@}} a simplex word or the first part of a compound 
 
@@ -1134,5 +1135,4 @@ LEXICON LatterVerb       ! a verb derivation
               
   @P.POS.V@@C.Der@ Verbs ;                   !!= * {{@CODE@}}
 
-! Punctuation ;             !!= * {{@CODE@}}
 

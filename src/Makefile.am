@@ -447,59 +447,6 @@ analyser-raw-gt-%.hfst: generator-raw-gt-%.hfst
 analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.vocabulary.xfst 
 		cp $< $@
 
-
-# final transducers that allow concatenating by - and / and
-# include punctuation 
-# the generator and analyser differ in uppercasing, hence the need to build them separately
-
-# HFST:
-# note the invert net for analyser
-analyser-gt-%.hfst: analyser-gt-%.tmp.hfst \
-					morphology/punctuation.tmp.hfst
-	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
-			read regex [@\"$<\" .o. [ [..] (->) \"-\" || \\[\"-\"] _ .#. ]];\n\
-		read regex @\"morphology/punctuation.tmp.hfst\"                         \
-			;\n\
-		union net\n\
-		invert net\n\
-		save stack $@\n\
-		quit\n" | $(XFST_TOOL)
-
-generator-gt-%.hfst: generator-gt-%.tmp.hfst \
-					morphology/punctuation.tmp.hfst
-	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
-			read regex [@\"$<\"];\n\
-		read regex @\"morphology/punctuation.tmp.hfst\"                         \
-			;\n\
-		union net\n\
-		save stack $@\n\
-		quit\n" | $(XFST_TOOL)
-
-# XEROX:
-# note the invert net for generator
-analyser-gt-%.xfst: analyser-gt-%.tmp.xfst \
-					morphology/punctuation.tmp.xfst
-	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
-			read regex [@\"$<\" .o. [ [..] (->) \"-\" || \\[\"-\"] _ .#.]];\n\
-		read regex @\"morphology/punctuation.tmp.xfst\"                         \
-			;\n\
-		union net\n\
-			cleanup net\n\
-		save stack $@\n\
-		quit\n" | $(XFST) $(VERBOSITY)
-
-generator-gt-%.xfst: generator-gt-%.tmp.xfst \
-					morphology/punctuation.tmp.xfst
-	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
-			read regex [@\"$<\"];\n\
-		read regex @\"morphology/punctuation.tmp.xfst\"                         \
-			;\n\
-		union net\n\
-		invert net\n\
-			cleanup net\n\
-		save stack $@\n\
-		quit\n" | $(XFST) $(VERBOSITY)
-
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######
 ##################################################################
