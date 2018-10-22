@@ -573,8 +573,8 @@ LEXICON LIK_DERIVATION_SUF
 @U.Cap.Opt@@C.Cap@ LIK_DERIVATION_CAP ;         ! proper name must be downcased
 
 LEXICON LIK_DERIVATION_CAP
-            +Der/lik+A:»l´ik ELANIK ;           ! elajalik etc
-            +Der/lik+A:»l´ikk US_DERIVATION ;  ! elajalikkus etc
+            +Der/lik+A:»l˘ik ELANIK ;           ! elajalik etc
+            +Der/lik+A:»l˘ikk US_DERIVATION ;  ! elajalikkus etc
 
 LEXICON LINE_DERIVATION
   @P.Der.A@@C.NeedAdj@ LINE_DERIVATION_SUF ; ! the compounding algorithm needs a noun to be derived into adj,
@@ -586,7 +586,7 @@ LEXICON KOND_DERIVATION
   @P.Der.N@ KOND_DERIVATION_SUF ;
 
 LEXICON KOND_DERIVATION_SUF
-           +Der/kond+N:»k´onnD1%>%{pl.i%} PIIM ;  ! elajaskond etc
+           +Der/kond+N:»k˘onD1%>%{pl.i%} PIIM ;  ! elajaskond etc
            +Der/kond+N:»konni TI_DERIVATION ;     ! elanikkonniti
 
 LEXICON US_DERIVATION

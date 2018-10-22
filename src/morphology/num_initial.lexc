@@ -10,21 +10,21 @@ LEXICON Root
  
 LEXICON CompoundNumerals
 
-üks:´ü KAKS ;
-kaks:k´a KAKS ;
-kolm:k´olm%>%{pl.i%}%{rare%} EIT ;
-neli:n´elʲJ1%>%{pl.u%} PIIM ;
-viis:v´iiS1%{stemill%} VARS ;
-kuus:k´uuS1%{stemill%} VARS ;
-seitse:s´eitsE2 HAARE ;
+üks:˘ü KAKS ;
+kaks:k˘a KAKS ;
+kolm:k˘olm%>%{pl.i%}%{rare%} EIT ;
+neli:n˘elʲJ1%>%{pl.u%} PIIM ;
+viis:v˘iiS1%{stemill%} VARS ;
+kuus:k˘uuS1%{stemill%} VARS ;
+seitse:s˘eitsE2 HAARE ;
 kaheksa:kaheksa AASTA ;
 üheksa:üheksa AASTA ;
 ! kümme+Num+Card:kümmE2 SEEME ;
 
-paar:p´aar TAUD ;
-pool:p´ool%{stemill%} KEEL ;
+paar:p˘aar TAUD ;
+pool:p˘ool%{stemill%} KEEL ;
 ! sada:saD1J1a%>%{pl.u%} SADA ;
 
-mitu:m´ittU2 HAARE ;
+mitu:m˘ittU2 HAARE ;
 mõni:mõnD3 MÕNI ;
-poolteist:p´ool POOLTEIST ;
+poolteist:p˘ool POOLTEIST ;

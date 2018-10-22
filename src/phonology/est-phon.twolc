@@ -6,6 +6,9 @@ Alphabet
 a b c d e f g h i j k l m n o p q r s š z ž t u v w õ ä ö ü x y 
 A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y 
 '
+!! Sami GT convention for quoatation marks
+ »7     !! * »
+ «7     !! * «
 
 !! !Triggers
 
@@ -297,9 +300,9 @@ Diacritics
 ! Stress, 3rd grade and palatalisation marks 
 ! Originally in the Filosoft lexicon; keep them for future 
  
-´    ! kolmas aste ! 3rd grade: l´aud
-`    ! rõhk        ! stress: sem`antiline
-ʲ        ! peenendus   ! palatalisation: k´onʲt
+˘    ! kolmas aste ! 3rd grade: l˘aud
+ˈ        ! rõhk        ! stress: semˈantiline
+ʲ        ! peenendus   ! palatalisation: k˘onʲt
 
 ;
 

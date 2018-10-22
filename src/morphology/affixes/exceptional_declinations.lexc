@@ -326,21 +326,21 @@ LEXICON LAPS    ! only laps, uks; notice the weird (?) use of {W}
 
 LEXICON LAPSELAPS    ! only lapselaps; the N_PL_SUBPARA is different...
 
-                  :lapse%#l´aP1s SG_NOMINATIVE ;    ! laps
-                  :lapse%#l´aP1se N_SG_SUBPARA ;    ! lapse etc 
-                  :lapse%#l´aP1s%{W%}%>t SG_PARTITIVE ;    ! last
-                  :lapse%#l´aP1se%>sse SG_ILLATIVE ;    ! lapsesse 
-                  :laste%#l´aP1s%{W%} TE_PL ;    ! laste etc 
-                  :lapse%#l´aP1s%>i PL_PARTITIVE ;    ! lapsi
+                  :lapse%#l˘aP1s SG_NOMINATIVE ;    ! laps
+                  :lapse%#l˘aP1se N_SG_SUBPARA ;    ! lapse etc 
+                  :lapse%#l˘aP1s%{W%}%>t SG_PARTITIVE ;    ! last
+                  :lapse%#l˘aP1se%>sse SG_ILLATIVE ;    ! lapsesse 
+                  :laste%#l˘aP1s%{W%} TE_PL ;    ! laste etc 
+                  :lapse%#l˘aP1s%>i PL_PARTITIVE ;    ! lapsi
 
 LEXICON LAPSELAPSELAPS    ! only lapselapselaps; the N_PL_SUBPARA is different...
 
-                  :lapse%#lapse%#l´aP1s SG_NOMINATIVE ;    ! laps
-                  :lapse%#lapse%#l´aP1se N_SG_SUBPARA ;    ! lapse etc 
-                  :lapse%#lapse%#l´aP1s%{W%}%>t SG_PARTITIVE ;    ! last
-                  :lapse%#lapse%#l´aP1se%>sse SG_ILLATIVE ;    ! lapsesse 
-                  :laste%#laste%#l´aP1s%{W%} TE_PL ;    ! laste etc 
-                  :lapse%#lapse%#l´aP1s%>i PL_PARTITIVE ;    ! lapsi
+                  :lapse%#lapse%#l˘aP1s SG_NOMINATIVE ;    ! laps
+                  :lapse%#lapse%#l˘aP1se N_SG_SUBPARA ;    ! lapse etc 
+                  :lapse%#lapse%#l˘aP1s%{W%}%>t SG_PARTITIVE ;    ! last
+                  :lapse%#lapse%#l˘aP1se%>sse SG_ILLATIVE ;    ! lapsesse 
+                  :laste%#laste%#l˘aP1s%{W%} TE_PL ;    ! laste etc 
+                  :lapse%#lapse%#l˘aP1s%>i PL_PARTITIVE ;    ! lapsi
 
 LEXICON LÕUNA    ! only lõuna; almost like haare
 
