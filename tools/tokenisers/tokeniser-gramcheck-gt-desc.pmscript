@@ -47,7 +47,6 @@ Define flags [          ! explicit list since `?` does not match flags
     | "@D.SpaceCmp.ON@"
     | "@C.SpaceCmp@"
 |  "@U.Cap.Obl@" | "@U.Cap.Opt@" | "@C.Cap@" | 
-  "@D.Word@" | "@P.Word.One@" | "@R.Word.One@" | "@P.Word.Two@" | "@R.Word.Two@" | 
   "@D.Part@" | "@P.Part.One@" | "@R.Part.One@" | "@D.Part.One@" | 
                "@P.Part.Two@" | "@R.Part.Two@" | "@P.Part.Three@" | "@P.Part.Bad@" | "@C.Part@" | 
   "@P.Bad.Nonfinal@" | "@D.Bad.Nonfinal@" | "@C.Bad@" | 
