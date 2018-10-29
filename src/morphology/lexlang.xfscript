@@ -30,10 +30,8 @@ define Punct [ "-" | "%" | "." | "," | ";" | ":" | "!" | "?" | %' | %‘ | %’ 
 
 define Flag [ 
   "@U.Cap.Obl@" | "@U.Cap.Opt@" | "@C.Cap@" | 
-  "@D.Word@" | "@P.Word.One@" | "@R.Word.One@" | "@P.Word.Two@" | "@R.Word.Two@" | 
   "@D.Part@" | "@P.Part.One@" | "@R.Part.One@" | "@D.Part.One@" | 
                "@P.Part.Two@" | "@R.Part.Two@" | "@P.Part.Three@" | "@P.Part.Bad@" | "@C.Part@" | 
-  "@P.Bad.Nonfinal@" | "@D.Bad.Nonfinal@" | "@C.Bad@" | 
   "@R.POS.A@" | "@P.POS.A@" | "@R.POS.AComp@" | "@P.POS.AComp@" | "@R.POS.N@" | "@P.POS.N@" | 
   "@R.POS.NProp@" | "@P.POS.NProp@" | "@R.POS.GA@" | "@P.POS.GA@" | "@R.POS.IntNum@" | "@P.POS.IntNum@" | 
   "@R.POS.NonIntNum@" | "@P.POS.NonIntNum@" | "@R.POS.NumCardCompound@" | "@P.POS.NumCardCompound@" | 
@@ -46,6 +44,9 @@ define Flag [
   "@P.Der.kas@" | "@D.Der.kas@" | "@R.Der.us@" | "@P.Der.us@" | "@D.Der.us@" | "@P.Der.ist@" | 
   "@P.Der.m@" | "@P.Der.im@" | "@P.Der.N@" | "@D.Der.N@" | "@P.Der.A@" | "@D.Der.A@" | "@P.Der.Adv@" | "@D.Der.Adv@" | 
   "@D.Der@" | "@C.Der@" | 
+  "@P.Stem.Single@" | "@R.Stem.Single@" | "@D.Stem.Single@" |
+  "@P.Stem.Final@" | "@R.Stem.Final@" | "@D.Stem.Final@" |
+  "@P.Stem.Nom@" | "@R.Stem.Nom@" | "@D.Stem.Nom@" |
   "@P.Stem.ise@" | "@R.Stem.ise@" | "@D.Stem.ise@" | "@P.Stem.vähe@" | "@R.Stem.vähe@" | "@D.Stem.vähe@" | 
   "@P.Stem.topelt@" | "@R.Stem.topelt@" | "@D.Stem.topelt@" | "@C.Stem@" | 
   "@P.NeedAdj.On@" | "@R.NeedAdj@" | "@D.NeedAdj@" | "@C.NeedAdj@" | 

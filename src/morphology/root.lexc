@@ -555,14 +555,16 @@ Multichar_Symbols
 
 
 !! !Muud / Other tags
+!! Copied from Sami root.lexc
 
 ! +Der  !!≈ * @CODE@: Keelest sõltumatutes filtrites? / In language-independent filters ?
 !! !Symbols that need to be escaped on the lower side (towards twolc):
 
  »7     !! * »
  «7     !! * «
- %[%>%] !! * > (written with square brackets, see the root.lexc file)
- %[%<%] !! * < (written with square brackets, see the root.lexc file)
+ %[%>%] !! * > (escaped with square brackets, to avoid collision with > as morpheme boundary)
+ %[%<%] !! * < (escaped with square brackets, to avoid collision with < as morpheme boundary)
+
 
 '7  !!≈ * @CODE@  7 is the real apostrophe ?? 
 ! "😱"  !! {{@CODE@}} is used in some languages to prefix # in dynamic compounds
@@ -596,11 +598,6 @@ Multichar_Symbols
  @P.Part.Three@      !!≈ | @CODE@ | Indicate that this could be the third part of a compound
  @P.Part.Bad@        !!≈ | @CODE@ | Indicate that this cannot be a part of a compound
  @C.Part@
-
-!! A special flag for limiting compounding
- @P.Bad.Nonfinal@       !!≈ | @CODE@ | Indicate that this can only be the last part of a compound
- @D.Bad.Nonfinal@       !!≈ | @CODE@ | Disallow a non-final part of a compound
- @C.Bad@
 
 !! POS is used for filtering derivations and compounds
  @R.POS.A@
@@ -646,6 +643,7 @@ Multichar_Symbols
 !! Case is used for filtering derivations and compounds
  @R.Case.Nom@
  @P.Case.Nom@
+ @D.Case.Nom@   ! previous word should not be SgNom
  @R.Case.Gen@
  @P.Case.Gen@
  @R.Case.Par@
@@ -659,7 +657,6 @@ Multichar_Symbols
  @R.Case.Short@  ! no case because stem is shortened (astraal-, nais-)
  @P.Case.Short@
  @D.Case@
- @D.Case.Nom@   ! a word does not allow the previous word to be SgNom
  @C.Case@  ! initialise case flag
 
 !! Remember there has been some derivation from A or N; for filtering compounds
@@ -682,6 +679,16 @@ Multichar_Symbols
  @C.Der@
 
 !! Remember the stem type; for filtering compounds 
+ @P.Stem.Single@   ! does not participate in compounding
+ @R.Stem.Single@
+ @D.Stem.Single@
+ @P.Stem.Final@   ! may be only the last part 
+ @R.Stem.Final@
+ @D.Stem.Final@
+ @P.Stem.Nom@   ! Even if this word is Sg Nom, smth may follow it 
+ @R.Stem.Nom@
+ @D.Stem.Nom@
+
  @P.Stem.ise@   ! enese + anything
  @R.Stem.ise@
  @D.Stem.ise@
@@ -712,10 +719,10 @@ Multichar_Symbols
  @C.NeedDerNe@
 
 !! Sg Nom is allowed as first part of a compound only for some words
- @P.NomStem.First@
- @R.NomStem.First@
- @D.NomStem.First@
- @C.NomStem@
+! @P.NomStem.First@
+! @R.NomStem.First@
+! @D.NomStem.First@
+! @C.NomStem@
 
 ! Morphophonology
 
@@ -893,7 +900,8 @@ LEXICON Nonfirst
 
 ! D.Der means that the previous word should not be a derived one;
 ! it may be too restrictive here...
-  @D.Bad.Nonfinal@@C.Cap@@D.Case.PlNom@@D.Der.N@@D.Der.A@@D.Der.Adv@ Latter ;   ! a latter part
+! previous word should not be allowed only single, nor one that can be only final
+  @D.Stem.Single@@D.Stem.Final@@C.Cap@@D.Case.PlNom@@D.Der.N@@D.Der.A@@D.Der.Adv@ Latter ;   ! a latter part
 
 LEXICON Single     !! strictly simplex words; cannot be a part of a compound
 
@@ -942,8 +950,8 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.Pref@ LatterAdjectiveComp ;  ! inimtühjem
   @R.Case.Short@ LatterAdjective ;  ! vaatamispunane, astraalpunane
 
-  @R.POS.N@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ; ! laudõiekas
-  @R.POS.N@@R.Case.Nom@@D.NomStem.First@ LatterAdjective_ne ; ! aerjalgne
+  @R.POS.N@@R.Case.Nom@@R.Stem.Nom@ LatterAdjective ; ! laudõiekas
+  @R.POS.N@@R.Case.Nom@@D.Stem.Nom@ LatterAdjective_ne ; ! aerjalgne
   @R.POS.N@@R.Case.Gen@ LatterAdjective_ne ; ! lauapunane, laudadepunane
   @R.POS.N@@R.Case.Gen@ PlainLatterAdjective ; ! lauaahastuslik
   @R.POS.N@@R.Case.Par@ LatterAdjective_v ; ! mägejuhtiv
@@ -951,7 +959,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
   @R.POS.GA@ LatterAdjective_ne ; ! himaalajajalgne
 
-  @R.POS.IntNum@@R.Case.Nom@@D.Der.kas@@R.NomStem.First@ LatterAdjective ; ! poolraske
+  @R.POS.IntNum@@R.Case.Nom@@D.Der.kas@@R.Stem.Nom@ LatterAdjective ; ! poolraske
   @R.POS.IntNum@@R.Case.Gen@ LatterAdjective_ne ;          ! viiemeetrine
   @R.POS.IntNum@@R.Case.Gen@@P.NeedDerNe.On@ Nouns ;        ! viieautone
   @R.POS.NumCardCompound@@R.Case.Gen@ LatterAdjective_ne ; ! kahekümnemeetrine
@@ -959,12 +967,12 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.Num@ LatterAdjective_ne ;                       ! 5punane, 3järguline
   @R.POS.Num@@P.NeedDerNe.On@ Nouns ;                    ! 5-autone
  
-  @R.POS.A@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ;  ! rämepunane
+  @R.POS.A@@R.Case.Nom@@R.Stem.Nom@ LatterAdjective ;  ! rämepunane
   @R.POS.A@@R.Case.Gen@ LatterAdjective_ne ;  ! suureruuduline
   @R.POS.A@@R.Case.Ine@ LatterAdjective_ne ; ! punnispunane
   @R.Der.us@@R.Case.Nom@ LatterAdjective_ne ;  ! funktsionaalsusjalgne
 
-  @R.POS.AComp@@R.Case.Nom@@R.NomStem.First@ LatterAdjective ;  ! enampunane, enimpunane
+  @R.POS.AComp@@R.Case.Nom@@R.Stem.Nom@ LatterAdjective ;  ! enampunane, enimpunane
   @R.POS.AComp@@R.Case.Gen@ LatterAdjective_ne ;  ! enamaruuduline, enimaruuduline
 
 ! NB only some pronouns !
@@ -984,8 +992,8 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.Case.Short@ LatterNoun ;              ! astraallaud, ekstrariiul
   @R.Case.Short@ LatterGenitiveAttribute ;   ! astraalkreeka
 
-  @R.POS.N@@R.Case.Nom@@R.NomStem.First@ LatterNoun ;
-!  @R.POS.N@@R.Case.Nom@@D.NomStem.First@@R.Part.Two@@P.Part.Bad@ LatterNoun ; ! only 2-part compounds: huulhein, helmeskate
+  @R.POS.N@@R.Case.Nom@@R.Stem.Nom@ LatterNoun ;
+!  @R.POS.N@@R.Case.Nom@@D.Stem.Nom@@R.Part.Two@@P.Part.Bad@ LatterNoun ; ! only 2-part compounds: huulhein, helmeskate
   @R.POS.N@@R.Case.Gen@ LatterNoun ;             ! lauariiul
   @R.POS.N@@R.Case.Gen@ LatterGenitiveAttribute ;             ! lauakreeka
   @R.POS.IntNum@@R.Case.Nom@@D.Der.kas@ LatterNoun ;       ! neliriiul
@@ -993,10 +1001,10 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.IntNum@@R.Case.Gen@ LatterNoun ;       ! neljariiul, neljakariiul
 
 ! NB only short adjectives are good here !!!
-  @R.POS.A@@R.Case.Nom@@R.NomStem.First@@D.Der.kas@ LatterNoun ;   ! lapikriiul, NOT pruunjasriiul (?)
-  @R.POS.AComp@@R.Case.Nom@@R.NomStem.First@ LatterNoun ;   ! enamriiul, enimriiul
+  @R.POS.A@@R.Case.Nom@@R.Stem.Nom@@D.Der.kas@ LatterNoun ;   ! lapikriiul, NOT pruunjasriiul (?)
+  @R.POS.AComp@@R.Case.Nom@@R.Stem.Nom@ LatterNoun ;   ! enamriiul, enimriiul
 
-  @R.Der.us@@R.Case.Nom@@D.NomStem.First@ LatterNoun ;  ! funktsionaalsusriiul
+  @R.Der.us@@R.Case.Nom@@D.Stem.Nom@ LatterNoun ;  ! funktsionaalsusriiul
 
 ! NB only enese, enda !
   @R.POS.Pron@@R.Case.Gen@@R.Stem.ise@ LatterNoun ;        ! eneseabi, enesekriitika etc 
@@ -1014,12 +1022,12 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
 ! x + numeral
   @R.POS.Pref@@P.POS.IntNum@ IntegerNumerals ;  ! esiviisteist, esikolmekas
-  @R.POS.N@@R.Case.Gen@@P.POS.IntNum@@C.Der@@C.NomStem@@P.NeedNoun.On@ IntegerNumerals ;   ! arvuti + kolmekas
-  @R.POS.NumCardCompound@@R.Case.Gen@@P.POS.IntNum@@C.Der@@C.NomStem@@P.NeedNoun.On@ IntegerNumerals ;   ! kahekümne + kolmekas
+  @R.POS.N@@R.Case.Gen@@P.POS.IntNum@@C.Der@@C.Stem@@P.NeedNoun.On@ IntegerNumerals ;   ! arvuti + kolmekas
+  @R.POS.NumCardCompound@@R.Case.Gen@@P.POS.IntNum@@C.Der@@C.Stem@@P.NeedNoun.On@ IntegerNumerals ;   ! kahekümne + kolmekas
 
 ! x + adverb
   @R.POS.Pref@@P.POS.Adv@@P.NeedPartThree.On@ CompoundingAdverbs ;  ! era+ratsa+baas, era+järel+valvama+Der/ja 
-  @R.POS.N@@R.Case.Nom@@R.NomStem.First@@P.POS.Adv@@C.Case@@P.NeedPartThree.On@ CompoundingAdverbs ;  ! ehitus+järel+valvama+Der/ja 
+  @R.POS.N@@R.Case.Nom@@R.Stem.Nom@@P.POS.Adv@@C.Case@@P.NeedPartThree.On@ CompoundingAdverbs ;  ! ehitus+järel+valvama+Der/ja 
   @R.POS.N@@R.Case.Gen@@P.POS.Adv@@C.Case@@P.NeedPartThree.On@ CompoundingAdverbs ;  ! ehitus+järel+valvama+Der/ja 
 
 ! x + verb derivation
@@ -1031,7 +1039,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.N@@R.Case.Gen@ LatterVerb ;   ! lauajooksja
   @R.POS.N@@R.Case.Par@ LatterVerb ;   ! laudajooksnud
 
-  @R.POS.N@@R.Case.Nom@@R.NomStem.First@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
+  @R.POS.N@@R.Case.Nom@@R.Stem.Nom@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
   @R.POS.N@@R.Case.Sem@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
   @R.POS.N@@R.Case.Short@ AnyLatterVerb ;  ! investeerimisnõustamine
 
@@ -1042,10 +1050,10 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.GA@@P.Case.Gen@ LatterVerb ;   ! eestivihkaja
 
 ! NB only short adjectives are good here !!!
-  @R.POS.A@@R.Case.Nom@@R.NomStem.First@@D.Der.kas@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
-  @R.POS.AComp@@R.Case.Nom@@R.NomStem.First@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
+  @R.POS.A@@R.Case.Nom@@R.Stem.Nom@@D.Der.kas@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
+  @R.POS.AComp@@R.Case.Nom@@R.Stem.Nom@ AnyLatterVerb ;  ! map orig. case flag for derivation needs
 
-  @R.Der.us@@R.Case.Nom@@D.NomStem.First@@P.Case.Gen@ LatterVerb ;  ! funktsionaalsusjõramine, kindlustusjõramine
+  @R.Der.us@@R.Case.Nom@@D.Stem.Nom@@P.Case.Gen@ LatterVerb ;  ! funktsionaalsusjõramine, kindlustusjõramine
 
 
 ! NB only short and good adverbs here !!!
@@ -1067,50 +1075,50 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.IntNum@@R.Case.Nom@@D.Der.kas@ AdjAfterNumeralNom ;          ! kolmkeelne
   @R.POS.IntNum@@R.Case.Gen@@P.POS.Adv@ AdvAfterNumeral ;  ! seitsmekaupa
 
-  @R.POS.N@@R.Case.Nom@@P.POS.Adv@@C.Der@@C.NomStem@ AdvAfterNounNom ;  ! riiulhaaval
-  @R.POS.N@@R.Case.Gen@@P.POS.Adv@@C.Der@@C.NomStem@ AdvAfterNounGen ;  ! riiulihaaval
-  @R.POS.N@@R.Case.Par@@P.POS.Adv@@C.Der@@C.NomStem@ AdvAfterNounPar ;  ! riiulitpidi
+  @R.POS.N@@R.Case.Nom@@P.POS.Adv@@C.Der@@C.Stem@ AdvAfterNounNom ;  ! riiulhaaval
+  @R.POS.N@@R.Case.Gen@@P.POS.Adv@@C.Der@@C.Stem@ AdvAfterNounGen ;  ! riiulihaaval
+  @R.POS.N@@R.Case.Par@@P.POS.Adv@@C.Der@@C.Stem@ AdvAfterNounPar ;  ! riiulitpidi
 
   @R.POS.GA@@P.POS.A@ AdjAfterGenAttrib ;                     ! himaalajapoolne
   @R.POS.GA@@P.POS.N@ NounFinalComp ;                         ! himaalajamees
 
-  @R.POS.A@@R.Case.Gen@@P.POS.A@@C.Der@@C.NomStem@ AdjAfterAdjGen ;      ! hapukavõitu
-  @R.POS.AComp@@R.Case.Gen@@P.POS.A@@C.Der@@C.NomStem@ AdjAfterAdjGen ;  ! hapukamavõitu
-  @R.POS.A@@R.Case.Gen@@P.POS.N@@C.Der@@C.NomStem@ NounFinalComp ;       ! hapukavahend
+  @R.POS.A@@R.Case.Gen@@P.POS.A@@C.Der@@C.Stem@ AdjAfterAdjGen ;      ! hapukavõitu
+  @R.POS.AComp@@R.Case.Gen@@P.POS.A@@C.Der@@C.Stem@ AdjAfterAdjGen ;  ! hapukamavõitu
+  @R.POS.A@@R.Case.Gen@@P.POS.N@@C.Der@@C.Stem@ NounFinalComp ;       ! hapukavahend
 
-  @R.POS.N@@R.Case.Short@@P.POS.A@@C.Der@@C.NomStem@ VäärtFinal ;    ! kiitmisväärt
+  @R.POS.N@@R.Case.Short@@P.POS.A@@C.Der@@C.Stem@ VäärtFinal ;    ! kiitmisväärt
 ! --------------------------------
 
 LEXICON LatterAdjective
 
-  @P.POS.A@@C.Der@@C.NomStem@ Adjectives ;              !!= * {{@CODE@}}
+  @P.POS.A@@C.Der@@C.Stem@ Adjectives ;              !!= * {{@CODE@}}
 
 LEXICON LatterAdjective_ne
 
-  @P.POS.A@@C.Der@@C.NomStem@ Adjectives_ne ;              !!= * {{@CODE@}}
+  @P.POS.A@@C.Der@@C.Stem@ Adjectives_ne ;              !!= * {{@CODE@}}
   @P.NeedAdj.On@@D.NeedDerNe@ LatterNoun ;                 !! järguline	järk+N+Der/line+A  redellik redel+N+Der/lik+A     NOT -autone
 
 LEXICON LatterAdjective_v
 
-  @P.POS.A@@C.Der@@C.NomStem@ Adjectives_v ;              !!= * {{@CODE@}}
+  @P.POS.A@@C.Der@@C.Stem@ Adjectives_v ;              !!= * {{@CODE@}}
 
 LEXICON PlainLatterAdjective
 
-  @P.POS.A@@C.Der@@C.NomStem@ PlainAdjectives ;              !!= * {{@CODE@}}
+  @P.POS.A@@C.Der@@C.Stem@ PlainAdjectives ;              !!= * {{@CODE@}}
 
 LEXICON LatterAdjectiveComp
 
-  @P.POS.AComp@@C.Der@@C.NomStem@ ComparativeAdjectives ;              !!= * {{@CODE@}}
-  @P.POS.AComp@@C.Der@@C.NomStem@ SuperlativeAdjectives ;              !!= * {{@CODE@}}
+  @P.POS.AComp@@C.Der@@C.Stem@ ComparativeAdjectives ;              !!= * {{@CODE@}}
+  @P.POS.AComp@@C.Der@@C.Stem@ SuperlativeAdjectives ;              !!= * {{@CODE@}}
 
 LEXICON LatterNoun
-  @P.POS.N@@C.Der@@C.NomStem@ Nouns ;
+  @P.POS.N@@C.Der@@C.Stem@ Nouns ;
 
 LEXICON LatterProperNoun
-  @P.POS.NProp@@C.Der@@C.NomStem@@P.NeedAdj.On@@U.Cap.Opt@  ProperNouns ;    ! derived into an adjective
+  @P.POS.NProp@@C.Der@@C.Stem@@P.NeedAdj.On@@U.Cap.Opt@  ProperNouns ;    ! derived into an adjective
 
 LEXICON LatterDeverbal
-  @P.POS.N@@C.Der@@C.NomStem@ DeverbalNouns ;    
+  @P.POS.N@@C.Der@@C.Stem@ DeverbalNouns ;    
 
 LEXICON LatterGenitiveAttribute
   @P.POS.GA@@P.Case.Gen@ GenitiveAttributes ;   ! -kreeka

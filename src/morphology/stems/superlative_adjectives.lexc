@@ -1,7 +1,7 @@
 LEXICON SuperlativeAdjectives
 
 edukaim+A+Superl:edukaim MAGUS ;
-@P.NomStem.First@enim+A+Superl:@P.NomStem.First@enim MAGUS ;
+@P.Stem.Nom@enim+A+Superl:@P.Stem.Nom@enim MAGUS ;
 ergim+A+Superl:ergim MAGUS ;
 esinduslikem+A+Superl:esinduslikem MAGUS ;
 halvim+A+Superl:halʲvim MAGUS ;
@@ -65,7 +65,7 @@ vaeseim+A+Superl:v˘aeseim MAGUS ;
 vanim+A+Superl:vanʲim MAGUS ;
 virgim+A+Superl:virgim MAGUS ;
 võimsaim+A+Superl:v˘õimsaim MAGUS ;
-@P.NomStem.First@vähim+A+Superl:@P.NomStem.First@vähim MAGUS ;
+@P.Stem.Nom@vähim+A+Superl:@P.Stem.Nom@vähim MAGUS ;
 väikseim+A+Superl:v˘äikseim MAGUS ;
 õrnim+A+Superl:õrnim MAGUS ;
-@P.NomStem.First@ülim+A+Superl:@P.NomStem.First@ülim MAGUS ;
+@P.Stem.Nom@ülim+A+Superl:@P.Stem.Nom@ülim MAGUS ;

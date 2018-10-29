@@ -63,14 +63,14 @@ echo '  @R.POS.IntNum@@R.Case.Nom@ AdjAfterNumeralNom ;' >> final_components.lex
 #echo ' @R.POS.A@@R.Case.Gen@ AfterAdjectiveGen ;\n' >> final_components.lexc
 #echo ' @R.POS.AComp@@R.Case.Gen@ AfterCompAdjectiveGen ;\n' >> final_components.lexc
 echo '  @R.POS.IntNum@@R.Case.Gen@@P.POS.Adv@ AdvAfterNumeral ;' >> final_components.lexc
-echo '  @R.POS.N@@P.POS.N@@C.Der@@C.NomStem@ NounFinalComp ;  ! insufficient flag diacritics' >> final_components.lexc
-echo '  @R.POS.N@@R.Case.Nom@@P.POS.Adv@@C.Der@@C.NomStem@ AdvAfterNounNom ;' >> final_components.lexc
-echo '  @R.POS.N@@R.Case.Gen@@P.POS.Adv@@C.Der@@C.NomStem@ AdvAfterNounGen ;' >> final_components.lexc
-echo '  @R.POS.N@@R.Case.Par@@P.POS.Adv@@C.Der@@C.NomStem@ AdvAfterNounPar ;' >> final_components.lexc
+echo '  @R.POS.N@@P.POS.N@@C.Der@@C.Stem@ NounFinalComp ;  ! insufficient flag diacritics' >> final_components.lexc
+echo '  @R.POS.N@@R.Case.Nom@@P.POS.Adv@@C.Der@@C.Stem@ AdvAfterNounNom ;' >> final_components.lexc
+echo '  @R.POS.N@@R.Case.Gen@@P.POS.Adv@@C.Der@@C.Stem@ AdvAfterNounGen ;' >> final_components.lexc
+echo '  @R.POS.N@@R.Case.Par@@P.POS.Adv@@C.Der@@C.Stem@ AdvAfterNounPar ;' >> final_components.lexc
 echo '  @R.POS.GA@@P.POS.A@ AdjAfterGenAttrib ;' >> final_components.lexc
-echo '  @R.POS.A@@R.Case.Gen@@P.POS.A@@C.Der@@C.NomStem@ AdjAfterAdjGen ;' >> final_components.lexc
-echo '  @R.POS.AComp@@R.Case.Gen@@P.POS.A@@C.Der@@C.NomStem@ AdjAfterAdjGen ;' >> final_components.lexc
-echo '  @R.POS.AComp@@R.Case.Short@@P.POS.A@@C.Der@@C.NomStem@ VäärtFinal ;' >> final_components.lexc
+echo '  @R.POS.A@@R.Case.Gen@@P.POS.A@@C.Der@@C.Stem@ AdjAfterAdjGen ;' >> final_components.lexc
+echo '  @R.POS.AComp@@R.Case.Gen@@P.POS.A@@C.Der@@C.Stem@ AdjAfterAdjGen ;' >> final_components.lexc
+echo '  @R.POS.AComp@@R.Case.Short@@P.POS.A@@C.Der@@C.Stem@ VäärtFinal ;' >> final_components.lexc
 
 
 echo '\nLEXICON AdjAfterNumeralNom\n' >> final_components.lexc

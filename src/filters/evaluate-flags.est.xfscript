@@ -1,17 +1,15 @@
 # decide if the traversed path is actually a valid word,
 # by looking at the values of flag diacritics (that were set while traversing the path)
 
-# the commented out part is part of trials during development
-# the main motivation is to filter out unlikely compounds that consist of short words
-#define Req "@D.NeedAdj@" ;
-#define Three "@D.Part.Three@" ;
-# example: filter out all 3-part compounds that are not in semantic case or sg nom
-#regex ["@R.Part.Three@" Req ["@R.Case.Sem@" | "@R.Case.Nom@"]] | ["@R.Part.Two@" Req] | "@R.Part.One@" | "@R.Part.Bad@";
-# example: allow only 3-part compounds, nothing else
-#regex ["@R.Part.Three@" Req ] ;
-
 # at the end of a (compound) word, we should'n be waiting for an adj, noun, Der/ne, or for part three
-# and the last word shouldn't be an acronym that ends with minus and thus suits only in compounds
+define FalseExpectation ["@D.NeedAdj@" "@D.NeedNoun@" "@D.NeedDerNe@" "@D.NeedPartThree@"] ;
 
-regex "@D.NeedAdj@" "@D.NeedNoun@" "@D.NeedDerNe@" "@D.NeedPartThree@" "@D.POS.ACRMinus@" ;
+# the last word shouldn't be an acronym that ends with minus and thus suits only in compounds
+define BadMinus "@D.POS.ACRMinus@" ;
+
+# a word that cannot participate in compounds must be the first and only part of a word
+define EvaluateSingle ["@R.Part.One@" | ["@D.Part.One@" "@D.Stem.Single@"]] ;
+
+# check all the flags that eliminate paths
+regex EvaluateSingle FalseExpectation BadMinus ;
 

@@ -18,7 +18,7 @@ miljon+Num+Card:m˘ilʲjon REDEL ;
 neli+Num+Card:n˘elʲJ1%>%{pl.u%} PIIM ;
 null+Num+Card:n˘ulʲl TAUD ;
 paar+Num+Card:p˘aar TAUD ;
-@P.NomStem.First@pool+Num+Card:@P.NomStem.First@p˘ool%{stemill%} KEEL ;
+@P.Stem.Nom@pool+Num+Card:@P.Stem.Nom@p˘ool%{stemill%} KEEL ;
 sadakond+Num+Card:sˈadak˘onD1%>%{pl.i%} PÄEV ;
 sada+Num+Card:saJ1D1a%>%{pl.u%} SADA ;
 seitse+Num+Card:s˘eitsE2 HAARE ;
