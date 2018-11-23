@@ -190,7 +190,7 @@ LEXICON MUUSEUM    ! VVS 2 & 19 (productive)
 LEXICON PIIM    ! VVS 22; (unproductive) i.e. unstable type (passiivne muuttüüp) sepp, kaup, ...
 
               : SG_NOMINATIVE ;
-              :%{sg.a%} 1C ;
+              :%{stemill%}%{sg.a%} 1C ;
               :a US_DERIVATION ;
               : LIK_DERIVATION ;          ! NB! not checked on real usage
               :a%{W%} LIK_DERIVATION ;         ! NB! not checked on real usage
@@ -198,21 +198,21 @@ LEXICON PIIM    ! VVS 22; (unproductive) i.e. unstable type (passiivne muuttüü
 LEXICON KOON    ! VVS 22; (unproductive) i.e. unstable type (passiivne muuttüüp) lõpp, laug
 
               : SG_NOMINATIVE ;
-              :%{sg.u%} 1C ;
+              :%{stemill%}%{sg.u%} 1C ;
               : LIK_DERIVATION ;          ! NB! not checked on real usage
               :u%{W%} LIK_DERIVATION ;         ! NB! not checked on real usage
 
 LEXICON EIT    ! VVS 22; (unproductive) i.e. unstable type (passiivne muuttüüp) kuusk, kärg
 
               : SG_NOMINATIVE ;
-              :%{sg.e%} 1C ;
+              :%{stemill%}%{sg.e%} 1C ;
               : LIK_DERIVATION ;          ! NB! not checked on real usage
               :e%{W%} LIK_DERIVATION ;         ! NB! not checked on real usage
 
 LEXICON TAUD    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp) siil, president, ...
 
               : SG_NOMINATIVE ;
-              :%>%{pl.e%}%{sg.i%} 1C ;    ! {pl.e} is here so it need not be in the stem lexicon
+              :%>%{pl.e%}%{stemill%}%{sg.i%} 1C ;    ! {pl.e} is here so it need not be in the stem lexicon
               : LIK_DERIVATION ;          ! NB! not checked on real usage
               :i%{W%} LIK_DERIVATION ;         ! NB! not checked on real usage
 
@@ -235,7 +235,7 @@ LEXICON KABINET    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp)
               : SG_NOMINATIVE ;    ! kabinet
                                           ! sg nom has a single final stop instead of double, 
                                           ! so it has to be doubled to get the forms right
-              :%{dbl%}%>%{pl.e%}%{sg.i%} 1C ;
+              :%{dbl%}%>%{pl.e%}%{stemill%}%{sg.i%} 1C ;
               : LIK_DERIVATION ;          ! NB! not checked on real usage
               :i%{W%} LIK_DERIVATION ;         ! NB! not checked on real usage
 
@@ -247,7 +247,7 @@ LEXICON ELANIK    ! VVS 25; (productive) i.e. stable type (aktiivne muuttüüp)
               : SG_NOMINATIVE ;    ! elanik
                                           ! sg nom has a single final stop instead of double, 
                                           ! so it has to be doubled to get the forms right
-              :%{dbl%}%{sg.u%} 1C_SG ;         ! elaniku etc
+              :%{dbl%}%{stemill%}%{sg.u%} 1C_SG ;         ! elaniku etc
               :%{dbl%}e%{W%} N_PL_SUBPARA ;    ! NB! elanike etc
      +Use/Rare:%{dbl%}%{sg.u%} DE_PL ;         ! elanikkude etc   
               :%{dbl%}%>%{pl.e%}%{sg.u%}%>%{s%}%{i%}%{d%} PL_PAR_VARIANT ;    ! elanikke; elanikkusid+Use/Rare
@@ -346,8 +346,8 @@ LEXICON 1C_SG    ! SG subpara of 1C
 
               :%{W%} N_SG_SUBPARA ;    ! koti etc
               : SG_PARTITIVE ;            ! kotti
-              : SG_ILLATIVE ;              ! kotti
-      +Use/Hyp:%{W%}%>sse SG_ILLATIVE ;    ! kotisse is very rare
+              :%{S%} SG_ILL_VARIANT ;     ! kavva
+              :%{W%} SG_ILL_VARIANT ;    ! kavasse 
 
 LEXICON DE_PL    ! PL subpara of 1C, 1V, KAVA, PERE, ...
 
@@ -441,6 +441,7 @@ LEXICON PL_PAR_VARIANT    ! for TAUD, PIIM, KOON etc types
 LEXICON SG_ILL_VARIANT    ! for KEEL etc types
 
      +Use/Rare:%>%{s%}%{s%}%{e%}%{rare%} SG_ILLATIVE ;  ! less used sg ill form for that word
+      +Use/Hyp:%>%{s%}%{s%}%{e%}%{hypo%} SG_ILLATIVE ;  ! hypothetical sg ill form for that word
               :%>%{s%}%{s%}%{e%} SG_ILLATIVE ;          ! default sg ill form for that word
 
 ! -------- these cases are (often) non-predictable from Sg Nom

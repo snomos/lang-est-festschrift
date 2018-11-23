@@ -36,6 +36,7 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
 !! It is used to pair the surface form with the usage tag of the lexical representation.
 
  %{rare%}:0       !!≈ * __@CODE@__ rare or less used form (norm) ; e.g. kingasid
+ %{hypo%}:0       !!≈ * __@CODE@__ so infrequent form (norm) that it is hypothetical; e.g. kingasse
 
 !! !Special surface side symbols, used in rule contexts
 
@@ -354,6 +355,10 @@ WS = G1 B1 D1 K1 P1 T1 G3 D3 S1 ;
 ! lexical side of consonants that participate in gradation
 ! LexGrad = G1 B1 D1 K1 P1 T1 S1 B2 K2 P2 T2 g b d k p t f s š ;
 
+! usage info
+UI =  %{rare%} %{hypo%} ;
+
+
 Definitions
 
 WordBorder = [ .#. | # ];  ! word border
@@ -376,7 +381,7 @@ AnyNoWeakTrigger  = [[ Any  - WeakGrade ] | » ];
 NullNoTrigger = [ Null - GradeTrigger ] ;
 AnyNoTrigger  = [ Any  - GradeTrigger ] ;
 
-ShortSyll = [WordBorder | :Consonant] :Vowel ;  ! short syllable
+ShortStart = WordBorder :Consonant* :Vowel ;  ! first syllable is a short one
 
 Rules 
  
@@ -508,7 +513,7 @@ Cx:Cy <=>  _ E2:e [l | r] NullNoTrigger* WordEnd ;  ! ader sg nom is not WeakGra
 
 "b d and s assimilation after lmnr"
 
-Cx:Cy <=> ShortSyll Cy _ AnyNoTrigger* WeakGrade ;
+Cx:Cy <=> [ShortStart | [k o]] Cy _ AnyNoTrigger* WeakGrade ;  ! also -kond -konna -konda
      where Cx in (B1 D1 D1 D1 S1) 
            Cy in ( m  l  n  r  r)
      matched ;
@@ -559,11 +564,11 @@ K1:0 <=> _ NullNoTrigger* G7: AnyNoTrigger* WordEnd;  ! only laskma mõskma pusk
 ! surface: p u s  0 >  k u
 
 !------- short illative stem generation
-! the rules are hard-wired to %{S%}: 
+! the rules are hard-wired to %{S%}: and ShortStart (word is C*VCV)
 
 "short illative strong stem generation: consonant doubling"
 
-0:Cy  <=>  ShortSyll NullNoTrigger* Cx:Cy _ NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ; ! majja
+0:Cy  <=>  ShortStart NullNoTrigger* Cx:Cy _ NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ; ! majja
      where Cx in ( l m M1 n r v j h s g b d k p t G1 B1 B2 D1 ) 
            Cy in ( l m  m n r v j h s k p t k p t  k  p  p  t )
      matched ;
@@ -575,7 +580,7 @@ K1:0 <=> _ NullNoTrigger* G7: AnyNoTrigger* WordEnd;  ! only laskma mõskma pusk
 
 "short illative strong stem generation: g b d to k p t"
 
-Cx:Cy <=> ShortSyll NullNoTrigger* _ :Cy NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ;
+Cx:Cy <=> ShortStart NullNoTrigger* _ :Cy NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ;
      where Cx in ( g b d ) 
            Cy in ( k p t )
      matched ;
@@ -583,21 +588,29 @@ Cx:Cy <=> ShortSyll NullNoTrigger* _ :Cy NullNoTrigger* :Vowel NullNoTrigger* St
 ! s a b 0 a > {pl.u} {rare} {stemill} {S} > {s} {s} {e}
 ! s a p p a >    0     0         0     0  0  0   0   0
 
-! the context is too specific; this is just to avoid twol warning messages about conflicting => contexts
-! (the StrongGrade trigger alone should be sufficient as context)
 "short illative strong stem generation: lexically determined stop"
 
-Cx:Cy <=>  _ (:Cy | j) NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ;
-     where Cx in ( G1 B1 B2 D1 G3 D3 G4 B4 D4) 
-           Cy in (  k  p  p  t  g  d  k  p  t)
+Cx:Cy <=> ShortStart NullNoTrigger* _ AnyNoTrigger+ StrongGrade ;
+     where Cx in ( G1 B1 B2 D1 ) 
+           Cy in (  k  p  p  t )
      matched ;
 
 ! lexical: l a G1 0 {stemill} e  {S} > {s} {s} {e}
 ! surface: l a  k k     0     e   0  >  0   0   0
+
+"short illative strong stem generation for old proper names: lexically determined stop"
+
+Cx:Cy <=>  _ (:Cy | j) NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ;
+     where Cx in ( G3 D3 G4 B4 D4) 
+           Cy in (  g  d  k  p  t)
+     matched ;
+
 ! lexical: A B4 j a {stemill} {S} > {s} {s} {e}
 ! surface: A  p j a     0      0  >  0   0   0
 ! lexical: R a n n D3 u {stemill} {S} > {s} {s} {e}
 ! surface: R a n 0  d u     0      0  >  0   0   0
+! lexical: L e e D4 u {stemill} {S} > {s} {s} {e}
+! surface: L e e  t u     0      0  >  0   0   0
 
 !--------- vowels
 
@@ -650,7 +663,7 @@ i:e  <=>  [ :Consonant | %{apo%}:' ] Null* _ Null* %> :i ;
 
 "single short high vowel lowers if it obtains a neighboring vowel after stop or s disappears"
 
-Vx:Vy  <=>  ShortSyll (LowerBackVowel:0) WS:0 Null* _  ;
+Vx:Vy  <=>  ShortStart (LowerBackVowel:0) WS:0 Null* _  ;
             [Border | Consonant] _ WS:0 :Vowel ;
        where Vx in ( i u ü %{sg.i%} %{sg.u%} )
              Vy in ( e o ö     e        o    )
@@ -1073,7 +1086,7 @@ G7:k  <=> \[:Vowel] a Null* WeakGrade %> _ ;
 
 "from -is to -i"
 
-S7:0 <=> ShortSyll :Consonant Null* %> I7: _ WordEnd ;  ! lasi
+S7:0 <=> ShortStart :Consonant Null* %> I7: _ WordEnd ;  ! lasi
          :s Null* _ ;    ! to eliminate jookssid, seissid
 
 ! lexical: p e s > I7 S7
@@ -1165,7 +1178,7 @@ Vx:0 <=> :Consonant Null* _ SuffixBorder u s ;
 ! somewhere in the stem...
 "non-third grade word cannot be stem illative"
 
-%{s%}:0  /<= ShortSyll :Consonant Null* :Vowel SuffixBorder* Null* SuffixBorder _ %{s%}:0 %{e%}:0 ;
+%{s%}:0  /<= ShortStart :Consonant Null* :Vowel SuffixBorder* Null* SuffixBorder _ %{s%}:0 %{e%}:0 ;
 
 ! p e r e {stemill} {S} > {s} {s} {e}
 ! p e r e     0      0  >  0   0   0   FAIL
@@ -1187,13 +1200,13 @@ Vx:0 <=> :Consonant Null* _ SuffixBorder u s ;
 
 "No sg stem vowel if no Pl Par with -sid (choose pl stem vowel instead)"
 
-Vx:0  <=>  %> PlSV:stemV Null* _ Null* %{s%}:0 ;
+Vx:0  <=>  %> PlSV:stemV Null* _ Null* %{s%}:0 %{i%}:0 ;
      where Vx in ( %{sg.a%} %{sg.e%} %{sg.u%} %{sg.i%} ); 
 
 "Choose pl stem vowel for Pl Par (sg stem vowel is 0) "
 
-Vx:Vy  <=>  :Consonant Null* %> _ Null+ %{s%}:0 ;     ! puud-puudi, maja - maju
-                     i Null* %> _ Null+ %{s%}:0 ;     ! sai - saiu
+Vx:Vy  <=>  :Consonant Null* %> _ Null+ %{s%}:0 %{i%}:0 ;     ! puud-puudi, maja - maju
+                     i Null* %> _ Null+ %{s%}:0 %{i%}:0 ;     ! sai - saiu
      where Vx in ( %{pl.e%} %{pl.i%} %{pl.u%} ) 
            Vy in (     e        i        u   )
      matched ;
@@ -1257,11 +1270,11 @@ Vx:0  <=> :Consonant ( J1:0 ) _ %> PlSV:Vy Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 ! ------
 ! we (mis)use 2-level formalism to prune spurious branches that emerge from continuation lexicons
 !
-! usage tag %{rare%} is used for controlling paths
+! usage tag UI is used for controlling paths
 ! that have the same lexical side, but different surface realisation
 ! so that the final lexical side has usage info indicated
 
-! (the first lexical tag %{rare%} comes from the stem lexicon, the second from a continuation class lexicon)
+! (the first lexical tag UI comes from the stem lexicon, the second from a continuation class lexicon)
 
 ! -sse sg ill cannot be rare, if the stem lexicon tag says that short form is rare;
 ! -sse sg ill cannot be common, if there is no lexicon tag that would say that short form is rare;
@@ -1283,8 +1296,8 @@ Vx:0  <=> :Consonant ( J1:0 ) _ %> PlSV:Vy Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 %{rare%}:0  =>  %{stemill%}: _ ;      ! stem illative usage tag in the lexicon follows the trigger
                        PlSV: _ ;      ! short pl partitive usage tag in the lexicon follows the plural stem vowel 
                      %{id%}: _ ;      ! -id plural partitive usage tag in the lexicon follows the trigger 
-                %{stemill%}:  %{rare%}: Any* %{s%}:0 %{s%}:0 %{e%}:0   _  ;   ! nimme is rare
-                %{stemill%}: \%{rare%}: Any* %{s%}:s %{s%}:s %{e%}:e   _  ;   ! majasse is rare
+                %{stemill%}:  %{rare%}: Any* %{s%}:0 %{s%}:0 %{e%}:0  _  ;   ! nimme is rare
+                %{stemill%}: \%{rare%}: Any* %{s%}:s %{s%}:s %{e%}:e  _  ;   ! majasse is rare
                   PlSV:stemV  %{rare%}: Any* %{s%}:0 %{i%}:0 %{d%}:0  _ ;   ! puudi is rare
                   PlSV:0     \%{rare%}: Any* %{s%}:s %{i%}:i %{d%}:d  _ ;   ! kaupasid is rare
                      %{id%}:  %{rare%}: Any* %{s%}:0 i d _  ;   ! esseid is rare
@@ -1292,10 +1305,10 @@ Vx:0  <=> :Consonant ( J1:0 ) _ %> PlSV:Vy Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 
 
 "long plural partitive cannot be common if the word already has a common short plural partitive"
-%{s%}:s    /<= PlSV:0 \%{rare%}: Any* _ %{i%}:i %{d%}:d \%{rare%}: ; 
+%{s%}:s    /<= PlSV:0 \UI: Any* _ %{i%}:i %{d%}:d \UI: ; 
 
 "short plural partitive cannot be common if the lexicon tag says it is rare"
-%{s%}:0    /<= PlSV:stemV %{rare%}: Any* _ %{i%}:0 %{d%}:0 \%{rare%}: ; 
+%{s%}:0    /<= PlSV:stemV UI: Any* _ %{i%}:0 %{d%}:0 \UI: ; 
 
 ! lexical: p u u d > {pl.i} {hyp} {sg.a} > {s} {i} {d} {rare}
 ! surface: p u u d >    i     0      0   >  0   0   0      0     
@@ -1314,10 +1327,10 @@ Vx:0  <=> :Consonant ( J1:0 ) _ %> PlSV:Vy Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 ! surface: t ü n g                   a   >  s   i   d     0    FAIL
 
 "-id plural partitive cannot be common if the lexicon tag says it is rare"
-%{s%}:0  /<=  %{id%}: %{rare%}: Any* _ i d \%{rare%}:  ;
+%{s%}:0  /<=  %{id%}: UI: Any* _ i d \UI:  ;
 
 "-sid plural partitive cannot be common if the word has a common -id plural partitive"
-%{s%}:s  /<= %{id%}: \%{rare%}: Any* _ i d \%{rare%}:  ;
+%{s%}:s  /<= %{id%}: \UI: Any* _ i d \UI:  ;
 
 ! lexical: p u u     {id}        > {s} i d {rare}
 ! surface: p u u      0          >  s  i d   0
@@ -1336,10 +1349,10 @@ Vx:0  <=> :Consonant ( J1:0 ) _ %> PlSV:Vy Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 ! --------------
 
 "long illative cannot be common if the word has a common short illative already"
-%{s%}:s      /<= %{stemill%}: \%{rare%}: Any* _ %{s%}: %{e%}: \%{rare%}:  ;
+%{s%}:s      /<= %{stemill%}: \UI: Any* _ %{s%}: %{e%}: \UI:  ;
 
 "short illative cannot be common if the lexicon tag says it is rare"
-%{s%}:0      /<= %{stemill%}: %{rare%}: Any* _ %{s%}: %{e%}: \%{rare%}:  ;
+%{s%}:0      /<= %{stemill%}: UI: Any* _ %{s%}: %{e%}: \UI:  ;
 
 ! majja is common, majasse is rare
 ! lexical: m a j 0 a > {pl.u} {stemill} {S} > {s} {s} {e}
@@ -1362,6 +1375,18 @@ Vx:0  <=> :Consonant ( J1:0 ) _ %> PlSV:Vy Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 ! loppa is impossible, lobasse is common
 ! lexical: l o b a                       {W} > {s} {s} {e}
 ! surface: l o b a                        0  >  s   s   e
+
+! both +Use/Hyp (so rare it is hypothetical) and +Use/Rare (just rare) may be used for less used illative forms
+! {hypo} and {rare} are their embodiments (or pairings) for the two-level rules' input
+! {hypo} is used for sse-illative of TAUD-type words 
+! the following rules choose the path containing {hypo} and discard {rare}
+
+"tag +Use/Hyp is possible only in certain contexts"
+%{hypo%}:0 <=> SgSV:Vowel Null* %{s%}:s %{s%}:s %{e%}:e Null* _ ;
+
+"tag +Use/Rare is impossible in these contexts"
+%{rare%}:0 /<= SgSV:Vowel Null* %{s%}:s %{s%}:s %{e%}:e Null* _ ;
+
 
 ! --------- orthography
 
@@ -1418,7 +1443,7 @@ Cx:Cy  <=> :voiceless Null* SuffixBorder _ ;
 
 "double k p t"
 
-%{dbl%}:Cx  <=> :Cx _ AnyNoTrigger* WordEnd ;
+%{dbl%}:Cx  <=> :Cx _ AnyNoWeakTrigger* WordEnd ;
       where Cx in (k p t) ;
 
 ! lexical: k a b i n e t . > {pl.e} {sg.i}

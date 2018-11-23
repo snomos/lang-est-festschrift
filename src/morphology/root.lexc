@@ -739,6 +739,7 @@ Multichar_Symbols
 ! usage tag; never on the surface side
 
  %{rare%}       ! rare or less used form (norm) ; e.g. kingasid
+ %{hypo%}       ! so infrequent form (norm) that it is hypothetical; e.g. kingasse
 
  %>     ! Inflectional suffix boundary
  »      ! Derivational suffix boundary
