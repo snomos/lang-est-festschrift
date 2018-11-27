@@ -729,7 +729,7 @@ Multichar_Symbols
 ! Triggers
 
  %{W%} ! The weak grade trigger never appears on the surface side.
- %{WL%} ! The weak grade for foreign words trigger never appears on the surface side.
+ %{F%} ! The foreign words flag never appears on the surface side.
  %{S%}  ! Strong stem trigger (for short illatives only) never appears on the surface side.
  %{id%}   ! lexicon flag for pl part possible ending (esseesid/esseid)
  %{stemill%} ! lexicon flag for short sg ill, formed by stem change (jõgi-jõkke)

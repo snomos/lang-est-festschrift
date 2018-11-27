@@ -163,13 +163,7 @@ LEXICON KAVA    ! VVS 17, 18 (productive) + (unproductive)
                 ! VVS 18 (unproductive): words with quality gradation
 
               : SG_NOMINATIVE ;
-              :%{W%} N_SG_SUBPARA ;     ! kava, sõja etc
-              : SG_PARTITIVE ;           ! kava
-              :%{S%} SG_ILL_VARIANT ;     ! kavva
-              :%{W%} SG_ILL_VARIANT ;    ! kavasse 
-              : DE_PL ;
-              :%>%{s%}%{i%}%{d%} PL_PAR_VARIANT ;   ! kingi, kingasid+Use/Rare vs. puudi+Use/Rare,
-                                                    ! puudasid; kavu, kavasid; sõdu, sõdasid
+              : 1C ;                    ! like TAUD, EIT etc...
               : LIK_DERIVATION ;
 
 LEXICON MUUSEUM    ! VVS 2 & 19 (productive)
@@ -217,17 +211,12 @@ LEXICON TAUD    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp) si
               :i%{W%} LIK_DERIVATION ;         ! NB! not checked on real usage
 
 LEXICON FIAT    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp) 
-                ! almost == TAUD, but final stop does not change in weak grade (note {WL} instead of {W})
+                ! almost == TAUD, but final stop does not change in weak grade (note {F} in front of {W})
 
               : SG_NOMINATIVE ;
-              :%>%{pl.e%}%{sg.i%}%{WL%} N_SG_SUBPARA ;      ! Fiati etc; {pl.e} is here so it need not be in the stem lexicon
-              :%>%{pl.e%}%{sg.i%} SG_PARTITIVE ;               ! Fiati
-              :%>%{pl.e%}%{sg.i%} SG_ILLATIVE ;                ! Fiati
-      +Use/Hyp:%>%{pl.e%}%{sg.i%}%{WL%}%>sse SG_ILLATIVE ;     ! Fiatisse
-              :%>%{pl.e%}%{sg.i%} DE_PL ;                      ! Fiatide,  
-              :%>%{pl.e%}%{sg.i%}%>%{s%}%{i%}%{d%} PL_PAR_VARIANT ;   ! Fiate, Fiatisid+Use/Rare
+              :%>%{pl.e%}%{stemill%}%{sg.i%}%{F%} 1C ;    ! {pl.e} is here so it need not be in the stem lexicon
               : LIK_DERIVATION ;          ! ?? lowercasing also ??
-              :%>%{pl.e%}%{sg.i%}%{WL%} LIK_DERIVATION ;          ! ?? lowercasing also ??
+              :i%{F%}{W%} LIK_DERIVATION ;          ! ?? lowercasing also ??
 
 LEXICON KABINET    ! VVS 22; (productive) i.e. stable type (aktiivne muuttüüp) 
                    ! almost == TAUD, but Sg Nom orthography with single final stop instead of 2
