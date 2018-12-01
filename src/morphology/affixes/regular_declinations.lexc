@@ -361,7 +361,9 @@ LEXICON 2C_ADDED_TO_1C  ! if a word inflects both like 1C and 2C, then it has th
 LEXICON N_SG_SUBPARA    ! sg gen + sg cases depending on it + pl nom; excl sg ill
 
               : SG_GENITIVE ; 
-           +Sg: REGULAR_SEM_CASES ;
+           +Sg: REGULAR_LOCATIVES ;
+           +Sg:%>ks TRANSLATIVE ;
+           +Sg: NINATAGA ;
        +Pl+Nom:%>d PL_NOM_GI ;
 
 LEXICON N_PL_SUBPARA    ! pl gen + pl cases depending on it 
@@ -375,13 +377,7 @@ LEXICON STANDARD_GEN_ET_AL    ! genitive and cases depending on it (either sg or
 
 LEXICON ALL_SEM_CASES       ! semantic cases, incl sse-illative
 
-              :%>sse ILLATIVE ;
-              : REGULAR_SEM_CASES ;
-
-LEXICON REGULAR_SEM_CASES    ! semantic cases, excl illative
-
-              : REGULAR_LOCATIVES ;
-              :%>ks TRANSLATIVE ;
+              : LOCATIVES ;
               : NINATAGA ;
 
 LEXICON NINATAGA
@@ -393,7 +389,7 @@ LEXICON NINATAGA
 
 	
 LEXICON N_VOWEL_PL_SUBPARA    ! pl cases depending on vowel plural gen  
-                              ! incl. ni-na-ta-ga ?
+                              ! incl. ni-na-ta-ga
            +Pl: ALL_SEM_CASES ;
 
 LEXICON LOCATIVES            
