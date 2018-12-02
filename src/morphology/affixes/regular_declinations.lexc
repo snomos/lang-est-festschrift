@@ -172,12 +172,13 @@ LEXICON MUUSEUM    ! VVS 2 & 19 (productive)
                    ! if prononunced as 3-syllable word (muus-e-um), then like TAUD 
 
               : SG_NOMINATIVE ;
-              :i%{W%} N_SG_SUBPARA ; 
-              :i SG_PARTITIVE ;             ! muuseumi
-     +Use/Rare:i SG_ILLATIVE ;              ! muuseumi  ! in TAUD, this is the default ill
-              :i%{W%}%>sse SG_ILLATIVE ;    ! muuseumisse ! in TAUD, this is the rare ill
-              :i DE_PL ;                    ! muuseumide etc 
-              :e PL_PARTITIVE ;             ! muuseume
+              :%>%{pl.e%}%{stemill%}%{rare%}%{sg.i%} 1C ;    ! {pl.e} is here so it need not be in the stem lexicon
+!              :i%{W%} N_SG_SUBPARA ; 
+!              :i SG_PARTITIVE ;             ! muuseumi
+!     +Use/Rare:i SG_ILLATIVE ;              ! muuseumi  ! in TAUD, this is the default ill
+!              :i%{W%}%>sse SG_ILLATIVE ;    ! muuseumisse ! in TAUD, this is the rare ill
+!              :i DE_PL ;                    ! muuseumide etc 
+!              :e PL_PARTITIVE ;             ! muuseume
      +Use/Rare:i 2C_ADDED_TO_1C ;   ! REDEL
               : LIK_DERIVATION ;
 

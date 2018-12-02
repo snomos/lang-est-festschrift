@@ -409,8 +409,8 @@ LEXICON NIMI    ! VVS 20, 21 unstable type (passiivne muuttüüp) 17 words; suvi
                 ! almost = KAVA, but last vowel changes i -> e 
 
                   : SG_NOMINATIVE ;
-                  :%>e 1C ;                ! EIT
-                  :%>e%{W%} LIK_DERIVATION ;
+                  :e 1C ;                ! EIT
+                  :e%{W%} LIK_DERIVATION ;
 
 LEXICON OSA    ! only osa
 

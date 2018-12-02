@@ -667,13 +667,15 @@ i:e  <=>  [ :Consonant | %{apo%}:' ] Null* _ Null* %> :i ;
 "single short high vowel lowers if it obtains a neighboring vowel after stop or s disappears"
 
 Vx:Vy  <=>  ShortStart (LowerBackVowel:0) WS:0 Null* _  ;
-            [Border | Consonant] _ WS:0 Null* :Vowel ;
+            [Border | Consonant] _ WS:0 (I3:0) :Vowel ;      
        where Vx in ( i u ü %{sg.i%} %{sg.u%} )
              Vy in ( e o ö     e        o    )
        matched;
 
 ! lexical: v i G1 a
 ! surface: v e  0 a
+! lexical: t u G1 I3 e
+! surface: t o  0  0 e
 ! lexical: s ü S1 e {W}
 ! surface: s ö  0 e  0
 
@@ -1397,9 +1399,16 @@ Vx:0  <=> :Consonant ( J1:0 ) _ %> PlSV:Vy Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 "tag +Use/Hyp is possible only in certain contexts"
 %{hypo%}:0 <=> SgSV:Vowel Null* %{s%}:s %{s%}:s %{e%}:e Null* _ ;
 
+! the second context discards muuseumisid as a possible form altogether;
+! it relies on the exact sequence of the triggers etc, this being the configuration
+! that characterises muuseum-type words
+
 "tag +Use/Rare is impossible in these contexts"
 %{rare%}:0 /<= SgSV:Vowel Null* %{s%}:s %{s%}:s %{e%}:e Null* _ ;
+               %{pl.e%}:0 %{stemill%}: %{rare%}: %{sg.i%}:i %> %{s%}:s %{i%}:i %{d%}:d _ ; 
 
+! lexical: m u u s e u m > {pl.e} {stemill} {rare} {sg.i} > {s} {i} {d} {rare}
+! surface: m u u s e u m >    0       0        0      i   >  s   i   d    0      FAIL
 
 ! --------- orthography
 
