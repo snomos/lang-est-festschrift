@@ -141,6 +141,9 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
  A1:a !!≈ * __@CODE@__ an ugly trigger for ne/s words pingne - pingsa
  A1:0 !!≈ * __@CODE@__ pingne - pingsus
 
+ I3:i !!≈ * __@CODE@__ nimi - nime
+ I3:0 !!≈ * __@CODE@__ 
+
 !! Few words...
 
 !! j surfacing and changing
@@ -664,7 +667,7 @@ i:e  <=>  [ :Consonant | %{apo%}:' ] Null* _ Null* %> :i ;
 "single short high vowel lowers if it obtains a neighboring vowel after stop or s disappears"
 
 Vx:Vy  <=>  ShortStart (LowerBackVowel:0) WS:0 Null* _  ;
-            [Border | Consonant] _ WS:0 :Vowel ;
+            [Border | Consonant] _ WS:0 Null* :Vowel ;
        where Vx in ( i u ü %{sg.i%} %{sg.u%} )
              Vy in ( e o ö     e        o    )
        matched;
@@ -999,6 +1002,16 @@ I1:i   => n:s e:0 Null* (») _ ;   ! -ne word
 ! lexical: g l o o b u s > I1
 ! surface: g l o o b u s >  i
 
+! nimi should have I3 as the final vowel so that triggers like {stemill} are situated properly...
+! it gets deleted when e is attached as a hmm... stem vowel ...
+! that is, it exists only in sg nom
+"nimi-type words have final i only in sg nom"
+
+I3:i <=> _ Null* WordEnd ; 
+
+! lexical: n i m I3 {stemill} > g i
+! surface: n i m  i     0     > g i
+ 
 ! ---------
 ! affix allomorphs
 

@@ -408,14 +408,9 @@ LEXICON NIIN    ! only niin; almost like KEEL, but some forms are more regular
 LEXICON NIMI    ! VVS 20, 21 unstable type (passiivne muuttüüp) 17 words; suvi, lagi
                 ! almost = KAVA, but last vowel changes i -> e 
 
-                  :i SG_NOMINATIVE ;
-                  :e%{W%} N_SG_SUBPARA ;     ! nime, lae etc
-                  :e SG_PARTITIVE ;           ! nime, suve, lage
-                  :e%{S%} SG_ILL_VARIANT ;     ! lakke
-                  :e%{W%} SG_ILL_VARIANT ;    ! laesse 
-                  :e DE_PL ;
-                  :e%>sid PL_PARTITIVE ;   
-!                 :e%{W%} LIK_DERIVATION ;
+                  : SG_NOMINATIVE ;
+                  :%>e 1C ;                ! EIT
+                  :%>e%{W%} LIK_DERIVATION ;
 
 LEXICON OSA    ! only osa
 
