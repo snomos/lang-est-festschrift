@@ -373,14 +373,11 @@ Null = [[ :0 | %> ] - Border];            ! something on the lexical side, but n
 Any  = [ : - Border ];             ! anything except word border
 SuffixBorder = [%> | »];           ! for assimilation in verb paradigmatic derivation (tud, tamatu, tav): and+tud=antud  
 
-WeakGrade = [%{W%}:0 | %{WL%}:0] ;
-StrongGrade = %{S%}:0 ;
-
 ! these trigger-aware contexts are used in a few rules; kind of ad hoc...
-GradeTrigger = [ WeakGrade | StrongGrade ] ;
+GradeTrigger = [ %{W%}: | %{S%}: ] ;
 
-NullNoWeakTrigger = [[ Null - WeakGrade ] | » ];   
-AnyNoWeakTrigger  = [[ Any  - WeakGrade ] | » ];   
+NullNoWeakTrigger = [[ Null - %{W%}: ] | » ];   
+AnyNoWeakTrigger  = [[ Any  - %{W%}: ] | » ];   
 NullNoTrigger = [ Null - GradeTrigger ] ;
 AnyNoTrigger  = [ Any  - GradeTrigger ] ;
 
@@ -391,8 +388,8 @@ Rules
 ! -----
 ! general 
 "strong and weak gradation triggers cannot co-exist"
-%{S%}:0  /<= _ :* WeakGrade ;
-             WeakGrade :* _ ;
+%{S%}:0  /<= _ :* %{W%}: ;
+             %{W%}: :* _ ;
 
 ! ----- consonant gradation
 
@@ -464,14 +461,14 @@ s:0 <=> :Vowel :sonor :s _ Null* :stemV %{W%}: ;
 
 "Lexically determined weak grade: prohibit the strong phones"
 
-Cx:Cy /<= _ AnyNoTrigger* WeakGrade ;         
+Cx:Cy /<= _ AnyNoTrigger* %{W%}: ;         
      where Cx in ( B2 G1 G1 K1 B1 B1 P1 D1 D1 T1 S1 K2 P2 T2) 
            Cy in (  b  g  k  k  b  p  p  d  t  t  s  k  p  t)
      matched ;
 
 "Lexically determined weak grade: allow the weak phones"
 
-Cx:Cy  => _ AnyNoTrigger* WeakGrade ;
+Cx:Cy  => _ AnyNoTrigger* %{W%}: ;
      where Cx in ( B2 G1 K1 B1 P1 D1 T1 S1 K2 P2 T2) 
            Cy in (  v  0  0  0  0  0  0  0  g  b  d)
      matched ;
@@ -493,7 +490,7 @@ Cx:Cy  => _ AnyNoTrigger* WeakGrade ;
 
 "Word-final J1: makes sg nom weak grade"
 
-Cx:Cy <=>  J1: _ NullNoTrigger* WordEnd ;         ! rohi ruhi rehi"
+Cx:Cy <=>  J1: _ NullNoTrigger* WordEnd ;         ! rohi ruhi rehi
            _ J1: NullNoTrigger* WordEnd ;         ! lubi lodi 
      where Cx in (T1 P2 T2) 
            Cy in ( 0  b  d)
@@ -506,7 +503,7 @@ Cx:Cy <=>  J1: _ NullNoTrigger* WordEnd ;         ! rohi ruhi rehi"
 
 "kpt:gbd; weak sg nom for ader etc"
 
-Cx:Cy <=>  _ E2:e [l | r] NullNoTrigger* WordEnd ;  ! ader sg nom is not WeakGrade; has e2:e
+Cx:Cy <=>  _ E2:e [l | r] NullNoTrigger* WordEnd ;  ! ader sg nom is not %{W%}:; has e2:e
       where Cx in ( K2 P2 T2 ) 
             Cy in (  g  b  d )
       matched ;
@@ -516,7 +513,7 @@ Cx:Cy <=>  _ E2:e [l | r] NullNoTrigger* WordEnd ;  ! ader sg nom is not WeakGra
 
 "b d and s assimilation after lmnr"
 
-Cx:Cy <=> [ShortStart | [k o]] Cy _ AnyNoTrigger* WeakGrade ;  ! also -kond -konna -konda
+Cx:Cy <=> [ShortStart | [k o]] Cy _ AnyNoTrigger* %{W%}: ;  ! also -kond -konna -konda
      where Cx in (B1 D1 D1 D1 S1) 
            Cy in ( m  l  n  r  r)
      matched ;
@@ -571,7 +568,7 @@ K1:0 <=> _ NullNoTrigger* G7: AnyNoTrigger* WordEnd;  ! only laskma mõskma pusk
 
 "short illative strong stem generation: consonant doubling"
 
-0:Cy  <=>  ShortStart NullNoTrigger* Cx:Cy _ NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ; ! majja
+0:Cy  <=>  ShortStart NullNoTrigger* Cx:Cy _ NullNoTrigger* :Vowel NullNoTrigger* %{S%}: ; ! majja
      where Cx in ( l m M1 n r v j h s g b d k p t G1 B1 B2 D1 ) 
            Cy in ( l m  m n r v j h s k p t k p t  k  p  p  t )
      matched ;
@@ -583,7 +580,7 @@ K1:0 <=> _ NullNoTrigger* G7: AnyNoTrigger* WordEnd;  ! only laskma mõskma pusk
 
 "short illative strong stem generation: g b d to k p t"
 
-Cx:Cy <=> ShortStart NullNoTrigger* _ :Cy NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ;
+Cx:Cy <=> ShortStart NullNoTrigger* _ :Cy NullNoTrigger* :Vowel NullNoTrigger* %{S%}: ;
      where Cx in ( g b d ) 
            Cy in ( k p t )
      matched ;
@@ -593,7 +590,7 @@ Cx:Cy <=> ShortStart NullNoTrigger* _ :Cy NullNoTrigger* :Vowel NullNoTrigger* S
 
 "short illative strong stem generation: lexically determined stop"
 
-Cx:Cy <=> ShortStart NullNoTrigger* _ AnyNoTrigger+ StrongGrade ;
+Cx:Cy <=> ShortStart NullNoTrigger* _ AnyNoTrigger+ %{S%}: ;
      where Cx in ( G1 B1 B2 D1 ) 
            Cy in (  k  p  p  t )
      matched ;
@@ -603,7 +600,7 @@ Cx:Cy <=> ShortStart NullNoTrigger* _ AnyNoTrigger+ StrongGrade ;
 
 "short illative strong stem generation for old proper names: lexically determined stop"
 
-Cx:Cy <=>  _ (:Cy | j) NullNoTrigger* :Vowel NullNoTrigger* StrongGrade ;
+Cx:Cy <=>  _ (:Cy | j) NullNoTrigger* :Vowel NullNoTrigger* %{S%}: ;
      where Cx in ( G3 D3 G4 B4 D4) 
            Cy in (  g  d  k  p  t)
      matched ;
@@ -642,7 +639,7 @@ Vx:Vy  <=>    _ Null* [:Consonant - :stop] Null* :stemV  ;
 ! some older verbs lose the stem final vowel in strong grade forms
 "verb stem final vowel in weak grade (excl. impersonal)"
 
-Vx:Vy  <=> _ WeakGrade %> \[T7:] ;
+Vx:Vy  <=> _ %{W%}: %> \[T7:] ;
      where Vx in ( A7 E7 ) 
            Vy in (  a  e )
      matched ;
@@ -666,7 +663,7 @@ i:e  <=>  [ :Consonant | %{apo%}:' ] Null* _ Null* %> :i ;
 
 "single short high vowel lowers if it obtains a neighboring vowel after stop or s disappears"
 
-Vx:Vy  <=>  ShortStart (LowerBackVowel:0) WS:0 Null* _  ;
+Vx:Vy  <=>  ShortStart (LowerBackVowel:0) WS:0 Null* _ Null* [WordEnd | :Consonant];
             [Border | Consonant] _ WS:0 (I3:0) :Vowel ;      
        where Vx in ( i u ü %{sg.i%} %{sg.u%} )
              Vy in ( e o ö     e        o    )
@@ -687,7 +684,7 @@ Vx:Vy  <=>  ShortStart (LowerBackVowel:0) WS:0 Null* _  ;
 ! surface: l i 0  0 >    0      u    0    NB! no lowering!
 
 ! here long vowel shortening is formally equivalent to one vowel deletion
-! hence the need to use 2 rules instead of one <=> rule:
+! hence the need to use several rules instead of one <=> rule:
 ! there are other contexts where a vowel gets deleted
 
 "Long vowel shortening 1/2"
@@ -721,8 +718,8 @@ Vx:Vx /<= :Vx _ Null+ :stemV ;            ! sae, soid
 ! lexical: h u u G1 a {W} > n u d      
 ! surface: h u u  0 a  0  > n u d     NB! no shortening !
 
-! lexical: p u u             {id} > {idsid} i d
-! surface: p u 0               0  0    0    i d
+! lexical: p u u             {id} > {s} i d
+! surface: p u 0               0  0  0  i d
 
 ! lexical: t õ u G1 > {pl.e} {sg.u} {W}
 ! surface: t õ 0  0 >    0      u    0
@@ -742,7 +739,7 @@ Vx:Vx /<= :Vx _ Null+ :stemV ;            ! sae, soid
 ! impersonal voice for söötma, nutma, lõpma: söödetud, nutetud, lõpetud
 "from t+t to te+t"
 
-0:e <=> [t: | T1: | p:] Null* _ WeakGrade SuffixBorder T7:t ;
+0:e <=> [t: | T1: | p:] Null* _ %{W%}: SuffixBorder T7:t ;
 
 ! lexical: n ´ u t t A7 0 {W} > T7 u d
 ! surface: n ´ u t 0  0 e  0  >  t u d
@@ -769,16 +766,16 @@ I7:i <=> :Consonant Null* %> _ S7: WordEnd ;
 
 "el-le 1/3"
 
-e:0 <=> :e [l | r] _ WeakGrade SuffixBorder :Consonant ;
+e:0 <=> :e [l | r] _ %{W%}: SuffixBorder :Consonant ;
 
 "el-le 2/3"
 
-0:e <=>  [:Consonant | WS:0] _ [l | r] e:0 WeakGrade SuffixBorder :Consonant ;
+0:e <=>  [:Consonant | WS:0] _ [l | r] e:0 %{W%}: SuffixBorder :Consonant ;
 
 ! in weak grade, -le- is impossible (has to be -el-)
 "el-le 3/3"
 
-e:e /<=  [:Consonant | WS:0] [l | r] _ WeakGrade SuffixBorder :Consonant ;
+e:e /<=  [:Consonant | WS:0] [l | r] _ %{W%}: SuffixBorder :Consonant ;
 
 ! lexical: s i p 0 l e {W} > d a
 ! surface: s i p e l 0  0  > d a
@@ -881,7 +878,7 @@ Y3:e  <=> [:ä | :ö] Null* H3:h _ ;
 Y3:u  <=> [:o | :u] Null* H3:h _ ;
 
 "h-illative"
-H3:h  <=> _ :* StrongGrade ;
+H3:h  <=> _ :* %{S%}: ;
 
 !------
 "Verb vowel ö o to õ"
@@ -1021,7 +1018,7 @@ I3:i <=> _ Null* WordEnd ;
 ! thus tütar, kannel, pinge, kotkas appear similar
 
 "+te appears as +de in tütar-type words"
- t:d <=> [A2:a | E2:e] lmnr WeakGrade %> _ e ; 
+ t:d <=> [A2:a | E2:e] lmnr %{W%}: %> _ e ; 
 
 ! lexical: s ´ õ s t A2 r {W} > t e
 ! surface: s 0 õ s t  a r  0  > d e
@@ -1035,7 +1032,7 @@ I3:i <=> _ Null* WordEnd ;
 
 "infinitive and gerund affixes may begin in t"
 
-D7:t  <=> :Vowel Null* WeakGrade SuffixBorder _ ;
+D7:t  <=> :Vowel Null* %{W%}: SuffixBorder _ ;
           :s Null* SuffixBorder _ ;
 
 ! lexical: h ü p p a {W} > D7 a
@@ -1066,7 +1063,7 @@ D7:d /<= :voiceless Null* _ ;
 
 "impersonal voice affix may begin in d"
 
-T7:d  <=> [l | n | r] e:0 WeakGrade SuffixBorder _ ;
+T7:d  <=> [l | n | r] e:0 %{W%}: SuffixBorder _ ;
           [l | n | r] [A7:0 | E7:0] SuffixBorder _ ;
 
 ! lexical: s i p 0 l e {W} > T7 u d
@@ -1089,7 +1086,7 @@ T7:d  <=> [l | n | r] e:0 WeakGrade SuffixBorder _ ;
 
 "imperative mood affix may begin in k"
 
-G7:k  <=> \[:Vowel] a Null* WeakGrade %> _ ;
+G7:k  <=> \[:Vowel] a Null* %{W%}: %> _ ;
           :voiceless Null* %> _ ;
 
 ! lexical: h ü p p a {W} > G7 u
@@ -1273,11 +1270,6 @@ Vx:0  <=> :Consonant ( J1:0 ) _ %> PlSV:Vy Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 
 "weak grade is incompatible with exceptional stem (aka short) illative"
 %{W%}:0       /<=  _ Any* %{s%}:0 %{s%}:0 %{e%}:0  ;    
-
-! use {WL} in PERE, to prevent pere+Ill:pere
-
-!"less strict weak grade is incompatible with exceptional stem (aka short) illative"
-!%{WL%}:0       /<=  _ Any* %{s%}:0 %{s%}:0 %{e%}:0  ;    
 
 "(extra) strong grade is incompatible with sse-illative"
 %{S%}:0       /<=  _ Any* %{s%}:s %{s%}:s %{e%}:e  ;      
@@ -1489,7 +1481,7 @@ Cx:Cy  <=> :voiceless Null* SuffixBorder _ ;
 
 "mäslema"
 
-0:s <=> Consonant Vowel s _ 0:e l e:0 WeakGrade ;
+0:s <=> Consonant Vowel s _ 0:e l e:0 %{W%}: ;
 
 ! lexical: m ä s 0 0 l e {W} > d a
 ! surface: m ä s s e l 0  0  > d a     

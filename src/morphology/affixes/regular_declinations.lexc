@@ -378,7 +378,7 @@ LEXICON STANDARD_GEN_ET_AL    ! genitive and cases depending on it (either sg or
 
 LEXICON ALL_SEM_CASES       ! semantic cases, incl sse-illative
 
-              : LOCATIVES ;
+              : LOCATIVES_PLUS ;
               : NINATAGA ;
 
 LEXICON NINATAGA
@@ -393,12 +393,12 @@ LEXICON N_VOWEL_PL_SUBPARA    ! pl cases depending on vowel plural gen
                               ! incl. ni-na-ta-ga
            +Pl: ALL_SEM_CASES ;
 
-LEXICON LOCATIVES            
+LEXICON LOCATIVES_PLUS            
 
-              : STANDARD_LOCATIVES ;
+              : LOCATIVES ;
               :%>ks TRANSLATIVE ;
 
-LEXICON STANDARD_LOCATIVES            
+LEXICON LOCATIVES            
 
               :%>sse ILLATIVE ;
               : REGULAR_LOCATIVES ;

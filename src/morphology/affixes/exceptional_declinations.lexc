@@ -56,7 +56,7 @@ LEXICON MASA    ! ma & sa
                +Sg:u%>l ADESSIVE ;	
                +Sg:u%>lt ABLATIVE ;	
            +Sg+Com:u%>ga # ;                  ! muga
-          +Sg+Emph:inu STANDARD_LOCATIVES ;    ! minul, sinul
+          +Sg+Emph:inu LOCATIVES ;    ! minul, sinul
                +Sg:inu%>ks TRANSLATIVE ;
                +Sg:inu%>ni TERMINATIVE ;	  ! minuni
                +Sg:inu%>na ESSIVE ;	  ! minuna
@@ -71,7 +71,7 @@ LEXICON METE    ! me & te
           +Pl+Emph:ie GENITIVE ;    ! meie, teie
            +Pl+Gen: # ;    ! me, te
                   :i%>d PL_PARTITIVE ;    ! meid, teid
-               +Pl:i STANDARD_LOCATIVES ;    ! meil, teil etc
+               +Pl:i LOCATIVES ;    ! meil, teil etc
                +Pl:ie%>ks TRANSLATIVE ;
                +Pl:ie%>ni TERMINATIVE ;	  ! meieni
                +Pl:ie%>na ESSIVE ;	  ! meiena
@@ -86,7 +86,7 @@ LEXICON TEMA    ! ta
              +Emph:ema SG_GENITIVE ;    ! tema
            +Sg+Gen:a # ;    ! ta
                   :e%>da SG_PARTITIVE ;    ! teda
-          +Sg+Emph:ema STANDARD_LOCATIVES ;    ! temal etc
+          +Sg+Emph:ema LOCATIVES ;    ! temal etc
                +Sg:ema%>ks TRANSLATIVE ;
                +Sg:ema%>ni TERMINATIVE ;	  ! temani
                +Sg:ema%>na ESSIVE ;	  ! temana
@@ -115,7 +115,7 @@ LEXICON NENO    ! nemad, need & nood common cont. lexicon
                +Pl:n%>de%>na ESSIVE ;	  ! nendena
                +Pl:n%>de%>ta ABESSIVE ;	  ! nendeta
                +Pl:n%>de%>ga COMITATIVE ;    ! nendega
-      +Use/Rare+Pl:i LOCATIVES ;    ! neil etc 
+      +Use/Rare+Pl:i LOCATIVES_PLUS ;    ! neil etc 
 
 ! ----
 LEXICON ISE    ! ise, iseenese NB! the usage info is possibly wrong...
@@ -203,7 +203,7 @@ LEXICON ARGPÜKS    ! some compound words ending with püks (argpüks, vesipüks
 LEXICON ASI    ! only asi, paik, tiib, kõrv, mari
 
                   : PIIM ;
-      +Use/Rare+Pl:%{W%}%>u LOCATIVES ;    ! asjus, paigus etc
+      +Use/Rare+Pl:%{W%}%>u LOCATIVES_PLUS ;    ! asjus, paigus etc
 
 LEXICON JALG    ! only jalg
 
@@ -246,7 +246,7 @@ LEXICON KANNEL    ! only kannel, tütar, kärbes, lemmel; = PIPAR, but stem vowe
 LEXICON KEEL    !  VVS 13 unstable (closed) type; 27 words
 
                   : VARS ;
-       +Use/Hyp+Pl:%{W%}%>i LOCATIVES ;    ! vowel pl cases  keelil; except for some expressions (suuril silmil)
+       +Use/Hyp+Pl:%{W%}%>i LOCATIVES_PLUS ;    ! vowel pl cases  keelil; except for some expressions (suuril silmil)
 
 LEXICON KEVAD    ! only küps, kevad, = REDEL, but stem vowel is e
 
@@ -393,7 +393,7 @@ LEXICON NAINE    ! only naine; much like OLULINE
                   : NE_S_COMMON ;
                   :E1%>sse SG_ILLATIVE ;    ! naisesse
                   :%>I1 PL_PARTITIVE ;    ! naisi
-      +Use/Rare+Pl:%>I1 LOCATIVES ;    ! naisil etc
+      +Use/Rare+Pl:%>I1 LOCATIVES_PLUS ;    ! naisil etc
 
 LEXICON NIIN    ! only niin; almost like KEEL, but some forms are more regular
 
@@ -435,7 +435,7 @@ LEXICON PEEN    ! only peen; almost like KEEL, but some forms are more regular
          +Use/Rare:e TE_PL ;     ! peenete etc 
                   :e%>id PL_PARTITIVE ;     ! peeneid 
          +Use/Rare:i PL_PARTITIVE ;         ! peeni
-       +Use/Hyp+Pl:%{W%}%>i LOCATIVES ;    ! peenil etc
+       +Use/Hyp+Pl:%{W%}%>i LOCATIVES_PLUS ;    ! peenil etc
                   : US_DERIVATION ;
 
 
@@ -469,7 +469,7 @@ LEXICON PÕLV    ! only põlv; similar to talv and rohi
 
                   :v%>%{pl.i%} EIT ;
          +Use/Rare:i SG_NOMINATIVE ;               ! põli
-      +Use/Rare+Pl:v%>i LOCATIVES ;    ! põlvil etc
+      +Use/Rare+Pl:v%>i LOCATIVES_PLUS ;    ! põlvil etc
       +Pl+Use/Rare:v%>i%>ni TERMINATIVE ;       ! põlvini
 
 LEXICON PÕRSAS   ! only põrsas
@@ -497,7 +497,7 @@ LEXICON RIND    ! only rind
 
                   : PIIM ;
       +Pl+Use/Rare:%>e GENITIVE;    ! rinde
-      +Use/Rare+Pl:%{W%}%>u LOCATIVES ;    ! rinnus etc
+      +Use/Rare+Pl:%{W%}%>u LOCATIVES_PLUS ;    ! rinnus etc
 
 LEXICON RUBLA    ! about 20 words 
 
@@ -507,7 +507,7 @@ LEXICON RUBLA    ! about 20 words
 LEXICON RUUM    ! only ruum, piir
 
                   : TAUD ;
-      +Use/Rare+Pl:%{W%}%>e LOCATIVES ;    ! ruumes etc
+      +Use/Rare+Pl:%{W%}%>e LOCATIVES_PLUS ;    ! ruumes etc
 
 LEXICON SADA    ! only sada
 
@@ -620,7 +620,7 @@ LEXICON XÄIKE    ! VVS 10 common part of väike(ne), päike(ne), äike(ne)
          +Use/Rare:ke%>sse SG_ILLATIVE ;    ! xäikesse (haplology)
          +Use/Rare:kse TE_PL ;       
          +Use/Rare:kes%>i PL_PARTITIVE ;      ! xäikesi
-      +Use/Rare+Pl:kes%>i LOCATIVES ;    ! xäikesil etc
+      +Use/Rare+Pl:kes%>i LOCATIVES_PLUS ;    ! xäikesil etc
          +Use/Rare:kese%>i N_VOWEL_PL_SUBPARA ;    ! xäikeseil etc
          +Use/Rare:kse%>i N_VOWEL_PL_SUBPARA ;    ! xäikseil etc
 
