@@ -1086,13 +1086,15 @@ T7:d  <=> [l | n | r] e:0 %{W%}: SuffixBorder _ ;
 
 "imperative mood affix may begin in k"
 
-G7:k  <=> \[:Vowel] a Null* %{W%}: %> _ ;
+G7:k  <=> [\:Vowel | :i] a Null* %{W%}: %> _ ;
           :voiceless Null* %> _ ;
 
 ! lexical: h ü p p a {W} > G7 u
 ! surface: h ü p 0 a {W} >  k u
 ! lexical: l õ u G1 a {W} > G7 u
 ! surface: l õ u  0 a {W} >  k u
+! lexical: l a i a {W} > G7 u
+! surface: l a i a {W} >  k u
 ! lexical: s e i s > G7 u 
 ! surface: s e i s >  k u
 
