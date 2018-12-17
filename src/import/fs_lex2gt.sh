@@ -57,6 +57,11 @@ cat decltmp1 | ./fs_lex2verblemma.sed \
 | sed '/JOOKSMA/s/[AE]7//' \
 | sed '/LASKMA/s/[AE]7//' \
 | grep -v 'LEPPIMA [km]aitsema:' \
+| grep -v 'ELAMA <ehtima:' \
+| grep -v 'ELAMA h<auduma:' \
+| sed 's/LEPPIMA h<auduma:/LEKKIMA h<auduma:/' \
+| grep -v 'ELAMA <uhtuma:' \
+| sed 's/LEPPIMA <uhtuma:/LEKKIMA <uhtuma:/' \
 > tmp1
 
 # kirjuta mõnedesse lemmadesse sisse leksikaalse tasandi märgid

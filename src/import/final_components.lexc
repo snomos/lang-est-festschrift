@@ -137,7 +137,7 @@ LEXICON NounFinalComp
 @P.Stem.Nom@vili+N:@P.Stem.Nom@v˘ilʲJ1%>%{pl.u%} PIIM ;
 @P.Stem.Nom@vool+N:@P.Stem.Nom@v˘ool%>%{pl.e%} KOON ;
 @P.Stem.Nom@vorm+N:@P.Stem.Nom@v˘orm TAUD ;
-@P.Stem.Nom@vägi+N:@P.Stem.Nom@väG1%{stemill%} NIMI ;
+@P.Stem.Nom@vägi+N:@P.Stem.Nom@väG1I3%{stemill%} NIMI ;
 @P.Stem.Nom@väli+N:@P.Stem.Nom@v˘älʲJ1%>%{pl.u%} PIIM ;
 @P.Stem.Nom@võrk+N:@P.Stem.Nom@v˘õrk%>%{pl.e%} KOON ;
 @P.Stem.Nom@õigus+N:@P.Stem.Nom@˘õigus SUULINE ;
@@ -201,7 +201,7 @@ tera+N:tera%>%{pl.i%} KAVA ;
 toode+N:t˘ooT2e PINGE ;
 toru+N:toru%{stemill%}%{rare%} KAVA ;
 tunne+N:t˘unD1e PINGE ;
-tõbi+N:tõB2%{stemill%} NIMI ;
+tõbi+N:tõB2I3%{stemill%} NIMI ;
 töö+N:t˘öö%>%{id%} PUU ;
 tööline+N:t˘ööline SUULINE ;
 vedu+N:veD1u KAVA ;
