@@ -1048,15 +1048,15 @@ D7:0  <=>  [:p | :t | :d] Null* SuffixBorder _ ; ! tappa, kasta, nutta, anda, ni
 ! surface: k ü  t t >  0 a
 ! lexical: k e e T2 > D7 a 
 ! surface: k e e  t >  0 a
-! lexical: k ü n n D1 > D7 a
-! surface: k ü n 0  d >  0 a
+! lexical: k ü n D1 > D7 a
+! surface: k ü n  d >  0 a
 
 ! d cannot follow a voiceless consonant; 
 ! this is a general rule that is repeated here for the D7:d case
 
-"orthography for da, des"
+!"orthography for da, des"
 
-D7:d /<= :voiceless Null* _ ;
+!D7:d /<= :voiceless Null* _ ;
 
 ! lexical: l a s K1 > D7 a 
 ! surface: l a s  k 0  d a   <-- FAIL
