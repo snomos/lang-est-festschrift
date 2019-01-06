@@ -175,7 +175,7 @@ LEXICON MISKI    ! only miski; mis+gi; nonstandard parallel forms millegil etc; 
 LEXICON KUMBKI    ! only kumbki; kumb like PIIM +gi; nonstandard parallel forms kummagil etc like REDEL
 
                   : SG_NOMINATIVE ;
-                  :%{stemill%}%{sg.a%} 1C ;
+                  :%{sg.a%} 1C ;
       +Use/NotNorm:agi%{W%} 2C ;    ! kummagis, kummagil etc
 
 !---------------
@@ -213,7 +213,7 @@ LEXICON JALG    ! only jalg
 LEXICON KAEL    ! VVS 23  17 words; almost = PIIM, except pl gen + 
 
                   : SG_NOMINATIVE ;
-                  :%{stemill%}%{sg.a%} 1C_SG ;
+                  :%{sg.a%} 1C_SG ;
                   : TE_PL ;    ! kaelte etc 
          +Use/Rare:%{sg.a%} DE_PL ;    ! kaelade etc 
                                ! pl par stem vowel (u, i, 0) is lexically determined 
@@ -231,7 +231,7 @@ LEXICON KALLIS    !  VVS 7, 5 only kallis, kaunis unstable (closed) type;
 LEXICON KAKS    ! only üks, kaks
 
                   :ks SG_NOMINATIVE ;    ! kaks
-                  :hT1%{stemill%}%{sg.e%} 1C ;   ! like EIT
+                  :hT1%{sg.e%} 1C ;   ! like EIT
          +Use/Rare:h%>t SG_PARTITIVE ;    ! kaht
 
 LEXICON KANNEL    ! only kannel, tütar, kärbes, lemmel; = PIPAR, but stem vowel -e instead of -a
@@ -408,9 +408,14 @@ LEXICON NIIN    ! only niin; almost like KEEL, but some forms are more regular
 LEXICON NIMI    ! VVS 20, 21 unstable type (passiivne muuttüüp) 17 words; suvi, lagi
                 ! almost = KAVA, but last vowel changes i -> e 
 
-                  : SG_NOMINATIVE ;
-                  :e 1C ;                ! EIT
-                  :e%{W%} LIK_DERIVATION ;
+                  :i SG_NOMINATIVE ;
+                  :e%{W%} N_SG_SUBPARA ;     ! nime, lae etc
+                  :e SG_PARTITIVE ;           ! nime, suve, lage
+                  :e%{S%} SG_ILL_VARIANT ;     ! lakke
+                  :e%{W%} SG_ILL_VARIANT ;    ! laesse 
+                  :e DE_PL ;
+                  :e%>sid PL_PARTITIVE ;   
+!                 :e%{W%} LIK_DERIVATION ;
 
 LEXICON OSA    ! only osa
 
@@ -447,10 +452,10 @@ LEXICON PERSE    ! only perse
 LEXICON POISS    ! only poiss, püks; like KAEL; almost = TAUD, except pl gen + 
 
                   : SG_NOMINATIVE ;
-                  :%{stemill%}%{sg.i%} 1C_SG ;                 ! poisi etc
+                  :%{sg.i%} 1C_SG ;                 ! poisi etc
                   :%{W%} TE_PL ;  ! poiste etc
          +Use/Rare:%>%{sg.i%} DE_PL ;    ! poisside etc
-                   :%>%{pl.e%}%{stemill%}%{sg.i%}%>%{s%}%{i%}%{d%} PL_PAR_VARIANT ;
+                   :%>%{pl.e%}%{sg.i%}%>%{s%}%{i%}%{d%} PL_PAR_VARIANT ;
 
 
 LEXICON PURI    ! only puri
