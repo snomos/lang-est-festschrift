@@ -429,6 +429,9 @@ Multichar_Symbols
 +Use/CommonNotNorm !!= * {{@CODE@}}:  not norm, and used more than norm 
 !!€ kööment: köömen+N+Sg+Par+Use/CommonNotNorm
 
+!! Oletatav analüüs / Guessed analysis
++Guess !!= * {{@CODE@}}: guessed analysis
+
 !! !Tuletus / Derivation
 
 !! !Eesliited on harvad, aga ikkagi ... / Prefixes are seldom used, but still...
@@ -786,8 +789,6 @@ E1    ! e 0  soolase, raudset  soolas t
 I1    ! i    katkisil
 A1    ! a    pingsa
 
-I3    ! nimi - nime
-
 !  Few words...
 
 E4   ! e j   aeg aja 
@@ -852,6 +853,10 @@ Number = [[ Dig ]+ [ %. | %, ]]* [ Dig ]+ ;
 PercentNum = Number [ %% | [ %' (%') ] ];
 OrdinalNum  = Number %.;
 
+! Capital letters are used for making acronyms
+! An acronym is inflected according to its pronounciation
+! An acronym can be read as word (e.g. NATO), or letter-by-letter (e.g. ABC)
+! In the latter case, the reading of the last letter determines the inflectional type
 CapVow = A|E|I|O|U|Õ|Ü|Ö|Ä|Y ;
 CapConsv  = B|C|D|G|H|K|P|Q|Š|Ž|T|V|W ;  ! bee, tsee, ...
 CapConsc  = F|J|L|M|N|R|S|Z|X ;          ! eff, jott, ell, ...
@@ -892,8 +897,8 @@ LEXICON Root !!= * {{@CODE@}} is the starting point of everything
 @D.Part@@P.Part.Bad@ Single ;      !! strictly simplex word; cannot be a part of a compound
 @D.Part@@P.Part.One@ First ;       !! a simplex word, or the first part of a compound
 
-@R.Part.One@@P.Part.Two@ Nonfirst ;                      ! second loop; 
-@R.Part.Two@@P.Part.Three@@C.NeedPartThree@ Nonfirst ;   ! third loop; 
+@R.Part.One@@P.Part.Two@ Nonfirst "weight: 10" ;                      ! second loop; 
+@R.Part.Two@@P.Part.Three@@C.NeedPartThree@ Nonfirst "weight: 10" ;   ! third loop; 
 
 ! number starting a word is a special case...
 @D.Part@@P.Part.Two@@P.NeedPartThree.On@@P.POS.Num@ CardinalNumbersInComp ;   !!= * {{@CODE@}} 5-autone etc
@@ -952,8 +957,8 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.Pref@ LatterAdjectiveComp ;  ! inimtühjem
   @R.Case.Short@ LatterAdjective ;  ! vaatamispunane, astraalpunane
 
-  @R.POS.N@@R.Case.Nom@@R.Stem.Nom@ LatterAdjective ; ! laudõiekas
-  @R.POS.N@@R.Case.Nom@@D.Stem.Nom@ LatterAdjective_ne ; ! aerjalgne
+  @R.POS.N@@R.Case.Nom@@R.Stem.Nom@ LatterAdjective "weight: 5" ; ! laudõiekas
+  @R.POS.N@@R.Case.Nom@@D.Stem.Nom@ LatterAdjective_ne "weight: 5" ; ! aerjalgne
   @R.POS.N@@R.Case.Gen@ LatterAdjective_ne ; ! lauapunane, laudadepunane
   @R.POS.N@@R.Case.Gen@ PlainLatterAdjective ; ! lauaahastuslik
   @R.POS.N@@R.Case.Par@ LatterAdjective_v ; ! mägejuhtiv
@@ -994,8 +999,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.Case.Short@ LatterNoun ;              ! astraallaud, ekstrariiul
   @R.Case.Short@ LatterGenitiveAttribute ;   ! astraalkreeka
 
-  @R.POS.N@@R.Case.Nom@@R.Stem.Nom@ LatterNoun ;
-!  @R.POS.N@@R.Case.Nom@@D.Stem.Nom@@R.Part.Two@@P.Part.Bad@ LatterNoun ; ! only 2-part compounds: huulhein, helmeskate
+  @R.POS.N@@R.Case.Nom@@R.Stem.Nom@ LatterNoun "weight: 5" ;
   @R.POS.N@@R.Case.Gen@ LatterNoun ;             ! lauariiul
   @R.POS.N@@R.Case.Gen@ LatterGenitiveAttribute ;             ! lauakreeka
   @R.POS.IntNum@@R.Case.Nom@@D.Der.kas@ LatterNoun ;       ! neliriiul
