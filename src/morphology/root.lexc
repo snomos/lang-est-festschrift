@@ -912,6 +912,7 @@ LEXICON Nonfirst
 
 LEXICON Single     !! strictly simplex words; cannot be a part of a compound
 
+  Abbreviations ;             !!= * {{@CODE@}}
   Adpositions ;             !!= * {{@CODE@}}
   Conjunctions ;            !!= * {{@CODE@}}
   NoninflectingVerbs ;      !!= * {{@CODE@}}
@@ -1139,3 +1140,4 @@ LEXICON LatterVerb       ! a verb derivation
   @P.POS.V@@C.Der@ Verbs ;                   !!= * {{@CODE@}}
 
 
+! Ad hoc definitions, to be fixed

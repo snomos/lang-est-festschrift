@@ -23,6 +23,7 @@ GT_LEXC_ROOT=$(srcdir)/root.lexc
 
 # Set this to the names of all regular lexc source files:
 GT_LEXC_SRCS_L1_L2=\
+                         stems/abbreviations.lexc \
                          stems/adjectives.lexc \
                          stems/noninflecting_adjectives.lexc \
                          stems/comparative_adjectives.lexc \
