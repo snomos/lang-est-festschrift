@@ -1191,11 +1191,7 @@ LEXICON SomeThing
 
   < [Word & [?* Consonant]] Vowel "+Guess":0 > # ;
 
-!LEXICON GuessFirst
-
-!@D.Part@@P.Part.One@+Guess: Nouns ;       !! a simplex word, or the first part of a compound
-!     +Guess: # ;       !! first, non-word part of a guessed compound
-
+! these  
 
 LEXICON GuessDerivation
 !  < Letter* Vowel Consonant+ Vowel > GuessLine ; 
