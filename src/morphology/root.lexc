@@ -642,6 +642,8 @@ Multichar_Symbols
  @P.POS.ACRMinus@
  @D.POS.ACRMinus@
  @C.POS@
+ @R.POS.Guess@
+ @P.POS.Guess@
 
 !! Case is used for filtering derivations and compounds
  @R.Case.Nom@
@@ -879,6 +881,47 @@ CapNonPairC = [[CapCons CapConsv] - CapPairC] ;
 
 !Cap = A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|Š|Z|Ž|T|U|V|W|Ü|Ö|Ä|X|Y ;
 
+! Guesser needs these
+Vowel = a|e|i|o|u|õ|ä|ö|ü;
+Ckpt = k|p|t;
+Clmnr = l|m|n|r;
+Cgbd = g|b|d;
+Cvf = v|f;
+Consonant = Ckpt | Clmnr | Cgbd | Cvf | c|d|f|g|j|q|s|š|z|ž|v|w|x|y;
+! Consonant = b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|š|z|ž|t|v|w|x|y; 
+! Syllable onset and coda mirror each other (kind of..)
+! Syllable onset
+Onset = Consonant |
+        [s Ckpt] | [s Clmnr] | [[Ckpt Clmnr] - [t n]] | 
+        [[s Ckpt Clmnr] - [s t n]] | [Ckpt s] | [p t] | [m n] |
+        [Cgbd Clmnr] | [š Clmnr] | [s Cvf] | [Cvf Clmnr] ;
+! Syllable end
+Coda =  [Consonant - [j | h]] | 
+        [s s] | [k k] | [p p] | [t t] | [k t] | [l l] | [m m] | [n n] | [r r] | 
+        [l m] | [r n] | 
+        [Clmnr Ckpt] | [Clmnr s] | [Clmnr s s] | 
+        [Ckpt s] | [Clmnr Ckpt s] | [s Ckpt] | [Clmnr Cgbd] | 
+        [š š] | [Clmnr š] | [Clmnr š š] | [s v] | [f f] ;
+Nucleus = Vowel (Vowel) ; 
+DoubleCons = [b b] | [c c] | [d d] | [f f] | [g g] | [h h] | [j j] | [k k] | 
+             [l l] | [m m] | [n n] | [p p] | [q q] | [r r] | [s s] | [š š] | 
+             [z z] | [ž ž] | [t t] | [v v] | [w w] | [x x] | [y y] ;
+ 
+! seminar, puue etc
+! any number of syllables is allowed;
+! no double consonant in consonat cluster is allowed
+! InSyllable is defined weirdly because the first Onset and last Coda of the 
+! word are special cases
+InSyllable = [[Nucleus (Coda) Onset] | [Vowel Vowel]]
+       & ~[?* DoubleCons Consonant ?*] & ~[?* Consonant DoubleCons ?*] ;
+! 
+Word = [[(Onset) InSyllable* Nucleus (Coda)] 
+       & ~[?* Vowel Vowel Vowel Vowel ?*]] ;
+V1Word = [(Onset) Nucleus] | [Word & [ ?* Vowel Vowel]] ;
+C1Word =  [(Onset) Nucleus Coda] |
+       [Word & [ ?* Vowel [Vowel | Consonant+] Consonant]]  ; ! pooleli...
+
+Letter = Vowel | Consonant ;
 
 !! !!Lexicons  
 
@@ -902,6 +945,8 @@ LEXICON Root !!= * {{@CODE@}} is the starting point of everything
 
 ! number starting a word is a special case...
 @D.Part@@P.Part.Two@@P.NeedPartThree.On@@P.POS.Num@ CardinalNumbersInComp ;   !!= * {{@CODE@}} 5-autone etc
+@D.Part@@P.Part.Two@@P.NeedPartThree.On@@P.POS.Guess@ SomeThing ;
+
 
 LEXICON Nonfirst
 
@@ -1017,6 +1062,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.Pron@@R.Case.Gen@@R.Stem.ise@ LatterNoun ;        ! eneseabi, enesekriitika etc 
 
   @R.POS.Adv@@R.Stem.topelt@ LatterNoun ;        ! topeltriiul etc 
+  @R.POS.Guess@ LatterNoun ;      
 
 ! x + deverbal noun (in addition to x + noun)
  
@@ -1140,4 +1186,63 @@ LEXICON LatterVerb       ! a verb derivation
   @P.POS.V@@C.Der@ Verbs ;                   !!= * {{@CODE@}}
 
 
-! Ad hoc definitions, to be fixed
+
+LEXICON SomeThing
+
+  < [Word & [?* Consonant]] Vowel "+Guess":0 > # ;
+
+!LEXICON GuessFirst
+
+!@D.Part@@P.Part.One@+Guess: Nouns ;       !! a simplex word, or the first part of a compound
+!     +Guess: # ;       !! first, non-word part of a guessed compound
+
+
+LEXICON GuessDerivation
+!  < Letter* Vowel Consonant+ Vowel > GuessLine ; 
+  < [Word & [?* Consonant]] Vowel > GuessLine ;
+  < [Word & [?* Consonant]] > GuessLane ; 
+  < [Word & [?* Consonant]] Vowel > GuessMine ; 
+  < Consonant* Vowel+ Consonant+ Vowel [[Consonant+ Vowel] - [[l i] | [l a] | [m i] | [k e]]] n e > GuessOluline ; ! edasine, ??
+  < Consonant* Vowel+ Consonant+ Vowel > GuessNe ; ! soolane
+  < [Word & [?* Vowel [Vowel | Consonant] Consonant+]] > GuessNe ; ! raudne akuutne
+
+LEXICON GuessSimplex
+  < Letter* Vowel+ Consonant+ Vowel Consonant+ i s > GuessOlulane ; ! eputis
+  < Letter* Vowel+ Consonant+ [[Vowel Consonant+] - [i k k]] u s > GuessOlulane ; ! ümarus
+  < Letter* Vowel Vowel Vowel Consonant+ u s > GuessOlulane ; ! jõuetus
+  < Letter* Vowel l i s u s > GuessOlulane ;  ! aatelisus
+  < Letter* Consonant i k k u s> GuessOlulane ;  ! aistlikkus
+  < Letter* Vowel Consonant+ i u s > GuessOlulane ; ! raadius
+  < Letter* Vowel Consonant+ e u s > GuessOlulane ; ! bakalauŕeus
+
+  < Letter* Consonant [[Vowel Vowel] - [[i a] | [i o]]] > GuessArmee ; 
+  < [Letter* Consonant Consonant] & ~[Letter* [Consonant - l] l]> GuessTaud ; ! axt, but not axl ?
+  < Letter* Vowel Vowel Consonant Consonant* > GuessTaud ; 
+  < Letter* Vowel Vowel t t > GuessTaud ; 
+
+LEXICON GuessLane   
+    +Guess: LANE_DERIVATION_SUF ;
+
+LEXICON GuessLine   
+    +Guess: LINE_DERIVATION_SUF ;
+
+LEXICON GuessMine   
+    +Guess: MINE_DERIVATION_SUF ;
+
+LEXICON GuessNe   
+    +Guess: NE_DERIVATION_SUF ;
+
+!LEXICON GuessUs   
+!    +Guess: US_DERIVATION_SUF ;
+
+LEXICON GuessOluline
+    +Guess+A: OLULINE ;
+
+LEXICON GuessOlulane   
+    +Guess+N: OLULINE ;
+
+LEXICON GuessArmee
+   +Guess+N: ARMEE ;
+
+LEXICON GuessTaud
+   +Guess+N: TAUD ;
