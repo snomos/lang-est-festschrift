@@ -461,6 +461,8 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | sed '/^pee+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
 | sed '/^aar+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
 | sed '/^boi+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
+| sed '/^erg+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
+| sed '/@ess+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
 \
 | sed '/;.*nnolastpart/s/^\([^:]*+N\):\([^;]*;\)\(.*\)nnolastpart/@R.Part.One@\1:@R.Part.One@\2\3/' \
 | sed 's/@R.Part.One@@R.Part.One@/@R.Part.One@/g' \
@@ -471,12 +473,15 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 \
 | sed '/^iga+/s/^\([^:]*\):\(.*\)$/@D.Case.Nom@\1:@D.Case.Nom@\2/' \
 | sed '/^au+/s/^\([^:]*\):\(.*\)$/@D.Case.Nom@\1:@D.Case.Nom@\2/' \
+| sed '/^kuma+/s/^\([^:]*\):\(.*\)$/@D.Case.Nom@\1:@D.Case.Nom@\2/' \
 | sed '/@lust+/s/^\([^:]*\):\(.*\)$/@D.Case.Nom@\1:@D.Case.Nom@\2/' \
 \
 | sed -f bad_after_nom3.sed \
 | sed 's/@P\.Stem\.Nom@@P\.Stem\.Nom@/@P.Stem.Nom@/g' \
 | sed '/@P.Stem.Single@/s/@R.Part.One@//g' \
 | sed '/@P.Stem.Single@/s/@P.Stem.Nom@//g' \
+\
+| sed '/@erim+/s/@P.Stem.Nom@//g' \
 | sed 's/?/#/' \
 >> nouns.lexc
 
@@ -576,6 +581,8 @@ echo '\nLEXICON SimpleVerbs\n' >> verbs.lexc
 cat fs_gt.inflecting.tmp1 | grep '+V:' | grep -v '...eer[iu]ma+' \
 | sed 's/nnolastpart//' \
 | sed '/võidma+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
+| sed '/^seerima+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
+| sed '/^utma+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
 >> verbs.lexc
 
 echo '\nLEXICON EerVerbs\n' >> verbs.lexc
