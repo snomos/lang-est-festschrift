@@ -808,3 +808,6 @@ s/^\([^ ]*\) .*@ELANIK/& \1:\1/
 /k<õrv .*@PIIM/s/PIIM/ASI/
 /mari .*@PIIM/s/PIIM/ASI/
 
+/MUUSEUM.*ua[lmnr]:/s/MUUSEUM/TAUD/
+
+

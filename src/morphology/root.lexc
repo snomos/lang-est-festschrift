@@ -882,46 +882,82 @@ CapNonPairC = [[CapCons CapConsv] - CapPairC] ;
 !Cap = A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|Š|Z|Ž|T|U|V|W|Ü|Ö|Ä|X|Y ;
 
 ! Guesser needs these
-Vowel = a|e|i|o|u|õ|ä|ö|ü;
-Ckpt = k|p|t;
-Clmnr = l|m|n|r;
-Cgbd = g|b|d;
-Cvf = v|f;
-Consonant = Ckpt | Clmnr | Cgbd | Cvf | c|d|f|g|j|q|s|š|z|ž|v|w|x|y;
+! Define phones for phonological patterns
+aA=a|A; bB=b|B; cC=c|C; dD=d|D; eE=e|E; fF=f|F; gG=g|G; hH=h|H; iI=i|I; jJ=j|J; 
+kK=k|K; lL=l|L; mM=m|M; nN=n|N; oO=o|O; pP=p|P; qQ=q|Q; rR=r|R; sS=s|S; šŠ=š|Š; 
+zZ=z|Z; žŽ=ž|Ž; tT=t|T; uU=u|U; vV=v|V; wW=w|W; õÕ=õ|Õ; ää=ä|Ä; öÖ=ö|Ö; üÜ=ü|Ü; 
+xX=x|X; yY=y|Y ;
+Vowel = aA|eE|iI|oO|uU|õÕ|äÄ|öÖ|üÜ;
+DoubleVow = [aA aA] | [eE eE] | [iI iI] | [oO oO] | [uU uU] | [õÕ õÕ] | [äÄ äÄ] | [öÖ öÖ] | [üÜ üÜ];
+Diphtong = [Vowel Vowel] - DoubleVow ;
+Ckpt = kK|pP|tT;
+DoubleCkpt = [kK kK] | [pP pP] | [tT tT] ;
+Clmnr = lL|mM|nN|rR;
+DoubleClmnr = [lL lL] | [mM mM] | [nN nN] | [rR rR] ;
+Cgbd = gG|bB|dD;
+Cvf = vV|fF;
+Consonant = Ckpt | Clmnr | Cgbd | Cvf | cC|jJ|qQ|sS|šŠ|zZ|žŽ|wW|xX|yY;
 ! Consonant = b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|š|z|ž|t|v|w|x|y; 
+Letter = a|e|i|o|u|õ|ä|ö|ü|b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|š|z|ž|t|v|w|x|y; 
+CapLetter = CapVow | CapCons ;
 ! Syllable onset and coda mirror each other (kind of..)
 ! Syllable onset
 Onset = Consonant |
-        [s Ckpt] | [s Clmnr] | [[Ckpt Clmnr] - [t n]] | 
-        [[s Ckpt Clmnr] - [s t n]] | [Ckpt s] | [p t] | [m n] |
-        [Cgbd Clmnr] | [š Clmnr] | [s Cvf] | [Cvf Clmnr] ;
+        [sS Ckpt] | [sS Clmnr] | [[Ckpt Clmnr] - [tT nN]] | 
+        [[sS Ckpt Clmnr] - [sS tT nN]] | [Ckpt sS] | [pP tT] | [mM nN] |
+        [Cgbd Clmnr] | [šŠ Clmnr] | [sS Cvf] | [Cvf Clmnr]  ;
 ! Syllable end
-Coda =  [Consonant - [j | h]] | 
-        [s s] | [k k] | [p p] | [t t] | [k t] | [l l] | [m m] | [n n] | [r r] | 
-        [l m] | [r n] | 
-        [Clmnr Ckpt] | [Clmnr s] | [Clmnr s s] | 
-        [Ckpt s] | [Clmnr Ckpt s] | [s Ckpt] | [Clmnr Cgbd] | 
-        [š š] | [Clmnr š] | [Clmnr š š] | [s v] | [f f] ;
+Coda =  Consonant | 
+        [sS sS] | DoubleCkpt | [kK tT] | DoubleClmnr | 
+        [lL mM] | [rR nN] | 
+        [Clmnr Ckpt] | [Clmnr sS] | [Clmnr sS sS] | 
+        [Ckpt sS] | [Clmnr Ckpt sS] | [sS Ckpt] | [Clmnr Cgbd] | 
+        [šŠ šŠ] | [Clmnr šŠ] | [Clmnr šŠ šŠ] | [sS vV] | [fF fF] ;
 Nucleus = Vowel (Vowel) ; 
-DoubleCons = [b b] | [c c] | [d d] | [f f] | [g g] | [h h] | [j j] | [k k] | 
-             [l l] | [m m] | [n n] | [p p] | [q q] | [r r] | [s s] | [š š] | 
-             [z z] | [ž ž] | [t t] | [v v] | [w w] | [x x] | [y y] ;
+DoubleCons = DoubleCkpt | DoubleClmnr | [bB bB] | [cC cC] | [dD dD] | [fF fF] | 
+        [gG gG] | [hH hH] | [jJ jJ] | [qQ qQ] | [sS sS] | [šŠ šŠ] | 
+        [zZ zZ] | [žŽ žŽ] | [vV vV] | [wW wW] | [xX xX] | [yY yY] ;
  
 ! seminar, puue etc
 ! any number of syllables is allowed;
 ! no double consonant in consonat cluster is allowed
 ! InSyllable is defined weirdly because the first Onset and last Coda of the 
 ! word are special cases
+
 InSyllable = [[Nucleus (Coda) Onset] | [Vowel Vowel]]
        & ~[?* DoubleCons Consonant ?*] & ~[?* Consonant DoubleCons ?*] ;
 ! 
-Word = [[(Onset) InSyllable* Nucleus (Coda)] 
+ProtoWord = [[(Onset) InSyllable* Nucleus (Coda)] 
        & ~[?* Vowel Vowel Vowel Vowel ?*]] ;
-V1Word = [(Onset) Nucleus] | [Word & [ ?* Vowel Vowel]] ;
-C1Word =  [(Onset) Nucleus Coda] |
-       [Word & [ ?* Vowel [Vowel | Consonant+] Consonant]]  ; ! pooleli...
+Word = ProtoWord & [Letter+] ;
+Name = ProtoWord & [CapLetter Letter+] ;
+! Li, bleu, kabeltau, 
+ProtoV1 = [(Onset) [Nucleus - [i a]]] | 
+          [?* DoubleVow] | 
+          [?* Consonant [Diphtong - [i a]]] ;
+ProtoKAVA = (Onset) Vowel [Cgbd | Clmnr | h | j | s | v] [Vowel - eE] ;
+ProtoPERE = [[?* \Vowel Vowel Consonant+ Vowel] & ~[ProtoKAVA]] |
+            [?* \Vowel Vowel Vowel Onset Vowel] ;   ! aga kanoostre ?
+ProtoAASTA = [?* Vowel] &~[ProtoV1]  &~[ProtoKAVA]  &~[ProtoPERE];
+WordV1 = Word & ProtoV1 ;
+WordKAVA =  Word & ProtoKAVA ;
+WordPERE = Word & ProtoPERE ;
+WordAASTA = Word & ProtoAASTA ;
+ProtoC1 =  [(Onset) Nucleus Coda] |
+           [(Onset) Nucleus (Coda) Onset Vowel Onset Vowel Coda] | 
+           [ ?* Vowel Vowel Coda] |
+           [ ?* DoubleCons] |
+           [ ?* Ckpt Ckpt] |
+           [ ?* Clmnr Clmnr] |
+           [ ?* i s m] |
+           [ ?* \Vowel Vowel [[Consonant Consonant+] & ~[l l] & ~[n n] & ~[l b]] Vowel Clmnr Ckpt]
+; ! pooleli... nt kanostrel ?
+ProtoMUUSEUM = ?* Vowel [Vowel | Consonant] Consonant+ [[[i | e] u m] | [[i | e] o n] | [[i | e] a n] | 
+           [i  o r] | [i e m]] ;
+!ProtoC2 =  [(Onset) Vowel Vowel  (Coda) Onset Vowel Coda]  | 
+!            [(Onset) Nucleus (Coda) Onset Vowel Coda] 
+!; ! pooleli...
 
-Letter = Vowel | Consonant ;
 
 !! !!Lexicons  
 
@@ -943,9 +979,12 @@ LEXICON Root !!= * {{@CODE@}} is the starting point of everything
 @R.Part.One@@P.Part.Two@ Nonfirst "weight: 10" ;                      ! second loop; 
 @R.Part.Two@@P.Part.Three@@C.NeedPartThree@ Nonfirst "weight: 10" ;   ! third loop; 
 
+! only two components allowed, thus must bypass LEXICON First:
 ! number starting a word is a special case...
 @D.Part@@P.Part.Two@@P.NeedPartThree.On@@P.POS.Num@ CardinalNumbersInComp ;   !!= * {{@CODE@}} 5-autone etc
-@D.Part@@P.Part.Two@@P.NeedPartThree.On@@P.POS.Guess@ SomeThing ;
+
+! blahblah followed by a word is a special case
+@D.Part@@P.Part.Two@@P.NeedPartThree.On@@P.POS.Guess@ SomeThing ;        
 
 
 LEXICON Nonfirst
@@ -964,6 +1003,7 @@ LEXICON Single     !! strictly simplex words; cannot be a part of a compound
   CardinalNumbersSingle ;      !!= * {{@CODE@}}
   OrdinalNumbers ;          !!= * {{@CODE@}}
   Punctuation ;          !!= * {{@CODE@}}
+  SomeName ;          !!= * {{@CODE@}}
 
 LEXICON First     !!= * {{@CODE@}} a simplex word or the first part of a compound 
 
@@ -1190,6 +1230,11 @@ LEXICON LatterVerb       ! a verb derivation
 LEXICON SomeThing
 
   < [Word & [?* Consonant]] Vowel "+Guess":0 > # ;
+  < [Word & [?* Consonant] [[Vowel Vowel] - [[i a] | [i o]]]] "+Guess":0 "+N":0 > # ;
+
+LEXICON SomeName
+
+  < [Name & [?* Consonant] [[Vowel Vowel] - [[i a] | [i o]]]] "+Guess":0 "+N":0 "+Prop":0 > ARMEE ;
 
 ! these  
 
