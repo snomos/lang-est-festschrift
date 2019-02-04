@@ -550,6 +550,29 @@ endif !WITH_OFST_TROPICAL
 analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.vocabulary.xfst 
 		cp $< $@
 
+# normative should not include paths of guessing
+# HFST:
+generator-gt-norm.%: generator-gt-norm.tmp.% \
+				filters/remove-guessed-forms.est.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"filters/remove-guessed-forms.est.$*\" \
+			.o. @\"$<\" \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
+analyser-gt-norm.hfst: generator-gt-norm.hfst
+	$(AM_V_XFST_TOOL)$(PRINTF) "\
+		 load stack $<\n\
+		 invert net\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
+# XEROX:
+# not implemented...
+#
+
+
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######
 ##################################################################
