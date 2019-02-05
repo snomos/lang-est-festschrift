@@ -83,6 +83,8 @@ cat tmp1 | ./lemma2twol.sed \
 | ./post_lex2lemma.sed \
 \
 | sed 's/mmB1/mB1/g' \
+| sed 's/l]lD1/l]D1/g' \
+| sed 's/n]nD1/n]D1/g' \
 | sed 's/llD1/lD1/g' \
 | sed 's/nnD1/nD1/g' \
 | sed 's/rrD1/rD1/g' \

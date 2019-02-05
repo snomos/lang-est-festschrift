@@ -312,11 +312,17 @@ Diacritics
 
 Sets
 
-Vowel = A E I O U Õ Ä Ö Ü Y
-        a e i o u õ ä ö ü y ;
+! Acronyms are inflected, but ordinary phonological rules do not apply to their 
+! written form, so we must be able to differentiate between normal words
+! and those written in capital letters
 
-Consonant = b c d f g h j k l m n p q r s š z ž t v w x 
-            B C D F G H J K L M N P Q R S Š Z Ž T V W X ;
+UpperCaseVowel = A E I O U Õ Ä Ö Ü Y ;
+LowerCaseVowel = a e i o u õ ä ö ü y ;
+Vowel = UpperCaseVowel LowerCaseVowel ;
+
+LowerCaseConsonant = b c d f g h j k l m n p q r s š z ž t v w x ;
+UpperCaseConsonant = B C D F G H J K L M N P Q R S Š Z Ž T V W X ;
+Consonant = LowerCaseConsonant UpperCaseConsonant ;
 
 ! stops
 stop = g b d k p t ;
@@ -1372,25 +1378,15 @@ Vx:0  <=> :Consonant ( J1:0 ) _ %> PlSV:Vy Null* %{s%}:0 %{i%}:0 %{d%}:0 ;
 
 "consonant de-doubling in consonant clusters (e.g. after vowel deletion)"
 
-Cx:0 <=> :Cx _ [Null | SuffixBorder]+ [[:Consonant Any* Border] - [Gi Border]];
+Cx:0 <=> :Cx _ [Null | SuffixBorder]+ [[:LowerCaseConsonant Any* Border] - [Gi Border]];
          :Cx _ [WS:stop] ;
-      where Cx in (Consonant) ;
+      where Cx in (LowerCaseConsonant) ;
 
 ! lexical: s p i k k E2 r > i
 ! surface: s p i k 0  0 r > i 
-! lexical: k õ r r S1 {stemill} {rare} > t e
-! surface: k õ r 0  0     0        0   > t e
-! lexical: k ü n n D1 > T7 u d
-! surface: k ü n 0  0 >  t u d 
 
-! lexical: k a n n D1 E2 l e
-! surface: k a n 0  d  0 l e 
-! lexical: k õ r r S1 
-! surface: k õ r 0  s 
-! lexical: k u l l D1 > {pl.i} {hyp}
-! surface: k u l 0  d >    0     0
-! lexical: s ´ u n , n D1 i > m a
-! surface: s 0 u n 0 0  d i > m a
+! lexical: R a n n D3 u
+! surface: R a n 0 d  u 
 
 ! this prohibits vasallik, which is good, but vasalllik is prohibited by the rule above anyway...
 "no deletion in ll+lik"
