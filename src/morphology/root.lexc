@@ -1024,6 +1024,7 @@ LEXICON First     !!= * {{@CODE@}} a simplex word or the first part of a compoun
   @P.POS.GA@@P.Case.Gen@ GenitiveAttributes ;      !!= * {{@CODE@}}
   @P.POS.Pref@ Prefixes ;                !!= * {{@CODE@}}
   @P.POS.ACR@ Acronyms ;          !!= * {{@CODE@}}
+  @P.POS.ACRMinus@ Acrominus ;          !!= * {{@CODE@}}
 
 ! the nature of the previous word is reflected by flag diacritics that were set back then
 ! (possibly when passing through a continuation lexicon);
@@ -1225,7 +1226,11 @@ LEXICON LatterVerb       ! a verb derivation
               
   @P.POS.V@@C.Der@ Verbs ;                   !!= * {{@CODE@}}
 
+! An acronym that may be first part of a compound:
+! a sequence of capital letters; max length 5 and a trailing hyphen
+LEXICON Acrominus
 
+  < Cap^<6 "+ACR":"-" > # ;
 
 LEXICON SomeThing
 

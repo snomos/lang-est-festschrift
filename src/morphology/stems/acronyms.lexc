@@ -35,7 +35,6 @@ LEXICON AcroArmee
    +ACR+Sg: GENITIVE ;
       +ACR: Acro1V ;
       +ACR:- Acro1V ;
- @P.POS.ACRMinus@ WithHyphen ;
 
 LEXICON Acro1V 
           :d SG_PARTITIVE ;            ! KT-d
@@ -48,7 +47,6 @@ LEXICON AcroFiat
    +ACR+Sg: NOMINATIVE ;
       +ACR: Acro1C ;
       +ACR:- Acro1C ;
- @P.POS.ACRMinus@ WithHyphen ;
 
 LEXICON Acro1C 
               :i N_SG_SUBPARA ;      ! KEKi etc
@@ -65,7 +63,6 @@ LEXICON AcroPere
    +ACR+Sg: GENITIVE ;
       +ACR: Acro2V ;
       +ACR:- Acro2V ;
- @P.POS.ACRMinus@ WithHyphen ;
 
 LEXICON Acro2V 
           :t SG_PARTITIVE ;            ! NATOt
@@ -78,7 +75,6 @@ LEXICON AcroRedel
    +ACR+Sg: NOMINATIVE ;
       +ACR: Acro2C ;
       +ACR:- Acro2C ;
- @P.POS.ACRMinus@ WithHyphen ;
 
 LEXICON Acro2C 
               :i N_SG_SUBPARA ;      ! UNIXi etc
@@ -92,7 +88,6 @@ LEXICON AcroEtis
    +ACR+Sg: NOMINATIVE ;
       +ACR: AcroS ;
       +ACR:- AcroS ;
- @P.POS.ACRMinus@ WithHyphen ;
 
 LEXICON AcroS 
           :e N_SG_SUBPARA ;      ! ETISe etc
@@ -101,6 +96,4 @@ LEXICON AcroS
           :te N_PL_SUBPARA ;     ! ETISte etc
           :eid PL_PARTITIVE ;            ! ETISeid
 
-LEXICON WithHyphen        ! ends with a hyphen,
-      +ACR:- # ;          ! thus possible only in compounds
 
