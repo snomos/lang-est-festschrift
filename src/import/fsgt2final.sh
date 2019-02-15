@@ -12,8 +12,8 @@ cat fs_gt.inflecting \
 | sed 's/^[^|]*| //g' \
 > fs_gt.inflecting.tmp1
 
-echo 'LEXICON Adjectives\n\n Adjectives_v ;\n Adjectives_ne ;\n PlainAdjectives ;\n' > adjectives.lexc
-#echo 'LEXICON Adjectives\n\n @P.Stem.Short@ ShortAdjectives ;  ! max 2 syllables\n Adjectives_v ;  ! no compounds\n Adjectives_ne ;  ! no compounds\n PlainAdjectives ;\n' > adjectives.lexc
+echo 'LEXICON Adjectives\n\n Adjectives_v ;\n Adjectives_ne ;\n PlainAdjectives ;\n' > adjectives.proto
+#echo 'LEXICON Adjectives\n\n @P.Stem.Short@ ShortAdjectives ;  ! max 2 syllables\n Adjectives_v ;  ! no compounds\n Adjectives_ne ;  ! no compounds\n PlainAdjectives ;\n' > adjectives.protolexc
 
 # ignore the classification of vabamorf
 cat fs_gt.inflecting.tmp1 | grep '+A:' \
@@ -42,26 +42,26 @@ cat fs_gt.inflecting.tmp1 | grep '+A:' \
 
 # adjectives ending in v
 
-echo '\nLEXICON Adjectives_v\n' >> adjectives.lexc
+echo '\nLEXICON Adjectives_v\n' >> adjectives.proto
 cat adjectives.tmp1 \
 | grep -v '#' | grep 'v+' \
 | sed '/^[^aeiouõäöü]*[aeiouõäöü]*[^aeiouõäöü]*[aeiouõäöü][aeiouõäöü]*[^aeiouõäöü]*+A/s/^\([^:]*+A\):\([^;]*;\)\(.*\)$/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 | sed '/;.*nnolastpart/s/^\([^:]*+A\):\([^;]*;\)\(.*\)nnolastpart/@R.Part.One@\1:@R.Part.One@\2\3/' \
 | sed 's/?/#/g' \
->> adjectives.lexc
+>> adjectives.proto
 
 # adjectives ending in ne
 
-echo '\nLEXICON Adjectives_ne\n' >> adjectives.lexc
+echo '\nLEXICON Adjectives_ne\n' >> adjectives.proto
 cat adjectives.tmp1 \
 | grep -v '#' | grep 'ne+' \
 | sed '/;.*nnolastpart/s/^\([^:]*+A\):\([^;]*;\)\(.*\)nnolastpart/@R.Part.One@\1:@R.Part.One@\2\3/' \
 | sed 's/?/#/g' \
->> adjectives.lexc
+>> adjectives.proto
 
 # other adjectives
 
-echo '\nLEXICON PlainAdjectives\n' >> adjectives.lexc
+echo '\nLEXICON PlainAdjectives\n' >> adjectives.proto
 
 cat adjectives.tmp1 \
 | grep '#' \
@@ -85,10 +85,16 @@ cat adjectives.tmp2 \
 | sed '/@kasutu+/s/@P.Stem.Nom@//g' \
 | sed '/@antu+/s/@P.Stem.Nom@//g' \
 | sed 's/?/#/g' \
-| sort -u >> adjectives.lexc
+| sort -u >> adjectives.proto
+
+# some more flag diacritics to block some paths in compounding
+cat  adjectives.proto \
+| sed -f badfinal_A.sed \
+| sed '/@P.Stem.Single@/s/@P.Stem.Nom@//g' \
+> adjectives.protolexc
 
 echo '\nLEXICON NoninflectingAdjectives\n' \
-> noninflecting_adjectives.lexc
+> noninflecting_adjectives.protolexc
 cat fs_gt.noninfl.tmp1 | grep '+A:' > noninflecting_adjectives.tmp1
 
 # mark good words for compounding 
@@ -108,9 +114,9 @@ cat noninflecting_adjectives.tmp1 \
 | sed '/il+/s/^\([^:]*+A\):\([^;]*;\)\(.*\)/@P.Case.Ine@\1:@P.Case.Ine@\2\3/' \
 > noninflecting_adjectives.tmp2
 
-cat noninflecting_adjectives.tmp2 >> noninflecting_adjectives.lexc
+cat noninflecting_adjectives.tmp2 >> noninflecting_adjectives.protolexc
 
-echo 'LEXICON ComparativeAdjectives\n' > comparative_adjectives.lexc
+echo 'LEXICON ComparativeAdjectives\n' > comparative_adjectives.protolexc
 cat fs_gt.inflecting.tmp1 | grep '+A+Comp' > comparative_adjectives.tmp1
 
 # mark good words for compounding in Sg Nom
@@ -128,9 +134,9 @@ cat comparative_adjectives.tmp1 \
 | sed '/^ülem+/s/^\([^:]*+A+Comp\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 > comparative_adjectives.tmp2
 
-cat comparative_adjectives.tmp2 >> comparative_adjectives.lexc
+cat comparative_adjectives.tmp2 >> comparative_adjectives.protolexc
 
-echo 'LEXICON SuperlativeAdjectives\n' > superlative_adjectives.lexc
+echo 'LEXICON SuperlativeAdjectives\n' > superlative_adjectives.protolexc
 cat fs_gt.inflecting.tmp1 | grep '+A+Superl' > superlative_adjectives.tmp1
 
 # mark good words for compounding in Sg Nom
@@ -140,7 +146,7 @@ cat superlative_adjectives.tmp1 \
 | sed '/^ülim+/s/^\([^:]*+A+Superl\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 > superlative_adjectives.tmp2
 
-cat superlative_adjectives.tmp2 >> superlative_adjectives.lexc
+cat superlative_adjectives.tmp2 >> superlative_adjectives.protolexc
 
 
 
@@ -182,31 +188,31 @@ cat tmpadv.alg \
 cat tmpadv.2 | grep -v '\(^alasti+\)\|\(^alles+\)\|\(^edasi+\)\|\(^eemale+\)\|\(^eemalt+\)\|\(^eraldi+\)\|\(^halvasti+\)\|\(^juurde+\)\|\(^järele+\)\|\(^kaotsi+\)\|\(^kaugele+\)\|\(^kaugelt+\)\|\(^kergelt+\)\|\(^kergesti+\)\|\(^kindlaks+\)\|\(^klaariks+\)\|\(^käsitsi+\)\|\(^kõrgelt+\)\|\(^kõrval+\)\|\(^kõrvalt+\)\|\(^kõvaks+\)\|\(^kõrvuti+\)\|\(^külili+\)\|\(^laiali+\)\|\(^raskesti+\)\|\(^seni+\)\|\(^sisse+\)\|\(^tagant+\)\|\(^tagasi+\)\|\(^viimati+\)\|\(^võistu+\)\|\(^vääriti+\)\|\(^äsja+\)' \
 > tmpadv.3
 
-#>> adverbs.lexc
+#>> adverbs.protolexc
 
-echo 'LEXICON Adverbs\n\n CompoundingAdverbs ;\n @P.Part.Bad@ PlainAdverbs ;\n\n' > adverbs.lexc
-echo 'LEXICON CompoundingAdverbs\n\n @P.Stem.topelt@ NounCompoundingAdverbs ;\n VerbCompoundingAdverbs ;\n\n' >> adverbs.lexc
+echo 'LEXICON Adverbs\n\n CompoundingAdverbs ;\n @P.Part.Bad@ PlainAdverbs ;\n\n' > adverbs.protolexc
+echo 'LEXICON CompoundingAdverbs\n\n @P.Stem.topelt@ NounCompoundingAdverbs ;\n VerbCompoundingAdverbs ;\n\n' >> adverbs.protolexc
 
-echo 'LEXICON NounCompoundingAdverbs\n' >> adverbs.lexc
-cat tmpadv.0 >> adverbs.lexc
+echo 'LEXICON NounCompoundingAdverbs\n' >> adverbs.protolexc
+cat tmpadv.0 >> adverbs.protolexc
 
-echo '\nLEXICON VerbCompoundingAdverbs\n' >> adverbs.lexc
+echo '\nLEXICON VerbCompoundingAdverbs\n' >> adverbs.protolexc
 cat tmpadv.1 \
 | sed '/^vähe+/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.vähe@\1:@P.Stem.vähe@\2\3/' \
 | sed '/^puht+/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.vähe@\1:@P.Stem.vähe@\2\3/' \
 | sort -u \
->> adverbs.lexc
+>> adverbs.protolexc
 
-echo '\nLEXICON PlainAdverbs\n' >> adverbs.lexc
+echo '\nLEXICON PlainAdverbs\n' >> adverbs.protolexc
 
-cat tmpadv.3 | sort -u >> adverbs.lexc
-#cat adverbs.tmp2 | sort -u >> adverbs.lexc
+cat tmpadv.3 | sort -u >> adverbs.protolexc
+#cat adverbs.tmp2 | sort -u >> adverbs.protolexc
 
-echo 'LEXICON Adpositions\n' > adpositions.lexc
-cat fs_gt.noninfl.tmp1 | grep '+Adp' >> adpositions.lexc
+echo 'LEXICON Adpositions\n' > adpositions.protolexc
+cat fs_gt.noninfl.tmp1 | grep '+Adp' >> adpositions.protolexc
 
-echo 'LEXICON Conjunctions\n' > conjunctions.lexc
-cat fs_gt.noninfl.tmp1 | grep '+C[CS]' >> conjunctions.lexc
+echo 'LEXICON Conjunctions\n' > conjunctions.protolexc
+cat fs_gt.noninfl.tmp1 | grep '+C[CS]' >> conjunctions.protolexc
 
 # add compounding-related flag diacritics to individual words
 
@@ -310,17 +316,17 @@ LC_COLLATE=C join -t+ -a 1 -a 2 -o 1.1 2.1 2.2 head_esiosad fs_gt.inflecting.tmp
 | sed 's/^[^+]*+//' > fs_gt.inflecting.tmp1.tagged
 #----
 
-echo 'LEXICON Nouns\n\n DeverbalNouns ;\n PlainNouns ;\n' > nouns.lexc
+echo 'LEXICON Nouns\n\n DeverbalNouns ;\n PlainNouns ;\n' > nouns.protolexc
 
-echo '\nLEXICON DeverbalNouns\n' >> nouns.lexc
+echo '\nLEXICON DeverbalNouns\n' >> nouns.protolexc
 cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | grep 'WDEVERBAL' | sed 's/WDEVERBAL//' \
 | sed '/;.*heaesi/s/^\([^:]*+N\):\([^;]*;\)\(.*\)heaesi/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
->> nouns.lexc
+>> nouns.protolexc
 
-#echo '\nLEXICON PlainNouns\n\n @P.Stem.Single@ PlainNouns_nocompound ;\n @R.Part.One@ PlainNouns_nolastpart ;\n @P.Len.3@ PlainNouns_three ;\n @P.Len.4@ PlainNouns_four ;\n PlainNouns_fiveplus ;\n' >> nouns.lexc
+#echo '\nLEXICON PlainNouns\n\n @P.Stem.Single@ PlainNouns_nocompound ;\n @R.Part.One@ PlainNouns_nolastpart ;\n @P.Len.3@ PlainNouns_three ;\n @P.Len.4@ PlainNouns_four ;\n PlainNouns_fiveplus ;\n' >> nouns.protolexc
 
-echo '\nLEXICON PlainNouns\n\n' >> nouns.lexc
+echo '\nLEXICON PlainNouns\n\n' >> nouns.protolexc
 
 # add flags for limiting compounding
 cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
@@ -456,7 +462,6 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | sed '/@alam+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Final@\1:@P.Stem.Final@\2\3/' \
 | sed '/^ülem+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Final@\1:@P.Stem.Final@\2\3/' \
 | sed '/@ülem+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Final@\1:@P.Stem.Final@\2\3/' \
-| sed '/@P.Stem.Final@/s/@P.Stem.Nom@//g' \
 \
 | sed '/^pee+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
 | sed '/^aar+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
@@ -477,13 +482,20 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | sed '/@lust+/s/^\([^:]*\):\(.*\)$/@D.Case.Nom@\1:@D.Case.Nom@\2/' \
 \
 | sed -f bad_after_nom3.sed \
+| sed -f badfinal_N.sed \
+| sed -f badfinal3_N.sed \
 | sed 's/@P\.Stem\.Nom@@P\.Stem\.Nom@/@P.Stem.Nom@/g' \
 | sed '/@P.Stem.Single@/s/@R.Part.One@//g' \
 | sed '/@P.Stem.Single@/s/@P.Stem.Nom@//g' \
+| sed '/@P.Stem.Single@/s/@D.Case.Nom@//g' \
+| sed '/@R.Part.One@/s/@D.Case.Nom@//g' \
+| sed 's/\(@D.Stem.Guessed@\)\(@D.Case.Nom@\)/\2\1/g' \
+| sed 's/\(@D.Case.Nom@\)\(@D.Case.Nom@\)/\1/g' \
+| sed 's/\(@D.Stem.Guessed@\)\(@D.Stem.Guessed@\)/\1/g' \
 \
 | sed '/@erim+/s/@P.Stem.Nom@//g' \
 | sed 's/?/#/' \
->> nouns.lexc
+>> nouns.protolexc
 
 # grep 'Nom#...+' korpustest-8-alakriips.hjk.hfst.14dets | sed 's/^.*Nom#\(...\)+.*$/\1/' | sort | uniq -c | sed 's/ \([^ ][^ ][^ ]\)$/ sed \/^\1+\/s\/^\\([^:]*\\):\\(.*\\)$\/@D.Case.Nom@\\1:@D.Case.Nom@\\2\//' | sed 's/^.* \/^/\/^/' 
 # grep -v '\^töö+' | grep -v '\^ala+'
@@ -492,20 +504,20 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 
 
 
-#echo '\nLEXICON PlainNouns_fiveplus\n' >> nouns.lexc
+#echo '\nLEXICON PlainNouns_fiveplus\n' >> nouns.protolexc
 #cat fs_gt.inflecting.tmp1 | grep '+N:' \
 #| grep -v 'WDEVERBAL' \
 #| grep -v 'mnocompound' \
 #| grep -v 'nnolastpart' \
 #| grep -v '^[^+][^+][^+]+' \
 #| grep -v '^[^+][^+][^+][^+]+' \
-#>> nouns.lexc
+#>> nouns.protolexc
 
-echo 'lapselaps+N: LAPSELAPS ;' >> nouns.lexc
-echo 'lapselapselaps+N: LAPSELAPSELAPS ;' >> nouns.lexc
+echo 'lapselaps+N: LAPSELAPS ;' >> nouns.protolexc
+echo 'lapselapselaps+N: LAPSELAPSELAPS ;' >> nouns.protolexc
 
-echo 'LEXICON ProperNouns\n' > propernouns.lexc
-cat fs_gt.inflecting.tmp1 | grep '+N+Prop' | sed 's/nnolastpart//' >> propernouns.lexc
+echo 'LEXICON ProperNouns\n' > propernouns.protolexc
+cat fs_gt.inflecting.tmp1 | grep '+N+Prop' | sed 's/nnolastpart//' >> propernouns.protolexc
 
 cat fs_gt.inflecting.tmp1 | grep '+Num+Card' \
 | grep -v '#p.aar ' \
@@ -513,56 +525,56 @@ cat fs_gt.inflecting.tmp1 | grep '+Num+Card' \
 > cardinalnumerals.tmp1
 echo 'poolteist+Num+Card:p´ool POOLTEIST ;' >> cardinalnumerals.tmp1
 
-echo 'LEXICON CardinalNumerals\n  IntegerNumerals ;\n  NonIntegerNumerals ;\n' > cardinalnumerals.lexc
-echo '\nLEXICON IntegerNumerals\n' >> cardinalnumerals.lexc
+echo 'LEXICON CardinalNumerals\n  IntegerNumerals ;\n  NonIntegerNumerals ;\n' > cardinalnumerals.protolexc
+echo '\nLEXICON IntegerNumerals\n' >> cardinalnumerals.protolexc
 
 # compoundable with Der/ne words
 cat cardinalnumerals.tmp1 \
 | grep -v 'ELANIK' | grep  -v ':.*[#-]' \
->> cardinalnumerals.lexc
+>> cardinalnumerals.protolexc
 
-echo '\nLEXICON NonIntegerNumerals\n' >> cardinalnumerals.lexc
+echo '\nLEXICON NonIntegerNumerals\n' >> cardinalnumerals.protolexc
 cat cardinalnumerals.tmp1 \
 | grep 'ELANIK' \
->> cardinalnumerals.lexc
+>> cardinalnumerals.protolexc
 
 cat cardinalnumerals.tmp1 \
 | grep -v 'ELANIK' | grep  ':.*[#-]' \
->> cardinalnumerals.lexc
+>> cardinalnumerals.protolexc
 
-echo 'LEXICON OrdinalNumerals\n' > ordinalnumerals.lexc
-cat fs_gt.inflecting.tmp1 | grep '+Num+Ord' >> ordinalnumerals.lexc
+echo 'LEXICON OrdinalNumerals\n' > ordinalnumerals.protolexc
+cat fs_gt.inflecting.tmp1 | grep '+Num+Ord' >> ordinalnumerals.protolexc
 
-echo 'LEXICON Pronouns\n\n @P.Part.Bad@ PlainPronouns ;\n CompoundingPronouns ;\n\nLEXICON PlainPronouns\n' > pronouns.lexc
-cat fs_gt.noninfl.tmp1 | grep '+Pron' >> pronouns.lexc
+echo 'LEXICON Pronouns\n\n @P.Part.Bad@ PlainPronouns ;\n CompoundingPronouns ;\n\nLEXICON PlainPronouns\n' > pronouns.protolexc
+cat fs_gt.noninfl.tmp1 | grep '+Pron' >> pronouns.protolexc
 
 # exclude list(1) words
 cat fs_gt.inflecting.tmp1 | grep '+Pron' \
 | sed 's/nnolastpart//' \
 | grep -v '\(^iga+\)\|\(^mitu+\)\|\(^mõlema+\)\|\(^mõni+\)\|\(^sama+\)\|\(^palju+\)' \
->> pronouns.lexc
+>> pronouns.protolexc
 
 # insert LEXICON CompoundingPronouns
 cat pronouns_exceptions.handmade \
 | sed '/ise+/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.ise@\1:@P.Stem.ise@\2\3/' \
 | sed '/iseenese+/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.ise@\1:@P.Stem.ise@\2\3/' \
->> pronouns.lexc
+>> pronouns.protolexc
 
 # include list(1) words
 cat fs_gt.inflecting.tmp1 | grep '+Pron' \
 | sed 's/nnolastpart//' \
 | grep '\(^iga+\)\|\(^mitu+\)\|\(^mõlema+\)\|\(^mõni+\)\|\(^sama+\)\|\(^palju+\)' \
->> pronouns.lexc
+>> pronouns.protolexc
 
-echo 'LEXICON NoninflectingVerbs\n' > noninflecting_verbs.lexc
-cat fs_gt.noninfl.tmp1 | grep '+V:' >> noninflecting_verbs.lexc
-cat ara.handmade >> noninflecting_verbs.lexc
+echo 'LEXICON NoninflectingVerbs\n' > noninflecting_verbs.protolexc
+cat fs_gt.noninfl.tmp1 | grep '+V:' >> noninflecting_verbs.protolexc
+cat ara.handmade >> noninflecting_verbs.protolexc
 
-echo 'LEXICON Interjections\n' > interjections.lexc
-cat fs_gt.noninfl.tmp1 | grep '+Interj' >> interjections.lexc
+echo 'LEXICON Interjections\n' > interjections.protolexc
+cat fs_gt.noninfl.tmp1 | grep '+Interj' >> interjections.protolexc
 
 # some words cannot be a latter part of a compound
-echo 'LEXICON GenitiveAttributes\n' > genitive_attributes.lexc
+echo 'LEXICON GenitiveAttributes\n' > genitive_attributes.protolexc
 cat fs_gt.noninfl.tmp1 \
 | grep '+N+Sg+Gen' \
 | sed '/^doni+/s/^\([^:]*\):\(.*\)$/@R.Part.One@\1:@R.Part.One@\2/' \
@@ -574,20 +586,20 @@ cat fs_gt.noninfl.tmp1 \
 | sed '/^süva+/s/^\([^:]*\):\(.*\)$/@R.Part.One@\1:@R.Part.One@\2/' \
 | sed '/^tori+/s/^\([^:]*\):\(.*\)$/@R.Part.One@\1:@R.Part.One@\2/' \
 | sed '/^võsu+/s/^\([^:]*\):\(.*\)$/@R.Part.One@\1:@R.Part.One@\2/' \
->> genitive_attributes.lexc
+>> genitive_attributes.protolexc
 
-echo 'LEXICON Verbs\n\neel+Pref#:eel# SimpleVerbs ;\neel+Pref#:eel# EerVerbs ;\neelis+Pref#:eelis# SimpleVerbs ;\neelis+Pref#:eelis# EerVerbs ;\nkaug+Pref#:kaug# SimpleVerbs ;\nkaug+Pref#:kaug# EerVerbs ;\nkiir+Pref#:kiir# SimpleVerbs ;\nkiir+Pref#:kiir# EerVerbs ;\nsund+Pref#:sund# SimpleVerbs ;\nsund+Pref#:sund# EerVerbs ;\ntaas+Pref#:taas# SimpleVerbs ;\ntaas+Pref#:taas# EerVerbs ;\nvaeg+Pref#:vaeg# SimpleVerbs ;\nvaeg+Pref#:vaeg# EerVerbs ;\nühis+Pref#:ühis# SimpleVerbs ;\nühis+Pref#:ühis# EerVerbs ;\nde+Pref#:de# EerVerbs ;\nre+Pref#:re# EerVerbs ;\nSimpleVerbs ;\nEerVerbs ;\n' > verbs.lexc
-echo '\nLEXICON SimpleVerbs\n' >> verbs.lexc
+echo 'LEXICON Verbs\n\neel+Pref#:eel# SimpleVerbs ;\neel+Pref#:eel# EerVerbs ;\neelis+Pref#:eelis# SimpleVerbs ;\neelis+Pref#:eelis# EerVerbs ;\nkaug+Pref#:kaug# SimpleVerbs ;\nkaug+Pref#:kaug# EerVerbs ;\nkiir+Pref#:kiir# SimpleVerbs ;\nkiir+Pref#:kiir# EerVerbs ;\nsund+Pref#:sund# SimpleVerbs ;\nsund+Pref#:sund# EerVerbs ;\ntaas+Pref#:taas# SimpleVerbs ;\ntaas+Pref#:taas# EerVerbs ;\nvaeg+Pref#:vaeg# SimpleVerbs ;\nvaeg+Pref#:vaeg# EerVerbs ;\nühis+Pref#:ühis# SimpleVerbs ;\nühis+Pref#:ühis# EerVerbs ;\nde+Pref#:de# EerVerbs ;\nre+Pref#:re# EerVerbs ;\nSimpleVerbs ;\nEerVerbs ;\n' > verbs.protolexc
+echo '\nLEXICON SimpleVerbs\n' >> verbs.protolexc
 cat fs_gt.inflecting.tmp1 | grep '+V:' | grep -v '...eer[iu]ma+' \
 | sed 's/nnolastpart//' \
 | sed '/võidma+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
 | sed '/^seerima+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
 | sed '/^utma+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
->> verbs.lexc
+>> verbs.protolexc
 
-echo '\nLEXICON EerVerbs\n' >> verbs.lexc
+echo '\nLEXICON EerVerbs\n' >> verbs.protolexc
 cat fs_gt.inflecting.tmp1 | grep '+V:' | grep '...eer[iu]ma+' \
-| sed 's/nnolastpart//' >> verbs.lexc
+| sed 's/nnolastpart//' >> verbs.protolexc
 
 # create final_components.lexc
 ./fs_suf2gt.sh
@@ -595,26 +607,40 @@ cat fs_gt.inflecting.tmp1 | grep '+V:' | grep '...eer[iu]ma+' \
 # NB! this relies on the dir structure being the same as in Giellatekno
 #cp *.lexc ../morphology/stems
 
-#cat abbreviations.lexc | sed 's/[´`,]//g'  > ../morphology/stems/abbreviations.lexc
-#cat acronyms.lexc | sed 's/[´`,]//g'  > ../morphology/stems/acronyms.lexc
-cat adjectives.lexc | sed 's/`/ˈ/g' | sed 's/´/˘/g' | sed 's/,/ʲ/g' | sed 's/ # *;/ @@@ ;/g' | sed 's/#/%#/g' | sed 's/@@@/#/g' > ../morphology/stems/adjectives.lexc
-cat adpositions.lexc | sed 's/`/ˈ/g' | sed 's/´/˘/g' | sed 's/,/ʲ/g' | sed 's/ # *;/ @@@ ;/g' | sed 's/#/%#/g' | sed 's/@@@/#/g'  > ../morphology/stems/adpositions.lexc
-cat adverbs.lexc | sed 's/`/ˈ/g' | sed 's/´/˘/g' | sed 's/,/ʲ/g' | sed 's/ # *;/ @@@ ;/g' | sed 's/#/%#/g' | sed 's/@@@/#/g' > ../morphology/stems/adverbs.lexc
-cat cardinalnumerals.lexc | sed 's/`/ˈ/g' | sed 's/´/˘/g' | sed 's/,/ʲ/g' | sed 's/ # *;/ @@@ ;/g' | sed 's/#/%#/g' | sed 's/@@@/#/g' > ../morphology/stems/cardinalnumerals.lexc
-cat comparative_adjectives.lexc | sed 's/`/ˈ/g' | sed 's/´/˘/g' | sed 's/,/ʲ/g' | sed 's/ # *;/ @@@ ;/g' | sed 's/#/%#/g' | sed 's/@@@/#/g' > ../morphology/stems/comparative_adjectives.lexc
-cat conjunctions.lexc | sed 's/`/ˈ/g' | sed 's/´/˘/g' | sed 's/,/ʲ/g' | sed 's/ # *;/ @@@ ;/g' | sed 's/#/%#/g' | sed 's/@@@/#/g' > ../morphology/stems/conjunctions.lexc
-cat final_components.lexc | sed 's/`/ˈ/g' | sed 's/´/˘/g' | sed 's/,/ʲ/g' | sed 's/ # *;/ @@@ ;/g' | sed 's/#/%#/g' | sed 's/@@@/#/g' > ../morphology/stems/final_components.lexc
-cat genitive_attributes.lexc | sed 's/`/ˈ/g' | sed 's/´/˘/g' | sed 's/,/ʲ/g' | sed 's/ # *;/ @@@ ;/g' | sed 's/#/%#/g' | sed 's/@@@/#/g' > ../morphology/stems/genitive_attributes.lexc
-cat interjections.lexc | sed 's/`/ˈ/g' | sed 's/´/˘/g' | sed 's/,/ʲ/g' | sed 's/ # *;/ @@@ ;/g' | sed 's/#/%#/g' | sed 's/@@@/#/g' > ../morphology/stems/interjections.lexc
-cat noninflecting_adjectives.lexc | sed 's/`/ˈ/g' | sed 's/´/˘/g' | sed 's/,/ʲ/g'| sed 's/ # *;/ @@@ ;/g' | sed 's/#/%#/g' | sed 's/@@@/#/g' > ../morphology/stems/noninflecting_adjectives.lexc
-cat noninflecting_verbs.lexc | sed 's/`/ˈ/g' | sed 's/´/˘/g' | sed 's/,/ʲ/g' | sed 's/ # *;/ @@@ ;/g' | sed 's/#/%#/g' | sed 's/@@@/#/g' > ../morphology/stems/noninflecting_verbs.lexc
-cat nouns.lexc | sed 's/`/ˈ/g' | sed 's/´/˘/g' | sed 's/,/ʲ/g' | sed 's/ # *;/ @@@ ;/g' | sed 's/#/%#/g' | sed 's/@@@/#/g' > ../morphology/stems/nouns.lexc
-#cat numbers.lexc | sed 's/[´`,]//g'  > ../morphology/stems/numbers.lexc
-cat ordinalnumerals.lexc | sed 's/`/ˈ/g' | sed 's/´/˘/g' | sed 's/,/ʲ/g' | sed 's/ # *;/ @@@ ;/g' | sed 's/#/%#/g' | sed 's/@@@/#/g' > ../morphology/stems/ordinalnumerals.lexc
-cat prefixes.lexc | sed 's/`/ˈ/g' | sed 's/´/˘/g' | sed 's/,/ʲ/g' | sed 's/ # *;/ @@@ ;/g' | sed 's/#/%#/g' | sed 's/@@@/#/g' > ../morphology/stems/prefixes.lexc
-cat pronouns.lexc | sed 's/`/ˈ/g' | sed 's/´/˘/g' | sed 's/,/ʲ/g' | sed 's/ # *;/ @@@ ;/g' | sed 's/#/%#/g' | sed 's/@@@/#/g' > ../morphology/stems/pronouns.lexc
-cat propernouns.lexc | sed 's/`/ˈ/g' | sed 's/´/˘/g' | sed 's/,/ʲ/g' | sed 's/ # *;/ @@@ ;/g' | sed 's/#/%#/g' | sed 's/@@@/#/g' > ../morphology/stems/propernouns.lexc
-cat superlative_adjectives.lexc | sed 's/`/ˈ/g' | sed 's/´/˘/g' | sed 's/,/ʲ/g' | sed 's/ # *;/ @@@ ;/g' | sed 's/#/%#/g' | sed 's/@@@/#/g' > ../morphology/stems/superlative_adjectives.lexc
-cat verbs.lexc | sed 's/`/ˈ/g' | sed 's/´/˘/g' | sed 's/,/ʲ/g' | sed 's/ # *;/ @@@ ;/g' | sed 's/#/%#/g' | sed 's/@@@/#/g' > ../morphology/stems/verbs.lexc
+# ../morphology/stems/abbreviations.lexc
+# ../morphology/stems/acronyms.lexc
+cat adjectives.protolexc | ./special_chars.sh | ./insert_weights.py 15miljon.astak - - \
+> ../morphology/stems/adjectives.lexc
+
+cat adpositions.protolexc | ./special_chars.sh | ./insert_weights.py 15miljon.astak - -  > ../morphology/stems/adpositions.lexc
+cat adverbs.protolexc | ./special_chars.sh | ./insert_weights.py 15miljon.astak - - > ../morphology/stems/adverbs.lexc
+cat cardinalnumerals.protolexc | ./special_chars.sh | ./insert_weights.py 15miljon.astak - - > ../morphology/stems/cardinalnumerals.lexc
+cat comparative_adjectives.protolexc | ./special_chars.sh | ./insert_weights.py 15miljon.astak - - > ../morphology/stems/comparative_adjectives.lexc
+cat conjunctions.protolexc | ./special_chars.sh | ./insert_weights.py 15miljon.astak - - > ../morphology/stems/conjunctions.lexc
+# final_components.lexc was made by ./fs_suf2gt.sh; should contain no weights
+cat final_components.lexc | sed 's/"weight:[^"]*"//' | ./special_chars.sh  > ../morphology/stems/final_components.lexc
+
+cat genitive_attributes.protolexc | ./special_chars.sh | ./insert_weights.py 15miljon.astak - - \
+| sed -f badfinal_N.sed \
+> ../morphology/stems/genitive_attributes.lexc
+
+cat interjections.protolexc | ./special_chars.sh | ./insert_weights.py 15miljon.astak - - > ../morphology/stems/interjections.lexc
+cat noninflecting_adjectives.protolexc | ./special_chars.sh | ./insert_weights.py 15miljon.astak - - > ../morphology/stems/noninflecting_adjectives.lexc
+cat noninflecting_verbs.protolexc | ./special_chars.sh | ./insert_weights.py 15miljon.astak - - > ../morphology/stems/noninflecting_verbs.lexc
+
+cat nouns.protolexc | ./special_chars.sh | ./insert_weights.py 15miljon.astak - - \
+> ../morphology/stems/nouns.lexc
+
+# ../morphology/stems/numbers.lexc
+cat ordinalnumerals.protolexc | ./special_chars.sh | ./insert_weights.py 15miljon.astak - - > ../morphology/stems/ordinalnumerals.lexc
+# prefixes.lexc was made by ./fs_pref2gt.sh; no weights
+cat prefixes.lexc | ./special_chars.sh > ../morphology/stems/prefixes.lexc
+cat pronouns.protolexc | ./special_chars.sh | ./insert_weights.py 15miljon.astak - - > ../morphology/stems/pronouns.lexc
+cat propernouns.protolexc | ./special_chars.sh | ./insert_weights.py 15miljon.astak - - > ../morphology/stems/propernouns.lexc
+cat superlative_adjectives.protolexc | ./special_chars.sh | ./insert_weights.py 15miljon.astak - - > ../morphology/stems/superlative_adjectives.lexc
+
+cat verbs.protolexc | ./special_chars.sh | ./insert_weights.py 15miljon.astak - - \
+| sed '/Pref+/s/"weight:[^"]*"//' \
+> ../morphology/stems/verbs.lexc
 
 

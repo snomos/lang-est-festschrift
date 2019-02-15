@@ -594,7 +594,7 @@ Multichar_Symbols
 !! (the compound transducer is cyclic, but in reality there is a limit to the length of words)
  @D.Part@        !!≈ | @CODE@ | No part of a compound should have been encountered yet
  @P.Part.One@        !!≈ | @CODE@ | Indicate that this could be the first part of a compound
- @R.Part.One@        !!≈ | @CODE@ | Require that the first part has been encountered 
+ @R.Part.One@        !!≈ | @CODE@ | Require that the first part has been encountered; if a lemma has it, it means that the lemma cannot be part2 or part3 of a compound
  @D.Part.One@        !!≈ | @CODE@ | Require that the first part has NOT been encountered 
  @P.Part.Two@        !!≈ | @CODE@ | Indicate that this could be the second part of a compound
  @R.Part.Two@        !!≈ | @CODE@ | Require that the second part has been encountered
@@ -648,7 +648,7 @@ Multichar_Symbols
 !! Case is used for filtering derivations and compounds
  @R.Case.Nom@
  @P.Case.Nom@
- @D.Case.Nom@   ! previous word should not be SgNom
+ @D.Case.Nom@   ! previous word should not be SgNom; if a lemma has it, then this lemma is restricted in compounding productivity
  @R.Case.Gen@
  @P.Case.Gen@
  @R.Case.Par@
@@ -687,12 +687,12 @@ Multichar_Symbols
  @P.Stem.Single@   ! does not participate in compounding
  @R.Stem.Single@
  @D.Stem.Single@
- @P.Stem.Final@   ! may be only the last part 
+ @P.Stem.Final@   ! may be only the last part: alam+N, ülem+N, vana+N 
  @R.Stem.Final@
  @D.Stem.Final@
  @P.Stem.Nom@   ! Even if this word is Sg Nom, smth may follow it 
- @R.Stem.Nom@
- @D.Stem.Nom@
+ @R.Stem.Nom@   ! Previous word should have been in Sg Nom
+ @D.Stem.Nom@   ! Previous word should not have been in Sg Nom
 
  @P.Stem.ise@   ! enese + anything
  @R.Stem.ise@
@@ -705,7 +705,7 @@ Multichar_Symbols
  @D.Stem.topelt@
  @P.Stem.Guessed@   ! stem is guessed, it is not from the lexicon
  @R.Stem.Guessed@
- @D.Stem.Guessed@
+ @D.Stem.Guessed@   ! if a lemma has it, then this lemma is restricted in its ability to be the last part of a compound 
  @C.Stem@
 
 !! A special condition that is used for filtering derivations and compounds
@@ -963,7 +963,7 @@ ProtoMUUSEUM = ?* Vowel [Vowel | Consonant] Consonant+ [[[i | e] u m] | [[i | e]
 LEXICON Root !!= * {{@CODE@}} is the starting point of everything
 
   LexiconBased ;
-  Guesser ;
+!  Guesser ;
 
 LEXICON LexiconBased
 

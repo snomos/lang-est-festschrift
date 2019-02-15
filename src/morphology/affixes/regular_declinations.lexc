@@ -90,6 +90,7 @@ LEXICON KOTKAS    !  VVS 7 (unproductive) i.e. unstable (closed) type;
               :s%{W%}%>t SG_PARTITIVE ;    ! kotkast
               :s%{W%} TE_PL ;              ! kotkaste
               : 2C_STRONG ;               ! kotka etc, kotkaid, kotkail etc
+  +Use/NotNorm: TE_PL ;                 ! kotkate etc
               : US_DERIVATION ;
               : LIK_DERIVATION ;
 

@@ -66,6 +66,18 @@ echo 'pöörd+Pref:pöörd- #;' >> pref.lexc
 echo 'sega+Pref:sega- #;' >> pref.lexc
 echo 'puhke+Pref:p´uhke- #;' >> pref.lexc
 echo 'vääris+Pref:vääris- #;' >> pref.lexc
+echo 'toor+Pref:toor- #;' >> pref.lexc
+
+# 15.02.2019 olid need miskipärast svn-i versiooni failis prefixes.lexc olemas, aga programm neid ei tekitanud... 
+echo 'geo+Pref:g´eo- #;' >> pref.lexc
+echo 'intiim+Pref:intiim- #;' >> pref.lexc
+echo 'isoleer+Pref:isoleer- #;' >> pref.lexc
+echo 'meteo+Pref:meteo- #;' >> pref.lexc
+echo 'neo+Pref:n´eo- #;' >> pref.lexc
+echo 'nüüdis+Pref:nüüdis- #;' >> pref.lexc
+echo 'paleo+Pref:paleo- #;' >> pref.lexc
+echo 'polaar+Pref:pol´aar- #;' >> pref.lexc
+echo 'poliit+Pref:pol´iit- #;' >> pref.lexc
 
 cat pref.lexc | sort -u | sed 's/\- #/»&/' >> prefixes.lexc
 
