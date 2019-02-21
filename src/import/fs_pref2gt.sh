@@ -57,7 +57,7 @@ echo 'nais+Pref:n´ais- #;' >> pref.lexc
 echo 'süva+Pref:süva- #;' >> pref.lexc
 echo 'lühimaa+Pref:lühi#m´aa- #;' >> pref.lexc
 echo 'pikamaa+Pref:pika#m´aa- #;' >> pref.lexc
-echo 'laiatarbe+Pref:laia#t´arbe- #;' >> pref.lexc
+#echo 'laiatarbe+Pref:laia#t´arbe- #;' >> pref.lexc
 echo 'linnalähi+Pref:linna#lähi- #;' >> pref.lexc
 echo 'nõuka+Pref:nõuka- #;' >> pref.lexc
 echo 'väli+Pref:väli- #;' >> pref.lexc
@@ -67,6 +67,8 @@ echo 'sega+Pref:sega- #;' >> pref.lexc
 echo 'puhke+Pref:p´uhke- #;' >> pref.lexc
 echo 'vääris+Pref:vääris- #;' >> pref.lexc
 echo 'toor+Pref:toor- #;' >> pref.lexc
+echo 'lühi+Pref:lühi- #;' >> pref.lexc
+echo 'puhtavee+Pref:p´uhta#v´ee- #;' >> pref.lexc
 
 # 15.02.2019 olid need miskipärast svn-i versiooni failis prefixes.lexc olemas, aga programm neid ei tekitanud... 
 echo 'geo+Pref:g´eo- #;' >> pref.lexc

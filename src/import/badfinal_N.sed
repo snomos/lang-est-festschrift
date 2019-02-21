@@ -12,8 +12,8 @@
 /^aktiivse+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
 /@alane+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
 /^alane+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
-/@alasi+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/
-/^alasi+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/
+/@alasi+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Nom@@D.Stem.Guessed@\1:@D.Stem.Nom@@D.Stem.Guessed@\2\3/
+/^alasi+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Nom@@D.Stem.Guessed@\1:@D.Stem.Nom@@D.Stem.Guessed@\2\3/
 /@and+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
 /^and+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
 /@anna+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/
@@ -148,8 +148,8 @@
 /^nina+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
 /@noova+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
 /^noova+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
-/@näär+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/
-/^näär+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/
+/@näär+.*EIT/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/
+/^näär+.*EIT/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/
 /@näärid+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/
 /^näärid+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/
 /@okas+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
@@ -158,8 +158,6 @@
 /^okse+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Nom@@D.Stem.Guessed@\1:@D.Stem.Nom@@D.Stem.Guessed@\2\3/
 /@osa+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
 /^osa+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
-/@paal+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/
-/^paal+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/
 /@ping+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/
 /^ping+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/
 /@poni+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
@@ -224,8 +222,6 @@
 /^siid+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
 /@siin+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
 /^siin+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
-/@sina+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/
-/^sina+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/
 /@sine+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
 /^sine+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
 /@sionism+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
@@ -240,8 +236,6 @@
 /^tali+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
 /@tall+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
 /^tall+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
-/@tatt+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/
-/^tatt+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/
 /@tava+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
 /^tava+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
 /@teek+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/

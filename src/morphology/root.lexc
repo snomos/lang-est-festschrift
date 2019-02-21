@@ -1176,7 +1176,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
   @R.POS.A@@R.Case.Gen@@P.POS.A@@C.Der@@C.Stem@ AdjAfterAdjGen ;      ! hapukavõitu
   @R.POS.AComp@@R.Case.Gen@@P.POS.A@@C.Der@@C.Stem@ AdjAfterAdjGen ;  ! hapukamavõitu
-  @R.POS.A@@R.Case.Gen@@P.POS.N@@C.Der@@C.Stem@ NounFinalComp ;       ! hapukavahend
+!  @R.POS.A@@R.Case.Gen@@P.POS.N@@C.Der@@C.Stem@ NounFinalComp ;       ! hapukavahend
 
   @R.POS.N@@R.Case.Short@@P.POS.A@@C.Der@@C.Stem@ VäärtFinal ;    ! kiitmisväärt
 ! --------------------------------

@@ -27,6 +27,7 @@ triljon+Num+Card:tr˘ilʲjon REDEL  "weight: 10 " ;
 tuhat+Num+Card:tuha TUHAT  "weight: 6 " ; 
 veerand+Num+Card:veerand REDEL  "weight: 7 " ; 
 viis+Num+Card:v˘iiS1%{stemill%} VARS  "weight: 4 " ; 
+värvuline+Num+Card:värvuline OLULINE  "weight: 11 " ; 
 üheksa+Num+Card:üheksa AASTA  "weight: 6 " ; 
 üks+Num+Card:˘ü KAKS  "weight: 3 " ; 
 poolteist+Num+Card:p˘ool POOLTEIST  "weight: 7 " ; 

@@ -517,23 +517,27 @@ LEXICON PL3VAD
 LEXICON NU_DERIVATION
   @R.Part.One@@P.POS.N@  NU_DERIVATION_SUF ;   ! no previous part; no restrictions   
   @R.Case.Par@@P.POS.N@  NU_DERIVATION_SUF ;
+  @R.Part.One@@P.POS.A@  NUD_DERIVATION_SUF ;   ! no previous part; no restrictions   
+  @R.Case.Par@@P.POS.A@  NUD_DERIVATION_SUF ;
 
 LEXICON NU_DERIVATION_SUF
              +Der/nu+N:»nu AASTA ;             ! derivation: elanu etc
+
+LEXICON NUD_DERIVATION_SUF
              +Der/nud+A:»nu TUNTUD ;             ! derivation: elanud etc
              +Der/nud+A:»nud # ;             ! derivation: noninflecting A: elanud 
 
 LEXICON TU_DERIVATION  !    NB! the morpheme border + d/t is assigned before this lexicon
-  @R.Part.One@@P.POS.N@  TU_DERIVATION_SUF ;   ! no previous part; no restrictions   
-  @R.Case.Gen@@P.POS.N@  TU_DERIVATION_SUF ;
+  @R.Part.One@@P.POS.A@  TU_DERIVATION_SUF ;   ! no previous part; no restrictions   
+  @R.Case.Gen@@P.POS.A@  TU_DERIVATION_SUF ;
 
 LEXICON TU_DERIVATION_SUF  !    NB! the morpheme border + d/t is assigned before this lexicon
              +Der/tu+A:u AASTA ;              ! derivation: elatu etc
              +Der/tud+A:ud # ;             ! derivation: noninflecting A: elatud 
 
 LEXICON MATA_DERIVATION
-  @R.Part.One@@P.POS.N@  MATA_DERIVATION_SUF ;   ! no previous part; no restrictions   
-  @R.Case.Par@@P.POS.N@  MATA_DERIVATION_SUF ;
+  @R.Part.One@@P.POS.A@  MATA_DERIVATION_SUF ;   ! no previous part; no restrictions   
+  @R.Case.Par@@P.POS.A@  MATA_DERIVATION_SUF ;
 
 LEXICON MATA_DERIVATION_SUF
            +Der/mata+A:»mata GI ;            ! elamata 
@@ -546,23 +550,23 @@ LEXICON MATU_DERIVATION_SUF
            +Der/matu+A:»matu AASTA ;             ! segamatu etc
 
 LEXICON TAMATU_DERIVATION  !    NB! the morpheme border + d/t is assigned before this lexicon
-  @R.Part.One@@P.POS.N@  TAMATU_DERIVATION_SUF ;   ! no previous part; no restrictions   
-  @R.Case.Par@@P.POS.N@  TAMATU_DERIVATION_SUF ;
+  @R.Part.One@@P.POS.A@  TAMATU_DERIVATION_SUF ;   ! no previous part; no restrictions   
+  @R.Case.Par@@P.POS.A@  TAMATU_DERIVATION_SUF ;
 
 LEXICON TAMATU_DERIVATION_SUF  !    NB! the morpheme border + d/t is assigned before this lexicon
            +Der/tamatu+A:amatu AASTA ;             ! segatamatu etc
 
 LEXICON V_DERIVATION
-  @R.Part.One@@P.POS.N@  V_DERIVATION_SUF ;   ! no previous part; no restrictions   
-  @R.Case.Par@@P.POS.N@  V_DERIVATION_SUF ;
-  @R.Case.Gen@@R.Stem.ise@@P.POS.N@  V_DERIVATION_SUF ;  ! enesetervendav
+  @R.Part.One@@P.POS.A@  V_DERIVATION_SUF ;   ! no previous part; no restrictions   
+  @R.Case.Par@@P.POS.A@  V_DERIVATION_SUF ;
+  @R.Case.Gen@@R.Stem.ise@@P.POS.A@  V_DERIVATION_SUF ;  ! enesetervendav
 
 LEXICON V_DERIVATION_SUF
               +Der/v+A:»v MAGUS ;              ! elav, elava etc
 
 LEXICON TAV_DERIVATION   !    NB! the morpheme border + d/t is assigned before this lexicon
-  @R.Part.One@@P.POS.N@  TAV_DERIVATION_SUF ;   ! no previous part; no restrictions   
-  @R.Case.Par@@P.POS.N@  TAV_DERIVATION_SUF ;
+  @R.Part.One@@P.POS.A@  TAV_DERIVATION_SUF ;   ! no previous part; no restrictions   
+  @R.Case.Par@@P.POS.A@  TAV_DERIVATION_SUF ;
 
 LEXICON TAV_DERIVATION_SUF   !    NB! the morpheme border + d/t is assigned before this lexicon
             +Der/tav+A:av MAGUS ;              ! elatav, elatava etc

@@ -46,7 +46,12 @@ echo '\nLEXICON Adjectives_v\n' >> adjectives.proto
 cat adjectives.tmp1 \
 | grep -v '#' | grep 'v+' \
 | sed '/^[^aeiouõäöü]*[aeiouõäöü]*[^aeiouõäöü]*[aeiouõäöü][aeiouõäöü]*[^aeiouõäöü]*+A/s/^\([^:]*+A\):\([^;]*;\)\(.*\)$/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/^vahelduv+A/s/^\([^:]*+A\):\([^;]*;\)\(.*\)$/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 | sed '/;.*nnolastpart/s/^\([^:]*+A\):\([^;]*;\)\(.*\)nnolastpart/@R.Part.One@\1:@R.Part.One@\2\3/' \
+| sed '/@elev+A/s/@P.Stem.Nom@//g' \
+| sed '/@ülev+A/s/@P.Stem.Nom@//g' \
+| sed '/@tulev+A/s/@P.Stem.Nom@//g' \
+| sed '/@omav+A/s/@P.Stem.Nom@//g' \
 | sed 's/?/#/g' \
 >> adjectives.proto
 
@@ -77,6 +82,7 @@ cat adjectives.tmp1 \
 cat adjectives.tmp1 \
 | grep -v '#' | grep -v 'ne+' | grep -v 'v+' | grep -v '[jk]as+' \
 | sed '/^[^aeiouõäöü]*[aeiouõäöü]*[^aeiouõäöü]*[aeiouõäöü][aeiouõäöü]*[^aeiouõäöü]*+A/s/^\([^:]*+A\):\([^;]*;\)\(.*\)$/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/^möödunud+A/s/^\([^:]*+A\):\([^;]*;\)\(.*\)$/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 | sed '/^[^aeiouõäöü]*[aeiouõäöü]*[^aeiouõäöü]*[aeiouõäöü]tu+A/s/^\([^:]*+A\):\([^;]*;\)\(.*\)$/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 >> adjectives.tmp2
 
@@ -365,6 +371,8 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | sed '/^[^@].*+[^#]*#sk.oop TAUD/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 | sed '/ism+.*TAUD/s/@P.Stem.Nom@//g' \
 | sed '/@...[žš]+.*TAUD/s/@P.Stem.Nom@//g' \
+| sed '/@mart+.*TAUD/s/@P.Stem.Nom@//g' \
+| sed '/@kult+.*TAUD/s/@P.Stem.Nom@//g' \
 | sed '/^[^@]...*[iu]s+N:[^#]* OLULINE/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 | sed '/^[^@]...*s+N:[^#]* SUULINE/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 | sed '/^[^@]...*us+N:.*#.* SUULINE/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
@@ -450,8 +458,12 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | sed '/^kapsas+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 | sed '/^nälg+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 | sed '/^kameeleon+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/^sari+N.*PIIM/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 \
 | sed '/^....*[kpt]s+.*KOON/s/^\([^:]*+N\):\([^#;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+> nouns.proto1
+
+cat nouns.proto1 \
 | sed -f nomstem_first_koon.sed \
 | sed -f nomstem_first_piim.sed \
 | sed -f nomstem_first_eit.sed \
@@ -474,6 +486,9 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 \
 | sed '/-/s/@P.Stem.Nom@//g' \
 \
+> nouns.proto2
+
+cat nouns.proto2 \
 | sed -f no_nomstem_first.sed \
 \
 | sed '/^iga+/s/^\([^:]*\):\(.*\)$/@D.Case.Nom@\1:@D.Case.Nom@\2/' \
@@ -484,10 +499,24 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | sed -f bad_after_nom3.sed \
 | sed -f badfinal_N.sed \
 | sed -f badfinal3_N.sed \
+| sed -f badfinal4_N.sed \
+\
+| sed '/@..+/s/@D.Stem.Guessed@//g' \
+| sed '/@..+/s/^\([^:]*\):\(.*\)$/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2/' \
+| sed '/^..+/s/^\([^:]*\):\(.*\)$/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2/' \
+| sed '/@...+/s/@D.Stem.Guessed@//g' \
+| sed '/@...+/s/^\([^:]*\):\(.*\)$/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2/' \
+| sed '/^...+/s/^\([^:]*\):\(.*\)$/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2/' \
+| sed '/@maa+/s/@D.Stem.Guessed@//g' \
+| sed '/@töö+/s/@D.Stem.Guessed@//g' \
+| sed '/@õde+/s/@D.Stem.Guessed@//g' \
+| sed '/@ülem+N/s/@P.Stem.Nom@//g' \
+\
 | sed 's/@P\.Stem\.Nom@@P\.Stem\.Nom@/@P.Stem.Nom@/g' \
 | sed '/@P.Stem.Single@/s/@R.Part.One@//g' \
 | sed '/@P.Stem.Single@/s/@P.Stem.Nom@//g' \
 | sed '/@P.Stem.Single@/s/@D.Case.Nom@//g' \
+| sed '/@R.Part.One@/s/@D.Stem.Guessed@//g' \
 | sed '/@R.Part.One@/s/@D.Case.Nom@//g' \
 | sed 's/\(@D.Stem.Guessed@\)\(@D.Case.Nom@\)/\2\1/g' \
 | sed 's/\(@D.Case.Nom@\)\(@D.Case.Nom@\)/\1/g' \
@@ -595,6 +624,11 @@ cat fs_gt.inflecting.tmp1 | grep '+V:' | grep -v '...eer[iu]ma+' \
 | sed '/võidma+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
 | sed '/^seerima+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
 | sed '/^utma+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
+| sed '/^ahetama+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/' \
+| sed '/^aatlema+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/' \
+| sed '/^anduma+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/' \
+| sed '/^ohutama+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/' \
+| sed '/^ahendama+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/' \
 >> verbs.protolexc
 
 echo '\nLEXICON EerVerbs\n' >> verbs.protolexc
