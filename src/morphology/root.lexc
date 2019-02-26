@@ -963,6 +963,8 @@ ProtoMUUSEUM = ?* Vowel [Vowel | Consonant] Consonant+ [[[i | e] u m] | [[i | e]
 LEXICON Root !!= * {{@CODE@}} is the starting point of everything
 
   LexiconBased ;
+  Punctuation ;
+  Symbols     ;
 !  Guesser ;
 
 LEXICON LexiconBased

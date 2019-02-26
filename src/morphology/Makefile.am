@@ -44,6 +44,7 @@ GT_LEXC_SRCS_L1_L2=\
                          stems/final_components.lexc \
 			 stems/numbers.lexc \
 			 stems/acronyms.lexc \
+			 affixes/symbols.lexc     \
 			 affixes/regular_declinations.lexc \
 			 affixes/exceptional_declinations.lexc \
 			 affixes/verbs.lexc \
@@ -66,8 +67,8 @@ GT_LEXC_L2_SRCS=\
 			$(L2)
 
 # Set this to the names of all generated lexc files, if any
-GENERATED_LEXC_SRCS=generated_files/punctuation.lexc
-#GENERATED_LEXC_SRCS=
+GENERATED_LEXC_SRCS=generated_files/punctuation.lexc \
+                    generated_files/symbols.lexc
 
 # Set this to the names of all source xml files, if any
 GT_XML_SRCS=
