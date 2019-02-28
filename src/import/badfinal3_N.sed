@@ -10,6 +10,8 @@
 /^ora+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/
 /@ost+N.*TAUD/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/
 /^ost+N.*TAUD/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/
+/@paa+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/
+/^paa+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/
 /@tou+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/
 /^tou+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/
 /@tõu+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/
@@ -22,6 +24,8 @@
 /^ulm+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/
 /@vau+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/
 /^vau+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/
+/@väi+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/
+/^väi+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/
 /@ähm+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/
 /^ähm+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/
 /@äie+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/

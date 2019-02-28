@@ -256,8 +256,12 @@
 /^torin+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
 /@tuur+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
 /^tuur+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
-/@uks+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
-/^uks+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
+/@uks+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Case.Nom@@D.Stem.Guessed@\1:@D.Case.Nom@@D.Stem.Guessed@\2\3/
+/^uks+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Case.Nom@@D.Stem.Guessed@\1:@D.Case.Nom@@D.Stem.Guessed@\2\3/
+/^usk+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Case.Nom@@D.Stem.Guessed@\1:@D.Case.Nom@@D.Stem.Guessed@\2\3/
+/@usk+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Case.Nom@@D.Stem.Guessed@\1:@D.Case.Nom@@D.Stem.Guessed@\2\3/
+/^uss+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Case.Nom@@D.Stem.Guessed@\1:@D.Case.Nom@@D.Stem.Guessed@\2\3/
+/@uss+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Case.Nom@@D.Stem.Guessed@\1:@D.Case.Nom@@D.Stem.Guessed@\2\3/
 /@ustav+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
 /^ustav+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/
 /@uure+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@D.Stem.Guessed@\1:@D.Stem.Guessed@\2\3/

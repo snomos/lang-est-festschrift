@@ -161,15 +161,15 @@ cat superlative_adjectives.tmp2 >> superlative_adjectives.protolexc
 
 # lisaks (1), lisaks (2)
 cat fs_gt.noninfl.tmp1 | grep '+Adv' \
-| grep '\(^järel+\)\|\(^koos+\)\|\(^kõrval+\)\|\(^otse+\)\|\(^piki+\)\|\(^püsti+\)\|\(^ratsa+\)\|\(^taga+\)\|\(^topelt+\)\|\(^vastas+\)\|\(^vastu+\)\|\(^üle+\)' \
+| grep '\(^järel+\)\|\(^koos+\)\|\(^kõrval+\)\|\(^otse+\)\|\(^piki+\)\|\(^püsti+\)\|\(^ratsa+\)\|\(^taga+\)\|\(^topelt+\)\|\(^vallas+\)\|\(^vastas+\)\|\(^vastu+\)\|\(^üle+\)' \
 > tmpadv.0
 
 cat fs_gt.noninfl.tmp1 | grep '+Adv' \
-| grep -v '\(^järel+\)\|\(^koos+\)\|\(^kõrval+\)\|\(^otse+\)\|\(^piki+\)\|\(^püsti+\)\|\(^ratsa+\)\|\(^taga+\)\|\(^topelt+\)\|\(^vastas+\)\|\(^vastu+\)\|\(^üle+\)' \
+| grep -v '\(^järel+\)\|\(^koos+\)\|\(^kõrval+\)\|\(^otse+\)\|\(^piki+\)\|\(^püsti+\)\|\(^ratsa+\)\|\(^taga+\)\|\(^topelt+\)\|\(^vallas+\)\|\(^vastas+\)\|\(^vastu+\)\|\(^üle+\)' \
 > tmpadv.alg
 
 cat tmpadv.alg \
-| grep '\(^all+\)\|\(^alt+\)\|\(^eel+\)\|\(^ees+\)\|\(^ise+\)\|\(^jae+\)\|\(^oma+\)\|\(^pea+\)\|\(^ula+\)\|\(^õue+\)\|\(^ära+\)\|\(^üle+\)\|\(^....+\)\|\(^umbes+\)\|\(^....[^s]+[^#-]*$\)\|\(^...ks+[^#-]*$\)\|\(^...*li+[^#-]*$\)\|\(^...*il+[^#-]*$\)\|\(^...*ile+[^#-]*$\)\|\(^[^aeiouõäöü]*[aeiouõäöü][aeiouõäöü]*[^aeiouõäöü][^aeiouõäöü]*si+\)\|\(^hiljuti+\)\|\(^kaheti+\)\|\(^kolmeti+\)\|\(^kunagi+\)\|\(^mitmeti+\)\|\(^teisiti+\)\|\(^tükati+\)\|\(^võõriti+\)' \
+| grep '\(^all+\)\|\(^alt+\)\|\(^eel+\)\|\(^ees+\)\|\(^ise+\)\|\(^jae+\)\|\(^oma+\)\|\(^pea+\)\|\(^ula+\)\|\(^õue+\)\|\(^ära+\)\|\(^üle+\)\|\(^....+\)\|\(^umbes+\)\|\(^....[^s]+[^#-]*$\)\|\(^...ks+[^#-]*$\)\|\(^...*li+[^#-]*$\)\|\(^...*il+[^#-]*$\)\|\(^...*ile+[^#-]*$\)\|\(^[^aeiouõäöü]*[aeiouõäöü][aeiouõäöü]*[^aeiouõäöü][^aeiouõäöü]*si+\)\|\(^hiljuti+\)\|\(^kaheti+\)\|\(^kolmeti+\)\|\(^kunagi+\)\|\(^mitmeti+\)\|\(^teisiti+\)\|\(^tükati+\)\|\(^võõriti+\)\|\(^uuesti+\)\|\(^valesti+\)' \
 | grep -v '\(^miks+\)\|\(^näos+\)\|\(^egas+\)\|\(^kuis+\)\|\(^siis+\)\|\(^teps+\)\|\(^aina+\)\|\(^aiva+\)\|\(^eele+\)\|\(^eelt+\)\|\(^ikka+\)\|\(^istu+\)\|\(^jalu+\)\|\(^jaol+\)\|\(^jokk+\)\|\(^juba+\)\|\(^just+\)\|\(^jõle+\)\|\(^jönt+\)\|\(^kohe+\)\|\(^kole+\)\|\(^kord+\)\|\(^kuhu+\)\|\(^kuna+\)\|\(^küll+\)\|\(^loga+\)\|\(^loha+\)\|\(^losa+\)\|\(^mant+\)\|\(^manu+\)\|\(^nagu+\)\|\(^nõka+\)\|\(^nõus+\)\|\(^nüüd+\)\|\(^olgu+\)\|\(^puha+\)\|\(^põsi+\)\|\(^päta+\)\|\(^seep+\)\|\(^seni+\)\|\(^siva+\)\|\(^sugu+\)\|\(^tuna+\)\|\(^täna+\)\|\(^töhe+\)\|\(^vaid+\)\|\(^vaja+\)\|\(^veel+\)\|\(^vist+\)\|\(^väga+\)\|\(^õige+\)\|\(^õkva+\)\|\(^ähmi+\)\|\(^äkki+\)\|\(^ängi+\)\|\(^äsja+\)\|\(^+ühti\)\|\(^üsna+\)\|\(^abiga+\)\|\(^eduga+\)\|\(^hulga+\)\|\(^jõuga+\)\|\(^liiga+\)\|\(^lõõga+\)\|\(^punga+\)\|\(^seega+\)\|\(^tõega+\)' \
 > tmpadv.1
 
@@ -186,7 +186,7 @@ cat tmpadv.alg \
 #> adverbs.tmp2
 # NB! see loend olgu sama, mis lisaks (1)
 cat tmpadv.alg \
-| grep -v '\(^all+\)\|\(^alt+\)\|\(^eel+\)\|\(^ees+\)\|\(^ise+\)\|\(^jae+\)\|\(^oma+\)\|\(^pea+\)\|\(^ula+\)\|\(^õue+\)\|\(^ära+\)\|\(^üle+\)\|\(^....+\)\|\(^umbes+\)\|\(^....[^s]+[^#-]*$\)\|\(^...ks+[^#-]*$\)\|\(^...*li+[^#-]*$\)\|\(^...*il+[^#-]*$\)\|\(^...*ile+[^#-]*$\)\|\(^[^aeiouõäöü]*[aeiouõäöü][aeiouõäöü]*[^aeiouõäöü][^aeiouõäöü]*si+\)\|\(^hiljuti+\)\|\(^kaheti+\)\|\(^kolmeti+\)\|\(^kunagi+\)\|\(^mitmeti+\)\|\(^teisiti+\)\|\(^tükati+\)\|\(^võõriti+\)' \
+| grep -v '\(^all+\)\|\(^alt+\)\|\(^eel+\)\|\(^ees+\)\|\(^ise+\)\|\(^jae+\)\|\(^oma+\)\|\(^pea+\)\|\(^ula+\)\|\(^õue+\)\|\(^ära+\)\|\(^üle+\)\|\(^....+\)\|\(^umbes+\)\|\(^....[^s]+[^#-]*$\)\|\(^...ks+[^#-]*$\)\|\(^...*li+[^#-]*$\)\|\(^...*il+[^#-]*$\)\|\(^...*ile+[^#-]*$\)\|\(^[^aeiouõäöü]*[aeiouõäöü][aeiouõäöü]*[^aeiouõäöü][^aeiouõäöü]*si+\)\|\(^hiljuti+\)\|\(^kaheti+\)\|\(^kolmeti+\)\|\(^kunagi+\)\|\(^mitmeti+\)\|\(^teisiti+\)\|\(^tükati+\)\|\(^võõriti+\)\|\(^uuesti+\)\|\(^valesti+\)' \
 >> tmpadv.2
 #>> adverbs.tmp2
 
@@ -197,12 +197,13 @@ cat tmpadv.2 | grep -v '\(^alasti+\)\|\(^alles+\)\|\(^edasi+\)\|\(^eemale+\)\|\(
 #>> adverbs.protolexc
 
 echo 'LEXICON Adverbs\n\n CompoundingAdverbs ;\n @P.Part.Bad@ PlainAdverbs ;\n\n' > adverbs.protolexc
-echo 'LEXICON CompoundingAdverbs\n\n @P.Stem.topelt@ NounCompoundingAdverbs ;\n VerbCompoundingAdverbs ;\n\n' >> adverbs.protolexc
 
-echo 'LEXICON NounCompoundingAdverbs\n' >> adverbs.protolexc
-cat tmpadv.0 >> adverbs.protolexc
+echo 'LEXICON CompoundingAdverbs\n' >> adverbs.protolexc
+cat tmpadv.0 \
+| sed '/^üle+/!s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.topelt@\1:@P.Stem.topelt@\2\3/' \
+| sed '/^üle+/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.üle@\1:@P.Stem.üle@\2\3/' \
+>> adverbs.protolexc
 
-echo '\nLEXICON VerbCompoundingAdverbs\n' >> adverbs.protolexc
 cat tmpadv.1 \
 | sed '/^vähe+/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.vähe@\1:@P.Stem.vähe@\2\3/' \
 | sed '/^puht+/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.vähe@\1:@P.Stem.vähe@\2\3/' \
@@ -328,6 +329,7 @@ echo '\nLEXICON DeverbalNouns\n' >> nouns.protolexc
 cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | grep 'WDEVERBAL' | sed 's/WDEVERBAL//' \
 | sed '/;.*heaesi/s/^\([^:]*+N\):\([^;]*;\)\(.*\)heaesi/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/^[^@]...*s+N:[^#]* SUULINE/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 >> nouns.protolexc
 
 #echo '\nLEXICON PlainNouns\n\n @P.Stem.Single@ PlainNouns_nocompound ;\n @R.Part.One@ PlainNouns_nolastpart ;\n @P.Len.3@ PlainNouns_three ;\n @P.Len.4@ PlainNouns_four ;\n PlainNouns_fiveplus ;\n' >> nouns.protolexc
@@ -545,8 +547,44 @@ cat nouns.proto2 \
 echo 'lapselaps+N: LAPSELAPS ;' >> nouns.protolexc
 echo 'lapselapselaps+N: LAPSELAPSELAPS ;' >> nouns.protolexc
 
-echo 'LEXICON ProperNouns\n' > propernouns.protolexc
-cat fs_gt.inflecting.tmp1 | grep '+N+Prop' | sed 's/nnolastpart//' >> propernouns.protolexc
+# make a file for classifying proper names
+# the result is names.tmp1 (it is used below)
+./classify_names.sh
+
+cat fs_gt.inflecting.tmp1 | grep '+N+Prop' | sed 's/nnolastpart//' \
+| sed 's/+N+Prop/&_/' \
+| LC_COLLATE=C sort \
+> proper.tmp
+
+LC_COLLATE=C join -a 1 -a 2 -t "_" -e "###" -o 1.2 2.1 2.2 names.tmp1 proper.tmp \
+| grep -v '###_###' \
+| sed "/###_Aatomik+N+Prop/s/###/O/" \
+| sed "/###_Franz=Joseph+N+Prop/s/###/N/" \
+| sed "/###_Jumalapoeg+N+Prop/s/###/O/" \
+| sed "/###_Kohtla-Nõmme+N+Prop/s/###/G/" \
+| sed "/###_Leppik+N+Prop/s/###/N/" \
+| sed "/###_Loorits+N+Prop/s/###/N/" \
+| sed "/###_Lunastaja+N+Prop/s/###/O/" \
+| sed "/###_Messias+N+Prop/s/###/O/" \
+| sed "/###_Mõttus+N+Prop/s/###/N/" \
+| sed "/###_Pärnits+N+Prop/s/###/N/" \
+| sed "/###_Päästja+N+Prop/s/###/O/" \
+| sed "/###_Saint=Christopher+N+Prop/s/###/O/" \
+| sed "/###_Tomson+N+Prop/s/###/N/" \
+| sed "/###_Toompea+N+Prop/s/###/G/" \
+| sed 's/_:/:/' \
+| sort -u \
+> proper.tmp2 
+
+echo 'LEXICON ProperNouns\n  ProperNounsGeo ;\n  ProperNounsPersons ;\n  ProperNounsOther ;\n' > propernouns.protolexc
+echo '\nLEXICON ProperNounsGeo\n' >> propernouns.protolexc
+cat proper.tmp2 | grep '^G_' | sed 's/^G_//' >> propernouns.protolexc
+
+echo '\nLEXICON ProperNounsPersons\n' >> propernouns.protolexc
+cat proper.tmp2 | grep '^N_' | sed 's/^N_//' >> propernouns.protolexc
+
+echo '\nLEXICON ProperNounsOther\n' >> propernouns.protolexc
+cat proper.tmp2 | grep '^O_' | sed 's/^O_//' >> propernouns.protolexc
 
 cat fs_gt.inflecting.tmp1 | grep '+Num+Card' \
 | grep -v '#p.aar ' \

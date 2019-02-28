@@ -7,13 +7,18 @@
 
 # kapitalism + ist -> kapitalist
 # -kond + ti -> -konniti
+# -lane + nna -> -lanna
 
 define WB [ "#" | .#. ] ;
 define MB [ "»" ] ;  # morpheme border
-define LINE [ MB [{line} | {lis}] ];
-define LANE [ MB [{lane} | {las}] ] ;
+define LI   [ MB l i ];
+define LA   [ MB l a ] ;
+define NE   [ [n e] | [s] ] ;
+define LINE [ LI NE ];
+define LANE [ LA NE ] ;
 define IST  [ MB {ist} ] ;
 define TI   [ MB {ti} ] ;
+define NNA  [ MB {nna} ] ;
 
 # vowel may be upper case, so that if a wowel-initial word starts with a capital letter, 
 # the first syllable will get counted; 
@@ -32,12 +37,14 @@ define Pre2  [ Syll CC LS]  ;  # NOT biopsia, meelika
 
 define IKA [i (k) a] ;
 define IA  [i a] ;
-define ISM  [i s m] ;
+define ISM [i s m] ;
+define SE  [s e] ;
 
 define shorten1 [ IKA -> i || Pre1 _ LINE ] ;
 define shorten2 [  IA -> 0 || Pre2 _ LANE ] ;
 define shorten3 [ ISM -> 0 || _ IST ] ;
 define konniti  [   a -> i || k o n n (">") _ TI ];  # not sure if > is actually present here...
+define lanna    [  SE -> 0 || LA _ NNA ];
 
 # filter out karl+lik; the only lik-derivation is then karli+lik ???
 # (because they both are generated at first...)
@@ -47,6 +54,6 @@ define LIK [ MB {lik} \WB*] ;
 define CVl [LS l] ;      # 1C word stem ending in l
 define CVLIK [ \WB* CVl LIK \WB*] ;   # falsely filters out also Tirool+lik and Iisrael+lik
 
-regex [shorten1 .o. shorten2 .o. shorten3 .o. konniti .o. ~CVLIK] ;
+regex [shorten1 .o. shorten2 .o. shorten3 .o. konniti .o. ~CVLIK .o. lanna] ;
 
 

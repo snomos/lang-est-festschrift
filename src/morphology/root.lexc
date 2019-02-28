@@ -614,6 +614,7 @@ Multichar_Symbols
  @P.POS.N@
  @R.POS.NProp@
  @P.POS.NProp@
+ @D.POS.NProp@
  @R.POS.GA@
  @P.POS.GA@
  @R.POS.IntNum@
@@ -698,6 +699,9 @@ Multichar_Symbols
  @P.Stem.ise@   ! enese + anything
  @R.Stem.ise@
  @D.Stem.ise@
+ @P.Stem.üle@   ! üle + geoname + line (üle+siberi+line)
+ @R.Stem.üle@
+ @D.Stem.üle@
  @P.Stem.vähe@   ! vähe, puht + adjective
  @R.Stem.vähe@
  @D.Stem.vähe@
@@ -1077,7 +1081,8 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
 
   @R.POS.Adv@@R.Stem.topelt@ LatterAdjective ;        ! topelthallikas etc 
   @R.POS.Adv@@R.Stem.vähe@ LatterAdjective ;        ! vähehallikas etc 
-  @R.POS.Adv@@D.Stem.topelt@@D.Stem.vähe@ LatterAdjective_v ;        ! harvanähtavaid etc 
+  @R.POS.Adv@@R.Stem.üle@ LatterAdjective ;        ! ülehallikas etc 
+  @R.POS.Adv@@D.Stem.topelt@@D.Stem.vähe@@D.Stem.üle@ LatterAdjective_v ;        ! harvanähtavaid etc 
 
 ! x + noun
   @R.POS.ACRMinus@ LatterNoun ;      
@@ -1105,6 +1110,9 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.Pron@@R.Case.Gen@@R.Stem.ise@ LatterNoun ;        ! eneseabi, enesekriitika etc 
 
   @R.POS.Adv@@R.Stem.topelt@ LatterNoun ;        ! topeltriiul etc 
+  @R.POS.Adv@@R.Stem.vähe@@P.NeedAdj.On@@D.NeedDerNe@ LatterNoun ;  ! vähe + kalor +Der/line; not väheautone
+  @R.POS.Adv@@R.Stem.üle@ LatterNoun ;        ! ületoodang etc 
+  @R.POS.Adv@@R.Stem.üle@ LatterProperNounGeo ;          ! ülesiberiline
 
 ! x + deverbal noun (in addition to x + noun)
  
@@ -1211,6 +1219,9 @@ LEXICON LatterNoun
 
 LEXICON LatterProperNoun
   @P.POS.NProp@@C.Der@@C.Stem@@P.NeedAdj.On@@U.Cap.Opt@  ProperNouns ;    ! derived into an adjective
+
+LEXICON LatterProperNounGeo
+  @P.POS.NProp@@C.Der@@P.NeedAdj.On@@U.Cap.Opt@  ProperNounsGeo ;    ! üle + Siberi +Der/line
 
 LEXICON LatterDeverbal
   @P.POS.N@@C.Der@@C.Stem@ DeverbalNouns ;    

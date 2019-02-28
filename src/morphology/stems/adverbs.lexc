@@ -6,26 +6,18 @@ LEXICON Adverbs
 
 LEXICON CompoundingAdverbs
 
- @P.Stem.topelt@ NounCompoundingAdverbs ;
- VerbCompoundingAdverbs ;
-
-
-LEXICON NounCompoundingAdverbs
-
-järel+Adv:järel GI  "weight: 5 " ; 
-koos+Adv:k˘oos GI  "weight: 4 " ; 
-kõrval+Adv:kõrval GI  "weight: 5 " ; 
-otse+Adv:otse GI  "weight: 6 " ; 
-püsti+Adv:p˘üsʲti GI  "weight: 6 " ; 
-ratsa+Adv:r˘atsa GI  "weight: 10 " ; 
-taga+Adv:taga GI  "weight: 5 " ; 
-topelt+Adv:topelt GI  "weight: 9 " ; 
-vastas+Adv:vastas GI  "weight: 8 " ; 
-vastu+Adv:v˘astu GI  "weight: 4 " ; 
-üle+Adv:üle GI  "weight: 3 " ; 
-
-LEXICON VerbCompoundingAdverbs
-
+@P.Stem.topelt@järel+Adv:@P.Stem.topelt@järel GI  "weight: 5 " ; 
+@P.Stem.topelt@koos+Adv:@P.Stem.topelt@k˘oos GI  "weight: 4 " ; 
+@P.Stem.topelt@kõrval+Adv:@P.Stem.topelt@kõrval GI  "weight: 5 " ; 
+@P.Stem.topelt@otse+Adv:@P.Stem.topelt@otse GI  "weight: 6 " ; 
+@P.Stem.topelt@püsti+Adv:@P.Stem.topelt@p˘üsʲti GI  "weight: 6 " ; 
+@P.Stem.topelt@ratsa+Adv:@P.Stem.topelt@r˘atsa GI  "weight: 10 " ; 
+@P.Stem.topelt@taga+Adv:@P.Stem.topelt@taga GI  "weight: 5 " ; 
+@P.Stem.topelt@topelt+Adv:@P.Stem.topelt@topelt GI  "weight: 9 " ; 
+@P.Stem.topelt@vallas+Adv:@P.Stem.topelt@vallas GI  "weight: 11 " ; 
+@P.Stem.topelt@vastas+Adv:@P.Stem.topelt@vastas GI  "weight: 8 " ; 
+@P.Stem.topelt@vastu+Adv:@P.Stem.topelt@v˘astu GI  "weight: 4 " ; 
+@P.Stem.üle@üle+Adv:@P.Stem.üle@üle GI  "weight: 3 " ; 
 abiks+Adv:abiks GI  "weight: 11 " ; 
 aitab+Adv:˘aitab GI  "weight: 11 " ; 
 ajalt+Adv:ajalt GI  "weight: 10 " ; 
@@ -661,6 +653,7 @@ urvakil+Adv:urvakil GI  "weight: 11 " ;
 urvakile+Adv:urvakile GI  "weight: 11 " ; 
 uuelt+Adv:uuelt GI  "weight: 11 " ; 
 uuena+Adv:uuena GI  "weight: 11 " ; 
+uuesti+Adv:uuesti GI  "weight: 5 " ; 
 uurakil+Adv:uurakil GI  "weight: 11 " ; 
 uurakile+Adv:uurakile GI  "weight: 11 " ; 
 vaevu+Adv:vaevu GI  "weight: 8 " ; 
@@ -668,6 +661,7 @@ vahel+Adv:vahel GI  "weight: 4 " ;
 vaiki+Adv:v˘aiki GI  "weight: 10 " ; 
 vait+Adv:v˘ait #  "weight: 7 " ; 
 vakka+Adv:v˘akka GI  "weight: 10 " ; 
+valesti+Adv:valesti GI  "weight: 7 " ; 
 valju+Adv:valʲju GI  "weight: 11 " ; 
 valla+Adv:v˘alla GI  "weight: 8 " ; 
 vallali+Adv:vallali GI  "weight: 11 " ; 
@@ -5789,7 +5783,6 @@ uudishimuga+Adv:uudis%#himuga GI  "weight: 11 " ;
 uudishimulikult+Adv:uudis%#himulikult GI  "weight: 9 " ; 
 uudistavalt+Adv:uudistavalt GI  "weight: 11 " ; 
 uudselt+Adv:˘uudselt GI  "weight: 11 " ; 
-uuesti+Adv:uuesti GI  "weight: 5 " ; 
 uurivalt+Adv:˘uurivalt GI  "weight: 9 " ; 
 uutmoodi+Adv:˘uut%#m˘oodʲi GI  "weight: 10 " ; 
 vaagides+Adv:v˘aagides GI  "weight: 11 " ; 
@@ -5864,7 +5857,6 @@ valdavalt+Adv:v˘aldavalt GI  "weight: 7 " ;
 valduses+Adv:v˘alduses GI  "weight: 11 " ; 
 valelikult+Adv:vˈalelikult GI  "weight: 11 " ; 
 valepidi+Adv:vale%#pidi GI  "weight: 11 " ; 
-valesti+Adv:valesti GI  "weight: 7 " ; 
 valgel+Adv:v˘algel GI  "weight: 11 " ; 
 valges+Adv:v˘alges GI  "weight: 11 " ; 
 valjemalt+Adv:valʲjemalt GI  "weight: 11 " ; 
@@ -5872,7 +5864,6 @@ valjemini+Adv:valjemini GI  "weight: 10 " ;
 valjuhäälselt+Adv:valʲju%#h˘äälselt GI  "weight: 10 " ; 
 valjult+Adv:valʲjult GI  "weight: 9 " ; 
 valjusti+Adv:valʲjusti GI  "weight: 8 " ; 
-vallas+Adv:vallas GI  "weight: 11 " ; 
 vallatult+Adv:vallatult GI  "weight: 11 " ; 
 valmilt+Adv:v˘alʲmilt GI  "weight: 11 " ; 
 valmis+Adv:v˘alʲmis GI  "weight: 5 " ; 

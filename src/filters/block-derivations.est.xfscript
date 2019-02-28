@@ -18,14 +18,14 @@ define ZZ [[Vow Cons+ Vow+ Cons*] | [Vow Vow Vow Cons*]];   # at least 2 syllabl
 define BadDer1 [
     [~[?* [["+N"] | ["+Num" "+Card"] | ["+N" "+Prop"]]] "+Der/lik"] |
     [~[?* [["+N" "+Prop"] | [{kond} "+N"]]] "+Der/lane"] |
-    [~[?* [["+N"] | ["+Num" "+Card"]]] "+Der/line"] |
+    [~[?* [["+N"] | ["+N" "+Prop"] | ["+Num" "+Card"]]] "+Der/line"] |
     [~[?* "+N"] "+Der/ne"] |
     [~[?* [["+A"] | ["+A" "+Comp"] | ["+A" "+Superl"]]] "+Der/lt"] |
     [~[?* "+A"] "+Der/sti"] |
     [~[?* "+A" "+Comp"] "+Der/ini"] |
     [~[?* "+A"] "+Der/m"] |
     [~[?* "+A"] "+Der/im"] |
-    [~[?* j a "+N"] "+Der/nna"] |
+    [~[?* [[j a "+N"] | ["+Der/lane" "+N"]]] "+Der/nna"] |
     [~[?* [["+N"] | ["+Num" "+Card"]]] "+Der/kond"] |
     [~[?* [["+A"] | ["+A" "+Comp"] | ["+A" "+Superl"] | 
           [ ZZ {tama} "+V"] | [ ZZ {dama} "+V"] | 
