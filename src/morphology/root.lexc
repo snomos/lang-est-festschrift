@@ -968,8 +968,6 @@ ProtoMUUSEUM = ?* Vowel [Vowel | Consonant] Consonant+ [[[i | e] u m] | [[i | e]
 LEXICON Root !!= * {{@CODE@}} is the starting point of everything
 
   LexiconBased ;
-  Punctuation ;
-  Symbols     ;
 !  Guesser ;
 
 LEXICON LexiconBased
@@ -1010,6 +1008,7 @@ LEXICON Single     !! strictly simplex words; cannot be a part of a compound
   CardinalNumbersSingle ;      !!= * {{@CODE@}}
   OrdinalNumbers ;          !!= * {{@CODE@}}
   Punctuation ;          !!= * {{@CODE@}}
+  Symbols     ;          !!= * {{@CODE@}}
 
 LEXICON First     !!= * {{@CODE@}} a simplex word or the first part of a compound 
 

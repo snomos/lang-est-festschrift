@@ -476,6 +476,13 @@ vs+ABBR:vs AbbrNoCase ;
 
 LEXICON AbbrCases
       : AbbrNoCase ;                ! mld, vs, ...
+      : AbbrSomeCase ;
+
+LEXICON AbbrNoCase
+      :   # ;
+      :%. # ;
+
+LEXICON AbbrSomeCase
    +Sg:-i GENITIVE ;                ! mld-i
       :-d SG_PARTITIVE ;            ! wc-d
       :-t SG_PARTITIVE ;            ! mld-t
@@ -493,7 +500,4 @@ LEXICON AbbrCases
       :-isid PL_PARTITIVE ;       ! DivX-isid
       :-e PL_PARTITIVE ;          ! DivX-e
 
-LEXICON AbbrNoCase
-      :   # ;
-      :%. # ;
 
