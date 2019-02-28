@@ -575,6 +575,7 @@ Multichar_Symbols
 +Use/Circ !!= * {{@CODE@}}: for arabic and roman numerals
 
 +ABBR !!= * {{@CODE@}}: Lühend / Abbreviation
++Symbol !!≈ * @CODE@ = independent symbols in the text stream, like £, €, ©
 +ACR !!= * {{@CODE@}}: Suurtähtlühend / Acronym
 +CLB !!= * {{@CODE@}}: Osalause piir (punkt, koma) / Clause border (full stop, comma..)
 +PUNCT !!= * {{@CODE@}}: Kirjavahemärk / Punctuation
