@@ -686,15 +686,18 @@ Multichar_Symbols
  @C.Der@
 
 !! Remember the stem type; for filtering compounds 
- @P.Stem.Single@   ! does not participate in compounding
+ @P.Stem.Single@   ! does not participate in compounding (used for words that would normally compound)   
  @R.Stem.Single@
- @D.Stem.Single@
+ @D.Stem.Single@   ! more restrictive than @R.Part.One@
  @P.Stem.Final@   ! may be only the last part: alam+N, ülem+N, vana+N 
  @R.Stem.Final@
  @D.Stem.Final@
  @P.Stem.Nom@   ! Even if this word is Sg Nom, smth may follow it 
  @R.Stem.Nom@   ! Previous word should have been in Sg Nom
  @D.Stem.Nom@   ! Previous word should not have been in Sg Nom
+ @P.Stem.Verb@   ! to remember that A or N was derived from verb 
+ @R.Stem.Verb@
+ @D.Stem.Verb@
 
  @P.Stem.ise@   ! enese + anything
  @R.Stem.ise@
@@ -1226,7 +1229,7 @@ LEXICON LatterDeverbal
   @P.POS.N@@C.Der@@C.Stem@ DeverbalNouns ;    
 
 LEXICON LatterGenitiveAttribute
-  @P.POS.GA@@P.Case.Gen@ GenitiveAttributes ;   ! -kreeka
+  @P.POS.GA@@P.Case.Gen@@C.Stem@ GenitiveAttributes ;   ! -kreeka
 
 LEXICON AnyLatterVerb     ! any verb derivation is allowed; set the case accordingly
               
@@ -1235,7 +1238,7 @@ LEXICON AnyLatterVerb     ! any verb derivation is allowed; set the case accordi
 
 LEXICON LatterVerb       ! a verb derivation
               
-  @P.POS.V@@C.Der@ Verbs ;                   !!= * {{@CODE@}}
+  @P.POS.V@@C.Der@@P.Stem.Verb@ Verbs ;                   !!= * {{@CODE@}}
 
 ! An acronym that may be first part of a compound:
 ! a sequence of capital letters; max length 5 and a trailing hyphen

@@ -80,6 +80,7 @@ echo 'nüüdis+Pref:nüüdis- #;' >> pref.lexc
 echo 'paleo+Pref:paleo- #;' >> pref.lexc
 echo 'polaar+Pref:pol´aar- #;' >> pref.lexc
 echo 'poliit+Pref:pol´iit- #;' >> pref.lexc
+echo 'raid+Pref:r´aid- #;' >> pref.lexc
 
 cat pref.lexc | sort -u | sed 's/\- #/»&/' >> prefixes.lexc
 

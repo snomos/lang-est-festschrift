@@ -94,9 +94,13 @@ cat adjectives.tmp2 \
 | sort -u >> adjectives.proto
 
 # some more flag diacritics to block some paths in compounding
+# ... followed by deleting flags that are spurious because of more restrictive flags
 cat  adjectives.proto \
 | sed -f badfinal_A.sed \
 | sed '/@P.Stem.Single@/s/@P.Stem.Nom@//g' \
+| sed '/@P.Stem.Single@/s/@R.Part.One@//g' \
+| sed '/@P.Stem.Single@/s/@D.Stem.Guessed@//g' \
+| sed '/@R.Part.One@/s/@D.Stem.Guessed@//g' \
 > adjectives.protolexc
 
 echo '\nLEXICON NoninflectingAdjectives\n' \
@@ -659,8 +663,9 @@ echo 'LEXICON Verbs\n\neel+Pref#:eel# SimpleVerbs ;\neel+Pref#:eel# EerVerbs ;\n
 echo '\nLEXICON SimpleVerbs\n' >> verbs.protolexc
 cat fs_gt.inflecting.tmp1 | grep '+V:' | grep -v '...eer[iu]ma+' \
 | sed 's/nnolastpart//' \
+| sed '/^asima+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
+| sed '/^väljama+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/' \
 | sed '/võidma+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
-| sed '/^seerima+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
 | sed '/^utma+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
 | sed '/^ahetama+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/' \
 | sed '/^aatlema+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/' \
@@ -671,6 +676,7 @@ cat fs_gt.inflecting.tmp1 | grep '+V:' | grep -v '...eer[iu]ma+' \
 
 echo '\nLEXICON EerVerbs\n' >> verbs.protolexc
 cat fs_gt.inflecting.tmp1 | grep '+V:' | grep '...eer[iu]ma+' \
+| sed '/^seerima+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
 | sed 's/nnolastpart//' >> verbs.protolexc
 
 # create final_components.lexc

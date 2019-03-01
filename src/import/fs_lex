@@ -71103,5 +71103,9 @@ lisa:0219|p<ät]tus p<ät]tuse!\S\.11^I^+7!&&!\S\.9+7!
 lisa:0219|v?astast<ik_mõju (v?astast<ik_m<õjju)!\S\.17!
 lisa:0219|v?astast<ik_s<eos v?astast<ik_s<eose!\S\.9+9!
 lisa:0219|vere_urma_rohi vere_urma_r<ohtu vere_urma_rohu!\S\.24^E^!
+lisa:0319|vormi_are vormi_areda!\A\.2+9!
+lisa:0319|kehtestav kehtestava!\A\.2+9!
+lisa:0319|tervendav tervendava!\A\.2+9!
+lisa:0319|piitsutav piitsutava!\A\.2+9!
 
 tes:1002|elamine-olemine, elamise-olemise, elamist-olemis[T, elamisesse-olemise[SSE, elamises-olemise[S, elamisest-olemise[ST, elamisele-olemise[LE, elamisel-olemise[L, elamiselt-olemise[LT, elamiseks-olemise[KS, elamise-olemise[NI, elamise-olemise[NA, elamise-olemise[TA, elamise-olemise[GA, elamisse-olemi[SSE, elamised-olemise[D, elamiste-olemis[TE, elamisi-olemis[I, elamistesse-olemis[TESSE, elamistes-olemis[TES, elamistest-olemis[TEST, elamistele-olemis[TELE, elamistel-olemis[TEL, elamistelt-olemis[TELT, elamisteks-olemis[TEKS, elamiste-olemis[TENI, elamiste-olemis[TENA, elamiste-olemis[TETA, elamiste-olemis[TEGA,!\S\.0!

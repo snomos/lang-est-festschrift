@@ -22517,7 +22517,7 @@ pahupool+N:pahu%#p˘ool%{stemill%} KEEL  "weight: 10 " ;
 pahvakas+N:pahvaka LOHAKAS  "weight: 11 " ; 
 @P.Stem.Nom@pahvatus+N:@P.Stem.Nom@pahvatus OLULINE  "weight: 11 " ; 
 pahvimine+N:p˘ahvimine OLULINE  "weight: 11 " ; 
-@R.Part.One@pai+N:@R.Part.One@p˘ai ARMEE  "weight: 9 " ; 
+@D.Stem.Guessed@pai+N:@D.Stem.Guessed@p˘ai ARMEE  "weight: 9 " ; 
 paidelane+N:p˘aidelane OLULINE  "weight: 11 " ; 
 paidelanna+N:p˘aidelanna PERE  "weight: 11 " ; 
 paigaldamine+N:paigaldamine OLULINE  "weight: 8 " ; 

@@ -12,7 +12,7 @@ LEXICON ELAMA    ! VVS 27
                       : NU ;               ! elanud
                       :%>I7S7 IND_PAST ;   ! elas
                       : IND_COND_PRS ;     ! elan, elaksin
-                      : US_DERIVATION ;     ! õpetus
+                      : US_DERIVATION_VERB ; ! õpetus
 
 LEXICON JULGEMA   ! only julgema
 
@@ -58,7 +58,7 @@ LEXICON HAKKAMA    ! VVS 29 (hakkama), 30 (riidlema)
                       : SUPINE_V ;            ! hakkama, riidlema
                       :%>I7S7 IND_PAST ;      ! hakkas, riidles
                       : IND_COND_PRS ;        ! hakkan, riidlen
-                      : US_DERIVATION ;       ! only riidlema-type; others get blocked by block-derivations script
+                      : US_DERIVATION_VERB ;  ! only riidlema-type; others get blocked by block-derivations script
 
 LEXICON HAKKAMA_WEAK    ! weak grade sub-paradigm
 
@@ -559,7 +559,6 @@ LEXICON TAMATU_DERIVATION_SUF  !    NB! the morpheme border + d/t is assigned be
 LEXICON V_DERIVATION
   @R.Part.One@@P.POS.A@  V_DERIVATION_SUF ;   ! no previous part; no restrictions   
   @R.Case.Par@@P.POS.A@  V_DERIVATION_SUF ;
-  @R.Case.Gen@@R.Stem.ise@@P.POS.A@  V_DERIVATION_SUF ;  ! enesetervendav
 
 LEXICON V_DERIVATION_SUF
               +Der/v+A:»v MAGUS ;              ! elav, elava etc
@@ -592,6 +591,10 @@ LEXICON MUS_DERIVATION
 
 LEXICON MUS_DERIVATION_SUF
              +Der/mus+N:»mus OLULINE ;         ! promoveerumus, elamus, ...
+
+LEXICON US_DERIVATION_VERB         ! us also changes A -> N; directing to that continuation class 
+  @R.Part.One@   US_DERIVATION ;   ! no previous part; no restrictions   
+  @R.Case.Gen@   US_DERIVATION ;
 
 LEXICON NG_DERIVATION
   @R.Part.One@@P.POS.N@  NG_DERIVATION_SUF ;   ! no previous part; no restrictions   
