@@ -863,7 +863,7 @@ PercentNum = Number [ %% | [ %' (%') ] ];
 OrdinalNum  = Number %.;
 
 ! Capital letters are used for making acronyms
-! An acronym is inflected according to its pronounciation
+! An acronym is inflected according to its pronunciation
 ! An acronym can be read as word (e.g. NATO), or letter-by-letter (e.g. ABC)
 ! In the latter case, the reading of the last letter determines the inflectional type
 CapVow = A|E|I|O|U|Õ|Ü|Ö|Ä|Y ;
@@ -890,10 +890,10 @@ CapNonPairC = [[CapCons CapConsv] - CapPairC] ;
 
 ! Guesser needs these
 ! Define phones for phonological patterns
-aA=a|A; bB=b|B; cC=c|C; dD=d|D; eE=e|E; fF=f|F; gG=g|G; hH=h|H; iI=i|I; jJ=j|J; 
-kK=k|K; lL=l|L; mM=m|M; nN=n|N; oO=o|O; pP=p|P; qQ=q|Q; rR=r|R; sS=s|S; šŠ=š|Š; 
-zZ=z|Z; žŽ=ž|Ž; tT=t|T; uU=u|U; vV=v|V; wW=w|W; õÕ=õ|Õ; ää=ä|Ä; öÖ=ö|Ö; üÜ=ü|Ü; 
-xX=x|X; yY=y|Y ;
+aA = a|A; bB = b|B; cC = c|C; dD = d|D; eE = e|E; fF = f|F; gG = g|G; hH = h|H; iI = i|I; jJ = j|J; 
+kK = k|K; lL = l|L; mM = m|M; nN = n|N; oO = o|O; pP = p|P; qQ = q|Q; rR = r|R; sS = s|S; šŠ = š|Š; 
+zZ = z|Z; žŽ = ž|Ž; tT = t|T; uU = u|U; vV = v|V; wW = w|W; õÕ = õ|Õ; ää = ä|Ä; öÖ = ö|Ö; üÜ = ü|Ü; 
+xX = x|X; yY = y|Y ;
 Vowel = aA|eE|iI|oO|uU|õÕ|äÄ|öÖ|üÜ;
 DoubleVow = [aA aA] | [eE eE] | [iI iI] | [oO oO] | [uU uU] | [õÕ õÕ] | [äÄ äÄ] | [öÖ öÖ] | [üÜ üÜ];
 Diphtong = [Vowel Vowel] - DoubleVow ;
