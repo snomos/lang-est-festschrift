@@ -588,6 +588,11 @@ LEXICON TUHAT    ! only tuhat; like LOHAKAS
                   :nde 2C ;           ! tuhande etc
        ! ????     :%>t SG_PARTITIVE ;    ! tuhat
 
+LEXICON TÕRI    ! only kuulmetõri; similar to talv (tali) and põlv (põli), but even older
+
+                  :i SG_NOMINATIVE ;              ! tõri
+                  :v EIT ;                        ! tõrve etc
+
 LEXICON VAHER    ! VVS 3 unstable (closed) type;  only vaher, aher
 
                   :%{W%} SG_NOMINATIVE ;    ! vaher

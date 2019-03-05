@@ -28487,7 +28487,7 @@ lisa:0094|audit<oorne audit<oorse!\A\.2+9!
 lisa:0094|ravimine ravimise ravimis[T!\S\.12^I^+7!
 lisa:0094|para_fraseering para_fraseeringu!\S\.2+9!
 lisa:0094|melo_draama!\S\.16!
-lisa:0094|met<al]lik met<al]liku!\S\.2+9!
+lisa:0094|met?al]lik met?al]liku!\S\.2+9!
 lisa:0094|tr?enaž<öör tr?enaž<ööri tr?enažööri!\S\.22^E^+7!
 lisa:0094|s<aamine s<aamise s<aamis[T!\S\.12^I^+7!
 lisa:0094|sada saja (s<atta)!\N\.18^U^! **$SG.P$: sada & sada[T
@@ -71107,5 +71107,20 @@ lisa:0319|vormi_are vormi_areda!\A\.2+9!
 lisa:0319|kehtestav kehtestava!\A\.2+9!
 lisa:0319|tervendav tervendava!\A\.2+9!
 lisa:0319|piitsutav piitsutava!\A\.2+9!
+lisa:0319|päevak päevaku!\S\.2+9!
+lisa:0319|teisi_päevak teisi_päevaku!\S\.2+9!
+lisa:0319|esmas_päevak esmas_päevaku!\S\.2+9!
+lisa:0319|kolma_päevak kolma_päevaku!\S\.2+9!
+lisa:0319|püha_päevak püha_päevaku!\S\.2+9!
+lisa:0319|<eakas <eaka!\S\.2+9!
+lisa:0319|k<aks_t<eist_sõrmik k<aks_t<eist_sõrmiku!\S\.2+9!
+lisa:0319|keelekas keeleka!\S\.2+9!
+lisa:0319|harvester harvesteri!\S\.19^E^+7!
+lisa:0319|ladek<ond ladek<onda ladekonna!\S\.22^I^+7!
+lisa:0319|hal]lik hal]liku!\S\.2+9!
+lisa:0319|k?aask<ondne k?aask<ondse!\A\.2+9!
+lisa:0319|inimlane inimlase inimlas[T!\S\.12^I^+7!
+lisa:0319|k<okku_l<eplane k<okku_l<eplase k<okku_l<eplas[T!\S\.12^I^+7!&&(!\S\.10+7!)
+lisa:0319|g<oot] g<oot]i goot]i!\S\.22^E^!
 
 tes:1002|elamine-olemine, elamise-olemise, elamist-olemis[T, elamisesse-olemise[SSE, elamises-olemise[S, elamisest-olemise[ST, elamisele-olemise[LE, elamisel-olemise[L, elamiselt-olemise[LT, elamiseks-olemise[KS, elamise-olemise[NI, elamise-olemise[NA, elamise-olemise[TA, elamise-olemise[GA, elamisse-olemi[SSE, elamised-olemise[D, elamiste-olemis[TE, elamisi-olemis[I, elamistesse-olemis[TESSE, elamistes-olemis[TES, elamistest-olemis[TEST, elamistele-olemis[TELE, elamistel-olemis[TEL, elamistelt-olemis[TELT, elamisteks-olemis[TEKS, elamiste-olemis[TENI, elamiste-olemis[TENA, elamiste-olemis[TETA, elamiste-olemis[TEGA,!\S\.0!

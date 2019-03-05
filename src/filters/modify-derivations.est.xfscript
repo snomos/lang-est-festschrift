@@ -8,11 +8,12 @@
 # kapitalism + ist -> kapitalist
 # -kond + ti -> -konniti
 # -lane + nna -> -lanna
+# ...maalane + nna -> ...maalanna
 
 define WB [ "#" | .#. ] ;
 define MB [ "»" ] ;  # morpheme border
 define LI   [ MB l i ];
-define LA   [ MB l a ] ;
+define LA   [ [MB | {maa}] l a ] ;
 define NE   [ [n e] | [s] ] ;
 define LINE [ LI NE ];
 define LANE [ LA NE ] ;

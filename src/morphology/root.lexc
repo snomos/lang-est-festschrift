@@ -459,6 +459,9 @@ Multichar_Symbols
 +Der/ng !!= * {{@CODE@}}
 !!€ devalveering: devalveerima+V+Der/ng+N+Sg+Nom 
 
++Der/is !!= * {{@CODE@}}
+!!€ arveldis: arveldama+V+Der/is+N+Sg+Nom
+
 !! V --> A
 
 +Der/v !!= * {{@CODE@}}

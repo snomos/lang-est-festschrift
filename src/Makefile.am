@@ -466,6 +466,7 @@ generator-raw-gt-desc.hfst: generator-raw-gt-desc.vocabulary.hfst
 	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/nna' -a 10 -A \
 	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/kond' -a 10 -A \
 	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/ist' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/is' -a 10 -A \
 	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/us' -a 10 -A \
 	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/ti' -a 10 -A \
 	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/lane' -a 10 -A \

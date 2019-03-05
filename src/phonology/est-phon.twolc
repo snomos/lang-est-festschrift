@@ -1097,16 +1097,19 @@ S7:0 <=> ShortSyll :Consonant Null* %> I7: _ WordEnd ;  ! lasi
 ! us-suffix and ini-suffix attach to a consonant, so a preceding vowel is deleted
 ! in reality, only a u e are the preceding vowels
 
-"delete vowel before -us or -ini"
+"delete vowel before -us -is or -ini"
 
 Vx:0 <=> :Consonant Null* _ SuffixBorder u s ;
+         :Consonant Null* _ SuffixBorder i s ;
          :Consonant Null* _ SuffixBorder i n i ;
      where Vx in ( a u e A1) ; 
 
-! lexical: a h h e t a > u s
-! surface: a h h e t 0 > u s
-! lexical: p i n g n e A1 > u s
-! surface: p i n g s 0  0 > u s
+! lexical: a h h e t a » u s
+! surface: a h h e t 0 » u s
+! lexical: p i n g n e A1 » u s
+! surface: p i n g s 0  0 » u s
+! lexical: a r v e l d a » i s
+! surface: a r v e l d 0 » i s
 
 ! ---------
 ! Rules for selecting 

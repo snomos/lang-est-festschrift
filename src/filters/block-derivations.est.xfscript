@@ -25,11 +25,12 @@ define BadDer1 [
     [~[?* "+A" "+Comp"] "+Der/ini"] |
     [~[?* "+A"] "+Der/m"] |
     [~[?* "+A"] "+Der/im"] |
-    [~[?* [[j a "+N"] | ["+Der/lane" "+N"]]] "+Der/nna"] |
+    [~[?* [[{ja} "+N"] | [{maalane} "+N"] | ["+Der/lane" "+N"]]] "+Der/nna"] |
     [~[?* [["+N"] | ["+Num" "+Card"]]] "+Der/kond"] |
     [~[?* [["+A"] | ["+A" "+Comp"] | ["+A" "+Superl"] | 
           [ ZZ {tama} "+V"] | [ ZZ {dama} "+V"] | 
           [ {hooldama} "+V"] | [ {soendama} "+V"] | [ {tsema} "+V"] | [ ? ? ? {lema} "+V"]]] "+Der/us"] |
+    [~[?* [[ ZZ {tama} "+V"] | [ ZZ {dama} "+V"]]] "+Der/is"] |
     [~[?* [{uma} | {tellima}] "+V"] "+Der/mus"] |             # devalveeruma - devalveerumus
     [~[?* {eerima} "+V"] "+Der/ng"] |           # devalveerima - devalveering
     [~[?* {ism} "+N"] "+Der/ist"] |             # kapitalism - kapitalist
@@ -81,6 +82,10 @@ define BadDer4 [
     [{ke} "+A" "+Der/us"] | 
     [{nud} "+A" "+Der/us"] | 
     [{aitama} "+V" "+Der/us"] |
+    [{harjuma} "+V" "+Der/tu"] |
+    [{põlema} "+V" "+Der/tu"] |
+    [{puhkama} "+V" "+Der/tu"] |
+    [{veenma} "+V" "+Der/tu"] |
     [{arg} "+A" "+Der/m"] |
     [{hahk} "+A" "+Der/m"] |
     [{halb} "+A" "+Der/m"] |
@@ -151,7 +156,14 @@ define BadDer6 [
     [{tuss} "+N" "+Der/lik"] | # _tus+lik
     [{udu} "+N" "+Der/line"] |  # ru_udu+line
     [{uss} "+N" "+Der/lik"] | # _us+lik
-    [{voog} "+N" "+Der/lik"]  # voo+lik
+    [{voog} "+N" "+Der/lik"] | # voo+lik
+    [{kinkima} "+V" "+Der/tu" "+A" "+Der/us"] | # kingitus
+    [{kasvama} "+V" "+Der/tu" "+A" "+Der/us"] | # kasvatus
+    [{kuivama} "+V" "+Der/tu" "+A" "+Der/us"] | # kuivatus
+    [{kukkuma} "+V" "+Der/tu" "+A" "+Der/us"] | # kukutus
+    [{kusema} "+V" "+Der/tu" "+A" "+Der/us"] | # kustus
+    [{käärima} "+V" "+Der/tu" "+A" "+Der/us"] | # kääritus
+    [{looma} "+V" "+Der/tu" "+A" "+Der/us"]  # loodus
     ] ;
 
 # guessed lemmas do not further derive because we do not trust them

@@ -13,6 +13,7 @@ LEXICON ELAMA    ! VVS 27
                       :%>I7S7 IND_PAST ;   ! elas
                       : IND_COND_PRS ;     ! elan, elaksin
                       : US_DERIVATION_VERB ; ! õpetus
+                      : IS_DERIVATION      ; ! arveldis
 
 LEXICON JULGEMA   ! only julgema
 
@@ -584,6 +585,13 @@ LEXICON JA_DERIVATION
 LEXICON JA_DERIVATION_SUF
              +Der/ja+N:»ja AASTA ;             ! elaja, elajat etc
              +Der/ja+N:»jas KOND_DERIVATION ; ! õpetajaskond, õpetajaskondlik, etc
+
+LEXICON IS_DERIVATION
+  @R.Part.One@@P.POS.N@  IS_DERIVATION_SUF ;   ! no previous part; no restrictions   
+  @R.Case.Gen@@P.POS.N@  IS_DERIVATION_SUF ;
+
+LEXICON IS_DERIVATION_SUF
+             +Der/is+N:»is OLULINE ;         ! arveldis
 
 LEXICON MUS_DERIVATION
   @R.Part.One@@P.POS.N@  MUS_DERIVATION_SUF ;   ! no previous part; no restrictions   

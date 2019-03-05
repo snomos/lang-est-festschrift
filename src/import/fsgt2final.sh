@@ -438,6 +438,13 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | sed '/^tüügas+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 | sed '/^varras+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 | sed '/^varvas+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/^ehmes+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/^mülgas+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/^tõbras+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/^urgas+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/^tainas+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/^riugas+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/^oinas+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 | sed '/^baarium+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 | sed '/^deuteerium+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 | sed '/^gallium+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
@@ -468,6 +475,9 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 \
 | sed '/^....*[kpt]s+.*KOON/s/^\([^:]*+N\):\([^#;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 > nouns.proto1
+
+# exception: kuulmetõri kuulmetõrve
+echo 'kuulmetõri+N:k´uulme#tõr TÕRI ;' >> nouns.proto1
 
 cat nouns.proto1 \
 | sed -f nomstem_first_koon.sed \
@@ -622,7 +632,7 @@ cat fs_gt.noninfl.tmp1 | grep '+Pron' >> pronouns.protolexc
 # exclude list(1) words
 cat fs_gt.inflecting.tmp1 | grep '+Pron' \
 | sed 's/nnolastpart//' \
-| grep -v '\(^iga+\)\|\(^mitu+\)\|\(^mõlema+\)\|\(^mõni+\)\|\(^sama+\)\|\(^palju+\)' \
+| grep -v '\(^iga+\)\|\(^igaüks+\)\|\(^mitu+\)\|\(^mõlema+\)\|\(^mõni+\)\|\(^sama+\)\|\(^palju+\)' \
 >> pronouns.protolexc
 
 # insert LEXICON CompoundingPronouns
@@ -634,7 +644,8 @@ cat pronouns_exceptions.handmade \
 # include list(1) words
 cat fs_gt.inflecting.tmp1 | grep '+Pron' \
 | sed 's/nnolastpart//' \
-| grep '\(^iga+\)\|\(^mitu+\)\|\(^mõlema+\)\|\(^mõni+\)\|\(^sama+\)\|\(^palju+\)' \
+| grep '\(^iga+\)\|\(^igaüks+\)\|\(^mitu+\)\|\(^mõlema+\)\|\(^mõni+\)\|\(^sama+\)\|\(^palju+\)' \
+| sed '/igaüks+/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.ise@\1:@P.Stem.ise@\2\3/' \
 >> pronouns.protolexc
 
 echo 'LEXICON NoninflectingVerbs\n' > noninflecting_verbs.protolexc
@@ -663,21 +674,15 @@ echo 'LEXICON Verbs\n\neel+Pref#:eel# SimpleVerbs ;\neel+Pref#:eel# EerVerbs ;\n
 echo '\nLEXICON SimpleVerbs\n' >> verbs.protolexc
 cat fs_gt.inflecting.tmp1 | grep '+V:' | grep -v '...eer[iu]ma+' \
 | sed 's/nnolastpart//' \
-| sed '/^asima+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
-| sed '/^väljama+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/' \
-| sed '/võidma+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
-| sed '/^utma+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
-| sed '/^ahetama+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/' \
-| sed '/^aatlema+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/' \
-| sed '/^anduma+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/' \
-| sed '/^ohutama+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/' \
-| sed '/^ahendama+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@R.Part.One@\1:@R.Part.One@\2\3/' \
+| sed -f bad_final_V.sed \
+\
 >> verbs.protolexc
 
 echo '\nLEXICON EerVerbs\n' >> verbs.protolexc
 cat fs_gt.inflecting.tmp1 | grep '+V:' | grep '...eer[iu]ma+' \
+| sed 's/nnolastpart//' \
 | sed '/^seerima+V/s/^\([^:]*\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
-| sed 's/nnolastpart//' >> verbs.protolexc
+ >> verbs.protolexc
 
 # create final_components.lexc
 ./fs_suf2gt.sh
