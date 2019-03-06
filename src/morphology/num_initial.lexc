@@ -4,9 +4,13 @@
 
 LEXICON Root
 
-@D.Part@@P.Part.One@@P.POS.NumCardCompound@ CompoundNumerals ;
-@R.Part.One@@R.POS.Pref@@P.Part.Two@@P.POS.NumCardCompound@ CompoundNumerals ;
-@R.Part.Two@@R.POS.Pref@@P.Part.Three@@P.POS.NumCardCompound@ CompoundNumerals ;
+! This lexicon is union-ed with the lexicon of simplex words.
+! They are tied to each other via flag diacritics.
+! Restricting compounds with these compound numerals.
+! Only two-part compounds allowed (instead of the default 3, thus have to play with Part): 
+
+@D.Part@@P.Part.Two@@P.POS.NumCardCompound@ CompoundNumerals ;          ! numeral + adjective (incl. derived adj)
+@R.Part.One@@R.POS.Pref@@P.Part.Three@@P.POS.NumCardCompound@ CompoundNumerals ;   ! pref + numeral
  
 LEXICON CompoundNumerals
 

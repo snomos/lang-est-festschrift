@@ -96,7 +96,8 @@ EST_AFFIX_FILES=$(srcdir)/affixes/regular_declinations \
 
 # make the parts inflect 
 # by re-using root.lexc and affixes, and omitting all the stem lexicons
-# ... and remove the flag diacritics
+# ... and remove the flag diacritics from initial parts (why? because otherwise the filter that 
+# puts the initial and final part together doesn't work ?)
  
 pair_initial.tmp.lexc: pair_initial.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
 	$(AM_V_GEN)cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
@@ -111,7 +112,7 @@ num_initial.tmp.lexc: num_initial.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lex
 pair_final.tmp.lexc: pair_final.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
 	$(AM_V_GEN)cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
 			   cat $< >> $@ && \
-			   cat $(EST_AFFIX_FILES:%=%.lexc) | sed 's/@.\.[^@]*@//g' >> $@
+			   cat $(EST_AFFIX_FILES:%=%.lexc) >> $@
 
 num_final.tmp.lexc: num_final.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
 	$(AM_V_GEN)cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \

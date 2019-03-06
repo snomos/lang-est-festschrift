@@ -350,17 +350,20 @@ analyser-raw-gt-desc.simple.xfst: analyser-raw-gt-desc.tmp.xfst \
 		 save stack $@\n\
 		 quit\n" | $(XFST) $(VERBOSITY)
 
+# include paired words and compound numerals
 # We need to add processing of language-specific tags in the generator:
 # HFST:
 generator-raw-gt-desc.simple.hfst: generator-raw-gt-desc.tmp.hfst \
 				generator-numerals-raw.simple.hfst \
+				generator-wordpairs-raw.simple.hfst \
 				$(EST_EXTRA_PRE_FILTERS:%=%.hfst) \
 				$(EST_EXTRA_POST_FILTERS:%=%.hfst) \
 				filters/downcase-derived_proper-strings.est.hfst
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
 			read regex                         \
 			$(EST_EXTRA_PRE_FILTERS:%=@\"%.hfst\" .o.)    \
-			[ @\"$<\" | @\"generator-numerals-raw.simple.hfst\" ] \
+			[ @\"$<\" | @\"generator-numerals-raw.simple.hfst\" \
+			          | @\"generator-wordpairs-raw.simple.hfst\"] \
 			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.hfst\")   \
 			;\n\
 			define fst \n\
@@ -412,14 +415,10 @@ analyser-raw-gt-desc.comp.xfst: analyser-raw-gt-desc.simple.xfst \
 		quit\n" | $(XFST) $(VERBOSITY)
 
 # the vocabulary, i.e. words that might be combined with - / or otherwise
-# include paired words and compounds in the raw generator
 # HFST:
-generator-raw-gt-desc.vocabulary.hfst: generator-raw-gt-desc.comp.hfst \
-					generator-wordpairs-raw.simple.hfst 
+generator-raw-gt-desc.vocabulary.hfst: generator-raw-gt-desc.comp.hfst
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
 			read regex @\"$<\" ; \n\
-			read regex @\"generator-wordpairs-raw.simple.hfst\" ; \n\
-			union net\n\
 			save stack $@\n\
 			quit\n" | $(XFST_TOOL)
 

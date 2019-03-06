@@ -1068,6 +1068,7 @@ LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
   @R.POS.IntNum@@R.Case.Gen@ LatterAdjective_ne ;          ! viiemeetrine
   @R.POS.IntNum@@R.Case.Gen@@P.NeedDerNe.On@ Nouns ;        ! viieautone
   @R.POS.NumCardCompound@@R.Case.Gen@ LatterAdjective_ne ; ! kahekümnemeetrine
+  @R.POS.NumCardCompound@@R.Case.Gen@@P.NeedDerNe.On@ Nouns ;    ! kahekümneautone
   @R.POS.NumOrd@@R.Case.Gen@ LatterAdjective_ne ;        ! viiendajärguline
   @R.POS.Num@ LatterAdjective_ne ;                       ! 5punane, 3järguline
   @R.POS.Num@@P.NeedDerNe.On@ Nouns ;                    ! 5-autone
