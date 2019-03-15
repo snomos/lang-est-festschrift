@@ -1,10 +1,15 @@
 ! lexical language
+! INCORRECT at the moment...
+! usage:
+! in est/src, make weights to zero:
+! e.g. hfst-reweight -b 0 generator-raw-gt-desc.simple.hfst > katse1.hfst
+! or   hfst-reweight -b 0 generator-raw-gt-desc.hfst > katse2.hfst
 ! in est/src, do (FSM book p. 330):
 !
-! ~/xfst/bin/xfst
+! hfst-xfst
 ! clear stack
 ! source morphology/lexlang.xfscript
-! read regex  [@"analyser-raw-gt-desc.xfst"].u - Word ;
+! read regex  [@"katse1.hfst"].u - Word ;
 ! the result should be empty net, i.e. 1 state, 0 arcs
 
 define EstLetter [ 
@@ -26,50 +31,68 @@ define Letter [EstLetter | ForeignLetter] ;
 
 define Digit [ %0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 ] ;
 
-define Punct [ "-" | "%" | "." | "," | ";" | ":" | "!" | "?" | %' | %‘ | %’ | %" | %/ | %\ | "=" | "#"] ;
+!define Punct [ "-" | "%" | "." | "," | ";" | ":" | "!" | "?" | %' | %‘ | %’ | %" | %/ | %\ | "=" | "#" ] ;
+
+! from morphology/generated_files/punctuation.lexc
+define Punct [ "," | "." | ":" | ";" | "|" | "?" | "…" | "¿" | "¶" | "❡" |
+               "•" | "●" | "·" | "·" | "-" | "–" | "—" | "―" | "−" | "_" | "=" | "≈" | "%" | "&" | %" | "'" |
+               "*" | "+" | "±" | "`" | "´" | "/" | "~" | "‐" | "°" | "«" | "»" | "“" | "”" | "‘" | "’" | "„" |
+               "‹" | "›" | "(" | ")" | "[" | "]" | "{" | "}" | "<" | ">" |
+               "#" ] ;
+
+
+! from morphology/generated files/symbols.lexc
+define Symbol ["§" | "$" | "€" | "£" | "®" | "©" | "√" | "◊" ] ;
 
 define Flag [ 
   "@U.Cap.Obl@" | "@U.Cap.Opt@" | "@C.Cap@" | 
   "@D.Part@" | "@P.Part.One@" | "@R.Part.One@" | "@D.Part.One@" | 
                "@P.Part.Two@" | "@R.Part.Two@" | "@P.Part.Three@" | "@P.Part.Bad@" | "@C.Part@" | 
   "@R.POS.A@" | "@P.POS.A@" | "@R.POS.AComp@" | "@P.POS.AComp@" | "@R.POS.N@" | "@P.POS.N@" | 
-  "@R.POS.NProp@" | "@P.POS.NProp@" | "@R.POS.GA@" | "@P.POS.GA@" | "@R.POS.IntNum@" | "@P.POS.IntNum@" | 
+  "@R.POS.NProp@" | "@P.POS.NProp@" | "@D.POS.NProp@" | "@R.POS.GA@" | "@P.POS.GA@" | "@R.POS.IntNum@" | "@P.POS.IntNum@" | 
   "@R.POS.NonIntNum@" | "@P.POS.NonIntNum@" | "@R.POS.NumCardCompound@" | "@P.POS.NumCardCompound@" | 
   "@R.POS.NumOrd@" | "@P.POS.NumOrd@" | "@R.POS.Num@" | "@P.POS.Num@" | "@R.POS.V@" | "@P.POS.V@" | 
   "@R.POS.Interj@" | "@P.POS.Interj@" | "@R.POS.Adv@" | "@P.POS.Adv@" | "@R.POS.Pron@" | "@P.POS.Pron@" | 
-  "@R.POS.Pref@" | "@P.POS.Pref@" | "@C.POS@" | 
-  "@R.Case.Nom@" | "@P.Case.Nom@" | "@R.Case.Gen@" | "@P.Case.Gen@" | "@R.Case.Par@" | "@P.Case.Par@" | 
+  "@R.POS.Pref@" | "@P.POS.Pref@" | 
+  "@R.POS.ACR@" | " @P.POS.ACR@" | " @D.POS.ACR@" |
+  "@R.POS.ACRMinus@" | " @P.POS.ACRMinus@" | " @D.POS.ACRMinus@" |
+  "@C.POS@" | 
+  "@R.POS.Guess@" | "@P.POS.Guess@" |
+  "@R.Case.Nom@" | "@P.Case.Nom@" | "@D.Case.Nom@"| "@R.Case.Gen@" | "@P.Case.Gen@" | "@R.Case.Par@" | "@P.Case.Par@" | 
   "@R.Case.Ine@" | "@P.Case.Ine@" | "@R.Case.Sem@" | "@P.Case.Sem@" | "@D.Case.PlNom@" | "@P.Case.PlNom@" | 
-  "@R.Case.Short@" | "@P.Case.Short@" | "@D.Case@" | "@D.Case.Nom@" | "@C.Case@" | 
+  "@R.Case.Short@" | "@P.Case.Short@" | "@D.Case@" | "@C.Case@" | 
   "@P.Der.kas@" | "@D.Der.kas@" | "@R.Der.us@" | "@P.Der.us@" | "@D.Der.us@" | "@P.Der.ist@" | 
   "@P.Der.m@" | "@P.Der.im@" | "@P.Der.N@" | "@D.Der.N@" | "@P.Der.A@" | "@D.Der.A@" | "@P.Der.Adv@" | "@D.Der.Adv@" | 
   "@D.Der@" | "@C.Der@" | 
   "@P.Stem.Single@" | "@R.Stem.Single@" | "@D.Stem.Single@" |
   "@P.Stem.Final@" | "@R.Stem.Final@" | "@D.Stem.Final@" |
   "@P.Stem.Nom@" | "@R.Stem.Nom@" | "@D.Stem.Nom@" |
-  "@P.Stem.ise@" | "@R.Stem.ise@" | "@D.Stem.ise@" | "@P.Stem.vähe@" | "@R.Stem.vähe@" | "@D.Stem.vähe@" | 
-  "@P.Stem.topelt@" | "@R.Stem.topelt@" | "@D.Stem.topelt@" | "@C.Stem@" | 
+  "@P.Stem.Verb@" | "@R.Stem.Verb@" | "@D.Stem.Verb@" |
+  "@P.Stem.ise@" | "@R.Stem.ise@" | "@D.Stem.ise@" | 
+  "@P.Stem.üle@" | "@R.Stem.üle@" | "@D.Stem.üle@" | 
+  "@P.Stem.vähe@" | "@R.Stem.vähe@" | "@D.Stem.vähe@" | 
+  "@P.Stem.topelt@" | "@R.Stem.topelt@" | "@D.Stem.topelt@" | 
+  "@P.Stem.Guessed@" | "@R.Stem.Guessed@" | "@D.Stem.Guessed@" | 
+  "@C.Stem@" | 
   "@P.NeedAdj.On@" | "@R.NeedAdj@" | "@D.NeedAdj@" | "@C.NeedAdj@" | 
   "@P.NeedNoun.On@" | "@R.NeedNoun@" | "@D.NeedNoun@" | "@C.NeedNoun@" | 
   "@P.NeedPartThree.On@" | "@R.NeedPartThree@" | "@D.NeedPartThree@" | "@C.NeedPartThree@" | 
-  "@P.NeedDerNe.On@" | "@R.NeedDerNe@" | "@D.NeedDerNe@" | "@C.NeedDerNe@" | 
-  "@P.NomStem.First@" | "@R.NomStem.First@" | "@D.NomStem.First@" | "@C.NomStem@" |
-  "@R.POS.ACR@" | "@P.POS.ACR@" | "@D.POS.ACR@" | "@R.POS.ACRMinus@" | "@P.POS.ACRMinus@" | "@D.POS.ACRMinus@"
-
+  "@P.NeedDerNe.On@" | "@R.NeedDerNe@" | "@D.NeedDerNe@" | "@C.NeedDerNe@" 
             ] ;
 
-define Chr [Letter | Digit | Punct] ;
+define Chr [Letter | Digit | Punct | Symbol] ;
 define Lemma [Chr]+ ;
 
-define DeclinablePOS [Flag* ["+N" | ["+N" "+Prop"] | "+A" | ["+A" "+Comp"] | 
-   ["+A" "+Superl"] | ["+Num" "+Card"] | ["+Num" "+Ord"] | "+Pron" | "+ACR"] Flag*];
+define DeclinablePOS [Flag* ["+N" | ["+N" "+Prop"] | ["+N" "+Symbol"] | "+A" | ["+A" "+Comp"] | 
+   ["+A" "+Superl"] | ["+Num" "+Card"] | ["+Num" "+Ord"] | "+Pron" | "+ACR" | "+ABBR"] Flag*];
 
 define VPOS [Flag* [ "+V" ] Flag*];
 
-define NonInflectingPOS [Flag* ["+A" | ["+Num" "+Card"] | ["+Num" "+Ord"] | "+Pron" | 
-                "+Adv" | "+Interj" | "+CC" | "+CS" | "+Adp" | "+Pref" | "+ACR"] Flag*];
+define NonInflectingPOS [Flag* [["+N" "+Symbol"] | "+A" | ["+Num" "+Card"] | ["+Num" "+Ord"] | "+Pron" | 
+                "+Adv" | "+Interj" | "+CC" | "+CS" | "+Adp" | "+Pref" | 
+                "+ACR" | "+ABBR" | "+CLB" | "+PUNCT"  | ["+PUNCT" "+LEFT"]  | ["+PUNCT" "+RIGHT"] ] Flag*];
 
-define POS [DeclinablePOS | VPOS | NonInflectingPOS] ;
+define POS [[DeclinablePOS | VPOS | NonInflectingPOS] Flag* ("+Guess") Flag*] ;
 
 define Gi [Flag* ["+Foc/gi"] Flag*] ;
 
@@ -97,7 +120,7 @@ define Kuulukse [{kuulukse} | {tunnukse} | {näikse}] ;
 define PersPron [{mina} | {sina} | {tema} | {meie} | {teie} | {nemad}] ;
 
 define DerDeclinable [ Flag* [
-   ["+Der/im" "+A" "+Superl"] | ["+Der/m" "+A" "+Comp"] | ["+Der/us" "+N"] |
+   ["+Der/im" "+A" "+Superl"] | ["+Der/m" "+A" "+Comp"] | ["+Der/us" "+N"] | ["+Der/is" "+N"] |
    ["+Der/lane" "+N"] | ["+Der/kas" "+N"] | 
    ["+Der/ist" "+N"] | ["+Der/kond" "+N"] | ["+Der/lik" "+A"] | 
    ["+Der/line" "+A"] | ["+Der/ne" "+A"] | ["+Der/nna" "+N"] | 
@@ -156,5 +179,9 @@ define Conjugable [
 
 define SimpleWord [Flag* (Lemma "+Pref" "#" Flag*) [Declinable | NonInflecting | Conjugable] Flag*] ;
 define Word [[SimpleWord "#"]* SimpleWord] ;
+
+define Anything [Chr | Flag | POS | Gi | Number | 
+                 Prs | Prt | Ind | Cond | Imprt | Quot |
+                 PersonNumber | Usage | Der ]+ ;
 
 

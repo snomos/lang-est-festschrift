@@ -97,9 +97,9 @@ LEXICON NounFinalComp
 @P.Stem.Nom@masin+N:@P.Stem.Nom@masin MAGUS   ; 
 @P.Stem.Nom@materjal+N:@P.Stem.Nom@materjal TAUD   ; 
 @P.Stem.Nom@mees+N:@P.Stem.Nom@me MEES   ; 
-@P.Stem.Nom@meeter+N:@P.Stem.Nom@m˘eetE2r REDEL   ; 
+@P.Stem.Nom@meeter+N:@P.Stem.Nom@m˘eeter REDEL   ; 
 @P.Stem.Nom@meetod+N:@P.Stem.Nom@meetod REDEL   ; 
-@P.Stem.Nom@meister+N:@P.Stem.Nom@m˘eistE2r REDEL   ; 
+@P.Stem.Nom@meister+N:@P.Stem.Nom@m˘eister REDEL   ; 
 @P.Stem.Nom@mets+N:@P.Stem.Nom@m˘ets%>%{pl.i%} PIIM   ; 
 @P.Stem.Nom@mootor+N:@P.Stem.Nom@m˘ootor REDEL   ; 
 @P.Stem.Nom@muld+N:@P.Stem.Nom@m˘ulD1%>%{pl.i%} PIIM   ; 

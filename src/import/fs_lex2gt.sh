@@ -179,6 +179,66 @@ cat fs_lex.gt1 \
 | sed 's/#&#p´õrssa//' \
 | sed '/perse+/s/erse PINGE/ers PERSE/' \
 | sed '/põrsas+/s/õrsa KOTKAS/õrs PÕRSAS/' \
+| sed '/Aksel+N+Prop/s/REDEL/AKSEL/' \
+| sed '/Valter+N+Prop/s/REDEL/AKSEL/' \
+| sed '/e[lr]+N+Prop/s/REDEL/EIFFEL/' \
+| sed '/Aleksander+N+Prop/s/\(@.*\)er /\1E2r /' \
+| sed '/Alexander+N+Prop/s/\(@.*\)er /\1E2r /' \
+| sed '/Endel+N+Prop/s/\(@.*\)el /\1E2l /' \
+| sed '/Ester+N+Prop/s/\(@.*\)er /\1E2r /' \
+| sed '/Kaarel+N+Prop/s/\(@.*\)el /\1E2l /' \
+| sed '/Mihkel+N+Prop/s/\(@.*\)el /\1E2l /' \
+| sed '/Peeter+N+Prop/s/\(@.*\)er /\1E2r /' \
+| sed '/Pärtel+N+Prop/s/\(@.*\)el /\1E2l /' \
+| sed '/Sander+N+Prop/s/\(@.*\)er /\1E2r /' \
+| sed '/kimmel+N/s/\(@.*\)el /\1E2l /' \
+| sed '/trummel+N/s/\(@.*\)el /\1E2l /' \
+| sed '/juubel+N/s/REDEL/EIFFEL/' \
+| sed '/kaamel+N/s/REDEL/EIFFEL/' \
+| sed '/gospel+N/s/REDEL/AKSEL/' \
+| sed '/paabel+N/s/REDEL/AKSEL/' \
+| sed '/piksel+N/s/REDEL/AKSEL/' \
+\
+| sed '/geiser+N/s/\(@.*\)er /\1E2r /' \
+| sed '/keiser+N/s/\(@.*\)er /\1E2r /' \
+| sed '/mauser+N/s/\(@.*\)er /\1E2r /' \
+| sed '/müüser+N/s/\(@.*\)er /\1E2r /' \
+| sed '/fraater+N/s/\(@.*\)er /\1E2r /' \
+| sed '/elekter+N/s/\(@.*\)er /\1E2r /' \
+| sed '/skepter+N/s/\(@.*\)er /\1E2r /' \
+| sed '/spekter+N/s/\(@.*\)er /\1E2r /' \
+| sed '/haamer+N/s/\(@.*\)er /\1E2r /' \
+| sed '/stiimer+N/s/\(@.*\)er /\1E2r /' \
+| sed '/kraater+N/s/\(@.*\)er /\1E2r /' \
+| sed '/maaler+N/s/\(@.*\)er /\1E2r /' \
+| sed '/märter+N/s/\(@.*\)er /\1E2r /' \
+| sed '/päsmer+N/s/\(@.*\)er /\1E2r /' \
+| sed '/taaler+N/s/\(@.*\)er /\1E2r /' \
+| sed '/teener+N/s/\(@.*\)er /\1E2r /' \
+| sed '/ureeter+N/s/\(@.*\)er /\1E2r /' \
+| sed '/vesper+N/s/REDEL/AKSEL/' \
+| sed '/snuuker+N/s/REDEL/AKSEL/' \
+| sed '/stopper+N/s/REDEL/AKSEL/' \
+| sed '/snaiper+N/s/REDEL/AKSEL/' \
+| sed '/jokker+N/s/REDEL/AKSEL/' \
+| sed '/röster+N/s/REDEL/AKSEL/' \
+\
+| sed '/mister+N/s/REDEL/EIFFEL/' \
+| sed '/tanker+N/s/REDEL/EIFFEL/' \
+| sed '/autsaider+N/s/REDEL/EIFFEL/' \
+| sed '/@ oober+N/s/REDEL/EIFFEL/' \
+| sed '/pauper+N/s/REDEL/EIFFEL/' \
+| sed '/kveeker+N/s/REDEL/EIFFEL/' \
+| sed '/ ooper+N/s/REDEL/EIFFEL/' \
+| sed '/pokker+N/s/REDEL/EIFFEL/' \
+| sed '/setter+N/s/REDEL/EIFFEL/' \
+| sed '/häkker+N/s/REDEL/EIFFEL/' \
+| sed '/plotter+N/s/REDEL/EIFFEL/' \
+| sed '/skvotter+N/s/REDEL/EIFFEL/' \
+| sed '/klopper+N/s/REDEL/EIFFEL/' \
+| sed '/pointer+N/s/REDEL/EIFFEL/' \
+| sed '/rabarber+N/s/REDEL/RABARBER/' \
+| sed '/rabarber+N/s/\(@.*\)er /\1 /' \
 > fs_gt.pre-inflecting
 
 # NB! perse, põrsas praegu osaliselt valesti 

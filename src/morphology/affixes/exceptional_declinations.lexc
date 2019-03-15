@@ -580,7 +580,10 @@ LEXICON POOLTEIST     ! only (pool)teist; much like TEINE ?
                   :e%#teise%>sse SG_ILLATIVE ;  ! 
          +Use/Rare:%#teise%>sse SG_ILLATIVE ;   ! 
 
+LEXICON RABARBER ! only rabarber
 
+                  :er REDEL ;   ! rabarberi
+                  :E2r REDEL ;  ! rabarbri
 
 LEXICON TUHAT    ! only tuhat; like LOHAKAS
 

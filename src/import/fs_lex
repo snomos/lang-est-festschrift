@@ -4818,7 +4818,6 @@ lisa:0098|<eel_arve <eel_<arve!\S\.6+9!
 lisa:0098|l<iikmes_organ l<iikmes_organi!\S\.2+9!%i>e[I%
 lisa:0098|n<õus_olek n<õus_oleku!\S\.2+9!
 lisa:0098|p<uudu_olev p<uudu_oleva!\SA\.2+9!
-lisa:0098|st<aapel st<aapeli!\S\.2+9!
 lisa:0098|p<uudu_j<ääv p<uudu_j<ääva!\A\.2+9!
 lisa:0098|t<ootja!\S\.1+9!
 lisa:0098|r<eisija!\S\.1+9!
@@ -12380,7 +12379,6 @@ vvs:0093|k<eskur k<eskuri!\S\.2+9!%i>e[I%
 vvs:0093|k<eskus k<eskuse!\S\.11^I^+7!&&!\S\.9+7!
 vvs:0093|keskustelu keskust<ellu!\S\.17!
 vvs:0093|k<es]s k<es]si kes]si!\S\.22^E^!
-vvs:0093|k<essel k<esli!\S\.2+9!%i>e[I%
 vvs:0093|kess<oon kess<ooni kess?ooni!\S\.22^E^+7!
 vvs:0093|k<est k<esta kesta!\S\.22^I^!
 vvs:0093|kestendus kestenduse!\S\.11^I^+7!
@@ -14105,7 +14103,6 @@ vvs:0093|kääbus kääbuse!\S\.9+9!
 vvs:0093|k<ääks k<ääksu kääksu!\S\.22^E^!&&!\I\!
 vvs:0093|kääksatus kääksatuse!\S\.11^I^+7!
 vvs:0093|kääksutus kääksutuse!\S\.11^I^+7!
-vvs:0093|k<äämer k<äämri!\S\.2+9!%i>e[I%
 vvs:0093|käänak käänaku!\S\.2+9!
 vvs:0093|k<äänd k<äändu käänu!\S\.22^E^!
 vvs:0093|k<äändk<ond k<äändk<onda k<äändkonna!\S\.22^I^+7!
@@ -14193,7 +14190,7 @@ vvs:0093|kül]vik kül]viku!\S\.2+9!
 vvs:0093|kül]vis kül]vise!\S\.9+9!
 vvs:0093|k<ümbal k<ümbali!\S\.2+9!%i>e[I%
 vvs:0093|k<ümblus k<ümbluse!\S\.11^I^+7!&&!\S\.9+7!
-vvs:0093|k<ümmel k<ümli!\S\.2+9!%i>e[I%
+vvs:0093|k<ümmel k<ümmeli!\S\.2+9!%i>e[I%
 vvs:0093|k<ümnend k<ümnendi!\S\.2+9!%i>e[I%
 vvs:0093|k<ümn<ik k<ümn<ikku k<ümniku!\S\.25^E^+11!
 vvs:0093|k<ümnis k<ümnise!\S\.11^I^+7!&&!\S\.9+7!
@@ -15898,7 +15895,6 @@ vvs:0093|m?arkit<an]t m?arkit<an]ti m?arkitan]di!\S\.22^E^+7!
 vvs:0093|m?arkom<ann m?arkom<anni m?arkomanni!\S\.22^E^+7!
 vvs:0093|mark<öör mark<ööri mark?ööri!\S\.22^E^+7!
 vvs:0093|marli!\S\.16!
-vvs:0093|m<armel m<armli!\S\.2+9!%i>e[I%
 vvs:0093|m?armel<aad m?armel<aadi m?armelaadi!\S\.22^E^+7!
 vvs:0093|m<armor m<armori!\S\.2+9!%i>e[I%
 vvs:0093|m?arod<öör m?arod<ööri m?arodööri!\S\.22^E^+7!
@@ -20579,7 +20575,7 @@ vvs:0093|silu<et]t silu<et]ti silu?et]i!\S\.22^E^+7!
 vvs:0093|silur siluri!\S\.2+9!%i>e[I%
 vvs:0093|s<imbel s<imbli!\S\.2+9!%i>e[I%
 vvs:0093|s<imman s<immani!\S\.2+9!%i>e[I%
-vvs:0093|s<immel s<imli!\S\.2+9!%i>e[I%
+vvs:0093|s<immel s<immeli!\S\.2+9!%i>e[I%
 vvs:0093|s<imss s<imssi simsi!\S\.22^E^!
 vvs:0093|s?imul<an]t s?imul<an]ti s?imulan]di!\S\.22^E^+7!
 vvs:0093|simulatsi<oon simulatsi<ooni simulatsi?ooni!\S\.22^E^+7!

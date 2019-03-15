@@ -324,8 +324,12 @@ LowerCaseConsonant = b c d f g h j k l m n p q r s š z ž t v w x ;
 UpperCaseConsonant = B C D F G H J K L M N P Q R S Š Z Ž T V W X ;
 Consonant = LowerCaseConsonant UpperCaseConsonant ;
 
+ForeignLetter = c C q Q š Š z Z ž Ž w W x X ;
+
 ! stops
-stop = g b d k p t ;
+gbd = g b d ;
+kpt = k p t ;
+stop = gbd kpt ;
 
 ! sonorous consonants that have a special place in Est morph/phon
 lmnr = l m n r ;
@@ -747,6 +751,33 @@ I7:i <=> :Consonant Null* %> _ S7: WordEnd ;
 ! lexical: s a a > I7
 ! surface: s a 0 >  i
 
+! --------- declinable word stem change ---------
+! schwa (dis)appears or emerges or surfaces...
+
+! -el/-er becomes -li/-ri, but not in cases where this would create difficult pronunciation:
+! e.g. ssel, ššel, rrel, mmel, nnel, llel, jel, [kpt][kpt]el
+! exceptions: 
+! 1) e disappears, although the result is hard to pronounce: kimmel-kimli (vs. kummel-kummeli) 
+!    have E2 instead of e in the stem lexicon: kimmel+N:kimmE2l  
+! 2) e remains, although it would be convenient to delete it: juubel-juubeli (vs. duubel-duubli)
+!    add trigger {F} to the end of word (via cont. lexicon) to block the rules below
+! 
+
+"el-li"
+
+e:0 <=> Vowel [[h v] | [f f:] | [k k:] | [p p:] | [t t:] | [h h:] | [h kpt]] _ l SuffixBorder i: ;
+        Vowel [[r | n | m] [gbd | kpt | v | f | s]]                          _ l SuffixBorder i: ;
+        Vowel [([r | n | m]) [[s kpt] | [kpt s]]]                            _ l SuffixBorder i: ;
+        Vowel Vowel [v | f | kpt | gbd | m | n | r | s | [s kpt] | [kpt s]]  _ l SuffixBorder i: ;
+   \[r] Vowel [[h v] | [f f:] | [k k:] | [p p:] | [t t:] |[h kpt] | [h m]]   _ r SuffixBorder i: ;
+   \[r] Vowel [[l | n | m] [gbd | kpt | v | f ]]                             _ r SuffixBorder i: ;
+   \[r] Vowel [[l | n | m] [s kpt]]                                          _ r SuffixBorder i: ;
+   \[r] Vowel Vowel [v | f | kpt | gbd | [s kpt]]                            _ r SuffixBorder i: ;
+        Vowel s kpt                                                          _ r SuffixBorder i: ;     ! raster-rastri
+
+! lexical: t o o b e r > i
+! surface: t o o b 0 r > i
+
 ! --------- verb stem changes -------
 ! not really gradation
 ! if [l | r] does not border with a vowel, then schwa surfaces (or appears?)
@@ -921,18 +952,18 @@ n:0  <=> :Consonant _ Null+ » %- ;        ! nais-, vaatamis-, astraal-
 
 n:s  =>       _ e: E1:  ;
               _ e: Null* (») I1: ;
-              _ e: A1:  ;
+              _ e: > A1:  ;
 
 "ne to s (2/2)"
 
 e:0  /<= n:n _ E1: ;
-         n:n _ A1: ;
+         n:n _ > A1: ;
 
 "e disappearing (ne - s) 1/2"
 
 e:0 <=>       n: _ E1: ;                    ! kodune - kodust, koduse
               n: _ Null* (») I1: ;          ! katkine - katkisil;  alalisim
-              n: _ A1: ;                    ! pingne - pingsa
+              n: _ > A1: ;                    ! pingne - pingsa
 
 ! we postulate that there is a special stem vowel e that is added both for -ne and -s words
 "add e for inflecting a ne/s word "
@@ -1106,8 +1137,8 @@ Vx:0 <=> :Consonant Null* _ SuffixBorder u s ;
 
 ! lexical: a h h e t a » u s
 ! surface: a h h e t 0 » u s
-! lexical: p i n g n e A1 » u s
-! surface: p i n g s 0  0 » u s
+! lexical: p i n g n e > A1 » u s
+! surface: p i n g s 0 >  0 » u s
 ! lexical: a r v e l d a » i s
 ! surface: a r v e l d 0 » i s
 
