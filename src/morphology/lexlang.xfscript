@@ -1,5 +1,4 @@
 ! lexical language
-! INCORRECT at the moment...
 ! usage:
 ! in est/src, make weights to zero:
 ! e.g. hfst-reweight -b 0 generator-raw-gt-desc.simple.hfst > katse1.hfst
@@ -9,19 +8,26 @@
 ! hfst-xfst
 ! clear stack
 ! source morphology/lexlang.xfscript
-! read regex  [@"katse1.hfst"].u - Word ;
-! the result should be empty net, i.e. 1 state, 0 arcs
+! read regex  [@"katse1.hfst"].u - SimpleWord ;
+! the result should be empty net, i.e. 0 states, 0 arcs
+! read regex  [@"katse2.hfst"].u - Word ;
+! the result should be empty net, i.e. 0 states, 0 arcs
 
-define EstLetter [ 
+define LowerCaseEstLetter  [ 
              a | b | c | d | e | f | g | h |
              i | j | k | l | m | n | o | p |
              q | r | s | š | z | ž | t | u |
-             v | w | x | y | õ | ä | ö | ü |
+             v | w | x | y | õ | ä | ö | ü 
+             ] ;
+
+define UpperCaseEstLetter [ 
              A | B | C | D | E | F | G | H |
              I | J | K | L | M | N | O | P |
              Q | R | S | Š | Z | Ž | T | U |
              V | W | X | Y | Õ | Ä | Ö | Ü 
              ] ;
+
+define EstLetter [LowerCaseEstLetter | UpperCaseEstLetter] ;
 
 define ForeignLetter [ á | â | ã | å | æ | ç |
             é | ë | í | ï | ñ | ó | ô | ō | ø | ā | ă | ī | ŏ | ş | ţ | ū
@@ -38,7 +44,7 @@ define Punct [ "," | "." | ":" | ";" | "|" | "?" | "…" | "¿" | "¶" | "❡" |
                "•" | "●" | "·" | "·" | "-" | "–" | "—" | "―" | "−" | "_" | "=" | "≈" | "%" | "&" | %" | "'" |
                "*" | "+" | "±" | "`" | "´" | "/" | "~" | "‐" | "°" | "«" | "»" | "“" | "”" | "‘" | "’" | "„" |
                "‹" | "›" | "(" | ")" | "[" | "]" | "{" | "}" | "<" | ">" |
-               "#" ] ;
+               "#" | "!" ] ;
 
 
 ! from morphology/generated files/symbols.lexc
@@ -54,8 +60,8 @@ define Flag [
   "@R.POS.NumOrd@" | "@P.POS.NumOrd@" | "@R.POS.Num@" | "@P.POS.Num@" | "@R.POS.V@" | "@P.POS.V@" | 
   "@R.POS.Interj@" | "@P.POS.Interj@" | "@R.POS.Adv@" | "@P.POS.Adv@" | "@R.POS.Pron@" | "@P.POS.Pron@" | 
   "@R.POS.Pref@" | "@P.POS.Pref@" | 
-  "@R.POS.ACR@" | " @P.POS.ACR@" | " @D.POS.ACR@" |
-  "@R.POS.ACRMinus@" | " @P.POS.ACRMinus@" | " @D.POS.ACRMinus@" |
+  "@R.POS.ACR@" | "@P.POS.ACR@" | "@D.POS.ACR@" |
+  "@R.POS.ACRMinus@" | "@P.POS.ACRMinus@" | "@D.POS.ACRMinus@" |
   "@C.POS@" | 
   "@R.POS.Guess@" | "@P.POS.Guess@" |
   "@R.Case.Nom@" | "@P.Case.Nom@" | "@D.Case.Nom@"| "@R.Case.Gen@" | "@P.Case.Gen@" | "@R.Case.Par@" | "@P.Case.Par@" | 
@@ -92,7 +98,8 @@ define NonInflectingPOS [Flag* [["+N" "+Symbol"] | "+A" | ["+Num" "+Card"] | ["+
                 "+Adv" | "+Interj" | "+CC" | "+CS" | "+Adp" | "+Pref" | 
                 "+ACR" | "+ABBR" | "+CLB" | "+PUNCT"  | ["+PUNCT" "+LEFT"]  | ["+PUNCT" "+RIGHT"] ] Flag*];
 
-define POS [[DeclinablePOS | VPOS | NonInflectingPOS] Flag* ("+Guess") Flag*] ;
+!define POS [[DeclinablePOS | VPOS | NonInflectingPOS] Flag* ("+Guess") Flag*] ;
+define POS [[DeclinablePOS | VPOS | NonInflectingPOS] ] ;
 
 define Gi [Flag* ["+Foc/gi"] Flag*] ;
 
@@ -177,7 +184,8 @@ define Conjugable [
   [ Ei VPOS "+Neg" ] |
   [ Kuulukse VPOS ] ;
 
-define SimpleWord [Flag* (Lemma "+Pref" "#" Flag*) [Declinable | NonInflecting | Conjugable] Flag*] ;
+define SimpleWord [Flag* [[(Lemma "+Pref" "#" Flag*) [Declinable | NonInflecting | Conjugable]] ] Flag*] ;
+
 define Word [[SimpleWord "#"]* SimpleWord] ;
 
 define Anything [Chr | Flag | POS | Gi | Number | 

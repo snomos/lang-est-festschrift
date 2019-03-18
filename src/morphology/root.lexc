@@ -1248,7 +1248,7 @@ LEXICON LatterVerb       ! a verb derivation
 ! a sequence of capital letters; max length 5 and a trailing hyphen
 LEXICON Acrominus
 
-  < Cap^<6 "+ACR":"-" > # ;
+  < Cap^{1,5} "+ACR":"-" > # ;
 
 ! ------------------------
 ! Guessing follows a different logic:
