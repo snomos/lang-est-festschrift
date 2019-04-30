@@ -19,11 +19,11 @@ Multichar_Symbols
   +NumNum    ! Tag to denote real numbers in one form or another
 
 LEXICON Root
-< %+String [a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|q|y|z|õ|ä|ö|ü|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|Õ|Ä|Ö|Ü]* > COMMA ; ! This first line is to allow all letter strings.
-+NumNum NUMBERSECTION ;
+!< %+String [a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|q|y|z|õ|ä|ö|ü|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|Õ|Ä|Ö|Ü]* > COMMA ; ! This first line is to allow all letter strings.
+!+NumNum NUMBERSECTION ;
 !+NumNum COMMASECTION ;
 
-LEXICON NUMBERSECTION
+!LEXICON NUMBERSECTION
 HUNDREDSM ;		! 200M
 1:sada HUNDREDM ;	! 100M
 TENSM ;			! 20-99M
