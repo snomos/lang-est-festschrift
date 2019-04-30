@@ -952,18 +952,18 @@ n:0  <=> :Consonant _ Null+ » %- ;        ! nais-, vaatamis-, astraal-
 
 n:s  =>       _ e: E1:  ;
               _ e: Null* (») I1: ;
-              _ e: > A1:  ;
+              _ e: %> A1:  ;
 
 "ne to s (2/2)"
 
 e:0  /<= n:n _ E1: ;
-         n:n _ > A1: ;
+         n:n _ %> A1: ;
 
 "e disappearing (ne - s) 1/2"
 
 e:0 <=>       n: _ E1: ;                    ! kodune - kodust, koduse
               n: _ Null* (») I1: ;          ! katkine - katkisil;  alalisim
-              n: _ > A1: ;                    ! pingne - pingsa
+              n: _ %> A1: ;                    ! pingne - pingsa
 
 ! we postulate that there is a special stem vowel e that is added both for -ne and -s words
 "add e for inflecting a ne/s word "
