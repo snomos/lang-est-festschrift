@@ -18,8 +18,8 @@ LEXICON ELAMA    ! VVS 27
 LEXICON JULGEMA   ! only julgema
 
                       : ELAMA ;    
-           %+Use%/Rare:%{W%} IMPERS ;      ! impersonal forms  juleta...
-           %+Use%/Rare:%{W%} NU ;          ! NU-affixes julenud...
+           +Use/Rare:%{W%} IMPERS ;      ! impersonal forms  juleta...
+           +Use/Rare:%{W%} NU ;          ! NU-affixes julenud...
 
 LEXICON LEPPIMA   ! VVS 28
 
@@ -44,14 +44,14 @@ LEXICON LEKKIMA   ! VVS 28 & 27
 
                       : LEPPIMA_STRONG ;         ! lekkima, lekib, lekitud, ...
                       :%{W%} LEPPIMA_WEAK ;      ! lekib, lekiks
-           %+Use%/Rare: LEPPIMA_WEAK ;           ! lekkitud, lekkib, ...
+           +Use/Rare: LEPPIMA_WEAK ;           ! lekkitud, lekkib, ...
 
 LEXICON SÜTTIMA   ! VVS 28 & 27
                   ! like LEKKIMA, but weak grade forms are less used
 
                       : LEPPIMA_STRONG ;         ! süttima
                       : LEPPIMA_WEAK ;           ! süttib, süttiks
-           %+Use%/Rare:%{W%} LEPPIMA_WEAK ;      ! sütitud, sütib, sütiks
+           +Use/Rare:%{W%} LEPPIMA_WEAK ;      ! sütitud, sütib, sütiks
 
 LEXICON HAKKAMA    ! VVS 29 (hakkama), 30 (riidlema)
 
@@ -72,13 +72,13 @@ LEXICON ÜTLEMA    ! only ütlema, mõtlema
                   ! parallel forms: either t disappears in weak grade, or not
 
                       :le HAKKAMA ;             ! ütlema, ..., öeldud, öelda, öelgu, öelnud
-           %+Use%/Rare:tle%{W%} HAKKAMA_WEAK ;  ! üteldud, ütelda, ütelgu, ütelnud
+           +Use/Rare:tle%{W%} HAKKAMA_WEAK ;  ! üteldud, ütelda, ütelgu, ütelnud
 
 LEXICON RABELEMA    ! VVS 31; = HAKKAMA + ELAMA 
                     ! assuming that rabel- is less used than rabele- ...
 
                       : ELAMA ;                 ! rabelema; rabeletud, rabeleda, ...
-           %+Use%/Rare:%{W%} HAKKAMA_WEAK ;     ! rabeldud, rabelda, ...
+           +Use/Rare:%{W%} HAKKAMA_WEAK ;     ! rabeldud, rabelda, ...
 
 LEXICON KÄSKIMA     ! only käskima
 
@@ -90,12 +90,12 @@ LEXICON KISKUMA     ! only kiskuma
 
                       :u LEPPIMA_STRONG ;         ! kiskuma etc
                       : IMPERS ;                  ! kistud
-           %+Use%/Rare:u%{W%} IMPERS ;            ! kisutud etc
+           +Use/Rare:u%{W%} IMPERS ;            ! kisutud etc
                       :u%{W%} IND_COND_PRS ;      ! kisun etc
 
 LEXICON USKUMA      ! only uskuma 
 
- @R.Part.One@@P.Part.Bad@%+Use%/Rare:@R.Part.One@@P.Part.Bad@ IMPERS_COMP ;  ! ustud etc; no derivation
+ @R.Part.One@@P.Part.Bad@+Use/Rare:@R.Part.One@@P.Part.Bad@ IMPERS_COMP ;  ! ustud etc; no derivation
                       :u LEPPIMA ;        ! uskuma, usutud etc
 
 ! ---------------
@@ -118,17 +118,17 @@ LEXICON PESEMA    ! only pesema
 LEXICON KUSEMA    ! only kusema
 
                       : PESEMA ;    
-        %+Use%/NotNorm:e INFINITIVE ;         ! kuseda
-        %+Use%/NotNorm:e IMPERATIVE ;         ! kusegu
-        %+Use%/NotNorm:e%>I7S7 IND_PAST ;     ! kuses
+        +Use/NotNorm:e INFINITIVE ;         ! kuseda
+        +Use/NotNorm:e IMPERATIVE ;         ! kusegu
+        +Use/NotNorm:e%>I7S7 IND_PAST ;     ! kuses
 
 LEXICON KAITSMA    ! only  kaitsma, maitsma
 
                       : C_COMMON ;            ! kaitsta, kaitsku, kaitsnud
-           %+Use%/Rare:e C_COMMON ;           ! kaitseda, kaitsegu, kaitsenud
+           +Use/Rare:e C_COMMON ;           ! kaitseda, kaitsegu, kaitsenud
                       : IMPERS ;              ! kaitstud
                       : SUPINE_V ;            ! kaitsma
-           %+Use%/Rare:e SUPINE_V ;           ! kaitsema
+           +Use/Rare:e SUPINE_V ;           ! kaitsema
                       :e%>I7S7 IND_PAST ;     ! kaitses
                       :e IND_COND_PRS ;       ! kaitseb
 
@@ -143,12 +143,12 @@ LEXICON SAATMA      ! VVS 34, 35   söötma, nutma; lõpma
 LEXICON JOOKSMA     ! only jooksma
 
                       :%{W%} IMPERS ;         ! impersonal forms joostakse, ... 
-           %+Use%/Rare: IMPERS ;              ! impersonal forms jookstakse,...
+           +Use/Rare: IMPERS ;              ! impersonal forms jookstakse,...
                       : SUPINE_V ;            ! jooksma
                       :%{W%} INFINITIVE ;     ! joosta, joostes 
-           %+Use%/Rare: INFINITIVE ;          ! jooksta, jookstes
+           +Use/Rare: INFINITIVE ;          ! jooksta, jookstes
                       : IMPERATIVE ;          ! jooksku
-           %+Use%/Rare:%{W%} IMPERATIVE ;     ! joosku
+           +Use/Rare:%{W%} IMPERATIVE ;     ! joosku
                       : NU ;                  ! jooksnud
                       :%>I7S7 IND_PAST ;      ! jooksis, jooksin
                       :e IND_COND_PRS ;       ! jookseb
@@ -158,7 +158,7 @@ LEXICON LASKMA    ! only laskma
                       : C_COMMON ;            ! lasta, lasku, lasknud
                       : IMPERS ;              ! impersonal forms lastakse, ...
                       : SUPINE_V ;            ! laskma
-           %+Use%/Rare:%>I7S7 IND_PAST ;      ! indicative past laskis, ...
+           +Use/Rare:%>I7S7 IND_PAST ;      ! indicative past laskis, ...
                       :%{W%}%>I7S7 IND_PAST ; ! indicative past lasi, ...
                       :e%{W%} IND_COND_PRS ;  ! laseb
 
@@ -247,7 +247,7 @@ LEXICON MINEMA    ! only minema
 
 LEXICON MINEMA2
    +Pers+Prs+Imprt+Sg2:mine%{W%}%> GI ;          ! mine
-+Pers+Prs+Ind+Pl1+Aff%+Use%/Rare:läh%{W%}%>me GI ;  ! lähme more colloquial...
++Pers+Prs+Ind+Pl1+Aff+Use/Rare:läh%{W%}%>me GI ;  ! lähme more colloquial...
 
 ! ---------------
 ! 17 exceptional words of types 37, 38, all ending in VV
@@ -296,7 +296,7 @@ LEXICON IMPERS_A     ! if infinitive affix is -a, then ...
 LEXICON IMPERS_A_COMP    ! impersonal forms 
                       :%>d IMPERS_DUD ;        ! surdud, söödud
                       :%{W%}%> IMPERS_AKSE ;   ! surrakse, süüakse
-        %+Use%/NotNorm:%>d IMPERS_AKSE ;       ! surdakse, söödakse
+        +Use/NotNorm:%>d IMPERS_AKSE ;       ! surdakse, söödakse
 
 LEXICON IMPERS_DA     ! if infinitive affix is -da, then ...
  @R.Part.One@@P.Part.Bad@ IMPERS_DA_COMP ;
