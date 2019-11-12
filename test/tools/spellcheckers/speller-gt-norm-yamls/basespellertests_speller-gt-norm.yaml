@@ -9,5 +9,6 @@ Config:
 
 Tests:
   Normativity tests: # We should not generate non-standard or irrelevant forms:
+    ampel+N+Sg+Gen: [ampl>i]
 #    abrodh+V+PrfPrc:       "obr>eme"
 # this is not an issue for Estonian, since we have tags +Use/Rare, +Use/Hyp, +Use/NotNorm, +Use/ComonNotNorm for such forms
