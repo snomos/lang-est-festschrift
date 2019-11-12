@@ -19,5 +19,5 @@ halftest=gen
 yaml_file_subdir=gt-desc-yamls
 
 ####### Include helper script from GTCORE: ########
-giella_core=/home/hkaalep/giellatekno/core
-source ${giella_core}/scripts/include-scripts/yaml-runner-include.sh
+testrunner="../run-yaml-testcases.sh"
+source $testrunner $transducer $yaml_file_subdir $halftest
