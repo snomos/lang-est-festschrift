@@ -9,7 +9,7 @@ Config:
 
 Tests:
   Compound tests: # testing different compounding patterns that should be accepted:
-    ampel+N+Sg+Gen#lill+N+Sg+Nom: [amplilill, ampli-lill]
-    leht+N+Sg+Nom#peet+N+Sg+Nom: [lehtpeet, leht-peet]
-    peet+N+Sg+Nom#leht+N+Sg+Nom: [ ~peetleht ]
+    ampel+N+Sg+Gen#lill+N+Sg+Nom: [ampli#lill]
+    leht+N+Sg+Nom#peet+N+Sg+Nom:  [leht#peet ]
+    peet+N+Sg+Nom#leht+N+Sg+Nom:  [~peetleht ]
 
