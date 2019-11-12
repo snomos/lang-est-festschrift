@@ -68,7 +68,7 @@ FINAL_STRING_EDITS=txt
 WORD_REPLACEMENTS=yes
 
 # Specify where to find the project.yaml file and the corresponding layout defs:
-KEYBOARD_LAYOUT_DIR=$(GIELLA_CORE)/../keyboards/$GLANG
+KEYBOARD_LAYOUT_DIR=$(GIELLA_CORE)/../keyboards/$(GTLANG)
 # Specify the ID of the layout as found at the top of each layout file
 KEYBOARD_LAYOUT_ID=est
 
