@@ -2,6 +2,7 @@ LEXICON OrdinalNumerals
 
 biljones+Num+Ord:bilʲjoneN1S1 HALE  "weight: 11 " ; 
 esimene+Num+Ord:esimene OLULINE  "weight: 4 " ; 
+essa+Num+Ord:essa PERE  "weight: 11 " ; 
 kaheksakümnes+Num+Ord:kaheksa%#k˘ümneN1S1 HALE  "weight: 9 " ; 
 kaheksasajas+Num+Ord:kaheksa%#sajaN1S1 HALE  "weight: 11 " ; 
 kaheksas+Num+Ord:kaheksaN1S1 HALE  "weight: 8 " ; 
@@ -34,6 +35,7 @@ seitsmesajas+Num+Ord:s˘eitsme%#sajaN1S1 HALE  "weight: 11 " ;
 seitsmes+Num+Ord:s˘eitsmeN1S1 HALE  "weight: 7 " ; 
 seitsmeteistkümnes+Num+Ord:s˘eitsme%#t˘eist%#k˘ümneN1S1 HALE  "weight: 10 " ; 
 teine+Num+Ord:teine TEINE  "weight: 3 " ; 
+tessa+Num+Ord:tessa PERE  "weight: 11 " ; 
 triljones+Num+Ord:trilʲjoneN1S1 HALE  "weight: 11 " ; 
 tuhandes+Num+Ord:tuhandeN1S1 HALE  "weight: 11 " ; 
 veerandsajas+Num+Ord:veerand%#sajaN1S1 HALE  "weight: 11 " ; 

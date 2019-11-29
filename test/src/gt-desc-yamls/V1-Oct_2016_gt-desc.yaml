@@ -611,8 +611,10 @@ Tests:
      looma+V+Pers+Prt+Ind+Sg2+Aff: lõid
      looma+V+Pers+Prt+Ind+Sg1+Aff: lõin
      looma+V+Pers+Prt+Ind+Sg3+Aff: lõi
-     laastama+V+Inf: laastata
-     laastama+V+Ger: laastates
+     laastama+V+Inf: laastada
+     laastama+V+Inf+Use/Rare: laastata
+     laastama+V+Ger: laastades
+     laastama+V+Ger+Use/Rare: laastates
      laastama+V+Impers+Prt+Prc: laastatud
      laastama+V+Impers+Prt+Ind+Neg: laastatud
      laastama+V+Impers+Prt+Cond: laastatuks
@@ -651,9 +653,12 @@ Tests:
      laastama+V+Pers+Prs+Ind+Sg3+Aff: laastab
      laastama+V+Pers+Prs+Imprt+Sg2: laasta
      laastama+V+Pers+Prs+Ind+Neg: laasta
-     laastama+V+Pers+Prs+Imprt: laastaku
-     laastama+V+Pers+Prs+Imprt+Pl2: laastake
-     laastama+V+Pers+Prs+Imprt+Pl1: laastakem
+     laastama+V+Pers+Prs+Imprt: laastagu
+     laastama+V+Pers+Prs+Imprt+Use/Rare: laastaku
+     laastama+V+Pers+Prs+Imprt+Pl2: laastage
+     laastama+V+Pers+Prs+Imprt+Pl2+Use/Rare: laastake
+     laastama+V+Pers+Prs+Imprt+Pl1: laastagem
+     laastama+V+Pers+Prs+Imprt+Pl1+Use/Rare: laastakem
      laastama+V+Pers+Prt+Quot: laastanuvat
      laastama+V+Pers+Prt+Prc: laastanud
      laastama+V+Pers+Prt+Ind+Neg: laastanud

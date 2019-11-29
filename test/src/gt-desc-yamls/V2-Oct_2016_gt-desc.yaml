@@ -274,31 +274,31 @@ Tests:
      pügama+V+Pers+Prt+Cond+Pl1+Aff: püganuksime
      pügama+V+Pers+Prt+Cond+Sg2+Aff: püganuksid
      pügama+V+Pers+Prt+Cond+Sg1+Aff: püganuksin
-     pügama+V+Impers+Prt+Prc: pöetud
-     pügama+V+Impers+Prt+Ind+Neg: pöetud
-     pügama+V+Impers+Prt+Cond: pöetuks
-     pügama+V+Impers+Prs+Prc: pöetav
-     pügama+V+Impers+Prs+Quot: pöetavat
-     pügama+V+Impers+Prs+Cond: pöetaks
-     pügama+V+Impers+Prs+Ind+Neg: pöeta
-     pügama+V+Impers+Prs+Ind+Aff: pöetakse
-     pügama+V+Impers+Prs+Imprt: pöetagu
-     pügama+V+Impers+Sup: pöetama
-     pügama+V+Impers+Prt+Ind+Aff: pöeti
-     pügama+V+Pers+Prs+Ind+Sg2+Aff: pöad
-     pügama+V+Pers+Prs+Cond: pöaks
-     pügama+V+Pers+Prs+Cond+Pl3+Aff: pöaksid
-     pügama+V+Pers+Prs+Cond+Pl2+Aff: pöaksite
-     pügama+V+Pers+Prs+Cond+Pl1+Aff: pöaksime
-     pügama+V+Pers+Prs+Cond+Sg2+Aff: pöaksid
-     pügama+V+Pers+Prs+Cond+Sg1+Aff: pöaksin
-     pügama+V+Pers+Prs+Ind+Sg1+Aff: pöan
-     pügama+V+Pers+Prs+Ind+Pl1+Aff: pöame
-     pügama+V+Pers+Prs+Ind+Pl2+Aff: pöate
-     pügama+V+Pers+Prs+Ind+Pl3+Aff: pöavad
-     pügama+V+Pers+Prs+Ind+Sg3+Aff: pöab
-     pügama+V+Pers+Prs+Imprt+Sg2: pöa
-     pügama+V+Pers+Prs+Ind+Neg: pöa
+     pügama+V+Impers+Prt+Prc: [pöetud, pügatud]
+     pügama+V+Impers+Prt+Ind+Neg: [pöetud, pügatud]
+     pügama+V+Impers+Prt+Cond: [pöetuks, pügatuks]
+     pügama+V+Impers+Prs+Prc: [pöetav, pügatav]
+     pügama+V+Impers+Prs+Quot: [pöetavat, pügatavat]
+     pügama+V+Impers+Prs+Cond: [pöetaks, pügataks]
+     pügama+V+Impers+Prs+Ind+Neg: [pöeta, pügata]
+     pügama+V+Impers+Prs+Ind+Aff: [pöetakse, pügatakse]
+     pügama+V+Impers+Prs+Imprt: [pöetagu, pügatagu]
+     pügama+V+Impers+Sup: [pöetama, pügatama]
+     pügama+V+Impers+Prt+Ind+Aff: [pöeti, pügati]
+     pügama+V+Pers+Prs+Ind+Sg2+Aff: [pöad, pügad]
+     pügama+V+Pers+Prs+Cond: [pöaks, pügaks]
+     pügama+V+Pers+Prs+Cond+Pl3+Aff: [pöaksid, pügaksid]
+     pügama+V+Pers+Prs+Cond+Pl2+Aff: [pöaksite, pügaksite]
+     pügama+V+Pers+Prs+Cond+Pl1+Aff: [pöaksime, pügaksime]
+     pügama+V+Pers+Prs+Cond+Sg2+Aff: [pöaksid, pügaksid]
+     pügama+V+Pers+Prs+Cond+Sg1+Aff: [pöaksin, pügaksin]
+     pügama+V+Pers+Prs+Ind+Sg1+Aff: [pöan, pügan]
+     pügama+V+Pers+Prs+Ind+Pl1+Aff: [pöame, pügame]
+     pügama+V+Pers+Prs+Ind+Pl2+Aff: [pöate, pügate]
+     pügama+V+Pers+Prs+Ind+Pl3+Aff: [pöavad, pügavad]
+     pügama+V+Pers+Prs+Ind+Sg3+Aff: [pöab, pügab]
+     pügama+V+Pers+Prs+Imprt+Sg2: [pöa, püga]
+     pügama+V+Pers+Prs+Ind+Neg: [pöa, püga]
      pidama+V+Impers+Prt+Prc: peetud
      pidama+V+Impers+Prt+Ind+Neg: peetud
      pidama+V+Impers+Prt+Cond: peetuks

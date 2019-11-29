@@ -77,6 +77,16 @@ LEXICON METE    ! me & te
                +Pl:ie%>na ESSIVE ;	  ! meiena
                +Pl:ie%>ta ABESSIVE ;	  ! meieta
                +Pl:ie%>ga COMITATIVE ;    ! meiega
+
+   +Pl+Use/NotNorm:ite GENITIVE ;    ! meite, teite
+      +Use/NotNorm:ite%>sid PL_PARTITIVE ;    ! meid, teid
+   +Pl+Use/NotNorm:ite LOCATIVES ;    ! meitel, teitel etc
+   +Pl+Use/NotNorm:ite%>ks TRANSLATIVE ;
+   +Pl+Use/NotNorm:ite%>ni TERMINATIVE ;	  ! meiteni
+   +Pl+Use/NotNorm:ite%>na ESSIVE ;	  ! meitena
+   +Pl+Use/NotNorm:ite%>ta ABESSIVE ;	  ! meiteta
+   +Pl+Use/NotNorm:ite%>ga COMITATIVE ;    ! meitega
+
                   :ie LIK_DERIVATION ;    ! meielik, teielik
 
 LEXICON TEMA    ! ta 
@@ -386,6 +396,12 @@ LEXICON MESI     ! VVS 15 unstable type (passiivne muuttüüp) 8 words
                   :%{W%} TE_PL ;    ! mete etc 
                   :i PL_PARTITIVE ;    ! mesi ?? meesid ???
       !   +Use/Hyp: N_VOWEL_PL_SUBPARA ;    ! mesil? etc; except for some expressions (käsil) ?
+
+LEXICON MÕRU     ! only mõru; KAVA & HALE
+
+                   : KAVA ;
+       +Use/NotNorm:da 2C ;    ! haleda, mõruda
+                   :da US_DERIVATION ;
 
 LEXICON NAINE    ! only naine; much like OLULINE
                   

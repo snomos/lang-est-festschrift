@@ -231,7 +231,7 @@ cat fs_gt.noninfl.tmp1 | grep '+C[CS]' >> conjunctions.protolexc
 # ja eering-lõpulised
 # ... ja palju PINGE tüüpi sõnu polegi deverbaalideks märgitud...
 # (ja siin all olevad lisandused pole kõik, mis võimalik...)
-cat fs_gt.inflecting.tmp1 | grep '+N:' \
+cat fs_gt.inflecting.tmp1 | grep '\(+N:\)\|\(+N+Use\)' \
 | sed 's/^\(WDEVERBAL\)\(.*\)$/\2\1/' \
 | sed 's/^\(mnocompound\)\(.*\)$/\2\1/' \
 | sed 's/^\(nnolastpart\)\(.*\)$/\2\1/' \
@@ -317,6 +317,7 @@ cat fs_gt.inflecting.tmp1 | grep '+N:' \
 | sed '/^kandlus+/s/$/WDEVERBAL/' \
 | sed '/^leplus+/s/$/WDEVERBAL/' \
 | sed '/^mäng+/s/$/WDEVERBAL/' \
+| sed 's/+N+Use/+N_Use/' \
 | LC_COLLATE=C sort > fs_gt.inflecting.tmp1.srt
 
 # ja lisa siia märge nende lühikeste nimisõnade kohta, mis ei osale liitsõnades
@@ -324,7 +325,8 @@ LC_COLLATE=C join -t+ -a 1 -a 2 -o 1.1 2.1 2.2 head_esiosad fs_gt.inflecting.tmp
 | sed '/^[k]*ost+/s/heaesi//' \
 | sed '/^õpe+/s/heaesi//' \
 | sed '/^anne+/s/heaesi//' \
-| sed 's/^[^+]*+//' > fs_gt.inflecting.tmp1.tagged
+| sed 's/^[^+]*+//' \
+| sed 's/+N_Use/+N+Use/' > fs_gt.inflecting.tmp1.tagged
 #----
 
 echo 'LEXICON Nouns\n\n DeverbalNouns ;\n PlainNouns ;\n' > nouns.protolexc
@@ -332,8 +334,8 @@ echo 'LEXICON Nouns\n\n DeverbalNouns ;\n PlainNouns ;\n' > nouns.protolexc
 echo '\nLEXICON DeverbalNouns\n' >> nouns.protolexc
 cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | grep 'WDEVERBAL' | sed 's/WDEVERBAL//' \
-| sed '/;.*heaesi/s/^\([^:]*+N\):\([^;]*;\)\(.*\)heaesi/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
-| sed '/^[^@]...*s+N:[^#]* SUULINE/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/;.*heaesi/s/^\([^:]*+N[^:]*\):\([^;]*;\)\(.*\)heaesi/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/^[^@]...*s+N[^:]*:[^#]* SUULINE/s/^\([^:]*+N[^:]*\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 >> nouns.protolexc
 
 #echo '\nLEXICON PlainNouns\n\n @P.Stem.Single@ PlainNouns_nocompound ;\n @R.Part.One@ PlainNouns_nolastpart ;\n @P.Len.3@ PlainNouns_three ;\n @P.Len.4@ PlainNouns_four ;\n PlainNouns_fiveplus ;\n' >> nouns.protolexc
@@ -341,7 +343,7 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 echo '\nLEXICON PlainNouns\n\n' >> nouns.protolexc
 
 # add flags for limiting compounding
-cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
+cat fs_gt.inflecting.tmp1.tagged | grep '\(+N:\)\|\(+N+Use\)' \
 | grep -v 'WDEVERBAL' \
 | sed 's/:de#/:de?/' \
 | sed 's/:in#/:in?/' \
@@ -372,19 +374,19 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | sed 's/:an,ti#/:an,ti?/' \
 | sed 's/:tele#/:tele?/' \
 | sed '/^alg+.*KOON/s/nnolastpartheaesi/mnocompound/' \
-| sed '/;.*heaesi/s/^\([^:]*+N\):\([^;]*;\)\(.*\)heaesi/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
-| sed '/^[^@]....*+[^#]* TAUD/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
-| sed '/^[^@].*+[^#]*#sk.oop TAUD/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/;.*heaesi/s/^\([^:]*+N[^:]*\):\([^;]*;\)\(.*\)heaesi/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/^[^@]....*+[^#]* TAUD/s/^\([^:]*+N[^:]*\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/^[^@].*+[^#]*#sk.oop TAUD/s/^\([^:]*+N[^:]*\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 | sed '/ism+.*TAUD/s/@P.Stem.Nom@//g' \
 | sed '/@...[žš]+.*TAUD/s/@P.Stem.Nom@//g' \
 | sed '/@mart+.*TAUD/s/@P.Stem.Nom@//g' \
 | sed '/@kult+.*TAUD/s/@P.Stem.Nom@//g' \
-| sed '/^[^@]...*[iu]s+N:[^#]* OLULINE/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
-| sed '/^[^@]...*s+N:[^#]* SUULINE/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
-| sed '/^[^@]...*us+N:.*#.* SUULINE/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
-| sed '/^[^@]...*[iu]s+N:.*#.* OLULINE/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
-| sed '/^[^@]...*s+N:[^#]* KATKINE/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
-| sed '/^[^@]...*s+N:[^#]* SOOLANE/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/^[^@]...*[iu]s+N[^:]*:[^#]* OLULINE/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/^[^@]...*s+N[^:]*:[^#]* SUULINE/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/^[^@]...*us+N[^:]*:.*#.* SUULINE/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/^[^@]...*[iu]s+N[^:]*:.*#.* OLULINE/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/^[^@]...*s+N[^:]*:[^#]* KATKINE/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/^[^@]...*s+N[^:]*:[^#]* SOOLANE/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 | sed '/^[^@]....*+[^#]* REDEL/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 | sed '/^[^@]....*+[^#]* VIRSIK/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 | sed '/^[^@]....*+[^#]* ÄMBLIK/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
@@ -473,7 +475,7 @@ cat fs_gt.inflecting.tmp1.tagged | grep '+N:' \
 | sed '/^kameeleon+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 | sed '/^sari+N.*PIIM/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 \
-| sed '/^....*[kpt]s+.*KOON/s/^\([^:]*+N\):\([^#;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
+| sed '/^....*[kpt]s+.*KOON/s/^\([^:]*+N[^:]*\):\([^#;]*;\)\(.*\)/@P.Stem.Nom@\1:@P.Stem.Nom@\2\3/' \
 > nouns.proto1
 
 # exception: kuulmetõri kuulmetõrve
@@ -484,7 +486,7 @@ cat nouns.proto1 \
 | sed -f nomstem_first_piim.sed \
 | sed -f nomstem_first_eit.sed \
 \
-| sed '/;.*mnocompound/s/^\([^:]*+N\):\([^;]*;\)\(.*\)mnocompound/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
+| sed '/;.*mnocompound/s/^\([^:]*+N[^:]*\):\([^;]*;\)\(.*\)mnocompound/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
 | sed '/^vana+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Final@\1:@P.Stem.Final@\2\3/' \
 | sed '/^alam+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Final@\1:@P.Stem.Final@\2\3/' \
 | sed '/@alam+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Final@\1:@P.Stem.Final@\2\3/' \
@@ -497,7 +499,7 @@ cat nouns.proto1 \
 | sed '/^erg+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
 | sed '/@ess+/s/^\([^:]*+N\):\([^;]*;\)\(.*\)/@P.Stem.Single@\1:@P.Stem.Single@\2\3/' \
 \
-| sed '/;.*nnolastpart/s/^\([^:]*+N\):\([^;]*;\)\(.*\)nnolastpart/@R.Part.One@\1:@R.Part.One@\2\3/' \
+| sed '/;.*nnolastpart/s/^\([^:]*+N[^:]*\):\([^;]*;\)\(.*\)nnolastpart/@R.Part.One@\1:@R.Part.One@\2\3/' \
 | sed 's/@R.Part.One@@R.Part.One@/@R.Part.One@/g' \
 \
 | sed '/-/s/@P.Stem.Nom@//g' \

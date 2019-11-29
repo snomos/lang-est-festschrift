@@ -68,35 +68,58 @@ LEXICON HAKKAMA_WEAK    ! weak grade sub-paradigm
                       : IMPERATIVE ;      ! hakaku, riielgu
                       : NU ;              ! hakanud, riielnud
 
-LEXICON ÜTLEMA    ! only ütlema, mõtlema
+LEXICON ÜTLEMA    ! only ütlema, mõtlema; = HAKKAMA + Rare ELAMA
                   ! parallel forms: either t disappears in weak grade, or not
 
                       :le HAKKAMA ;             ! ütlema, ..., öeldud, öelda, öelgu, öelnud
-           +Use/Rare:tle%{W%} HAKKAMA_WEAK ;  ! üteldud, ütelda, ütelgu, ütelnud
+             +Use/Rare:tle%{W%} HAKKAMA_WEAK ;  ! üteldud, ütelda, ütelgu, ütelnud
 
-LEXICON RABELEMA    ! VVS 31; = HAKKAMA + ELAMA 
+LEXICON TÜÜTAMA    ! only siirdama, tüütama, vastama, puistada, rüüstama, uitama, raadama, kiirgama ; = HAKKAMA + NotNorm ELAMA
+
+                      : HAKKAMA ;             ! tüüdatud, tüüdata, tüüdaku, tüüdanud, ...
+          +Use/NotNorm: HAKKAMA_WEAK ;        ! tüütatud, tüütada, tüütagu, tüütanud
+
+LEXICON RABELEMA    ! VVS 31; = ELAMA + Rare HAKKAMA 
                     ! assuming that rabel- is less used than rabele- ...
 
                       : ELAMA ;                 ! rabelema; rabeletud, rabeleda, ...
            +Use/Rare:%{W%} HAKKAMA_WEAK ;     ! rabeldud, rabelda, ...
 
-LEXICON KÄSKIMA     ! only käskima
+LEXICON LAASTAMA    ! only saastama, laastama; = ELAMA + Rare HAKKAMA 
+                      : RABELEMA ;
+
+LEXICON TAOTLEMA    ! only taotlema, töötama, taastama, kaotama, paitama, peatama, teatama ; = ELAMA + NotNorm HAKKAMA
+
+                      : ELAMA ;
+          +Use/NotNorm:%{W%} HAKKAMA_WEAK ;  ! taodeldud, taodelda, taodelgu, taodelnud
+                                             ! töödatud, töödata, töödaku, töödanud
+
+
+LEXICON KÄSKIMA     ! only käskima; like kiskuma, but with i; käsen...
 
                       :i LEPPIMA_STRONG ;       ! käskima etc
                       : IMPERS ;                ! kästud
+          +Use/NotNorm:i%{W%} IMPERS ;          ! käsitud etc
                       :i%{W%} IND_COND_PRS ;    ! käsin etc
+          +Use/NotNorm:e%{W%} IND_COND_PRS ;    ! käsen etc
 
 LEXICON KISKUMA     ! only kiskuma 
 
                       :u LEPPIMA_STRONG ;         ! kiskuma etc
                       : IMPERS ;                  ! kistud
-           +Use/Rare:u%{W%} IMPERS ;            ! kisutud etc
+             +Use/Rare:u%{W%} IMPERS ;            ! kisutud etc
                       :u%{W%} IND_COND_PRS ;      ! kisun etc
 
 LEXICON USKUMA      ! only uskuma 
 
- @R.Part.One@@P.Part.Bad@+Use/Rare:@R.Part.One@@P.Part.Bad@ IMPERS_COMP ;  ! ustud etc; no derivation
                       :u LEPPIMA ;        ! uskuma, usutud etc
+ @R.Part.One@@P.Part.Bad@+Use/Rare:@R.Part.One@@P.Part.Bad@ IMPERS_COMP ;  ! ustud etc; no derivation
+
+LEXICON VAAGIMA    ! only vaagima
+                   ! parallel forms: either g disappears in weak grade, or not
+
+                      : LEPPIMA ;             ! vaagima, vaen, vaetud
+             +Use/Rare: LEPPIMA_WEAK ;        ! vaagitud, vaagin
 
 ! ---------------
 LEXICON NAERMA      ! VVS 32, 33  naerma, kuulma, seisma, tõusma etc (31 words)
@@ -115,20 +138,23 @@ LEXICON PESEMA    ! only pesema
                       :%>I7S7 IND_PAST ;      ! pesi
                       :%{W%} IND_COND_PRS ;   ! peseb
 
-LEXICON KUSEMA    ! only kusema
+LEXICON KUSEMA    ! only kusema; moving towards ELAMA
 
                       : PESEMA ;    
-        +Use/NotNorm:e INFINITIVE ;         ! kuseda
-        +Use/NotNorm:e IMPERATIVE ;         ! kusegu
-        +Use/NotNorm:e%>I7S7 IND_PAST ;     ! kuses
+          +Use/NotNorm:e IMPERS ;             ! kusetud
+          +Use/NotNorm:e INFINITIVE ;         ! kuseda
+          +Use/NotNorm:e IMPERATIVE ;         ! kusegu
+          +Use/NotNorm:e NU ;                 ! kusenud
+          +Use/NotNorm:e%>I7S7 IND_PAST ;     ! kuses
 
 LEXICON KAITSMA    ! only  kaitsma, maitsma
 
                       : C_COMMON ;            ! kaitsta, kaitsku, kaitsnud
-           +Use/Rare:e C_COMMON ;           ! kaitseda, kaitsegu, kaitsenud
+             +Use/Rare:e C_COMMON ;           ! kaitseda, kaitsegu, kaitsenud
                       : IMPERS ;              ! kaitstud
+          +Use/NotNorm:e IMPERS ;             ! kaitseti, (on) kaitsetud
                       : SUPINE_V ;            ! kaitsma
-           +Use/Rare:e SUPINE_V ;           ! kaitsema
+             +Use/Rare:e SUPINE_V ;           ! kaitsema
                       :e%>I7S7 IND_PAST ;     ! kaitses
                       :e IND_COND_PRS ;       ! kaitseb
 
@@ -143,33 +169,55 @@ LEXICON SAATMA      ! VVS 34, 35   söötma, nutma; lõpma
 LEXICON JOOKSMA     ! only jooksma
 
                       :%{W%} IMPERS ;         ! impersonal forms joostakse, ... 
-           +Use/Rare: IMPERS ;              ! impersonal forms jookstakse,...
+             +Use/Rare: IMPERS ;              ! impersonal forms jookstakse,...
                       : SUPINE_V ;            ! jooksma
                       :%{W%} INFINITIVE ;     ! joosta, joostes 
-           +Use/Rare: INFINITIVE ;          ! jooksta, jookstes
+             +Use/Rare: INFINITIVE ;          ! jooksta, jookstes
                       : IMPERATIVE ;          ! jooksku
-           +Use/Rare:%{W%} IMPERATIVE ;     ! joosku
+             +Use/Rare:%{W%} IMPERATIVE ;     ! joosku
                       : NU ;                  ! jooksnud
                       :%>I7S7 IND_PAST ;      ! jooksis, jooksin
                       :e IND_COND_PRS ;       ! jookseb
-
-LEXICON LASKMA    ! only laskma
-
-                      : C_COMMON ;            ! lasta, lasku, lasknud
-                      : IMPERS ;              ! impersonal forms lastakse, ...
-                      : SUPINE_V ;            ! laskma
-           +Use/Rare:%>I7S7 IND_PAST ;      ! indicative past laskis, ...
-                      :%{W%}%>I7S7 IND_PAST ; ! indicative past lasi, ...
-                      :e%{W%} IND_COND_PRS ;  ! laseb
 
 LEXICON KATMA      ! VVS 35   katma kütma matma võtma jätma
                    ! almost like SAATMA, but IMPERS are even weaker grade
 
                       :t C_COMMON ;          ! kütta
                       :%{W%} IMPERS ;        ! köetud
+          +Use/NotNorm:te%{W%} IMPERS ;      ! kütetud  (võiks olla ka ilma {W}-ta, s.t. :e IMPERS;)
                       :t SUPINE_V ;          ! kütma
                       :t%>I7S7 IND_PAST ;    ! küttis
                       :a IND_COND_PRS ;      ! kütab
+
+LEXICON LASKMA    ! only laskma
+
+                      : C_COMMON ;            ! lasta, lasku, lasknud
+                      : IMPERS ;              ! impersonal forms lastakse, ...
+                      : SUPINE_V ;            ! laskma
+             +Use/Rare:%>I7S7 IND_PAST ;      ! indicative past laskis, ...
+                      :%{W%}%>I7S7 IND_PAST ; ! indicative past lasi, ...
+                      :e%{W%} IND_COND_PRS ;  ! laseb
+
+LEXICON NAASMA     ! only naasma, koolma; norm like NAERMA (tõusma), but usage moving towards ELAMA
+
+                    :E7 NAERMA ;            ! naasma, naasis, naastud, ...
+        +Use/NotNorm:e IMPERS ;             ! naasetud
+        +Use/NotNorm:e SUPINE_V ;           ! naasema
+        +Use/NotNorm:e INFINITIVE ;         ! naaseda
+        +Use/NotNorm:e IMPERATIVE ;         ! naasegu
+        +Use/NotNorm:e NU ;                 ! naasenud
+        +Use/NotNorm:e%>I7S7 IND_PAST ;     ! naases
+
+LEXICON VEENMA     ! only veenma, möönma; norm like NAERMA , but usage moving towards HAKKAMA
+
+                    :A7 NAERMA ;            ! veenma, veenis, veendud, ...
+        +Use/NotNorm:a IMPERS ;             ! veenatud
+        +Use/NotNorm:a SUPINE_V ;           ! veenama
+        +Use/NotNorm:a INFINITIVE ;         ! veenata
+        +Use/NotNorm:a IMPERATIVE ;         ! veenaku
+        +Use/NotNorm:a NU ;                 ! veenanud
+        +Use/NotNorm:a%>I7S7 IND_PAST ;     ! veenas
+
 
 LEXICON C_COMMON  ! common to almost all words of types 32-35 (supine stem ends with C)
 
@@ -390,10 +438,12 @@ LEXICON NU    !  NU-affixes
                       : NU_DERIVATION ;
 
 LEXICON NU_COMP    !  NU-affixes
-      !+Pers+Prt+Imprt:%>nud GI ;         ! omitted for now because it would create homonymy
-     +Pers+Prt+Ind+Neg:%>nud GI ;
-         +Pers+Prt+Prc:%>nud GI ;
-        +Pers+Prt+Quot:%>nuvat GI ;
+             !+Pers+Prt+Imprt:%>nud GI ;         ! omitted for now because it would create homonymy
+            +Pers+Prt+Ind+Neg:%>nud GI ;
+                +Pers+Prt+Prc:%>nud GI ;
+               +Pers+Prt+Quot:%>nuvat GI ;
++Pers+Prt+Ind+Neg+Use/NotNorm:%>nd GI ;
+    +Pers+Prt+Prc+Use/NotNorm:%>nd GI ;
 
 LEXICON IMPERATIVE    ! imperative
  @R.Part.One@@P.Part.Bad@ IMPERATIVE_COMP ;

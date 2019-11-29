@@ -33,7 +33,7 @@ cat algtmp | ./fs_lex2lemma.sed \
 | sed '/ÕIGEVORM.*eed:/s/eed$/ee/' \
 | sed '/KÕRB/s/õrb$/õrB2/' \
 | sed '/@EIT laane_k<õrb:/s/@EIT laane_k<õrb:laane_k<õrB2%>%{pl.i%}%{rare%}/@KÕRB laane_k<õrb:laane_k<õrB2/' \
-| grep -v '@EIT k<õrb:' \
+| sed '/@EIT k<õrb:/s/@.*$//' \
 > decltmp1
 
 # pöördsõnade omad
@@ -56,11 +56,11 @@ cat decltmp1 | ./fs_lex2verblemma.sed \
 | sed '/KATMA/s/[AE]7//' \
 | sed '/JOOKSMA/s/[AE]7//' \
 | sed '/LASKMA/s/[AE]7//' \
-| grep -v 'LEPPIMA [km]aitsema:' \
-| grep -v 'ELAMA <ehtima:' \
-| grep -v 'ELAMA h<auduma:' \
+| sed '/LEPPIMA [km]aitsema:/s/@.*$//' \
+| sed '/ELAMA <ehtima:/s/@.*$//' \
+| sed '/ELAMA h<auduma:/s/@.*$//' \
 | sed 's/LEPPIMA h<auduma:/LEKKIMA h<auduma:/' \
-| grep -v 'ELAMA <uhtuma:' \
+| sed '/ELAMA <uhtuma:/s/@.*$//' \
 | sed 's/LEPPIMA <uhtuma:/LEKKIMA <uhtuma:/' \
 > tmp1
 
@@ -121,6 +121,9 @@ paste fs_lex tmp1twol \
 # W - deverbal noun, e.g. hüpe (jump)
 
 # create the nearly final lexicons
+# ja see rida võiks ära märkida (mingil moel) sõnad, mis pole spellerile sobivad:
+# | sed '/^nosp/s/\([^:]*:[^:]*[^ ]\):/\1+Use\/NotNorm:/' \
+
 cat fs_lex.gt1 \
 | grep '^[^@]* !\\[^\\]*\\!$' \
 \
@@ -137,6 +140,7 @@ cat fs_lex.gt1 \
 | ./diacritics.sed \
 | ./eemalda_gi.sed \
 | sort -k 2 \
+| sed '/^nosp/s/\([^:]*:[^:]*[^ ]\):/\1+Use\/NotNorm:/' \
 > fs_gt.noninfl
 
 cat fs_lex.gt1 \
@@ -239,9 +243,40 @@ cat fs_lex.gt1 \
 | sed '/pointer+N/s/REDEL/EIFFEL/' \
 | sed '/rabarber+N/s/REDEL/RABARBER/' \
 | sed '/rabarber+N/s/\(@.*\)er /\1 /' \
+\
+| sed '/mõru+A/s/KAVA/MÕRU/' \
+| sed '/vaagima+V/s/LEPPIMA/VAAGIMA/' \
+| sed '/taotlema+V/s/ELAMA/TAOTLEMA/' \
+| sed '/töötama+V/s/ELAMA/TAOTLEMA/' \
+| sed '/taastama+V/s/ELAMA/TAOTLEMA/' \
+| sed '/kaotama+V/s/ELAMA/TAOTLEMA/' \
+| sed '/paitama+V/s/ELAMA/TAOTLEMA/' \
+| sed '/peatama+V/s/ELAMA/TAOTLEMA/' \
+| sed '/teatama+V/s/ELAMA/TAOTLEMA/' \
+| sed '/saastama+V/s/HAKKAMA/LAASTAMA/' \
+| sed '/laastama+V/s/HAKKAMA/LAASTAMA/' \
+| sed '/siirdama+V/s/HAKKAMA/TÜÜTAMA/' \
+| sed '/tüütama+V/s/HAKKAMA/TÜÜTAMA/' \
+| sed '/vastama+V/s/HAKKAMA/TÜÜTAMA/' \
+| sed '/puistama+V/s/HAKKAMA/TÜÜTAMA/' \
+| sed '/rüüstama+V/s/HAKKAMA/TÜÜTAMA/' \
+| sed '/uitama+V/s/HAKKAMA/TÜÜTAMA/' \
+| sed '/raadama+V/s/HAKKAMA/TÜÜTAMA/' \
+| sed '/kiirgama+V/s/HAKKAMA/TÜÜTAMA/' \
+| sed '/\.27!@.*pügama+V/s/püG1 VEDAMA/püga ELAMA/' \
+| sed '/veenma+V/s/eenA7 NAERMA/een VEENMA/' \
+| sed '/möönma+V/s/öönA7 NAERMA/öön VEENMA/' \
+| sed '/koolma+V/s/oolE7 NAERMA/ool NAASMA/' \
+| sed '/naasma+V/s/aasE7 NAERMA/aas NAASMA/' \
+\
+| grep -v 'naasema+V' \
+| grep -v 'siirdama+.*ELAMA' \
+| grep -v 'saastama+.*ELAMA' \
 > fs_gt.pre-inflecting
 
 # NB! perse, põrsas praegu osaliselt valesti 
+# ja see rida võiks ära märkida (mingil moel) sõnad, mis pole spellerile sobivad:
+# | sed '/^nosp/s/\([^:]*:[^:]*[^ ]\):/\1+Use\/NotNorm:/' \
 
 cat fs_gt.pre-inflecting \
 | sed 's/| \([^@]*\)@ /| /g' \

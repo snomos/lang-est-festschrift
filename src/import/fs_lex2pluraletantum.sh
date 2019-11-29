@@ -4,24 +4,36 @@
 # hääldusmärgid ei jää sisse (aga kas peaks ???)
 # liitsõna osade vaheline piir _ läheb #-ks
 
-echo '# remove Sg forms of plurale tantum words' > remove-sg-forms.est.xfscript
-echo '#' >> remove-sg-forms.est.xfscript
-echo 'define plwords [' >> remove-sg-forms.est.xfscript
+#echo '# remove Sg forms of plurale tantum words' > remove-sg-forms.est.xfscript
+#echo '#' >> remove-sg-forms.est.xfscript
+#echo 'define plwords [' >> remove-sg-forms.est.xfscript
 
 
 cat algtmp \
+| grep '\\H' \
 | grep 'ÕIGEVORM' \
 | sed 's/^.* \([^ ]*\)ÕIGEVORM.*$/\1/' \
 | sed 's/#//g' \
 | sed 's/D$/d/' \
-| sed 's/_/#/g' \
 | sed 's/[]_<?]//g' \
 | sed 's/\[//g' \
-| sed 's/^.*$/               {&} \| /' \
+| sed 's/^.*$/               \[ {&}  "+N" "+Prop" \] \| /' \
 | sort \
-> tmp1.remove-sg-forms.est.xfscript
+> tmp1_h.remove-sg-forms.est.xfscript
 
-# insert the list to ../filters/remove-sg-forms.est.xfscript
+cat algtmp \
+| grep -v '\\H' \
+| grep 'ÕIGEVORM' \
+| sed 's/^.* \([^ ]*\)ÕIGEVORM.*$/\1/' \
+| sed 's/#//g' \
+| sed 's/D$/d/' \
+| sed 's/[]_<?]//g' \
+| sed 's/\[//g' \
+| sed 's/^.*$/               \[ {&}  "+N" \] \| /' \
+| sort \
+> tmp1_mitteh.remove-sg-forms.est.xfscript
+
+# manually insert the lists to ../filters/remove-sg-forms.est.xfscript
 exit
 
 
