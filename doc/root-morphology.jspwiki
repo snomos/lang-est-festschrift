@@ -81,14 +81,13 @@ __hfstol: examples:__
 * __majasid: __ {{maja+N+Pl+Par+Use/Rare }}
 
  * {{+Ill }}: sisseütlev			/ illative	
-
-Lühike sisseütlev e suunduv pole eraldi kääne (''parti'', ''majja'') / Short illative or additive is not a separate case 
 * __parti: __ {{part+N+Sg+Ill }}
 * __majja: __ {{maja+N+Sg+Ill }}
 * __pardisse: __ {{part+N+Sg+Ill+Use/Hyp }}
 * __majasse: __ {{maja+N+Sg+Ill+Use/Rare }}
 * __partidesse: __ {{part+N+Pl+Ill }}
 * __majadesse: __ {{maja+N+Pl+Ill }}
+Lühike sisseütlev e suunduv pole eraldi kääne (''parti'', ''majja'') / Short illative or additive is not a separate case 
 
  * {{+Ine }}: seesütlev			/ inessive	
 * __pardis: __ {{part+N+Sg+Ine }}
@@ -427,7 +426,10 @@ Analytical forms (''olen elanud'', ''olin elanud'', ''oleksin elanud'', ''ei oln
 * __pöidlates: __ {{pöial+N+Pl+Ine+Use/NotNorm }}
 
  * {{+Use/CommonNotNorm }}:  not norm, and used more than norm 
-* __peeneid: __ {{peen+A+Pl+Par+Use/CommonNotNorm }}
+* __kööment: __ {{köömen+N+Sg+Par+Use/CommonNotNorm }}
+
+Oletatav analüüs / Guessed analysis
+ * {{+Guess }}: guessed analysis
 
 !Tuletus / Derivation
 
@@ -492,6 +494,8 @@ N --> A
 * __onomastiline: __ {{onomastika+N+Der/line+A+Sg+Nom }}
 * __apooriline: __ {{apooria+N+Der/line+A+Sg+Nom }}
 
+ * {{+Der/ne }}
+
 A --> Adv
 
  * {{+Der/lt }}
@@ -519,6 +523,9 @@ N --> N
  * {{+Der/kond }}
 * __vaatajaskond: __ {{vaatama+V+Der/ja+N+Der/kond+N+Sg+Nom }}
 
+ * {{+Der/ist }}
+* __kapitalist: __ {{kapitalism+N+Der/ist+N+Sg+Nom }}
+
 A --> N, V --> N
 
  * {{+Der/us }}
@@ -543,21 +550,29 @@ N --> N, A --> A
 * __vaatamis-: __ {{vaatamine+N+Der/minus }}
 * __astraal-: __ {{astraalne+A+Der/minus }}
 
+Num --> N
+
+ * {{+Der/kas }}
+* __kolmekas: __ {{kolm+Num+Card+Der/kas+N+Sg+Nom }}
+
 
 !Muud / Other tags
+Copied from Sami root.lexc
 
 !Symbols that need to be escaped on the lower side (towards twolc):
 
 * »
 * «
-* > (written with square brackets, see the root.lexc file)
-* < (written with square brackets, see the root.lexc file)
+* > (escaped with square brackets, to avoid collision with > as morpheme boundary)
+* < (escaped with square brackets, to avoid collision with < as morpheme boundary)
+
 
  * '7  7 is the real apostrophe ?? 
 
  * {{+Use/Circ }}: for arabic and roman numerals
 
  * {{+ABBR }}: Lühend / Abbreviation
+ * {{+ACR }}: Suurtähtlühend / Acronym
  * {{+CLB }}: Osalause piir (punkt, koma) / Clause border (full stop, comma..)
  * {{+PUNCT }}: Kirjavahemärk / Punctuation
  * {{+LEFT }}: Kirjavahemärgi asetus / Punctuation orientation
@@ -576,6 +591,7 @@ These are used for limiting the number of components in a compound word
  | @D.Part@ | No part of a compound should have been encountered yet
  | @P.Part.One@ | Indicate that this could be the first part of a compound
  | @R.Part.One@ | Require that the first part has been encountered 
+ | @D.Part.One@ | Require that the first part has NOT been encountered 
  | @P.Part.Two@ | Indicate that this could be the second part of a compound
  | @R.Part.Two@ | Require that the second part has been encountered
  | @P.Part.Three@ | Indicate that this could be the third part of a compound
@@ -587,8 +603,10 @@ POS is used for filtering derivations and compounds
 Case is used for filtering derivations and compounds
 
 Remember there has been some derivation from A or N; for filtering compounds
+derivation from V is called paradigmatic and does not result in Der; just a new POS... 
 
-Remember the stem type; for filtering compounds (not used at the moment)
+Remember the stem type; for filtering compounds 
+
 
 A special condition that is used for filtering derivations and compounds
 
@@ -628,46 +646,64 @@ Sg Nom is allowed as first part of a compound only for some words
 
 
 
+Legitimate strings that are not words: numbers, acronyms, ...
+
+
+
+
+
+
 
 !!Lexicons  
 
  * {{LEXICON Root }} is the starting point of everything
 
 This is actually a loop, formed after applying Kleene star 
-concatenation on the transducer with itself.
+concatenation on the simple word transducer with itself.
 When looping, it remembers which paths it has taken in every loop. 
 For remembering it sets up flags on the path:
 1. flag the first 3 loops (thus forbidding any more loops)
 2. in every loop, flag the POS and inflection, to be used in the following loop
+Different paths may result in the same output string, 
+e.g. mootoriõlilik = (mootori+õli)+lik and (mootori)+(õli+lik)
 
 strictly simplex word; cannot be a part of a compound
 a simplex word, or the first part of a compound
 
 
+ * {{@D.Part@@P.Part.Two@@P.NeedPartThree.On@@P.POS.Num@ CardinalNumbersInComp ;   }} 5-autone etc
+
+
 
 strictly simplex words; cannot be a part of a compound
 
+ * {{  Abbreviations ;             }}
  * {{  Adpositions ;             }}
  * {{  Conjunctions ;            }}
  * {{  NoninflectingVerbs ;      }}
+ * {{  CardinalNumbersSingle ;      }}
+ * {{  OrdinalNumbers ;          }}
+ * {{  Punctuation ;          }}
 
  * {{LEXICON First     }} a simplex word or the first part of a compound 
 
  * {{  @P.POS.A@ Adjectives ;              }}
  * {{  @P.POS.A@ NoninflectingAdjectives ; }}
  * {{  @P.POS.AComp@ ComparativeAdjectives ;   }}
- * {{  @P.POS.ASuperl@ SuperlativeAdjectives ;   }}  
+ * {{  @P.POS.AComp@ SuperlativeAdjectives ;   }}  ! Superl = Comp in compounding
  * {{  @P.POS.Adv@ Adverbs ;                 }}
  * {{  @P.POS.N@ Nouns ;                   }}
  * {{  @P.POS.NProp@@U.Cap.Obl@ ProperNouns ; }}  ! always uppercase
  * {{  @P.POS.NProp@@U.Cap.Opt@ ProperNouns ; }}  ! downcased for derivations
- * {{  @P.POS.NumCard@ CardinalNumerals ;                }}
+ * {{  @P.POS.IntNum@ IntegerNumerals ;                }}
+ * {{  @P.POS.NonIntNum@ NonIntegerNumerals ;                }}
  * {{  @P.POS.NumOrd@ OrdinalNumerals ;                }}
  * {{  @P.POS.Pron@ Pronouns ;                }}
  * {{  @P.POS.V@ Verbs ;                   }}
  * {{  @P.POS.Interj@ Interjections ;           }}
  * {{  @P.POS.GA@@P.Case.Gen@ GenitiveAttributes ;      }}
  * {{  @P.POS.Pref@ Prefixes ;                }}
+ * {{  @P.POS.ACR@ Acronyms ;          }}
 
 
  * {{LEXICON Latter }} the latter part of a compound
@@ -697,16 +733,36 @@ strictly simplex words; cannot be a part of a compound
 
 
 
- * {{  @P.POS.A@@C.Der@@C.NomStem@ Adjectives ;              }}
 
 
- * {{  @P.POS.A@@C.Der@@C.NomStem@ Adjectives_ne ;              }}
 
 
- * {{  @P.POS.A@@C.Der@@C.NomStem@ Adjectives_v ;              }}
 
 
- * {{  @P.POS.A@@C.Der@@C.NomStem@ PlainAdjectives ;              }}
+
+
+
+
+
+
+
+ * {{  @P.POS.A@@C.Der@@C.Stem@ Adjectives ;              }}
+
+
+ * {{  @P.POS.A@@C.Der@@C.Stem@ Adjectives_ne ;              }}
+järguline	järk+N+Der/line+A  redellik redel+N+Der/lik+A     NOT -autone
+
+
+ * {{  @P.POS.A@@C.Der@@C.Stem@ Adjectives_v ;              }}
+
+
+ * {{  @P.POS.A@@C.Der@@C.Stem@ PlainAdjectives ;              }}
+
+
+ * {{  @P.POS.AComp@@C.Der@@C.Stem@ ComparativeAdjectives ;              }}
+ * {{  @P.POS.AComp@@C.Der@@C.Stem@ SuperlativeAdjectives ;              }}
+
+
 
 
 
