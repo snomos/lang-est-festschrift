@@ -19,19 +19,33 @@ LEXICON AASTA    ! VVS 1 (productive) for vowel-final; stress on penultimate syl
 LEXICON REDEL    ! VVS 2 (productive) for consonant-ending, stress on penultimate syllable words
    
               : SG_NOMINATIVE ;    ! redel, koppel
-              :%>i 2C ;    ! redeli etc
+              :%>i 2C_VARIANT ;    ! redeli etc
               : US_DERIVATION ;
               : LIK_DERIVATION ;
-     +Use/Rare:i LIK_DERIVATION ;
+     +Use/Rare:%>i LIK_DERIVATION ;
 
-LEXICON EIFFEL    ! VVS 2 (productive) for proper names; they normally have no e-deletion
-   
-              :%{F%} REDEL ;    ! {F} makes e-deleting 2-level phon. rules inappliccable
+! el/er ending words have various preference patterns; they are currently (dec. 2019) not described 
+! 
+!LEXICON RABARBER ! only rabarber, adapter
+!
+!                  :er REDEL ;   ! rabarberi
+!         +Use/Rare:E2r REDEL ;  ! rabarbri
+!
+!LEXICON PIKSEL    ! VVS 2 (productive) for older or more frequent el/er words and proper names like piksel, Aksel - Aksli/Akseli
+!   
+!              :E2l REDEL ;         ! piksli, Aksli
+!     +Use/Rare:er REDEL ;    ! pikseli, Akseli; {F} makes e-deleting 2-level phon. rules inappliccable
+!
+!LEXICON JOKKER    ! VVS 2 (productive) for newer or less frequent el/er words like jokker
+!   
+!     +Use/Rare:E2r REDEL ;         ! jokri
+!              :er REDEL ;    ! jokkeri, {F} makes e-deleting 2-level phon. rules inappliccable
+!
+!LEXICON KAAMEL    ! VVS 2 (productive) ; like JOKKER, but norm is more strict; 
+!   
+!  +Use/NotNorm:E2l REDEL ;         ! kaamli
+!              :el REDEL ;    ! kaameli, {F} makes e-deleting 2-level phon. rules inappliccable
 
-LEXICON AKSEL    ! VVS 2 (productive) for proper names like Aksel - Aksli/Akseli
-   
-              : REDEL ;         ! Aksli
-              :%{F%} REDEL ;    ! Akseli; {F} makes e-deleting 2-level phon. rules inappliccable
 
 
 LEXICON VIRSIK    ! VVS 2 (productive) for -ik, -ing; stress on penultimate syllable words
@@ -39,7 +53,7 @@ LEXICON VIRSIK    ! VVS 2 (productive) for -ik, -ing; stress on penultimate syll
               : SG_NOMINATIVE ;    ! virsik
               :%>u 2C ;    ! virsiku etc
               : LIK_DERIVATION ;
-     +Use/Rare:u LIK_DERIVATION ;
+     +Use/Rare:%>u LIK_DERIVATION ;
 
 LEXICON LOHAKAS    ! VVS 2 (productive) -kas, -jas etc ending words (incl derivations)
 
@@ -313,6 +327,11 @@ LEXICON LINE_US_NORM  ! part of line_us_specific
               :»I1 IM_DERIVATION ;           ! olulisim
       
 ! ------
+
+LEXICON 2C_VARIANT    ! for REDEL
+
+     +Use/Rare:%{rare%} 2C ;    ! less used paradigm forms for that word
+              : 2C ;            ! default paradigm forms for that word
 
 LEXICON 1C    ! consonant ending, stress NOT on penultimate syllable
 

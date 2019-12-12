@@ -4580,7 +4580,7 @@ vvs:0093|budu<aar budu<aari budu?aari!\S\.22^E^+7!
 voor:0094|Buenos=Aires Buenos=Airese!\H\.9.SG+9!
 lisa:1019|buf<ee!\S\.26!
 vvs:0093|b?ufon<aad b?ufon<aadi b?ufonaadi!\S\.22^E^+7!
-lisa:1019|bugi-vugi bugi-vugi!\S\.17!
+lisa:1019|bugi-vugi!\S\.17!
 vvs:0093|bugspr<iit bugspr<iiti bugspr?iidi!\S\.22^E^+7!
 lisa:0094|Bujumb?ura!\H\.16.SG!
 tes:0096|bukanj<eer bukanj<eeri bukanj?eeri!\S\.22^E^+7!
@@ -31265,7 +31265,6 @@ vvs:0093|linukas linuka!\S\.2+9!
 tesv:0096|linuta[MA!\V\.27!
 voor:0094|Linux Linuxi!\H\.2+9!%i>e[I%
 vvs:0093|lipakas lipaka!\ASt\.2+9!
-vvs:0093|lipakas lipaka!\St\.2+9!
 vvs:0093|lipats lipatsi!\S\.2+9!%i>e[I%
 tes:0096|lip<eemia!\S\.1+9!
 vvsv:0093|lipenda[MA!\V\.27!
@@ -35829,7 +35828,7 @@ voor:1001|M<ick M<icki Micki!\H\.22^E^!
 voor:1001|M?icrol<ink M?icrol<inki M?icrol?inki!\H\.22^E^!
 voor:0094|M?icros<oft M?icros<ofti M?icros?ofti!\H\.22^E^.SG!
 nospm:1019|midagist!\D\!
-lisa:1019|midi midi!\Sn\.17!
+lisa:1019|midi!\Sn\.17!
 lisa:0094|midri_l<ind midri_l<indu midri_linnu!\S\.22^E^!
 voor:0094|M<id_t<own M<id_t<owni M<id_towni!\H\.22^E^.SG!
 lisa:0094|migr<an]t migr<an]ti migr?an]di!\S\.22^E^+7!
@@ -62864,7 +62863,7 @@ vvs:0093|transporditavus transporditavuse!\S\.11^I^+7!&&(!\S\.9+7!)
 sage:0905|tr<ansp?ordi_t<ööline tr<ansp?ordi_t<öölise tr<ansp?ordi_t<öölis[T!\S\.12^I^+7!&&(!\S\.10+7!)
 sage:0905|tr<ansp?ordi_t<öötaja!\S\.1+9!
 sage:0905|tr<ansp?ordi_vahend tr<ansp?ordi_vahendi!\S\.2+9!%i>e[I%
-vvsv:0093|tr?ansp<orti[MA transpordi[B!\V\.28!
+vvsv:0093|tr?ansp<orti[MA tr?anspordi[B!\V\.28!
 sage:0905|tr?ansp<ortimine tr?ansp<ortimise tr?ansp<ortimis[T!\S\.12^I^+7!
 vvs:0093|tr<ansp<ort tr<ansp<orti tr<ansp?ordi!\S\.22^E^+7!
 tes:0802|tr<ansp<ort_t<ööline tr<ansp<ort_t<öölise tr<ansp<ort_t<öölis[T!\S\.12^I^+7!&&(!\S\.10+7!)

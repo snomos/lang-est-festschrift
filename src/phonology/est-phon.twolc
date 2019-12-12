@@ -23,6 +23,7 @@ A B C D E F G H I J K L M N O P Q R S Š Z Ž T U V W Õ Ä Ö Ü X Y
            !! necessary for words with no stem gradation, having only short illative in a strong grade, 
            !! e.g. ''Riia'' - ''Riiga'', ''Rannu'' - ''Randu''.
            !! (But currently used also for words with stem gradation, e.g. ''tuba'' - ''tuppa'')
+ %{E%}:0   !! Schwa trigger (for -el/er words only) never appears on the surface side.
  %{id%}:0  !!≈ * __@CODE@__ Trigger / lexicon flag for pl part possible ending (esseesid/esseid)
  %{stemill%}:0 !!≈ * __@CODE@__ Trigger / lexicon flag for short sg ill, formed by stem change (jõgi-jõkke)
  %{dbl%}:0 !!≈ * __@CODE@__ Trigger to double the previous letter. Sometimes a phonologically long long kk pp tt  
@@ -751,32 +752,52 @@ I7:i <=> :Consonant Null* %> _ S7: WordEnd ;
 ! lexical: s a a > I7
 ! surface: s a 0 >  i
 
-! --------- declinable word stem change ---------
+!--------- declinable word stem change ---------
 ! schwa (dis)appears or emerges or surfaces...
+! REDEL type
 
-! -el/-er becomes -li/-ri, but not in cases where this would create difficult pronunciation:
-! e.g. ssel, ššel, rrel, mmel, nnel, llel, jel, [kpt][kpt]el
-! exceptions: 
-! 1) e disappears, although the result is hard to pronounce: kimmel-kimli (vs. kummel-kummeli) 
-!    have E2 instead of e in the stem lexicon: kimmel+N:kimmE2l  
-! 2) e remains, although it would be convenient to delete it: juubel-juubeli (vs. duubel-duubli)
-!    add trigger {F} to the end of word (via cont. lexicon) to block the rules below
-! 
+! the -li/-ri form may be common or rare
+" -el/-er is -li/-ri "
 
-"el-li"
+e:0 <=>  _ [l | r]           %{E%}:           SuffixBorder i: \%{rare%}: ;   ! toobri
+         _ [l | r]           %{E%}: %{rare%}: SuffixBorder i:  %{rare%}: ;   ! gospli
+         _ [l | r] %{rare%}: %{E%}:           SuffixBorder i: \%{rare%}: ;   ! piksli
 
-e:0 <=> Vowel [[h v] | [f f:] | [k k:] | [p p:] | [t t:] | [h h:] | [h kpt]] _ l SuffixBorder i: ;
-        Vowel [[r | n | m] [gbd | kpt | v | f | s]]                          _ l SuffixBorder i: ;
-        Vowel [([r | n | m]) [[s kpt] | [kpt s]]]                            _ l SuffixBorder i: ;
-        Vowel Vowel [v | f | kpt | gbd | m | n | r | s | [s kpt] | [kpt s]]  _ l SuffixBorder i: ;
-   \[r] Vowel [[h v] | [f f:] | [k k:] | [p p:] | [t t:] |[h kpt] | [h m]]   _ r SuffixBorder i: ;
-   \[r] Vowel [[l | n | m] [gbd | kpt | v | f ]]                             _ r SuffixBorder i: ;
-   \[r] Vowel [[l | n | m] [s kpt]]                                          _ r SuffixBorder i: ;
-   \[r] Vowel Vowel [v | f | kpt | gbd | [s kpt]]                            _ r SuffixBorder i: ;
-        Vowel s kpt                                                          _ r SuffixBorder i: ;     ! raster-rastri
+! lexical: t o o b e r {E} > i
+! surface: t o o b 0 r  0  > i
+! lexical: g o s p e l {E} {rare} > i {rare}   gospli is rare; gospeli is common
+! surface: g o s p 0 l  0     0   > i    0
+! lexical: p i k s e l {rare} {E} > i \{rare}  piksli is common; pikseli is rare
+! surface: p i k s 0 l    0    0  > i    0
 
-! lexical: t o o b e r > i
-! surface: t o o b 0 r > i
+! in the stem lexicon,
+! piksel{rare}{E} means that pikseli is rare, piksli is common
+! gospel{E}{rare} means that gospeli is common, gospli is rare
+! the last {rare} tag comes from a continuation lexicon
+
+"usage tag is here and there"
+%{rare%}:0  =>  _ %{E%}:    ;
+                  %{E%}: _  ;
+               SuffixBorder i: _ ;
+
+! when concatenating the stem lexicon and variants of continuation classes,
+! some paths end up containing unnecessary symbol {rare}; this rule 
+! deletes the paths
+ 
+"block a spurious path"
+%{rare%}:0 /<= # \[%{rare%}:]* SuffixBorder i: _ ;
+
+!%{rare%}:0 /<=  e: [l | r] (%{E%}:) SuffixBorder i: _ ;
+!                           %{apo%}: SuffixBorder i: _ ;
+
+! S c h e d u l e {apo} > i > i > s s e
+! S c h e d u l e   '   > e > i > s s e
+! S c h e d u l e {apo} > i > {rare} t e > s s e   FAIL
+! S c h e d u l e   '   > i >    0   t e > s s e
+
+
+!e:e /<=  _ [l | r] SuffixBorder i:  %{rare%}: ;
+
 
 ! --------- verb stem changes -------
 ! not really gradation
