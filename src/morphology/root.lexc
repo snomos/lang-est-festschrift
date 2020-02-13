@@ -874,7 +874,7 @@ CapVow = A|E|I|O|U|Õ|Ü|Ö|Ä|Y ;
 CapConsv  = B|C|D|G|H|K|P|Q|Š|Ž|T|V|W ;  ! bee, tsee, ...
 CapConsc  = F|J|L|M|N|R|S|Z|X ;          ! eff, jott, ell, ...
 CapCons = CapConsv | CapConsc ;
-Cap = CapVow | CapCons ;
+CapLetter = CapVow | CapCons ;
 ! word end pronouncable pairs where last C is CapConsv
 ! so the word belongs to FIAT type (instead of ARMEE)
 CapPairC = [{HH}|{KK}|{PP}|{ŠŠ}|{TT}|
@@ -887,97 +887,11 @@ CapPairC = [{HH}|{KK}|{PP}|{ŠŠ}|{TT}|
 ] ; 
 CapNonPairC = [[CapCons CapConsv] - CapPairC] ;
 
-!CapPairC = [{FF}|{HH}|{KK}|{LL}|{MM}|{NN}|{PP}|{RR}|{SS}|{ŠŠ}|{ZZ}|{TT}|
-!           {SP}|{SK}|{ST}|{PS}|{KS}|{TS}|{BS}|{GS}|{DS}
-
 !Cap = A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|Š|Z|Ž|T|U|V|W|Ü|Ö|Ä|X|Y ;
-
-! Guesser needs these
-! Define phones for phonological patterns
-aA = a|A; bB = b|B; cC = c|C; dD = d|D; eE = e|E; fF = f|F; gG = g|G; hH = h|H; iI = i|I; jJ = j|J; 
-kK = k|K; lL = l|L; mM = m|M; nN = n|N; oO = o|O; pP = p|P; qQ = q|Q; rR = r|R; sS = s|S; šŠ = š|Š; 
-zZ = z|Z; žŽ = ž|Ž; tT = t|T; uU = u|U; vV = v|V; wW = w|W; õÕ = õ|Õ; ää = ä|Ä; öÖ = ö|Ö; üÜ = ü|Ü; 
-xX = x|X; yY = y|Y ;
-Vowel = aA|eE|iI|oO|uU|õÕ|äÄ|öÖ|üÜ;
-DoubleVow = [aA aA] | [eE eE] | [iI iI] | [oO oO] | [uU uU] | [õÕ õÕ] | [äÄ äÄ] | [öÖ öÖ] | [üÜ üÜ];
-Diphtong = [Vowel Vowel] - DoubleVow ;
-Ckpt = kK|pP|tT;
-DoubleCkpt = [kK kK] | [pP pP] | [tT tT] ;
-Clmnr = lL|mM|nN|rR;
-DoubleClmnr = [lL lL] | [mM mM] | [nN nN] | [rR rR] ;
-Cgbd = gG|bB|dD;
-Cvf = vV|fF;
-Consonant = Ckpt | Clmnr | Cgbd | Cvf | cC|jJ|qQ|sS|šŠ|zZ|žŽ|wW|xX|yY;
-! Consonant = b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|š|z|ž|t|v|w|x|y; 
-Letter = a|e|i|o|u|õ|ä|ö|ü|b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|š|z|ž|t|v|w|x|y; 
-CapLetter = CapVow | CapCons ;
-! Syllable onset and coda mirror each other (kind of..)
-! Syllable onset
-Onset = Consonant |
-        [sS Ckpt] | [sS Clmnr] | [[Ckpt Clmnr] - [tT nN]] | 
-        [[sS Ckpt Clmnr] - [sS tT nN]] | [Ckpt sS] | [pP tT] | [mM nN] |
-        [Cgbd Clmnr] | [šŠ Clmnr] | [sS Cvf] | [Cvf Clmnr]  ;
-! Syllable end
-Coda =  Consonant | 
-        [sS sS] | DoubleCkpt | [kK tT] | DoubleClmnr | 
-        [lL mM] | [rR nN] | 
-        [Clmnr Ckpt] | [Clmnr sS] | [Clmnr sS sS] | 
-        [Ckpt sS] | [Clmnr Ckpt sS] | [sS Ckpt] | [Clmnr Cgbd] | 
-        [šŠ šŠ] | [Clmnr šŠ] | [Clmnr šŠ šŠ] | [sS vV] | [fF fF] ;
-Nucleus = Vowel (Vowel) ; 
-DoubleCons = DoubleCkpt | DoubleClmnr | [bB bB] | [cC cC] | [dD dD] | [fF fF] | 
-        [gG gG] | [hH hH] | [jJ jJ] | [qQ qQ] | [sS sS] | [šŠ šŠ] | 
-        [zZ zZ] | [žŽ žŽ] | [vV vV] | [wW wW] | [xX xX] | [yY yY] ;
- 
-! seminar, puue etc
-! any number of syllables is allowed;
-! no double consonant in consonat cluster is allowed
-! InSyllable is defined weirdly because the first Onset and last Coda of the 
-! word are special cases
-
-InSyllable = [[Nucleus (Coda) Onset] | [Vowel Vowel]]
-       & ~[?* DoubleCons Consonant ?*] & ~[?* Consonant DoubleCons ?*] ;
-! 
-ProtoWord = [[(Onset) InSyllable* Nucleus (Coda)] 
-       & ~[?* Vowel Vowel Vowel Vowel ?*]] ;
-Word = ProtoWord & [Letter+] ;
-Name = ProtoWord & [CapLetter Letter+] ;
-! Li, bleu, kabeltau, 
-ProtoV1 = [(Onset) [Nucleus - [i a]]] | 
-          [?* DoubleVow] | 
-          [?* Consonant [Diphtong - [i a]]] ;
-ProtoKAVA = (Onset) Vowel [Cgbd | Clmnr | h | j | s | v] [Vowel - eE] ;
-ProtoPERE = [[?* \Vowel Vowel Consonant+ Vowel] & ~[ProtoKAVA]] |
-            [?* \Vowel Vowel Vowel Onset Vowel] ;   ! aga kanoostre ?
-ProtoAASTA = [?* Vowel] &~[ProtoV1]  &~[ProtoKAVA]  &~[ProtoPERE];
-WordV1 = Word & ProtoV1 ;
-WordKAVA =  Word & ProtoKAVA ;
-WordPERE = Word & ProtoPERE ;
-WordAASTA = Word & ProtoAASTA ;
-ProtoC1 =  [(Onset) Nucleus Coda] |
-           [(Onset) Nucleus (Coda) Onset Vowel Onset Vowel Coda] | 
-           [ ?* Vowel Vowel Coda] |
-           [ ?* DoubleCons] |
-           [ ?* Ckpt Ckpt] |
-           [ ?* Clmnr Clmnr] |
-           [ ?* i s m] |
-           [ ?* \Vowel Vowel [[Consonant Consonant+] & ~[l l] & ~[n n] & ~[l b]] Vowel Clmnr Ckpt]
-; ! pooleli... nt kanostrel ?
-ProtoMUUSEUM = ?* Vowel [Vowel | Consonant] Consonant+ [[[i | e] u m] | [[i | e] o n] | [[i | e] a n] | 
-           [i  o r] | [i e m]] ;
-!ProtoC2 =  [(Onset) Vowel Vowel  (Coda) Onset Vowel Coda]  | 
-!            [(Onset) Nucleus (Coda) Onset Vowel Coda] 
-!; ! pooleli...
-
 
 !! !!Lexicons  
 
 LEXICON Root !!= * {{@CODE@}} is the starting point of everything
-
-  LexiconBased ;
-!  Guesser ;
-
-LEXICON LexiconBased
 
 !! This is actually a loop, formed after applying Kleene star 
 !! concatenation on the simple word transducer with itself.
@@ -1043,6 +957,11 @@ LEXICON First     !!= * {{@CODE@}} a simplex word or the first part of a compoun
 ! use the diacritics to select possible continuation paths
 
 LEXICON Latter !!= * {{@CODE@}} the latter part of a compound
+
+! guesser: blahblah + word:
+  @R.POS.Guess@ Nouns ;
+  @R.POS.Guess@@P.POS.A@ Adjectives ;
+  @R.POS.Guess@ AnyLatterVerb ;
 
 ! x + prefix
   @R.POS.ACRMinus@ Prefixes ;      
@@ -1249,84 +1168,6 @@ LEXICON LatterVerb       ! a verb derivation
 ! a sequence of capital letters; max length 5 and a trailing hyphen
 LEXICON Acrominus
 
-  < Cap^{1,5} "+ACR":"-" > # ;
+  < CapLetter^{1,5} "+ACR":"-" > # ;
 
-! ------------------------
-! Guessing follows a different logic:
-!
-LEXICON Guesser
 
-@D.Part@@P.Part.Bad@   GuessName ;          !!= * {{@CODE@}}
-@D.Part@@P.Part.Bad@   GuessSimplexWord ;          !!= * {{@CODE@}}
-
-! blahblah followed by a word:
-! 
-@D.Part@@P.Part.Two@@P.NeedPartThree.On@@P.POS.Guess@@P.Stem.Guessed@ SomeThing ;        
-
-@R.Part.Two@@R.POS.Guess@@P.Part.Three@@C.NeedPartThree@ Nouns ;
-    
-LEXICON SomeThing
-
-  < [Word & [?* ? ?]] 0:%- "+Guess":0 > # ;
-  < [Name & [?* ? ?]] 0:%- "+Guess":0 "+N":0 "+Prop":0 > # ;
-  < [Word & [?* ? ?]] 0:» "+Guess":0 > # ;     ! » blocks insertion of a surface hyphen (elsewhere)
-
-LEXICON GuessName
-
-  < [Name & [?* Consonant [[Vowel Vowel] & ~[i a] & ~[i o]] ]] "+Guess":0 "+N":0 "+Prop":0 > ARMEE ;
-
-LEXICON GuessSimplexWord
-
-  < [Word & [?* Consonant] [[Vowel Vowel] - [[i a] | [i o]]]] "+Guess":0 "+N":0 > ARMEE ;
-
-! these  
-
-LEXICON GuessDerivation
-!  < Letter* Vowel Consonant+ Vowel > GuessLine ; 
-  < [Word & [?* Consonant]] Vowel > GuessLine ;
-  < [Word & [?* Consonant]] > GuessLane ; 
-  < [Word & [?* Consonant]] Vowel > GuessMine ; 
-  < Consonant* Vowel+ Consonant+ Vowel [[Consonant+ Vowel] - [[l i] | [l a] | [m i] | [k e]]] n e > GuessOluline ; ! edasine, ??
-  < Consonant* Vowel+ Consonant+ Vowel > GuessNe ; ! soolane
-  < [Word & [?* Vowel [Vowel | Consonant] Consonant+]] > GuessNe ; ! raudne akuutne
-
-LEXICON GuessSimplex
-  < Letter* Vowel+ Consonant+ Vowel Consonant+ i s > GuessOlulane ; ! eputis
-  < Letter* Vowel+ Consonant+ [[Vowel Consonant+] - [i k k]] u s > GuessOlulane ; ! ümarus
-  < Letter* Vowel Vowel Vowel Consonant+ u s > GuessOlulane ; ! jõuetus
-  < Letter* Vowel l i s u s > GuessOlulane ;  ! aatelisus
-  < Letter* Consonant i k k u s> GuessOlulane ;  ! aistlikkus
-  < Letter* Vowel Consonant+ i u s > GuessOlulane ; ! raadius
-  < Letter* Vowel Consonant+ e u s > GuessOlulane ; ! bakalauŕeus
-
-  < Letter* Consonant [[Vowel Vowel] - [[i a] | [i o]]] > GuessArmee ; 
-  < [Letter* Consonant Consonant] & ~[Letter* [Consonant - l] l]> GuessTaud ; ! axt, but not axl ?
-  < Letter* Vowel Vowel Consonant Consonant* > GuessTaud ; 
-  < Letter* Vowel Vowel t t > GuessTaud ; 
-
-LEXICON GuessLane   
-    +Guess: LANE_DERIVATION_SUF ;
-
-LEXICON GuessLine   
-    +Guess: LINE_DERIVATION_SUF ;
-
-LEXICON GuessMine   
-    +Guess: MINE_DERIVATION_SUF ;
-
-LEXICON GuessNe   
-    +Guess: NE_DERIVATION_SUF ;
-
-!LEXICON GuessUs   
-!    +Guess: US_DERIVATION_SUF ;
-
-LEXICON GuessOluline
-    +Guess+A: OLULINE ;
-
-LEXICON GuessOlulane   
-    +Guess+N: OLULINE ;
-
-LEXICON GuessArmee
-   +Guess+N: ARMEE ;
-
-LEXICON GuessTaud
-   +Guess+N: TAUD ;

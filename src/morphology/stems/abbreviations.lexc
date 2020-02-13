@@ -6,7 +6,7 @@
 
 LEXICON Abbreviations
 
-< ( Cap ( %. ) %- ) Cap %. "+ABBR":0 > AbbrNoCase ;
+< ( CapLetter ( %. ) %- ) CapLetter %. "+ABBR":0 > AbbrNoCase ;
 < 1 "0" n d "+ABBR":0 > AbbrNoCase ;
 16nd+ABBR:16nd AbbrNoCase ;
 2nd+ABBR:2nd AbbrNoCase ;
@@ -64,7 +64,7 @@ Ctrl+ABBR:Ctrl AbbrNoCase ;
 < C t r l %+ A l t %+ D e l %+ABBR:0 > AbbrNoCase ;
 < C t r l %+ A l t ( %+ E n t e r ) %+ABBR:0 > AbbrNoCase ;
 < C t r l %+ F Dig^{1,2} %+ABBR:0 > AbbrNoCase ;
-< C t r l ( %+ S h i f t ) ( %+ ( Cap ) ) %+ABBR:0 > AbbrNoCase ;
+< C t r l ( %+ S h i f t ) ( %+ ( CapLetter ) ) %+ABBR:0 > AbbrNoCase ;
 Dets+ABBR:Dets AbbrCasesDot ;
 dets+ABBR:dets AbbrCasesDot ;
 dipl+ABBR:dipl AbbrNoCaseDot ;

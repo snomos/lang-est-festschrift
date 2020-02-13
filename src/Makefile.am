@@ -70,6 +70,7 @@ endif # CAN_FOMA
 #### Add language-specific build rules here: ####
 
 EST_EXTRA_PRE_FILTERS=filters/remove-sg-forms.est filters/remove-pl-forms.est filters/remove-sg-nom-forms.est filters/remove-non-gi-forms.est filters/block-derivations.est # filters/remove-usage-tags.est
+EST_GUESSER_PRE_FILTERS=filters/block-derivations.est 
 EST_EXTRA_POST_FILTERS=filters/modify-derivations.est # filters/downcase-derived_proper-strings.est
 EST_WORDPAIR_FILTERS=filters/reorder-tags.est filters/wordpair-filter.est
 EST_NUMERAL_FILTERS=filters/reorder-tags.est filters/numeral-filter.est
@@ -174,6 +175,22 @@ num_final.tmp1.xfst: morphology/num_final.tmp.xfst \
 		quit\n" \
 		| $(LEXC) $(VERBOSITY)
 
+# guesser
+# HFST:
+guesser.tmp1.hfst: morphology/guesser.tmp.hfst \
+					 phonology/$(GTLANG)-phon.compose.hfst
+	$(AM_V_INTRSCT)\
+		  $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $<\
+		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
+			$(MORE_VERBOSITY) $(HFST_FLAGS) \
+			-2 phonology/$(GTLANG)-phon.compose.hfst \
+		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		-o $@ 
+
+# XEROX
+# not implemented...
+
 # acronyms
 acronyms.tmp1.%: morphology/acronyms.tmp.%
 			   cp $< $@ 
@@ -252,6 +269,22 @@ num_final.tmp.%: num_final.tmp1.% \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
+guesser.tmp.%: guesser.tmp1.% \
+					filters/reorder-tags.$(GTLANG).% \
+					filters/reorder-semantic-tags.%       \
+					filters/reorder-subpos-tags.%         \
+					filters/remove-mwe-tags.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex \
+			 @\"filters/reorder-tags.$(GTLANG).$*\"\
+			.o. @\"filters/reorder-subpos-tags.$*\"   \
+			.o. @\"filters/reorder-semantic-tags.$*\" \
+			.o. @\"filters/remove-mwe-tags.$*\"       \
+			.o. @\"$<\" \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
 acronyms.tmp.%: acronyms.tmp1.% \
 					filters/reorder-tags.$(GTLANG).% \
 					filters/reorder-semantic-tags.%       \
@@ -306,6 +339,38 @@ generator-numerals-raw.simple.hfst: redundant_numerals.hfst \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
+# guesser: DO NOT use filters for derivation
+guesser-raw.simple.hfst: guesser.tmp.hfst \
+				$(EST_GUESSER_PRE_FILTERS:%=%.hfst) \
+				$(EST_EXTRA_POST_FILTERS:%=%.hfst) \
+				filters/downcase-derived_proper-strings.est.hfst
+	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex                         \
+			[ @\"$<\" ] \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
+# guesser: use filters for derivation
+#guesser-raw.simple.hfst: guesser.tmp.hfst \
+#				$(EST_GUESSER_PRE_FILTERS:%=%.hfst) \
+#				$(EST_EXTRA_POST_FILTERS:%=%.hfst) \
+#				filters/downcase-derived_proper-strings.est.hfst
+#	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
+#			read regex                         \
+#			$(EST_GUESSER_PRE_FILTERS:%=@\"%.hfst\" .o.)    \
+#			[ @\"$<\" ] \
+#			$(EST_EXTRA_POST_FILTERS:%=.o. @\"%.hfst\")   \
+#			;\n\
+#			define fst \n\
+#			set flag-is-epsilon OFF\n\
+#			read regex fst \
+#			.o. @\"filters/downcase-derived_proper-strings.est.hfst\"       \
+#			;\n\
+#		 save stack $@\n\
+#		 quit\n" | $(XFST_TOOL)
+#
+
 # XEROX:
 analyser-wordpairs-raw.simple.xfst: redundant_wordpairs.xfst \
 					$(EST_WORDPAIR_FILTERS:%=%.xfst)
@@ -356,6 +421,7 @@ analyser-raw-gt-desc.simple.xfst: analyser-raw-gt-desc.tmp.xfst \
 generator-raw-gt-desc.simple.hfst: generator-raw-gt-desc.tmp.hfst \
 				generator-numerals-raw.simple.hfst \
 				generator-wordpairs-raw.simple.hfst \
+				guesser-raw.simple.hfst \
 				$(EST_EXTRA_PRE_FILTERS:%=%.hfst) \
 				$(EST_EXTRA_POST_FILTERS:%=%.hfst) \
 				filters/downcase-derived_proper-strings.est.hfst
@@ -370,6 +436,9 @@ generator-raw-gt-desc.simple.hfst: generator-raw-gt-desc.tmp.hfst \
 			set flag-is-epsilon OFF\n\
 			read regex fst \
 			.o. @\"filters/downcase-derived_proper-strings.est.hfst\"       \
+			;\n\
+			define fst \n\
+			read regex [fst | @\"guesser-raw.simple.hfst\"]       \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
