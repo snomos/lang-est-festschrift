@@ -87,16 +87,16 @@ ProtoKAVA = [[Consonant* Vowel ShortCons [VowNoDots - eE]] |
 SyllAASTA = [[ThreeSyllV & [?* VowNoDots]] & ~DerKe] ;
 
 ! viimane on ka ThreeSyll, aga EndAASTA on mugav ; tegelinski
-EndAASTA = [[?* Consonant iI aA] |   
+EndAASTA = [[?* Vowel Consonant+ iI aA] |   
            [?* Vowel Consonant+ iI kK aA] | 
-           [?* Vowel Consonant sS kK iI]] ;                                       
+           [?* Vowel Consonant+ sS kK iI]] ;                                       
 
             
 ! tüüne, haige, rohke, raske, range,  lükra , kalme, võimla, Brodski, mitte katte ega veski
 ! need ei tohiks olla AASTA tüüpi
 BadGradeAASTA = [Consonant* Vowel [Consonant | [Cgbd Clmnr]] VowNoDots] | 
                      [Consonant* Vowel Consonant Csibilant [VowNoDots - eE]] | 
-                     [(?* Consonant) Consonant* Vowel DoubleClmnr  [VowNoDots - eE]] ;
+                     [?* Vowel DoubleClmnr  [VowNoDots - eE]] ;
 
 GradeAASTA = [Foot & [?* Vowel+ Consonant+ VowNoDots] & ~BadGradeAASTA] ;
 
@@ -109,8 +109,8 @@ NimiAASTA = [?* AASTA] ;
 
 ! need justkui ei tohiks olla PERE tüüpi (on ainult AASTA tüüpi)
 BadGradePere = [[?* LongV Consonant Consonant Consonant+ Vowel] |
-                     [(?* Consonant) Consonant* Vowel Csibilant Consonant Consonant+ Vowel] |
-                     [(?* Consonant) Consonant* Vowel Consonant+ Cgbd Clmnr Vowel] 
+                     [?* Csibilant Consonant Consonant+ Vowel] |
+                     [?* Consonant+ Cgbd Clmnr Vowel] 
                     ] ;
 
 GradePERE = [Foot & [[?* Vowel+ Consonant+ Vowel] & ~BadGradePere ]] ;
@@ -122,8 +122,8 @@ VoorPERE = [?* ? Consonant Vowel Vowel [kK|nN] eE] ; ! karaoke, lantsaroone
 ProtoPERE = [[SyllPERE | [SyllAASTA & ~EndAASTA]] & ~DerJa  & ~DerTu & ~DerKe & ~DerNe] | [GradePERE & ~DerNe] | VoorPERE ;
 ! eefeu, panatsea jms kuuluvad ka PERE alla, ehkki tegelt samad vormid saaks ARMEE + AASTA kaudu...
 
-! anything is possible... e.g. Sydney, Maria, Tanganjika
-NimiPERE =  [?* [Vowel]] ;
+! almost anything is possible... e.g. Sydney, Maria, Tanganjika
+NimiPERE =  [?* ? Vowel] & ~[FirstSyll & [?* Vowel]];
 
 ProtoPEENIKE = DerKe ;
 !NimiPEENIKE is unnecessary ?
@@ -192,7 +192,7 @@ SyllVIRSIK = [Foot] & [?* [[aA | eE | iI] [kK | [nN gG] | [rR gG]]]] ;
 
 EndVIRSIK = [?* Consonant^2 iI kK] | [?* Vowel tT iI kK] ;
 
-BadVirsik = [?* Vowel Consonant+ Vowel (sS) lL iI kK] ;
+BadVirsik = [?* Vowel Consonant+ Vowel (sS) lL iI kK] | [?* bB eE rR gG];
 ProtoVIRSIK = [SyllVIRSIK | EndVIRSIK] & ~BadVirsik; ! ei tunne: kürenaik, paranoik, stoik
 
 NimiVIRSIK = [ProtoVIRSIK] | [?* Vowel Consonant+ iI cC (kK) ] ; ! ka Titanic, Eric
@@ -296,10 +296,12 @@ LEXICON GuessSimplexNoun
   < [Word & ProtoOLULINE & ~[[?* DerLane] | [?* DerMine]]] > GuessOLULINE ; ! adjectives
   < [Word & ProtoOLULINE &  [[?* DerLane] | [?* DerMine]]] > GuessOLULIS ;  ! nouns
   < [Word & ProtoSOOLANE] > GuessSOOLANE ;
+  < [Word & ProtoSOOLANE &  [?* DerLane]] > GuessMAALANE ;
   < [Word & ProtoOLULIS] > GuessOLULIS ;
   < [Word & ProtoSOOLAS] > GuessSOOLAS ;
   < [Word & ProtoMUUSEUM] > GuessMUUSEUM ;
   < [Word & ProtoELANIK] > GuessELANIK ;
+  < [Word & ProtoELANIK & [?* lL iI kK]] > GuessLIK ;
   < [Word & ProtoVIRSIK] > GuessVIRSIK ;
   < [Word & ProtoKABINET] > GuessKABINET ;
   < [Word & ProtoMAGUS] > GuessMAGUS ;
@@ -381,6 +383,9 @@ LEXICON GuessNameOLULINE
 LEXICON GuessSOOLANE
    +Guess+A: SOOLANE ;
 
+LEXICON GuessMAALANE
+   +Guess+N: SOOLANE ;
+
 LEXICON GuessNameSOOLANE
    +Guess+N+Prop: SOOLANE ;
 
@@ -404,6 +409,9 @@ LEXICON GuessNameMUUSEUM
 
 LEXICON GuessELANIK
    +Guess+N: ELANIK ;
+
+LEXICON GuessLIK
+   +Guess+A: ELANIK ;
 
 LEXICON GuessNameELANIK
    +Guess+N+Prop: ELANIK ;
@@ -448,4 +456,5 @@ LEXICON GuessKOND
 
 LEXICON GuessNameKOND
    +Guess+N+Prop:%>%{pl.i%} PÄEV ;
+
 

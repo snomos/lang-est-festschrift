@@ -684,14 +684,14 @@ Vx:Vy  <=>  ShortSyll (LowerBackVowel:0) WS:0 Null* _  ;
 
 "Long vowel shortening 1/2"
 
-Vx:0 =>     :Vx _ Null+ :stemV ;            ! puid, suid, soid, sae, soe, nea
+Vx:0 =>      Vx _ Null+ :stemV ;            ! puid, suid, soid, sae, soe, nea
          :Vowel _ Null+ :Vx ;               ! tõu, näub
             :Vx _ E4:e ;                    ! soe
       where Vx in ( Vowel ) ;  
 
 "Long vowel shortening 2/2"
 
-Vx:Vx /<=    :Vx _ Null+ :i ;            ! puid, suid, soid
+Vx:Vx /<=     Vx _ Null+ :i ;            ! puid, suid, soid
           :Vowel _ Null+ :Vx ;               ! tõu, näub
              :Vx _ E4:e ;                    ! soe
       where Vx in ( Vowel ) ;  
@@ -703,7 +703,7 @@ Vx:0 /<=  :Vx _ Null+ [:stemV - :i];            ! riiu, luua; puid
 
 "Long non-high vowel shortens before a stem vowel"
 
-Vx:Vx /<= :Vx _ Null+ :stemV ;            ! sae, soid
+Vx:Vx /<=  Vx _ Null+ :stemV ;            ! sae, soid
       where Vx in ( NonHighVowel ) ;  
 
 !      where Vx in ( MidVowel LowVowel ) ;  

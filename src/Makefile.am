@@ -339,13 +339,12 @@ generator-numerals-raw.simple.hfst: redundant_numerals.hfst \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
-# guesser: DO NOT use filters for derivation
+# guesser: no derivation allowed
 guesser-raw.simple.hfst: guesser.tmp.hfst \
-				$(EST_GUESSER_PRE_FILTERS:%=%.hfst) \
-				$(EST_EXTRA_POST_FILTERS:%=%.hfst) \
-				filters/downcase-derived_proper-strings.est.hfst
+				$(EST_GUESSER_PRE_FILTERS:%=%.hfst) 
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
 			read regex                         \
+			$(EST_GUESSER_PRE_FILTERS:%=@\"%.hfst\" .o.)    \
 			[ @\"$<\" ] \
 			;\n\
 		 save stack $@\n\
