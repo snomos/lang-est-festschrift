@@ -79,7 +79,7 @@ GT_LOCAL_SRCS=\
 				pair_final.tmp.lexc \
 				num_initial.tmp.lexc \
 				num_final.tmp.lexc \
-				guesser.tmp.lexc
+				guesser.tmp0.lexc
 #				punctuation.tmp.lexc
 #				acronyms.tmp.lexc 
 
@@ -122,10 +122,11 @@ num_final.tmp.lexc: num_final.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
 
 # guesser:
 # re-using root.lexc and affixes
-guesser.tmp.lexc: guesser.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
+guesser.tmp0.lexc: guesser.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
 	$(AM_V_GEN)cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
 			   cat $< >> $@ && \
 			   cat $(EST_AFFIX_FILES:%=%.lexc) >> $@
+
 
 ### END: Local processing: ###
 

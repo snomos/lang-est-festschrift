@@ -175,6 +175,19 @@ num_final.tmp1.xfst: morphology/num_final.tmp.xfst \
 		quit\n" \
 		| $(LEXC) $(VERBOSITY)
 
+# upcase names:
+# upcase both the lexical and the surface side
+morphology/guesser.tmp.hfst: morphology/guesser.tmp0.hfst filters/upcase-guessed_proper-strings.est.hfst
+	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon OFF\n\
+			read regex                         \
+			@\"filters/upcase-guessed_proper-strings.est.hfst\".i       \
+			.o. @\"$<\"   \
+			.o. @\"filters/upcase-guessed_proper-strings.est.hfst\"       \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+	
+
 # guesser
 # HFST:
 guesser.tmp1.hfst: morphology/guesser.tmp.hfst \
