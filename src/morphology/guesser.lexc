@@ -49,15 +49,23 @@ ShortVSyll = Vowel ;
 ShortCSyll = [[Vowel | JVow | UVow] [Consonant | [Cgbd Clmnr]]] ;
 LongCSyll =  [[Vowel | JVow | UVow] [[Consonant Consonant+] & ~[Cgbd Clmnr]]] ;
 LCSyll =     [LongCSyll & ~[Letter* [DoubleCons | [Clmnr s s]]]] ;
+XCSyll =     [LongCSyll &  [Letter* [DoubleCons | [Clmnr s s]]]] ;  ! xtra long...
+
 
 ! word syllable count starts from the last stressed syllable:
 ! it may be the first syllable of the word, or the last one with long vowel
 FirstSyll = [Consonant* [ShortCSyll | ShortVSyll]] | [Letter* LongCSyll] | 
             [[[Letter* DoubleVow] | [[Letter* Diphtong] & ~[Letter* [DoubleVow | StrictDiphtong] Vowel]]] Consonant*] ;
 
+! longish first syllable
+LFirstSyll = [Consonant* LongCSyll] | [Letter* XCSyll] | 
+             [[[Letter* DoubleVow] | [[Letter* Diphtong] & ~[Letter* [DoubleVow | StrictDiphtong] Vowel]]] Consonant*] ;
+
 ! foot is a recurring building block for patterns
 badinfoot = [Consonant* [LongV | JVow | UVow] Consonant*] | [Letter* DoubleVow Consonant*];
-Foot = [FirstSyll [ShortVSyll | ShortCSyll | LCSyll]] & ~[badinfoot] ;
+Foot  = [FirstSyll  [ShortVSyll | ShortCSyll | LCSyll]] & ~[badinfoot] ;
+LFoot = [LFirstSyll [ShortVSyll | ShortCSyll | LCSyll]] & ~[badinfoot] ;  ! foot starts with a longish syllable
+
 
 ! three syllable sequence
 ThreeSyllV = [Foot Vowel] & ~[Letter* [DoubleVow | StrictDiphtong]] ;
@@ -236,7 +244,25 @@ ProtoTAUD = [SyllTAUD | AlsoTAUD] ;
 NimiTAUD = [ProtoTAUD] | [Letter* Vowel g r a d] ;  ! ka Beograd
 
 !----
+! verbs
+
+RABELEMA = [Consonant* Vowel Consonant+ e l e ] ;
+HAKKLE = [[[Foot & [Letter* Consonant l e]] ] & ~[Foot l e ]] ; 
+HAKKA =  [[[LFoot & [Letter* a]] ] & ~[Foot a ]];
+
+HAKKAMA = [HAKKLE | HAKKA] ;
+
+LEPPI = [[[LFoot & [Letter* i]] ] & ~[Foot i ]] | [[Foot & [Letter* Clmnr Ckpt i]] ] ;
+LEPPU = [Consonant* Vowel Clmnr Ckpt u ] | 
+             [Consonant* LongV Ckpt u ] | 
+             [Consonant* Vowel DoubleCkpt u ]; ! alati ka ELAMA; nähtava orto muutuseta on siit väljas...
+LEPPIMA = [LEPPI | LEPPU] ;
+
+ELAMA = [Letter* Letter Letter Vowel ] & ~[RABELEMA] & ~[LEPPI] & ~[HAKKLE];
+
+!----
 ProtoKOND = [Letter* Letter Letter k o n ] ; ! d:"D1"  kond-derivation hack
+ProtoAPO = [Letter* Letter] ; ! word pronunciation is not deducible from its letters (e.g. Braille is brai)
 
 !Word = [Letter+] ;
 !Name = [CapLetter Letter+] ;
@@ -253,6 +279,8 @@ LEXICON Root !!= * {{@CODE@}} is the starting point of everything
 !@D.Part@@P.Part.Bad@@P.POS.NProp@@U.Cap.Opt@   GuessName ;          !!= * {{@CODE@}}
 !@D.Part@@P.Part.Bad@   GuessDerivation "weight: 35" ;          !!= * {{@CODE@}}
 @D.Part@@P.Part.Bad@@P.POS.N@   GuessSimplexNoun "weight: 70" ;          !!= * {{@CODE@}}
+! notice @P.Part.One@; this is what finite verb form affixes require
+@D.Part@@P.Part.One@@P.POS.V@   GuessVerb "weight: 70" ;          !!= * {{@CODE@}}
 
 ! blahblah that might be followed by a word; a desperate attempt at guessing:
 ! @U.Cap.Obl@ is used as a flag (in a filter) to upcase the name string
@@ -286,6 +314,7 @@ LEXICON GuessName
   < [NimiREDEL] > GuessNameREDEL ;
   < [NimiTAUD] > GuessNameTAUD ;
   < [ProtoKOND] d:"D1"> GuessNameKOND ; ! ?? kas on ikka vaja?
+  < [ProtoAPO] 0:%{apo%}> GuessNameAPO ; 
 
 LEXICON GuessSimplexNoun
 
@@ -311,6 +340,12 @@ LEXICON GuessSimplexNoun
   < [ProtoTAUD] > GuessTAUD ;
   < [ProtoKOND] d:"D1"> GuessKOND ;
 
+LEXICON GuessVerb
+
+  < [RABELEMA] > GuessRABELEMA ;
+  < [HAKKAMA] > GuessHAKKAMA ;
+  < [LEPPIMA] > GuessLEPPIMA ;
+  < [ELAMA] > GuessELAMA ;
 
 LEXICON GuessLane   
     +Guess: LANE_DERIVATION_SUF ;
@@ -438,10 +473,27 @@ LEXICON GuessNameTAUD
    +Guess+N+Prop: TAUD ;
    +Guess+N+Prop: FIAT ;   ! ?? no change in orthography
 
+LEXICON GuessRABELEMA
+   ma+Guess+V: RABELEMA ;
+
+LEXICON GuessHAKKAMA
+   ma+Guess+V: HAKKAMA ;
+
+LEXICON GuessLEPPIMA
+   ma+Guess+V: LEPPIMA ;
+
+LEXICON GuessELAMA
+   ma+Guess+V: ELAMA ;
+
 LEXICON GuessKOND
    +Guess+N:%>%{pl.i%} PÄEV ;
 
 LEXICON GuessNameKOND
    +Guess+N+Prop:%>%{pl.i%} PÄEV ;
+
+LEXICON GuessNameAPO
+   +Guess+N+Prop: TAUD ;
+   +Guess+N+Prop: REDEL ;   
+   +Guess+N+Prop: ARMEE ;   
 
 
