@@ -130,4 +130,19 @@
     </body>
   </error>
 
+  <error id="err-comma">
+    <header>
+      <title xml:lang="en">Comma error</title>
+      <title xml:lang="et">Komaviga</title>
+      <references><ref n=""/></references>
+    </header>
+    <body>
+      <description xml:lang="en">Missing comma before this word</description>
+      <description xml:lang="se">Puudub koma selle sõna ees</description>
+    <examples>
+      <ex xml:lang="se">Tahaks lennata{,} aga mitte eriti kõrgelt.</ex> 
+    </examples>
+    </body>
+  </error>
+
 </errors>

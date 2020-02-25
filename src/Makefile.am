@@ -428,6 +428,7 @@ analyser-raw-gt-desc.simple.xfst: analyser-raw-gt-desc.tmp.xfst \
 		 quit\n" | $(XFST) $(VERBOSITY)
 
 # include paired words and compound numerals
+# NB! include guesser
 # We need to add processing of language-specific tags in the generator:
 # HFST:
 generator-raw-gt-desc.simple.hfst: generator-raw-gt-desc.tmp.hfst \
@@ -514,12 +515,11 @@ analyser-raw-gt-desc.vocabulary.xfst: analyser-raw-gt-desc.comp.xfst \
 			save stack $@\n\
 			quit\n" | $(XFST) $(VERBOSITY)
 
-# make the raw ones
-# HFST:
+# weights added to all analyses
 # 7.01.2019 from Sjur:
 # Hfst - add weights to compounds if using tropical-semiring fst format:
 if WITH_OFST_TROPICAL
-generator-raw-gt-desc.hfst: generator-raw-gt-desc.vocabulary.hfst
+generator-raw-gt-desc.weighted.hfst: generator-raw-gt-desc.vocabulary.hfst
 	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-S '#' -a 30 --arcs-only -i $< \
 	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/mine' -a 10 -A \
@@ -619,9 +619,27 @@ generator-raw-gt-desc.hfst: generator-raw-gt-desc.vocabulary.hfst
 
 else !WITH_OFST_TROPICAL
 
-generator-raw-gt-desc.hfst: generator-raw-gt-desc.vocabulary.hfst 
+generator-raw-gt-desc.weighted.hfst: generator-raw-gt-desc.vocabulary.hfst 
 		cp $< $@
 endif !WITH_OFST_TROPICAL
+
+# make the raw ones
+# HFST:
+#
+#generator-raw-gt-desc.hfst: generator-raw-gt-desc.weighted.hfst 
+#		cp $< $@
+
+# raw should not include paths of guessing...
+# HFST:
+generator-raw-gt-desc.hfst: generator-raw-gt-desc.weighted.hfst \
+				filters/remove-guessed-forms.est.hfst
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"filters/remove-guessed-forms.est.hfst\" \
+			.o. @\"$<\" \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
 
 # ... also the raw analyser... this is unnecessary garbage
 #analyser-raw-gt-%.hfst: generator-raw-gt-%.hfst

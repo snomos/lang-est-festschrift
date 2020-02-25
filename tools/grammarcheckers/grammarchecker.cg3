@@ -603,6 +603,7 @@ LIST &err-orrood-inf = &err-orrood-inf ;
 LIST &err-ext-agr = &err-ext-agr ;
 LIST &err-ext-vagr = &err-ext-vagr ;
 LIST &err-conneg-not-3rdsg = &err-conneg-not-3rdsg ;
+LIST &err-comma = &err-comma ;
 
 MAPPING-PREFIX = & ;
 
@@ -626,12 +627,24 @@ ADD:spell-conservatively (&typo &SUGGESTWF) (<spelled>) IF (NEGATE -1 QMARK LINK
 
 
 # A simple grammar checker rule without suggestions: Ensure preceding nominal agrees with the verb
-ADD:err-agr (&err-agr) TARGET V IF (-1C Sg + Nom) (0 V) (NOT 0 Sg3);
+ADD:err-agr (&err-agr) TARGET V IF (-1C Sg + Nom) (0 V) (NOT 0 Sg3)(NOT 0 (Neg));
 ADD:err-agr (&err-agr) TARGET V IF (-1C Pron + Sg1 + Nom) (0 V) (NOT 0 Sg1);
 ADD:err-agr (&err-agr) TARGET V IF (-1C Pron + Sg2 + Nom) (0 V) (NOT 0 Sg2);
 ADD:err-agr (&err-agr) TARGET V IF (-1C Pron + Pl1 + Nom) (0 V) (NOT 0 Pl1);
 ADD:err-agr (&err-agr) TARGET V IF (-1C Pron + Pl2 + Nom) (0 V) (NOT 0 Pl2);
 
+LIST PersPronSing1 = "mina" "ma" ;
+LIST InfMod = "võima" "saama" "tohtima" ;
+LIST SupMod = "pidama" ;
+LIST Inf = Inf ;
+LIST Sup = Sup ;
+LIST Kvm = "," "." "!" "?" ";" ":" ;
+
+
+ADD:err-agr (&err-agr) TARGET V IF (-1C PersPronSing1 + Nom)(0 V)(NOT 0 Sg1);
+
+ADD:err-agr (&err-agr) TARGET V IF (0 (Sup)) (*-1C InfMod BARRIER Kvm)(NEGATE *0 Inf);
+ADD:err-agr (&err-agr) TARGET V IF (0 (Inf)) (*-1C SupMod BARRIER Kvm)(NEGATE *0 Sup);
 
 
 #!! !Negation verb rules
@@ -639,6 +652,48 @@ ADD:err-agr (&err-agr) TARGET V IF (-1C Pron + Pl2 + Nom) (0 V) (NOT 0 Pl2);
 ADD:err-conneg-not-3rdsg (&err-conneg-not-3rdsg) TARGET (V Prs Sg3) IF (0 Ind OR Cond)(-1 ("ei") LINK NOT 0 Sup);	
 
 
+LIST Komaga = "vaid" "kuid" "sest" "siis" ;
+LIST PoordV = (V Sg1) (V Sg2) (V Sg3) (V Pl1) (V Pl2) (V Pl3) ;
+
+LIST Sides = CC SC;
+
+LIST Komata = "aga" "vaid" "siis";
+LIST KomataCC = "ja" "ning" "või" "ehk" "ega";
+LIST KomagaCC = "ent" "kuid" ;
+LIST Vordlus = "kui" "nagu" ;
+LIST RelPron = "kes" "mis" ;
+LIST SP = N Pron ;
+
+ADD:err-comma (&err-comma) TARGET Sides IF (*-1C PoordV LINK NEGATE *1 Kvm) (NEGATE *1 PoordV) ;
+ADD:err-comma (&err-comma) TARGET Sides IF (*-1C PoordV LINK NEGATE *1 Kvm) (*1 PoordV LINK NEGATE *-1 Kvm) ;
+
+ADD:err-comma (&err-comma) TARGET Komata (-1 (",")) (-2 ("mina")) (1 (V Sg1));
+ADD:err-comma (&err-comma) TARGET Komata (-1 (",")) (-2 ("sina")) (1 (V Sg2));
+ADD:err-comma (&err-comma) TARGET Komata (-1 (",")) (-2 ("tema")) (1 (V Sg3));
+
+
+ADD:err-comma (&err-comma) TARGET Vordlus IF (*-1C PoordV LINK NEGATE *1 Kvm) (NEGATE *1 PoordV) ;
+ADD:err-comma (&err-comma) TARGET Vordlus IF (1 ("ka")) (NEGATE *1 PoordV) ; 
+
+LIST Kaanded = Nom Gen Par Add Ine Ill Ela All Ade Abl;
+
+ADD:err-comma (&err-comma) TARGET Vordlus IF (1 ("ka"))(-1 (",")) (-2 $$Kaanded) (2 $$Kaanded) ;
+
+
+ADD:err-comma (&err-comma) TARGET KomataCC IF (-1 (",")) (-2 $$Kaanded) (1 $$Kaanded) ;
+ADD:err-comma (&err-comma) TARGET KomagaCC IF (NOT -1 (",")) ;
+
+
+#Ajamäärus
+LIST Nadalapaev = "esmaspäev" "teisipäev" "kolmapäev" "neljapäev" "reede" "laupäev" "pühapäev" ;
+LIST Kuu = "jaanuar" "veebruar" "märts" "aprill" "mai" "juuni" "juuli" "august" "september" "oktoober" "november" "detsember" ;
+
+ADD:err-comma (&err-comma) TARGET Nadalapaev (NOT 1 (","))(1 (Ord))(2 Kuu) ;
+
+#Relatiivlaused
+
+ADD:err-comma (&err-comma) TARGET RelPron IF (NOT -1 Kvm) (-1C SP) (*-1C PoordV LINK NEGATE *1 Kvm); 
+ADD:err-comma (&err-comma2) TARGET RelPron IF (NOT -1 Kvm) (-1C SP) (*-1C PoordV BARRIER Kvm); 
 
 #!! !Postposition rules
 
