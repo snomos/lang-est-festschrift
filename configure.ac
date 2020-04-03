@@ -107,7 +107,7 @@ AM_CONDITIONAL([WANT_ALT_ORTH_SPELLERS], [ true ])
 # upper vs lower case. That is not always true, or the case handling is such
 # that the default system doesn't cut it. In those cases, change the value
 # below from 'true' to 'false':
-AM_CONDITIONAL([DEFAULT_CASE_HANDLING], [ true ])
+AM_CONDITIONAL([DEFAULT_CASE_HANDLING], [ false ])
 # Also, some languages use multiple writing systems, where at least one of them
 # has no case distinction at all. List all writing systems without case
 # distinctions in the variable below, space separated:
