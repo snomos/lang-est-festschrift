@@ -8,7 +8,7 @@
 # dir/filename.lexc => filename-dir.jspwiki
 
 JSP_PAGES=root-morphology.jspwiki  \
-		  est-phon-phonology.jspwiki
+		  phonology-morphology.jspwiki
 #		  regular_declinations-affixes.jspwiki \
 #		  exceptional_declinations-affixes.jspwiki \
 #		  gi-affixes.jspwiki      \
