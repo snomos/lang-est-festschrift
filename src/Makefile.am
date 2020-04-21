@@ -81,22 +81,22 @@ EST_NUMERAL_FILTERS=filters/reorder-tags.est filters/numeral-filter.est
 # paired words: initial part
 # HFST:
 pair_initial.tmp1.hfst: morphology/pair_initial.tmp.hfst \
-					 phonology/$(GTLANG)-phon.compose.hfst
+					 morphology/phonology.compose.hfst
 	$(AM_V_INTRSCT)\
 		  $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $<\
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
 			$(MORE_VERBOSITY) $(HFST_FLAGS) \
-			-2 phonology/$(GTLANG)-phon.compose.hfst \
+			-2 morphology/phonology.compose.hfst \
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-o $@
 
 # XEROX
 pair_initial.tmp1.xfst: morphology/pair_initial.tmp.xfst \
-			 phonology/$(GTLANG)-phon.compose.xfst
+			 morphology/phonology.compose.xfst
 	$(AM_V_LEXC)$(PRINTF) \
 		"read-source morphology/pair_initial.tmp.xfst\n\
-		read-rules phonology/$(GTLANG)-phon.compose.xfst\n\
+		read-rules morphology/phon.compose.xfst\n\
 		compose-result\n\
 		save-result $@\n\
 		quit\n" \
@@ -106,22 +106,22 @@ pair_initial.tmp1.xfst: morphology/pair_initial.tmp.xfst \
 # compound numerals: initial part
 # HFST:
 num_initial.tmp1.hfst: morphology/num_initial.tmp.hfst \
-					 phonology/$(GTLANG)-phon.compose.hfst
+					 morphology/phonology.compose.hfst
 	$(AM_V_INTRSCT)\
 		  $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $<\
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
 			$(MORE_VERBOSITY) $(HFST_FLAGS) \
-			-2 phonology/$(GTLANG)-phon.compose.hfst \
+			-2 morphology/phonology.compose.hfst \
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-o $@
 
 # XEROX
 num_initial.tmp1.xfst: morphology/num_initial.tmp.xfst \
-			 phonology/$(GTLANG)-phon.compose.xfst
+			 morphology/phonology.compose.xfst
 	$(AM_V_LEXC)$(PRINTF) \
 		"read-source morphology/num_initial.tmp.xfst\n\
-		read-rules phonology/$(GTLANG)-phon.compose.xfst\n\
+		read-rules morphology/phonology.compose.xfst\n\
 		compose-result\nsave-result $@\n\
 		quit\n" \
 		| $(LEXC) $(VERBOSITY)
@@ -130,22 +130,22 @@ num_initial.tmp1.xfst: morphology/num_initial.tmp.xfst \
 # paired words: final part
 # HFST:
 pair_final.tmp1.hfst: morphology/pair_final.tmp.hfst \
-					 phonology/$(GTLANG)-phon.compose.hfst
+					 morphology/phonology.compose.hfst
 	$(AM_V_INTRSCT)\
 		  $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $<\
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
 			$(MORE_VERBOSITY) $(HFST_FLAGS) \
-			-2 phonology/$(GTLANG)-phon.compose.hfst \
+			-2 morphology/phonology.compose.hfst \
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-o $@ 
 
 # XEROX
 pair_final.tmp1.xfst: morphology/pair_final.tmp.xfst \
-			 phonology/$(GTLANG)-phon.compose.xfst
+			 morphology/phonology.compose.xfst
 	$(AM_V_LEXC)$(PRINTF) \
 		"read-source morphology/pair_final.tmp.xfst\n\
-		read-rules phonology/$(GTLANG)-phon.compose.xfst\n\
+		read-rules morphology/phonology.compose.xfst\n\
 		compose-result\n\
 		save-result $@\n\
 		quit\n" \
@@ -154,22 +154,22 @@ pair_final.tmp1.xfst: morphology/pair_final.tmp.xfst \
 # compound numerals: final part
 # HFST:
 num_final.tmp1.hfst: morphology/num_final.tmp.hfst \
-					 phonology/$(GTLANG)-phon.compose.hfst
+					 morphology/phonology.compose.hfst
 	$(AM_V_INTRSCT)\
 		  $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $<\
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
 			$(MORE_VERBOSITY) $(HFST_FLAGS) \
-			-2 phonology/$(GTLANG)-phon.compose.hfst \
+			-2 morphology/phonology.compose.hfst \
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-o $@ 
 
 # XEROX
 num_final.tmp1.xfst: morphology/num_final.tmp.xfst \
-			 phonology/$(GTLANG)-phon.compose.xfst
+			 morphology/phonology.compose.xfst
 	$(AM_V_LEXC)$(PRINTF) \
 		"read-source morphology/num_final.tmp.xfst\n\
-		read-rules phonology/$(GTLANG)-phon.compose.xfst\n\
+		read-rules morphology/phonology.compose.xfst\n\
 		compose-result\n\
 		save-result $@\n\
 		quit\n" \
@@ -191,13 +191,13 @@ morphology/guesser.tmp.hfst: morphology/guesser.tmp0.hfst filters/upcase-guessed
 # guesser
 # HFST:
 guesser.tmp1.hfst: morphology/guesser.tmp.hfst \
-					 phonology/$(GTLANG)-phon.compose.hfst
+					 morphology/phonology.compose.hfst
 	$(AM_V_INTRSCT)\
 		  $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $<\
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
 			$(MORE_VERBOSITY) $(HFST_FLAGS) \
-			-2 phonology/$(GTLANG)-phon.compose.hfst \
+			-2 morphology/phonology.compose.hfst \
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-o $@ 
 
