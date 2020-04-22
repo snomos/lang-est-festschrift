@@ -40,41 +40,8 @@ Define morphology [ lexmorph | UpCase(lexmorph, U) ] ;
 
 Define url @bin"analyser-url-gt-desc.hfst" ;
 
-Define flags [          ! explicit list since `?` does not match flags
-      "@D.CmpOnly.FALSE@"
-    | "@D.CmpPref.TRUE@"
-    | "@D.NeedNoun.ON@"
-    | "@D.SpellRlx.ON@"
-    | "@C.SpellRlx@"
-    | "@D.SpaceCmp.ON@"
-    | "@C.SpaceCmp@"
-|   "@U.Cap.Obl@" | "@U.Cap.Opt@" | "@C.Cap@" | 
-  "@D.Part@" | "@P.Part.One@" | "@R.Part.One@" | "@D.Part.One@" | 
-               "@P.Part.Two@" | "@R.Part.Two@" | "@P.Part.Three@" | "@P.Part.Bad@" | "@C.Part@" | 
-  "@R.POS.A@" | "@P.POS.A@" | "@R.POS.AComp@" | "@P.POS.AComp@" | "@R.POS.N@" | "@P.POS.N@" | 
-  "@R.POS.NProp@" | "@P.POS.NProp@" | "@R.POS.GA@" | "@P.POS.GA@" | "@R.POS.IntNum@" | "@P.POS.IntNum@" | 
-  "@R.POS.NonIntNum@" | "@P.POS.NonIntNum@" | "@R.POS.NumCardCompound@" | "@P.POS.NumCardCompound@" | 
-  "@R.POS.NumOrd@" | "@P.POS.NumOrd@" | "@R.POS.Num@" | "@P.POS.Num@" | "@R.POS.V@" | "@P.POS.V@" | 
-  "@R.POS.Interj@" | "@P.POS.Interj@" | "@R.POS.Adv@" | "@P.POS.Adv@" | "@R.POS.Pron@" | "@P.POS.Pron@" | 
-  "@R.POS.Pref@" | "@P.POS.Pref@" | "@C.POS@" | 
-  "@R.Case.Nom@" | "@P.Case.Nom@" | "@R.Case.Gen@" | "@P.Case.Gen@" | "@R.Case.Par@" | "@P.Case.Par@" | 
-  "@R.Case.Ine@" | "@P.Case.Ine@" | "@R.Case.Sem@" | "@P.Case.Sem@" | "@D.Case.PlNom@" | "@P.Case.PlNom@" | 
-  "@R.Case.Short@" | "@P.Case.Short@" | "@D.Case@" | "@D.Case.Nom@" | "@C.Case@" | 
-  "@P.Der.kas@" | "@D.Der.kas@" | "@R.Der.us@" | "@P.Der.us@" | "@D.Der.us@" | "@P.Der.ist@" | 
-  "@P.Der.m@" | "@P.Der.im@" | "@P.Der.N@" | "@D.Der.N@" | "@P.Der.A@" | "@D.Der.A@" | "@P.Der.Adv@" | "@D.Der.Adv@" | 
-  "@D.Der@" | "@C.Der@" | 
-  "@P.Stem.Single@" | "@R.Stem.Single@" | "@D.Stem.Single@" |
-  "@P.Stem.Final@" | "@R.Stem.Final@" | "@D.Stem.Final@" |
-  "@P.Stem.Nom@" | "@R.Stem.Nom@" | "@D.Stem.Nom@" |
-  "@P.Stem.ise@" | "@R.Stem.ise@" | "@D.Stem.ise@" | "@P.Stem.vähe@" | "@R.Stem.vähe@" | "@D.Stem.vähe@" | 
-  "@P.Stem.topelt@" | "@R.Stem.topelt@" | "@D.Stem.topelt@" | "@C.Stem@" | 
-  "@P.NeedAdj.On@" | "@R.NeedAdj@" | "@D.NeedAdj@" | "@C.NeedAdj@" | 
-  "@P.NeedNoun.On@" | "@R.NeedNoun@" | "@D.NeedNoun@" | "@C.NeedNoun@" | 
-  "@P.NeedPartThree.On@" | "@R.NeedPartThree@" | "@D.NeedPartThree@" | "@C.NeedPartThree@" | 
-  "@P.NeedDerNe.On@" | "@R.NeedDerNe@" | "@D.NeedDerNe@" | "@C.NeedDerNe@" | 
-  "@P.NomStem.First@" | "@R.NomStem.First@" | "@D.NomStem.First@" | "@C.NomStem@" |
-  "@R.POS.ACR@" | "@P.POS.ACR@" | "@D.POS.ACR@" | "@R.POS.ACRMinus@" | "@P.POS.ACRMinus@" | "@D.POS.ACRMinus@"
-];
+! explicit list of flags, since `?` does not match flags; the list is dynamically built, since it is language dep:
+Define flags @bin"filters/disamb-tokeniser-flags.hfst" ;
 Define inputmark    [ 0:"@PMATCH_INPUT_MARK@" | 0:"@PMATCH_BACKTRACKING@" ];
 
 ! Characters which have analyses in the lexicon, but can appear without spaces
