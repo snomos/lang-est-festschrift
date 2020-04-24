@@ -55,9 +55,11 @@ endif # CAN_XFST
 if CAN_HFST
 GT_ANALYSERS+=analyser-gt-desc.hfst \
 			  analyser-gt-norm.hfst \
+			  analyser-gt-guess.hfst \
 			  analyser-disamb-gt-desc.hfst
 GT_GENERATORS+=generator-gt-desc.hfst \
-			   generator-gt-norm.hfst
+			   generator-gt-norm.hfst \
+			   generator-gt-guess.hfst
 endif # CAN_HFST
 
 #### FOMA transducers
@@ -190,6 +192,14 @@ fst/guesser.tmp.hfst: fst/guesser.tmp0.hfst filters/upcase-guessed_proper-string
 
 # guesser
 # HFST:
+# a transducer for blabla- and Blabla-
+guesser-smth.hfst: fst/guesser-smth.xfscript
+	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
+			source $<   \
+			\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
 guesser.tmp1.hfst: fst/guesser.tmp.hfst \
 					 fst/phonology.compose.hfst
 	$(AM_V_INTRSCT)\
@@ -428,13 +438,11 @@ analyser-raw-gt-desc.simple.xfst: analyser-raw-gt-desc.tmp.xfst \
 		 quit\n" | $(XFST) $(VERBOSITY)
 
 # include paired words and compound numerals
-# NB! include guesser
 # We need to add processing of language-specific tags in the generator:
 # HFST:
 generator-raw-gt-desc.simple.hfst: generator-raw-gt-desc.tmp.hfst \
 				generator-numerals-raw.simple.hfst \
 				generator-wordpairs-raw.simple.hfst \
-				guesser-raw.simple.hfst \
 				$(EST_EXTRA_PRE_FILTERS:%=%.hfst) \
 				$(EST_EXTRA_POST_FILTERS:%=%.hfst) \
 				filters/downcase-derived_proper-strings.est.hfst
@@ -450,9 +458,6 @@ generator-raw-gt-desc.simple.hfst: generator-raw-gt-desc.tmp.hfst \
 			read regex fst \
 			.o. @\"filters/downcase-derived_proper-strings.est.hfst\"       \
 			;\n\
-			define fst \n\
-			read regex [fst | @\"guesser-raw.simple.hfst\"]       \
-			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
@@ -466,12 +471,12 @@ generator-raw-gt-desc.comp.hfst: generator-raw-gt-desc.simple.hfst \
 				filters/evaluate-flags.est.hfst
 	$(AM_V_XFST)$(PRINTF) "set flag-is-epsilon ON\n\
 			read regex \
-			[                                                                    \
-			  [                                                                  \
+			[								\
+			  [                                                                    \
 			    [                                                                \
 			      ~[?* \"+Foc/gi\" ?*] .o. @\"$<\"  \
 			       .o. [[ \"-\" (->) 0 || » _ .#. ] | [ [..] (->) \"-\" || \\[\"-\"] _ .#. ]] \
-			    ] \"#\"                                                          \
+			    ] \"#\"                                \
 			  ]* @\"$<\"                                                         \
 			] @\"filters/evaluate-flags.est.hfst\"                               \
 			;\n\
@@ -519,7 +524,7 @@ analyser-raw-gt-desc.vocabulary.xfst: analyser-raw-gt-desc.comp.xfst \
 # 7.01.2019 from Sjur:
 # Hfst - add weights to compounds if using tropical-semiring fst format:
 if WITH_OFST_TROPICAL
-generator-raw-gt-desc.weighted.hfst: generator-raw-gt-desc.vocabulary.hfst
+generator-raw-gt-guess.weighted.hfst: generator-raw-gt-guess.vocabulary.hfst
 	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-S '#' -a 30 --arcs-only -i $< \
 	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/mine' -a 10 -A \
@@ -619,53 +624,184 @@ generator-raw-gt-desc.weighted.hfst: generator-raw-gt-desc.vocabulary.hfst
 
 else !WITH_OFST_TROPICAL
 
-generator-raw-gt-desc.weighted.hfst: generator-raw-gt-desc.vocabulary.hfst 
+generator-raw-gt-guess.weighted.hfst: generator-raw-gt-guess.vocabulary.hfst 
+		cp $< $@
+endif !WITH_OFST_TROPICAL
+
+
+# analogy with generator-raw-gt-desc.weighted.hfst
+# Hfst - add weights to compounds if using tropical-semiring fst format:
+if WITH_OFST_TROPICAL
+guesser-raw.weighted.hfst: guesser-raw.simple.hfst
+	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		-S '#' -a 30 --arcs-only -i $< \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/mine' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/ja' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/nu' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/mus' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/ng' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/v' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/tav' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/nud' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/mata' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/matu' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/tamatu' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/tu' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/tud' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/lik' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/line' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/ne' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/lt' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/sti' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/ini' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/m' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/im' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/nna' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/kond' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/ist' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/is' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/us' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/ti' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/lane' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/kas' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+N' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+A' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Num' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Pron' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+V' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Adv' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Interj' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+CC' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+CS' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Adp' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Pref' -a 5 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Prop' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Card' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Ord' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Comp' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Superl' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Sg' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Pl' -a 1 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Nom' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Gen' -a 1 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Par' -a 2 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Ill' -a 3 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Ine' -a 3 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Ela' -a 3 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+All' -a 3 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Ade' -a 3 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Abl' -a 3 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Tra' -a 3 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Trm' -a 3 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Ess' -a 3 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Abe' -a 3 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Com' -a 3 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Impers' -a 1 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Pers' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Prs' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Prt' -a 1 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Ind' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Cond' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Imprt' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Quot' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Sg1' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Sg2' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Sg3' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Pl1' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Pl2' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Pl3' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Aff' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Neg' -a 1 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Sup' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Inf' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Ger' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Prc' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Foc/gi' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Emph' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Pref' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Dim/ke' -a 10 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+ABBR' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+ACR' -a 5 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Use/Rare' -a 30 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Use/Hyp' -a 30 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Use/NotNorm' -a 30 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Use/CommonNotNorm' -a 30 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Use/Circ' -a 0 -A \
+	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Guess' -a 200 -A \
+		> $@
+
+else !WITH_OFST_TROPICAL
+
+guesser-raw.weighted.hfst: guesser-raw.simple.hfst 
 		cp $< $@
 endif !WITH_OFST_TROPICAL
 
 # make the raw ones
 # HFST:
-#
-#generator-raw-gt-desc.hfst: generator-raw-gt-desc.weighted.hfst 
-#		cp $< $@
+# map the name to GT/Divvun conventions
 
-# raw should not include paths of guessing...
+generator-raw-gt-desc.hfst: generator-raw-gt-desc.weighted.hfst 
+		cp $< $@
+
 # HFST:
-generator-raw-gt-desc.hfst: generator-raw-gt-desc.weighted.hfst \
-				filters/remove-guessed-forms.est.hfst
+# this is probably the pure guesser;
+generator-raw-gt-guess.hfst: guesser-raw.weighted.hfst \
+					filters/remove-hyphenation-marks.hfst        \
+					filters/remove-infl_deriv-borders.hfst       \
+					filters/remove-word-boundary.hfst            
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-				@\"filters/remove-guessed-forms.est.hfst\" \
-			.o. @\"$<\" \
+			@\"$<\" \
+			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
+			.o. @\"filters/remove-word-boundary.hfst\"            \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
+# HFST:
+# upcasing added (like for analyser-gt-desc)
+# perhaps a spellrelax filter should be also added ?
+analyser-raw-gt-guess.hfst: generator-raw-gt-guess.hfst \
+					orthography/inituppercase.compose.hfst       \
+					orthography/allcaps.compose.hfst       \
+					orthography/spellrelax.compose.hfst
+	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon ON\n\
+			read regex \
+			@\"$<\" \
+			.o. [@\"orthography/inituppercase.compose.hfst\"       \
+			| @\"orthography/allcaps.compose.hfst\" ]      \
+			.o. @\"orthography/spellrelax.compose.hfst\"          \
+			;\n\
+		 invert net \n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
 
-# ... also the raw analyser... this is unnecessary garbage
-#analyser-raw-gt-%.hfst: generator-raw-gt-%.hfst
-#		cp $< $@
 
 # XEROX:
+# probably garbage anyway
 analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.vocabulary.xfst 
 		cp $< $@
 
-# normative should not include paths of guessing
-# HFST:
-generator-gt-norm.%: generator-gt-norm.tmp.% \
-				filters/remove-guessed-forms.est.%
+# generator with a guesser
+# 
+# katsetus
+generator-gt-guess.hfst: generator-gt-desc.hfst \
+			 guesser-smth.hfst \
+			 generator-raw-gt-guess.hfst
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-				@\"filters/remove-guessed-forms.est.$*\" \
-			.o. @\"$<\" \
-			;\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST_TOOL)
+			[[(@\"guesser-smth.hfst\") @\"$<\"] | @\"generator-raw-gt-guess.hfst\"] \
+			; \n\
+		 	save stack $@\n\
+		 	quit\n" | $(XFST_TOOL)
 
-analyser-gt-norm.hfst: generator-gt-norm.hfst
-	$(AM_V_XFST_TOOL)$(PRINTF) "\
-		 load stack $<\n\
-		 invert net\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST_TOOL)
+analyser-gt-guess.hfst: analyser-gt-desc.hfst \
+			guesser-smth.hfst \
+			analyser-raw-gt-guess.hfst
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+			[[([ @\"guesser-smth.hfst\"].i) @\"$<\" ] | @\"analyser-raw-gt-guess.hfst\"] \
+			; \n\
+		 	save stack $@\n\
+		 	quit\n" | $(XFST_TOOL)
 
 # XEROX:
 # not implemented...

@@ -27,15 +27,19 @@ DoubleCkpt = k^2 | p^2 | t^2 ;
 Clmnr = l|m|n|r;
 DoubleClmnr = l^2 | m^2 | n^2 | r^2 ;
 Cgbd = g|b|d;
+Cplosive = [Ckpt | Cgbd] ;
 Cfš = f|š;
 Csibilant = [s|š|z|ž];
 Cnonsonor = [Ckpt | Cgbd | Cfš | h | s ] ;
-Consonant = Cnonsonor | Clmnr | j | v | c|q|z|ž|w|x|y;
+Csonor = [ Clmnr | j | v] ;                  ! excluding foreign letters
+Consonant = Cnonsonor | Csonor | c|q|z|ž|w|x|y;
 ShortCons = [Cgbd | Clmnr | h | j | s | v] ;
-
+Cspirant = [f | h | [h v]];
 DoubleCons = DoubleCkpt | DoubleClmnr | f^2 | h^2 | s^2 | š^2 | v^2   ;
 
 Letter = Vowel | Consonant ;
+
+SomeSyllables = [?* Vowel ?*] ;
 
 ! a syllable pair
 ! uba, puänt, laua, liaan
@@ -66,7 +70,6 @@ badinfoot = [Consonant* [LongV | JVow | UVow] Consonant*] | [Letter* DoubleVow C
 Foot  = [FirstSyll  [ShortVSyll | ShortCSyll | LCSyll]] & ~[badinfoot] ;
 LFoot = [LFirstSyll [ShortVSyll | ShortCSyll | LCSyll]] & ~[badinfoot] ;  ! foot starts with a longish syllable
 
-
 ! three syllable sequence
 ThreeSyllV = [Foot Vowel] & ~[Letter* [DoubleVow | StrictDiphtong]] ;
 
@@ -76,6 +79,43 @@ DerTu = [[Letter* Pair t u] |
 DerJa = [[Letter* Vowel Consonant+ Vowel j a] | [Letter* Vowel Consonant+ t j a]];
 DerNe = [[Letter* Pair (Consonant) n e] | [Letter* Vowel [Vowel | Consonant] Consonant+ n e]];
 DerKe = [Letter* Pair k e] ;
+
+!-----------
+! astmed
+! need on hakkama ja leppima tüüpide sisehäälikud;
+! s.t. need on kolmandas vältes, aga teisendus teise vältesse ei muuda kirjapilti, v.a.
+! [LongV | [Vowel Csonor]]kpt -> gbd, kpt[Csonor] -> gbd, [Vowel]topeltkpt -> kpt, [LongV | [Vowel Csonor]]ss -> s
+! tundub, et need samad sisehäälikud sobivad selleks, et defineerida II välte sisehäälikuid
+! (v.a. [LongV | [Vowel Csonor]]ss)
+! JVow on sõnades nagu siesta, fiasko
+SiseLeppima = [[LongV [Consonant | [s s] | [Cplosive Csibilant] | [Csibilant Cplosive] ]] | 
+                    [Vowel Csonor    [ [s s] | [Cplosive Csibilant] | [Csibilant Cplosive]]] | 
+                    [[Vowel | JVow] [[Consonant Consonant] & ~[Cgbd Csonor] & ~[j Consonant] & ~[\h h] | [h v Ckpt]]]  
+                   ] ;
+
+SiseLeppuma = [Vowel Clmnr Ckpt] | 
+             [LongV Ckpt] | 
+             [Vowel DoubleCkpt]; ! alati ka ELAMA; nähtava orto muutuseta on siit väljas...
+
+! veel II välte sisehäälikuid
+! vedru
+SiseIIGL = [[Vowel | JVow] Cgbd Csonor] ;
+! piko, siena
+SiseIIK = [Vowel [Ckpt | f | š | z | ž]] | [JVow Consonant];
+
+! II välde
+SiseII = [SiseLeppima & ~[[LongV | [Vowel Csonor]] s s]] | SiseIIK | SiseIIGL;
+
+! I välde
+SiseI = [Vowel ShortCons] ;
+
+! Ainult III välde, s.t. pole võimalik hääldada nagu oleks II välde
+! jäta wyq välja
+SiseIIIAinult = [[Vowel | LongV | JVow] Consonant+] & ~[SiseI] & ~[SiseII] & ~$[w|y|q];
+
+
+
+!---------------
 
 ! patterns for productive inflectional types
 ! prefix Proto denotes ordinary words, Nimi denotes names
@@ -108,6 +148,9 @@ GradeAASTA = [Foot & [Letter* Vowel+ Consonant+ VowNoDots] & ~BadGradeAASTA] ;
 AASTA = [SyllAASTA | EndAASTA | GradeAASTA] ;  ! DerJa tuleks verbi tuletisena nagunii, eks?
 
 ProtoAASTA = [AASTA & ~DerNe] | DerTu | DerJa ;
+! lihtsustatud versioon
+
+LihtAASTA = [ThreeSyllV & [Letter* VowNoDots]] | EndAASTA | [Foot & [Letter* Vowel+ Consonant+ VowNoDots]] | DerTu | DerJa ;
 
 ! kui iganes mahub piisavalt silpe, siis ongi AASTA tüüp...
 NimiAASTA = [Letter* AASTA] ;
@@ -126,6 +169,8 @@ VoorPERE = [Letter* Letter Consonant Vowel Vowel [k|n] e] ; ! karaoke, lantsaroo
 
 ProtoPERE = [[SyllPERE | [SyllAASTA & ~EndAASTA]] & ~DerJa  & ~DerTu & ~DerKe & ~DerNe] | [GradePERE & ~DerNe] | VoorPERE ;
 ! eefeu, panatsea jms kuuluvad ka PERE alla, ehkki tegelt samad vormid saaks ARMEE + AASTA kaudu...
+
+LihtPERE = [Foot & [Letter* Vowel+ Consonant+ Vowel]] | [Consonant* JVow] ;
 
 ! almost anything is possible... e.g. Sydney, Maria, Tanganjika
 NimiPERE =  [Letter* Letter Vowel] & ~[FirstSyll & [Letter* Vowel]];
@@ -150,11 +195,17 @@ EndSOOLANE = [Letter* Vowel [Vowel | Consonant+] n e] & ~[Consonant* Vowel [Cons
 ! ProtoOLULIS: selle mustriga sõnad võivad olla pl par lõpus -si;
 ProtoOLULIS = [AnyOLULIS & ~SyllSOOLAS] ;
 
+LihtOLULIS = AnyOLULIS ;
+
 NimiOLULIS = [ProtoOLULIS] ;
+NimiOLULIS = [LihtOLULIS] ;
 
 ProtoOLULINE = [ AnyOLULINE & ~[SyllSOOLANE | EndSOOLANE]] ;  ! ei tunne laiune, sest selle tunneb (valesti) EndSOOLANE
 
+LihtOLULINE = AnyOLULINE ;
+
 NimiOLULINE = [ProtoOLULINE] ;
+NimiOLULINE = [LihtOLULINE] ;
 
 ! soolane: kõik ne, s lõpulised on siin 
 ProtoSOOLAS = [Letter* Pair s] & ~[Letter* [DoubleVow | StrictDiphtong] s] ; ! ei tunne: päis, teos jts 1-silbilised
@@ -191,7 +242,10 @@ EndELANIK =    [Letter* Pair Consonant* l i k] | [Letter* LongV l i k ] ;  ! ...
 !ei tunne: kümnik, suumik
 ProtoELANIK = [SyllELANIK | GradeELANIK | EndELANIK];
 
+LihtELANIK = [SyllELANIK | [Foot & [Letter* Vowel+ Consonant+ i k]] | EndELANIK];
+
 NimiELANIK = [ProtoELANIK] ;
+NimiELANIK = [LihtELANIK] ;
 
 SyllVIRSIK = [Foot] & [Letter* [[a | e | i] [k | [n g] | [r g]]]] ;
 
@@ -199,8 +253,10 @@ EndVIRSIK = [Letter* Consonant^2 i k] | [Letter* Vowel t i k] ;
 
 BadVirsik = [Letter* Vowel Consonant+ Vowel (s) l i k] | [Letter* b e r g];
 ProtoVIRSIK = [SyllVIRSIK | EndVIRSIK] & ~BadVirsik; ! ei tunne: kürenaik, paranoik, stoik
+LihtVIRSIK = [SyllVIRSIK | EndVIRSIK] ;
 
 NimiVIRSIK = [ProtoVIRSIK] | [Letter* Vowel Consonant+ i c (k) ] ; ! ka Titanic, Eric
+NimiVIRSIK = [LihtVIRSIK] | [Letter* Vowel Consonant+ i c (k) ] ; ! ka Titanic, Eric
 
 ! ka seviot ja patriot
 
@@ -259,6 +315,15 @@ LEPPU = [Consonant* Vowel Clmnr Ckpt u ] |
 LEPPIMA = [LEPPI | LEPPU] ;
 
 ELAMA = [Letter* Letter Letter Vowel ] & ~[RABELEMA] & ~[LEPPI] & ~[HAKKLE];
+LihtELAMA = [Letter* Letter Letter Vowel ] ;
+
+GL = [Cgbd [Clmnr | j | v]];              ! AGL: vedru, käbla (KAVA, PERE)
+xCL = [Letter Consonant [Clmnr | j | v]];             ! A.CL: eidla, ildna, ustna (AASTA)
+KL = [Ckpt [Clmnr | j | v]];              ! AKL: makro, kokni; kopra, tšakra (PERE, AASTA)
+xCCC = [Letter Consonant^3];            ! A....: oontsa, oostna, orstnu  (AASTA)
+sK = [s Ckpt];              ! AsK: piste, vatse (PERE, AASTA)
+Ksk = [Ckpt s k];             ! AKsk: plotski, rupski (AASTA)
+xsK = [Letter s Ckpt];             ! AxsK: puiste, inste (AASTA)
 
 !----
 ProtoKOND = [Letter* Letter Letter k o n ] ; ! d:"D1"  kond-derivation hack
@@ -268,84 +333,116 @@ ProtoAPO = [Letter* Letter] ; ! word pronunciation is not deducible from its let
 !Name = [CapLetter Letter+] ;
 
 
-! This guesser lexicon turned into a transcuder is later union-ed with the transducer of simplex words.
-! They are tied to each other via flag diacritics.
-! The Kleene star operation on top of the resulting transducer will yield the complete vocabulary, incl. compound words.
- 
+! This guesser lexicon turned into a transcuder is later union-ed with the lexicon-based transducer
 
 LEXICON Root !!= * {{@CODE@}} is the starting point of everything
 
-@D.Part@@P.Part.Bad@@P.POS.NProp@@U.Cap.Obl@   GuessName "weight: 50" ;          !!= * {{@CODE@}}
+!!@D.Part@@P.Part.Bad@@P.POS.NProp@@U.Cap.Obl@   GuessName "weight: 50" ;          !!= * {{@CODE@}}
 !@D.Part@@P.Part.Bad@@P.POS.NProp@@U.Cap.Opt@   GuessName ;          !!= * {{@CODE@}}
 !@D.Part@@P.Part.Bad@   GuessDerivation "weight: 35" ;          !!= * {{@CODE@}}
-@D.Part@@P.Part.Bad@@P.POS.N@   GuessSimplexNoun "weight: 70" ;          !!= * {{@CODE@}}
+!@D.Part@@P.Part.Bad@@P.POS.N@   GuessSimplexWord "weight: 70" ;          !!= * {{@CODE@}}
+
+ GuessSimplexWord "weight: 70" ;
 ! notice @P.Part.One@; this is what finite verb form affixes require
-@D.Part@@P.Part.One@@P.POS.V@   GuessVerb "weight: 70" ;          !!= * {{@CODE@}}
+!@D.Part@@P.Part.One@@P.POS.V@   GuessSimplexWord "weight: 70" ;          !!= * {{@CODE@}}
 
-! blahblah that might be followed by a word; a desperate attempt at guessing:
-! @U.Cap.Obl@ is used as a flag (in a filter) to upcase the name string
 
-@D.Part@@P.Part.Two@@P.NeedPartThree.On@@P.POS.Guess@@P.Stem.Guessed@@U.Cap.Obl@ SomeThingName ;         
-@D.Part@@P.Part.Two@@P.NeedPartThree.On@@P.POS.Guess@@P.Stem.Guessed@ SomeThing ;        
+! K=kpt, G=gbd, L=lmnrjv, A=aeiouõäöü, C=consonant
+LEXICON GuessSimplexWord
 
-   
-LEXICON SomeThingName
+ < [Consonant* ] > ScanWord ;  ! siin saaks paika sättida suurtähelisuse ???
 
-!  < [~Name & ~Word & [AnySymbol* AnySymbol AnySymbol]] 0:%- "+Guess":0 > # ;
-  < [Letter* Letter Letter] 0:%- "+Guess":0 "+N":0 "+Prop":0 > # ;
+LEXICON ScanWord
 
-LEXICON SomeThing
-  < [Letter* Letter Letter] 0:» "+Guess":0 > # ;     ! » blocks insertion of a surface hyphen (elsewhere)
+! "silp-silbi" haaval vaata edasi
+! on sõna lõpp ainult juhul, kui see ongi ainus silp või see on kindlasti rõhuline silp
+! < [Vowel] >            Vowel ; ! polegi võimalik??? 
+ < [Vowel Consonant] >  VowelConsonant ;
+ < [DoubleVow] >        DoubleVowel ;
 
-LEXICON GuessName
+! sõna lõpp, s.t. 1 või 2 viimast silpi
+ < [Vowel] >                       EndA ;
+ < [Vowel Ckpt] >                  EndAK ;
+ < [Vowel Clmnr] >                 EndAL ;
+ < [Vowel ShortCons [Vowel - e]] > IsKAVA ;
+ < [Vowel ShortCons e] >           IsPERE ;
+ < [Vowel [Vowel | Consonant] Vowel] >   IsPERE ;  ! pole päris ammendav muster...
+ < [DoubleVow] >                   IsARMEE ;
 
-  < [NimiARMEE] > GuessNameARMEE ;
-  < [NimiAASTA] > GuessNameAASTA ;
-  < [NimiPERE] > GuessNamePERE ;
-  < [NimiOLULINE] > GuessNameOLULINE ;
-  < [NimiSOOLANE] > GuessNameSOOLANE ;
-  < [NimiOLULIS] > GuessNameOLULIS ;
-  < [NimiSOOLAS] > GuessNameSOOLAS ;
-  < [NimiMUUSEUM] > GuessNameMUUSEUM ;
-  < [NimiELANIK] > GuessNameELANIK ;
-  < [NimiVIRSIK] > GuessNameVIRSIK ;
-  < [NimiKABINET] > GuessNameKABINET ;
-  < [NimiMAGUS] > GuessNameMAGUS ;
-  < [NimiREDEL] > GuessNameREDEL ;
-  < [NimiTAUD] > GuessNameTAUD ;
-  < [ProtoKOND] d:"D1"> GuessNameKOND ; ! ?? kas on ikka vaja?
-  < [ProtoAPO] 0:%{apo%}> GuessNameAPO ; 
+! verbs
+ < [Vowel Consonant+ e l e ] > IsRABELEMA ;
+ < [[Vowel | LongV] Consonant+ l e] > IsHAKLEMA; 
+ < [SiseLeppima a] > IsHAKKAMA; 
+ < [SiseLeppima i] > IsLEPPIMA; 
+ < [SiseLeppuma u] > IsLEPPUMA; 
+! need elama sõnad on ilmselt liiga lubavad...
+ < [[Vowel+ Consonant+ Vowel] & ~[[Vowel | LongV] Consonant+ l e] & ~[SiseLeppima i]] > IsELAMA; ! tal on mitme tüübiga paralleele 
+ < [Vowel+ Consonant+ Vowel] > EndELAMA; ! follows a stressed syllable; (compare with IsELAMA) 
 
-LEXICON GuessSimplexNoun
+LEXICON Vowel
+!  @D.Stress@@P.Stress.On@      ScanWord ;  ! <a>-...
+  @R.Stress.On@@P.Stress.Off@  ScanWord ;  ! av-<a>-us
+!  @R.Stress.Off@@P.Stress.On@  ScanWord ;  ! kal-ah-<ü>-o ???
 
-  < [ProtoARMEE] > GuessARMEE ;
-  < [ProtoKAVA] > GuessKAVA ;
-  < [ProtoAASTA] > GuessAASTA ;
-  < [ProtoPERE]  > GuessPERE ;
-  < [ProtoPEENIKE] > GuessPEENIKE ;
-  < [ProtoOLULINE & ~[[Letter* DerLane] | [Letter* DerMine]]] > GuessOLULINE ; ! adjectives
-  < [ProtoOLULINE &  [[Letter* DerLane] | [Letter* DerMine]]] > GuessOLULIS ;  ! nouns
-  < [ProtoSOOLANE] > GuessSOOLANE ;
-  < [ProtoSOOLANE &  [Letter* DerLane]] > GuessMAALANE ;
-  < [ProtoOLULIS] > GuessOLULIS ;
-  < [ProtoSOOLAS] > GuessSOOLAS ;
-  < [ProtoMUUSEUM] > GuessMUUSEUM ;
-  < [ProtoELANIK] > GuessELANIK ;
-  < [ProtoELANIK & [Letter* lL iI kK]] > GuessLIK ;
-  < [ProtoVIRSIK] > GuessVIRSIK ;
-  < [ProtoKABINET] > GuessKABINET ;
-  < [ProtoMAGUS] > GuessMAGUS ;
-  < [ProtoLOHAKAS] > GuessLOHAKAS ;
-  < [ProtoREDEL] > GuessREDEL ;
-  < [ProtoTAUD] > GuessTAUD ;
-  < [ProtoKOND] d:"D1"> GuessKOND ;
+LEXICON EndA
+  @D.Stress@                   GuessARMEE ;  ! <a>
+  @R.Stress.Off@               GuessAASTA ;  ! raad-i-<o>???, var-am-<u>
 
-LEXICON GuessVerb
+LEXICON VowelConsonant
+  @D.Stress@@P.Stress.On@@P.Len.I@      ScanWord ;      ! <ag>-...
+  @R.Stress.On@@P.Stress.Off@           ScanWord ;      ! ag-<ar>-us
+  @R.Stress.Off@@P.Stress.On@@P.Len.I@  ScanWord ;      ! kal-ah-<ar>-i
 
-  < [RABELEMA] > GuessRABELEMA ;
-  < [HAKKAMA] > GuessHAKKAMA ;
-  < [LEPPIMA] > GuessLEPPIMA ;
-  < [ELAMA] > GuessELAMA ;
+LEXICON EndAK
+  @D.Stress@                   GuessKABINET ;     ! n<et>
+!  @D.Stress@                   GuessFIAT ;       ! n<et> võiks olla
+  @R.Stress.Off@               GuessKABINET ;     ! ka-bin-<et>
+  @R.Stress.On@@D.Len.III@     GuessREDEL ;       ! ag-<at>
+  @R.Stress.On@@R.Len.III@     GuessKABINET ;     !  alksr-at
+
+LEXICON EndAL
+  @D.Stress@                   GuessTAUD ;      ! n<el>
+  @R.Stress.Off@               GuessTAUD ;      ! se-min-<ar>
+  @R.Stress.On@                GuessREDEL ;     ! ag-<am>, aarstl-am
+
+LEXICON DoubleVowel
+  @P.Stress.On@@P.Len.II@     ScanWord ;      ! s<uu>-e
+
+LEXICON IsARMEE
+                               GuessARMEE ;    ! ...<aa>
+
+LEXICON IsKAVA
+  @D.Stress@                   GuessKAVA ;     ! kava
+
+LEXICON IsPERE
+  @D.Stress@                   GuessPERE ;     ! pere
+  @R.Stress.Off@               GuessPERE ;     ! ...pere
+
+LEXICON IsRABELEMA
+  @D.Stress@@P.Part.One@       GuessRABELEMA ;     ! rabelema  @P.Part.One@ vajab lõppude lisamise programm
+
+LEXICON IsHAKLEMA          ! kahtlane...
+  @P.Part.One@                 GuessHAKKAMA ;     ! 
+  @P.Part.One@                 GuessHAKKAMA ;     ! ??? 
+
+LEXICON IsHAKKAMA
+  @D.Stress@@P.Part.One@           GuessHAKKAMA ;     ! 
+  @R.Stress.Off@@P.Part.One@       GuessHAKKAMA ;     ! ??? 
+
+LEXICON IsLEPPIMA
+  @D.Stress@@P.Part.One@           GuessLEPPIMA ;     ! 
+  @R.Stress.Off@@P.Part.One@       GuessLEPPIMA ;     ! 
+
+LEXICON IsLEPPUMA
+  @D.Stress@@P.Part.One@           GuessLEPPIMA ;     ! 
+
+LEXICON IsELAMA
+  @D.Stress@@P.Part.One@           GuessELAMA ;     ! 
+  @R.Stress.Off@@P.Part.One@       GuessELAMA ;     ! 
+
+LEXICON EndELAMA
+  @R.Stress.On@@P.Part.One@        GuessELAMA ;     ! 
+
 
 LEXICON GuessLane   
     +Guess: LANE_DERIVATION_SUF ;
@@ -473,14 +570,26 @@ LEXICON GuessNameTAUD
    +Guess+N+Prop: TAUD ;
    +Guess+N+Prop: FIAT ;   ! ?? no change in orthography
 
+LEXICON GuessRABELE
+  @R.POS.V@ GuessRABELEMA ;
+
 LEXICON GuessRABELEMA
-   ma+Guess+V: RABELEMA ;
+ ma+Guess+V: RABELEMA ;
+
+LEXICON GuessHAKKA
+  @R.POS.V@ GuessHAKKAMA ;
 
 LEXICON GuessHAKKAMA
    ma+Guess+V: HAKKAMA ;
 
+LEXICON GuessLEPPI
+  @R.POS.V@ GuessLEPPIMA ;
+
 LEXICON GuessLEPPIMA
    ma+Guess+V: LEPPIMA ;
+
+LEXICON GuessELA
+  @R.POS.V@ GuessELAMA ;
 
 LEXICON GuessELAMA
    ma+Guess+V: ELAMA ;

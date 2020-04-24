@@ -737,6 +737,30 @@ Multichar_Symbols
  @D.NeedDerNe@
  @C.NeedDerNe@
 
+!! Guesser
+! Pay attention to the stress
+ @P.Stress.On@    ! mark this as a stressed syllable 
+ @R.Stress.On@    ! need the previous syllable to be a stressed one 
+ @D.Stress.On@    ! not used? 
+ @P.Stress.Off@   ! mark this as a syllable following a stressed one
+ @R.Stress.Off@   ! need the previous syllable to be an UNstressed one 
+ @D.Stress.Off@   ! not used? 
+ @D.Stress@       ! no stress on a previous syllable, i.e. there is no previous syllable
+ @C.Stress@       ! not used ?
+
+! Pay attention to 'grade' (I, II or III), expressed via 'syllable' length
+! It co-occurs with only stressed syllables
+ @P.Len.I@
+ @R.Len.I@
+ @D.Len.I@
+ @P.Len.II@
+ @R.Len.II@
+ @D.Len.II@
+ @P.Len.III@
+ @R.Len.III@
+ @D.Len.III@
+ @C.Len@
+
 !! 
 
 ! Morphophonology
