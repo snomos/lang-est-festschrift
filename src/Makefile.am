@@ -524,7 +524,7 @@ analyser-raw-gt-desc.vocabulary.xfst: analyser-raw-gt-desc.comp.xfst \
 # 7.01.2019 from Sjur:
 # Hfst - add weights to compounds if using tropical-semiring fst format:
 if WITH_OFST_TROPICAL
-generator-raw-gt-guess.weighted.hfst: generator-raw-gt-guess.vocabulary.hfst
+generator-raw-gt-desc.weighted.hfst: generator-raw-gt-desc.vocabulary.hfst
 	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-S '#' -a 30 --arcs-only -i $< \
 	| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) -S '+Der/mine' -a 10 -A \
