@@ -624,7 +624,7 @@ generator-raw-gt-desc.weighted.hfst: generator-raw-gt-desc.vocabulary.hfst
 
 else !WITH_OFST_TROPICAL
 
-generator-raw-gt-guess.weighted.hfst: generator-raw-gt-guess.vocabulary.hfst 
+generator-raw-gt-desc.weighted.hfst: generator-raw-gt-desc.vocabulary.hfst
 		cp $< $@
 endif !WITH_OFST_TROPICAL
 
