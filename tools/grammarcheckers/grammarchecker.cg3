@@ -756,7 +756,7 @@ ADD:err-comma (&err-comma) TARGET Nadalapaev (NOT 1 (","))(1 (Ord))(2 Kuu) ;
 #Relatiivlaused
 
 ADD:err-comma (&err-comma) TARGET RelPron IF (NOT -1 Kvm) (-1C SP) (*-1C PoordV LINK NEGATE *1 Kvm); 
-ADD:err-comma (&err-comma2) TARGET RelPron IF (NOT -1 Kvm) (-1C SP) (*-1C PoordV BARRIER Kvm); 
+ADD:err-comma (&err-comma) TARGET RelPron IF (NOT -1 Kvm) (-1C SP) (*-1C PoordV BARRIER Kvm); 
 
 #!! !Postposition rules
 

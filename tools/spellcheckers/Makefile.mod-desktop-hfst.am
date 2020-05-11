@@ -67,4 +67,11 @@ FINAL_STRING_EDITS=txt
 # - no
 WORD_REPLACEMENTS=no
 
+### BEGIN: Local build rules: *.regex ###
+
+editdist.default.regex: editdist.est.regex 
+	cp $< $@
+
+#### END: Local build rules: *.regex ####
+
 # vim: set ft=automake:
