@@ -112,7 +112,7 @@ GT_LOCAL_SRCS=\
 
 #				guesser-derivations.tmp.lexc
 #				punctuation.tmp.lexc
-#				acronyms.tmp.lexc 
+#				acronyms.tmp.lexc
 
 # Define local xfscripts here:
 GT_LOCAL_XFSCRIPT_SRCS=\
@@ -127,11 +127,11 @@ EST_AFFIX_FILES=$(srcdir)/affixes/regular_declinations \
 				$(srcdir)/affixes/verbs \
 				$(srcdir)/affixes/gi
 
-# make the parts inflect 
+# make the parts inflect
 # by re-using root.lexc and affixes, and omitting all the stem lexicons
-# ... and remove the flag diacritics from initial parts (why? because otherwise the filter that 
+# ... and remove the flag diacritics from initial parts (why? because otherwise the filter that
 # puts the initial and final part together doesn't work ?)
- 
+
 pair_initial.tmp.lexc: pair_initial.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
 	$(AM_V_GEN)cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
 			   cat $< >> $@ && \
@@ -160,13 +160,11 @@ num_final.tmp.lexc: num_final.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
 
 abbrevdot.tmp.lexc: stems/abbreviations.lexc $(GT_LEXC_ROOT) $(EST_AFFIX_FILES:%=%.lexc)
 	$(AM_V_GEN)cat $(GT_LEXC_ROOT) | sed '/^ *LEXICON  *Root/,$$d' > $@ && \
-	echo 'LEXICON Root'  >> $@ && \
-	echo '  @D.Part@@P.Part.Bad@ DABBR ;'  >> $@ && \
-	echo 'LEXICON DABBR'  >> $@ && \
-	$(AM_V_GEN)cat $< | grep '^ *!.*DOTABBR' | sed 's/^ *!//' >> $@ && \
-	$(AM_V_GEN)cat $< | grep 'may also end with a dot' | \
-			    sed 's/:\([^ ]*\)  *[^ ]*  *; *! *may also end with a dot/:\1 DOTABBR ;/' >> $@ && \
-			   cat $(EST_AFFIX_FILES:%=%.lexc) >> $@
+		echo 'LEXICON Root'  >> $@ && \
+		cat $< | grep '^ *!.*DOTABBR' | sed 's/^ *!//' >> $@ && \
+		cat $< | grep 'may also end with a dot' | \
+		sed 's/:\([^ ]*\)  *[^ ]*  *; *! *may also end with a dot/:\1 DOTABBR ;/' >> $@ && \
+		cat $(EST_AFFIX_FILES:%=%.lexc) >> $@
 
 
 # guesser:
